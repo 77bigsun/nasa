@@ -28,18 +28,7 @@
 
 最終交付給負責前後端的成員（見第 7 節）。
 
-## 3. 時程
-
-| 日期 | 內容 |
-|---|---|
-| 11/9–11/12 | 用現有公開資料完成整條流程（A、B 平行開發） |
-| 11/12 晚上 | 內部 v1：完整跑通一次，產出真實結果檔 |
-| 11/13 | 官方題目 Resources、提交指南、評審指南公布 → 對照官方資料清單，替換資料來源並重跑 |
-| 11/14–15 | 黑客松：最終版本、分批交付給前後端 |
-
-> 11/13 一定要讀評審指南，確認評分標準，以及有沒有賽前準備的相關規定。
-
-## 4. 變數規格（9 個）
+## 3. 變數規格（9 個）
 
 詳細參數在 `config/features.yaml`。三種比較類型：
 
@@ -65,7 +54,7 @@
 - 計分時只用 coverage = true 的變數，權重在這些變數之間重新正規化。
 - 信心度 `confidence` = 有資料的變數原始權重總和（0–1）。
 
-## 5. 計分公式
+## 4. 計分公式
 
 單項相似度 s_i ∈ [0, 1]，任務權重 w_i（每個任務總和 = 1，見 `config/missions.json`）。
 
@@ -77,53 +66,6 @@ w'_i = w_i / Σ_{j∈V} w_j                       # 重新正規化
 ```
 
 用幾何平均而不是算術平均：任一關鍵變數很差時，總分會明顯下降。例如取冰任務中，冰的分數很低的地點不該拿高分。
-
-## 6. Repo 結構與檔案負責人
-
-```
-.
-├─ README.md                         # 共同（B 先建）
-├─ environment.yml                   # 共同（B 先建）
-├─ .gitignore                        # 共同：忽略 data/raw/、大型 tif、.env
-├─ docs/
-│  ├─ PROJECT_CONTEXT.md             # 本文件（共同）
-│  ├─ TASK_A_mars.md                 # A 的任務
-│  ├─ TASK_B_earth.md                # B 的任務
-│  └─ DATA_SOURCES.md                # 資料來源與引用清單（A、B 各自補自己的）
-├─ config/
-│  ├─ features.yaml                  # 變數規格（共同，改動需雙方同意）
-│  ├─ missions.json                  # 任務權重先驗（共同）
-│  ├─ targets.yaml                   # 火星目標清單（A）
-│  └─ weights_learned.json           # 學習後權重（A 產出）
-├─ data/
-│  ├─ raw/                           # 原始下載檔，不進 git
-│  ├─ processed/
-│  │  ├─ mars_targets.json           # A 產出
-│  │  ├─ mars_reference_pct.json     # A 產出：火星端百分位參考分布
-│  │  └─ earth_grid.parquet          # B 產出（大檔不進 git，放共用雲端）
-│  ├─ labels/known_analogs.csv       # A 產出
-│  └─ mappings/lithology_mars_to_glim.csv   # A 產出
-├─ src/mars_analog/
-│  ├─ __init__.py                    # B：對外的 score() 介面
-│  ├─ config.py                      # B：讀 features.yaml / missions.json
-│  ├─ adapters/
-│  │  ├─ mars/                       # A：每個火星變數一個讀取函式
-│  │  └─ earth/                      # B：每個地球變數一個讀取函式
-│  ├─ mars_features.py               # A
-│  ├─ earth_grid.py                  # B
-│  ├─ similarity.py                  # B
-│  ├─ scoring.py                     # B
-│  ├─ validate.py                    # A
-│  ├─ learn_weights.py               # A
-│  ├─ novelty.py                     # A
-│  └─ export.py                      # B
-├─ scripts/run_pipeline.py           # B：一鍵重跑全流程
-├─ notebooks/                        # 各自探索用，檔名加前綴 a_ / b_
-├─ outputs/                          # 交付給前後端的結果檔
-└─ tests/                            # 各自負責自己模組的測試
-```
-
-**規則**：每個檔案只有一個負責人，只改自己的檔案。要動對方的檔案，先開 issue 或直接溝通。共同檔案（`features.yaml`、`missions.json`、本文件）改動需雙方同意。
 
 ### 資料轉接層（為 11/13 換資料做準備）
 
@@ -183,17 +125,6 @@ result = score(target_lat=47.2, target_lon=-175.7, radius_km=25,
                mission="isru_base",   # 或 weights={...} 自訂權重
                top_n=20)              # 回傳與 7.1 同格式的 dict
 ```
-
-### 7.3 交付時程
-
-| 時間 | 交付內容 |
-|---|---|
-| 立刻 | 假資料版結果檔（格式正確，數字隨便），讓前後端先開工 |
-| 11/12 | 真實資料 v1 |
-| 11/14 開賽 +6 h | 官方資料試跑版 |
-| 開賽 +24 h | 第一版正式結果 |
-| 開賽 +30 h | 評分模組第一版 |
-| 開賽 +36 h | 最終版；之後只修 bug、不改格式 |
 
 ## 8. 任務類型與權重先驗
 
