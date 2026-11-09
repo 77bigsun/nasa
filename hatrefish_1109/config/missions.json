@@ -1,0 +1,7 @@
+{
+  "_note": "任務權重先驗（初始假設，每個任務總和 = 1）。A 的 learn_weights 會產生 config/weights_learned.json 修正。",
+  "geology":   { "slope": 0.05, "roughness": 0.10, "thermal_inertia": 0.10, "lithology": 0.35, "ice": 0.05, "temperature": 0.05, "aridity": 0.10, "barrenness": 0.15, "dust": 0.05 },
+  "rover":     { "slope": 0.25, "roughness": 0.25, "thermal_inertia": 0.20, "lithology": 0.05, "ice": 0.00, "temperature": 0.05, "aridity": 0.05, "barrenness": 0.05, "dust": 0.10 },
+  "isru_base": { "slope": 0.10, "roughness": 0.05, "thermal_inertia": 0.10, "lithology": 0.05, "ice": 0.35, "temperature": 0.20, "aridity": 0.05, "barrenness": 0.05, "dust": 0.05 },
+  "landing":   { "slope": 0.30, "roughness": 0.30, "thermal_inertia": 0.15, "lithology": 0.00, "ice": 0.00, "temperature": 0.00, "aridity": 0.05, "barrenness": 0.05, "dust": 0.15 }
+}

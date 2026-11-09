@@ -1,0 +1,62 @@
+# 變數規格（火星組）。改動需 A、B 雙方同意。
+# type: A = 直接比數值（高斯核）；B = 百分位比較；C = 機率／比例；categorical = 查表
+# source: 目前使用的資料來源 adapter 名稱（11/13 換官方資料時改這裡）
+
+defaults:
+  min_score: 0.01          # 計分時 ln(max(s, min_score))
+  earth_grid_deg: 0.1
+  compare_resolution_m: 200
+
+variables:
+  slope:
+    type: A
+    unit: deg
+    sigma: 3.0
+    mars_source: hrsc_mola_200m
+    earth_source: copernicus_glo30_200m
+  roughness:
+    type: A
+    unit: m
+    window_px: 5             # 200 m 解析度下 5x5 視窗（約 1 km）
+    sigma: auto              # = 地球陸地分布標準差 x 0.5
+    mars_source: hrsc_mola_200m
+    earth_source: copernicus_glo30_200m
+  thermal_inertia:
+    type: B
+    compare: abs_pct_diff    # 1 - |p_mars - p_earth|
+    mars_source: themis_ti_quant   # 60 度以上 fallback: tes_ti
+    earth_source: modis_ati
+  lithology:
+    type: categorical
+    mapping: data/mappings/lithology_mars_to_glim.csv
+    default_score: 0.1
+    mars_source: usgs_sim3292
+    earth_source: glim
+  ice:
+    type: C
+    compare: abs_prob_diff   # 1 - |p_earth - p_mars|, p_mars = (SWIM+1)/2
+    mars_source: swim        # 範圍外 fallback: odyssey_neutron
+    earth_source: esa_cci_permafrost   # 僅北半球 30N 以北
+  temperature:
+    type: B
+    compare: earth_extreme_pct   # cold_pct
+    mars_source: mcd_v61
+    earth_source: modis_lst_era5
+  aridity:
+    type: B
+    compare: earth_extreme_pct   # arid_pct
+    mars_source: fixed_max
+    earth_source: global_aridity_index
+  barrenness:
+    type: C
+    compare: ndvi_linear     # clip(1 - NDVI / ndvi_max, 0, 1)
+    ndvi_max: 0.3
+    mars_source: fixed_zero_ndvi
+    earth_source: modis_ndvi
+  dust:
+    type: B
+    compare: abs_pct_diff
+    mars_source: mcd_v61_dust
+    earth_source: modis_maiac_aod
+
+gaps_not_scored: [gravity, pressure, radiation, atmosphere_composition]
