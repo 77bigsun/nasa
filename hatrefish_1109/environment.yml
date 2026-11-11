@@ -1,0 +1,46 @@
+# 建立：conda env create -f environment.yml
+# 啟用：conda activate analog
+# 更新（之後改了這個檔）：conda env update -f environment.yml --prune
+name: analog
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.11
+  # 地理空間核心（一定要從 conda-forge 裝，Windows 用 pip 裝 GDAL 很容易失敗）
+  - gdal
+  - libgdal-netcdf   # conda-forge 把 GDAL 的 netCDF 格式拆成外掛，要另外裝
+  - libgdal-hdf5     # 同上，HDF5 格式（部分 NASA 資料用）
+  - rasterio
+  - rioxarray
+  - xarray
+  - netcdf4
+  - h5netcdf
+  - geopandas
+  - pyogrio
+  - shapely
+  - pyproj
+  # 數值與機器學習
+  - numpy
+  - scipy
+  - pandas
+  - pyarrow
+  - scikit-learn
+  # 資料存取
+  - earthengine-api
+  - geemap
+  - earthaccess
+  - pystac-client
+  - requests
+  - tqdm
+  # 工具
+  - pyyaml
+  - matplotlib
+  - jupyterlab
+  - ipykernel
+  - pytest
+  - pip
+  # 選用：地貌 embedding（加分項目）。要用 GPU 的話不要在這裡裝，
+  # 改照 https://pytorch.org/get-started/locally/ 的指令另外裝 CUDA 版。
+  # - pytorch
+  # - torchvision
