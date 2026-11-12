@@ -1,0 +1,319 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.92,
+          -24.08
+        ]
+      },
+      "properties": {
+        "id": "atacama_yungay",
+        "name": "Atacama Desert (Yungay Core, Chile)",
+        "category": "known_analog",
+        "data_confidence": 0.98,
+        "fallback_fields": [],
+        "relief_m": 3.35,
+        "slope_deg": 2.27,
+        "roughness_m": 1.73,
+        "mean_temp_c": 27.0,
+        "diurnal_temp_range_c": 34.9,
+        "precip_mm_yr": 160.9,
+        "ndvi": 0.096,
+        "subsurface_ice_index": 0.05,
+        "lithology": "evaporite_sulfate_clastic"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          162.0,
+          -77.5
+        ]
+      },
+      "properties": {
+        "id": "mcmurdo_dry_valleys",
+        "name": "McMurdo Dry Valleys (Antarctica)",
+        "category": "known_analog",
+        "data_confidence": 0.83,
+        "fallback_fields": [
+          "ndvi"
+        ],
+        "relief_m": 8.74,
+        "slope_deg": 12.49,
+        "roughness_m": 6.01,
+        "mean_temp_c": -26.7,
+        "diurnal_temp_range_c": 2.1,
+        "precip_mm_yr": 47.7,
+        "ndvi": 0.0,
+        "subsurface_ice_index": 0.9,
+        "lithology": "clastic_permafrost"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.68,
+          75.38
+        ]
+      },
+      "properties": {
+        "id": "haughton_crater",
+        "name": "Haughton Impact Crater (Devon Island, Canada)",
+        "category": "known_analog",
+        "data_confidence": 0.9,
+        "fallback_fields": [],
+        "relief_m": 4.46,
+        "slope_deg": 2.39,
+        "roughness_m": 3.66,
+        "mean_temp_c": -20.3,
+        "diurnal_temp_range_c": 2.6,
+        "precip_mm_yr": 259.3,
+        "ndvi": 0.004,
+        "subsurface_ice_index": 0.85,
+        "lithology": "impact_breccia_carbonate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.79,
+          38.41
+        ]
+      },
+      "properties": {
+        "id": "mdrs_utah",
+        "name": "Mars Desert Research Station (Hanksville, Utah, USA)",
+        "category": "known_analog",
+        "data_confidence": 0.95,
+        "fallback_fields": [],
+        "relief_m": 3.64,
+        "slope_deg": 1.76,
+        "roughness_m": 2.62,
+        "mean_temp_c": 18.3,
+        "diurnal_temp_range_c": 22.9,
+        "precip_mm_yr": 135.7,
+        "ndvi": 0.092,
+        "subsurface_ice_index": 0.0,
+        "lithology": "mudstone_clastic"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.43,
+          35.68
+        ]
+      },
+      "properties": {
+        "id": "black_point_lava",
+        "name": "Black Point Lava Flow (Arizona, USA)",
+        "category": "known_analog",
+        "data_confidence": 0.92,
+        "fallback_fields": [],
+        "relief_m": 1.53,
+        "slope_deg": 0.86,
+        "roughness_m": 0.86,
+        "mean_temp_c": 20.7,
+        "diurnal_temp_range_c": 26.0,
+        "precip_mm_yr": 194.5,
+        "ndvi": 0.127,
+        "subsurface_ice_index": 0.0,
+        "lithology": "basalt"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -16.75,
+          65.05
+        ]
+      },
+      "properties": {
+        "id": "askja_iceland",
+        "name": "Askja Basalt Lava Fields (Iceland)",
+        "category": "known_analog",
+        "data_confidence": 0.85,
+        "fallback_fields": [],
+        "relief_m": 6.06,
+        "slope_deg": 2.38,
+        "roughness_m": 2.98,
+        "mean_temp_c": -6.1,
+        "diurnal_temp_range_c": 4.0,
+        "precip_mm_yr": 1208.8,
+        "ndvi": -0.048,
+        "subsurface_ice_index": 0.3,
+        "lithology": "basalt"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.38,
+          22.88
+        ]
+      },
+      "properties": {
+        "id": "tw_tianliao",
+        "name": "Tianliao Moon World (高雄田寮月世界, Taiwan)",
+        "category": "taiwan_candidate",
+        "data_confidence": 0.95,
+        "fallback_fields": [],
+        "relief_m": 5.54,
+        "slope_deg": 2.55,
+        "roughness_m": 5.19,
+        "mean_temp_c": 24.2,
+        "diurnal_temp_range_c": 8.4,
+        "precip_mm_yr": 2048.3,
+        "ndvi": 0.676,
+        "subsurface_ice_index": 0.0,
+        "lithology": "mudstone_clastic"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.17,
+          22.8
+        ]
+      },
+      "properties": {
+        "id": "tw_liji",
+        "name": "Liji Badlands (台東利吉惡地, Taiwan)",
+        "category": "taiwan_candidate",
+        "data_confidence": 0.85,
+        "fallback_fields": [],
+        "relief_m": 4.39,
+        "slope_deg": 1.09,
+        "roughness_m": 1.56,
+        "mean_temp_c": 23.2,
+        "diurnal_temp_range_c": 9.5,
+        "precip_mm_yr": 1859.3,
+        "ndvi": 0.582,
+        "subsurface_ice_index": 0.0,
+        "lithology": "mudstone_clastic"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.55,
+          23.6
+        ]
+      },
+      "properties": {
+        "id": "tw_penghu_basalt",
+        "name": "Penghu Columnar Basalt (澎湖柱狀玄武岩, Taiwan)",
+        "category": "taiwan_candidate",
+        "data_confidence": 0.85,
+        "fallback_fields": [],
+        "relief_m": 0.71,
+        "slope_deg": 0.0,
+        "roughness_m": 0.0,
+        "mean_temp_c": 23.3,
+        "diurnal_temp_range_c": 4.7,
+        "precip_mm_yr": 847.4,
+        "ndvi": 0.316,
+        "subsurface_ice_index": 0.0,
+        "lithology": "basalt"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.55,
+          25.18
+        ]
+      },
+      "properties": {
+        "id": "tw_xiaoyoukeng",
+        "name": "Xiaoyoukeng Fumaroles (陽明山小油坑, Taiwan)",
+        "category": "taiwan_candidate",
+        "data_confidence": 0.8,
+        "fallback_fields": [],
+        "relief_m": 17.79,
+        "slope_deg": 15.02,
+        "roughness_m": 16.42,
+        "mean_temp_c": 21.0,
+        "diurnal_temp_range_c": 6.0,
+        "precip_mm_yr": 2291.2,
+        "ndvi": 0.702,
+        "subsurface_ice_index": 0.0,
+        "lithology": "hydrothermal_sulfate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -60.2,
+          -2.6
+        ]
+      },
+      "properties": {
+        "id": "amazon_rainforest",
+        "name": "Central Amazon Rainforest (near Manaus, Brazil)",
+        "category": "negative_control",
+        "data_confidence": 0.95,
+        "fallback_fields": [],
+        "relief_m": 6.09,
+        "slope_deg": 3.08,
+        "roughness_m": 5.71,
+        "mean_temp_c": 25.9,
+        "diurnal_temp_range_c": 5.1,
+        "precip_mm_yr": 2536.4,
+        "ndvi": 0.766,
+        "subsurface_ice_index": 0.0,
+        "lithology": "soil"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.5,
+          42.0
+        ]
+      },
+      "properties": {
+        "id": "iowa_farmland",
+        "name": "Iowa Farmland (USA)",
+        "category": "negative_control",
+        "data_confidence": 0.95,
+        "fallback_fields": [],
+        "relief_m": 0.81,
+        "slope_deg": 0.42,
+        "roughness_m": 0.65,
+        "mean_temp_c": 11.7,
+        "diurnal_temp_range_c": 12.7,
+        "precip_mm_yr": 926.1,
+        "ndvi": 0.395,
+        "subsurface_ice_index": 0.05,
+        "lithology": "soil"
+      }
+    }
+  ]
+}
