@@ -292,7 +292,7 @@ evaporite_sulfate_clastic,ev,0.9,蒸發岩
 
 **完成的標準**：至少 20 筆，每筆都有參考連結，而且都確認過（`verified` = true）。
 
-**技術細節**：欄位照 `PROJECT_CONTEXT.md`：
+**技術細節**：欄位如下：
 
 ```csv
 site_id,name,lat,lon,radius_km,analog_for,mars_target_ids,missions,reference_url,verified

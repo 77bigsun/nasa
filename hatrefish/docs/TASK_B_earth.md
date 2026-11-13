@@ -255,7 +255,7 @@ def rank(target_id: str, mission: str, weights: dict | None = None, top_n: int =
     """weights=None 時用 weights_learned.json，沒有就用 missions.json"""
 ```
 
-`diurnal_range` 不在 `missions.json` 裡，權重預設 0。
+`diurnal_range` 在 `missions.json` 裡的權重目前都是 0。
 
 ---
 

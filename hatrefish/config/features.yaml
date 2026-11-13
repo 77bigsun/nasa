@@ -1,62 +1,85 @@
-# 變數規格（火星組）。改動需 A、B 雙方同意。
-# type: A = 直接比數值（高斯核）；B = 百分位比較；C = 機率／比例；categorical = 查表
-# source: 目前使用的資料來源 adapter 名稱（11/13 換官方資料時改這裡）
+# 變數規格（火星組）。改動需兩人同意，並同步更新 docs/PROJECT_CONTEXT.md。最後更新：11/13。
+#
+# compare（比較方式）：
+#   gaussian          直接比數值：exp(-(x-t)^2 / (2*sigma^2))
+#   abs_pct_diff      比排第幾：1 - |p_mars - p_earth|，p = 在自己星球上的百分位
+#   earth_extreme_pct 比有多極端：地球端越接近極端（越冷、越乾）分數越高
+#   lookup            查表（岩性）
+#   abs_prob_diff     比例：1 - |p_earth - p_mars|
+#   ndvi_linear       clip(1 - NDVI / ndvi_max, 0, 1)
+# source：目前使用的資料 adapter 名稱。要換資料來源時改這裡。
 
 defaults:
-  min_score: 0.01          # 計分時 ln(max(s, min_score))
+  min_score: 0.01             # 計分時 ln(max(s, min_score))
   earth_grid_deg: 0.1
-  compare_resolution_m: 200
+  compare_resolution_m: 200   # 火星和地球的坡度、粗糙度都在這個尺度計算
+  percentile:
+    earth_reference: ice_free_land   # 扣掉冰蓋的陸地格（南極乾谷等無冰地區保留）
+    mars_reference: all_valid_pixels
+    area_weight: cos_lat             # 每格乘 cos(緯度)
+  breaks_threshold: 0.3       # 單項分數低於這個值，寫進結果檔的 breaks（哪裡不像）
+  refine:                     # 先粗後細
+    top_n: 50
+    fine_resolution_m:
+      jezero: 20
+      gale: 30
 
 variables:
   slope:
-    type: A
+    compare: gaussian
     unit: deg
     sigma: 3.0
     mars_source: hrsc_mola_200m
     earth_source: copernicus_glo30_200m
   roughness:
-    type: A
+    compare: gaussian
     unit: m
-    window_px: 5             # 200 m 解析度下 5x5 視窗（約 1 km）
-    sigma: auto              # = 地球陸地分布標準差 x 0.5
+    window_px: 5              # 200 m 解析度下 5x5 視窗（約 1 km）
+    sigma: auto               # = 地球陸地分布標準差 x 0.5
     mars_source: hrsc_mola_200m
     earth_source: copernicus_glo30_200m
   thermal_inertia:
-    type: B
-    compare: abs_pct_diff    # 1 - |p_mars - p_earth|
-    mars_source: themis_ti_quant   # 60 度以上 fallback: tes_ti
-    earth_source: modis_ati
+    compare: abs_pct_diff
+    mars_source: tes_ti_night_2007     # 目標值和火星百分位都用 TES；THEMIS 只當局部檢查
+    earth_source: modis_ati            # (1 - 反照率) / (日溫 - 夜溫)
+    earth_min_day_night_diff_k: 5      # 日夜溫差小於這個值設沒資料
   lithology:
-    type: categorical
+    compare: lookup
+    unit_groups: data/mappings/sim3292_unit_groups.csv
     mapping: data/mappings/lithology_mars_to_glim.csv
     default_score: 0.1
     mars_source: usgs_sim3292
     earth_source: glim
   ice:
-    type: C
-    compare: abs_prob_diff   # 1 - |p_earth - p_mars|, p_mars = (SWIM+1)/2
-    mars_source: swim        # 範圍外 fallback: odyssey_neutron
-    earth_source: esa_cci_permafrost   # 僅北半球 30N 以北
+    compare: abs_prob_diff    # p_mars = (SWIM + 1) / 2
+    mars_source: swim         # SWIM 範圍外設沒資料
+    earth_source: esa_cci_permafrost_v5
+    earth_coverage: "北緯 25～85 度、南緯 60～85 度"
+    outside_coverage:
+      low_elevation_value: 0.0          # 範圍外低海拔：當作沒有永凍土
+      missing_above_elevation_m: 3500   # 範圍外高山：設沒資料（暫定）
   temperature:
-    type: B
-    compare: earth_extreme_pct   # cold_pct
-    mars_source: mcd_v61
-    earth_source: modis_lst_era5
+    compare: earth_extreme_pct          # cold_pct
+    unit: C
+    mars_source: mcd_v62_tsurf
+    earth_source: modis_lst
+  diurnal_range:
+    compare: earth_extreme_pct          # dtr_pct；權重暫時為 0
+    unit: C
+    mars_source: mcd_v62_tsurf_dtr      # 每季日最高減日最低，再平均
+    earth_source: modis_lst_dtr         # 日溫減夜溫
   aridity:
-    type: B
-    compare: earth_extreme_pct   # arid_pct
+    compare: earth_extreme_pct          # arid_pct
     mars_source: fixed_max
-    earth_source: global_aridity_index
+    earth_source: global_aridity_index  # 不用 CHIRPS（在 Atacama 偏差很大）
   barrenness:
-    type: C
-    compare: ndvi_linear     # clip(1 - NDVI / ndvi_max, 0, 1)
+    compare: ndvi_linear
     ndvi_max: 0.3
     mars_source: fixed_zero_ndvi
     earth_source: modis_ndvi
   dust:
-    type: B
-    compare: abs_pct_diff
-    mars_source: mcd_v61_dust
-    earth_source: modis_maiac_aod
+    compare: abs_pct_diff               # 驗證時另外試 gaussian
+    mars_source: mcd_v62_tauref
+    earth_source: merra2_duexttau
 
 gaps_not_scored: [gravity, pressure, radiation, atmosphere_composition]
