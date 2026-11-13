@@ -1,0 +1,26 @@
+# A1: the three Mars targets, using the teammate's coordinates (original targets.yaml in TASK_A_mars.md).
+# Decided 2026-11-13 by the user; to be confirmed with the team at the 21:00 meeting.
+# Longitude -180..180, east positive. Changing a coordinate changes every value: rerun scripts/run_task_a.py targets.
+# Alternatives we also measured are in config/targets_alt.yaml (Arcadia SWIM pilot centre has a higher ice index, 0.65).
+targets:
+  - id: jezero
+    name: Jezero Crater
+    lat: 18.4
+    lon: 77.5
+    radius_km: 25
+    missions: [geology, rover]
+    source: "Teammate's targets.yaml (rounded centre of the Jezero area). A 25 km circle contains the Perseverance landing site (Octavia E. Butler Landing, 18.4447 N 77.4508 E): https://www.jpl.nasa.gov/images/pia24483-welcome-to-octavia-e-butler-landing/"
+  - id: gale
+    name: Gale Crater
+    lat: -5.4
+    lon: 137.8
+    radius_km: 25
+    missions: [geology, rover]
+    source: "Teammate's targets.yaml (Gale crater centre). Note: Curiosity's Bradbury Landing (4.5895 S 137.4417 E) is about 48 km away, outside the 25 km circle, so the circle covers the crater floor and the foot of Mount Sharp, not the landing site."
+  - id: arcadia
+    name: Arcadia Planitia (shallow ground ice)
+    lat: 47.2
+    lon: -175.7
+    radius_km: 50
+    missions: [isru_base, landing]
+    source: "Teammate's targets.yaml. Inside the SWIM Arcadia study region (150-225 E, 0-60 N); SWIM ice consistency about 0.5 here. Morgan et al. 2021, Nature Astronomy 5:230; https://swim.psi.edu/resources/abstracts/LPSC2019/2069.pdf"

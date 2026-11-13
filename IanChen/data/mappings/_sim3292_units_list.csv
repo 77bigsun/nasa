@@ -1,0 +1,45 @@
+Unit,UnitDesc,share
+mNh,Middle Noachian highland unit,0.1841
+lHl,Late Hesperian lowland unit,0.1404
+eNh,Early Noachian highland unit,0.0898
+Apu,Amazonian polar undivided unit,0.0674
+AHv,Amazonian and Hesperian volcanic,0.0671
+lApc,Late Amazonian polar cap unit,0.0509
+AHi,Amazonian and Hesperian impact unit,0.0506
+lNh,Late Noachian highland unit,0.0497
+mAl,Middle Amazonian lowland unit,0.0286
+eHv,Early Hesperian volcanic unit,0.028
+Hp,Hesperian polar unit,0.0192
+eHt,Early Hesperian transition unit,0.0189
+lNv,Late Noachian volcanic unit,0.0179
+lAv,Late Amazonian volcanic unit,0.0163
+HNt,Hesperian and Noachian transition unit,0.014
+lHt,Late Hesperian transition unit,0.0123
+Av,Amazonian volcanic unit,0.0123
+eNhm,Early Noachian highland massif unit,0.0122
+lHv,Late Hesperian volcanic unit,0.0112
+mNhm,Middle Noachian highland massif unit,0.0111
+AHtu,Amazonian and Hesperian transition undivided unit,0.0097
+eHh,Early Hesperian highland unit,0.0088
+Nhu,Noachian highland undivided unit,0.0076
+lApd,Late Amazonian polar dunes unit,0.0073
+Hto,Hesperian transition outflow unit,0.0061
+lHb,Late Hesperian basin unit,0.0054
+HNhu,Hesperian and Noachian highland undivided unit,0.0051
+Hpe,Hesperian polar edifice unit,0.005
+Aa,Amazonian apron unit,0.0048
+Ap,Amazonian polar unit,0.0047
+Ht,Hesperian transition unit,0.004
+Ave,Amazonian volcanic edifice,0.0039
+HNb,Hesperian and Noachian basin unit,0.0038
+eAb,Early Amazonian basin unit,0.0034
+Htu,Hesperian transition undivided unit,0.0033
+eHb,Early Hesperian basin unit,0.0023
+ANa,Amazonian and Noachian apron unit,0.0022
+lHvf,Late Hesperian volcanic field unit,0.0022
+Hve,Hesperian volcanic edifice unit,0.0019
+lAvf,Late Amazonian volcanic field unit,0.0014
+Nhe,Noachian highland edifice unit,0.0013
+lAa,Late Amazonian apron unit,0.0013
+Nve,Noachian volcanic edifice unit,0.0012
+Hpu,Hesperian polar undivided unit,0.0011

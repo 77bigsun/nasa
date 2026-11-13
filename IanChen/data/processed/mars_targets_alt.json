@@ -1,0 +1,448 @@
+{
+ "body": "mars",
+ "generated_at": "2026-11-13T08:11:15+00:00",
+ "variables": [
+  "slope",
+  "roughness",
+  "thermal_inertia",
+  "lithology",
+  "ice",
+  "temperature",
+  "diurnal_range",
+  "dust",
+  "aridity",
+  "barrenness"
+ ],
+ "targets": {
+  "jezero_landing": {
+   "name": "Jezero (Perseverance landing site)",
+   "lat": 18.4447,
+   "lon": 77.4508,
+   "radius_km": 10,
+   "features": {
+    "slope": {
+     "value": 2.164,
+     "coverage": true,
+     "source": "hrsc_mola_blend_200m_v2",
+     "n_pixels": 7860,
+     "unit": "deg",
+     "p90": 8.107,
+     "seconds": 45.3
+    },
+    "roughness": {
+     "value": 9.985,
+     "coverage": true,
+     "source": "hrsc_mola_blend_200m_v2",
+     "n_pixels": 7860,
+     "unit": "m",
+     "window_px": 5,
+     "seconds": 0.3
+    },
+    "thermal_inertia": {
+     "value": 294.5,
+     "pct": 0.874,
+     "coverage": true,
+     "source": "tes_night_2007",
+     "n_pixels": 38,
+     "unit": "tiu",
+     "seconds": 0.1
+    },
+    "lithology": {
+     "value": "HNt",
+     "unit_desc": "Hesperian and Noachian transition unit",
+     "group": "clastic",
+     "coverage": true,
+     "source": "usgs_sim3292",
+     "n_pixels": 0,
+     "units_in_radius": [
+      {
+       "unit": "HNt",
+       "share": 0.81,
+       "group": "clastic"
+      },
+      {
+       "unit": "mNhm",
+       "share": 0.19,
+       "group": "impact_breccia_carbonate"
+      }
+     ],
+     "seconds": 1.0
+    },
+    "ice": {
+     "value": -0.2,
+     "p": 0.4,
+     "coverage": true,
+     "source": "swim4mim_ci_composite",
+     "n_pixels": 36,
+     "median": -0.191,
+     "seconds": 0.1
+    },
+    "temperature": {
+     "value": -49.46,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 600,
+     "unit": "C",
+     "min_c": -87.38,
+     "max_c": 13.73,
+     "note": "point value at the target centre (MCD grid ~5 deg); radius not used",
+     "seconds": 12.9
+    },
+    "diurnal_range": {
+     "value": 84.76,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 600,
+     "unit": "C",
+     "min_season": 75.09,
+     "max_season": 95.42,
+     "seconds": 0.0
+    },
+    "dust": {
+     "value": 0.5542,
+     "pct": 0.869,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 1,
+     "unit": "tau",
+     "seconds": 0.0
+    },
+    "aridity": {
+     "value": "max",
+     "coverage": true,
+     "source": "fixed_max",
+     "n_pixels": 0,
+     "seconds": 0.0
+    },
+    "barrenness": {
+     "value": 0.0,
+     "coverage": true,
+     "source": "fixed_zero_ndvi",
+     "n_pixels": 0,
+     "unit": "ndvi",
+     "seconds": 0.0
+    }
+   }
+  },
+  "gale_mount_sharp": {
+   "name": "Gale (teammate coords",
+   "lat": -5.4,
+   "lon": 137.8,
+   "radius_km": 25,
+   "features": {
+    "slope": {
+     "value": 5.455,
+     "coverage": true,
+     "source": "hrsc_mola_blend_200m_v2",
+     "n_pixels": 49080,
+     "unit": "deg",
+     "p90": 16.873,
+     "seconds": 107.5
+    },
+    "roughness": {
+     "value": 27.254,
+     "coverage": true,
+     "source": "hrsc_mola_blend_200m_v2",
+     "n_pixels": 49080,
+     "unit": "m",
+     "window_px": 5,
+     "seconds": 0.0
+    },
+    "thermal_inertia": {
+     "value": 283.0,
+     "pct": 0.843,
+     "coverage": true,
+     "source": "tes_night_2007",
+     "n_pixels": 224,
+     "unit": "tiu",
+     "seconds": 0.0
+    },
+    "lithology": {
+     "value": "Htu",
+     "unit_desc": "Hesperian transition undivided unit",
+     "group": "clastic",
+     "coverage": true,
+     "source": "usgs_sim3292",
+     "n_pixels": 0,
+     "units_in_radius": [
+      {
+       "unit": "Htu",
+       "share": 0.624,
+       "group": "clastic"
+      },
+      {
+       "unit": "AHi",
+       "share": 0.376,
+       "group": "impact_breccia_carbonate"
+      }
+     ],
+     "seconds": 0.0
+    },
+    "ice": {
+     "value": 0.059,
+     "p": 0.529,
+     "coverage": true,
+     "source": "swim4mim_ci_composite",
+     "n_pixels": 216,
+     "median": 0.055,
+     "seconds": 0.1
+    },
+    "temperature": {
+     "value": -50.85,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 600,
+     "unit": "C",
+     "min_c": -94.62,
+     "max_c": 20.63,
+     "note": "point value at the target centre (MCD grid ~5 deg); radius not used",
+     "seconds": 0.0
+    },
+    "diurnal_range": {
+     "value": 93.3,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 600,
+     "unit": "C",
+     "min_season": 78.16,
+     "max_season": 103.8,
+     "seconds": 0.0
+    },
+    "dust": {
+     "value": 0.4639,
+     "pct": 0.735,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 1,
+     "unit": "tau",
+     "seconds": 0.0
+    },
+    "aridity": {
+     "value": "max",
+     "coverage": true,
+     "source": "fixed_max",
+     "n_pixels": 0,
+     "seconds": 0.0
+    },
+    "barrenness": {
+     "value": 0.0,
+     "coverage": true,
+     "source": "fixed_zero_ndvi",
+     "n_pixels": 0,
+     "unit": "ndvi",
+     "seconds": 0.0
+    }
+   }
+  },
+  "arcadia_ours": {
+   "name": "Arcadia (our earlier coords)",
+   "lat": 39.2,
+   "lon": 172.0,
+   "radius_km": 50,
+   "features": {
+    "slope": {
+     "value": 0.244,
+     "coverage": true,
+     "source": "hrsc_mola_blend_200m_v2",
+     "n_pixels": 196364,
+     "unit": "deg",
+     "p90": 1.296,
+     "seconds": 210.9
+    },
+    "roughness": {
+     "value": 1.185,
+     "coverage": true,
+     "source": "hrsc_mola_blend_200m_v2",
+     "n_pixels": 196364,
+     "unit": "m",
+     "window_px": 5,
+     "seconds": 0.0
+    },
+    "thermal_inertia": {
+     "value": 232.0,
+     "pct": 0.635,
+     "coverage": true,
+     "source": "tes_night_2007",
+     "n_pixels": 1159,
+     "unit": "tiu",
+     "seconds": 0.0
+    },
+    "lithology": {
+     "value": "eHt",
+     "unit_desc": "Early Hesperian transition unit",
+     "group": "clastic",
+     "coverage": true,
+     "source": "usgs_sim3292",
+     "n_pixels": 0,
+     "units_in_radius": [
+      {
+       "unit": "eHt",
+       "share": 1.0,
+       "group": "clastic"
+      }
+     ],
+     "seconds": 0.0
+    },
+    "ice": {
+     "value": 0.272,
+     "p": 0.636,
+     "coverage": true,
+     "source": "swim4mim_ci_composite",
+     "n_pixels": 1166,
+     "median": 0.277,
+     "seconds": 0.0
+    },
+    "temperature": {
+     "value": -67.04,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 600,
+     "unit": "C",
+     "min_c": -112.06,
+     "max_c": 6.27,
+     "note": "point value at the target centre (MCD grid ~5 deg); radius not used",
+     "seconds": 13.2
+    },
+    "diurnal_range": {
+     "value": 80.06,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 600,
+     "unit": "C",
+     "min_season": 52.74,
+     "max_season": 95.42,
+     "seconds": 0.0
+    },
+    "dust": {
+     "value": 0.444,
+     "pct": 0.693,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 1,
+     "unit": "tau",
+     "seconds": 0.0
+    },
+    "aridity": {
+     "value": "max",
+     "coverage": true,
+     "source": "fixed_max",
+     "n_pixels": 0,
+     "seconds": 0.0
+    },
+    "barrenness": {
+     "value": 0.0,
+     "coverage": true,
+     "source": "fixed_zero_ndvi",
+     "n_pixels": 0,
+     "unit": "ndvi",
+     "seconds": 0.0
+    }
+   }
+  },
+  "arcadia_swim_pilot": {
+   "name": "Arcadia (SWIM pilot centre)",
+   "lat": 47.25,
+   "lon": -164.0,
+   "radius_km": 50,
+   "features": {
+    "slope": {
+     "value": 0.289,
+     "coverage": true,
+     "source": "hrsc_mola_blend_200m_v2",
+     "n_pixels": 196364,
+     "unit": "deg",
+     "p90": 0.642,
+     "seconds": 210.2
+    },
+    "roughness": {
+     "value": 1.411,
+     "coverage": true,
+     "source": "hrsc_mola_blend_200m_v2",
+     "n_pixels": 196364,
+     "unit": "m",
+     "window_px": 5,
+     "seconds": 0.0
+    },
+    "thermal_inertia": {
+     "value": 198.0,
+     "pct": 0.46,
+     "coverage": true,
+     "source": "tes_night_2007",
+     "n_pixels": 1320,
+     "unit": "tiu",
+     "seconds": 0.0
+    },
+    "lithology": {
+     "value": "Av",
+     "unit_desc": "Amazonian volcanic unit",
+     "group": "basalt",
+     "coverage": true,
+     "source": "usgs_sim3292",
+     "n_pixels": 0,
+     "units_in_radius": [
+      {
+       "unit": "Av",
+       "share": 1.0,
+       "group": "basalt"
+      }
+     ],
+     "seconds": 0.0
+    },
+    "ice": {
+     "value": 0.654,
+     "p": 0.827,
+     "coverage": true,
+     "source": "swim4mim_ci_composite",
+     "n_pixels": 1324,
+     "median": 0.633,
+     "seconds": 0.0
+    },
+    "temperature": {
+     "value": -76.72,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 600,
+     "unit": "C",
+     "min_c": -120.69,
+     "max_c": -0.31,
+     "note": "point value at the target centre (MCD grid ~5 deg); radius not used",
+     "seconds": 13.9
+    },
+    "diurnal_range": {
+     "value": 67.91,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 600,
+     "unit": "C",
+     "min_season": 30.84,
+     "max_season": 90.14,
+     "seconds": 0.0
+    },
+    "dust": {
+     "value": 0.3513,
+     "pct": 0.403,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 1,
+     "unit": "tau",
+     "seconds": 0.0
+    },
+    "aridity": {
+     "value": "max",
+     "coverage": true,
+     "source": "fixed_max",
+     "n_pixels": 0,
+     "seconds": 0.0
+    },
+    "barrenness": {
+     "value": 0.0,
+     "coverage": true,
+     "source": "fixed_zero_ndvi",
+     "n_pixels": 0,
+     "unit": "ndvi",
+     "seconds": 0.0
+    }
+   }
+  }
+ }
+}

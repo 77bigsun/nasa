@@ -1,0 +1,6 @@
+# Teammate's earlier coordinates, used only to compare our extractor with the reference values in TASK_A_mars.md
+# (Jezero TI 281 / SWIM -0.19 / Tsurf -49.5 C; Gale 433 / 0.06 / -50.9; Arcadia 241 / 0.51 / -75.9).
+targets:
+  - {id: jezero, name: Jezero (teammate coords), lat: 18.4, lon: 77.5, radius_km: 25}
+  - {id: gale, name: Gale (teammate coords), lat: -5.4, lon: 137.8, radius_km: 25}
+  - {id: arcadia, name: Arcadia (teammate coords), lat: 47.2, lon: -175.7, radius_km: 50}

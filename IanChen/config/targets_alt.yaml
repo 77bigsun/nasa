@@ -1,0 +1,6 @@
+# Alternative coordinates, extracted only to help choose the targets in config/targets.yaml.
+targets:
+  - {id: jezero_landing, name: Jezero (Perseverance landing site), lat: 18.4447, lon: 77.4508, radius_km: 10}
+  - {id: gale_mount_sharp, name: Gale (teammate coords, Mount Sharp), lat: -5.4, lon: 137.8, radius_km: 25}
+  - {id: arcadia_ours, name: Arcadia (our earlier coords), lat: 39.2, lon: 172.0, radius_km: 50}
+  - {id: arcadia_swim_pilot, name: Arcadia (SWIM pilot centre), lat: 47.25, lon: -164.0, radius_km: 50}
