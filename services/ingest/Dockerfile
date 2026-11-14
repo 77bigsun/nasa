@@ -3,5 +3,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends libexpat1 && rm
 WORKDIR /app
 COPY services/ingest/requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
+COPY services/shared /app/services/shared
 COPY services/ingest /app/services/ingest
-CMD ["python", "-m", "services.ingest.run", "--config", "/data/ingest/pilot.yaml"]
+CMD ["python", "-m", "services.ingest.pipeline", "--data-dir", "/data"]

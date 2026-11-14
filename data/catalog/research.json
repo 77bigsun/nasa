@@ -12,7 +12,7 @@
     "items": [
       "Identify, characterize, state limitations and connect every analog to an exploration test. Visual resemblance alone is insufficient.",
       "Follow five stages: requirement matrix, comparable features, similarity, priority weights and minimum-site coverage. Move impossible Earth conditions to the limitations list before scoring.",
-      "Keep lunar and Martian priorities separate. The current wizard supports one target per run; its complete mission rankings still use demonstration measurements."
+      "Lunar and Martian priorities remain separate. The one-target wizard now compares traceable observations and data-derived models; missing features prevent a full task score."
     ],
     "links": []
   },
@@ -166,9 +166,9 @@
       5
     ],
     "items": [
-      "The evidence library now includes measured terrain statistics for one lunar and three Earth windows, plus January 2025 NASA POWER context at the Earth points. Source files are cached separately from demo fixtures.",
-      "This is a processing pilot, not a global search, mission certification or newly discovered analog. Measurement and interpolation uncertainty are not fully propagated.",
-      "The mission wizard retains clearly labelled synthetic rankings until feature-complete, compatible observations replace its fixtures. Account-required products are listed with their access requirements."
+      "The mission wizard reads only the observed measurement snapshot. All 12 tests and 37 features have product pairings: nine are comparable, twelve have context only and sixteen lack validated data pairs.",
+      "LOLA, Copernicus, HiRISE, Diviner, MODIS, Sentinel-2, REMS, TES, SWIM, POWER and NAIF products now supply imported measurements or explicitly scoped models.",
+      "There is no demo or cross-target fallback. Partial scores never count as complete test coverage; incompatible units, depth sensitivity and sampling remain visible instead of being filled."
     ],
     "links": []
   }

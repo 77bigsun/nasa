@@ -9,7 +9,8 @@ from scipy.stats import wasserstein_distance, t
 def extract(series, stat='mean', threshold=0.):
     x=np.asarray(series['values'],dtype=float)
     if not len(x) or not np.isfinite(x).all():raise ValueError('Invalid time series')
-    step=series.get('step_hours',1.)
+    step=series.get('step_hours')
+    if stat in ['hours_below','longest_below'] and step is None:raise ValueError('Irregular samples do not define duration hours')
     if stat=='mean':return float(x.mean())
     if stat=='range':return float(np.ptp(x))
     if stat=='std':return float(x.std())

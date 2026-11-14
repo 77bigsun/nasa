@@ -1,0 +1,1693 @@
+[
+  {
+    "mission": "moon",
+    "task_id": "M1",
+    "feature_id": "m1_slope",
+    "name": "Multiscale slope",
+    "planet_sources": [
+      {
+        "name": "LOLA",
+        "official": true,
+        "source_id": "lro",
+        "url": "https://science.nasa.gov/mission/lro/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "Copernicus DEM",
+        "official": true,
+        "source_id": "copernicus",
+        "url": "https://dataspace.copernicus.eu/"
+      }
+    ],
+    "planet_products": [
+      {
+        "title": "LOLA adjusted Site01 DEM",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Site01_final_adj_5mpp_surf.tif"
+      }
+    ],
+    "earth_products": [
+      {
+        "title": "Copernicus GLO-30 DSM",
+        "url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N36_00_W117_00_DEM/Copernicus_DSM_COG_10_N36_00_W117_00_DEM.tif"
+      },
+      {
+        "title": "Copernicus GLO-30 DSM",
+        "url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N43_00_E104_00_DEM/Copernicus_DSM_COG_10_N43_00_E104_00_DEM.tif"
+      },
+      {
+        "title": "Copernicus GLO-30 DSM",
+        "url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_S25_00_E135_00_DEM/Copernicus_DSM_COG_10_S25_00_E135_00_DEM.tif"
+      }
+    ],
+    "status": "paired",
+    "ready_sites": [
+      "moon-scr"
+    ],
+    "observed_sites": [
+      "moon-scr"
+    ],
+    "reason": "Comparable source quantities imported; see each feature for support and limitations."
+  },
+  {
+    "mission": "moon",
+    "task_id": "M1",
+    "feature_id": "m1_rock_proxy",
+    "name": "Rock coverage proxy",
+    "planet_sources": [
+      {
+        "name": "Diviner rock abundance",
+        "official": true,
+        "source_id": "diviner",
+        "url": "https://pds-geosciences.wustl.edu/missions/lro/diviner.htm"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "Apparent thermal inertia from MODIS",
+        "official": true,
+        "source_id": "earthdata",
+        "url": "https://search.earthdata.nasa.gov/"
+      }
+    ],
+    "planet_products": [],
+    "earth_products": [
+      {
+        "title": "Terra MOD11A1 v061 on Microsoft Planetary Computer",
+        "url": "https://planetarycomputer.microsoft.com/dataset/modis-11A1-061"
+      },
+      {
+        "title": "MOD11A1.A2025005.h08v05.061.2025006211916",
+        "url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MOD11A1/08/05/2025005/MOD11A1.A2025005.h08v05.061.2025006211916_LST_Day_1km.tif"
+      },
+      {
+        "title": "MOD11A1.A2025001.h25v04.061.2025002131643",
+        "url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MOD11A1/25/04/2025001/MOD11A1.A2025001.h25v04.061.2025002131643_LST_Day_1km.tif"
+      },
+      {
+        "title": "MOD11A1.A2025005.h30v11.061.2025006211805",
+        "url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MOD11A1/30/11/2025005/MOD11A1.A2025005.h30v11.061.2025006211805_LST_Day_1km.tif"
+      }
+    ],
+    "status": "context_only",
+    "ready_sites": [],
+    "observed_sites": [],
+    "reason": "Lunar rock abundance is not imported; Earth thermal contrast is not calibrated to a rock fraction."
+  },
+  {
+    "mission": "moon",
+    "task_id": "M1",
+    "feature_id": "m1_radar_rough",
+    "name": "Radar roughness",
+    "planet_sources": [
+      {
+        "name": "Mini-RF",
+        "official": true,
+        "source_id": "lro",
+        "url": "https://science.nasa.gov/mission/lro/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "Sentinel-1 and PALSAR",
+        "official": true,
+        "source_id": "copernicus",
+        "url": "https://dataspace.copernicus.eu/"
+      }
+    ],
+    "planet_products": [],
+    "earth_products": [],
+    "status": "missing",
+    "ready_sites": [],
+    "observed_sites": [],
+    "reason": "No matched and calibrated Mini-RF / Sentinel-1 / PALSAR radar pair; wavelengths and viewing geometries differ."
+  },
+  {
+    "mission": "moon",
+    "task_id": "M2",
+    "feature_id": "m2_illum_fraction",
+    "name": "Illumination fraction",
+    "planet_sources": [
+      {
+        "name": "Computed from LOLA + SPICE",
+        "official": true,
+        "source_id": "lro",
+        "url": "https://science.nasa.gov/mission/lro/"
+      },
+      {
+        "name": "PGDA",
+        "official": false,
+        "source_id": "pgda",
+        "url": "https://pgda.gsfc.nasa.gov/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "Copernicus DEM + solar position",
+        "official": true,
+        "source_id": "copernicus",
+        "url": "https://dataspace.copernicus.eu/"
+      }
+    ],
+    "planet_products": [
+      {
+        "title": "NASA NAIF naif0012.tls",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk/naif0012.tls"
+      },
+      {
+        "title": "NASA NAIF de440s.bsp",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp"
+      },
+      {
+        "title": "NASA NAIF moon_080317.tf",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/fk/satellites/moon_080317.tf"
+      },
+      {
+        "title": "NASA NAIF moon_pa_de421_1900-2050.bpc",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/moon_pa_de421_1900-2050.bpc"
+      },
+      {
+        "title": "NASA NAIF earth_000101_270208_261113.bpc",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/earth_000101_270208_261113.bpc"
+      },
+      {
+        "title": "LOLA Site01",
+        "url": "https://pgda.gsfc.nasa.gov/products/78"
+      }
+    ],
+    "earth_products": [
+      {
+        "title": "NASA NAIF naif0012.tls",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk/naif0012.tls"
+      },
+      {
+        "title": "NASA NAIF de440s.bsp",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp"
+      },
+      {
+        "title": "NASA NAIF moon_080317.tf",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/fk/satellites/moon_080317.tf"
+      },
+      {
+        "title": "NASA NAIF moon_pa_de421_1900-2050.bpc",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/moon_pa_de421_1900-2050.bpc"
+      },
+      {
+        "title": "NASA NAIF earth_000101_270208_261113.bpc",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/earth_000101_270208_261113.bpc"
+      },
+      {
+        "title": "Copernicus DSM",
+        "url": "https://registry.opendata.aws/copernicus-dem/"
+      }
+    ],
+    "status": "paired",
+    "ready_sites": [
+      "moon-scr"
+    ],
+    "observed_sites": [
+      "moon-scr"
+    ],
+    "reason": "Comparable source quantities imported; see each feature for support and limitations."
+  },
+  {
+    "mission": "moon",
+    "task_id": "M2",
+    "feature_id": "m2_sun_elevation",
+    "name": "Solar elevation",
+    "planet_sources": [
+      {
+        "name": "Computed from LOLA + SPICE",
+        "official": true,
+        "source_id": "lro",
+        "url": "https://science.nasa.gov/mission/lro/"
+      },
+      {
+        "name": "PGDA",
+        "official": false,
+        "source_id": "pgda",
+        "url": "https://pgda.gsfc.nasa.gov/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "Copernicus DEM + solar position",
+        "official": true,
+        "source_id": "copernicus",
+        "url": "https://dataspace.copernicus.eu/"
+      }
+    ],
+    "planet_products": [
+      {
+        "title": "NASA NAIF naif0012.tls",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk/naif0012.tls"
+      },
+      {
+        "title": "NASA NAIF de440s.bsp",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp"
+      },
+      {
+        "title": "NASA NAIF moon_080317.tf",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/fk/satellites/moon_080317.tf"
+      },
+      {
+        "title": "NASA NAIF moon_pa_de421_1900-2050.bpc",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/moon_pa_de421_1900-2050.bpc"
+      },
+      {
+        "title": "NASA NAIF earth_000101_270208_261113.bpc",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/earth_000101_270208_261113.bpc"
+      },
+      {
+        "title": "LOLA Site01",
+        "url": "https://pgda.gsfc.nasa.gov/products/78"
+      }
+    ],
+    "earth_products": [
+      {
+        "title": "NASA NAIF naif0012.tls",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk/naif0012.tls"
+      },
+      {
+        "title": "NASA NAIF de440s.bsp",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp"
+      },
+      {
+        "title": "NASA NAIF moon_080317.tf",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/fk/satellites/moon_080317.tf"
+      },
+      {
+        "title": "NASA NAIF moon_pa_de421_1900-2050.bpc",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/moon_pa_de421_1900-2050.bpc"
+      },
+      {
+        "title": "NASA NAIF earth_000101_270208_261113.bpc",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/earth_000101_270208_261113.bpc"
+      },
+      {
+        "title": "Copernicus DSM",
+        "url": "https://registry.opendata.aws/copernicus-dem/"
+      }
+    ],
+    "status": "paired",
+    "ready_sites": [
+      "moon-scr"
+    ],
+    "observed_sites": [
+      "moon-scr"
+    ],
+    "reason": "Comparable source quantities imported; see each feature for support and limitations."
+  },
+  {
+    "mission": "moon",
+    "task_id": "M2",
+    "feature_id": "m2_horizon",
+    "name": "Near-field terrain horizon",
+    "planet_sources": [
+      {
+        "name": "LOLA",
+        "official": true,
+        "source_id": "lro",
+        "url": "https://science.nasa.gov/mission/lro/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "Copernicus DEM",
+        "official": true,
+        "source_id": "copernicus",
+        "url": "https://dataspace.copernicus.eu/"
+      }
+    ],
+    "planet_products": [
+      {
+        "title": "NASA NAIF naif0012.tls",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk/naif0012.tls"
+      },
+      {
+        "title": "NASA NAIF de440s.bsp",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp"
+      },
+      {
+        "title": "NASA NAIF moon_080317.tf",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/fk/satellites/moon_080317.tf"
+      },
+      {
+        "title": "NASA NAIF moon_pa_de421_1900-2050.bpc",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/moon_pa_de421_1900-2050.bpc"
+      },
+      {
+        "title": "NASA NAIF earth_000101_270208_261113.bpc",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/earth_000101_270208_261113.bpc"
+      },
+      {
+        "title": "LOLA Site01",
+        "url": "https://pgda.gsfc.nasa.gov/products/78"
+      }
+    ],
+    "earth_products": [
+      {
+        "title": "NASA NAIF naif0012.tls",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk/naif0012.tls"
+      },
+      {
+        "title": "NASA NAIF de440s.bsp",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp"
+      },
+      {
+        "title": "NASA NAIF moon_080317.tf",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/fk/satellites/moon_080317.tf"
+      },
+      {
+        "title": "NASA NAIF moon_pa_de421_1900-2050.bpc",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/moon_pa_de421_1900-2050.bpc"
+      },
+      {
+        "title": "NASA NAIF earth_000101_270208_261113.bpc",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/earth_000101_270208_261113.bpc"
+      },
+      {
+        "title": "Copernicus DSM",
+        "url": "https://registry.opendata.aws/copernicus-dem/"
+      }
+    ],
+    "status": "paired",
+    "ready_sites": [
+      "moon-scr"
+    ],
+    "observed_sites": [
+      "moon-scr"
+    ],
+    "reason": "Comparable source quantities imported; see each feature for support and limitations."
+  },
+  {
+    "mission": "moon",
+    "task_id": "M3",
+    "feature_id": "m3_diurnal_range",
+    "name": "Diurnal temperature range",
+    "planet_sources": [
+      {
+        "name": "Diviner accumulated polar products (240 m)",
+        "official": true,
+        "source_id": "diviner",
+        "url": "https://pds-geosciences.wustl.edu/missions/lro/diviner.htm"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "MODIS MOD11A1",
+        "official": true,
+        "source_id": "earthdata",
+        "url": "https://search.earthdata.nasa.gov/"
+      },
+      {
+        "name": "SGLI",
+        "official": true,
+        "source_id": "earthdata",
+        "url": "https://search.earthdata.nasa.gov/"
+      }
+    ],
+    "planet_products": [
+      {
+        "title": "Diviner GCP numeric table",
+        "url": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_gcp/global_cumul_avg_cyl_90s80s_002.tab"
+      }
+    ],
+    "earth_products": [
+      {
+        "title": "Terra MOD11A1 v061 on Microsoft Planetary Computer",
+        "url": "https://planetarycomputer.microsoft.com/dataset/modis-11A1-061"
+      },
+      {
+        "title": "MOD11A1.A2025005.h08v05.061.2025006211916",
+        "url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MOD11A1/08/05/2025005/MOD11A1.A2025005.h08v05.061.2025006211916_LST_Day_1km.tif"
+      },
+      {
+        "title": "MOD11A1.A2025001.h25v04.061.2025002131643",
+        "url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MOD11A1/25/04/2025001/MOD11A1.A2025001.h25v04.061.2025002131643_LST_Day_1km.tif"
+      },
+      {
+        "title": "MOD11A1.A2025005.h30v11.061.2025006211805",
+        "url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MOD11A1/30/11/2025005/MOD11A1.A2025005.h30v11.061.2025006211805_LST_Day_1km.tif"
+      }
+    ],
+    "status": "context_only",
+    "ready_sites": [],
+    "observed_sites": [
+      "moon-scr"
+    ],
+    "reason": "Actual thermal samples are present, but a multi-year lunar cycle and sparse Earth overpasses do not measure the same diurnal extrema."
+  },
+  {
+    "mission": "moon",
+    "task_id": "M3",
+    "feature_id": "m3_cold_hours",
+    "name": "Cold exposure hours",
+    "planet_sources": [
+      {
+        "name": "Diviner accumulated polar products (240 m)",
+        "official": true,
+        "source_id": "diviner",
+        "url": "https://pds-geosciences.wustl.edu/missions/lro/diviner.htm"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "MODIS MOD11A1",
+        "official": true,
+        "source_id": "earthdata",
+        "url": "https://search.earthdata.nasa.gov/"
+      },
+      {
+        "name": "SGLI",
+        "official": true,
+        "source_id": "earthdata",
+        "url": "https://search.earthdata.nasa.gov/"
+      }
+    ],
+    "planet_products": [],
+    "earth_products": [],
+    "status": "missing",
+    "ready_sites": [],
+    "observed_sites": [],
+    "reason": "Sparse MODIS overpasses cannot establish continuous hours below a temperature threshold; no duration is filled in."
+  },
+  {
+    "mission": "moon",
+    "task_id": "M3",
+    "feature_id": "m3_max_dark",
+    "name": "Modelled longest local darkness",
+    "planet_sources": [
+      {
+        "name": "Illumination calculation from M2",
+        "official": true,
+        "source_id": "pds",
+        "url": "https://pds.nasa.gov/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "Illumination calculation from M2",
+        "official": true,
+        "source_id": "earthdata",
+        "url": "https://search.earthdata.nasa.gov/"
+      }
+    ],
+    "planet_products": [
+      {
+        "title": "NASA NAIF naif0012.tls",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk/naif0012.tls"
+      },
+      {
+        "title": "NASA NAIF de440s.bsp",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp"
+      },
+      {
+        "title": "NASA NAIF moon_080317.tf",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/fk/satellites/moon_080317.tf"
+      },
+      {
+        "title": "NASA NAIF moon_pa_de421_1900-2050.bpc",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/moon_pa_de421_1900-2050.bpc"
+      },
+      {
+        "title": "NASA NAIF earth_000101_270208_261113.bpc",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/earth_000101_270208_261113.bpc"
+      },
+      {
+        "title": "LOLA Site01",
+        "url": "https://pgda.gsfc.nasa.gov/products/78"
+      }
+    ],
+    "earth_products": [
+      {
+        "title": "NASA NAIF naif0012.tls",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk/naif0012.tls"
+      },
+      {
+        "title": "NASA NAIF de440s.bsp",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp"
+      },
+      {
+        "title": "NASA NAIF moon_080317.tf",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/fk/satellites/moon_080317.tf"
+      },
+      {
+        "title": "NASA NAIF moon_pa_de421_1900-2050.bpc",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/moon_pa_de421_1900-2050.bpc"
+      },
+      {
+        "title": "NASA NAIF earth_000101_270208_261113.bpc",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/earth_000101_270208_261113.bpc"
+      },
+      {
+        "title": "Copernicus DSM",
+        "url": "https://registry.opendata.aws/copernicus-dem/"
+      }
+    ],
+    "status": "paired",
+    "ready_sites": [
+      "moon-scr"
+    ],
+    "observed_sites": [
+      "moon-scr"
+    ],
+    "reason": "Comparable source quantities imported; see each feature for support and limitations."
+  },
+  {
+    "mission": "moon",
+    "task_id": "M3",
+    "feature_id": "m3_abs_temp",
+    "name": "Absolute surface temperature",
+    "planet_sources": [
+      {
+        "name": "Diviner",
+        "official": true,
+        "source_id": "diviner",
+        "url": "https://pds-geosciences.wustl.edu/missions/lro/diviner.htm"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "MODIS",
+        "official": true,
+        "source_id": "earthdata",
+        "url": "https://search.earthdata.nasa.gov/"
+      }
+    ],
+    "planet_products": [
+      {
+        "title": "Diviner GCP numeric table",
+        "url": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_gcp/global_cumul_avg_cyl_90s80s_002.tab"
+      }
+    ],
+    "earth_products": [
+      {
+        "title": "Terra MOD11A1 v061 on Microsoft Planetary Computer",
+        "url": "https://planetarycomputer.microsoft.com/dataset/modis-11A1-061"
+      },
+      {
+        "title": "MOD11A1.A2025005.h08v05.061.2025006211916",
+        "url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MOD11A1/08/05/2025005/MOD11A1.A2025005.h08v05.061.2025006211916_LST_Day_1km.tif"
+      },
+      {
+        "title": "MOD11A1.A2025001.h25v04.061.2025002131643",
+        "url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MOD11A1/25/04/2025001/MOD11A1.A2025001.h25v04.061.2025002131643_LST_Day_1km.tif"
+      },
+      {
+        "title": "MOD11A1.A2025005.h30v11.061.2025006211805",
+        "url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MOD11A1/30/11/2025005/MOD11A1.A2025005.h30v11.061.2025006211805_LST_Day_1km.tif"
+      }
+    ],
+    "status": "context_only",
+    "ready_sites": [],
+    "observed_sites": [
+      "moon-scr"
+    ],
+    "reason": "Observed temperatures are shown, but the lunar extreme is outside the Earth-reproducible test range and is excluded."
+  },
+  {
+    "mission": "moon",
+    "task_id": "M4",
+    "feature_id": "m4_slope_dist",
+    "name": "Slope distribution",
+    "planet_sources": [
+      {
+        "name": "LOLA",
+        "official": true,
+        "source_id": "lro",
+        "url": "https://science.nasa.gov/mission/lro/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "Copernicus DEM",
+        "official": true,
+        "source_id": "copernicus",
+        "url": "https://dataspace.copernicus.eu/"
+      }
+    ],
+    "planet_products": [
+      {
+        "title": "LOLA adjusted Site01 DEM",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Site01_final_adj_5mpp_surf.tif"
+      }
+    ],
+    "earth_products": [
+      {
+        "title": "Copernicus GLO-30 DSM",
+        "url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N36_00_W117_00_DEM/Copernicus_DSM_COG_10_N36_00_W117_00_DEM.tif"
+      },
+      {
+        "title": "Copernicus GLO-30 DSM",
+        "url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N43_00_E104_00_DEM/Copernicus_DSM_COG_10_N43_00_E104_00_DEM.tif"
+      },
+      {
+        "title": "Copernicus GLO-30 DSM",
+        "url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_S25_00_E135_00_DEM/Copernicus_DSM_COG_10_S25_00_E135_00_DEM.tif"
+      }
+    ],
+    "status": "paired",
+    "ready_sites": [
+      "moon-scr"
+    ],
+    "observed_sites": [
+      "moon-scr"
+    ],
+    "reason": "Comparable source quantities imported; see each feature for support and limitations."
+  },
+  {
+    "mission": "moon",
+    "task_id": "M4",
+    "feature_id": "m4_looseness",
+    "name": "Surface looseness",
+    "planet_sources": [
+      {
+        "name": "Diviner rock abundance and soil temperature",
+        "official": true,
+        "source_id": "diviner",
+        "url": "https://pds-geosciences.wustl.edu/missions/lro/diviner.htm"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "Apparent thermal inertia",
+        "official": true,
+        "source_id": "earthdata",
+        "url": "https://search.earthdata.nasa.gov/"
+      }
+    ],
+    "planet_products": [],
+    "earth_products": [
+      {
+        "title": "Terra MOD11A1 v061 on Microsoft Planetary Computer",
+        "url": "https://planetarycomputer.microsoft.com/dataset/modis-11A1-061"
+      },
+      {
+        "title": "MOD11A1.A2025005.h08v05.061.2025006211916",
+        "url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MOD11A1/08/05/2025005/MOD11A1.A2025005.h08v05.061.2025006211916_LST_Day_1km.tif"
+      },
+      {
+        "title": "MOD11A1.A2025001.h25v04.061.2025002131643",
+        "url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MOD11A1/25/04/2025001/MOD11A1.A2025001.h25v04.061.2025002131643_LST_Day_1km.tif"
+      },
+      {
+        "title": "MOD11A1.A2025005.h30v11.061.2025006211805",
+        "url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MOD11A1/30/11/2025005/MOD11A1.A2025005.h30v11.061.2025006211805_LST_Day_1km.tif"
+      }
+    ],
+    "status": "context_only",
+    "ready_sites": [],
+    "observed_sites": [],
+    "reason": "Thermal contrast is imported as context; no validated cross-planet soil-looseness calibration is available."
+  },
+  {
+    "mission": "moon",
+    "task_id": "M4",
+    "feature_id": "m4_radar_rough",
+    "name": "Radar roughness",
+    "planet_sources": [
+      {
+        "name": "Mini-RF",
+        "official": true,
+        "source_id": "lro",
+        "url": "https://science.nasa.gov/mission/lro/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "Sentinel-1 and PALSAR",
+        "official": true,
+        "source_id": "copernicus",
+        "url": "https://dataspace.copernicus.eu/"
+      }
+    ],
+    "planet_products": [],
+    "earth_products": [],
+    "status": "missing",
+    "ready_sites": [],
+    "observed_sites": [],
+    "reason": "No matched and calibrated radar roughness pair at the selected footprints."
+  },
+  {
+    "mission": "moon",
+    "task_id": "M5",
+    "feature_id": "m5_tir_mineral",
+    "name": "Thermal infrared mineral signature",
+    "planet_sources": [
+      {
+        "name": "Diviner Christiansen feature",
+        "official": true,
+        "source_id": "diviner",
+        "url": "https://pds-geosciences.wustl.edu/missions/lro/diviner.htm"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "ASTER GED (100 m)",
+        "official": true,
+        "source_id": "earthdata",
+        "url": "https://search.earthdata.nasa.gov/"
+      }
+    ],
+    "planet_products": [],
+    "earth_products": [],
+    "status": "missing",
+    "ready_sites": [],
+    "observed_sites": [],
+    "reason": "A matched Diviner Christiansen / Earth thermal-emissivity product pair and spectral-response calibration are not imported."
+  },
+  {
+    "mission": "moon",
+    "task_id": "M5",
+    "feature_id": "m5_vswir_mineral",
+    "name": "Visible / SWIR mineral spectrum",
+    "planet_sources": [
+      {
+        "name": "Chandrayaan-1 M3",
+        "official": true,
+        "source_id": "pds",
+        "url": "https://pds.nasa.gov/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "EMIT",
+        "official": true,
+        "source_id": "earthdata",
+        "url": "https://search.earthdata.nasa.gov/"
+      }
+    ],
+    "planet_products": [],
+    "earth_products": [],
+    "status": "missing",
+    "ready_sites": [],
+    "observed_sites": [],
+    "reason": "No site-matched M3 / EMIT spectra on a common calibrated wavelength grid are imported."
+  },
+  {
+    "mission": "moon",
+    "task_id": "M5",
+    "feature_id": "m5_grain_proxy",
+    "name": "Grain size proxy",
+    "planet_sources": [
+      {
+        "name": "Diviner soil temperature",
+        "official": true,
+        "source_id": "diviner",
+        "url": "https://pds-geosciences.wustl.edu/missions/lro/diviner.htm"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "Apparent thermal inertia",
+        "official": true,
+        "source_id": "earthdata",
+        "url": "https://search.earthdata.nasa.gov/"
+      }
+    ],
+    "planet_products": [],
+    "earth_products": [
+      {
+        "title": "Terra MOD11A1 v061 on Microsoft Planetary Computer",
+        "url": "https://planetarycomputer.microsoft.com/dataset/modis-11A1-061"
+      },
+      {
+        "title": "MOD11A1.A2025005.h08v05.061.2025006211916",
+        "url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MOD11A1/08/05/2025005/MOD11A1.A2025005.h08v05.061.2025006211916_LST_Day_1km.tif"
+      },
+      {
+        "title": "MOD11A1.A2025001.h25v04.061.2025002131643",
+        "url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MOD11A1/25/04/2025001/MOD11A1.A2025001.h25v04.061.2025002131643_LST_Day_1km.tif"
+      },
+      {
+        "title": "MOD11A1.A2025005.h30v11.061.2025006211805",
+        "url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MOD11A1/30/11/2025005/MOD11A1.A2025005.h30v11.061.2025006211805_LST_Day_1km.tif"
+      }
+    ],
+    "status": "context_only",
+    "ready_sites": [],
+    "observed_sites": [],
+    "reason": "Thermal contrast does not directly measure grain size; a calibrated paired grain-size proxy is missing."
+  },
+  {
+    "mission": "moon",
+    "task_id": "M6",
+    "feature_id": "m6_ice_depth",
+    "name": "Ice depth",
+    "planet_sources": [
+      {
+        "name": "Diviner polar resources: ice permafrost depth",
+        "official": true,
+        "source_id": "diviner",
+        "url": "https://pds-geosciences.wustl.edu/missions/lro/diviner.htm"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "ESA CCI permafrost active-layer thickness",
+        "official": false,
+        "source_id": "cci",
+        "url": "https://climate.esa.int/en/projects/permafrost/"
+      }
+    ],
+    "planet_products": [
+      {
+        "title": "Diviner PRP numeric model table",
+        "url": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_prp/dlre_prp_south.tab"
+      }
+    ],
+    "earth_products": [],
+    "status": "context_only",
+    "ready_sites": [],
+    "observed_sites": [
+      "moon-scr"
+    ],
+    "reason": "The lunar PRP value is a thermophysical stable-ice model; neither it nor Earth active-layer thickness is a direct paired ice-depth measurement."
+  },
+  {
+    "mission": "moon",
+    "task_id": "M6",
+    "feature_id": "m6_annual_temp",
+    "name": "Annual temperature",
+    "planet_sources": [
+      {
+        "name": "Diviner polar resource products",
+        "official": true,
+        "source_id": "diviner",
+        "url": "https://pds-geosciences.wustl.edu/missions/lro/diviner.htm"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "MODIS annual statistics",
+        "official": true,
+        "source_id": "earthdata",
+        "url": "https://search.earthdata.nasa.gov/"
+      }
+    ],
+    "planet_products": [
+      {
+        "title": "Diviner PRP numeric model table",
+        "url": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_prp/dlre_prp_south.tab"
+      }
+    ],
+    "earth_products": [
+      {
+        "title": "Terra MOD11A1 v061 on Microsoft Planetary Computer",
+        "url": "https://planetarycomputer.microsoft.com/dataset/modis-11A1-061"
+      },
+      {
+        "title": "MOD11A1.A2025005.h08v05.061.2025006211916",
+        "url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MOD11A1/08/05/2025005/MOD11A1.A2025005.h08v05.061.2025006211916_LST_Day_1km.tif"
+      },
+      {
+        "title": "MOD11A1.A2025001.h25v04.061.2025002131643",
+        "url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MOD11A1/25/04/2025001/MOD11A1.A2025001.h25v04.061.2025002131643_LST_Day_1km.tif"
+      },
+      {
+        "title": "MOD11A1.A2025005.h30v11.061.2025006211805",
+        "url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MOD11A1/30/11/2025005/MOD11A1.A2025005.h30v11.061.2025006211805_LST_Day_1km.tif"
+      }
+    ],
+    "status": "context_only",
+    "ready_sites": [],
+    "observed_sites": [
+      "moon-scr"
+    ],
+    "reason": "The lunar model is annual mean at 2 cm depth; Earth MODIS here samples January surface temperature. Depth and temporal support differ."
+  },
+  {
+    "mission": "moon",
+    "task_id": "M6",
+    "feature_id": "m6_permafrost",
+    "name": "Permafrost",
+    "planet_sources": [
+      {
+        "name": "Diviner polar resource products",
+        "official": true,
+        "source_id": "diviner",
+        "url": "https://pds-geosciences.wustl.edu/missions/lro/diviner.htm"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "MODIS annual mean land temperature below 0 C",
+        "official": true,
+        "source_id": "earthdata",
+        "url": "https://search.earthdata.nasa.gov/"
+      }
+    ],
+    "planet_products": [],
+    "earth_products": [],
+    "status": "missing",
+    "ready_sites": [],
+    "observed_sites": [],
+    "reason": "No comparable validated categorical ice/permafrost pair at these footprints is available."
+  },
+  {
+    "mission": "moon",
+    "task_id": "M6",
+    "feature_id": "m6_hydrogen",
+    "name": "Hydrogen / ice signal",
+    "planet_sources": [
+      {
+        "name": "LEND and Mini-RF",
+        "official": true,
+        "source_id": "lro",
+        "url": "https://science.nasa.gov/mission/lro/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "Sentinel-1",
+        "official": true,
+        "source_id": "copernicus",
+        "url": "https://dataspace.copernicus.eu/"
+      }
+    ],
+    "planet_products": [],
+    "earth_products": [],
+    "status": "missing",
+    "ready_sites": [],
+    "observed_sites": [],
+    "reason": "No matched LEND/Mini-RF hydrogen signal and calibrated terrestrial counterpart are imported."
+  },
+  {
+    "mission": "moon",
+    "task_id": "M6",
+    "feature_id": "m6_cold_trap",
+    "name": "Cold-trap terrain",
+    "planet_sources": [
+      {
+        "name": "LOLA + illumination calculation",
+        "official": true,
+        "source_id": "lro",
+        "url": "https://science.nasa.gov/mission/lro/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "Copernicus DEM + illumination calculation",
+        "official": true,
+        "source_id": "copernicus",
+        "url": "https://dataspace.copernicus.eu/"
+      }
+    ],
+    "planet_products": [
+      {
+        "title": "NASA NAIF naif0012.tls",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk/naif0012.tls"
+      },
+      {
+        "title": "NASA NAIF de440s.bsp",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp"
+      },
+      {
+        "title": "NASA NAIF moon_080317.tf",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/fk/satellites/moon_080317.tf"
+      },
+      {
+        "title": "NASA NAIF moon_pa_de421_1900-2050.bpc",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/moon_pa_de421_1900-2050.bpc"
+      },
+      {
+        "title": "NASA NAIF earth_000101_270208_261113.bpc",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/earth_000101_270208_261113.bpc"
+      },
+      {
+        "title": "LOLA Site01",
+        "url": "https://pgda.gsfc.nasa.gov/products/78"
+      }
+    ],
+    "earth_products": [
+      {
+        "title": "NASA NAIF naif0012.tls",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk/naif0012.tls"
+      },
+      {
+        "title": "NASA NAIF de440s.bsp",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp"
+      },
+      {
+        "title": "NASA NAIF moon_080317.tf",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/fk/satellites/moon_080317.tf"
+      },
+      {
+        "title": "NASA NAIF moon_pa_de421_1900-2050.bpc",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/moon_pa_de421_1900-2050.bpc"
+      },
+      {
+        "title": "NASA NAIF earth_000101_270208_261113.bpc",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/earth_000101_270208_261113.bpc"
+      },
+      {
+        "title": "Copernicus DSM",
+        "url": "https://registry.opendata.aws/copernicus-dem/"
+      }
+    ],
+    "status": "context_only",
+    "ready_sites": [],
+    "observed_sites": [
+      "moon-scr"
+    ],
+    "reason": "A finite near-field horizon is imported as context; one local cycle does not establish permanent shadow or buried ice."
+  },
+  {
+    "mission": "mars",
+    "task_id": "R1",
+    "feature_id": "r1_slope_100m",
+    "name": "100 m slope",
+    "planet_sources": [
+      {
+        "name": "CTX or HRSC terrain  (MOLA at approximately 463 m is too coarse)",
+        "official": false,
+        "source_id": "ctx",
+        "url": "https://murray-lab.caltech.edu/CTX/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "Copernicus DEM",
+        "official": true,
+        "source_id": "copernicus",
+        "url": "https://dataspace.copernicus.eu/"
+      }
+    ],
+    "planet_products": [
+      {
+        "title": "HiRISE Gale DTM",
+        "url": "https://hirise-pds.lpl.arizona.edu/PDS/DTM/ESP/ORB_040700_040799/ESP_040770_1755_ESP_039280_1755/DTEEC_040770_1755_039280_1755_A01.IMG"
+      }
+    ],
+    "earth_products": [
+      {
+        "title": "Copernicus GLO-30 DSM",
+        "url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N36_00_W117_00_DEM/Copernicus_DSM_COG_10_N36_00_W117_00_DEM.tif"
+      },
+      {
+        "title": "Copernicus GLO-30 DSM",
+        "url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N43_00_E104_00_DEM/Copernicus_DSM_COG_10_N43_00_E104_00_DEM.tif"
+      },
+      {
+        "title": "Copernicus GLO-30 DSM",
+        "url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_S25_00_E135_00_DEM/Copernicus_DSM_COG_10_S25_00_E135_00_DEM.tif"
+      }
+    ],
+    "status": "paired",
+    "ready_sites": [
+      "mars-gale"
+    ],
+    "observed_sites": [
+      "mars-gale"
+    ],
+    "reason": "Comparable source quantities imported; see each feature for support and limitations."
+  },
+  {
+    "mission": "mars",
+    "task_id": "R1",
+    "feature_id": "r1_slope_1_5m",
+    "name": "1-5 m slope",
+    "planet_sources": [
+      {
+        "name": "HiRISE terrain models  (limited coverage)",
+        "official": true,
+        "source_id": "pds",
+        "url": "https://pds.nasa.gov/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "No global data",
+        "official": true,
+        "source_id": "earthdata",
+        "url": "https://search.earthdata.nasa.gov/"
+      },
+      {
+        "name": "use 30 m slope and radar proxies",
+        "official": true,
+        "source_id": "earthdata",
+        "url": "https://search.earthdata.nasa.gov/"
+      }
+    ],
+    "planet_products": [],
+    "earth_products": [],
+    "status": "missing",
+    "ready_sites": [],
+    "observed_sites": [],
+    "reason": "Earth GLO-30 cannot resolve 1-5 m slopes. A colocated terrestrial lidar/DTM product is required."
+  },
+  {
+    "mission": "mars",
+    "task_id": "R1",
+    "feature_id": "r1_rock",
+    "name": "Rock fraction",
+    "planet_sources": [
+      {
+        "name": "TES/THEMIS rock abundance",
+        "official": true,
+        "source_id": "pds",
+        "url": "https://pds.nasa.gov/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "Apparent thermal inertia + Sentinel-1/PALSAR",
+        "official": true,
+        "source_id": "copernicus",
+        "url": "https://dataspace.copernicus.eu/"
+      }
+    ],
+    "planet_products": [],
+    "earth_products": [],
+    "status": "missing",
+    "ready_sites": [],
+    "observed_sites": [],
+    "reason": "No calibrated numeric rock-fraction pair at centimetre landing-hazard scales is available."
+  },
+  {
+    "mission": "mars",
+    "task_id": "R1",
+    "feature_id": "r1_thermal_inertia",
+    "name": "Thermal inertia",
+    "planet_sources": [
+      {
+        "name": "THEMIS thermal inertia (approximately 100 m)",
+        "official": true,
+        "source_id": "pds",
+        "url": "https://pds.nasa.gov/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "Apparent thermal inertia",
+        "official": true,
+        "source_id": "earthdata",
+        "url": "https://search.earthdata.nasa.gov/"
+      }
+    ],
+    "planet_products": [
+      {
+        "title": "TES numeric thermal inertia",
+        "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-tes-5-timap-v1/mgst_9001/data/global_ti_night_2007.img"
+      },
+      {
+        "title": "TES quality mask",
+        "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-tes-5-timap-v1/mgst_9001/data/global_ti_msk_night_2007.img"
+      }
+    ],
+    "earth_products": [
+      {
+        "title": "Terra MOD11A1 v061 on Microsoft Planetary Computer",
+        "url": "https://planetarycomputer.microsoft.com/dataset/modis-11A1-061"
+      },
+      {
+        "title": "MOD11A1.A2025005.h08v05.061.2025006211916",
+        "url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MOD11A1/08/05/2025005/MOD11A1.A2025005.h08v05.061.2025006211916_LST_Day_1km.tif"
+      },
+      {
+        "title": "MOD11A1.A2025001.h25v04.061.2025002131643",
+        "url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MOD11A1/25/04/2025001/MOD11A1.A2025001.h25v04.061.2025002131643_LST_Day_1km.tif"
+      },
+      {
+        "title": "MOD11A1.A2025005.h30v11.061.2025006211805",
+        "url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MOD11A1/30/11/2025005/MOD11A1.A2025005.h30v11.061.2025006211805_LST_Day_1km.tif"
+      }
+    ],
+    "status": "context_only",
+    "ready_sites": [],
+    "observed_sites": [
+      "mars-ap105"
+    ],
+    "reason": "TES thermal inertia and Earth sampled LST contrast have different units and physics; percentile defaults are not invented."
+  },
+  {
+    "mission": "mars",
+    "task_id": "R2",
+    "feature_id": "r2_texture",
+    "name": "Image texture",
+    "planet_sources": [
+      {
+        "name": "CTX (6 m) and HiRISE",
+        "official": true,
+        "source_id": "pds",
+        "url": "https://pds.nasa.gov/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "Sentinel-2 (10 m)",
+        "official": true,
+        "source_id": "copernicus",
+        "url": "https://dataspace.copernicus.eu/"
+      }
+    ],
+    "planet_products": [],
+    "earth_products": [
+      {
+        "title": "Sentinel-2 L2A S2B_MSIL2A_20250117T183619_R027_T11SNA_20250117T223643",
+        "url": "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/11/S/NA/2025/01/17/S2B_MSIL2A_20250117T183619_N0511_R027_T11SNA_20250117T223643.SAFE/GRANULE/L2A_T11SNA_A041094_20250117T183840/IMG_DATA/R10m/T11SNA_20250117T183619_B04_10m.tif"
+      },
+      {
+        "title": "Sentinel-2 L2A S2B_MSIL2A_20250106T040049_R004_T48TVN_20250106T060448",
+        "url": "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/48/T/VN/2025/01/06/S2B_MSIL2A_20250106T040049_N0511_R004_T48TVN_20250106T060448.SAFE/GRANULE/L2A_T48TVN_A040928_20250106T040129/IMG_DATA/R10m/T48TVN_20250106T040049_B04_10m.tif"
+      },
+      {
+        "title": "Sentinel-2 L2A S2A_MSIL2A_20250104T010721_R045_T53JNN_20250104T032950",
+        "url": "https://sentinel2l2a01.blob.core.windows.net/sentinel2-l2/53/J/NN/2025/01/04/S2A_MSIL2A_20250104T010721_N0511_R045_T53JNN_20250104T032950.SAFE/GRANULE/L2A_T53JNN_A049806_20250104T011314/IMG_DATA/R10m/T53JNN_20250104T010721_B04_10m.tif"
+      }
+    ],
+    "status": "context_only",
+    "ready_sites": [],
+    "observed_sites": [],
+    "reason": "Actual Sentinel-2 texture context is imported; no matched calibrated Mars image texture at common support is imported."
+  },
+  {
+    "mission": "mars",
+    "task_id": "R2",
+    "feature_id": "r2_dune_fraction",
+    "name": "Dune fraction",
+    "planet_sources": [
+      {
+        "name": "Mars Global Dune Database",
+        "official": false,
+        "source_id": "dunes",
+        "url": "https://astrogeology.usgs.gov/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "Sentinel-2",
+        "official": true,
+        "source_id": "copernicus",
+        "url": "https://dataspace.copernicus.eu/"
+      }
+    ],
+    "planet_products": [],
+    "earth_products": [],
+    "status": "missing",
+    "ready_sites": [],
+    "observed_sites": [],
+    "reason": "No validated dune segmentation or annotation pair is imported; a brightness texture is not a dune fraction."
+  },
+  {
+    "mission": "mars",
+    "task_id": "R3",
+    "feature_id": "r3_ground_ice",
+    "name": "Ground ice",
+    "planet_sources": [
+      {
+        "name": "Odyssey neutron/gamma rays and SHARAD",
+        "official": true,
+        "source_id": "pds",
+        "url": "https://pds.nasa.gov/"
+      },
+      {
+        "name": "SWIM",
+        "official": false,
+        "source_id": "swim",
+        "url": "https://swim.psi.edu/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "MODIS annual mean land temperature below 0 C",
+        "official": true,
+        "source_id": "earthdata",
+        "url": "https://search.earthdata.nasa.gov/"
+      },
+      {
+        "name": "ESA CCI permafrost",
+        "official": false,
+        "source_id": "cci",
+        "url": "https://climate.esa.int/en/projects/permafrost/"
+      }
+    ],
+    "planet_products": [
+      {
+        "title": "SWIM2 numeric ice consistency",
+        "url": "https://swim.psi.edu/output/SWIM2/Global/Composite/SWIM2_c1_5.tif"
+      }
+    ],
+    "earth_products": [],
+    "status": "context_only",
+    "ready_sites": [],
+    "observed_sites": [
+      "mars-ap105"
+    ],
+    "reason": "Actual SWIM ice consistency is imported; it is not comparable to Earth soil moisture, ice fraction or active-layer thickness."
+  },
+  {
+    "mission": "mars",
+    "task_id": "R3",
+    "feature_id": "r3_polygons",
+    "name": "Polygonal terrain",
+    "planet_sources": [
+      {
+        "name": "HiRISE and CTX",
+        "official": true,
+        "source_id": "pds",
+        "url": "https://pds.nasa.gov/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "Sentinel-2",
+        "official": true,
+        "source_id": "copernicus",
+        "url": "https://dataspace.copernicus.eu/"
+      }
+    ],
+    "planet_products": [],
+    "earth_products": [],
+    "status": "missing",
+    "ready_sites": [],
+    "observed_sites": [],
+    "reason": "No validated polygon-presence annotations at comparable spatial resolution are imported."
+  },
+  {
+    "mission": "mars",
+    "task_id": "R3",
+    "feature_id": "r3_subsurface_radar",
+    "name": "Subsurface radar",
+    "planet_sources": [
+      {
+        "name": "SHARAD",
+        "official": true,
+        "source_id": "pds",
+        "url": "https://pds.nasa.gov/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "PALSAR L band",
+        "official": true,
+        "source_id": "jaxa",
+        "url": "https://gportal.jaxa.jp/gpr/"
+      }
+    ],
+    "planet_products": [],
+    "earth_products": [],
+    "status": "missing",
+    "ready_sites": [],
+    "observed_sites": [],
+    "reason": "No calibrated SHARAD / terrestrial radar profile pair with compatible depth sensitivity is available."
+  },
+  {
+    "mission": "mars",
+    "task_id": "R4",
+    "feature_id": "r4_hydrated_spectra",
+    "name": "Hydrated mineral spectrum",
+    "planet_sources": [
+      {
+        "name": "CRISM and OMEGA",
+        "official": true,
+        "source_id": "pds",
+        "url": "https://pds.nasa.gov/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "EMIT",
+        "official": true,
+        "source_id": "earthdata",
+        "url": "https://search.earthdata.nasa.gov/"
+      },
+      {
+        "name": "ASTER SWIR",
+        "official": true,
+        "source_id": "earthdata",
+        "url": "https://search.earthdata.nasa.gov/"
+      }
+    ],
+    "planet_products": [],
+    "earth_products": [],
+    "status": "missing",
+    "ready_sites": [],
+    "observed_sites": [],
+    "reason": "No site-matched CRISM/OMEGA and Earth hydrated-mineral spectra with a common wavelength grid are imported."
+  },
+  {
+    "mission": "mars",
+    "task_id": "R5",
+    "feature_id": "r5_landform",
+    "name": "Landform class",
+    "planet_sources": [
+      {
+        "name": "HiRISE and CTX",
+        "official": true,
+        "source_id": "pds",
+        "url": "https://pds.nasa.gov/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "Sentinel-2 and Copernicus DEM",
+        "official": true,
+        "source_id": "copernicus",
+        "url": "https://dataspace.copernicus.eu/"
+      },
+      {
+        "name": "RGI glacier distribution",
+        "official": false,
+        "source_id": "rgi",
+        "url": "https://www.glims.org/RGI/"
+      }
+    ],
+    "planet_products": [],
+    "earth_products": [],
+    "status": "missing",
+    "ready_sites": [],
+    "observed_sites": [],
+    "reason": "No validated paired landform classes are imported; DEM roughness does not identify a glacial landform."
+  },
+  {
+    "mission": "mars",
+    "task_id": "R5",
+    "feature_id": "r5_polygon_size",
+    "name": "Polygon size",
+    "planet_sources": [
+      {
+        "name": "HiRISE and CTX",
+        "official": true,
+        "source_id": "pds",
+        "url": "https://pds.nasa.gov/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "Sentinel-2",
+        "official": true,
+        "source_id": "copernicus",
+        "url": "https://dataspace.copernicus.eu/"
+      }
+    ],
+    "planet_products": [],
+    "earth_products": [],
+    "status": "missing",
+    "ready_sites": [],
+    "observed_sites": [],
+    "reason": "No paired high-resolution polygon annotations are imported; Sentinel-2 pixels alone do not establish polygon size."
+  },
+  {
+    "mission": "mars",
+    "task_id": "R5",
+    "feature_id": "r5_roughness",
+    "name": "Detrended topographic roughness",
+    "planet_sources": [
+      {
+        "name": "HiRISE",
+        "official": true,
+        "source_id": "pds",
+        "url": "https://pds.nasa.gov/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "Copernicus DEM",
+        "official": true,
+        "source_id": "copernicus",
+        "url": "https://dataspace.copernicus.eu/"
+      },
+      {
+        "name": "RADARSAT-1 long-term change",
+        "official": true,
+        "source_id": "radarsat",
+        "url": "https://www.asc-csa.gc.ca/eng/satellites/radarsat1/"
+      }
+    ],
+    "planet_products": [
+      {
+        "title": "HiRISE Gale DTM",
+        "url": "https://hirise-pds.lpl.arizona.edu/PDS/DTM/ESP/ORB_040700_040799/ESP_040770_1755_ESP_039280_1755/DTEEC_040770_1755_039280_1755_A01.IMG"
+      }
+    ],
+    "earth_products": [
+      {
+        "title": "Copernicus GLO-30 DSM",
+        "url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N36_00_W117_00_DEM/Copernicus_DSM_COG_10_N36_00_W117_00_DEM.tif"
+      },
+      {
+        "title": "Copernicus GLO-30 DSM",
+        "url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N43_00_E104_00_DEM/Copernicus_DSM_COG_10_N43_00_E104_00_DEM.tif"
+      },
+      {
+        "title": "Copernicus GLO-30 DSM",
+        "url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_S25_00_E135_00_DEM/Copernicus_DSM_COG_10_S25_00_E135_00_DEM.tif"
+      }
+    ],
+    "status": "paired",
+    "ready_sites": [
+      "mars-gale"
+    ],
+    "observed_sites": [
+      "mars-gale"
+    ],
+    "reason": "Comparable source quantities imported; see each feature for support and limitations."
+  },
+  {
+    "mission": "mars",
+    "task_id": "R6",
+    "feature_id": "r6_dust",
+    "name": "Dust seasonality",
+    "planet_sources": [
+      {
+        "name": "MCS, MARCI, TES",
+        "official": true,
+        "source_id": "pds",
+        "url": "https://pds.nasa.gov/"
+      },
+      {
+        "name": "Mars Climate Database MCD",
+        "official": false,
+        "source_id": "mcd",
+        "url": "https://www-mars.lmd.jussieu.fr/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "MODIS aerosols, MERRA-2 dust, and Sentinel-5P",
+        "official": true,
+        "source_id": "copernicus",
+        "url": "https://dataspace.copernicus.eu/"
+      }
+    ],
+    "planet_products": [],
+    "earth_products": [],
+    "status": "missing",
+    "ready_sites": [],
+    "observed_sites": [],
+    "reason": "One REMS sol is not dust seasonality; no matched seasonal aerosol/dust product pair is imported."
+  },
+  {
+    "mission": "mars",
+    "task_id": "R6",
+    "feature_id": "r6_air_temp",
+    "name": "Near-surface air-temperature cycle",
+    "planet_sources": [
+      {
+        "name": "MCD",
+        "official": false,
+        "source_id": "mcd",
+        "url": "https://www-mars.lmd.jussieu.fr/"
+      },
+      {
+        "name": "REMS and MEDA  (two locations only)",
+        "official": true,
+        "source_id": "pds",
+        "url": "https://pds.nasa.gov/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "MERRA-2",
+        "official": true,
+        "source_id": "earthdata",
+        "url": "https://search.earthdata.nasa.gov/"
+      }
+    ],
+    "planet_products": [
+      {
+        "title": "Certified REMS PDS4 1000",
+        "url": "https://atmos.nmsu.edu/PDS/data/PDS4/msl_rems_bundle/data_calibrated/SOL_00939_01062/SOL01000/RME_486220880RMD10000000000_______P3.TAB"
+      },
+      {
+        "title": "Certified REMS PDS4 1000",
+        "url": "https://atmos.nmsu.edu/PDS/data/PDS4/msl_rems_bundle/data_calibrated/SOL_00939_01062/SOL01000/RME_486220880RMD10000000000_______P3.LBL"
+      },
+      {
+        "title": "Certified REMS PDS4 1000",
+        "url": "https://atmos.nmsu.edu/PDS/data/PDS4/msl_rems_bundle/data_calibrated/SOL_00939_01062/SOL01000/RME_486220880RMD10000000000_______P3.xml"
+      }
+    ],
+    "earth_products": [
+      {
+        "title": "NASA POWER hourly",
+        "url": "https://power.larc.nasa.gov/api/temporal/hourly/point?parameters=T2M%2CWS10M%2CALLSKY_SFC_SW_DWN&community=RE&longitude=-116.7&latitude=36.4&start=20250101&end=20250131&format=JSON&time-standard=LST"
+      },
+      {
+        "title": "NASA POWER hourly",
+        "url": "https://power.larc.nasa.gov/api/temporal/hourly/point?parameters=T2M%2CWS10M%2CALLSKY_SFC_SW_DWN&community=RE&longitude=104.5&latitude=43.2&start=20250101&end=20250131&format=JSON&time-standard=LST"
+      },
+      {
+        "title": "NASA POWER hourly",
+        "url": "https://power.larc.nasa.gov/api/temporal/hourly/point?parameters=T2M%2CWS10M%2CALLSKY_SFC_SW_DWN&community=RE&longitude=135.4&latitude=-24.6&start=20250101&end=20250131&format=JSON&time-standard=LST"
+      }
+    ],
+    "status": "paired",
+    "ready_sites": [
+      "mars-gale"
+    ],
+    "observed_sites": [
+      "mars-gale"
+    ],
+    "reason": "Comparable source quantities imported; see each feature for support and limitations."
+  },
+  {
+    "mission": "mars",
+    "task_id": "R6",
+    "feature_id": "r6_wind_speed",
+    "name": "Wind-speed cycle",
+    "planet_sources": [
+      {
+        "name": "MCD",
+        "official": false,
+        "source_id": "mcd",
+        "url": "https://www-mars.lmd.jussieu.fr/"
+      },
+      {
+        "name": "REMS and MEDA  (two locations only)",
+        "official": true,
+        "source_id": "pds",
+        "url": "https://pds.nasa.gov/"
+      }
+    ],
+    "earth_sources": [
+      {
+        "name": "MERRA-2",
+        "official": true,
+        "source_id": "earthdata",
+        "url": "https://search.earthdata.nasa.gov/"
+      }
+    ],
+    "planet_products": [],
+    "earth_products": [
+      {
+        "title": "NASA POWER hourly",
+        "url": "https://power.larc.nasa.gov/api/temporal/hourly/point?parameters=T2M%2CWS10M%2CALLSKY_SFC_SW_DWN&community=RE&longitude=-116.7&latitude=36.4&start=20250101&end=20250131&format=JSON&time-standard=LST"
+      },
+      {
+        "title": "NASA POWER hourly",
+        "url": "https://power.larc.nasa.gov/api/temporal/hourly/point?parameters=T2M%2CWS10M%2CALLSKY_SFC_SW_DWN&community=RE&longitude=104.5&latitude=43.2&start=20250101&end=20250131&format=JSON&time-standard=LST"
+      },
+      {
+        "title": "NASA POWER hourly",
+        "url": "https://power.larc.nasa.gov/api/temporal/hourly/point?parameters=T2M%2CWS10M%2CALLSKY_SFC_SW_DWN&community=RE&longitude=135.4&latitude=-24.6&start=20250101&end=20250131&format=JSON&time-standard=LST"
+      }
+    ],
+    "status": "context_only",
+    "ready_sites": [],
+    "observed_sites": [],
+    "reason": "Gale wind samples do not pass the selected quality filter; Earth POWER 10 m winds cannot fill missing rover wind."
+  }
+]

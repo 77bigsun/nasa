@@ -13,9 +13,9 @@
   manual_adjust: null
   notes:
   - Align local time and solar longitude Ls; a Martian year is about 687 Earth days.
-  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
-  - The five SkyFall regions lack lander measurements. Engineering constraints and
-    gap ranks follow the team brief and require source review.
+  - Mission comparisons use traceable observations and data-derived models. Missing evidence has no synthetic fallback.
+  - The five SkyFall regions lack lander measurements. Engineering constraints and gap ranks follow the team brief
+    and require source review.
   features:
   - id: r1_slope_100m
     name: 100 m slope
@@ -101,8 +101,7 @@
       url: https://dataspace.copernicus.eu/
     notes:
     - 'planet_threshold `{max: 0.05}`; earth_proxy'
-    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
-      not score Earth candidates.'
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
@@ -130,10 +129,8 @@
       source_id: earthdata
       url: https://search.earthdata.nasa.gov/
     notes:
-    - 'planet_threshold `{zero_at: 100, ideal_min: 150}`; Earth units differ, so compare
-      relative ranks'
-    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
-      not score Earth candidates.'
+    - 'planet_threshold `{zero_at: 100, ideal_min: 150}`; Earth units differ, so compare relative ranks'
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
@@ -150,9 +147,9 @@
     reason: Manually ordered from SkyFall engineering constraints
   notes:
   - Align local time and solar longitude Ls; a Martian year is about 687 Earth days.
-  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
-  - The five SkyFall regions lack lander measurements. Engineering constraints and
-    gap ranks follow the team brief and require source review.
+  - Mission comparisons use traceable observations and data-derived models. Missing evidence has no synthetic fallback.
+  - The five SkyFall regions lack lander measurements. Engineering constraints and gap ranks follow the team brief
+    and require source review.
   features:
   - id: r2_texture
     name: Image texture
@@ -177,8 +174,7 @@
       url: https://dataspace.copernicus.eu/
     notes:
     - HLS at 30 m is too coarse
-    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
-      not score Earth candidates.'
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
@@ -214,8 +210,7 @@
   mission: mars
   name: Shallow subsurface ice
   name_en: Shallow subsurface ice
-  verify: Use ground-penetrating radar to detect layering and buried ice within 3-5
-    m
+  verify: Use ground-penetrating radar to detect layering and buried ice within 3-5 m
   nasa_basis: SkyFall radar; accessible water for human exploration
   nasa_url: https://science.nasa.gov/mission/skyfall/
   tech_gap:
@@ -227,9 +222,9 @@
     reason: Raised priority because water access is central to SkyFall and human exploration
   notes:
   - Align local time and solar longitude Ls; a Martian year is about 687 Earth days.
-  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
-  - The five SkyFall regions lack lander measurements. Engineering constraints and
-    gap ranks follow the team brief and require source review.
+  - Mission comparisons use traceable observations and data-derived models. Missing evidence has no synthetic fallback.
+  - The five SkyFall regions lack lander measurements. Engineering constraints and gap ranks follow the team brief
+    and require source review.
   features:
   - id: r3_ground_ice
     name: Ground ice
@@ -262,8 +257,7 @@
       url: https://climate.esa.int/en/projects/permafrost/
     notes:
     - No global Earth measurements of ice at 3-5 m depth
-    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
-      not score Earth candidates.'
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
@@ -315,8 +309,7 @@
       url: https://gportal.jaxa.jp/gpr/
     notes:
     - Surface penetration is restricted to very dry sandy terrain
-    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
-      not score Earth candidates.'
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
@@ -333,9 +326,9 @@
     reason: Manually ordered from science goals
   notes:
   - Align local time and solar longitude Ls; a Martian year is about 687 Earth days.
-  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
-  - The five SkyFall regions lack lander measurements. Engineering constraints and
-    gap ranks follow the team brief and require source review.
+  - Mission comparisons use traceable observations and data-derived models. Missing evidence has no synthetic fallback.
+  - The five SkyFall regions lack lander measurements. Engineering constraints and gap ranks follow the team brief
+    and require source review.
   features:
   - id: r4_hydrated_spectra
     name: Hydrated mineral spectrum
@@ -363,8 +356,7 @@
       source_id: earthdata
       url: https://search.earthdata.nasa.gov/
     notes:
-    - ASTER SWIR failed in April 2008; use earlier data only. EMIT covers arid regions
-      south of 52 N only
+    - ASTER SWIR failed in April 2008; use earlier data only. EMIT covers arid regions south of 52 N only
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
@@ -381,9 +373,9 @@
     reason: Manually ordered from science goals
   notes:
   - Align local time and solar longitude Ls; a Martian year is about 687 Earth days.
-  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
-  - The five SkyFall regions lack lander measurements. Engineering constraints and
-    gap ranks follow the team brief and require source review.
+  - Mission comparisons use traceable observations and data-derived models. Missing evidence has no synthetic fallback.
+  - The five SkyFall regions lack lander measurements. Engineering constraints and gap ranks follow the team brief
+    and require source review.
   features:
   - id: r5_landform
     name: Landform class
@@ -441,11 +433,11 @@
     stat_threshold: 0
     rank_stat_threshold: null
   - id: r5_roughness
-    name: Surface roughness
-    name_en: Surface roughness
+    name: Detrended topographic roughness
+    name_en: Detrended topographic roughness
     type: profile
-    compare_mode: relative_rank
-    unit: ''
+    compare_mode: absolute
+    unit: m
     weight: 1.0
     threshold: null
     planet_threshold: null
@@ -466,8 +458,7 @@
       source_id: radarsat
       url: https://www.asc-csa.gc.ca/eng/satellites/radarsat1/
     notes:
-    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
-      not score Earth candidates.'
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
@@ -486,9 +477,9 @@
   manual_adjust: null
   notes:
   - Align local time and solar longitude Ls; a Martian year is about 687 Earth days.
-  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
-  - The five SkyFall regions lack lander measurements. Engineering constraints and
-    gap ranks follow the team brief and require source review.
+  - Mission comparisons use traceable observations and data-derived models. Missing evidence has no synthetic fallback.
+  - The five SkyFall regions lack lander measurements. Engineering constraints and gap ranks follow the team brief
+    and require source review.
   features:
   - id: r6_dust
     name: Dust seasonality
@@ -517,23 +508,22 @@
       url: https://dataspace.copernicus.eu/
     notes:
     - No lander measurements in the five SkyFall regions
-    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
-      not score Earth candidates.'
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
-  - id: r6_wind_temp
-    name: Wind / temperature cycle
-    name_en: Wind / temperature cycle
+  - id: r6_air_temp
+    name: Near-surface air-temperature cycle
+    name_en: Near-surface air-temperature cycle
     type: timeseries
-    compare_mode: relative_rank
-    unit: ''
+    compare_mode: absolute
+    unit: C
     weight: 1.0
     threshold: null
     planet_threshold: null
     out_of_earth_range: false
     earth_proxy: false
-    planet_data:
+    planet_data: &id001
     - name: MCD
       official: false
       source_id: mcd
@@ -542,14 +532,30 @@
       official: true
       source_id: pds
       url: https://pds.nasa.gov/
-    earth_data:
+    earth_data: &id002
     - name: MERRA-2
       official: true
       source_id: earthdata
       url: https://search.earthdata.nasa.gov/
-    notes:
-    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
-      not score Earth candidates.'
+    notes: &id003
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do not score Earth candidates.'
+    stat: range
+    stat_threshold: 0
+    rank_stat_threshold: null
+  - id: r6_wind_speed
+    name: Wind-speed cycle
+    name_en: Wind-speed cycle
+    type: timeseries
+    compare_mode: absolute
+    unit: m/s
+    weight: 1.0
+    threshold: null
+    planet_threshold: null
+    out_of_earth_range: false
+    earth_proxy: false
+    planet_data: *id001
+    earth_data: *id002
+    notes: *id003
     stat: range
     stat_threshold: 0
     rank_stat_threshold: null

@@ -4,7 +4,7 @@ A NASA Space Apps Challenge 2026 team prototype for connecting lunar and Martian
 
 The website switches between English and Traditional Chinese with the header language button and remembers the choice. Developer documentation and source definitions remain English. New browsers default to Traditional Chinese. The system runs as **six services, including four backend APIs**. Start with the [service guide](docs/SERVICES.md), [Docker instructions](docs/DOCKER.md), and [GitHub setup](docs/GIT.md). The [specification](docs/SPEC.md) incorporates the original brief and subsequent service and language requirements.
 
-**The mission wizard still uses placeholder measurements.** The separate [observed evidence page](http://localhost:8080/data#observed) uses downloaded LOLA, Copernicus and NASA POWER data for a limited processing pilot. Neither the pilot nor the demonstration rankings establish NASA-approved sites or new analog discoveries.
+**The mission wizard now reads observed data only.** All 12 tests have dataset mappings across 37 features: nine are comparable, twelve have context only and sixteen lack validated numeric pairs. Missing quantities never use demo values or another target. Partial scores do not count as complete test coverage. Coverage diagnostics distinguish missing data, individual feature matches and fully assessed tests below threshold; a separate available-feature network shows which Earth sites can already be used. See [the observed-data report](docs/OBSERVED_DATA.md).
 
 ## Start with Docker
 
@@ -65,10 +65,10 @@ This workspace already has `.venv` and `frontend/node_modules` installed. These 
 - Phase overlays, empirical CDFs, and Wasserstein distance. The Leaflet map uses NASA GIBS first and falls back to OpenStreetMap. Planetary targets use a coordinate diagram without an Earth basemap.
 - Adjustable coverage threshold, ROC/rank-sum/custom weights, and known-analog exclusion. Minimum set cover, coverage tables, uncoverable tests, marginal benefit, and Dirichlet sensitivity analysis.
 - `/method`: English and Traditional Chinese methodology served by catalog, with KaTeX formulas.
-- `/data`: 23 product-level records with access requirements, resolution, feature usage and import status; observed terrain tables, ECDFs, meteorology cycles and SHA-256 provenance; plus the original 22 portals. The `official` flag denotes inclusion in the competition Resources list, not institutional ownership.
+- `/data`: 27 product-level records with access requirements, resolution, feature usage and import status; observed terrain tables, ECDFs, meteorology cycles and SHA-256 provenance; plus the original 22 portals. The `official` flag denotes inclusion in the competition Resources list, not institutional ownership.
 - `/research`: nine bilingual sections from the four supplied planning PDFs, separating implemented scope, partial work, proposed work and source-review needs.
 - Persistent English / Traditional Chinese navigation, task descriptions, source notes, limitations, research content and methodology.
-- Visible placeholder and missing-data notices. Demonstration rankings are never presented as real discoveries.
+- Visible evidence coverage, source metadata and missing/incompatible-data notices. Actual inputs and scoped models never imply certified sites or new discoveries.
 
 ## Project structure
 
@@ -89,7 +89,7 @@ data/locales/                    Traditional Chinese content translations
 data/observed/                   Derived observations and source provenance
 data/processed/                  Small common-grid GeoTIFF windows
 data/raw/                        Ignored downloaded source cache
-data/seed/                       12 tests, 36 features, 17 targets, 20 demo candidates
+data/seed/                       12 tests, 37 features, 17 proposed targets; legacy fixtures unused at runtime
 scripts/generate_seed.py         Deterministic fixture generation; overwrites seed files
 scripts/dev.py                   Local stack launcher without Docker
 scripts/smoke.py                 Real HTTP routing and service integration checks
@@ -123,18 +123,20 @@ The production Docker stack has been built and started with all six containers h
 
 ## Remaining team work
 
-All mission-wizard lunar coordinates remain `null`/`todo`. The separate observed lunar study-window center is derived from the published ROI, and is not a final mission coordinate. The SkyFall design-reference coordinates and selected landing constraints have been checked against the official package; the complete engineering and technology-gap mapping still needs team review. Mission schedules are not confirmed commitments. Product versions, spatial coverage, cross-sensor scales, wavelength alignment, and uncertainty still require review.
+The imported lunar study-window center is derived from the published ROI and is not a final base coordinate. Gale has actual terrain and regional REMS evidence; AP-105 keeps its own TES/SWIM evidence. Unmeasured locations retain missing values. The SkyFall design-reference coordinates and selected landing constraints have been checked against the official package; the complete engineering and technology-gap mapping still needs team review. Mission schedules are not confirmed commitments. Product versions, spatial coverage, cross-sensor scales, wavelength alignment, and uncertainty still require review.
 
 TOST is an exploratory independent-differences helper; block bootstrap for autocorrelated series is not implemented or used to claim equivalence. Fixed-k coverage and sensitivity use exact enumeration for this 20-candidate prototype; larger collections need a different solver strategy. The ingestion pilot covers terrain and meteorological context only; other products, QA workflows, spectral calibration and uncertainty propagation remain unfinished. The prototype has no login, database, or cloud deployment.
 
 NASA imagery attribution is documented in [textures/README.md](frontend/public/textures/README.md).
 
-## Import public research data
+## Import actual mission data
 
-The current pilot has already imported eight source files (about 153 MiB), producing one lunar and three terrestrial terrain windows plus three meteorological context records. See [DATA_INGESTION.md](docs/DATA_INGESTION.md) for provenance, limitations and dataset access requirements, and [PDF_REVIEW.md](docs/PDF_REVIEW.md) for the planning-document review.
+The ingestion worker retrieves public LOLA, Copernicus, NAIF, Diviner, MODIS, Sentinel-2, HiRISE, REMS, TES, SWIM and POWER products. Public Planetary Computer access uses temporary signatures in memory without a user account. Products keep their own acquisition times, units, quality flags and spatial support.
 
 ```powershell
 docker compose --profile ingest run --rm --build ingest
 ```
 
-This optional one-off worker writes only `data/raw`, `data/processed` and `data/observed`; it does not replace `data/seed` or change mission ranking inputs. The six web services keep running. Observations are read on request; reload the data page after ingestion.
+The worker writes raw caches and observed products; the measurement service reads `data/observed/mission-measurements.json`. After a new import, restart `measurements`, `similarity` and `planning` to refresh snapshots and service caches, then reload the page. After container recreation, also restart `gateway` to refresh DNS. The optional `--cached-only` workflow and all remaining feature gaps are documented in [OBSERVED_DATA.md](docs/OBSERVED_DATA.md).
+
+The old `*.demo.*` files and deterministic generator are archival test material. They are not runtime inputs. Do not regenerate seed definitions over reviewed observed-data feature definitions.

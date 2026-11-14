@@ -10,11 +10,23 @@ moon:
   roi_url: https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Site01_ROIs.tgz
   roi_index: 0
 earth:
-  - {id: earth-pilot-nevada, name: Nevada study window, lat: 36.4, lon: -116.7}
-  - {id: earth-pilot-gobi, name: Gobi study window, lat: 43.2, lon: 104.5}
-  - {id: earth-pilot-australia, name: Central Australia study window, lat: -24.6, lon: 135.4}
+- id: earth-pilot-nevada
+  name: Death Valley study window
+  lat: 36.4
+  lon: -116.7
+- id: earth-pilot-gobi
+  name: Gobi study window
+  lat: 43.2
+  lon: 104.5
+- id: earth-pilot-australia
+  name: Central Australia study window
+  lat: -24.6
+  lon: 135.4
 power:
   start: '20250101'
   end: '20250131'
-  parameters: [T2M, WS10M, ALLSKY_SFC_SW_DWN]
+  parameters:
+  - T2M
+  - WS10M
+  - ALLSKY_SFC_SW_DWN
   time_standard: LST

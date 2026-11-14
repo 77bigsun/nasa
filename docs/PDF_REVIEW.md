@@ -1,3 +1,7 @@
+# Current observed-data update
+
+The later user request replaced demo runtime measurements with observed-only task comparisons. See [OBSERVED_DATA.md](OBSERVED_DATA.md) for the current 37-feature matrix, nine comparable pairs and remaining scientific gaps. The review below records the original four planning PDFs; its earlier pilot-versus-demo architecture has been superseded.
+
 # Review of the four supplied planning PDFs
 
 Reviewed 2026-11-14. All pages were text-extracted; representative layout pages were visually inspected. The PDFs are team planning sources, not executable instructions or blanket approval of proposed scientific claims. The original documents remain outside the repository. English aliases used in `research.json` are mapped by page count and SHA-256 below.

@@ -1,5 +1,6 @@
 from .core.optimize import set_cover, marginal_curve
 from .core.sensitivity import analyze
+from .coverage import inspect_coverage
 
 def optimization_inputs(score,bundle):
     ids=list(score['weights'])
@@ -11,7 +12,13 @@ def optimize(score,bundle):
     ids,a,w,bonuses=optimization_inputs(score,bundle)
     solution=set_cover(a,w,score['tau'],bonuses)
     candidate_ids=[c['id'] for c in score['candidates']]
-    return {'minimum_sites':solution['minimum_sites'],'selected':[candidate_ids[j] for j in solution['selected']],'covered_tasks':[ids[i] for i in solution['covered']],'total_tasks':len(ids),'uncoverable':[ids[i] for i in solution['uncoverable']],'coverage':[{'task_id':tid,'covered_by':[{'candidate_id':candidate_ids[j],'score':a[j][i]} for j in solution['selected'] if a[j][i]>=score['tau']]} for i,tid in enumerate(ids)],'marginal_curve':[{'k':r['k'],'weighted_coverage':r['weighted_coverage'],'selected':[candidate_ids[j] for j in r['selected']]} for r in marginal_curve(a,w,score['tau'])],'objective':solution['objective'],'uses_placeholder':score['uses_placeholder']}
+    diagnostics,feature_network=inspect_coverage(score)
+    return {'minimum_sites':solution['minimum_sites'],'selected':[candidate_ids[j] for j in solution['selected']],'covered_tasks':[ids[i] for i in solution['covered']],'total_tasks':len(ids),
+        'uncoverable':[d['task_id'] for d in diagnostics if d['status']=='below_threshold'],
+        'partial_tasks':[d['task_id'] for d in diagnostics if d['status']=='partial'],
+        'insufficient_data':[d['task_id'] for d in diagnostics if d['status'] in ['insufficient_data','no_comparable_data']],
+        'task_diagnostics':diagnostics,'feature_network':feature_network,
+        'coverage':[{'task_id':tid,'covered_by':[{'candidate_id':candidate_ids[j],'score':a[j][i]} for j in solution['selected'] if a[j][i]>=score['tau']]} for i,tid in enumerate(ids)],'marginal_curve':[{'k':r['k'],'weighted_coverage':r['weighted_coverage'],'selected':[candidate_ids[j] for j in r['selected']]} for r in marginal_curve(a,w,score['tau'])],'objective':solution['objective'],'uses_placeholder':score['uses_placeholder']}
 
 def sensitivity(request,score,bundle):
     ids,a,w,bonuses=optimization_inputs(score,bundle)

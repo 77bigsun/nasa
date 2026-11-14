@@ -105,7 +105,7 @@ Show mission goals, NASA context, and a three-step wizard: select tests, choose 
 
 Step 1: show six test cards (M1-M6 or R1-R6), selected by default. Include ID, name, verification objective, NASA basis, technology-gap rank/tier, ROC/rank-sum weights, manual adjustment marker and reason, feature count, and official/supplementary source badges. Expand cards for features and notes. Show Earth limitations below.
 
-Step 2: choose exactly one planetary target. Show name, source, description, and coordinates when known. Unknown coordinates remain a visible team TODO. Plot available planetary coordinates without using an Earth basemap. Clearly disclose placeholder target data and any fallback.
+Step 2: choose exactly one planetary target. Show name, source, description, and coordinates when known. Unknown coordinates remain a visible team TODO. Plot available planetary coordinates without using an Earth basemap. Show imported evidence coverage. Missing target values have no cross-target or synthetic fallback.
 
 Step 3: provide coverage threshold tau, ROC/rank-sum/custom weights, and known-analog exclusion. Include:
 
@@ -182,7 +182,7 @@ moon-scr:
   series: {}
 ```
 
-Candidate JSON records include id, name, lat/lon, known_analog, is_placeholder, values, categories, spectra, and series. Generate about 20 land-based demo coordinates named Demo-01 through Demo-20, with four known_analog flags. Use fixed seed 42 and simple periodic series. Every target and candidate measurement is marked as a placeholder. Document replacement contracts in `data/README.md`.
+Candidate JSON records include id, name, lat/lon, known_analog, is_placeholder, values, categories, spectra, and series. The historical demonstration files are archived test material. Production reads only the observed snapshot and rejects synthetic flags. There are three manually selected Earth study windows, not a global search. Document replacement contracts in `data/README.md`.
 
 ### 4.2 Moon (mission: `moon`)
 
@@ -451,4 +451,9 @@ Read content through APIs, disclose placeholders, and leave unknown coordinates/
 
 ## PDF review and observed-data extension
 
-The latest scope adds a bilingual research page, product-level dataset inventory and a reproducible public-data pilot. See `PDF_REVIEW.md` for reviewed additions and `DATA_INGESTION.md` for measurement support and provenance. The observed pilot uses four manually selected terrain windows, not a global search. Full mission scoring remains synthetic. Multi-target joint coverage, spectral matching, validated cross-sensor proxies and autocorrelation-aware uncertainty remain planned.
+The latest scope adds a bilingual research page, product-level dataset inventory and a reproducible public-data pilot. See `PDF_REVIEW.md` for reviewed additions and `DATA_INGESTION.md` for measurement support and provenance. The observed pilot uses four manually selected terrain windows, not a global search. Production mission comparisons now read observed data only; incomplete features prevent full task and mission scores. Multi-target joint coverage, spectral matching, validated cross-sensor proxies and autocorrelation-aware uncertainty remain planned.
+
+
+## Current observed runtime contract
+
+The latest observed-data requirement supersedes historical fixture-generation examples above. There are 37 features after separating R6 air temperature and wind. All have dataset mappings; nine are comparable, twelve contextual and sixteen missing validated pairs. Use `OBSERVED_DATA.md` and `METHOD.md` for current processing, eligibility and coverage rules. Production does not read demonstration measurement files or use placeholder/cross-target fallback.

@@ -1,90 +1,48 @@
-# Similarity method
+# Methods for observed mission comparisons
 
-This is an initial, replaceable method for the team. Current measurements are seeded **placeholders**: the results validate the application workflow, not scientific discoveries about real sites.
+The runtime uses only downloaded observations and explicitly labelled data-derived models. Synthetic measurement files have no runtime reader. All scores are descriptive comparisons within three manual Earth windows; they are not global discoveries or NASA certification. See [OBSERVED_DATA.md](OBSERVED_DATA.md) for product provenance, spatial/temporal support and all remaining gaps.
 
-## 01 - From mission to evidence
+## Evidence eligibility
 
-Each test consists of configured features. Responses include planetary and terrestrial sources, proxy indicators, units, comparison modes, and limitations. The portals on `/data` do not imply that products have already been downloaded or passed product-level quality review.
+Every feature has separate target and candidate evidence: actual value, quantity, unit, source URLs, hashes, processing, spatial support, acquisition period and limitations. A pair is eligible only when both records are `usable`, share a nonempty comparison key and have equal units. Context-only values are displayed but have null scores. Incompatible thermal, radar and ice proxies are never filled with a default percentile or another site's data.
 
-Catalog is the source of mission definitions; measurements supplies the numeric data. Scoring methods live in `services/similarity/app/core/`; site selection and sensitivity live in `services/planning/app/core/`. Planning consumes similarity scores over HTTP. When measurements from different planets do not share a physical scale, compare team-specified percentiles. Relative target values must lie in [0, 1].
+## Distributions and scalar comparison
 
-## 02 - Five feature scorers
+Common-grid terrain distributions use empirical Wasserstein distance. Normalize by the pooled sample standard deviation, then compute:
 
-Threshold features use linear desirability. For lower-is-better features, values at or below the ideal point score 1, values at or above the zero point score 0, and intermediate values interpolate linearly. Higher-is-better features reverse the direction. Mars R1 slope limits are provisional and require source review. Planet-only thresholds validate the planetary target; they are not applied to terrestrial proxies.
+$$
+S=\exp\left[-\frac12\left(\frac{W_1(A,B)}{\sigma_{A\cup B}}\right)^2\right].
+$$
 
-$$s=\mathrm{clip}\left(\frac{b-x}{b-a},0,1\right)$$
+For zero spread, identical distributions score one and differing distributions score zero. This is a descriptive distance, not an equivalence test or confidence interval. Raster samples are spatially correlated.
 
-Absolute profiles share the mean and standard deviation of the complete Earth candidate population. The target uses the same transformation. Excluding known sites does not change this reference population. With zero variance, identical values score 1 and different values score 0. A target more than three standard deviations from the Earth mean produces a warning.
+Scalar features use Gaussian physical-value similarity normalized by the fixed Earth candidate population standard deviation. Excluding a known analog does not change that population. Where a provisional engineering threshold applies, the observed profile score is capped by its desirability function. A threshold alone cannot create an analogy without an observed target value.
 
-$$s=\exp\left(-\frac{(z_c-z_t)^2}{2\sigma^2}\right)$$
+## Partial evidence and complete coverage
 
-Relative comparisons use the Earth midrank empirical CDF and a specified planetary percentile. Midranks handle tied values consistently.
+Available eligible features use their configured weighted geometric mean. This is labelled a partial evidence score whenever any required feature is missing or incompatible. The complete task score is null until every reproducible required feature is eligible. A full mission score is null until every selected task is complete. The UI shows availability counts and the limitations of each input.
 
-$$s=\exp\left(-\frac{(p_c-p_t)^2}{2\sigma_{rank}^2}\right)$$
+ROC, rank-sum and custom weights follow the configured task priority. They affect score summaries and planning but cannot repair missing evidence. Set cover and sensitivity consume complete task scores only. An empty selected network means no complete task reaches the threshold, not that no tests are necessary.
 
-Categorical features use explicit similarity tables; unknown category pairs remain missing. Spectral features use Spectral Angle Mapper. Wavelength samples and spectral resolution must be aligned first. Real-product resampling is not implemented in ingest; unaligned bands must not be compared directly.
+## Phase and sampling
 
-$$\theta=\arccos\frac{a\cdot b}{\|a\|\|b\|},\qquad s=\mathrm{clip}\left(1-\frac{\theta}{\pi/2},0,1\right)$$
+Charts use actual observed phases or documented bin means. Irregular MODIS overpasses use points without connecting invented samples. Their actual local view-time pixels are used, not nominal Terra overpass hours. Diviner cumulative phase bins, REMS local-mean-solar bins and POWER local-solar bins retain their different acquisition periods. An irregular series has no assumed hourly interval and cannot produce duration hours.
 
-Time series are normalized to local cycle phase before extracting the configured statistic: mean, range, cold-exposure hours, longest darkness, or another supported summary. Scores then use absolute or percentile comparison. Darkness spanning the phase boundary is one continuous interval. Charts show phase overlays, ECDFs, and Wasserstein distance. That distance retains the source variable's units and is not itself a similarity score.
+Lunar solar geometry uses DE440s ephemerides, DE421 lunar mean-Earth orientation and real LOLA terrain; Earth uses ITRF93 and Copernicus terrain. The model assumes a 2 m observer and truncates terrain horizons at 1 km. It excludes cloud, refraction, solar-disc fractions and distant terrain. Modelled darkness is expressed in physical hours using each body's solar-cycle duration. It is not a power-system certification.
 
-## 03 - Aggregation and weights
+## Non-comparable evidence
 
-Features within a test use a weighted geometric mean. Features outside Earth's reproducible range are excluded and explained separately. Missing features are not scored; the available feature count is shown. A test with no evidence has a null score. Its mission weight remains and contributes zero, so missing evidence cannot improve the overall rank through renormalization.
+Sparse MODIS day/night temperatures cannot establish continuous cold hours. Lunar PRP stable-ice depth is a model, not an ice detection or terrestrial active-layer thickness. TES thermal inertia cannot be equated to Earth thermal contrast. SWIM consistency is not soil moisture or probability. Different radar wavelengths, spectral response functions, spatial support and sampling seasons need validated processing before comparison. Missing data stays missing.
 
-$$S_{task}=\exp\left(\sum_i w_i\ln(\max(s_i,\epsilon))\right),\qquad \sum_i w_i=1$$
+Autocorrelation-aware block bootstrap, confidence bands, spectral calibration, multi-target joint optimization and global novelty search remain future work. The legacy independent-differences TOST helper is not used to claim observed-series equivalence.
 
-ROC weights follow the configured task order. Rank-sum and nonnegative custom weights are also supported. Selecting a subset recomputes and normalizes its weights. Technology-gap rank and task order are separate fields, with manual adjustments explained in the UI. Original NASA ranks follow the supplied brief and have not been individually verified against the Rev C appendix.
-
-$$w_k^{ROC}=\frac{1}{n}\sum_{i=k}^{n}\frac{1}{i},\qquad S_{overall}=\sum_k w_kS_k$$
-
-## 04 - Coverage optimization
-
-A site covers a test when its score is at least tau. PuLP + CBC first minimizes the number of sites. It then fixes that minimum count and maximizes the weighted best qualifying score for each demand plus configured same-site integration bonuses. Bonuses do not increase the minimum count or alter individual similarity scores. Tests with no qualifying candidate are excluded from cover constraints and returned as `uncoverable`.
-
-$$\min\sum_jx_j,\qquad \sum_{j:S_{ij}\ge\tau}x_j\ge1$$
-
-The marginal curve maximizes weighted coverage at fixed k, from 1 to min(number of tests, number of candidates). For 20 candidates, combinations are enumerated exactly; quality breaks equal-coverage ties. Larger datasets need MILP or an established approximation to avoid combinatorial growth.
-
-## 05 - Sensitivity and robustness
-
-Sensitivity samples weights from a symmetric Dirichlet(alpha), using 500 samples and seed 42 by default. Each solve fixes k to the minimum set-cover count and maximizes coverage. Selection frequency describes acceptance under this procedure; it is not statistical confidence or the probability of real-world similarity. A fixed seed makes the results reproducible.
-
-With at least two usable absolute profile features and three candidates, a regularized Mahalanobis distance is computed on standardized data and compared to the primary ranking with Spearman correlation. This cross-check does not replace the primary scores.
-
-`tost_equivalence` is an exploratory helper for independent paired differences. It does not drive primary scores or UI conclusions. Autocorrelated observations require block bootstrap, which is not implemented; the current helper cannot justify claims of time-series equivalence.
-
-## 06 - The limits of analogy
-
-Earth sites cannot reproduce low gravity, vacuum or very thin atmospheres, planetary radiation environments, or lunar dust electrostatics. A high score describes similarity for the selected test features; it does not mean an entire planet or mission can be reproduced.
-
-## Method references
-
-The authors and years below follow the team brief. Bibliographic details and original links require team review. Their inclusion does not imply that every published method has been reproduced in full.
-
-- Derringer & Suich (1980), desirability functions.
-- Gower (1971), general similarity coefficient.
-- Kruse et al. (1993), spectral analysis / SAM.
-- Barron & Barrett (1996), ROC weights.
-- Mahalanobis (1936), generalized distance.
-- Toregas et al. (1971), set covering.
-- Church & ReVelle (1974), maximal covering.
-- Lahdelma et al. (1998), SMAA.
-- Ramdas et al. (2017), Wasserstein two-sample tests.
-- Schuirmann (1987), TOST; Kunsch (1989), block bootstrap.
-
-## Official data references
-
-- [NASA Planetary Fact Sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/): distinguish solar days and sidereal rotation. The main table gives Mars about -65 C; the UI uses approximately -60 C to convey the scale.
-- [NASA Moon Base User's Guide entry](https://www.nasa.gov/moonbase-phases/)
-- [NASA SkyFall](https://science.nasa.gov/mission/skyfall/)
-- [NASA GIBS API](https://nasa-gibs.github.io/gibs-api-docs/)
-
-Sources reviewed on 2026-11-14. Exact engineering values, product coverage, band alignment, original gap rankings, and mission schedules still require individual team review.
+Primary data references and the feature-by-feature source mapping are available on the [data page](http://localhost:8080/data) and in `/api/measurements/products`.
 
 
-## Observed evidence pilot
+## Coverage diagnostics and available-feature networks
 
-The data page reports downloaded LOLA and Copernicus terrain measurements separately from the synthetic mission-ranking pipeline. Native raster pixels are area-averaged onto 100 m metric grids, over 2 km windows with a one-cell halo. Central-difference slopes therefore have 200 m support. Charts compare empirical slope distributions without assigning mission suitability or discovering analogs. Copernicus is a surface model; LOLA interpolation uncertainty is not propagated. NASA POWER January 2025 hourly local-solar-time cycles are environmental context, not lunar temperature or illumination scores. See [DATA_INGESTION.md](DATA_INGESTION.md).
+The API separates five task states: `covered`, `partial` (some individual features meet the threshold), `insufficient_data` (some numeric comparisons exist but gaps remain), `no_comparable_data`, and `below_threshold` (all current candidates can be completely evaluated and none passes). The public `uncoverable` list contains only the last category; it never contains a task merely because measurements are missing.
 
-The bilingual research page records source-review needs and future work from the four planning PDFs. Multi-target joint coverage, global novelty search, block-bootstrap confidence bands, DTW and time-by-season heatmaps are not implemented.
+Complete task coverage still requires every necessary comparable pair and the aggregate task score to reach tau. Separately, `feature_network` selects the smallest Earth-site set covering individual observed features whose scores reach the same tau. Its weights are the selected task weights split across all required reproducible feature weights, including missing requirements in the denominator. Feature matches do not promote an incomplete task to complete coverage. Its marginal curve measures feature-level weighted coverage only.
+
+At tau=0.7, the current lunar data has six comparable features and three individually qualifying features; two Earth windows cover them. Gale has three comparable features and two qualifying ones covered by one Earth window. There are still zero complete tasks above the threshold in these default runs. The interface displays the qualifying feature network while explaining each task's missing data or measured mismatch.

@@ -99,3 +99,6 @@ Definition and measurement HTTP caches default to 60 seconds. Dataset version co
 
 
 Catalog additionally owns `/datasets`, `/research`, `/translations/zh-TW` and translated methodology. Measurements owns `/observations`, separate from `/snapshot`. The frontend charts observed distributions and climate context, but does not calculate scientific mission similarity in Vue. The default web stack still has six services.
+
+
+Current measurement runtime: `/snapshot` reads only `data/observed/mission-measurements.json`; `/coverage` and `/products` expose feature pairings and quality/provenance. Similarity requires matching eligible quantities and returns null complete scores for missing features. Planning uses complete task scores only. Legacy demo measurement files have no runtime reader. See `OBSERVED_DATA.md`.

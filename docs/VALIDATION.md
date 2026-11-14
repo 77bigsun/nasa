@@ -1,43 +1,28 @@
-# Validation record - 2026-11-14
+# Validation record - observed runtime, 2026-11-14
 
-Local environment: Windows, Python 3.13.1, Node 26.13.0. Production images use Python 3.12 and Node 26. The default stack has six containers; ingestion is an optional one-off profile.
-
-## Completed checks
+The production workflow now uses downloaded observations and explicitly scoped data-derived models. There is no runtime reader for legacy demo measurements and no cross-target fallback.
 
 | Check | Result |
 |---|---|
-| Backend methods, scoring, optimization, boundaries and failures | 27 existing tests passed |
-| Terrain plane slope, fill handling, tile selection, observed/demo separation, missing observations, product/research/translation contracts | 5 additional tests passed |
-| Total backend tests | 32 passed |
-| Frontend URL restoration, wizard flow, empty selection, evidence drawer | Passed |
-| Stored language preference, English/Traditional Chinese switch and document language | Passed |
-| Observed table and loaded-content translation, planned research status | Passed |
-| Total frontend tests | 7 passed |
-| TypeScript and Vite production build, including Docker build | Passed |
-| English development content and matching UI locale keys | Passed; intentional translation files excluded |
-| Production Compose web build/start | Six healthy containers |
-| Four API health/docs/OpenAPI prefixes and both mission pipelines | Live HTTP smoke passed after gateway address refresh |
-| Observed/product/research/translation endpoints | HTTP 200; actual statistics and hashed provenance checked |
-| Optional ingestion container | Built and reran successfully using hash-checked cached downloads |
-| Source files | Eight successful public downloads, 152.69 MiB total |
-| Observed output | Four 2 km terrain windows, 400 valid samples each; three POWER records, 744 hours per parameter |
-| Demonstration numeric fixtures | Candidate and target files match pre-translation Git versions after CRLF normalization |
+| Backend formulas, solvers, observed APIs and source boundaries | 39 tests passed |
+| Missing feature cannot become complete coverage; missing target cannot borrow another target | Passed |
+| Actual Gale DTM slope; missing REMS wind; AP-105 TES context-only handling | Passed |
+| Snapshot rejects synthetic flags and never falls back to seed measurements | Passed |
+| Frontend wizard, partial-score state, evidence drawer, bilingual content and preference | 9 tests passed |
+| TypeScript and Vite production build | Passed locally and in Docker |
+| Production web Compose stack | Six services built and healthy |
+| Public Earth adapter | End-to-end validated; 446 crop hashes/unsigned URLs, actual MODIS view times |
+| Public Mars adapter | End-to-end validated; bounded ranges, source hashes, nodata and REMS QA |
+| Moon adapter and SPICE geometry | Actual retrieval/processing passed |
+| Complete ingestion image | Built; cached observed snapshot successfully regenerated in Python 3.12 Linux |
+| Live HTTP integration | Four health/docs/OpenAPI prefixes, both mission score/plan/sensitivity flows, series and legacy aliases passed |
+| Coverage/products endpoints | 37 feature pairings; nine comparable, twelve contextual, sixteen missing |
+| English development text and locale key parity | Passed; intentional translation files and raw source caches excluded |
+| Whitespace and temporary signature check | Passed |
 
-English source definitions and developer documentation are retained. The frontend has 196 matching UI keys per language and 338 translated content strings. A valid stored preference is respected; new browsers default to Traditional Chinese. Document language updates to `en` or `zh-Hant`. Tests verify reactive content translation without another data request. The method endpoint serves both English and Traditional Chinese Markdown.
+The nine comparable features do not imply twelve complete mission tests. Missing or incompatible required features make full task scores null; planning never counts partial scores as complete coverage. API checks confirm actual observations, source metadata and scoped models rather than placeholder booleans alone. Exact products and scientific limits are in `OBSERVED_DATA.md`.
 
-All four source PDFs were read in full, with representative page layouts inspected. Their SHA-256 identifiers, official cross-checks and website additions are recorded in `PDF_REVIEW.md`. Product records include public/account-required access and explicit import status.
+Manual browser visual acceptance remains outstanding because browser automation was unavailable in this environment. DOM simulation does not verify WebGL, chart appearance, mobile breakpoints, map rendering, focus or screen-reader behavior. No scientific equivalence or mission certification is claimed. Radar/spectral calibration, fine-scale Earth coverage, landform annotations, seasonally matched observations and uncertainty propagation remain missing work. Existing framework deprecation warnings are non-failing maintenance items.
 
-The original mission scoring fixtures remain synthetic and visibly labelled. The observed terrain pilot uses real derived product values but does not certify landing conditions, establish new analogs or replace full mission-ranking measurements. No block-bootstrap equivalence claims, multi-target joint optimization or global novelty search are made.
 
-## Manual and scientific limits
-
-- Docker development override has not been started; production build, health and HTTP integration were checked.
-- Browser automation was unavailable and native Edge approval previously timed out. DOM simulation is not visual acceptance; mobile layout, WebGL, Leaflet, ECharts, formula appearance, focus and screen-reader behavior still need manual browser review.
-- Account-based retrieval, spectral calibration, cross-sensor proxy validation and uncertainty propagation remain unfinished.
-- The terrain pilot's 100 m grid has 200 m central-difference support; it is not a 100 m landing-slope certification. Copernicus DSM and interpolated LOLA have different error structures.
-- POWER meteorology is gridded context, not local surface-temperature measurements or lunar geometric illumination.
-- Existing framework deprecation warnings do not fail the test suite. They are separate maintenance work.
-
-Nginx cached old backend addresses after container recreation during validation. Restarting the gateway restored all service identities and pipelines; the Docker guide now documents this required refresh after backend recreation.
-
-The ingestion image explicitly installs `libexpat1`, required by the Linux Rasterio wheel. The same public-data configuration completed on both the Windows virtual environment and the Python 3.12 container.
+Coverage-regression checks verify that existing Earth observations remain in the feature network, while incomplete tests stay incomplete. Tests cover the default lunar/Gale diagnostics, threshold reassessment, known-analog exclusion and bilingual status rendering. The feature-network response maps solver indices back to stable candidate IDs, including its marginal-curve records. The default task categories are disjoint and account for every selected test. No source measurements or similarity thresholds were altered for this correction.

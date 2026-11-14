@@ -11,8 +11,9 @@ let map:L.Map|undefined;let points:L.LayerGroup;let tiles:L.TileLayer|undefined;
 function draw(){
  if(!map)return;points.clearLayers()
  for(const c of props.candidates){
-  const color=c.overall>=props.similarCutoff?'#85dfbe':c.overall<props.differentCutoff?'#d99673':'#d8c48e'
-  const text=document.createElement('span');text.textContent=`${c.name} · ${c.overall.toFixed(3)}`
+  const value=c.overall??c.partial_score??null
+  const color=value===null?'#8195a8':value>=props.similarCutoff?'#85dfbe':value<props.differentCutoff?'#d99673':'#d8c48e'
+  const text=document.createElement('span');text.textContent=`${c.name} · ${value===null?'—':value.toFixed(3)}${c.overall===null?' · '+t('partialScore'):''}`
   L.circleMarker([c.lat,c.lon],{radius:6,color,weight:1.5,fillColor:color,fillOpacity:.7}).bindTooltip(text).on('click',()=>emit('select',c.id)).addTo(points)
  }
 }

@@ -2,21 +2,19 @@
   mission: moon
   name: Shackleton Connecting Ridge
   name_en: Shackleton Connecting Ridge
-  source: Moon Base I destination
-  description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic
-    placeholders.
-  lat: null
-  lon: null
-  coords_status: todo
+  source: PGDA LOLA Site01 published ROI 1 bounding-box center; study window only
+  description: Connecting Ridge study window from the published LOLA ROI. Not a finalized lunar base coordinate.
+  description_en: Connecting Ridge study window from the published LOLA ROI. Not a finalized lunar base coordinate.
+  lat: -89.43875806135662
+  lon: 222.92251707637553
+  coords_status: approx
 - id: moon-cabeus-b-peak
   mission: moon
   name: Peak near Cabeus B
   name_en: Peak near Cabeus B
   source: Artemis candidate landing region, October 2024
   description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic
-    placeholders.
+  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
   lat: null
   lon: null
   coords_status: todo
@@ -26,8 +24,7 @@
   name_en: Haworth
   source: Artemis candidate landing region, October 2024
   description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic
-    placeholders.
+  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
   lat: null
   lon: null
   coords_status: todo
@@ -37,8 +34,7 @@
   name_en: Malapert Massif
   source: Artemis candidate landing region, October 2024
   description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic
-    placeholders.
+  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
   lat: null
   lon: null
   coords_status: todo
@@ -48,8 +44,7 @@
   name_en: Mons Mouton Plateau
   source: Artemis candidate landing region, October 2024
   description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic
-    placeholders.
+  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
   lat: null
   lon: null
   coords_status: todo
@@ -59,8 +54,7 @@
   name_en: Mons Mouton
   source: Artemis candidate landing region, October 2024
   description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic
-    placeholders.
+  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
   lat: null
   lon: null
   coords_status: todo
@@ -70,8 +64,7 @@
   name_en: Nobile Rim 1
   source: Artemis candidate landing region, October 2024
   description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic
-    placeholders.
+  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
   lat: null
   lon: null
   coords_status: todo
@@ -81,8 +74,7 @@
   name_en: Nobile Rim 2
   source: Artemis candidate landing region, October 2024
   description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic
-    placeholders.
+  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
   lat: null
   lon: null
   coords_status: todo
@@ -92,8 +84,7 @@
   name_en: de Gerlache Rim 2
   source: Artemis candidate landing region, October 2024
   description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic
-    placeholders.
+  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
   lat: null
   lon: null
   coords_status: todo
@@ -103,19 +94,29 @@
   name_en: Slater Plain
   source: Artemis candidate landing region, October 2024
   description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic
-    placeholders.
+  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
   lat: null
   lon: null
   coords_status: todo
+- id: mars-gale
+  mission: mars
+  name: Gale crater (optional)
+  name_en: Gale crater (optional)
+  source: HiRISE Gale DTM and Curiosity REMS sol 1000
+  description: Approximate Gale study point with actual terrain and quality-filtered air-temperature evidence. This
+    is separate from AP-105.
+  description_en: Approximate Gale study point with actual terrain and quality-filtered air-temperature evidence.
+    This is separate from AP-105.
+  lat: -4.67
+  lon: 137.37
+  coords_status: approx
 - id: mars-ap105
   mission: mars
   name: Arcadia Planitia (AP-105)
   name_en: Arcadia Planitia (AP-105)
   source: SkyFall design reference; polygonal terrain and very few rocks
   description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic
-    placeholders.
+  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
   lat: 43.3295
   lon: 198.5228
   coords_status: exact
@@ -125,8 +126,7 @@
   name_en: Deuteronilus Mensae
   source: SkyFall study region at 30-45 N
   description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic
-    placeholders.
+  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
   lat: null
   lon: null
   coords_status: todo
@@ -136,8 +136,7 @@
   name_en: Utopia Planitia
   source: SkyFall study region at 30-45 N
   description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic
-    placeholders.
+  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
   lat: null
   lon: null
   coords_status: todo
@@ -147,8 +146,7 @@
   name_en: Phlegra Montes
   source: SkyFall study region at 30-45 N
   description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic
-    placeholders.
+  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
   lat: null
   lon: null
   coords_status: todo
@@ -158,8 +156,7 @@
   name_en: Erebus Montes
   source: SkyFall study region at 30-45 N
   description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic
-    placeholders.
+  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
   lat: null
   lon: null
   coords_status: todo
@@ -169,19 +166,7 @@
   name_en: Jezero crater (optional)
   source: Perseverance site with in-situ measurements for method validation
   description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic
-    placeholders.
+  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
   lat: 18.4
   lon: 77.5
-  coords_status: approx
-- id: mars-gale
-  mission: mars
-  name: Gale crater (optional)
-  name_en: Gale crater (optional)
-  source: Curiosity site with in-situ measurements for method validation
-  description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic
-    placeholders.
-  lat: -5.4
-  lon: 137.8
   coords_status: approx

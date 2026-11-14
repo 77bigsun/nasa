@@ -14,6 +14,16 @@ def create_app(repository=None):
     @app.get('/snapshot',response_model=MeasurementSnapshot)
     def snapshot():return {'candidates':repo.candidates,'targets':repo.targets}
 
+    @app.get('/products')
+    def products():
+        import json
+        path=repo.data_root/'observed/products.json'
+        if not path.exists():raise HTTPException(404,'Product provenance unavailable')
+        return json.loads(path.read_text(encoding='utf-8'))
+
+    @app.get('/coverage')
+    def coverage():return repo.coverage()
+
     @app.get('/candidates',response_model=list[Candidate])
     def candidates():return repo.candidates
 

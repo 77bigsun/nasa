@@ -1,10 +1,14 @@
+# Current workflow
+
+The original terrain pilot below is now part of the observed mission pipeline. Use [OBSERVED_DATA.md](OBSERVED_DATA.md) for current commands, product mappings and eligibility. Production no longer uses synthetic mission measurements.
+
 # Reproducible observed-data pilot
 
 ## Run and inspect
 
 The pilot configuration is `data/ingest/pilot.yaml`. Run `docker compose --profile ingest run --rm --build ingest`, or `python -m services.ingest.run --config data/ingest/pilot.yaml` after installing `requirements-dev.txt`. Default web services need no ingest dependency. The worker caches downloads in ignored `data/raw/`, records URL, byte count, UTC retrieval time and SHA-256, and verifies cached hashes before reuse. Each file is capped at 90 MiB; hosts are allowlisted. It reads shapefile members in memory, without extracting archive paths.
 
-Outputs are `data/processed/*.tif` and `data/observed/pilot.json`. Measurements serves the validated manifest at `/api/measurements/observations`; the frontend reads it at `/data#observed`. No complete observation file means HTTP 404, never synthetic fallback. Demonstration `data/seed` files and `/snapshot` remain separate and unchanged.
+Outputs are `data/processed/*.tif` and `data/observed/pilot.json`. Measurements serves the validated manifest at `/api/measurements/observations`; the frontend reads it at `/data#observed`. No complete observation file means HTTP 404, never synthetic fallback. Legacy demonstration files remain archived; `/snapshot` now reads the separate observed mission measurements only.
 
 ## Actual imported products
 

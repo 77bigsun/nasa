@@ -85,8 +85,10 @@ class Site(Record):
 class Series(Record):
     phase: list[float]
     values: list[float]
-    step_hours: float = Field(default=1,gt=0)
+    step_hours: float | None = Field(default=None,gt=0)
     period: str = ''
+    value_unit: str = ''
+    quantity: str = ''
 
     @model_validator(mode='after')
     def valid_arrays(self):
@@ -95,6 +97,19 @@ class Series(Record):
         if self.phase!=sorted(self.phase):raise ValueError('Phase must be sorted')
         return self
 
+class FeatureEvidence(Record):
+    value: float | str | list[float] | None = None
+    unit: str = ''
+    quantity: str
+    status: Literal['usable','context_only']
+    comparison_key: str = ''
+    method: str
+    spatial_support: str
+    temporal_support: str
+    sources: list[Link]
+    hashes: list[str] = []
+    notes: list[str] = []
+
 class Measurements(Record):
     is_placeholder: bool
     values: dict[str,float | None] = {}
@@ -102,6 +117,8 @@ class Measurements(Record):
     spectra: dict[str,list[float]] = {}
     series: dict[str,Series] = {}
     planet_values: dict[str,float] = {}
+    evidence: dict[str,FeatureEvidence] = {}
+    distributions: dict[str,list[float]] = {}
 
 class Candidate(Measurements):
     id: str
@@ -182,8 +199,13 @@ class FeatureScore(Model):
     target_value: float | str | list[float] | None
     candidate_value: float | str | list[float] | None
     score: float | None
-    classification: Literal['similar','different','intermediate','not_reproducible','missing']
+    classification: Literal['similar','different','intermediate','not_reproducible','missing','incomparable']
     warnings: list[str]=[]
+    target_evidence: FeatureEvidence | None = None
+    candidate_evidence: FeatureEvidence | None = None
+    comparison_method: str = ''
+    raw_distance: float | None = None
+    distance_unit: str = ''
 
 class TaskScore(Model):
     score: float | None
@@ -193,6 +215,9 @@ class TaskScore(Model):
     not_reproducible: list[str]
     available_features: int
     total_features: int
+    partial_score: float | None = None
+    complete: bool = False
+    observed_features: int = 0
 
 class CandidateScore(Model):
     id: str
@@ -202,7 +227,8 @@ class CandidateScore(Model):
     lon: float
     known_analog: bool
     is_placeholder: bool
-    overall: float
+    overall: float | None
+    partial_score: float | None = None
     tasks: dict[str,TaskScore]
 
 class Rank(Model):
@@ -230,6 +256,8 @@ class ScoreResponse(Model):
     uses_placeholder: bool
     warnings: list[str]
     tau: float
+    evidence_mode: Literal['observed'] = 'observed'
+    data_status: Literal['complete','partial','unavailable'] = 'partial'
 
 class CoverageRow(Model):
     task_id: str
@@ -240,12 +268,46 @@ class Marginal(Model):
     weighted_coverage: float
     selected: list[str]
 
+class TaskCoverageDiagnostic(Model):
+    task_id: str
+    status: Literal['covered','partial','insufficient_data','no_comparable_data','below_threshold']
+    required_features: int
+    comparable_features: int
+    met_features: int
+    best_complete_score: float | None
+    best_partial_score: float | None
+    missing_features: list[str]
+    incomparable_features: list[str]
+    met_feature_ids: list[str]
+
+class FeatureCoverage(Model):
+    task_id: str
+    feature_id: str
+    name: str
+    status: Literal['met','below_threshold','missing_data','incomparable']
+    best_score: float | None
+    best_candidate_id: str | None
+    covered_by: list[Rank]
+
+class FeatureNetwork(Model):
+    minimum_sites: int
+    selected: list[str]
+    total_features: int
+    comparable_features: int
+    covered_features: int
+    coverage: list[FeatureCoverage]
+    marginal_curve: list[Marginal]
+
 class OptimizeResponse(Model):
     minimum_sites: int
     selected: list[str]
     covered_tasks: list[str]
     total_tasks: int
     uncoverable: list[str]
+    partial_tasks: list[str]
+    insufficient_data: list[str]
+    task_diagnostics: list[TaskCoverageDiagnostic]
+    feature_network: FeatureNetwork
     coverage: list[CoverageRow]
     marginal_curve: list[Marginal]
     objective: float
@@ -276,11 +338,21 @@ class SeriesResponse(Model):
     uses_placeholder: bool
     raw_target: Series
     raw_candidate: Series
+    target_evidence: FeatureEvidence | None = None
+    candidate_evidence: FeatureEvidence | None = None
+    comparison_note: str = ''
 
 
 class MeasurementSnapshot(Model):
+    mode: Literal['observed'] = 'observed'
     candidates: list[Candidate]
     targets: dict[str,Measurements]
+
+    @model_validator(mode='after')
+    def observed_only(self):
+        if any(v.is_placeholder for v in [*self.candidates,*self.targets.values()]):
+            raise ValueError('Synthetic measurements are not accepted in observed mode')
+        return self
 
 
 class DatasetProduct(Record):

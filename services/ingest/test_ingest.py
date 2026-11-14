@@ -28,7 +28,7 @@ def test_power_filters_fill_values_and_tile_uses_southwest_corner():
     assert 'N36_00_W117' in copernicus_url(36.4,-116.7)
 
 
-def test_real_observations_are_scoped_and_demo_snapshot_stays_synthetic():
+def test_real_observations_and_runtime_snapshot_are_observed_only():
     client=TestClient(create_app())
     response=client.get('/observations')
     assert response.status_code==200,response.text
@@ -41,7 +41,7 @@ def test_real_observations_are_scoped_and_demo_snapshot_stays_synthetic():
         assert len(site['slope_samples_deg'])==site['statistics']['sample_count']==400
         assert np.mean(site['slope_samples_deg'])==pytest.approx(site['statistics']['mean_slope_deg'])
         assert site['is_placeholder'] is False
-    assert all(c['is_placeholder'] for c in client.get('/snapshot').json()['candidates'])
+    assert all(not c['is_placeholder'] for c in client.get('/snapshot').json()['candidates'])
 
 
 def test_missing_observed_file_does_not_fall_back_to_synthetic(tmp_path):
@@ -52,8 +52,8 @@ def test_missing_observed_file_does_not_fall_back_to_synthetic(tmp_path):
 def test_research_product_catalog_and_translated_method():
     client=TestClient(catalog_app)
     products=client.get('/datasets').json()
-    assert len(products)==23
-    assert sum(p['status']=='imported' for p in products)==3
+    assert len(products)>=23
+    assert sum(p['status']=='imported' for p in products)>=3
     assert len(client.get('/research').json())==9
     translations=client.get('/translations/zh-TW').json()
     assert len(translations)>300

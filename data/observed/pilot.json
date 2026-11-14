@@ -865,7 +865,7 @@
       "is_placeholder": false,
       "derived_file": "earth-pilot-nevada.tif",
       "id": "earth-pilot-nevada",
-      "name": "Nevada study window",
+      "name": "Death Valley study window",
       "source_id": "copernicus-glo30",
       "source_url": "https://registry.opendata.aws/copernicus-dem/",
       "raw_url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N36_00_W117_00_DEM/Copernicus_DSM_COG_10_N36_00_W117_00_DEM.tif",
@@ -1742,7 +1742,7 @@
   "meteorology": [
     {
       "id": "earth-pilot-nevada",
-      "name": "Nevada study window",
+      "name": "Death Valley study window",
       "lat": 36.4,
       "lon": -116.7,
       "start": "20250101",
@@ -2358,6 +2358,6 @@
     "LOLA Site01 is an interpolated product; uncertainty clones have not been propagated.",
     "Slopes use native-pixel area averaging to a 100 m grid with 200 m central-difference support.",
     "POWER air temperature is not MODIS land-surface temperature. Meteorology is shown as context, not a lunar temperature or illumination score.",
-    "The demonstration mission rankings remain separate and still use placeholder measurements."
+    "Mission comparisons use traceable observations and data-derived models; missing features are never filled with synthetic values."
   ]
 }

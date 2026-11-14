@@ -55,7 +55,7 @@
     "url": "https://pgda.gsfc.nasa.gov/products/69",
     "resolution": "60 / 120 / 240 m long-term products",
     "access": "public",
-    "status": "planned",
+    "status": "imported",
     "uses": [
       "M2"
     ],
@@ -69,7 +69,7 @@
     "url": "https://pds-geosciences.wustl.edu/missions/lro/diviner.htm",
     "resolution": "Product-dependent; PCP 240 m",
     "access": "public",
-    "status": "planned",
+    "status": "imported",
     "uses": [
       "M3",
       "M4"
@@ -112,14 +112,14 @@
     "name": "MOD11A1 v061 land-surface temperature",
     "url": "https://catalog.data.gov/dataset/modis-terra-land-surface-temperature-emissivity-daily-l3-global-1km-sin-grid-v061",
     "resolution": "Daily, 1 km, day / night",
-    "access": "earthdata",
-    "status": "account_required",
+    "access": "public",
+    "status": "imported",
     "uses": [
       "M3",
       "R6"
     ],
     "notes": [
-      "Apply QA flags and scale factors; preserve overpass time and missing-cloud observations. A day/night pair is not a complete daily waveform."
+      "Public Planetary Computer mirror imported with temporary SAS tokens kept in memory. January 2025 valid paired days: 14 / 18 / 14; Australian accepted samples carry the lower mandatory-QA flag. Sparse overpasses are not hourly thermal cycles."
     ]
   },
   {
@@ -248,12 +248,12 @@
     "url": "https://swim.psi.edu/",
     "resolution": "Regional synthesis, not a uniform depth sounding",
     "access": "public",
-    "status": "planned",
+    "status": "imported",
     "uses": [
       "R3"
     ],
     "notes": [
-      "Combine ice evidence and depth uncertainty. Orbital radar evidence does not guarantee ice at the 3-5 m sampling depth."
+      "SWIM2 1-5 m composite imported. AP-105 ice consistency is 0.5; this is not a probability, ice fraction or direct depth and is not scored against soil moisture."
     ]
   },
   {
@@ -289,8 +289,8 @@
     "name": "Sentinel-1 / Sentinel-2",
     "url": "https://dataspace.copernicus.eu/browser/",
     "resolution": "C-band radar / optical bands at 10-60 m",
-    "access": "cdse",
-    "status": "account_required",
+    "access": "public",
+    "status": "imported",
     "uses": [
       "M1",
       "M4",
@@ -298,7 +298,7 @@
       "R5"
     ],
     "notes": [
-      "Choose acquisition geometry and quality masks. Ten-metre imagery is marginal for 10-30 m polygons and cannot resolve centimetre rocks."
+      "Public Planetary Computer mirror imported B04 and SCL at all three Earth windows. BOA reflectance uses XML offset/scale and cloud/land masking. No matched Mars image-texture product is scored."
     ]
   },
   {
@@ -343,6 +343,64 @@
     ],
     "notes": [
       "Use as a processing reference. NASA Worldview and other viewers are also discovery tools, not automatically quantitative input products."
+    ]
+  },
+  {
+    "id": "hirise-gale",
+    "name": "HiRISE Gale DTM",
+    "url": "https://hirise.lpl.arizona.edu/dtm/dtm.php?ID=ESP_040770_1755",
+    "resolution": "Native 1.01 m; analysis 50/100 m grids",
+    "access": "public",
+    "status": "imported",
+    "uses": [
+      "R1",
+      "R5"
+    ],
+    "notes": [
+      "Imported a native row stripe, with hashes for the range. Gale data is not assigned to AP-105. Earth GLO-30 cannot provide 1-5 m slopes."
+    ]
+  },
+  {
+    "id": "rems-gale",
+    "name": "Curiosity REMS sol 1000",
+    "url": "https://atmos.nmsu.edu/data_and_services/atmospheres_data/MARS/curiosity/rems.html",
+    "resolution": "1 Hz source samples; hourly LMST bin means",
+    "access": "public",
+    "status": "imported",
+    "uses": [
+      "R6"
+    ],
+    "notes": [
+      "21,086 quality-filtered air-temperature samples. Wind remains missing after filtering. One 2015 sol is not seasonally matched to Earth January 2025."
+    ]
+  },
+  {
+    "id": "tes-inertia",
+    "name": "MGS TES numeric nighttime thermal inertia",
+    "url": "https://pds-geosciences.wustl.edu/missions/mgs/tes-timap.html",
+    "resolution": "20 pixels/degree, approximately 2.96 km",
+    "access": "public",
+    "status": "imported",
+    "uses": [
+      "R1"
+    ],
+    "notes": [
+      "Native thermal inertia and mask imported: AP-105 value 181, mask 1. This is not 100 m THEMIS data; Earth LST contrast has different units."
+    ]
+  },
+  {
+    "id": "naif-spice",
+    "name": "NASA NAIF SPICE ephemerides and orientations",
+    "url": "https://naif.jpl.nasa.gov/naif/data_generic.html",
+    "resolution": "DE440s, lunar DE421 ME orientation, Earth ITRF93",
+    "access": "public",
+    "status": "imported",
+    "uses": [
+      "M2",
+      "M3"
+    ],
+    "notes": [
+      "Real ephemerides plus measured DEM products produce a finite-horizon solar model. Observer 2 m, horizon radius 1 km; no distant terrain, cloud, refraction or solar-disc model."
     ]
   }
 ]

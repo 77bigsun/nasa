@@ -9,7 +9,7 @@ import products from '../../data/catalog/datasets.json'
 import research from '../../data/catalog/research.json'
 import pilot from '../../data/observed/pilot.json'
 import zh from '../src/messages/zh-TW.json'
-vi.mock('../src/api',()=>({api:{sources:vi.fn(),datasets:vi.fn(),observations:vi.fn(),research:vi.fn()},errorMessage:(e:unknown)=>String(e)}))
+vi.mock('../src/api',()=>({api:{coverage:vi.fn().mockResolvedValue({features:[],targets:{},mode:"observed"}),sources:vi.fn(),datasets:vi.fn(),observations:vi.fn(),research:vi.fn()},errorMessage:(e:unknown)=>String(e)}))
 const global={plugins:[i18n],stubs:{Shell:{template:'<main><slot/></main>'},Chart:true,RouterLink:{template:'<a><slot/></a>'}}}
 beforeEach(()=>{
  i18n.global.locale.value='en';setContentTranslations(translations)

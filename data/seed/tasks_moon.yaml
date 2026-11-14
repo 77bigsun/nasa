@@ -13,9 +13,8 @@
   manual_adjust: null
   notes:
   - Align local solar phase; a lunar solar day is about 29.5 Earth days.
-  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
-  - Quantitative slope and rock thresholds need literature review; use profile comparisons
-    for now.
+  - Mission comparisons use traceable observations and data-derived models. Missing evidence has no synthetic fallback.
+  - Quantitative slope and rock thresholds need literature review; use profile comparisons for now.
   features:
   - id: m1_slope
     name: Multiscale slope
@@ -66,8 +65,7 @@
       url: https://search.earthdata.nasa.gov/
     notes:
     - earth_proxy
-    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
-      not score Earth candidates.'
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
@@ -94,8 +92,7 @@
       url: https://dataspace.copernicus.eu/
     notes:
     - Different bands; compare relative ranks only
-    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
-      not score Earth candidates.'
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
@@ -114,7 +111,7 @@
   manual_adjust: null
   notes:
   - Align local solar phase; a lunar solar day is about 29.5 Earth days.
-  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
+  - Mission comparisons use traceable observations and data-derived models. Missing evidence has no synthetic fallback.
   features:
   - id: m2_illum_fraction
     name: Illumination fraction
@@ -175,8 +172,8 @@
     stat_threshold: 0
     rank_stat_threshold: null
   - id: m2_horizon
-    name: Horizon obstruction
-    name_en: Horizon obstruction
+    name: Near-field terrain horizon
+    name_en: Near-field terrain horizon
     type: profile
     compare_mode: absolute
     unit: deg
@@ -214,7 +211,7 @@
   manual_adjust: null
   notes:
   - Align local solar phase; a lunar solar day is about 29.5 Earth days.
-  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
+  - Mission comparisons use traceable observations and data-derived models. Missing evidence has no synthetic fallback.
   features:
   - id: m3_diurnal_range
     name: Diurnal temperature range
@@ -242,8 +239,7 @@
       source_id: earthdata
       url: https://search.earthdata.nasa.gov/
     notes:
-    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
-      not score Earth candidates.'
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do not score Earth candidates.'
     stat: range
     stat_threshold: 0
     rank_stat_threshold: null
@@ -273,14 +269,13 @@
       source_id: earthdata
       url: https://search.earthdata.nasa.gov/
     notes:
-    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
-      not score Earth candidates.'
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do not score Earth candidates.'
     stat: hours_below
     stat_threshold: 0
     rank_stat_threshold: 5
   - id: m3_max_dark
-    name: Longest darkness
-    name_en: Longest darkness
+    name: Modelled longest local darkness
+    name_en: Modelled longest local darkness
     type: timeseries
     compare_mode: absolute
     unit: h
@@ -344,11 +339,9 @@
   manual_adjust: null
   notes:
   - Align local solar phase; a lunar solar day is about 29.5 Earth days.
-  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
-  - Quantitative slope and rock thresholds need literature review; use profile comparisons
-    for now.
-  - M4 and M6 can share a site; integration bonuses apply after fixing minimum site
-    count.
+  - Mission comparisons use traceable observations and data-derived models. Missing evidence has no synthetic fallback.
+  - Quantitative slope and rock thresholds need literature review; use profile comparisons for now.
+  - M4 and M6 can share a site; integration bonuses apply after fixing minimum site count.
   features:
   - id: m4_slope_dist
     name: Slope distribution
@@ -399,8 +392,7 @@
       url: https://search.earthdata.nasa.gov/
     notes:
     - earth_proxy
-    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
-      not score Earth candidates.'
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
@@ -426,8 +418,7 @@
       source_id: copernicus
       url: https://dataspace.copernicus.eu/
     notes:
-    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
-      not score Earth candidates.'
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
@@ -446,7 +437,7 @@
   manual_adjust: null
   notes:
   - Align local solar phase; a lunar solar day is about 29.5 Earth days.
-  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
+  - Mission comparisons use traceable observations and data-derived models. Missing evidence has no synthetic fallback.
   features:
   - id: m5_tir_mineral
     name: Thermal infrared mineral signature
@@ -523,8 +514,7 @@
       url: https://search.earthdata.nasa.gov/
     notes:
     - earth_proxy
-    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
-      not score Earth candidates.'
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
@@ -541,13 +531,12 @@
     label: 55 (6)
   order: 5
   manual_adjust:
-    reason: 'Raised priority: resource identification moved to data gaps; LD-03-L
-      rationale and competition Resources emphasize Diviner polar resource products'
+    reason: 'Raised priority: resource identification moved to data gaps; LD-03-L rationale and competition Resources
+      emphasize Diviner polar resource products'
   notes:
   - Align local solar phase; a lunar solar day is about 29.5 Earth days.
-  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
-  - M4 and M6 can share a site; integration bonuses apply after fixing minimum site
-    count.
+  - Mission comparisons use traceable observations and data-derived models. Missing evidence has no synthetic fallback.
+  - M4 and M6 can share a site; integration bonuses apply after fixing minimum site count.
   features:
   - id: m6_ice_depth
     name: Ice depth
@@ -597,8 +586,7 @@
       source_id: earthdata
       url: https://search.earthdata.nasa.gov/
     notes:
-    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
-      not score Earth candidates.'
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
@@ -649,8 +637,7 @@
       source_id: copernicus
       url: https://dataspace.copernicus.eu/
     notes:
-    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
-      not score Earth candidates.'
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null

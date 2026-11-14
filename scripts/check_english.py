@@ -14,7 +14,7 @@ def main():
     failures=[]
     scanned=0
     for directory,folders,files in os.walk(ROOT):
-        folders[:]=[name for name in folders if name not in EXCLUDED]
+        folders[:]=[name for name in folders if name not in EXCLUDED and not (Path(directory)==ROOT/'data' and name=='raw')]
         for name in files:
             path=Path(directory)/name
             if path.relative_to(ROOT).as_posix() in LOCALIZED:continue

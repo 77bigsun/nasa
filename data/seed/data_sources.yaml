@@ -20,7 +20,8 @@
   - r1_thermal_inertia
   - r3_ground_ice
   - r4_hydrated_spectra
-  - r6_wind_temp
+  - r6_air_temp
+  - r6_wind_speed
   notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
     team review.
 - id: worldview
@@ -53,7 +54,8 @@
   - r5_polygon_size
   - r5_roughness
   - r6_dust
-  - r6_wind_temp
+  - r6_air_temp
+  - r6_wind_speed
   notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
     team review.
 - id: lro
@@ -223,7 +225,8 @@
   status: portal
   used_by:
   - r6_dust
-  - r6_wind_temp
+  - r6_air_temp
+  - r6_wind_speed
   notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
     team review.
 - id: power

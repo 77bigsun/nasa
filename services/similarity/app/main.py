@@ -37,11 +37,9 @@ def create_app(catalog=None,measurements=None):
         if not any(f['id']==feature_id and f['type']=='timeseries' for t in b['tasks'] for f in t['features']):raise HTTPException(404,'Unknown time series feature')
         candidate=next((c for c in repo.candidates if c['id']==candidate_id),None)
         target=repo.targets.get(site_id)
-        if target is None:
-            target=next((repo.targets[s['id']] for s in b['sites'] if s['id'] in repo.targets and repo.targets[s['id']]['is_placeholder']),None)
         if candidate is None or target is None or feature_id not in candidate['series'] or feature_id not in target['series']:raise HTTPException(404,'Series unavailable')
         a=target['series'][feature_id];c=candidate['series'][feature_id]
-        return {**charts(a,c),'uses_placeholder':target['is_placeholder'] or candidate['is_placeholder'],'raw_target':a,'raw_candidate':c}
+        return {**charts(a,c),'uses_placeholder':False,'raw_target':a,'raw_candidate':c,'target_evidence':target.get('evidence',{}).get(feature_id),'candidate_evidence':candidate.get('evidence',{}).get(feature_id),'comparison_note':'Observed or data-derived samples only. Acquisition periods and sampling support are shown with each source; no equivalence claim.'}
     return app
 
 app=create_app()

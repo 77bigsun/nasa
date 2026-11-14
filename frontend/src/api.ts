@@ -1,5 +1,5 @@
 import axios from 'axios'
-import type {Bundle,Mission,Facts,DataSource,ScoreRequest,ScoreResponse,OptimizeResponse,SensitivityResponse,SeriesResponse,DatasetProduct,ResearchSection,ObservedPilot} from './types'
+import type {Bundle,Mission,Facts,DataSource,ScoreRequest,ScoreResponse,OptimizeResponse,SensitivityResponse,SeriesResponse,DatasetProduct,ResearchSection,ObservedPilot,MeasurementCoverage} from './types'
 const catalog=axios.create({baseURL:'/api/catalog',timeout:15000})
 const similarity=axios.create({baseURL:'/api/similarity',timeout:120000})
 const measurements=axios.create({baseURL:'/api/measurements',timeout:15000})
@@ -10,6 +10,7 @@ export const api={
  facts:()=>catalog.get<Facts>('/earth-facts').then(r=>r.data),
  datasets:()=>catalog.get<DatasetProduct[]>('/datasets').then(r=>r.data),
  research:()=>catalog.get<ResearchSection[]>('/research').then(r=>r.data),
+ coverage:()=>measurements.get<MeasurementCoverage>('/coverage').then(r=>r.data),
  observations:()=>measurements.get<ObservedPilot>('/observations').then(r=>r.data).catch(e=>{if(axios.isAxiosError(e)&&e.response?.status===404)return null;throw e}),
  sources:()=>catalog.get<DataSource[]>('/data-sources').then(r=>r.data),
  method:()=>catalog.get<{settings:Record<string,unknown>;markdown:string;markdown_zh?:string}>('/method').then(r=>r.data),

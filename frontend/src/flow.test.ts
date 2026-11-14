@@ -7,11 +7,11 @@ import {useMission} from './store'
 import MissionPage from './pages/Mission.vue'
 import type {Bundle,ScoreResponse,OptimizeResponse} from './types'
 import {api} from './api'
-vi.mock('./api',()=>({api:{bundle:vi.fn(),score:vi.fn(),optimize:vi.fn(),sensitivity:vi.fn()},errorMessage:(e:unknown)=>String(e)}))
+vi.mock('./api',()=>({api:{coverage:vi.fn().mockResolvedValue({features:[],targets:{},mode:"observed"}),bundle:vi.fn(),score:vi.fn(),optimize:vi.fn(),sensitivity:vi.fn()},errorMessage:(e:unknown)=>String(e)}))
 const task=(id:string,order:number)=>({id,name:`Test ${id}`,name_en:`Test ${id}`,mission:'moon' as const,verify:'Verify the test',nasa_basis:'NASA',nasa_url:'https://www.nasa.gov/',order,manual_adjust:null,tech_gap:null,features:[],notes:[],weights:{roc:.5,rank_sum:.5}})
 const bundle={mission:{id:'moon',name:'Moon mission',name_en:'Moon mission',goal:'Goal',goal_en:'Goal',summary:'Summary',summary_en:'Summary',nasa_sources:[{title:'NASA',url:'https://www.nasa.gov/'}]},tasks:[task('M1',2),task('M2',1)],sites:[{id:'moon-scr',mission:'moon',name:'Shackleton',name_en:'Shackleton',lat:null,lon:null,source:'Team',description:'Demo',description_en:'Demo',coords_status:'todo'}],limits:[],constraints:[],settings:{tau:.7,similar_cutoff:.7,different_cutoff:.4,weight_scheme:'roc',sensitivity:{n_samples:500,seed:42,alpha:1},map:{gibs_url:'',fallback_url:'',max_zoom:8}},categorical_tables:{}} as Bundle
-const result={mission:'moon',site_id:'moon-scr',weights:{M1:.25,M2:.75},candidates:[{id:'demo-01',name:'Demo-01',name_en:'Demo-01',lat:36,lon:-116,known_analog:false,is_placeholder:true,overall:.8,tasks:{}}],task_rankings:[],limits:[],robustness:{status:'insufficient',spearman:null},uses_placeholder:true,warnings:[],tau:.7} as unknown as ScoreResponse
-const optimal={minimum_sites:1,selected:['demo-01'],covered_tasks:['M1'],total_tasks:2,uncoverable:['M2'],coverage:[{task_id:'M1',covered_by:[{candidate_id:'demo-01',score:.8}]},{task_id:'M2',covered_by:[]}],marginal_curve:[],objective:.8,uses_placeholder:true} as OptimizeResponse
+const result={mission:'moon',site_id:'moon-scr',weights:{M1:.25,M2:.75},candidates:[{id:'demo-01',name:'Demo-01',name_en:'Demo-01',lat:36,lon:-116,known_analog:false,is_placeholder:false,overall:null,partial_score:.8,tasks:{}}],task_rankings:[],limits:[],robustness:{status:'insufficient',spearman:null},uses_placeholder:false,warnings:[],tau:.7,data_status:"partial"} as unknown as ScoreResponse
+const optimal={minimum_sites:1,selected:['demo-01'],covered_tasks:['M1'],total_tasks:2,uncoverable:['M2'],partial_tasks:[],insufficient_data:[],task_diagnostics:[],feature_network:{minimum_sites:1,selected:['demo-01'],total_features:2,comparable_features:1,covered_features:1,coverage:[],marginal_curve:[]},coverage:[{task_id:'M1',covered_by:[{candidate_id:'demo-01',score:.8}]},{task_id:'M2',covered_by:[]}],marginal_curve:[],objective:.8,uses_placeholder:false} as OptimizeResponse
 beforeEach(()=>{i18n.global.locale.value='en';setActivePinia(createPinia());vi.mocked(api.bundle).mockResolvedValue(bundle);vi.mocked(api.score).mockResolvedValue(result);vi.mocked(api.optimize).mockResolvedValue(optimal);window.scrollTo=vi.fn()})
 afterEach(()=>{vi.useRealTimers();vi.clearAllMocks()})
 describe('URL selection contract',()=>{
@@ -35,8 +35,8 @@ describe('Mission wizard',()=>{
   expect(wrapper.find('input[type="radio"]').exists()).toBe(true)
   await wrapper.findAll('button').find(b=>b.text().includes('Calculate similarity'))!.trigger('click')
   await new Promise(resolve=>setTimeout(resolve,350));await flushPromises()
-  expect(api.score).toHaveBeenCalled();expect(wrapper.text().toLowerCase()).toContain('placeholder')
-  expect(wrapper.text()).toContain('Demo-01');expect(wrapper.text()).toContain('Uncoverable')
+  expect(api.score).toHaveBeenCalled();expect(wrapper.text()).toContain('Available evidence only');expect(wrapper.text()).toContain('Observed products')
+  expect(wrapper.text()).toContain('Demo-01');expect(wrapper.text()).toContain('Below threshold (complete data)')
   expect(router.currentRoute.value.query.tasks).toBe('M2')
   wrapper.unmount()
  })
