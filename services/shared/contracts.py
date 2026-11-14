@@ -81,6 +81,8 @@ class Site(Record):
     lat: float | None = Field(default=None, ge=-90,le=90)
     lon: float | None = Field(default=None, ge=0,le=360)
     coords_status: Literal['todo','approx','exact']
+    coordinate_reference: Link | None = None
+    study_window_m: int | None = Field(default=None, gt=0)
 
 class Series(Record):
     phase: list[float]
@@ -176,6 +178,7 @@ class Model(BaseModel):
     model_config=ConfigDict(extra='forbid',allow_inf_nan=False)
 
 class ScoreRequest(Model):
+    profile: Literal['observed','lunar_pdf']='observed'
     mission: Literal['moon','mars']
     site_id: str
     task_ids: list[str] = Field(min_length=1,max_length=6)
@@ -187,6 +190,7 @@ class ScoreRequest(Model):
     @model_validator(mode='after')
     def unique_tasks(self):
         if len(set(self.task_ids))!=len(self.task_ids):raise ValueError('Duplicate task IDs')
+        if self.profile=='lunar_pdf' and self.mission!='moon':raise ValueError('Lunar PDF profile requires a lunar mission')
         return self
 
 class SensitivityRequest(ScoreRequest):
@@ -195,6 +199,8 @@ class SensitivityRequest(ScoreRequest):
     alpha: float=Field(default=1,gt=0,le=100)
 
 class FeatureScore(Model):
+    data_fitness: float | None = Field(default=None,ge=0,le=1)
+    feature_weight: float | None = Field(default=None,ge=0,le=1)
     feature: Feature
     target_value: float | str | list[float] | None
     candidate_value: float | str | list[float] | None
@@ -208,6 +214,7 @@ class FeatureScore(Model):
     distance_unit: str = ''
 
 class TaskScore(Model):
+    data_fitness: float | None = Field(default=None,ge=0,le=1)
     score: float | None
     features: list[FeatureScore]
     similar: list[str]
@@ -220,6 +227,7 @@ class TaskScore(Model):
     observed_features: int = 0
 
 class CandidateScore(Model):
+    data_fitness: float | None = Field(default=None,ge=0,le=1)
     id: str
     name: str
     name_en: str
@@ -246,6 +254,8 @@ class Robustness(Model):
     candidate_ids: list[str]
 
 class ScoreResponse(Model):
+    profile: Literal['observed','lunar_pdf']='observed'
+    method_note: str=''
     mission: str
     site_id: str
     weights: dict[str,float]
@@ -256,7 +266,7 @@ class ScoreResponse(Model):
     uses_placeholder: bool
     warnings: list[str]
     tau: float
-    evidence_mode: Literal['observed'] = 'observed'
+    evidence_mode: Literal['observed','reported'] = 'observed'
     data_status: Literal['complete','partial','unavailable'] = 'partial'
 
 class CoverageRow(Model):
@@ -318,6 +328,8 @@ class Frequency(Model):
     frequency: float
 
 class SensitivityResponse(Model):
+    method: str='network_dirichlet'
+    scope: str=''
     frequencies: list[Frequency]
     n_samples: int
     seed: int
@@ -369,7 +381,7 @@ class ResearchSection(Record):
     id: str
     title: str
     status: Literal['implemented','partial','planned','review']
-    pdf: Literal['overview','moon','mars','download-matrix']
+    pdf: Literal['overview','moon','mars','download-matrix','lunar-method','lunar-principles']
     pages: list[int]
     items: list[str]
     links: list[Link] = []

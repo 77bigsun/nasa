@@ -1,0 +1,169 @@
+{
+  "locations": {
+    "moon-cabeus-b-peak": {
+      "lat": -83.7633,
+      "lon": 290.0171,
+      "source_point": "PCB01",
+      "region_code": "PCB",
+      "source_url": "https://doi.org/10.5281/zenodo.17084058",
+      "coordinate_method": "Published named study point; checked against shapefile geometry",
+      "geometry_discrepancy_m": 0.787498796337662,
+      "window_m": 2000,
+      "coordinate_source_sha256": "298e169afbea3c9bb157f20691af672495bfe391252b4acc798f59858ebc111f"
+    },
+    "moon-haworth": {
+      "lat": -86.7682,
+      "lon": 339.486,
+      "source_point": "HW01",
+      "region_code": "HW",
+      "source_url": "https://doi.org/10.5281/zenodo.17084058",
+      "coordinate_method": "Published named study point; checked against shapefile geometry",
+      "geometry_discrepancy_m": 0.7439668163002489,
+      "window_m": 2000,
+      "coordinate_source_sha256": "298e169afbea3c9bb157f20691af672495bfe391252b4acc798f59858ebc111f"
+    },
+    "moon-malapert": {
+      "lat": -85.9425,
+      "lon": 359.05635,
+      "source_point": "MMA01",
+      "region_code": "MMA",
+      "source_url": "https://doi.org/10.5281/zenodo.17084058",
+      "coordinate_method": "Published named study point; checked against shapefile geometry",
+      "geometry_discrepancy_m": 1.014068383177722,
+      "window_m": 2000,
+      "coordinate_source_sha256": "298e169afbea3c9bb157f20691af672495bfe391252b4acc798f59858ebc111f"
+    },
+    "moon-mouton-plateau": {
+      "lat": -85.1114,
+      "lon": 26.7102,
+      "source_point": "MMP01",
+      "region_code": "MMP",
+      "source_url": "https://doi.org/10.5281/zenodo.17084058",
+      "coordinate_method": "Published named study point; checked against shapefile geometry",
+      "geometry_discrepancy_m": 0.13493711888934581,
+      "window_m": 2000,
+      "coordinate_source_sha256": "298e169afbea3c9bb157f20691af672495bfe391252b4acc798f59858ebc111f"
+    },
+    "moon-mouton": {
+      "lat": -85.416,
+      "lon": 31.8506,
+      "source_point": "MMO01",
+      "region_code": "MMO",
+      "source_url": "https://doi.org/10.5281/zenodo.17084058",
+      "coordinate_method": "Published named study point; checked against shapefile geometry",
+      "geometry_discrepancy_m": 0.45271925303815924,
+      "window_m": 2000,
+      "coordinate_source_sha256": "298e169afbea3c9bb157f20691af672495bfe391252b4acc798f59858ebc111f"
+    },
+    "moon-nobile-1": {
+      "lat": -85.295,
+      "lon": 36.9168,
+      "source_point": "NR101",
+      "region_code": "NR1",
+      "source_url": "https://doi.org/10.5281/zenodo.17084058",
+      "coordinate_method": "Published named study point; checked against shapefile geometry",
+      "geometry_discrepancy_m": 0.761238245848884,
+      "window_m": 2000,
+      "coordinate_source_sha256": "298e169afbea3c9bb157f20691af672495bfe391252b4acc798f59858ebc111f"
+    },
+    "moon-nobile-2": {
+      "lat": -84.0539,
+      "lon": 56.4813,
+      "source_point": "NR201",
+      "region_code": "NR2",
+      "source_url": "https://doi.org/10.5281/zenodo.17084058",
+      "coordinate_method": "Published named study point; checked against shapefile geometry",
+      "geometry_discrepancy_m": 0.5522310040227185,
+      "window_m": 2000,
+      "coordinate_source_sha256": "298e169afbea3c9bb157f20691af672495bfe391252b4acc798f59858ebc111f"
+    },
+    "moon-degerlache-2": {
+      "lat": -88.3891,
+      "lon": 291.13530000000003,
+      "source_point": "dGR201",
+      "region_code": "dGR2",
+      "source_url": "https://doi.org/10.5281/zenodo.17084058",
+      "coordinate_method": "Published named study point; checked against shapefile geometry",
+      "geometry_discrepancy_m": 0.8086738648342358,
+      "window_m": 2000,
+      "coordinate_source_sha256": "298e169afbea3c9bb157f20691af672495bfe391252b4acc798f59858ebc111f"
+    },
+    "moon-slater": {
+      "lat": -87.4783,
+      "lon": 124.521,
+      "source_point": "SP01",
+      "region_code": "SP",
+      "source_url": "https://doi.org/10.5281/zenodo.17084058",
+      "coordinate_method": "Published named study point; checked against shapefile geometry",
+      "geometry_discrepancy_m": 0.3945019611625364,
+      "window_m": 2000,
+      "coordinate_source_sha256": "298e169afbea3c9bb157f20691af672495bfe391252b4acc798f59858ebc111f"
+    },
+    "mars-deuteronilus": {
+      "lat": 45.11,
+      "lon": 23.92,
+      "source_point": "1509",
+      "source_url": "https://planetarynames.wr.usgs.gov/Feature/1509",
+      "coordinate_method": "Current Gazetteer named-feature centre; a regional study sample, not a SkyFall landing site",
+      "window_m": 20000,
+      "outside_skyfall_latitude_band": true,
+      "coordinate_source_sha256": "5b458c591623405747b03dc3da3900e01b7c62abd412956109b614c353ebc99f"
+    },
+    "mars-utopia": {
+      "lat": 46.74,
+      "lon": 117.52,
+      "source_point": "6260",
+      "source_url": "https://planetarynames.wr.usgs.gov/Feature/6260",
+      "coordinate_method": "Current Gazetteer named-feature centre; a regional study sample, not a SkyFall landing site",
+      "window_m": 20000,
+      "outside_skyfall_latitude_band": true,
+      "coordinate_source_sha256": "4fbda20a3b45dcbd3fb05e7001ada0c2cae7755c824668a838da5d79035c5638"
+    },
+    "mars-phlegra": {
+      "lat": 40.4,
+      "lon": 163.71,
+      "source_point": "4701",
+      "source_url": "https://planetarynames.wr.usgs.gov/Feature/4701",
+      "coordinate_method": "Current Gazetteer named-feature centre; a regional study sample, not a SkyFall landing site",
+      "window_m": 20000,
+      "outside_skyfall_latitude_band": false,
+      "coordinate_source_sha256": "307732b92aed8dec1bb78a0621e3dae91baca944e6eb550fc2f5a16702578727"
+    },
+    "mars-erebus": {
+      "lat": 35.66,
+      "lon": 185.02,
+      "source_point": "1821",
+      "source_url": "https://planetarynames.wr.usgs.gov/Feature/1821",
+      "coordinate_method": "Current Gazetteer named-feature centre; a regional study sample, not a SkyFall landing site",
+      "window_m": 20000,
+      "outside_skyfall_latitude_band": false,
+      "coordinate_source_sha256": "5ba95adff8f687e4e88d2b1e46afede7a3cccf240150bea4a47cafe99bf74d0e"
+    },
+    "mars-gale": {
+      "lat": -4.67,
+      "lon": 137.37,
+      "source_url": "https://hirise.lpl.arizona.edu/dtm/dtm.php?ID=ESP_040770_1755",
+      "source_point": "mars-gale",
+      "coordinate_method": "Existing reviewed study point",
+      "window_m": 20000
+    },
+    "mars-ap105": {
+      "lat": 43.3295,
+      "lon": 198.5228,
+      "source_url": "https://science.nasa.gov/wp-content/uploads/2026/09/skyfall-mission-information-package-final.pdf",
+      "source_point": "mars-ap105",
+      "coordinate_method": "Existing reviewed study point",
+      "window_m": 20000
+    },
+    "mars-jezero": {
+      "lat": 18.4,
+      "lon": 77.5,
+      "source_url": "https://mars.nasa.gov/files/m2020/SDT_Appendices_Final_v6.pdf",
+      "source_point": "mars-jezero",
+      "coordinate_method": "Existing reviewed study point",
+      "window_m": 20000
+    }
+  },
+  "scope": "Representative published study points. A local window is not an entire candidate region or certified landing site.",
+  "lunar_citation": "Wueller et al. (2026), JGR Planets, doi:10.1029/2025JE009434; Zenodo doi:10.5281/zenodo.17084058"
+}

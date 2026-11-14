@@ -2,7 +2,7 @@
 import argparse
 import json
 from pathlib import Path
-from . import run, solar, paired, moon_products, earth_products, mars_products
+from . import run, solar, paired, moon_products, earth_products, mars_products, regional
 
 
 def main():
@@ -18,6 +18,7 @@ def main():
         moon_products.run(sources/'moon')
         earth_products.run(data/'ingest/pilot.yaml',sources/'earth')
         mars_products.run(sources/'mars')
+    regional.build(data,args.cached_only)
     paired.build(data,sources)
     # Selected provenance is published separately from source caches.
     products={
@@ -28,6 +29,8 @@ def main():
             for site in paired.read(data/'observed/pilot.json')['candidates']},
         'mars':paired.read(sources/'mars/ready.json'),
         'solar':paired.read(data/'observed/solar.json'),
+        'regional':paired.read(data/'observed/regional-evidence.json'),
+        'target_locations':paired.read(data/'observed/target-locations.json'),
     }
     def sanitize(value):
         if isinstance(value,dict):

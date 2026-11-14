@@ -54,7 +54,7 @@ def test_research_product_catalog_and_translated_method():
     products=client.get('/datasets').json()
     assert len(products)>=23
     assert sum(p['status']=='imported' for p in products)>=3
-    assert len(client.get('/research').json())==9
+    assert len(client.get('/research').json())==10
     translations=client.get('/translations/zh-TW').json()
     assert len(translations)>300
     assert client.get('/translations/invalid').status_code==404

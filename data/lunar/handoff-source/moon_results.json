@@ -1,0 +1,9160 @@
+{
+ "meta": {
+  "generated": "2026-11-14T23:21",
+  "status": "preliminary - verify place names before publishing",
+  "score_formula": "task score = 100·Σ(w·c·s)/Σ(w·c); total (optional) = Σ W_task·task over the tasks the user selects, W renormalised",
+  "task_weights_roc": {
+   "M2": 0.183,
+   "M3": 0.429,
+   "M4": 0.28,
+   "M6": 0.108
+  },
+  "classification_cutoffs": {
+   "similar": 0.6,
+   "different": 0.3
+  },
+  "ice_mask": "NASA MODIS MCD12Q1 IGBP 'Permanent Snow and Ice' >=50% of 1-deg cell (GIBS layer, 2023)",
+  "known_analog_regions_excluded_from_new_candidates": [
+   "Antarctica",
+   "Atacama",
+   "Iceland",
+   "Hawaii",
+   "Devon Island/Haughton",
+   "Death Valley"
+  ],
+  "data_sources": [
+   "LRO LOLA 5 m (NASA GSFC PGDA)",
+   "LRO LOLA LDEM_80S_20M (NASA PDS)",
+   "LROC NAC ROI centres",
+   "NASA POWER climatology 2001-2025",
+   "MODIS MCD12Q1 via NASA GIBS",
+   "SRTM-based AWS Terrain Tiles",
+   "ERA5 via Open-Meteo (validation sites)"
+  ],
+  "ai_disclosure": "Computation scripts and data assembly produced with Claude (Anthropic)."
+ },
+ "tasks": {
+  "M2": {
+   "name": "Low-sun illumination & solar power",
+   "name_zh": "低太陽角光照與太陽能",
+   "weight": 0.183,
+   "features": [
+    {
+     "id": "noon_sun_elevation",
+     "w": 0.3,
+     "c": 1.0,
+     "formula": "D(x=90-|lat|, b=90°, t=5°)"
+    },
+    {
+     "id": "low_sun_fraction",
+     "w": 0.7,
+     "c": 1.0,
+     "formula": "D(x=share of daylight with sun<10°, b=0, t=1)"
+    }
+   ]
+  },
+  "M3": {
+   "name": "Long darkness & extreme cold",
+   "name_zh": "長時間黑暗與極寒",
+   "weight": 0.429,
+   "features": [
+    {
+     "id": "longest_darkness_h",
+     "w": 0.5,
+     "c": 1.0,
+     "formula": "D(b=12 h, t=120 h)"
+    },
+    {
+     "id": "annual_min_temp_C",
+     "w": 0.35,
+     "c": 0.6,
+     "formula": "D(b=0, t=-89)"
+    },
+    {
+     "id": "diurnal_range_C",
+     "w": 0.15,
+     "c": 0.6,
+     "formula": "D(b=10, t=40)"
+    }
+   ]
+  },
+  "M4": {
+   "name": "Steep-slope & extreme-terrain mobility",
+   "name_zh": "陡坡與極端地形移動",
+   "weight": 0.28,
+   "depends_on_moon_site": true,
+   "features": [
+    {
+     "id": "slope_histogram_30m",
+     "w": 0.7,
+     "c": 1.0,
+     "formula": "sum(min(p_earth,p_moon)) over bins 0-5,5-10,10-15,15-20,20-30,>30°"
+    },
+    {
+     "id": "relief_16km_m",
+     "w": 0.3,
+     "c": 1.0,
+     "formula": "exp(-[ln(R_E/R_M)]^2/(2 ln2^2))"
+    }
+   ]
+  },
+  "M6": {
+   "name": "Cold-trap ice / permafrost",
+   "name_zh": "冷陷冰資源探勘",
+   "weight": 0.108,
+   "features": [
+    {
+     "id": "annual_mean_temp_C",
+     "w": 0.25,
+     "c": 0.6,
+     "formula": "D(b=15, t=-55)"
+    },
+    {
+     "id": "annual_max_temp_C",
+     "w": 0.25,
+     "c": 0.6,
+     "formula": "D(b=40, t=-20)"
+    },
+    {
+     "id": "ice_permafrost_proxy",
+     "w": 0.5,
+     "c": 0.3,
+     "formula": "0.4·[Tmean<=-2]+0.3·[Tmean<=-8]"
+    }
+   ]
+  }
+ },
+ "moon_sites": [
+  {
+   "id": "ConnectingRidge",
+   "name": "Shackleton 連接脊 Connecting Ridge",
+   "lat": -89.45,
+   "lon": null,
+   "dem_source": "LOLA 5 m PGDA Site01",
+   "terrain": {
+    "relief_16km_m": 2477,
+    "slope_fraction_bins_deg": [
+     "0-5",
+     "5-10",
+     "10-15",
+     "15-20",
+     "20-30",
+     ">30"
+    ],
+    "slope_fraction": [
+     0.098,
+     0.2757,
+     0.3035,
+     0.2206,
+     0.1023,
+     0
+    ],
+    "class": "moderate"
+   },
+   "suitable_tasks": {
+    "primary": [
+     "M2",
+     "M4"
+    ],
+    "secondary": [],
+    "basis": "team assessment (Canva, 2026-11-14) from published studies",
+    "note": "Ridge illumination is well studied; sunlit crest and dark lowland should be scored separately."
+   },
+   "best_earth_analogs_by_task": {
+    "M2": [
+     {
+      "name_en": "Taymyr Peninsula, Russia",
+      "name_zh": "俄羅斯 Taymyr 半島",
+      "lat": 74.5,
+      "lon": 96.5,
+      "score": 52.9
+     },
+     {
+      "name_en": "Eastern Taymyr Peninsula, Russia",
+      "name_zh": "俄羅斯 Taymyr 半島東部",
+      "lat": 74.5,
+      "lon": 104.5,
+      "score": 52.9
+     },
+     {
+      "name_en": "Novaya Zemlya, Russia",
+      "name_zh": "俄羅斯新地島",
+      "lat": 74.5,
+      "lon": 58.5,
+      "score": 52.9
+     }
+    ],
+    "M4": [
+     {
+      "name_en": "Southern Highlands, Papua New Guinea",
+      "name_zh": "新幾內亞南部高地",
+      "lat": -5.5,
+      "lon": 142.5,
+      "score": 89.8
+     },
+     {
+      "name_en": "Southern Armenia uplands",
+      "name_zh": "亞美尼亞南部山區",
+      "lat": 39.5,
+      "lon": 45.5,
+      "score": 82.9
+     },
+     {
+      "name_en": "Chilkat Range near Haines, Alaska/BC",
+      "name_zh": "阿拉斯加 Haines 附近 Chilkat 山脈",
+      "lat": 59.5,
+      "lon": -136.5,
+      "score": 80.2
+     }
+    ]
+   }
+  },
+  {
+   "id": "PeakNearCabeusB",
+   "name": "Peak near Cabeus B",
+   "lat": -83.6,
+   "lon": -68.8,
+   "dem_source": "LOLA 20 m, LROC ROI centre",
+   "terrain": {
+    "relief_16km_m": 3628,
+    "slope_fraction_bins_deg": [
+     "0-5",
+     "5-10",
+     "10-15",
+     "15-20",
+     "20-30",
+     ">30"
+    ],
+    "slope_fraction": [
+     0.0202,
+     0.0815,
+     0.1873,
+     0.2826,
+     0.4174,
+     0.0111
+    ],
+    "class": "very steep"
+   },
+   "suitable_tasks": {
+    "primary": [
+     "M2",
+     "M4"
+    ],
+    "secondary": [],
+    "basis": "team assessment (Canva, 2026-11-14) from published studies",
+    "note": "Do not assume cold-trap ice from the Cabeus B name; trap location and access must be checked."
+   },
+   "best_earth_analogs_by_task": {
+    "M2": [
+     {
+      "name_en": "Taymyr Peninsula, Russia",
+      "name_zh": "俄羅斯 Taymyr 半島",
+      "lat": 74.5,
+      "lon": 96.5,
+      "score": 52.9
+     },
+     {
+      "name_en": "Eastern Taymyr Peninsula, Russia",
+      "name_zh": "俄羅斯 Taymyr 半島東部",
+      "lat": 74.5,
+      "lon": 104.5,
+      "score": 52.9
+     },
+     {
+      "name_en": "Novaya Zemlya, Russia",
+      "name_zh": "俄羅斯新地島",
+      "lat": 74.5,
+      "lon": 58.5,
+      "score": 52.9
+     }
+    ],
+    "M4": [
+     {
+      "name_en": "Elqui Valley Andes, Chile",
+      "name_zh": "智利 Elqui 谷地安地斯",
+      "lat": -29.5,
+      "lon": -70.5,
+      "score": 89.3
+     },
+     {
+      "name_en": "Central Sulawesi highlands, Indonesia",
+      "name_zh": "印尼蘇拉威西中部山區",
+      "lat": -2.5,
+      "lon": 120.5,
+      "score": 84.3
+     },
+     {
+      "name_en": "High Andes, Chile–Argentina border",
+      "name_zh": "智利阿根廷邊界高安地斯",
+      "lat": -29.5,
+      "lon": -69.5,
+      "score": 79.5
+     }
+    ]
+   }
+  },
+  {
+   "id": "Haworth",
+   "name": "Haworth",
+   "lat": -86.7,
+   "lon": -23.7,
+   "dem_source": "LOLA 20 m, LROC ROI centre",
+   "terrain": {
+    "relief_16km_m": 2127,
+    "slope_fraction_bins_deg": [
+     "0-5",
+     "5-10",
+     "10-15",
+     "15-20",
+     "20-30",
+     ">30"
+    ],
+    "slope_fraction": [
+     0.1964,
+     0.4104,
+     0.244,
+     0.109,
+     0.04,
+     0.0003
+    ],
+    "class": "gentle"
+   },
+   "suitable_tasks": {
+    "primary": [
+     "M3",
+     "M6"
+    ],
+    "secondary": [],
+    "basis": "team assessment (Canva, 2026-11-14) from published studies",
+    "note": "Colder, darker PSRs identified (ShadowCam/Diviner); crater-floor conditions do not apply to sunlit landing spots."
+   },
+   "best_earth_analogs_by_task": {
+    "M3": [
+     {
+      "name_en": "Northern Yakutia (Olenyok basin), Russia",
+      "name_zh": "俄羅斯雅庫特北部（Olenyok 流域）",
+      "lat": 69.5,
+      "lon": 115.5,
+      "score": 92.7
+     },
+     {
+      "name_en": "Lower Olenyok, Yakutia, Russia",
+      "name_zh": "俄羅斯雅庫特 Olenyok 下游",
+      "lat": 72.5,
+      "lon": 117.5,
+      "score": 92.5
+     },
+     {
+      "name_en": "Lower Lena River, Yakutia, Russia",
+      "name_zh": "俄羅斯雅庫特 Lena 河下游",
+      "lat": 70.5,
+      "lon": 125.5,
+      "score": 91.1
+     }
+    ],
+    "M6": [
+     {
+      "name_en": "Peary Land, North Greenland (ice-free)",
+      "name_zh": "格陵蘭北部 Peary Land（無冰區）",
+      "lat": 82.5,
+      "lon": -32.5,
+      "score": 58.7
+     },
+     {
+      "name_en": "Kronprins Christian Land, NE Greenland",
+      "name_zh": "格陵蘭東北部 Kronprins Christian Land",
+      "lat": 81.5,
+      "lon": -21.5,
+      "score": 57.4
+     },
+     {
+      "name_en": "Northern Ellesmere Island, Canada",
+      "name_zh": "加拿大 Ellesmere 島北部",
+      "lat": 81.5,
+      "lon": -84.5,
+      "score": 56.3
+     }
+    ]
+   }
+  },
+  {
+   "id": "MalapertMassif",
+   "name": "Malapert Massif",
+   "lat": -86.0,
+   "lon": 0.3,
+   "dem_source": "LOLA 20 m, LROC ROI centre",
+   "terrain": {
+    "relief_16km_m": 3186,
+    "slope_fraction_bins_deg": [
+     "0-5",
+     "5-10",
+     "10-15",
+     "15-20",
+     "20-30",
+     ">30"
+    ],
+    "slope_fraction": [
+     0.0422,
+     0.1193,
+     0.1929,
+     0.2736,
+     0.3599,
+     0.0121
+    ],
+    "class": "very steep"
+   },
+   "suitable_tasks": {
+    "primary": [
+     "M4"
+    ],
+    "secondary": [
+     "M2"
+    ],
+    "basis": "team assessment (Canva, 2026-11-14) from published studies",
+    "note": "Peak-like massif with ridges; slope and trafficability computed here."
+   },
+   "best_earth_analogs_by_task": {
+    "M4": [
+     {
+      "name_en": "Elqui Valley Andes, Chile",
+      "name_zh": "智利 Elqui 谷地安地斯",
+      "lat": -29.5,
+      "lon": -70.5,
+      "score": 90.2
+     },
+     {
+      "name_en": "Central Sulawesi highlands, Indonesia",
+      "name_zh": "印尼蘇拉威西中部山區",
+      "lat": -2.5,
+      "lon": 120.5,
+      "score": 84.2
+     },
+     {
+      "name_en": "Alborz Mountains, Iran",
+      "name_zh": "伊朗 Alborz 山脈",
+      "lat": 36.5,
+      "lon": 51.5,
+      "score": 83.7
+     }
+    ],
+    "M2": [
+     {
+      "name_en": "Taymyr Peninsula, Russia",
+      "name_zh": "俄羅斯 Taymyr 半島",
+      "lat": 74.5,
+      "lon": 96.5,
+      "score": 52.9
+     },
+     {
+      "name_en": "Eastern Taymyr Peninsula, Russia",
+      "name_zh": "俄羅斯 Taymyr 半島東部",
+      "lat": 74.5,
+      "lon": 104.5,
+      "score": 52.9
+     },
+     {
+      "name_en": "Novaya Zemlya, Russia",
+      "name_zh": "俄羅斯新地島",
+      "lat": 74.5,
+      "lon": 58.5,
+      "score": 52.9
+     }
+    ]
+   }
+  },
+  {
+   "id": "MonsMoutonPlateau",
+   "name": "Mons Mouton Plateau",
+   "lat": -84.3,
+   "lon": 30.6,
+   "dem_source": "LOLA 20 m, LROC ROI centre",
+   "terrain": {
+    "relief_16km_m": 1526,
+    "slope_fraction_bins_deg": [
+     "0-5",
+     "5-10",
+     "10-15",
+     "15-20",
+     "20-30",
+     ">30"
+    ],
+    "slope_fraction": [
+     0.2799,
+     0.4513,
+     0.1855,
+     0.062,
+     0.0203,
+     0.001
+    ],
+    "class": "gentle"
+   },
+   "suitable_tasks": {
+    "primary": [
+     "M2"
+    ],
+    "secondary": [
+     "M3",
+     "M6"
+    ],
+    "basis": "team assessment (Canva, 2026-11-14) from published studies",
+    "note": "Whole-mountain results must not be transferred to the plateau box."
+   },
+   "best_earth_analogs_by_task": {
+    "M2": [
+     {
+      "name_en": "Taymyr Peninsula, Russia",
+      "name_zh": "俄羅斯 Taymyr 半島",
+      "lat": 74.5,
+      "lon": 96.5,
+      "score": 52.9
+     },
+     {
+      "name_en": "Eastern Taymyr Peninsula, Russia",
+      "name_zh": "俄羅斯 Taymyr 半島東部",
+      "lat": 74.5,
+      "lon": 104.5,
+      "score": 52.9
+     },
+     {
+      "name_en": "Novaya Zemlya, Russia",
+      "name_zh": "俄羅斯新地島",
+      "lat": 74.5,
+      "lon": 58.5,
+      "score": 52.9
+     }
+    ],
+    "M3": [
+     {
+      "name_en": "Northern Yakutia (Olenyok basin), Russia",
+      "name_zh": "俄羅斯雅庫特北部（Olenyok 流域）",
+      "lat": 69.5,
+      "lon": 115.5,
+      "score": 92.7
+     },
+     {
+      "name_en": "Lower Olenyok, Yakutia, Russia",
+      "name_zh": "俄羅斯雅庫特 Olenyok 下游",
+      "lat": 72.5,
+      "lon": 117.5,
+      "score": 92.5
+     },
+     {
+      "name_en": "Lower Lena River, Yakutia, Russia",
+      "name_zh": "俄羅斯雅庫特 Lena 河下游",
+      "lat": 70.5,
+      "lon": 125.5,
+      "score": 91.1
+     }
+    ],
+    "M6": [
+     {
+      "name_en": "Peary Land, North Greenland (ice-free)",
+      "name_zh": "格陵蘭北部 Peary Land（無冰區）",
+      "lat": 82.5,
+      "lon": -32.5,
+      "score": 58.7
+     },
+     {
+      "name_en": "Kronprins Christian Land, NE Greenland",
+      "name_zh": "格陵蘭東北部 Kronprins Christian Land",
+      "lat": 81.5,
+      "lon": -21.5,
+      "score": 57.4
+     },
+     {
+      "name_en": "Northern Ellesmere Island, Canada",
+      "name_zh": "加拿大 Ellesmere 島北部",
+      "lat": 81.5,
+      "lon": -84.5,
+      "score": 56.3
+     }
+    ]
+   }
+  },
+  {
+   "id": "MonsMouton",
+   "name": "Mons Mouton",
+   "lat": -85.4,
+   "lon": 35.3,
+   "dem_source": "LOLA 20 m, LROC ROI centre (shared with Nobile Rim 1)",
+   "terrain": {
+    "relief_16km_m": 3454,
+    "slope_fraction_bins_deg": [
+     "0-5",
+     "5-10",
+     "10-15",
+     "15-20",
+     "20-30",
+     ">30"
+    ],
+    "slope_fraction": [
+     0.0979,
+     0.2242,
+     0.283,
+     0.2311,
+     0.1581,
+     0.0058
+    ],
+    "class": "moderate"
+   },
+   "suitable_tasks": {
+    "primary": [
+     "M2",
+     "M6"
+    ],
+    "secondary": [],
+    "basis": "team assessment (Canva, 2026-11-14) from published studies",
+    "note": "USGS water-ice prospectivity model exists (model, not confirmed ice)."
+   },
+   "best_earth_analogs_by_task": {
+    "M2": [
+     {
+      "name_en": "Taymyr Peninsula, Russia",
+      "name_zh": "俄羅斯 Taymyr 半島",
+      "lat": 74.5,
+      "lon": 96.5,
+      "score": 52.9
+     },
+     {
+      "name_en": "Eastern Taymyr Peninsula, Russia",
+      "name_zh": "俄羅斯 Taymyr 半島東部",
+      "lat": 74.5,
+      "lon": 104.5,
+      "score": 52.9
+     },
+     {
+      "name_en": "Novaya Zemlya, Russia",
+      "name_zh": "俄羅斯新地島",
+      "lat": 74.5,
+      "lon": 58.5,
+      "score": 52.9
+     }
+    ],
+    "M6": [
+     {
+      "name_en": "Peary Land, North Greenland (ice-free)",
+      "name_zh": "格陵蘭北部 Peary Land（無冰區）",
+      "lat": 82.5,
+      "lon": -32.5,
+      "score": 58.7
+     },
+     {
+      "name_en": "Kronprins Christian Land, NE Greenland",
+      "name_zh": "格陵蘭東北部 Kronprins Christian Land",
+      "lat": 81.5,
+      "lon": -21.5,
+      "score": 57.4
+     },
+     {
+      "name_en": "Northern Ellesmere Island, Canada",
+      "name_zh": "加拿大 Ellesmere 島北部",
+      "lat": 81.5,
+      "lon": -84.5,
+      "score": 56.3
+     }
+    ]
+   }
+  },
+  {
+   "id": "NobileRim1",
+   "name": "Nobile Rim 1",
+   "lat": -85.28,
+   "lon": 37.01,
+   "dem_source": "LOLA 20 m, literature centre",
+   "terrain": {
+    "relief_16km_m": 4447,
+    "slope_fraction_bins_deg": [
+     "0-5",
+     "5-10",
+     "10-15",
+     "15-20",
+     "20-30",
+     ">30"
+    ],
+    "slope_fraction": [
+     0.1293,
+     0.2211,
+     0.2072,
+     0.1536,
+     0.2705,
+     0.0183
+    ],
+    "class": "moderate"
+   },
+   "suitable_tasks": {
+    "primary": [
+     "M2",
+     "M4"
+    ],
+    "secondary": [
+     "M3",
+     "M6"
+    ],
+    "basis": "team assessment (Canva, 2026-11-14) from published studies",
+    "note": "M3/M6 need a chosen shadowed sub-area."
+   },
+   "best_earth_analogs_by_task": {
+    "M2": [
+     {
+      "name_en": "Taymyr Peninsula, Russia",
+      "name_zh": "俄羅斯 Taymyr 半島",
+      "lat": 74.5,
+      "lon": 96.5,
+      "score": 52.9
+     },
+     {
+      "name_en": "Eastern Taymyr Peninsula, Russia",
+      "name_zh": "俄羅斯 Taymyr 半島東部",
+      "lat": 74.5,
+      "lon": 104.5,
+      "score": 52.9
+     },
+     {
+      "name_en": "Novaya Zemlya, Russia",
+      "name_zh": "俄羅斯新地島",
+      "lat": 74.5,
+      "lon": 58.5,
+      "score": 52.9
+     }
+    ],
+    "M4": [
+     {
+      "name_en": "Chilkat Range near Haines, Alaska/BC",
+      "name_zh": "阿拉斯加 Haines 附近 Chilkat 山脈",
+      "lat": 59.5,
+      "lon": -136.5,
+      "score": 75.9
+     },
+     {
+      "name_en": "Southern Armenia uplands",
+      "name_zh": "亞美尼亞南部山區",
+      "lat": 39.5,
+      "lon": 45.5,
+      "score": 75.6
+     },
+     {
+      "name_en": "Tibesti Mountains, Chad",
+      "name_zh": "查德 Tibesti 山脈",
+      "lat": 20.5,
+      "lon": 17.5,
+      "score": 74.4
+     }
+    ],
+    "M3": [
+     {
+      "name_en": "Northern Yakutia (Olenyok basin), Russia",
+      "name_zh": "俄羅斯雅庫特北部（Olenyok 流域）",
+      "lat": 69.5,
+      "lon": 115.5,
+      "score": 92.7
+     },
+     {
+      "name_en": "Lower Olenyok, Yakutia, Russia",
+      "name_zh": "俄羅斯雅庫特 Olenyok 下游",
+      "lat": 72.5,
+      "lon": 117.5,
+      "score": 92.5
+     },
+     {
+      "name_en": "Lower Lena River, Yakutia, Russia",
+      "name_zh": "俄羅斯雅庫特 Lena 河下游",
+      "lat": 70.5,
+      "lon": 125.5,
+      "score": 91.1
+     }
+    ],
+    "M6": [
+     {
+      "name_en": "Peary Land, North Greenland (ice-free)",
+      "name_zh": "格陵蘭北部 Peary Land（無冰區）",
+      "lat": 82.5,
+      "lon": -32.5,
+      "score": 58.7
+     },
+     {
+      "name_en": "Kronprins Christian Land, NE Greenland",
+      "name_zh": "格陵蘭東北部 Kronprins Christian Land",
+      "lat": 81.5,
+      "lon": -21.5,
+      "score": 57.4
+     },
+     {
+      "name_en": "Northern Ellesmere Island, Canada",
+      "name_zh": "加拿大 Ellesmere 島北部",
+      "lat": 81.5,
+      "lon": -84.5,
+      "score": 56.3
+     }
+    ]
+   }
+  },
+  {
+   "id": "NobileRim2",
+   "name": "Nobile Rim 2",
+   "lat": -83.9,
+   "lon": 58.7,
+   "dem_source": "LOLA 20 m, LROC ROI centre",
+   "terrain": {
+    "relief_16km_m": 2738,
+    "slope_fraction_bins_deg": [
+     "0-5",
+     "5-10",
+     "10-15",
+     "15-20",
+     "20-30",
+     ">30"
+    ],
+    "slope_fraction": [
+     0.1835,
+     0.3138,
+     0.2607,
+     0.1685,
+     0.0731,
+     0.0003
+    ],
+    "class": "moderate"
+   },
+   "suitable_tasks": {
+    "primary": [
+     "M3",
+     "M6"
+    ],
+    "secondary": [
+     "M4"
+    ],
+    "basis": "team assessment (Canva, 2026-11-14) from published studies",
+    "note": "Colder, darker PSRs identified; worth detailed study."
+   },
+   "best_earth_analogs_by_task": {
+    "M3": [
+     {
+      "name_en": "Northern Yakutia (Olenyok basin), Russia",
+      "name_zh": "俄羅斯雅庫特北部（Olenyok 流域）",
+      "lat": 69.5,
+      "lon": 115.5,
+      "score": 92.7
+     },
+     {
+      "name_en": "Lower Olenyok, Yakutia, Russia",
+      "name_zh": "俄羅斯雅庫特 Olenyok 下游",
+      "lat": 72.5,
+      "lon": 117.5,
+      "score": 92.5
+     },
+     {
+      "name_en": "Lower Lena River, Yakutia, Russia",
+      "name_zh": "俄羅斯雅庫特 Lena 河下游",
+      "lat": 70.5,
+      "lon": 125.5,
+      "score": 91.1
+     }
+    ],
+    "M6": [
+     {
+      "name_en": "Peary Land, North Greenland (ice-free)",
+      "name_zh": "格陵蘭北部 Peary Land（無冰區）",
+      "lat": 82.5,
+      "lon": -32.5,
+      "score": 58.7
+     },
+     {
+      "name_en": "Kronprins Christian Land, NE Greenland",
+      "name_zh": "格陵蘭東北部 Kronprins Christian Land",
+      "lat": 81.5,
+      "lon": -21.5,
+      "score": 57.4
+     },
+     {
+      "name_en": "Northern Ellesmere Island, Canada",
+      "name_zh": "加拿大 Ellesmere 島北部",
+      "lat": 81.5,
+      "lon": -84.5,
+      "score": 56.3
+     }
+    ],
+    "M4": [
+     {
+      "name_en": "Uummannaq Fjord, West Greenland",
+      "name_zh": "格陵蘭西岸 Uummannaq 峽灣",
+      "lat": 71.5,
+      "lon": -52.5,
+      "score": 84.9
+     },
+     {
+      "name_en": "Colima volcanic complex, Mexico",
+      "name_zh": "墨西哥 Colima 火山區",
+      "lat": 19.5,
+      "lon": -103.5,
+      "score": 82.9
+     },
+     {
+      "name_en": "Southern Highlands, Papua New Guinea",
+      "name_zh": "新幾內亞南部高地",
+      "lat": -5.5,
+      "lon": 142.5,
+      "score": 81.5
+     }
+    ]
+   }
+  },
+  {
+   "id": "deGerlacheRim2",
+   "name": "de Gerlache Rim 2",
+   "lat": -88.5,
+   "lon": -66.7,
+   "dem_source": "LOLA 20 m, LROC ROI centre",
+   "terrain": {
+    "relief_16km_m": 2725,
+    "slope_fraction_bins_deg": [
+     "0-5",
+     "5-10",
+     "10-15",
+     "15-20",
+     "20-30",
+     ">30"
+    ],
+    "slope_fraction": [
+     0.038,
+     0.1503,
+     0.3273,
+     0.3229,
+     0.1606,
+     0.0009
+    ],
+    "class": "moderate"
+   },
+   "suitable_tasks": {
+    "primary": [
+     "M2",
+     "M4"
+    ],
+    "secondary": [],
+    "basis": "team assessment (Canva, 2026-11-14) from published studies",
+    "note": "Some PSRs show strong scattered light and temperature swings; permanent shadow does not guarantee surface ice."
+   },
+   "best_earth_analogs_by_task": {
+    "M2": [
+     {
+      "name_en": "Taymyr Peninsula, Russia",
+      "name_zh": "俄羅斯 Taymyr 半島",
+      "lat": 74.5,
+      "lon": 96.5,
+      "score": 52.9
+     },
+     {
+      "name_en": "Eastern Taymyr Peninsula, Russia",
+      "name_zh": "俄羅斯 Taymyr 半島東部",
+      "lat": 74.5,
+      "lon": 104.5,
+      "score": 52.9
+     },
+     {
+      "name_en": "Novaya Zemlya, Russia",
+      "name_zh": "俄羅斯新地島",
+      "lat": 74.5,
+      "lon": 58.5,
+      "score": 52.9
+     }
+    ],
+    "M4": [
+     {
+      "name_en": "Southern Highlands, Papua New Guinea",
+      "name_zh": "新幾內亞南部高地",
+      "lat": -5.5,
+      "lon": 142.5,
+      "score": 84.7
+     },
+     {
+      "name_en": "Southern Armenia uplands",
+      "name_zh": "亞美尼亞南部山區",
+      "lat": 39.5,
+      "lon": 45.5,
+      "score": 80.6
+     },
+     {
+      "name_en": "Elqui Valley Andes, Chile",
+      "name_zh": "智利 Elqui 谷地安地斯",
+      "lat": -29.5,
+      "lon": -70.5,
+      "score": 77.6
+     }
+    ]
+   }
+  },
+  {
+   "id": "SlaterPlain",
+   "name": "Slater Plain",
+   "lat": -86.96,
+   "lon": 126.82,
+   "dem_source": "LOLA 20 m, literature centre",
+   "terrain": {
+    "relief_16km_m": 2077,
+    "slope_fraction_bins_deg": [
+     "0-5",
+     "5-10",
+     "10-15",
+     "15-20",
+     "20-30",
+     ">30"
+    ],
+    "slope_fraction": [
+     0.1988,
+     0.3527,
+     0.2443,
+     0.1515,
+     0.0514,
+     0.0013
+    ],
+    "class": "gentle"
+   },
+   "suitable_tasks": {
+    "primary": [
+     "M2"
+    ],
+    "secondary": [],
+    "basis": "team assessment (Canva, 2026-11-14) from published studies",
+    "note": "Official candidate; evidence insufficient for M3/M4/M6. Computed terrain: mostly gentle slopes."
+   },
+   "best_earth_analogs_by_task": {
+    "M2": [
+     {
+      "name_en": "Taymyr Peninsula, Russia",
+      "name_zh": "俄羅斯 Taymyr 半島",
+      "lat": 74.5,
+      "lon": 96.5,
+      "score": 52.9
+     },
+     {
+      "name_en": "Eastern Taymyr Peninsula, Russia",
+      "name_zh": "俄羅斯 Taymyr 半島東部",
+      "lat": 74.5,
+      "lon": 104.5,
+      "score": 52.9
+     },
+     {
+      "name_en": "Novaya Zemlya, Russia",
+      "name_zh": "俄羅斯新地島",
+      "lat": 74.5,
+      "lon": 58.5,
+      "score": 52.9
+     }
+    ]
+   }
+  }
+ ],
+ "task_rankings": {
+  "M2": {
+   "new_candidates": [
+    {
+     "rank": 1,
+     "lat": 74.5,
+     "lon": 96.5,
+     "name_en": "Taymyr Peninsula, Russia",
+     "name_zh": "俄羅斯 Taymyr 半島",
+     "score": 52.9,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "noon_sun_elevation",
+       "value": null,
+       "s": 0.876,
+       "classification": "similar"
+      },
+      {
+       "feature": "low_sun_fraction",
+       "value": 0.38,
+       "s": 0.38,
+       "classification": "partial"
+      }
+     ]
+    },
+    {
+     "rank": 2,
+     "lat": 74.5,
+     "lon": 104.5,
+     "name_en": "Eastern Taymyr Peninsula, Russia",
+     "name_zh": "俄羅斯 Taymyr 半島東部",
+     "score": 52.9,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "noon_sun_elevation",
+       "value": null,
+       "s": 0.876,
+       "classification": "similar"
+      },
+      {
+       "feature": "low_sun_fraction",
+       "value": 0.38,
+       "s": 0.38,
+       "classification": "partial"
+      }
+     ]
+    },
+    {
+     "rank": 3,
+     "lat": 74.5,
+     "lon": 58.5,
+     "name_en": "Novaya Zemlya, Russia",
+     "name_zh": "俄羅斯新地島",
+     "score": 52.9,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "noon_sun_elevation",
+       "value": null,
+       "s": 0.876,
+       "classification": "similar"
+      },
+      {
+       "feature": "low_sun_fraction",
+       "value": 0.38,
+       "s": 0.38,
+       "classification": "partial"
+      }
+     ]
+    },
+    {
+     "rank": 4,
+     "lat": 74.5,
+     "lon": -97.5,
+     "name_en": "Prince of Wales Island area, Canada",
+     "name_zh": "加拿大 Prince of Wales 島一帶",
+     "score": 52.9,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "noon_sun_elevation",
+       "value": null,
+       "s": 0.876,
+       "classification": "similar"
+      },
+      {
+       "feature": "low_sun_fraction",
+       "value": 0.38,
+       "s": 0.38,
+       "classification": "partial"
+      }
+     ]
+    },
+    {
+     "rank": 5,
+     "lat": 74.5,
+     "lon": -21.5,
+     "name_en": "Wollaston Forland, NE Greenland",
+     "name_zh": "格陵蘭東北岸 Wollaston Forland",
+     "score": 52.9,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "noon_sun_elevation",
+       "value": null,
+       "s": 0.876,
+       "classification": "similar"
+      },
+      {
+       "feature": "low_sun_fraction",
+       "value": 0.38,
+       "s": 0.38,
+       "classification": "partial"
+      }
+     ]
+    },
+    {
+     "rank": 6,
+     "lat": 74.5,
+     "lon": -121.5,
+     "name_en": "Banks Island, Canada",
+     "name_zh": "加拿大 Banks 島",
+     "score": 52.9,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "noon_sun_elevation",
+       "value": null,
+       "s": 0.876,
+       "classification": "similar"
+      },
+      {
+       "feature": "low_sun_fraction",
+       "value": 0.38,
+       "s": 0.38,
+       "classification": "partial"
+      }
+     ]
+    },
+    {
+     "rank": 7,
+     "lat": 73.5,
+     "lon": 142.5,
+     "name_en": "Yana–Indigirka coast, Russia",
+     "name_zh": "俄羅斯 Yana–Indigirka 沿岸",
+     "score": 52.8,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "noon_sun_elevation",
+       "value": null,
+       "s": 0.865,
+       "classification": "similar"
+      },
+      {
+       "feature": "low_sun_fraction",
+       "value": 0.38,
+       "s": 0.384,
+       "classification": "partial"
+      }
+     ]
+    },
+    {
+     "rank": 8,
+     "lat": 73.5,
+     "lon": -25.5,
+     "name_en": "Kong Oscar Fjord, East Greenland",
+     "name_zh": "格陵蘭東岸 Kong Oscar 峽灣",
+     "score": 52.8,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "noon_sun_elevation",
+       "value": null,
+       "s": 0.865,
+       "classification": "similar"
+      },
+      {
+       "feature": "low_sun_fraction",
+       "value": 0.38,
+       "s": 0.384,
+       "classification": "partial"
+      }
+     ]
+    },
+    {
+     "rank": 9,
+     "lat": 72.5,
+     "lon": -54.5,
+     "name_en": "Upernavik coast, West Greenland",
+     "name_zh": "格陵蘭西岸 Upernavik",
+     "score": 52.6,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "noon_sun_elevation",
+       "value": null,
+       "s": 0.853,
+       "classification": "similar"
+      },
+      {
+       "feature": "low_sun_fraction",
+       "value": 0.39,
+       "s": 0.385,
+       "classification": "partial"
+      }
+     ]
+    },
+    {
+     "rank": 10,
+     "lat": 71.5,
+     "lon": -93.5,
+     "name_en": "Boothia Peninsula, Canada",
+     "name_zh": "加拿大 Boothia 半島",
+     "score": 52.3,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "noon_sun_elevation",
+       "value": null,
+       "s": 0.841,
+       "classification": "similar"
+      },
+      {
+       "feature": "low_sun_fraction",
+       "value": 0.39,
+       "s": 0.386,
+       "classification": "partial"
+      }
+     ]
+    }
+   ],
+   "known_analogs_validation": [
+    {
+     "rank": 1,
+     "lat": -72.5,
+     "lon": -78.5,
+     "name_en": "-72.5, -78.5",
+     "name_zh": "-72.5, -78.5",
+     "score": 53.0,
+     "known_analog_region": "Antarctica",
+     "features": [
+      {
+       "feature": "noon_sun_elevation",
+       "value": null,
+       "s": 0.853,
+       "classification": "similar"
+      },
+      {
+       "feature": "low_sun_fraction",
+       "value": 0.39,
+       "s": 0.392,
+       "classification": "partial"
+      }
+     ]
+    },
+    {
+     "rank": 2,
+     "lat": 74.5,
+     "lon": -85.5,
+     "name_en": "74.5, -85.5",
+     "name_zh": "74.5, -85.5",
+     "score": 52.9,
+     "known_analog_region": "Devon/Haughton",
+     "features": [
+      {
+       "feature": "noon_sun_elevation",
+       "value": null,
+       "s": 0.876,
+       "classification": "similar"
+      },
+      {
+       "feature": "low_sun_fraction",
+       "value": 0.38,
+       "s": 0.38,
+       "classification": "partial"
+      }
+     ]
+    },
+    {
+     "rank": 3,
+     "lat": 65.5,
+     "lon": -18.5,
+     "name_en": "65.5, -18.5",
+     "name_zh": "65.5, -18.5",
+     "score": 49.0,
+     "known_analog_region": "Iceland",
+     "features": [
+      {
+       "feature": "noon_sun_elevation",
+       "value": null,
+       "s": 0.771,
+       "classification": "similar"
+      },
+      {
+       "feature": "low_sun_fraction",
+       "value": 0.37,
+       "s": 0.37,
+       "classification": "partial"
+      }
+     ]
+    },
+    {
+     "rank": 4,
+     "lat": 37.5,
+     "lon": -116.5,
+     "name_en": "37.5, -116.5",
+     "name_zh": "37.5, -116.5",
+     "score": 24.5,
+     "known_analog_region": "Death Valley",
+     "features": [
+      {
+       "feature": "noon_sun_elevation",
+       "value": null,
+       "s": 0.441,
+       "classification": "partial"
+      },
+      {
+       "feature": "low_sun_fraction",
+       "value": 0.16,
+       "s": 0.16,
+       "classification": "different"
+      }
+     ]
+    }
+   ],
+   "least_similar": [
+    {
+     "rank": 1,
+     "lat": -2.5,
+     "lon": 116.5,
+     "name_en": "-2.5, 116.5",
+     "name_zh": "-2.5, 116.5",
+     "score": 9.2,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "noon_sun_elevation",
+       "value": null,
+       "s": 0.029,
+       "classification": "different"
+      },
+      {
+       "feature": "low_sun_fraction",
+       "value": 0.12,
+       "s": 0.119,
+       "classification": "different"
+      }
+     ]
+    },
+    {
+     "rank": 2,
+     "lat": -2.5,
+     "lon": 119.5,
+     "name_en": "-2.5, 119.5",
+     "name_zh": "-2.5, 119.5",
+     "score": 9.2,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "noon_sun_elevation",
+       "value": null,
+       "s": 0.029,
+       "classification": "different"
+      },
+      {
+       "feature": "low_sun_fraction",
+       "value": 0.12,
+       "s": 0.119,
+       "classification": "different"
+      }
+     ]
+    },
+    {
+     "rank": 3,
+     "lat": -2.5,
+     "lon": 120.5,
+     "name_en": "Central Sulawesi highlands, Indonesia",
+     "name_zh": "印尼蘇拉威西中部山區",
+     "score": 9.2,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "noon_sun_elevation",
+       "value": null,
+       "s": 0.029,
+       "classification": "different"
+      },
+      {
+       "feature": "low_sun_fraction",
+       "value": 0.12,
+       "s": 0.119,
+       "classification": "different"
+      }
+     ]
+    }
+   ]
+  },
+  "M3": {
+   "new_candidates": [
+    {
+     "rank": 1,
+     "lat": 69.5,
+     "lon": 115.5,
+     "name_en": "Northern Yakutia (Olenyok basin), Russia",
+     "name_zh": "俄羅斯雅庫特北部（Olenyok 流域）",
+     "score": 92.7,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "longest_darkness_h",
+       "value": 1151.33,
+       "s": 1.0,
+       "classification": "similar"
+      },
+      {
+       "feature": "annual_min_temp_C",
+       "value": -67.1,
+       "s": 0.754,
+       "classification": "similar"
+      },
+      {
+       "feature": "diurnal_range_C",
+       "value": null,
+       "s": null,
+       "classification": null
+      }
+     ]
+    },
+    {
+     "rank": 2,
+     "lat": 72.5,
+     "lon": 117.5,
+     "name_en": "Lower Olenyok, Yakutia, Russia",
+     "name_zh": "俄羅斯雅庫特 Olenyok 下游",
+     "score": 92.5,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "longest_darkness_h",
+       "value": 1799.17,
+       "s": 1.0,
+       "classification": "similar"
+      },
+      {
+       "feature": "annual_min_temp_C",
+       "value": -66.44,
+       "s": 0.747,
+       "classification": "similar"
+      },
+      {
+       "feature": "diurnal_range_C",
+       "value": null,
+       "s": null,
+       "classification": null
+      }
+     ]
+    },
+    {
+     "rank": 3,
+     "lat": 70.5,
+     "lon": 125.5,
+     "name_en": "Lower Lena River, Yakutia, Russia",
+     "name_zh": "俄羅斯雅庫特 Lena 河下游",
+     "score": 91.1,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "longest_darkness_h",
+       "value": 1391.33,
+       "s": 1.0,
+       "classification": "similar"
+      },
+      {
+       "feature": "annual_min_temp_C",
+       "value": -62.16,
+       "s": 0.698,
+       "classification": "similar"
+      },
+      {
+       "feature": "diurnal_range_C",
+       "value": null,
+       "s": null,
+       "classification": null
+      }
+     ]
+    },
+    {
+     "rank": 4,
+     "lat": 73.5,
+     "lon": 87.5,
+     "name_en": "Central Taymyr, Russia",
+     "name_zh": "俄羅斯 Taymyr 半島中部",
+     "score": 90.3,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "longest_darkness_h",
+       "value": 1990.83,
+       "s": 1.0,
+       "classification": "similar"
+      },
+      {
+       "feature": "annual_min_temp_C",
+       "value": -59.7,
+       "s": 0.671,
+       "classification": "similar"
+      },
+      {
+       "feature": "diurnal_range_C",
+       "value": null,
+       "s": null,
+       "classification": null
+      }
+     ]
+    },
+    {
+     "rank": 5,
+     "lat": 72.5,
+     "lon": 125.5,
+     "name_en": "Lena Delta, Russia",
+     "name_zh": "俄羅斯 Lena 河三角洲",
+     "score": 90.2,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "longest_darkness_h",
+       "value": 1799.17,
+       "s": 1.0,
+       "classification": "similar"
+      },
+      {
+       "feature": "annual_min_temp_C",
+       "value": -59.41,
+       "s": 0.668,
+       "classification": "similar"
+      },
+      {
+       "feature": "diurnal_range_C",
+       "value": null,
+       "s": null,
+       "classification": null
+      }
+     ]
+    },
+    {
+     "rank": 6,
+     "lat": 67.5,
+     "lon": 151.5,
+     "name_en": "Kolyma basin, Russia",
+     "name_zh": "俄羅斯 Kolyma 流域",
+     "score": 90.1,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "longest_darkness_h",
+       "value": 263.67,
+       "s": 1.0,
+       "classification": "similar"
+      },
+      {
+       "feature": "annual_min_temp_C",
+       "value": -59.11,
+       "s": 0.664,
+       "classification": "similar"
+      },
+      {
+       "feature": "diurnal_range_C",
+       "value": null,
+       "s": null,
+       "classification": null
+      }
+     ]
+    },
+    {
+     "rank": 7,
+     "lat": 67.5,
+     "lon": 81.5,
+     "name_en": "Gydan–Taz lowland, Russia",
+     "name_zh": "俄羅斯 Gydan–Taz 低地",
+     "score": 90.0,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "longest_darkness_h",
+       "value": 263.67,
+       "s": 1.0,
+       "classification": "similar"
+      },
+      {
+       "feature": "annual_min_temp_C",
+       "value": -58.87,
+       "s": 0.661,
+       "classification": "similar"
+      },
+      {
+       "feature": "diurnal_range_C",
+       "value": null,
+       "s": null,
+       "classification": null
+      }
+     ]
+    },
+    {
+     "rank": 8,
+     "lat": 70.5,
+     "lon": -83.5,
+     "name_en": "Melville Peninsula area, Canada",
+     "name_zh": "加拿大 Melville 半島一帶",
+     "score": 89.1,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "longest_darkness_h",
+       "value": 1391.33,
+       "s": 1.0,
+       "classification": "similar"
+      },
+      {
+       "feature": "annual_min_temp_C",
+       "value": -56.27,
+       "s": 0.632,
+       "classification": "similar"
+      },
+      {
+       "feature": "diurnal_range_C",
+       "value": null,
+       "s": null,
+       "classification": null
+      }
+     ]
+    },
+    {
+     "rank": 9,
+     "lat": 72.5,
+     "lon": -115.5,
+     "name_en": "Victoria Island, Canada",
+     "name_zh": "加拿大 Victoria 島",
+     "score": 89.0,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "longest_darkness_h",
+       "value": 1799.17,
+       "s": 1.0,
+       "classification": "similar"
+      },
+      {
+       "feature": "annual_min_temp_C",
+       "value": -55.98,
+       "s": 0.629,
+       "classification": "similar"
+      },
+      {
+       "feature": "diurnal_range_C",
+       "value": null,
+       "s": null,
+       "classification": null
+      }
+     ]
+    },
+    {
+     "rank": 10,
+     "lat": 68.5,
+     "lon": -69.5,
+     "name_en": "Central Baffin Island, Canada",
+     "name_zh": "加拿大 Baffin 島中部",
+     "score": 88.9,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "longest_darkness_h",
+       "value": 839.33,
+       "s": 1.0,
+       "classification": "similar"
+      },
+      {
+       "feature": "annual_min_temp_C",
+       "value": -55.72,
+       "s": 0.626,
+       "classification": "similar"
+      },
+      {
+       "feature": "diurnal_range_C",
+       "value": null,
+       "s": null,
+       "classification": null
+      }
+     ]
+    }
+   ],
+   "known_analogs_validation": [
+    {
+     "rank": 1,
+     "lat": 75.5,
+     "lon": -90.5,
+     "name_en": "75.5, -90.5",
+     "name_zh": "75.5, -90.5",
+     "score": 87.2,
+     "known_analog_region": "Devon/Haughton",
+     "features": [
+      {
+       "feature": "longest_darkness_h",
+       "value": 2303.0,
+       "s": 1.0,
+       "classification": "similar"
+      },
+      {
+       "feature": "annual_min_temp_C",
+       "value": -50.43,
+       "s": 0.567,
+       "classification": "partial"
+      },
+      {
+       "feature": "diurnal_range_C",
+       "value": null,
+       "s": null,
+       "classification": null
+      }
+     ]
+    },
+    {
+     "rank": 2,
+     "lat": -70.5,
+     "lon": -72.5,
+     "name_en": "-70.5, -72.5",
+     "name_zh": "-70.5, -72.5",
+     "score": 75.8,
+     "known_analog_region": "Antarctica",
+     "features": [
+      {
+       "feature": "longest_darkness_h",
+       "value": 1487.33,
+       "s": 1.0,
+       "classification": "similar"
+      },
+      {
+       "feature": "annual_min_temp_C",
+       "value": -44.97,
+       "s": 0.505,
+       "classification": "partial"
+      },
+      {
+       "feature": "diurnal_range_C",
+       "value": 5.35,
+       "s": 0.0,
+       "classification": "different"
+      }
+     ]
+    },
+    {
+     "rank": 3,
+     "lat": 65.5,
+     "lon": -15.5,
+     "name_en": "65.5, -15.5",
+     "name_zh": "65.5, -15.5",
+     "score": 14.0,
+     "known_analog_region": "Iceland",
+     "features": [
+      {
+       "feature": "longest_darkness_h",
+       "value": 20.83,
+       "s": 0.082,
+       "classification": "different"
+      },
+      {
+       "feature": "annual_min_temp_C",
+       "value": -24.68,
+       "s": 0.277,
+       "classification": "different"
+      },
+      {
+       "feature": "diurnal_range_C",
+       "value": null,
+       "s": null,
+       "classification": null
+      }
+     ]
+    },
+    {
+     "rank": 4,
+     "lat": -27.5,
+     "lon": -68.5,
+     "name_en": "-27.5, -68.5",
+     "name_zh": "-27.5, -68.5",
+     "score": 10.6,
+     "known_analog_region": "Atacama",
+     "features": [
+      {
+       "feature": "longest_darkness_h",
+       "value": 13.5,
+       "s": 0.014,
+       "classification": "different"
+      },
+      {
+       "feature": "annual_min_temp_C",
+       "value": -26.8,
+       "s": 0.301,
+       "classification": "partial"
+      },
+      {
+       "feature": "diurnal_range_C",
+       "value": 14.97,
+       "s": 0.166,
+       "classification": "different"
+      }
+     ]
+    }
+   ],
+   "least_similar": [
+    {
+     "rank": 1,
+     "lat": 1.5,
+     "lon": 27.5,
+     "name_en": "1.5, 27.5",
+     "name_zh": "1.5, 27.5",
+     "score": 0.0,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "longest_darkness_h",
+       "value": 11.83,
+       "s": 0.0,
+       "classification": "different"
+      },
+      {
+       "feature": "annual_min_temp_C",
+       "value": 14.15,
+       "s": 0.0,
+       "classification": "different"
+      },
+      {
+       "feature": "diurnal_range_C",
+       "value": null,
+       "s": null,
+       "classification": null
+      }
+     ]
+    },
+    {
+     "rank": 2,
+     "lat": 1.5,
+     "lon": 28.5,
+     "name_en": "1.5, 28.5",
+     "name_zh": "1.5, 28.5",
+     "score": 0.0,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "longest_darkness_h",
+       "value": 11.83,
+       "s": 0.0,
+       "classification": "different"
+      },
+      {
+       "feature": "annual_min_temp_C",
+       "value": 12.94,
+       "s": 0.0,
+       "classification": "different"
+      },
+      {
+       "feature": "diurnal_range_C",
+       "value": null,
+       "s": null,
+       "classification": null
+      }
+     ]
+    },
+    {
+     "rank": 3,
+     "lat": 1.5,
+     "lon": 29.5,
+     "name_en": "1.5, 29.5",
+     "name_zh": "1.5, 29.5",
+     "score": 0.0,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "longest_darkness_h",
+       "value": 11.83,
+       "s": 0.0,
+       "classification": "different"
+      },
+      {
+       "feature": "annual_min_temp_C",
+       "value": 13.15,
+       "s": 0.0,
+       "classification": "different"
+      },
+      {
+       "feature": "diurnal_range_C",
+       "value": null,
+       "s": null,
+       "classification": null
+      }
+     ]
+    }
+   ]
+  },
+  "M6": {
+   "new_candidates": [
+    {
+     "rank": 1,
+     "lat": 82.5,
+     "lon": -32.5,
+     "name_en": "Peary Land, North Greenland (ice-free)",
+     "name_zh": "格陵蘭北部 Peary Land（無冰區）",
+     "score": 58.7,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "annual_mean_temp_C",
+       "value": -19.32,
+       "s": 0.49,
+       "classification": "partial"
+      },
+      {
+       "feature": "annual_max_temp_C",
+       "value": 5.81,
+       "s": 0.57,
+       "classification": "partial"
+      },
+      {
+       "feature": "ice_permafrost_proxy",
+       "value": null,
+       "s": 0.7,
+       "classification": "similar"
+      }
+     ]
+    },
+    {
+     "rank": 2,
+     "lat": 81.5,
+     "lon": -21.5,
+     "name_en": "Kronprins Christian Land, NE Greenland",
+     "name_zh": "格陵蘭東北部 Kronprins Christian Land",
+     "score": 57.4,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "annual_mean_temp_C",
+       "value": -15.76,
+       "s": 0.439,
+       "classification": "partial"
+      },
+      {
+       "feature": "annual_max_temp_C",
+       "value": 5.05,
+       "s": 0.582,
+       "classification": "partial"
+      },
+      {
+       "feature": "ice_permafrost_proxy",
+       "value": null,
+       "s": 0.7,
+       "classification": "similar"
+      }
+     ]
+    },
+    {
+     "rank": 3,
+     "lat": 81.5,
+     "lon": -84.5,
+     "name_en": "Northern Ellesmere Island, Canada",
+     "name_zh": "加拿大 Ellesmere 島北部",
+     "score": 56.3,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "annual_mean_temp_C",
+       "value": -18.68,
+       "s": 0.481,
+       "classification": "partial"
+      },
+      {
+       "feature": "annual_max_temp_C",
+       "value": 9.55,
+       "s": 0.507,
+       "classification": "partial"
+      },
+      {
+       "feature": "ice_permafrost_proxy",
+       "value": null,
+       "s": 0.7,
+       "classification": "similar"
+      }
+     ]
+    },
+    {
+     "rank": 4,
+     "lat": 77.5,
+     "lon": -105.5,
+     "name_en": "Lougheed Island area, Canada",
+     "name_zh": "加拿大 Lougheed 島一帶",
+     "score": 55.7,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "annual_mean_temp_C",
+       "value": -14.15,
+       "s": 0.416,
+       "classification": "partial"
+      },
+      {
+       "feature": "annual_max_temp_C",
+       "value": 6.67,
+       "s": 0.556,
+       "classification": "partial"
+      },
+      {
+       "feature": "ice_permafrost_proxy",
+       "value": null,
+       "s": 0.7,
+       "classification": "similar"
+      }
+     ]
+    },
+    {
+     "rank": 5,
+     "lat": 76.5,
+     "lon": -23.5,
+     "name_en": "Germania Land, NE Greenland",
+     "name_zh": "格陵蘭東北岸 Germania Land",
+     "score": 55.3,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "annual_mean_temp_C",
+       "value": -14.48,
+       "s": 0.421,
+       "classification": "partial"
+      },
+      {
+       "feature": "annual_max_temp_C",
+       "value": 7.81,
+       "s": 0.536,
+       "classification": "partial"
+      },
+      {
+       "feature": "ice_permafrost_proxy",
+       "value": null,
+       "s": 0.7,
+       "classification": "similar"
+      }
+     ]
+    },
+    {
+     "rank": 6,
+     "lat": 78.5,
+     "lon": -67.5,
+     "name_en": "Inglefield Land, NW Greenland",
+     "name_zh": "格陵蘭西北 Inglefield Land",
+     "score": 55.1,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "annual_mean_temp_C",
+       "value": -16.27,
+       "s": 0.447,
+       "classification": "partial"
+      },
+      {
+       "feature": "annual_max_temp_C",
+       "value": 9.54,
+       "s": 0.508,
+       "classification": "partial"
+      },
+      {
+       "feature": "ice_permafrost_proxy",
+       "value": null,
+       "s": 0.7,
+       "classification": "similar"
+      }
+     ]
+    },
+    {
+     "rank": 7,
+     "lat": 73.5,
+     "lon": -25.5,
+     "name_en": "Kong Oscar Fjord, East Greenland",
+     "name_zh": "格陵蘭東岸 Kong Oscar 峽灣",
+     "score": 55.1,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "annual_mean_temp_C",
+       "value": -15.37,
+       "s": 0.434,
+       "classification": "partial"
+      },
+      {
+       "feature": "annual_max_temp_C",
+       "value": 8.84,
+       "s": 0.519,
+       "classification": "partial"
+      },
+      {
+       "feature": "ice_permafrost_proxy",
+       "value": null,
+       "s": 0.7,
+       "classification": "similar"
+      }
+     ]
+    },
+    {
+     "rank": 8,
+     "lat": 79.5,
+     "lon": -80.5,
+     "name_en": "Central Ellesmere Island, Canada",
+     "name_zh": "加拿大 Ellesmere 島中部",
+     "score": 54.5,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "annual_mean_temp_C",
+       "value": -18.19,
+       "s": 0.474,
+       "classification": "partial"
+      },
+      {
+       "feature": "annual_max_temp_C",
+       "value": 12.38,
+       "s": 0.46,
+       "classification": "partial"
+      },
+      {
+       "feature": "ice_permafrost_proxy",
+       "value": null,
+       "s": 0.7,
+       "classification": "similar"
+      }
+     ]
+    },
+    {
+     "rank": 9,
+     "lat": 78.5,
+     "lon": 100.5,
+     "name_en": "Severnaya Zemlya, Russia",
+     "name_zh": "俄羅斯北地群島",
+     "score": 54.5,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "annual_mean_temp_C",
+       "value": -12.36,
+       "s": 0.391,
+       "classification": "partial"
+      },
+      {
+       "feature": "annual_max_temp_C",
+       "value": 7.37,
+       "s": 0.544,
+       "classification": "partial"
+      },
+      {
+       "feature": "ice_permafrost_proxy",
+       "value": null,
+       "s": 0.7,
+       "classification": "similar"
+      }
+     ]
+    },
+    {
+     "rank": 10,
+     "lat": 35.5,
+     "lon": 77.5,
+     "name_en": "Aksai Chin / Karakoram high plateau",
+     "name_zh": "阿克賽欽／喀喇崑崙高原",
+     "score": 53.5,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "annual_mean_temp_C",
+       "value": -13.37,
+       "s": 0.405,
+       "classification": "partial"
+      },
+      {
+       "feature": "annual_max_temp_C",
+       "value": 10.07,
+       "s": 0.499,
+       "classification": "partial"
+      },
+      {
+       "feature": "ice_permafrost_proxy",
+       "value": null,
+       "s": 0.7,
+       "classification": "similar"
+      }
+     ]
+    }
+   ],
+   "known_analogs_validation": [
+    {
+     "rank": 1,
+     "lat": -72.5,
+     "lon": -77.5,
+     "name_en": "-72.5, -77.5",
+     "name_zh": "-72.5, -77.5",
+     "score": 57.2,
+     "known_analog_region": "Antarctica",
+     "features": [
+      {
+       "feature": "annual_mean_temp_C",
+       "value": -11.31,
+       "s": 0.376,
+       "classification": "partial"
+      },
+      {
+       "feature": "annual_max_temp_C",
+       "value": 1.62,
+       "s": 0.64,
+       "classification": "similar"
+      },
+      {
+       "feature": "ice_permafrost_proxy",
+       "value": null,
+       "s": 0.7,
+       "classification": "similar"
+      }
+     ]
+    },
+    {
+     "rank": 2,
+     "lat": 76.5,
+     "lon": -86.5,
+     "name_en": "76.5, -86.5",
+     "name_zh": "76.5, -86.5",
+     "score": 52.8,
+     "known_analog_region": "Devon/Haughton",
+     "features": [
+      {
+       "feature": "annual_mean_temp_C",
+       "value": -15.35,
+       "s": 0.434,
+       "classification": "partial"
+      },
+      {
+       "feature": "annual_max_temp_C",
+       "value": 13.01,
+       "s": 0.45,
+       "classification": "partial"
+      },
+      {
+       "feature": "ice_permafrost_proxy",
+       "value": null,
+       "s": 0.7,
+       "classification": "similar"
+      }
+     ]
+    },
+    {
+     "rank": 3,
+     "lat": 64.5,
+     "lon": -17.5,
+     "name_en": "64.5, -17.5",
+     "name_zh": "64.5, -17.5",
+     "score": 39.9,
+     "known_analog_region": "Iceland",
+     "features": [
+      {
+       "feature": "annual_mean_temp_C",
+       "value": -4.32,
+       "s": 0.276,
+       "classification": "different"
+      },
+      {
+       "feature": "annual_max_temp_C",
+       "value": 8.83,
+       "s": 0.52,
+       "classification": "partial"
+      },
+      {
+       "feature": "ice_permafrost_proxy",
+       "value": null,
+       "s": 0.4,
+       "classification": "partial"
+      }
+     ]
+    },
+    {
+     "rank": 4,
+     "lat": -27.5,
+     "lon": -68.5,
+     "name_en": "-27.5, -68.5",
+     "name_zh": "-27.5, -68.5",
+     "score": 18.9,
+     "known_analog_region": "Atacama",
+     "features": [
+      {
+       "feature": "annual_mean_temp_C",
+       "value": -1.84,
+       "s": 0.241,
+       "classification": "different"
+      },
+      {
+       "feature": "annual_max_temp_C",
+       "value": 20.47,
+       "s": 0.326,
+       "classification": "partial"
+      },
+      {
+       "feature": "ice_permafrost_proxy",
+       "value": null,
+       "s": 0.0,
+       "classification": "different"
+      }
+     ]
+    }
+   ],
+   "least_similar": [
+    {
+     "rank": 1,
+     "lat": 3.5,
+     "lon": 18.5,
+     "name_en": "3.5, 18.5",
+     "name_zh": "3.5, 18.5",
+     "score": 0.0,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "annual_mean_temp_C",
+       "value": 26.43,
+       "s": 0.0,
+       "classification": "different"
+      },
+      {
+       "feature": "annual_max_temp_C",
+       "value": 42.12,
+       "s": 0.0,
+       "classification": "different"
+      },
+      {
+       "feature": "ice_permafrost_proxy",
+       "value": null,
+       "s": 0.0,
+       "classification": "different"
+      }
+     ]
+    },
+    {
+     "rank": 2,
+     "lat": 24.5,
+     "lon": 117.5,
+     "name_en": "24.5, 117.5",
+     "name_zh": "24.5, 117.5",
+     "score": 0.0,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "annual_mean_temp_C",
+       "value": 20.66,
+       "s": 0.0,
+       "classification": "different"
+      },
+      {
+       "feature": "annual_max_temp_C",
+       "value": 41.55,
+       "s": 0.0,
+       "classification": "different"
+      },
+      {
+       "feature": "ice_permafrost_proxy",
+       "value": null,
+       "s": 0.0,
+       "classification": "different"
+      }
+     ]
+    },
+    {
+     "rank": 3,
+     "lat": 24.5,
+     "lon": 96.5,
+     "name_en": "24.5, 96.5",
+     "name_zh": "24.5, 96.5",
+     "score": 0.0,
+     "known_analog_region": NaN,
+     "features": [
+      {
+       "feature": "annual_mean_temp_C",
+       "value": 26.58,
+       "s": 0.0,
+       "classification": "different"
+      },
+      {
+       "feature": "annual_max_temp_C",
+       "value": 43.4,
+       "s": 0.0,
+       "classification": "different"
+      },
+      {
+       "feature": "ice_permafrost_proxy",
+       "value": null,
+       "s": 0.0,
+       "classification": "different"
+      }
+     ]
+    }
+   ]
+  },
+  "M4": {
+   "ConnectingRidge": {
+    "new_candidates": [
+     {
+      "rank": 1,
+      "lat": -5.5,
+      "lon": 142.5,
+      "name_en": "Southern Highlands, Papua New Guinea",
+      "name_zh": "新幾內亞南部高地",
+      "score": 89.8,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.096,
+         0.198,
+         0.289,
+         0.203,
+         0.16,
+         0.054
+        ],
+        "moon_value": [
+         0.098,
+         0.2757,
+         0.3035,
+         0.2206,
+         0.1023,
+         0.0
+        ],
+        "s": 0.889,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1868.0,
+        "moon_value": 2477,
+        "s": 0.92,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": 39.5,
+      "lon": 45.5,
+      "name_en": "Southern Armenia uplands",
+      "name_zh": "亞美尼亞南部山區",
+      "score": 82.9,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.069,
+         0.187,
+         0.223,
+         0.208,
+         0.248,
+         0.065
+        ],
+        "moon_value": [
+         0.098,
+         0.2757,
+         0.3035,
+         0.2206,
+         0.1023,
+         0.0
+        ],
+        "s": 0.789,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1875.0,
+        "moon_value": 2477,
+        "s": 0.922,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": 59.5,
+      "lon": -136.5,
+      "name_en": "Chilkat Range near Haines, Alaska/BC",
+      "name_zh": "阿拉斯加 Haines 附近 Chilkat 山脈",
+      "score": 80.2,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.104,
+         0.225,
+         0.174,
+         0.127,
+         0.195,
+         0.175
+        ],
+        "moon_value": [
+         0.098,
+         0.2757,
+         0.3035,
+         0.2206,
+         0.1023,
+         0.0
+        ],
+        "s": 0.726,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2134.0,
+        "moon_value": 2477,
+        "s": 0.977,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 4,
+      "lat": 19.5,
+      "lon": -103.5,
+      "name_en": "Colima volcanic complex, Mexico",
+      "name_zh": "墨西哥 Colima 火山區",
+      "score": 79.6,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.219,
+         0.265,
+         0.141,
+         0.104,
+         0.15,
+         0.122
+        ],
+        "moon_value": [
+         0.098,
+         0.2757,
+         0.3035,
+         0.2206,
+         0.1023,
+         0.0
+        ],
+        "s": 0.71,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2340.0,
+        "moon_value": 2477,
+        "s": 0.997,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 5,
+      "lat": 20.5,
+      "lon": 17.5,
+      "name_en": "Tibesti Mountains, Chad",
+      "name_zh": "查德 Tibesti 山脈",
+      "score": 78.6,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.071,
+         0.193,
+         0.193,
+         0.17,
+         0.238,
+         0.135
+        ],
+        "moon_value": [
+         0.098,
+         0.2757,
+         0.3035,
+         0.2206,
+         0.1023,
+         0.0
+        ],
+        "s": 0.729,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1868.0,
+        "moon_value": 2477,
+        "s": 0.92,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 6,
+      "lat": 71.5,
+      "lon": -52.5,
+      "name_en": "Uummannaq Fjord, West Greenland",
+      "name_zh": "格陵蘭西岸 Uummannaq 峽灣",
+      "score": 78.0,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.238,
+         0.3,
+         0.161,
+         0.092,
+         0.062,
+         0.147
+        ],
+        "moon_value": [
+         0.098,
+         0.2757,
+         0.3035,
+         0.2206,
+         0.1023,
+         0.0
+        ],
+        "s": 0.689,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2275.0,
+        "moon_value": 2477,
+        "s": 0.992,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 7,
+      "lat": -1.5,
+      "lon": 121.5,
+      "name_en": "-1.5, 121.5",
+      "name_zh": "-1.5, 121.5",
+      "score": 77.7,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.088,
+         0.214,
+         0.23,
+         0.183,
+         0.207,
+         0.078
+        ],
+        "moon_value": [
+         0.098,
+         0.2757,
+         0.3035,
+         0.2206,
+         0.1023,
+         0.0
+        ],
+        "s": 0.817,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1353.0,
+        "moon_value": 2477,
+        "s": 0.683,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 8,
+      "lat": -0.5,
+      "lon": -78.5,
+      "name_en": "Andes near Quito, Ecuador",
+      "name_zh": "厄瓜多 Quito 附近安地斯",
+      "score": 77.5,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.207,
+         0.231,
+         0.165,
+         0.145,
+         0.183,
+         0.069
+        ],
+        "moon_value": [
+         0.098,
+         0.2757,
+         0.3035,
+         0.2206,
+         0.1023,
+         0.0
+        ],
+        "s": 0.742,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1673.0,
+        "moon_value": 2477,
+        "s": 0.852,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 9,
+      "lat": -1.5,
+      "lon": 133.5,
+      "name_en": "-1.5, 133.5",
+      "name_zh": "-1.5, 133.5",
+      "score": 77.1,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.084,
+         0.208,
+         0.231,
+         0.188,
+         0.195,
+         0.093
+        ],
+        "moon_value": [
+         0.098,
+         0.2757,
+         0.3035,
+         0.2206,
+         0.1023,
+         0.0
+        ],
+        "s": 0.814,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1335.0,
+        "moon_value": 2477,
+        "s": 0.672,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 10,
+      "lat": 82.5,
+      "lon": -76.5,
+      "name_en": "加拿大 Ellesmere Island 北部",
+      "name_zh": "加拿大 Ellesmere Island 北部",
+      "score": 75.8,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.234,
+         0.261,
+         0.133,
+         0.097,
+         0.161,
+         0.115
+        ],
+        "moon_value": [
+         0.098,
+         0.2757,
+         0.3035,
+         0.2206,
+         0.1023,
+         0.0
+        ],
+        "s": 0.69,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1848.0,
+        "moon_value": 2477,
+        "s": 0.915,
+        "classification": "similar"
+       }
+      ]
+     }
+    ],
+    "known_analogs_validation": [
+     {
+      "rank": 1,
+      "lat": null,
+      "lon": null,
+      "name_en": "Mauna Kea, Hawaii",
+      "name_zh": "夏威夷 Mauna Kea",
+      "score": 92.6,
+      "known_analog_region": "Hawaii",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.049,
+         0.22,
+         0.329,
+         0.265,
+         0.132,
+         0.006
+        ],
+        "moon_value": [
+         0.098,
+         0.2757,
+         0.3035,
+         0.2206,
+         0.1023,
+         0.0
+        ],
+        "s": 0.895,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2390.0,
+        "moon_value": 2477,
+        "s": 0.999,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": -26.5,
+      "lon": -68.5,
+      "name_en": "-26.5, -68.5",
+      "name_zh": "-26.5, -68.5",
+      "score": 81.9,
+      "known_analog_region": "Atacama",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.172,
+         0.233,
+         0.21,
+         0.163,
+         0.181,
+         0.041
+        ],
+        "moon_value": [
+         0.098,
+         0.2757,
+         0.3035,
+         0.2206,
+         0.1023,
+         0.0
+        ],
+        "s": 0.806,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1666.0,
+        "moon_value": 2477,
+        "s": 0.849,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": -77.53,
+      "lon": 161.6,
+      "name_en": "McMurdo Dry Valleys, Antarctica",
+      "name_zh": "南極乾谷",
+      "score": 80.8,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.156,
+         0.333,
+         0.341,
+         0.147,
+         0.023,
+         0.0
+        ],
+        "moon_value": [
+         0.098,
+         0.2757,
+         0.3035,
+         0.2206,
+         0.1023,
+         0.0
+        ],
+        "s": 0.847,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1409.0,
+        "moon_value": 2477,
+        "s": 0.718,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 4,
+      "lat": -73.5,
+      "lon": 166.5,
+      "name_en": "Northern Victoria Land (Terra Nova Bay), Antarctica",
+      "name_zh": "南極北維多利亞地",
+      "score": 79.4,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.326,
+         0.328,
+         0.169,
+         0.122,
+         0.046,
+         0.009
+        ],
+        "moon_value": [
+         0.098,
+         0.2757,
+         0.3035,
+         0.2206,
+         0.1023,
+         0.0
+        ],
+        "s": 0.71,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2237.0,
+        "moon_value": 2477,
+        "s": 0.989,
+        "classification": "similar"
+       }
+      ]
+     }
+    ],
+    "least_similar": [
+     {
+      "rank": 1,
+      "lat": -72.5,
+      "lon": 30.5,
+      "name_en": "-72.5, 30.5",
+      "name_zh": "-72.5, 30.5",
+      "score": 6.9,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         1.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.098,
+         0.2757,
+         0.3035,
+         0.2206,
+         0.1023,
+         0.0
+        ],
+        "s": 0.098,
+        "classification": "different"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 192.0,
+        "moon_value": 2477,
+        "s": 0.001,
+        "classification": "different"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": -28.5,
+      "lon": -66.5,
+      "name_en": "-28.5, -66.5",
+      "name_zh": "-28.5, -66.5",
+      "score": 19.7,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.817,
+         0.169,
+         0.013,
+         0.001,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.098,
+         0.2757,
+         0.3035,
+         0.2206,
+         0.1023,
+         0.0
+        ],
+        "s": 0.281,
+        "classification": "different"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 135.0,
+        "moon_value": 2477,
+        "s": 0.0,
+        "classification": "different"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": 14.5,
+      "lon": -91.5,
+      "name_en": "14.5, -91.5",
+      "name_zh": "14.5, -91.5",
+      "score": 23.2,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.793,
+         0.188,
+         0.018,
+         0.001,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.098,
+         0.2757,
+         0.3035,
+         0.2206,
+         0.1023,
+         0.0
+        ],
+        "s": 0.305,
+        "classification": "partial"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 481.0,
+        "moon_value": 2477,
+        "s": 0.061,
+        "classification": "different"
+       }
+      ]
+     }
+    ]
+   },
+   "PeakNearCabeusB": {
+    "new_candidates": [
+     {
+      "rank": 1,
+      "lat": -29.5,
+      "lon": -70.5,
+      "name_en": "Elqui Valley Andes, Chile",
+      "name_zh": "智利 Elqui 谷地安地斯",
+      "score": 89.3,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.025,
+         0.092,
+         0.167,
+         0.246,
+         0.402,
+         0.068
+        ],
+        "moon_value": [
+         0.0202,
+         0.0815,
+         0.1873,
+         0.2826,
+         0.4174,
+         0.0111
+        ],
+        "s": 0.928,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2321.0,
+        "moon_value": 3628,
+        "s": 0.812,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": -2.5,
+      "lon": 120.5,
+      "name_en": "Central Sulawesi highlands, Indonesia",
+      "name_zh": "印尼蘇拉威西中部山區",
+      "score": 84.3,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.038,
+         0.074,
+         0.115,
+         0.178,
+         0.397,
+         0.199
+        ],
+        "moon_value": [
+         0.0202,
+         0.0815,
+         0.1873,
+         0.2826,
+         0.4174,
+         0.0111
+        ],
+        "s": 0.794,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2954.0,
+        "moon_value": 3628,
+        "s": 0.957,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": -29.5,
+      "lon": -69.5,
+      "name_en": "High Andes, Chile–Argentina border",
+      "name_zh": "智利阿根廷邊界高安地斯",
+      "score": 79.5,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.016,
+         0.051,
+         0.099,
+         0.155,
+         0.427,
+         0.253
+        ],
+        "moon_value": [
+         0.0202,
+         0.0815,
+         0.1873,
+         0.2826,
+         0.4174,
+         0.0111
+        ],
+        "s": 0.748,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2656.0,
+        "moon_value": 3628,
+        "s": 0.904,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 4,
+      "lat": 36.5,
+      "lon": 51.5,
+      "name_en": "Alborz Mountains, Iran",
+      "name_zh": "伊朗 Alborz 山脈",
+      "score": 77.7,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.034,
+         0.109,
+         0.162,
+         0.195,
+         0.324,
+         0.177
+        ],
+        "moon_value": [
+         0.0202,
+         0.0815,
+         0.1873,
+         0.2826,
+         0.4174,
+         0.0111
+        ],
+        "s": 0.793,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2118.0,
+        "moon_value": 3628,
+        "s": 0.74,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 5,
+      "lat": -7.5,
+      "lon": -78.5,
+      "name_en": "-7.5, -78.5",
+      "name_zh": "-7.5, -78.5",
+      "score": 75.5,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.013,
+         0.048,
+         0.103,
+         0.149,
+         0.358,
+         0.328
+        ],
+        "moon_value": [
+         0.0202,
+         0.0815,
+         0.1873,
+         0.2826,
+         0.4174,
+         0.0111
+        ],
+        "s": 0.683,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2744.0,
+        "moon_value": 3628,
+        "s": 0.922,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 6,
+      "lat": -8.5,
+      "lon": 147.5,
+      "name_en": "-8.5, 147.5",
+      "name_zh": "-8.5, 147.5",
+      "score": 74.7,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.01,
+         0.035,
+         0.072,
+         0.122,
+         0.404,
+         0.358
+        ],
+        "moon_value": [
+         0.0202,
+         0.0815,
+         0.1873,
+         0.2826,
+         0.4174,
+         0.0111
+        ],
+        "s": 0.653,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 3023.0,
+        "moon_value": 3628,
+        "s": 0.966,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 7,
+      "lat": -3.5,
+      "lon": 136.5,
+      "name_en": "-3.5, 136.5",
+      "name_zh": "-3.5, 136.5",
+      "score": 74.7,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.005,
+         0.024,
+         0.065,
+         0.136,
+         0.426,
+         0.344
+        ],
+        "moon_value": [
+         0.0202,
+         0.0815,
+         0.1873,
+         0.2826,
+         0.4174,
+         0.0111
+        ],
+        "s": 0.658,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2932.0,
+        "moon_value": 3628,
+        "s": 0.954,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 8,
+      "lat": 27.5,
+      "lon": 91.5,
+      "name_en": "27.5, 91.5",
+      "name_zh": "27.5, 91.5",
+      "score": 74.7,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.005,
+         0.022,
+         0.068,
+         0.136,
+         0.427,
+         0.343
+        ],
+        "moon_value": [
+         0.0202,
+         0.0815,
+         0.1873,
+         0.2826,
+         0.4174,
+         0.0111
+        ],
+        "s": 0.658,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2937.0,
+        "moon_value": 3628,
+        "s": 0.955,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 9,
+      "lat": -4.5,
+      "lon": -79.5,
+      "name_en": "-4.5, -79.5",
+      "name_zh": "-4.5, -79.5",
+      "score": 74.6,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.024,
+         0.087,
+         0.151,
+         0.197,
+         0.367,
+         0.174
+        ],
+        "moon_value": [
+         0.0202,
+         0.0815,
+         0.1873,
+         0.2826,
+         0.4174,
+         0.0111
+        ],
+        "s": 0.827,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1711.0,
+        "moon_value": 3628,
+        "s": 0.555,
+        "classification": "partial"
+       }
+      ]
+     },
+     {
+      "rank": 10,
+      "lat": 22.5,
+      "lon": 103.5,
+      "name_en": "22.5, 103.5",
+      "name_zh": "22.5, 103.5",
+      "score": 74.6,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.017,
+         0.051,
+         0.095,
+         0.145,
+         0.366,
+         0.326
+        ],
+        "moon_value": [
+         0.0202,
+         0.0815,
+         0.1873,
+         0.2826,
+         0.4174,
+         0.0111
+        ],
+        "s": 0.685,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2588.0,
+        "moon_value": 3628,
+        "s": 0.888,
+        "classification": "similar"
+       }
+      ]
+     }
+    ],
+    "known_analogs_validation": [
+     {
+      "rank": 1,
+      "lat": -27.5,
+      "lon": -69.5,
+      "name_en": "-27.5, -69.5",
+      "name_zh": "-27.5, -69.5",
+      "score": 77.6,
+      "known_analog_region": "Atacama",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.041,
+         0.081,
+         0.157,
+         0.208,
+         0.387,
+         0.127
+        ],
+        "moon_value": [
+         0.0202,
+         0.0815,
+         0.1873,
+         0.2826,
+         0.4174,
+         0.0111
+        ],
+        "s": 0.864,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1738.0,
+        "moon_value": 3628,
+        "s": 0.569,
+        "classification": "partial"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": null,
+      "lon": null,
+      "name_en": "Mauna Kea, Hawaii",
+      "name_zh": "夏威夷 Mauna Kea",
+      "score": 73.4,
+      "known_analog_region": "Hawaii",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.049,
+         0.22,
+         0.329,
+         0.265,
+         0.132,
+         0.006
+        ],
+        "moon_value": [
+         0.0202,
+         0.0815,
+         0.1873,
+         0.2826,
+         0.4174,
+         0.0111
+        ],
+        "s": 0.692,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2390.0,
+        "moon_value": 3628,
+        "s": 0.834,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": -26.5,
+      "lon": -68.5,
+      "name_en": "-26.5, -68.5",
+      "name_zh": "-26.5, -68.5",
+      "score": 61.1,
+      "known_analog_region": "Atacama",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.172,
+         0.233,
+         0.21,
+         0.163,
+         0.181,
+         0.041
+        ],
+        "moon_value": [
+         0.0202,
+         0.0815,
+         0.1873,
+         0.2826,
+         0.4174,
+         0.0111
+        ],
+        "s": 0.644,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1666.0,
+        "moon_value": 3628,
+        "s": 0.532,
+        "classification": "partial"
+       }
+      ]
+     },
+     {
+      "rank": 4,
+      "lat": -73.5,
+      "lon": 166.5,
+      "name_en": "Northern Victoria Land (Terra Nova Bay), Antarctica",
+      "name_zh": "南極北維多利亞地",
+      "score": 54.9,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.326,
+         0.328,
+         0.169,
+         0.122,
+         0.046,
+         0.009
+        ],
+        "moon_value": [
+         0.0202,
+         0.0815,
+         0.1873,
+         0.2826,
+         0.4174,
+         0.0111
+        ],
+        "s": 0.448,
+        "classification": "partial"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2237.0,
+        "moon_value": 3628,
+        "s": 0.784,
+        "classification": "similar"
+       }
+      ]
+     }
+    ],
+    "least_similar": [
+     {
+      "rank": 1,
+      "lat": -72.5,
+      "lon": 30.5,
+      "name_en": "-72.5, 30.5",
+      "name_zh": "-72.5, 30.5",
+      "score": 1.4,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         1.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.0202,
+         0.0815,
+         0.1873,
+         0.2826,
+         0.4174,
+         0.0111
+        ],
+        "s": 0.02,
+        "classification": "different"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 192.0,
+        "moon_value": 3628,
+        "s": 0.0,
+        "classification": "different"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": -28.5,
+      "lon": -66.5,
+      "name_en": "-28.5, -66.5",
+      "name_zh": "-28.5, -66.5",
+      "score": 8.1,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.817,
+         0.169,
+         0.013,
+         0.001,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.0202,
+         0.0815,
+         0.1873,
+         0.2826,
+         0.4174,
+         0.0111
+        ],
+        "s": 0.116,
+        "classification": "different"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 135.0,
+        "moon_value": 3628,
+        "s": 0.0,
+        "classification": "different"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": 14.5,
+      "lon": -91.5,
+      "name_en": "14.5, -91.5",
+      "name_zh": "14.5, -91.5",
+      "score": 8.9,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.793,
+         0.188,
+         0.018,
+         0.001,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.0202,
+         0.0815,
+         0.1873,
+         0.2826,
+         0.4174,
+         0.0111
+        ],
+        "s": 0.121,
+        "classification": "different"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 481.0,
+        "moon_value": 3628,
+        "s": 0.014,
+        "classification": "different"
+       }
+      ]
+     }
+    ]
+   },
+   "Haworth": {
+    "new_candidates": [
+     {
+      "rank": 1,
+      "lat": 71.5,
+      "lon": -52.5,
+      "name_en": "Uummannaq Fjord, West Greenland",
+      "name_zh": "格陵蘭西岸 Uummannaq 峽灣",
+      "score": 85.1,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.238,
+         0.3,
+         0.161,
+         0.092,
+         0.062,
+         0.147
+        ],
+        "moon_value": [
+         0.1964,
+         0.4104,
+         0.244,
+         0.109,
+         0.04,
+         0.0003
+        ],
+        "s": 0.79,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2275.0,
+        "moon_value": 2127,
+        "s": 0.995,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": 19.5,
+      "lon": -103.5,
+      "name_en": "Colima volcanic complex, Mexico",
+      "name_zh": "墨西哥 Colima 火山區",
+      "score": 81.9,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.219,
+         0.265,
+         0.141,
+         0.104,
+         0.15,
+         0.122
+        ],
+        "moon_value": [
+         0.1964,
+         0.4104,
+         0.244,
+         0.109,
+         0.04,
+         0.0003
+        ],
+        "s": 0.746,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2340.0,
+        "moon_value": 2127,
+        "s": 0.991,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": -15.5,
+      "lon": -74.5,
+      "name_en": "Southern coastal Andes, Peru",
+      "name_zh": "秘魯南部安地斯",
+      "score": 80.6,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.24,
+         0.246,
+         0.153,
+         0.109,
+         0.169,
+         0.084
+        ],
+        "moon_value": [
+         0.1964,
+         0.4104,
+         0.244,
+         0.109,
+         0.04,
+         0.0003
+        ],
+        "s": 0.744,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1705.0,
+        "moon_value": 2127,
+        "s": 0.95,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 4,
+      "lat": 82.5,
+      "lon": -76.5,
+      "name_en": "加拿大 Ellesmere Island 北部",
+      "name_zh": "加拿大 Ellesmere Island 北部",
+      "score": 80.3,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.234,
+         0.261,
+         0.133,
+         0.097,
+         0.161,
+         0.115
+        ],
+        "moon_value": [
+         0.1964,
+         0.4104,
+         0.244,
+         0.109,
+         0.04,
+         0.0003
+        ],
+        "s": 0.727,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1848.0,
+        "moon_value": 2127,
+        "s": 0.98,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 5,
+      "lat": -0.5,
+      "lon": -78.5,
+      "name_en": "Andes near Quito, Ecuador",
+      "name_zh": "厄瓜多 Quito 附近安地斯",
+      "score": 80.2,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.207,
+         0.231,
+         0.165,
+         0.145,
+         0.183,
+         0.069
+        ],
+        "moon_value": [
+         0.1964,
+         0.4104,
+         0.244,
+         0.109,
+         0.04,
+         0.0003
+        ],
+        "s": 0.742,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1673.0,
+        "moon_value": 2127,
+        "s": 0.942,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 6,
+      "lat": 30.5,
+      "lon": 81.5,
+      "name_en": "Ngari near Mt Kailash, Tibet",
+      "name_zh": "西藏阿里（岡仁波齊一帶）",
+      "score": 79.6,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.245,
+         0.259,
+         0.159,
+         0.117,
+         0.132,
+         0.089
+        ],
+        "moon_value": [
+         0.1964,
+         0.4104,
+         0.244,
+         0.109,
+         0.04,
+         0.0003
+        ],
+        "s": 0.764,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1480.0,
+        "moon_value": 2127,
+        "s": 0.872,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 7,
+      "lat": -5.5,
+      "lon": 142.5,
+      "name_en": "Southern Highlands, Papua New Guinea",
+      "name_zh": "新幾內亞南部高地",
+      "score": 77.6,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.096,
+         0.198,
+         0.289,
+         0.203,
+         0.16,
+         0.054
+        ],
+        "moon_value": [
+         0.1964,
+         0.4104,
+         0.244,
+         0.109,
+         0.04,
+         0.0003
+        ],
+        "s": 0.688,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1868.0,
+        "moon_value": 2127,
+        "s": 0.983,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 8,
+      "lat": 59.5,
+      "lon": -136.5,
+      "name_en": "Chilkat Range near Haines, Alaska/BC",
+      "name_zh": "阿拉斯加 Haines 附近 Chilkat 山脈",
+      "score": 75.7,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.104,
+         0.225,
+         0.174,
+         0.127,
+         0.195,
+         0.175
+        ],
+        "moon_value": [
+         0.1964,
+         0.4104,
+         0.244,
+         0.109,
+         0.04,
+         0.0003
+        ],
+        "s": 0.653,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2134.0,
+        "moon_value": 2127,
+        "s": 1.0,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 9,
+      "lat": 70.5,
+      "lon": -27.5,
+      "name_en": "格陵蘭東岸 Scoresby Sund",
+      "name_zh": "格陵蘭東岸 Scoresby Sund",
+      "score": 75.2,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.277,
+         0.174,
+         0.138,
+         0.099,
+         0.146,
+         0.166
+        ],
+        "moon_value": [
+         0.1964,
+         0.4104,
+         0.244,
+         0.109,
+         0.04,
+         0.0003
+        ],
+        "s": 0.648,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1963.0,
+        "moon_value": 2127,
+        "s": 0.993,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 10,
+      "lat": -11.5,
+      "lon": -73.5,
+      "name_en": "-11.5, -73.5",
+      "name_zh": "-11.5, -73.5",
+      "score": 74.0,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.141,
+         0.186,
+         0.164,
+         0.135,
+         0.212,
+         0.162
+        ],
+        "moon_value": [
+         0.1964,
+         0.4104,
+         0.244,
+         0.109,
+         0.04,
+         0.0003
+        ],
+        "s": 0.64,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1800.0,
+        "moon_value": 2127,
+        "s": 0.971,
+        "classification": "similar"
+       }
+      ]
+     }
+    ],
+    "known_analogs_validation": [
+     {
+      "rank": 1,
+      "lat": -73.5,
+      "lon": 166.5,
+      "name_en": "Northern Victoria Land (Terra Nova Bay), Antarctica",
+      "name_zh": "南極北維多利亞地",
+      "score": 88.9,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.326,
+         0.328,
+         0.169,
+         0.122,
+         0.046,
+         0.009
+        ],
+        "moon_value": [
+         0.1964,
+         0.4104,
+         0.244,
+         0.109,
+         0.04,
+         0.0003
+        ],
+        "s": 0.842,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2237.0,
+        "moon_value": 2127,
+        "s": 0.997,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": -77.53,
+      "lon": 161.6,
+      "name_en": "McMurdo Dry Valleys, Antarctica",
+      "name_zh": "南極乾谷",
+      "score": 85.7,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.156,
+         0.333,
+         0.341,
+         0.147,
+         0.023,
+         0.0
+        ],
+        "moon_value": [
+         0.1964,
+         0.4104,
+         0.244,
+         0.109,
+         0.04,
+         0.0003
+        ],
+        "s": 0.865,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1409.0,
+        "moon_value": 2127,
+        "s": 0.838,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": -77.5,
+      "lon": -85.5,
+      "name_en": "-77.5, -85.5",
+      "name_zh": "-77.5, -85.5",
+      "score": 82.4,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.075,
+         0.662,
+         0.205,
+         0.046,
+         0.011,
+         0.0
+        ],
+        "moon_value": [
+         0.1964,
+         0.4104,
+         0.244,
+         0.109,
+         0.04,
+         0.0003
+        ],
+        "s": 0.748,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2190.0,
+        "moon_value": 2127,
+        "s": 0.999,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 4,
+      "lat": -26.5,
+      "lon": -68.5,
+      "name_en": "-26.5, -68.5",
+      "name_zh": "-26.5, -68.5",
+      "score": 81.7,
+      "known_analog_region": "Atacama",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.172,
+         0.233,
+         0.21,
+         0.163,
+         0.181,
+         0.041
+        ],
+        "moon_value": [
+         0.1964,
+         0.4104,
+         0.244,
+         0.109,
+         0.04,
+         0.0003
+        ],
+        "s": 0.764,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1666.0,
+        "moon_value": 2127,
+        "s": 0.94,
+        "classification": "similar"
+       }
+      ]
+     }
+    ],
+    "least_similar": [
+     {
+      "rank": 1,
+      "lat": -72.5,
+      "lon": 30.5,
+      "name_en": "-72.5, 30.5",
+      "name_zh": "-72.5, 30.5",
+      "score": 13.8,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         1.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.1964,
+         0.4104,
+         0.244,
+         0.109,
+         0.04,
+         0.0003
+        ],
+        "s": 0.196,
+        "classification": "different"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 192.0,
+        "moon_value": 2127,
+        "s": 0.002,
+        "classification": "different"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": 28.5,
+      "lon": 84.5,
+      "name_en": "28.5, 84.5",
+      "name_zh": "28.5, 84.5",
+      "score": 22.3,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.012,
+         0.032,
+         0.05,
+         0.072,
+         0.208,
+         0.625
+        ],
+        "moon_value": [
+         0.1964,
+         0.4104,
+         0.244,
+         0.109,
+         0.04,
+         0.0003
+        ],
+        "s": 0.207,
+        "classification": "different"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 6637.0,
+        "moon_value": 2127,
+        "s": 0.26,
+        "classification": "different"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": -28.5,
+      "lon": -66.5,
+      "name_en": "-28.5, -66.5",
+      "name_zh": "-28.5, -66.5",
+      "score": 26.6,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.817,
+         0.169,
+         0.013,
+         0.001,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.1964,
+         0.4104,
+         0.244,
+         0.109,
+         0.04,
+         0.0003
+        ],
+        "s": 0.379,
+        "classification": "partial"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 135.0,
+        "moon_value": 2127,
+        "s": 0.0,
+        "classification": "different"
+       }
+      ]
+     }
+    ]
+   },
+   "MalapertMassif": {
+    "new_candidates": [
+     {
+      "rank": 1,
+      "lat": -29.5,
+      "lon": -70.5,
+      "name_en": "Elqui Valley Andes, Chile",
+      "name_zh": "智利 Elqui 谷地安地斯",
+      "score": 90.2,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.025,
+         0.092,
+         0.167,
+         0.246,
+         0.402,
+         0.068
+        ],
+        "moon_value": [
+         0.0422,
+         0.1193,
+         0.1929,
+         0.2736,
+         0.3599,
+         0.0121
+        ],
+        "s": 0.902,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2321.0,
+        "moon_value": 3186,
+        "s": 0.901,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": -2.5,
+      "lon": 120.5,
+      "name_en": "Central Sulawesi highlands, Indonesia",
+      "name_zh": "印尼蘇拉威西中部山區",
+      "score": 84.2,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.038,
+         0.074,
+         0.115,
+         0.178,
+         0.397,
+         0.199
+        ],
+        "moon_value": [
+         0.0422,
+         0.1193,
+         0.1929,
+         0.2736,
+         0.3599,
+         0.0121
+        ],
+        "s": 0.776,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2954.0,
+        "moon_value": 3186,
+        "s": 0.994,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": 36.5,
+      "lon": 51.5,
+      "name_en": "Alborz Mountains, Iran",
+      "name_zh": "伊朗 Alborz 山脈",
+      "score": 83.7,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.034,
+         0.109,
+         0.162,
+         0.195,
+         0.324,
+         0.177
+        ],
+        "moon_value": [
+         0.0422,
+         0.1193,
+         0.1929,
+         0.2736,
+         0.3599,
+         0.0121
+        ],
+        "s": 0.835,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2118.0,
+        "moon_value": 3186,
+        "s": 0.841,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 4,
+      "lat": 39.5,
+      "lon": 45.5,
+      "name_en": "Southern Armenia uplands",
+      "name_zh": "亞美尼亞南部山區",
+      "score": 79.9,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.069,
+         0.187,
+         0.223,
+         0.208,
+         0.248,
+         0.065
+        ],
+        "moon_value": [
+         0.0422,
+         0.1193,
+         0.1929,
+         0.2736,
+         0.3599,
+         0.0121
+        ],
+        "s": 0.822,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1875.0,
+        "moon_value": 3186,
+        "s": 0.746,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 5,
+      "lat": -4.5,
+      "lon": -79.5,
+      "name_en": "-4.5, -79.5",
+      "name_zh": "-4.5, -79.5",
+      "score": 78.2,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.024,
+         0.087,
+         0.151,
+         0.197,
+         0.367,
+         0.174
+        ],
+        "moon_value": [
+         0.0422,
+         0.1193,
+         0.1929,
+         0.2736,
+         0.3599,
+         0.0121
+        ],
+        "s": 0.831,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1711.0,
+        "moon_value": 3186,
+        "s": 0.669,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 6,
+      "lat": 23.5,
+      "lon": 98.5,
+      "name_en": "23.5, 98.5",
+      "name_zh": "23.5, 98.5",
+      "score": 78.0,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.035,
+         0.09,
+         0.142,
+         0.19,
+         0.358,
+         0.185
+        ],
+        "moon_value": [
+         0.0422,
+         0.1193,
+         0.1929,
+         0.2736,
+         0.3599,
+         0.0121
+        ],
+        "s": 0.827,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1717.0,
+        "moon_value": 3186,
+        "s": 0.672,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 7,
+      "lat": -29.5,
+      "lon": -69.5,
+      "name_en": "High Andes, Chile–Argentina border",
+      "name_zh": "智利阿根廷邊界高安地斯",
+      "score": 77.4,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.016,
+         0.051,
+         0.099,
+         0.155,
+         0.427,
+         0.253
+        ],
+        "moon_value": [
+         0.0422,
+         0.1193,
+         0.1929,
+         0.2736,
+         0.3599,
+         0.0121
+        ],
+        "s": 0.692,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2656.0,
+        "moon_value": 3186,
+        "s": 0.966,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 8,
+      "lat": -7.5,
+      "lon": -78.5,
+      "name_en": "-7.5, -78.5",
+      "name_zh": "-7.5, -78.5",
+      "score": 77.2,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.013,
+         0.048,
+         0.103,
+         0.149,
+         0.358,
+         0.328
+        ],
+        "moon_value": [
+         0.0422,
+         0.1193,
+         0.1929,
+         0.2736,
+         0.3599,
+         0.0121
+        ],
+        "s": 0.684,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2744.0,
+        "moon_value": 3186,
+        "s": 0.977,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 9,
+      "lat": 20.5,
+      "lon": 17.5,
+      "name_en": "Tibesti Mountains, Chad",
+      "name_zh": "查德 Tibesti 山脈",
+      "score": 76.5,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.071,
+         0.193,
+         0.193,
+         0.17,
+         0.238,
+         0.135
+        ],
+        "moon_value": [
+         0.0422,
+         0.1193,
+         0.1929,
+         0.2736,
+         0.3599,
+         0.0121
+        ],
+        "s": 0.774,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1868.0,
+        "moon_value": 3186,
+        "s": 0.743,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 10,
+      "lat": 22.5,
+      "lon": 103.5,
+      "name_en": "22.5, 103.5",
+      "name_zh": "22.5, 103.5",
+      "score": 76.3,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.017,
+         0.051,
+         0.095,
+         0.145,
+         0.366,
+         0.326
+        ],
+        "moon_value": [
+         0.0422,
+         0.1193,
+         0.1929,
+         0.2736,
+         0.3599,
+         0.0121
+        ],
+        "s": 0.68,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2588.0,
+        "moon_value": 3186,
+        "s": 0.956,
+        "classification": "similar"
+       }
+      ]
+     }
+    ],
+    "known_analogs_validation": [
+     {
+      "rank": 1,
+      "lat": -27.5,
+      "lon": -69.5,
+      "name_en": "-27.5, -69.5",
+      "name_zh": "-27.5, -69.5",
+      "score": 80.6,
+      "known_analog_region": "Atacama",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.041,
+         0.081,
+         0.157,
+         0.208,
+         0.387,
+         0.127
+        ],
+        "moon_value": [
+         0.0422,
+         0.1193,
+         0.1929,
+         0.2736,
+         0.3599,
+         0.0121
+        ],
+        "s": 0.859,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1738.0,
+        "moon_value": 3186,
+        "s": 0.682,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": null,
+      "lon": null,
+      "name_en": "Mauna Kea, Hawaii",
+      "name_zh": "夏威夷 Mauna Kea",
+      "score": 80.5,
+      "known_analog_region": "Hawaii",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.049,
+         0.22,
+         0.329,
+         0.265,
+         0.132,
+         0.006
+        ],
+        "moon_value": [
+         0.0422,
+         0.1193,
+         0.1929,
+         0.2736,
+         0.3599,
+         0.0121
+        ],
+        "s": 0.757,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2390.0,
+        "moon_value": 3186,
+        "s": 0.918,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": -26.5,
+      "lon": -68.5,
+      "name_en": "-26.5, -68.5",
+      "name_zh": "-26.5, -68.5",
+      "score": 69.1,
+      "known_analog_region": "Atacama",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.172,
+         0.233,
+         0.21,
+         0.163,
+         0.181,
+         0.041
+        ],
+        "moon_value": [
+         0.0422,
+         0.1193,
+         0.1929,
+         0.2736,
+         0.3599,
+         0.0121
+        ],
+        "s": 0.711,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1666.0,
+        "moon_value": 3186,
+        "s": 0.646,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 4,
+      "lat": -73.5,
+      "lon": 166.5,
+      "name_en": "Northern Victoria Land (Terra Nova Bay), Antarctica",
+      "name_zh": "南極北維多利亞地",
+      "score": 61.9,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.326,
+         0.328,
+         0.169,
+         0.122,
+         0.046,
+         0.009
+        ],
+        "moon_value": [
+         0.0422,
+         0.1193,
+         0.1929,
+         0.2736,
+         0.3599,
+         0.0121
+        ],
+        "s": 0.507,
+        "classification": "partial"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2237.0,
+        "moon_value": 3186,
+        "s": 0.878,
+        "classification": "similar"
+       }
+      ]
+     }
+    ],
+    "least_similar": [
+     {
+      "rank": 1,
+      "lat": -72.5,
+      "lon": 30.5,
+      "name_en": "-72.5, 30.5",
+      "name_zh": "-72.5, 30.5",
+      "score": 3.0,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         1.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.0422,
+         0.1193,
+         0.1929,
+         0.2736,
+         0.3599,
+         0.0121
+        ],
+        "s": 0.042,
+        "classification": "different"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 192.0,
+        "moon_value": 3186,
+        "s": 0.0,
+        "classification": "different"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": -28.5,
+      "lon": -66.5,
+      "name_en": "-28.5, -66.5",
+      "name_zh": "-28.5, -66.5",
+      "score": 12.3,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.817,
+         0.169,
+         0.013,
+         0.001,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.0422,
+         0.1193,
+         0.1929,
+         0.2736,
+         0.3599,
+         0.0121
+        ],
+        "s": 0.175,
+        "classification": "different"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 135.0,
+        "moon_value": 3186,
+        "s": 0.0,
+        "classification": "different"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": 14.5,
+      "lon": -91.5,
+      "name_en": "14.5, -91.5",
+      "name_zh": "14.5, -91.5",
+      "score": 13.3,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.793,
+         0.188,
+         0.018,
+         0.001,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.0422,
+         0.1193,
+         0.1929,
+         0.2736,
+         0.3599,
+         0.0121
+        ],
+        "s": 0.18,
+        "classification": "different"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 481.0,
+        "moon_value": 3186,
+        "s": 0.024,
+        "classification": "different"
+       }
+      ]
+     }
+    ]
+   },
+   "MonsMoutonPlateau": {
+    "new_candidates": [
+     {
+      "rank": 1,
+      "lat": 30.5,
+      "lon": 81.5,
+      "name_en": "Ngari near Mt Kailash, Tibet",
+      "name_zh": "西藏阿里（岡仁波齊一帶）",
+      "score": 82.2,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.245,
+         0.259,
+         0.159,
+         0.117,
+         0.132,
+         0.089
+        ],
+        "moon_value": [
+         0.2799,
+         0.4513,
+         0.1855,
+         0.062,
+         0.0203,
+         0.001
+        ],
+        "s": 0.746,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1480.0,
+        "moon_value": 1526,
+        "s": 0.999,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": 83.5,
+      "lon": -32.5,
+      "name_en": "Peary Land, North Greenland",
+      "name_zh": "格陵蘭北部 Peary Land",
+      "score": 81.9,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.528,
+         0.363,
+         0.094,
+         0.014,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.2799,
+         0.4513,
+         0.1855,
+         0.062,
+         0.0203,
+         0.001
+        ],
+        "s": 0.752,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1304.0,
+        "moon_value": 1526,
+        "s": 0.975,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": -15.5,
+      "lon": -74.5,
+      "name_en": "Southern coastal Andes, Peru",
+      "name_zh": "秘魯南部安地斯",
+      "score": 80.2,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.24,
+         0.246,
+         0.153,
+         0.109,
+         0.169,
+         0.084
+        ],
+        "moon_value": [
+         0.2799,
+         0.4513,
+         0.1855,
+         0.062,
+         0.0203,
+         0.001
+        ],
+        "s": 0.723,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1705.0,
+        "moon_value": 1526,
+        "s": 0.987,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 4,
+      "lat": 71.5,
+      "lon": -52.5,
+      "name_en": "Uummannaq Fjord, West Greenland",
+      "name_zh": "格陵蘭西岸 Uummannaq 峽灣",
+      "score": 80.2,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.238,
+         0.3,
+         0.161,
+         0.092,
+         0.062,
+         0.147
+        ],
+        "moon_value": [
+         0.2799,
+         0.4513,
+         0.1855,
+         0.062,
+         0.0203,
+         0.001
+        ],
+        "s": 0.782,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2275.0,
+        "moon_value": 1526,
+        "s": 0.847,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 5,
+      "lat": 82.5,
+      "lon": -76.5,
+      "name_en": "加拿大 Ellesmere Island 北部",
+      "name_zh": "加拿大 Ellesmere Island 北部",
+      "score": 78.6,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.234,
+         0.261,
+         0.133,
+         0.097,
+         0.161,
+         0.115
+        ],
+        "moon_value": [
+         0.2799,
+         0.4513,
+         0.1855,
+         0.062,
+         0.0203,
+         0.001
+        ],
+        "s": 0.711,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1848.0,
+        "moon_value": 1526,
+        "s": 0.963,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 6,
+      "lat": -0.5,
+      "lon": -78.5,
+      "name_en": "Andes near Quito, Ecuador",
+      "name_zh": "厄瓜多 Quito 附近安地斯",
+      "score": 77.8,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.207,
+         0.231,
+         0.165,
+         0.145,
+         0.183,
+         0.069
+        ],
+        "moon_value": [
+         0.2799,
+         0.4513,
+         0.1855,
+         0.062,
+         0.0203,
+         0.001
+        ],
+        "s": 0.686,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1673.0,
+        "moon_value": 1526,
+        "s": 0.991,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 7,
+      "lat": 68.5,
+      "lon": -30.5,
+      "name_en": "68.5, -30.5",
+      "name_zh": "68.5, -30.5",
+      "score": 77.6,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.337,
+         0.178,
+         0.139,
+         0.1,
+         0.131,
+         0.115
+        ],
+        "moon_value": [
+         0.2799,
+         0.4513,
+         0.1855,
+         0.062,
+         0.0203,
+         0.001
+        ],
+        "s": 0.681,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1589.0,
+        "moon_value": 1526,
+        "s": 0.998,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 8,
+      "lat": 79.5,
+      "lon": -90.5,
+      "name_en": "加拿大 Axel Heiberg Island",
+      "name_zh": "加拿大 Axel Heiberg Island",
+      "score": 77.6,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.306,
+         0.187,
+         0.132,
+         0.101,
+         0.175,
+         0.099
+        ],
+        "moon_value": [
+         0.2799,
+         0.4513,
+         0.1855,
+         0.062,
+         0.0203,
+         0.001
+        ],
+        "s": 0.682,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1418.0,
+        "moon_value": 1526,
+        "s": 0.994,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 9,
+      "lat": 70.5,
+      "lon": -27.5,
+      "name_en": "格陵蘭東岸 Scoresby Sund",
+      "name_zh": "格陵蘭東岸 Scoresby Sund",
+      "score": 75.2,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.277,
+         0.174,
+         0.138,
+         0.099,
+         0.146,
+         0.166
+        ],
+        "moon_value": [
+         0.2799,
+         0.4513,
+         0.1855,
+         0.062,
+         0.0203,
+         0.001
+        ],
+        "s": 0.673,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1963.0,
+        "moon_value": 1526,
+        "s": 0.936,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 10,
+      "lat": 19.5,
+      "lon": -103.5,
+      "name_en": "Colima volcanic complex, Mexico",
+      "name_zh": "墨西哥 Colima 火山區",
+      "score": 74.3,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.219,
+         0.265,
+         0.141,
+         0.104,
+         0.15,
+         0.122
+        ],
+        "moon_value": [
+         0.2799,
+         0.4513,
+         0.1855,
+         0.062,
+         0.0203,
+         0.001
+        ],
+        "s": 0.707,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2340.0,
+        "moon_value": 1526,
+        "s": 0.827,
+        "classification": "similar"
+       }
+      ]
+     }
+    ],
+    "known_analogs_validation": [
+     {
+      "rank": 1,
+      "lat": -73.5,
+      "lon": 166.5,
+      "name_en": "Northern Victoria Land (Terra Nova Bay), Antarctica",
+      "name_zh": "南極北維多利亞地",
+      "score": 86.0,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.326,
+         0.328,
+         0.169,
+         0.122,
+         0.046,
+         0.009
+        ],
+        "moon_value": [
+         0.2799,
+         0.4513,
+         0.1855,
+         0.062,
+         0.0203,
+         0.001
+        ],
+        "s": 0.86,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2237.0,
+        "moon_value": 1526,
+        "s": 0.859,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": -77.53,
+      "lon": 161.6,
+      "name_en": "McMurdo Dry Valleys, Antarctica",
+      "name_zh": "南極乾谷",
+      "score": 82.8,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.156,
+         0.333,
+         0.341,
+         0.147,
+         0.023,
+         0.0
+        ],
+        "moon_value": [
+         0.2799,
+         0.4513,
+         0.1855,
+         0.062,
+         0.0203,
+         0.001
+        ],
+        "s": 0.757,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1409.0,
+        "moon_value": 1526,
+        "s": 0.993,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": -77.5,
+      "lon": -85.5,
+      "name_en": "-77.5, -85.5",
+      "name_zh": "-77.5, -85.5",
+      "score": 80.1,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.075,
+         0.662,
+         0.205,
+         0.046,
+         0.011,
+         0.0
+        ],
+        "moon_value": [
+         0.2799,
+         0.4513,
+         0.1855,
+         0.062,
+         0.0203,
+         0.001
+        ],
+        "s": 0.769,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2190.0,
+        "moon_value": 1526,
+        "s": 0.873,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 4,
+      "lat": -26.5,
+      "lon": -68.5,
+      "name_en": "-26.5, -68.5",
+      "name_zh": "-26.5, -68.5",
+      "score": 76.9,
+      "known_analog_region": "Atacama",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.172,
+         0.233,
+         0.21,
+         0.163,
+         0.181,
+         0.041
+        ],
+        "moon_value": [
+         0.2799,
+         0.4513,
+         0.1855,
+         0.062,
+         0.0203,
+         0.001
+        ],
+        "s": 0.674,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1666.0,
+        "moon_value": 1526,
+        "s": 0.992,
+        "classification": "similar"
+       }
+      ]
+     }
+    ],
+    "least_similar": [
+     {
+      "rank": 1,
+      "lat": 28.5,
+      "lon": 84.5,
+      "name_en": "28.5, 84.5",
+      "name_zh": "28.5, 84.5",
+      "score": 15.6,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.012,
+         0.032,
+         0.05,
+         0.072,
+         0.208,
+         0.625
+        ],
+        "moon_value": [
+         0.2799,
+         0.4513,
+         0.1855,
+         0.062,
+         0.0203,
+         0.001
+        ],
+        "s": 0.178,
+        "classification": "different"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 6637.0,
+        "moon_value": 1526,
+        "s": 0.106,
+        "classification": "different"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": 29.5,
+      "lon": 95.5,
+      "name_en": "29.5, 95.5",
+      "name_zh": "29.5, 95.5",
+      "score": 17.3,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.004,
+         0.013,
+         0.023,
+         0.039,
+         0.187,
+         0.734
+        ],
+        "moon_value": [
+         0.2799,
+         0.4513,
+         0.1855,
+         0.062,
+         0.0203,
+         0.001
+        ],
+        "s": 0.101,
+        "classification": "different"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 4224.0,
+        "moon_value": 1526,
+        "s": 0.34,
+        "classification": "partial"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": 32.5,
+      "lon": 76.5,
+      "name_en": "32.5, 76.5",
+      "name_zh": "32.5, 76.5",
+      "score": 19.0,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.003,
+         0.011,
+         0.024,
+         0.041,
+         0.182,
+         0.739
+        ],
+        "moon_value": [
+         0.2799,
+         0.4513,
+         0.1855,
+         0.062,
+         0.0203,
+         0.001
+        ],
+        "s": 0.1,
+        "classification": "different"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 3905.0,
+        "moon_value": 1526,
+        "s": 0.399,
+        "classification": "partial"
+       }
+      ]
+     }
+    ]
+   },
+   "MonsMouton": {
+    "new_candidates": [
+     {
+      "rank": 1,
+      "lat": -5.5,
+      "lon": 142.5,
+      "name_en": "Southern Highlands, Papua New Guinea",
+      "name_zh": "新幾內亞南部高地",
+      "score": 86.3,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.096,
+         0.198,
+         0.289,
+         0.203,
+         0.16,
+         0.054
+        ],
+        "moon_value": [
+         0.0979,
+         0.2242,
+         0.283,
+         0.2311,
+         0.1581,
+         0.0058
+        ],
+        "s": 0.944,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1868.0,
+        "moon_value": 3454,
+        "s": 0.675,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": 39.5,
+      "lon": 45.5,
+      "name_en": "Southern Armenia uplands",
+      "name_zh": "亞美尼亞南部山區",
+      "score": 79.9,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.069,
+         0.187,
+         0.223,
+         0.208,
+         0.248,
+         0.065
+        ],
+        "moon_value": [
+         0.0979,
+         0.2242,
+         0.283,
+         0.2311,
+         0.1581,
+         0.0058
+        ],
+        "s": 0.851,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1875.0,
+        "moon_value": 3454,
+        "s": 0.678,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": 59.5,
+      "lon": -136.5,
+      "name_en": "Chilkat Range near Haines, Alaska/BC",
+      "name_zh": "阿拉斯加 Haines 附近 Chilkat 山脈",
+      "score": 78.7,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.104,
+         0.225,
+         0.174,
+         0.127,
+         0.195,
+         0.175
+        ],
+        "moon_value": [
+         0.0979,
+         0.2242,
+         0.283,
+         0.2311,
+         0.1581,
+         0.0058
+        ],
+        "s": 0.787,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2134.0,
+        "moon_value": 3454,
+        "s": 0.786,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 4,
+      "lat": 19.5,
+      "lon": -103.5,
+      "name_en": "Colima volcanic complex, Mexico",
+      "name_zh": "墨西哥 Colima 火山區",
+      "score": 76.2,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.219,
+         0.265,
+         0.141,
+         0.104,
+         0.15,
+         0.122
+        ],
+        "moon_value": [
+         0.0979,
+         0.2242,
+         0.283,
+         0.2311,
+         0.1581,
+         0.0058
+        ],
+        "s": 0.723,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2340.0,
+        "moon_value": 3454,
+        "s": 0.854,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 5,
+      "lat": 20.5,
+      "lon": 17.5,
+      "name_en": "Tibesti Mountains, Chad",
+      "name_zh": "查德 Tibesti 山脈",
+      "score": 75.6,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.071,
+         0.193,
+         0.193,
+         0.17,
+         0.238,
+         0.135
+        ],
+        "moon_value": [
+         0.0979,
+         0.2242,
+         0.283,
+         0.2311,
+         0.1581,
+         0.0058
+        ],
+        "s": 0.79,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1868.0,
+        "moon_value": 3454,
+        "s": 0.675,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 6,
+      "lat": -1.5,
+      "lon": 121.5,
+      "name_en": "-1.5, 121.5",
+      "name_zh": "-1.5, 121.5",
+      "score": 73.5,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.088,
+         0.214,
+         0.23,
+         0.183,
+         0.207,
+         0.078
+        ],
+        "moon_value": [
+         0.0979,
+         0.2242,
+         0.283,
+         0.2311,
+         0.1581,
+         0.0058
+        ],
+        "s": 0.879,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1353.0,
+        "moon_value": 3454,
+        "s": 0.401,
+        "classification": "partial"
+       }
+      ]
+     },
+     {
+      "rank": 7,
+      "lat": -0.5,
+      "lon": -78.5,
+      "name_en": "Andes near Quito, Ecuador",
+      "name_zh": "厄瓜多 Quito 附近安地斯",
+      "score": 73.1,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.207,
+         0.231,
+         0.165,
+         0.145,
+         0.183,
+         0.069
+        ],
+        "moon_value": [
+         0.0979,
+         0.2242,
+         0.283,
+         0.2311,
+         0.1581,
+         0.0058
+        ],
+        "s": 0.796,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1673.0,
+        "moon_value": 3454,
+        "s": 0.579,
+        "classification": "partial"
+       }
+      ]
+     },
+     {
+      "rank": 8,
+      "lat": -29.5,
+      "lon": -70.5,
+      "name_en": "Elqui Valley Andes, Chile",
+      "name_zh": "智利 Elqui 谷地安地斯",
+      "score": 73.0,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.025,
+         0.092,
+         0.167,
+         0.246,
+         0.402,
+         0.068
+        ],
+        "moon_value": [
+         0.0979,
+         0.2242,
+         0.283,
+         0.2311,
+         0.1581,
+         0.0058
+        ],
+        "s": 0.679,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2321.0,
+        "moon_value": 3454,
+        "s": 0.848,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 9,
+      "lat": -1.5,
+      "lon": 133.5,
+      "name_en": "-1.5, 133.5",
+      "name_zh": "-1.5, 133.5",
+      "score": 73.0,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.084,
+         0.208,
+         0.231,
+         0.188,
+         0.195,
+         0.093
+        ],
+        "moon_value": [
+         0.0979,
+         0.2242,
+         0.283,
+         0.2311,
+         0.1581,
+         0.0058
+        ],
+        "s": 0.875,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1335.0,
+        "moon_value": 3454,
+        "s": 0.39,
+        "classification": "partial"
+       }
+      ]
+     },
+     {
+      "rank": 10,
+      "lat": -11.5,
+      "lon": -73.5,
+      "name_en": "-11.5, -73.5",
+      "name_zh": "-11.5, -73.5",
+      "score": 71.6,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.141,
+         0.186,
+         0.164,
+         0.135,
+         0.212,
+         0.162
+        ],
+        "moon_value": [
+         0.0979,
+         0.2242,
+         0.283,
+         0.2311,
+         0.1581,
+         0.0058
+        ],
+        "s": 0.747,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1800.0,
+        "moon_value": 3454,
+        "s": 0.643,
+        "classification": "similar"
+       }
+      ]
+     }
+    ],
+    "known_analogs_validation": [
+     {
+      "rank": 1,
+      "lat": null,
+      "lon": null,
+      "name_en": "Mauna Kea, Hawaii",
+      "name_zh": "夏威夷 Mauna Kea",
+      "score": 90.5,
+      "known_analog_region": "Hawaii",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.049,
+         0.22,
+         0.329,
+         0.265,
+         0.132,
+         0.006
+        ],
+        "moon_value": [
+         0.0979,
+         0.2242,
+         0.283,
+         0.2311,
+         0.1581,
+         0.0058
+        ],
+        "s": 0.921,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2390.0,
+        "moon_value": 3454,
+        "s": 0.868,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": -26.5,
+      "lon": -68.5,
+      "name_en": "-26.5, -68.5",
+      "name_zh": "-26.5, -68.5",
+      "score": 77.4,
+      "known_analog_region": "Atacama",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.172,
+         0.233,
+         0.21,
+         0.163,
+         0.181,
+         0.041
+        ],
+        "moon_value": [
+         0.0979,
+         0.2242,
+         0.283,
+         0.2311,
+         0.1581,
+         0.0058
+        ],
+        "s": 0.859,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1666.0,
+        "moon_value": 3454,
+        "s": 0.575,
+        "classification": "partial"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": -73.5,
+      "lon": 166.5,
+      "name_en": "Northern Victoria Land (Terra Nova Bay), Antarctica",
+      "name_zh": "南極北維多利亞地",
+      "score": 71.2,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.326,
+         0.328,
+         0.169,
+         0.122,
+         0.046,
+         0.009
+        ],
+        "moon_value": [
+         0.0979,
+         0.2242,
+         0.283,
+         0.2311,
+         0.1581,
+         0.0058
+        ],
+        "s": 0.664,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2237.0,
+        "moon_value": 3454,
+        "s": 0.822,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 4,
+      "lat": -77.53,
+      "lon": 161.6,
+      "name_en": "McMurdo Dry Valleys, Antarctica",
+      "name_zh": "南極乾谷",
+      "score": 67.3,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.156,
+         0.333,
+         0.341,
+         0.147,
+         0.023,
+         0.0
+        ],
+        "moon_value": [
+         0.0979,
+         0.2242,
+         0.283,
+         0.2311,
+         0.1581,
+         0.0058
+        ],
+        "s": 0.775,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1409.0,
+        "moon_value": 3454,
+        "s": 0.433,
+        "classification": "partial"
+       }
+      ]
+     }
+    ],
+    "least_similar": [
+     {
+      "rank": 1,
+      "lat": -72.5,
+      "lon": 30.5,
+      "name_en": "-72.5, 30.5",
+      "name_zh": "-72.5, 30.5",
+      "score": 6.9,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         1.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.0979,
+         0.2242,
+         0.283,
+         0.2311,
+         0.1581,
+         0.0058
+        ],
+        "s": 0.098,
+        "classification": "different"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 192.0,
+        "moon_value": 3454,
+        "s": 0.0,
+        "classification": "different"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": -28.5,
+      "lon": -66.5,
+      "name_en": "-28.5, -66.5",
+      "name_zh": "-28.5, -66.5",
+      "score": 19.6,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.817,
+         0.169,
+         0.013,
+         0.001,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.0979,
+         0.2242,
+         0.283,
+         0.2311,
+         0.1581,
+         0.0058
+        ],
+        "s": 0.281,
+        "classification": "different"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 135.0,
+        "moon_value": 3454,
+        "s": 0.0,
+        "classification": "different"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": 14.5,
+      "lon": -91.5,
+      "name_en": "14.5, -91.5",
+      "name_zh": "14.5, -91.5",
+      "score": 21.9,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.793,
+         0.188,
+         0.018,
+         0.001,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.0979,
+         0.2242,
+         0.283,
+         0.2311,
+         0.1581,
+         0.0058
+        ],
+        "s": 0.305,
+        "classification": "partial"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 481.0,
+        "moon_value": 3454,
+        "s": 0.018,
+        "classification": "different"
+       }
+      ]
+     }
+    ]
+   },
+   "NobileRim1": {
+    "new_candidates": [
+     {
+      "rank": 1,
+      "lat": 59.5,
+      "lon": -136.5,
+      "name_en": "Chilkat Range near Haines, Alaska/BC",
+      "name_zh": "阿拉斯加 Haines 附近 Chilkat 山脈",
+      "score": 75.9,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.104,
+         0.225,
+         0.174,
+         0.127,
+         0.195,
+         0.175
+        ],
+        "moon_value": [
+         0.1293,
+         0.2211,
+         0.2072,
+         0.1536,
+         0.2705,
+         0.0183
+        ],
+        "s": 0.84,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2134.0,
+        "moon_value": 4447,
+        "s": 0.571,
+        "classification": "partial"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": 39.5,
+      "lon": 45.5,
+      "name_en": "Southern Armenia uplands",
+      "name_zh": "亞美尼亞南部山區",
+      "score": 75.6,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.069,
+         0.187,
+         0.223,
+         0.208,
+         0.248,
+         0.065
+        ],
+        "moon_value": [
+         0.1293,
+         0.2211,
+         0.2072,
+         0.1536,
+         0.2705,
+         0.0183
+        ],
+        "s": 0.883,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1875.0,
+        "moon_value": 4447,
+        "s": 0.46,
+        "classification": "partial"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": 20.5,
+      "lon": 17.5,
+      "name_en": "Tibesti Mountains, Chad",
+      "name_zh": "查德 Tibesti 山脈",
+      "score": 74.4,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.071,
+         0.193,
+         0.193,
+         0.17,
+         0.238,
+         0.135
+        ],
+        "moon_value": [
+         0.1293,
+         0.2211,
+         0.2072,
+         0.1536,
+         0.2705,
+         0.0183
+        ],
+        "s": 0.867,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1868.0,
+        "moon_value": 4447,
+        "s": 0.457,
+        "classification": "partial"
+       }
+      ]
+     },
+     {
+      "rank": 4,
+      "lat": 19.5,
+      "lon": -103.5,
+      "name_en": "Colima volcanic complex, Mexico",
+      "name_zh": "墨西哥 Colima 火山區",
+      "score": 73.0,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.219,
+         0.265,
+         0.141,
+         0.104,
+         0.15,
+         0.122
+        ],
+        "moon_value": [
+         0.1293,
+         0.2211,
+         0.2072,
+         0.1536,
+         0.2705,
+         0.0183
+        ],
+        "s": 0.764,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2340.0,
+        "moon_value": 4447,
+        "s": 0.651,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 5,
+      "lat": -5.5,
+      "lon": 142.5,
+      "name_en": "Southern Highlands, Papua New Guinea",
+      "name_zh": "新幾內亞南部高地",
+      "score": 72.0,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.096,
+         0.198,
+         0.289,
+         0.203,
+         0.16,
+         0.054
+        ],
+        "moon_value": [
+         0.1293,
+         0.2211,
+         0.2072,
+         0.1536,
+         0.2705,
+         0.0183
+        ],
+        "s": 0.833,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1868.0,
+        "moon_value": 4447,
+        "s": 0.457,
+        "classification": "partial"
+       }
+      ]
+     },
+     {
+      "rank": 6,
+      "lat": -2.5,
+      "lon": 120.5,
+      "name_en": "Central Sulawesi highlands, Indonesia",
+      "name_zh": "印尼蘇拉威西中部山區",
+      "score": 72.0,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.038,
+         0.074,
+         0.115,
+         0.178,
+         0.397,
+         0.199
+        ],
+        "moon_value": [
+         0.1293,
+         0.2211,
+         0.2072,
+         0.1536,
+         0.2705,
+         0.0183
+        ],
+        "s": 0.668,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2954.0,
+        "moon_value": 4447,
+        "s": 0.84,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 7,
+      "lat": -11.5,
+      "lon": -73.5,
+      "name_en": "-11.5, -73.5",
+      "name_zh": "-11.5, -73.5",
+      "score": 71.9,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.141,
+         0.186,
+         0.164,
+         0.135,
+         0.212,
+         0.162
+        ],
+        "moon_value": [
+         0.1293,
+         0.2211,
+         0.2072,
+         0.1536,
+         0.2705,
+         0.0183
+        ],
+        "s": 0.845,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1800.0,
+        "moon_value": 4447,
+        "s": 0.427,
+        "classification": "partial"
+       }
+      ]
+     },
+     {
+      "rank": 8,
+      "lat": -0.5,
+      "lon": -78.5,
+      "name_en": "Andes near Quito, Ecuador",
+      "name_zh": "厄瓜多 Quito 附近安地斯",
+      "score": 71.4,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.207,
+         0.231,
+         0.165,
+         0.145,
+         0.183,
+         0.069
+        ],
+        "moon_value": [
+         0.1293,
+         0.2211,
+         0.2072,
+         0.1536,
+         0.2705,
+         0.0183
+        ],
+        "s": 0.861,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1673.0,
+        "moon_value": 4447,
+        "s": 0.37,
+        "classification": "partial"
+       }
+      ]
+     },
+     {
+      "rank": 9,
+      "lat": -29.5,
+      "lon": -70.5,
+      "name_en": "Elqui Valley Andes, Chile",
+      "name_zh": "智利 Elqui 谷地安地斯",
+      "score": 70.2,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.025,
+         0.092,
+         0.167,
+         0.246,
+         0.402,
+         0.068
+        ],
+        "moon_value": [
+         0.1293,
+         0.2211,
+         0.2072,
+         0.1536,
+         0.2705,
+         0.0183
+        ],
+        "s": 0.727,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2321.0,
+        "moon_value": 4447,
+        "s": 0.644,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 10,
+      "lat": 30.5,
+      "lon": 94.5,
+      "name_en": "30.5, 94.5",
+      "name_zh": "30.5, 94.5",
+      "score": 69.8,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.084,
+         0.135,
+         0.091,
+         0.084,
+         0.213,
+         0.394
+        ],
+        "moon_value": [
+         0.1293,
+         0.2211,
+         0.2072,
+         0.1536,
+         0.2705,
+         0.0183
+        ],
+        "s": 0.625,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 3074.0,
+        "moon_value": 4447,
+        "s": 0.868,
+        "classification": "similar"
+       }
+      ]
+     }
+    ],
+    "known_analogs_validation": [
+     {
+      "rank": 1,
+      "lat": -26.5,
+      "lon": -68.5,
+      "name_en": "-26.5, -68.5",
+      "name_zh": "-26.5, -68.5",
+      "score": 74.8,
+      "known_analog_region": "Atacama",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.172,
+         0.233,
+         0.21,
+         0.163,
+         0.181,
+         0.041
+        ],
+        "moon_value": [
+         0.1293,
+         0.2211,
+         0.2072,
+         0.1536,
+         0.2705,
+         0.0183
+        ],
+        "s": 0.911,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1666.0,
+        "moon_value": 4447,
+        "s": 0.367,
+        "classification": "partial"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": null,
+      "lon": null,
+      "name_en": "Mauna Kea, Hawaii",
+      "name_zh": "夏威夷 Mauna Kea",
+      "score": 73.8,
+      "known_analog_region": "Hawaii",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.049,
+         0.22,
+         0.329,
+         0.265,
+         0.132,
+         0.006
+        ],
+        "moon_value": [
+         0.1293,
+         0.2211,
+         0.2072,
+         0.1536,
+         0.2705,
+         0.0183
+        ],
+        "s": 0.767,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2390.0,
+        "moon_value": 4447,
+        "s": 0.669,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": -73.5,
+      "lon": 166.5,
+      "name_en": "Northern Victoria Land (Terra Nova Bay), Antarctica",
+      "name_zh": "南極北維多利亞地",
+      "score": 67.1,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.326,
+         0.328,
+         0.169,
+         0.122,
+         0.046,
+         0.009
+        ],
+        "moon_value": [
+         0.1293,
+         0.2211,
+         0.2072,
+         0.1536,
+         0.2705,
+         0.0183
+        ],
+        "s": 0.696,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2237.0,
+        "moon_value": 4447,
+        "s": 0.612,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 4,
+      "lat": -27.5,
+      "lon": -69.5,
+      "name_en": "-27.5, -69.5",
+      "name_zh": "-27.5, -69.5",
+      "score": 62.5,
+      "known_analog_region": "Atacama",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.041,
+         0.081,
+         0.157,
+         0.208,
+         0.387,
+         0.127
+        ],
+        "moon_value": [
+         0.1293,
+         0.2211,
+         0.2072,
+         0.1536,
+         0.2705,
+         0.0183
+        ],
+        "s": 0.721,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1738.0,
+        "moon_value": 4447,
+        "s": 0.399,
+        "classification": "partial"
+       }
+      ]
+     }
+    ],
+    "least_similar": [
+     {
+      "rank": 1,
+      "lat": -72.5,
+      "lon": 30.5,
+      "name_en": "-72.5, 30.5",
+      "name_zh": "-72.5, 30.5",
+      "score": 9.1,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         1.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.1293,
+         0.2211,
+         0.2072,
+         0.1536,
+         0.2705,
+         0.0183
+        ],
+        "s": 0.129,
+        "classification": "different"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 192.0,
+        "moon_value": 4447,
+        "s": 0.0,
+        "classification": "different"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": -28.5,
+      "lon": -66.5,
+      "name_en": "-28.5, -66.5",
+      "name_zh": "-28.5, -66.5",
+      "score": 21.8,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.817,
+         0.169,
+         0.013,
+         0.001,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.1293,
+         0.2211,
+         0.2072,
+         0.1536,
+         0.2705,
+         0.0183
+        ],
+        "s": 0.312,
+        "classification": "partial"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 135.0,
+        "moon_value": 4447,
+        "s": 0.0,
+        "classification": "different"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": 14.5,
+      "lon": -91.5,
+      "name_en": "14.5, -91.5",
+      "name_zh": "14.5, -91.5",
+      "score": 23.7,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.793,
+         0.188,
+         0.018,
+         0.001,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.1293,
+         0.2211,
+         0.2072,
+         0.1536,
+         0.2705,
+         0.0183
+        ],
+        "s": 0.336,
+        "classification": "partial"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 481.0,
+        "moon_value": 4447,
+        "s": 0.006,
+        "classification": "different"
+       }
+      ]
+     }
+    ]
+   },
+   "NobileRim2": {
+    "new_candidates": [
+     {
+      "rank": 1,
+      "lat": 71.5,
+      "lon": -52.5,
+      "name_en": "Uummannaq Fjord, West Greenland",
+      "name_zh": "格陵蘭西岸 Uummannaq 峽灣",
+      "score": 84.9,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.238,
+         0.3,
+         0.161,
+         0.092,
+         0.062,
+         0.147
+        ],
+        "moon_value": [
+         0.1835,
+         0.3138,
+         0.2607,
+         0.1685,
+         0.0731,
+         0.0003
+        ],
+        "s": 0.799,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2275.0,
+        "moon_value": 2738,
+        "s": 0.965,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": 19.5,
+      "lon": -103.5,
+      "name_en": "Colima volcanic complex, Mexico",
+      "name_zh": "墨西哥 Colima 火山區",
+      "score": 82.9,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.219,
+         0.265,
+         0.141,
+         0.104,
+         0.15,
+         0.122
+        ],
+        "moon_value": [
+         0.1835,
+         0.3138,
+         0.2607,
+         0.1685,
+         0.0731,
+         0.0003
+        ],
+        "s": 0.766,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2340.0,
+        "moon_value": 2738,
+        "s": 0.975,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": -5.5,
+      "lon": 142.5,
+      "name_en": "Southern Highlands, Papua New Guinea",
+      "name_zh": "新幾內亞南部高地",
+      "score": 81.5,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.096,
+         0.198,
+         0.289,
+         0.203,
+         0.16,
+         0.054
+        ],
+        "moon_value": [
+         0.1835,
+         0.3138,
+         0.2607,
+         0.1685,
+         0.0731,
+         0.0003
+        ],
+        "s": 0.797,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1868.0,
+        "moon_value": 2738,
+        "s": 0.859,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 4,
+      "lat": -0.5,
+      "lon": -78.5,
+      "name_en": "Andes near Quito, Ecuador",
+      "name_zh": "厄瓜多 Quito 附近安地斯",
+      "score": 79.2,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.207,
+         0.231,
+         0.165,
+         0.145,
+         0.183,
+         0.069
+        ],
+        "moon_value": [
+         0.1835,
+         0.3138,
+         0.2607,
+         0.1685,
+         0.0731,
+         0.0003
+        ],
+        "s": 0.798,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1673.0,
+        "moon_value": 2738,
+        "s": 0.777,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 5,
+      "lat": 82.5,
+      "lon": -76.5,
+      "name_en": "加拿大 Ellesmere Island 北部",
+      "name_zh": "加拿大 Ellesmere Island 北部",
+      "score": 77.8,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.234,
+         0.261,
+         0.133,
+         0.097,
+         0.161,
+         0.115
+        ],
+        "moon_value": [
+         0.1835,
+         0.3138,
+         0.2607,
+         0.1685,
+         0.0731,
+         0.0003
+        ],
+        "s": 0.747,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1848.0,
+        "moon_value": 2738,
+        "s": 0.851,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 6,
+      "lat": 59.5,
+      "lon": -136.5,
+      "name_en": "Chilkat Range near Haines, Alaska/BC",
+      "name_zh": "阿拉斯加 Haines 附近 Chilkat 山脈",
+      "score": 77.4,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.104,
+         0.225,
+         0.174,
+         0.127,
+         0.195,
+         0.175
+        ],
+        "moon_value": [
+         0.1835,
+         0.3138,
+         0.2607,
+         0.1685,
+         0.0731,
+         0.0003
+        ],
+        "s": 0.703,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2134.0,
+        "moon_value": 2738,
+        "s": 0.937,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 7,
+      "lat": -15.5,
+      "lon": -74.5,
+      "name_en": "Southern coastal Andes, Peru",
+      "name_zh": "秘魯南部安地斯",
+      "score": 77.3,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.24,
+         0.246,
+         0.153,
+         0.109,
+         0.169,
+         0.084
+        ],
+        "moon_value": [
+         0.1835,
+         0.3138,
+         0.2607,
+         0.1685,
+         0.0731,
+         0.0003
+        ],
+        "s": 0.764,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1705.0,
+        "moon_value": 2738,
+        "s": 0.792,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 8,
+      "lat": 39.5,
+      "lon": 45.5,
+      "name_en": "Southern Armenia uplands",
+      "name_zh": "亞美尼亞南部山區",
+      "score": 76.3,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.069,
+         0.187,
+         0.223,
+         0.208,
+         0.248,
+         0.065
+        ],
+        "moon_value": [
+         0.1835,
+         0.3138,
+         0.2607,
+         0.1685,
+         0.0731,
+         0.0003
+        ],
+        "s": 0.721,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1875.0,
+        "moon_value": 2738,
+        "s": 0.861,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 9,
+      "lat": 30.5,
+      "lon": 81.5,
+      "name_en": "Ngari near Mt Kailash, Tibet",
+      "name_zh": "西藏阿里（岡仁波齊一帶）",
+      "score": 75.6,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.245,
+         0.259,
+         0.159,
+         0.117,
+         0.132,
+         0.089
+        ],
+        "moon_value": [
+         0.1835,
+         0.3138,
+         0.2607,
+         0.1685,
+         0.0731,
+         0.0003
+        ],
+        "s": 0.792,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1480.0,
+        "moon_value": 2738,
+        "s": 0.674,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 10,
+      "lat": 20.5,
+      "lon": 17.5,
+      "name_en": "Tibesti Mountains, Chad",
+      "name_zh": "查德 Tibesti 山脈",
+      "score": 74.7,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.071,
+         0.193,
+         0.193,
+         0.17,
+         0.238,
+         0.135
+        ],
+        "moon_value": [
+         0.1835,
+         0.3138,
+         0.2607,
+         0.1685,
+         0.0731,
+         0.0003
+        ],
+        "s": 0.698,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1868.0,
+        "moon_value": 2738,
+        "s": 0.859,
+        "classification": "similar"
+       }
+      ]
+     }
+    ],
+    "known_analogs_validation": [
+     {
+      "rank": 1,
+      "lat": -73.5,
+      "lon": 166.5,
+      "name_en": "Northern Victoria Land (Terra Nova Bay), Antarctica",
+      "name_zh": "南極北維多利亞地",
+      "score": 87.1,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.326,
+         0.328,
+         0.169,
+         0.122,
+         0.046,
+         0.009
+        ],
+        "moon_value": [
+         0.1835,
+         0.3138,
+         0.2607,
+         0.1685,
+         0.0731,
+         0.0003
+        ],
+        "s": 0.834,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2237.0,
+        "moon_value": 2738,
+        "s": 0.958,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": null,
+      "lon": null,
+      "name_en": "Mauna Kea, Hawaii",
+      "name_zh": "夏威夷 Mauna Kea",
+      "score": 83.4,
+      "known_analog_region": "Hawaii",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.049,
+         0.22,
+         0.329,
+         0.265,
+         0.132,
+         0.006
+        ],
+        "moon_value": [
+         0.1835,
+         0.3138,
+         0.2607,
+         0.1685,
+         0.0731,
+         0.0003
+        ],
+        "s": 0.771,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2390.0,
+        "moon_value": 2738,
+        "s": 0.981,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": -26.5,
+      "lon": -68.5,
+      "name_en": "-26.5, -68.5",
+      "name_zh": "-26.5, -68.5",
+      "score": 82.8,
+      "known_analog_region": "Atacama",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.172,
+         0.233,
+         0.21,
+         0.163,
+         0.181,
+         0.041
+        ],
+        "moon_value": [
+         0.1835,
+         0.3138,
+         0.2607,
+         0.1685,
+         0.0731,
+         0.0003
+        ],
+        "s": 0.851,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1666.0,
+        "moon_value": 2738,
+        "s": 0.773,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 4,
+      "lat": -77.53,
+      "lon": 161.6,
+      "name_en": "McMurdo Dry Valleys, Antarctica",
+      "name_zh": "南極乾谷",
+      "score": 82.0,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.156,
+         0.333,
+         0.341,
+         0.147,
+         0.023,
+         0.0
+        ],
+        "moon_value": [
+         0.1835,
+         0.3138,
+         0.2607,
+         0.1685,
+         0.0731,
+         0.0003
+        ],
+        "s": 0.9,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1409.0,
+        "moon_value": 2738,
+        "s": 0.632,
+        "classification": "similar"
+       }
+      ]
+     }
+    ],
+    "least_similar": [
+     {
+      "rank": 1,
+      "lat": -72.5,
+      "lon": 30.5,
+      "name_en": "-72.5, 30.5",
+      "name_zh": "-72.5, 30.5",
+      "score": 12.9,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         1.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.1835,
+         0.3138,
+         0.2607,
+         0.1685,
+         0.0731,
+         0.0003
+        ],
+        "s": 0.183,
+        "classification": "different"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 192.0,
+        "moon_value": 2738,
+        "s": 0.001,
+        "classification": "different"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": -28.5,
+      "lon": -66.5,
+      "name_en": "-28.5, -66.5",
+      "name_zh": "-28.5, -66.5",
+      "score": 25.6,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.817,
+         0.169,
+         0.013,
+         0.001,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.1835,
+         0.3138,
+         0.2607,
+         0.1685,
+         0.0731,
+         0.0003
+        ],
+        "s": 0.366,
+        "classification": "partial"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 135.0,
+        "moon_value": 2738,
+        "s": 0.0,
+        "classification": "different"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": 14.5,
+      "lon": -91.5,
+      "name_en": "14.5, -91.5",
+      "name_zh": "14.5, -91.5",
+      "score": 28.6,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.793,
+         0.188,
+         0.018,
+         0.001,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.1835,
+         0.3138,
+         0.2607,
+         0.1685,
+         0.0731,
+         0.0003
+        ],
+        "s": 0.391,
+        "classification": "partial"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 481.0,
+        "moon_value": 2738,
+        "s": 0.043,
+        "classification": "different"
+       }
+      ]
+     }
+    ]
+   },
+   "deGerlacheRim2": {
+    "new_candidates": [
+     {
+      "rank": 1,
+      "lat": -5.5,
+      "lon": 142.5,
+      "name_en": "Southern Highlands, Papua New Guinea",
+      "name_zh": "新幾內亞南部高地",
+      "score": 84.7,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.096,
+         0.198,
+         0.289,
+         0.203,
+         0.16,
+         0.054
+        ],
+        "moon_value": [
+         0.038,
+         0.1503,
+         0.3273,
+         0.3229,
+         0.1606,
+         0.0009
+        ],
+        "s": 0.841,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1868.0,
+        "moon_value": 2725,
+        "s": 0.862,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": 39.5,
+      "lon": 45.5,
+      "name_en": "Southern Armenia uplands",
+      "name_zh": "亞美尼亞南部山區",
+      "score": 80.6,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.069,
+         0.187,
+         0.223,
+         0.208,
+         0.248,
+         0.065
+        ],
+        "moon_value": [
+         0.038,
+         0.1503,
+         0.3273,
+         0.3229,
+         0.1606,
+         0.0009
+        ],
+        "s": 0.78,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1875.0,
+        "moon_value": 2725,
+        "s": 0.865,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": -29.5,
+      "lon": -70.5,
+      "name_en": "Elqui Valley Andes, Chile",
+      "name_zh": "智利 Elqui 谷地安地斯",
+      "score": 77.6,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.025,
+         0.092,
+         0.167,
+         0.246,
+         0.402,
+         0.068
+        ],
+        "moon_value": [
+         0.038,
+         0.1503,
+         0.3273,
+         0.3229,
+         0.1606,
+         0.0009
+        ],
+        "s": 0.692,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2321.0,
+        "moon_value": 2725,
+        "s": 0.974,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 4,
+      "lat": 20.5,
+      "lon": 17.5,
+      "name_en": "Tibesti Mountains, Chad",
+      "name_zh": "查德 Tibesti 山脈",
+      "score": 75.7,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.071,
+         0.193,
+         0.193,
+         0.17,
+         0.238,
+         0.135
+        ],
+        "moon_value": [
+         0.038,
+         0.1503,
+         0.3273,
+         0.3229,
+         0.1606,
+         0.0009
+        ],
+        "s": 0.712,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1868.0,
+        "moon_value": 2725,
+        "s": 0.862,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 5,
+      "lat": 36.5,
+      "lon": 51.5,
+      "name_en": "Alborz Mountains, Iran",
+      "name_zh": "伊朗 Alborz 山脈",
+      "score": 74.3,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.034,
+         0.109,
+         0.162,
+         0.195,
+         0.324,
+         0.177
+        ],
+        "moon_value": [
+         0.038,
+         0.1503,
+         0.3273,
+         0.3229,
+         0.1606,
+         0.0009
+        ],
+        "s": 0.661,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2118.0,
+        "moon_value": 2725,
+        "s": 0.936,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 6,
+      "lat": 59.5,
+      "lon": -136.5,
+      "name_en": "Chilkat Range near Haines, Alaska/BC",
+      "name_zh": "阿拉斯加 Haines 附近 Chilkat 山脈",
+      "score": 73.7,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.104,
+         0.225,
+         0.174,
+         0.127,
+         0.195,
+         0.175
+        ],
+        "moon_value": [
+         0.038,
+         0.1503,
+         0.3273,
+         0.3229,
+         0.1606,
+         0.0009
+        ],
+        "s": 0.651,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2134.0,
+        "moon_value": 2725,
+        "s": 0.94,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 7,
+      "lat": -1.5,
+      "lon": 133.5,
+      "name_en": "-1.5, 133.5",
+      "name_zh": "-1.5, 133.5",
+      "score": 71.5,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.084,
+         0.208,
+         0.231,
+         0.188,
+         0.195,
+         0.093
+        ],
+        "moon_value": [
+         0.038,
+         0.1503,
+         0.3273,
+         0.3229,
+         0.1606,
+         0.0009
+        ],
+        "s": 0.769,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1335.0,
+        "moon_value": 2725,
+        "s": 0.589,
+        "classification": "partial"
+       }
+      ]
+     },
+     {
+      "rank": 8,
+      "lat": -1.5,
+      "lon": 121.5,
+      "name_en": "-1.5, 121.5",
+      "name_zh": "-1.5, 121.5",
+      "score": 71.4,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.088,
+         0.214,
+         0.23,
+         0.183,
+         0.207,
+         0.078
+        ],
+        "moon_value": [
+         0.038,
+         0.1503,
+         0.3273,
+         0.3229,
+         0.1606,
+         0.0009
+        ],
+        "s": 0.762,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1353.0,
+        "moon_value": 2725,
+        "s": 0.6,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 9,
+      "lat": -11.5,
+      "lon": -73.5,
+      "name_en": "-11.5, -73.5",
+      "name_zh": "-11.5, -73.5",
+      "score": 70.5,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.141,
+         0.186,
+         0.164,
+         0.135,
+         0.212,
+         0.162
+        ],
+        "moon_value": [
+         0.038,
+         0.1503,
+         0.3273,
+         0.3229,
+         0.1606,
+         0.0009
+        ],
+        "s": 0.649,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1800.0,
+        "moon_value": 2725,
+        "s": 0.836,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 10,
+      "lat": 19.5,
+      "lon": -103.5,
+      "name_en": "Colima volcanic complex, Mexico",
+      "name_zh": "墨西哥 Colima 火山區",
+      "score": 70.2,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.219,
+         0.265,
+         0.141,
+         0.104,
+         0.15,
+         0.122
+        ],
+        "moon_value": [
+         0.038,
+         0.1503,
+         0.3273,
+         0.3229,
+         0.1606,
+         0.0009
+        ],
+        "s": 0.584,
+        "classification": "partial"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2340.0,
+        "moon_value": 2725,
+        "s": 0.976,
+        "classification": "similar"
+       }
+      ]
+     }
+    ],
+    "known_analogs_validation": [
+     {
+      "rank": 1,
+      "lat": null,
+      "lon": null,
+      "name_en": "Mauna Kea, Hawaii",
+      "name_zh": "夏威夷 Mauna Kea",
+      "score": 93.4,
+      "known_analog_region": "Hawaii",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.049,
+         0.22,
+         0.329,
+         0.265,
+         0.132,
+         0.006
+        ],
+        "moon_value": [
+         0.038,
+         0.1503,
+         0.3273,
+         0.3229,
+         0.1606,
+         0.0009
+        ],
+        "s": 0.913,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2390.0,
+        "moon_value": 2725,
+        "s": 0.982,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": -26.5,
+      "lon": -68.5,
+      "name_en": "-26.5, -68.5",
+      "name_zh": "-26.5, -68.5",
+      "score": 73.9,
+      "known_analog_region": "Atacama",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.172,
+         0.233,
+         0.21,
+         0.163,
+         0.181,
+         0.041
+        ],
+        "moon_value": [
+         0.038,
+         0.1503,
+         0.3273,
+         0.3229,
+         0.1606,
+         0.0009
+        ],
+        "s": 0.723,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1666.0,
+        "moon_value": 2725,
+        "s": 0.777,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": -27.5,
+      "lon": -69.5,
+      "name_en": "-27.5, -69.5",
+      "name_zh": "-27.5, -69.5",
+      "score": 69.5,
+      "known_analog_region": "Atacama",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.041,
+         0.081,
+         0.157,
+         0.208,
+         0.387,
+         0.127
+        ],
+        "moon_value": [
+         0.038,
+         0.1503,
+         0.3273,
+         0.3229,
+         0.1606,
+         0.0009
+        ],
+        "s": 0.645,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1738.0,
+        "moon_value": 2725,
+        "s": 0.81,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 4,
+      "lat": -77.53,
+      "lon": 161.6,
+      "name_en": "McMurdo Dry Valleys, Antarctica",
+      "name_zh": "南極乾谷",
+      "score": 67.1,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.156,
+         0.333,
+         0.341,
+         0.147,
+         0.023,
+         0.0
+        ],
+        "moon_value": [
+         0.038,
+         0.1503,
+         0.3273,
+         0.3229,
+         0.1606,
+         0.0009
+        ],
+        "s": 0.686,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1409.0,
+        "moon_value": 2725,
+        "s": 0.636,
+        "classification": "similar"
+       }
+      ]
+     }
+    ],
+    "least_similar": [
+     {
+      "rank": 1,
+      "lat": -72.5,
+      "lon": 30.5,
+      "name_en": "-72.5, 30.5",
+      "name_zh": "-72.5, 30.5",
+      "score": 2.7,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         1.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.038,
+         0.1503,
+         0.3273,
+         0.3229,
+         0.1606,
+         0.0009
+        ],
+        "s": 0.038,
+        "classification": "different"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 192.0,
+        "moon_value": 2725,
+        "s": 0.001,
+        "classification": "different"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": -28.5,
+      "lon": -66.5,
+      "name_en": "-28.5, -66.5",
+      "name_zh": "-28.5, -66.5",
+      "score": 14.2,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.817,
+         0.169,
+         0.013,
+         0.001,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.038,
+         0.1503,
+         0.3273,
+         0.3229,
+         0.1606,
+         0.0009
+        ],
+        "s": 0.202,
+        "classification": "different"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 135.0,
+        "moon_value": 2725,
+        "s": 0.0,
+        "classification": "different"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": 14.5,
+      "lon": -91.5,
+      "name_en": "14.5, -91.5",
+      "name_zh": "14.5, -91.5",
+      "score": 15.8,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.793,
+         0.188,
+         0.018,
+         0.001,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.038,
+         0.1503,
+         0.3273,
+         0.3229,
+         0.1606,
+         0.0009
+        ],
+        "s": 0.207,
+        "classification": "different"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 481.0,
+        "moon_value": 2725,
+        "s": 0.044,
+        "classification": "different"
+       }
+      ]
+     }
+    ]
+   },
+   "SlaterPlain": {
+    "new_candidates": [
+     {
+      "rank": 1,
+      "lat": 71.5,
+      "lon": -52.5,
+      "name_en": "Uummannaq Fjord, West Greenland",
+      "name_zh": "格陵蘭西岸 Uummannaq 峽灣",
+      "score": 86.1,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.238,
+         0.3,
+         0.161,
+         0.092,
+         0.062,
+         0.147
+        ],
+        "moon_value": [
+         0.1988,
+         0.3527,
+         0.2443,
+         0.1515,
+         0.0514,
+         0.0013
+        ],
+        "s": 0.805,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2275.0,
+        "moon_value": 2077,
+        "s": 0.991,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": -0.5,
+      "lon": -78.5,
+      "name_en": "Andes near Quito, Ecuador",
+      "name_zh": "厄瓜多 Quito 附近安地斯",
+      "score": 84.1,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.207,
+         0.231,
+         0.165,
+         0.145,
+         0.183,
+         0.069
+        ],
+        "moon_value": [
+         0.1988,
+         0.3527,
+         0.2443,
+         0.1515,
+         0.0514,
+         0.0013
+        ],
+        "s": 0.793,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1673.0,
+        "moon_value": 2077,
+        "s": 0.952,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": 19.5,
+      "lon": -103.5,
+      "name_en": "Colima volcanic complex, Mexico",
+      "name_zh": "墨西哥 Colima 火山區",
+      "score": 82.8,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.219,
+         0.265,
+         0.141,
+         0.104,
+         0.15,
+         0.122
+        ],
+        "moon_value": [
+         0.1988,
+         0.3527,
+         0.2443,
+         0.1515,
+         0.0514,
+         0.0013
+        ],
+        "s": 0.761,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2340.0,
+        "moon_value": 2077,
+        "s": 0.985,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 4,
+      "lat": -15.5,
+      "lon": -74.5,
+      "name_en": "Southern coastal Andes, Peru",
+      "name_zh": "秘魯南部安地斯",
+      "score": 81.9,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.24,
+         0.246,
+         0.153,
+         0.109,
+         0.169,
+         0.084
+        ],
+        "moon_value": [
+         0.1988,
+         0.3527,
+         0.2443,
+         0.1515,
+         0.0514,
+         0.0013
+        ],
+        "s": 0.759,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1705.0,
+        "moon_value": 2077,
+        "s": 0.96,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 5,
+      "lat": 30.5,
+      "lon": 81.5,
+      "name_en": "Ngari near Mt Kailash, Tibet",
+      "name_zh": "西藏阿里（岡仁波齊一帶）",
+      "score": 81.7,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.245,
+         0.259,
+         0.159,
+         0.117,
+         0.132,
+         0.089
+        ],
+        "moon_value": [
+         0.1988,
+         0.3527,
+         0.2443,
+         0.1515,
+         0.0514,
+         0.0013
+        ],
+        "s": 0.786,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1480.0,
+        "moon_value": 2077,
+        "s": 0.887,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 6,
+      "lat": -5.5,
+      "lon": 142.5,
+      "name_en": "Southern Highlands, Papua New Guinea",
+      "name_zh": "新幾內亞南部高地",
+      "score": 81.6,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.096,
+         0.198,
+         0.289,
+         0.203,
+         0.16,
+         0.054
+        ],
+        "moon_value": [
+         0.1988,
+         0.3527,
+         0.2443,
+         0.1515,
+         0.0514,
+         0.0013
+        ],
+        "s": 0.743,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1868.0,
+        "moon_value": 2077,
+        "s": 0.988,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 7,
+      "lat": 82.5,
+      "lon": -76.5,
+      "name_en": "加拿大 Ellesmere Island 北部",
+      "name_zh": "加拿大 Ellesmere Island 北部",
+      "score": 81.5,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.234,
+         0.261,
+         0.133,
+         0.097,
+         0.161,
+         0.115
+        ],
+        "moon_value": [
+         0.1988,
+         0.3527,
+         0.2443,
+         0.1515,
+         0.0514,
+         0.0013
+        ],
+        "s": 0.742,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1848.0,
+        "moon_value": 2077,
+        "s": 0.986,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 8,
+      "lat": 59.5,
+      "lon": -136.5,
+      "name_en": "Chilkat Range near Haines, Alaska/BC",
+      "name_zh": "阿拉斯加 Haines 附近 Chilkat 山脈",
+      "score": 77.8,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.104,
+         0.225,
+         0.174,
+         0.127,
+         0.195,
+         0.175
+        ],
+        "moon_value": [
+         0.1988,
+         0.3527,
+         0.2443,
+         0.1515,
+         0.0514,
+         0.0013
+        ],
+        "s": 0.683,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2134.0,
+        "moon_value": 2077,
+        "s": 0.999,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 9,
+      "lat": 39.5,
+      "lon": 45.5,
+      "name_en": "Southern Armenia uplands",
+      "name_zh": "亞美尼亞南部山區",
+      "score": 77.5,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.069,
+         0.187,
+         0.223,
+         0.208,
+         0.248,
+         0.065
+        ],
+        "moon_value": [
+         0.1988,
+         0.3527,
+         0.2443,
+         0.1515,
+         0.0514,
+         0.0013
+        ],
+        "s": 0.683,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1875.0,
+        "moon_value": 2077,
+        "s": 0.989,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 10,
+      "lat": -11.5,
+      "lon": -73.5,
+      "name_en": "-11.5, -73.5",
+      "name_zh": "-11.5, -73.5",
+      "score": 76.9,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.141,
+         0.186,
+         0.164,
+         0.135,
+         0.212,
+         0.162
+        ],
+        "moon_value": [
+         0.1988,
+         0.3527,
+         0.2443,
+         0.1515,
+         0.0514,
+         0.0013
+        ],
+        "s": 0.679,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1800.0,
+        "moon_value": 2077,
+        "s": 0.979,
+        "classification": "similar"
+       }
+      ]
+     }
+    ],
+    "known_analogs_validation": [
+     {
+      "rank": 1,
+      "lat": -73.5,
+      "lon": 166.5,
+      "name_en": "Northern Victoria Land (Terra Nova Bay), Antarctica",
+      "name_zh": "南極北維多利亞地",
+      "score": 90.4,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.326,
+         0.328,
+         0.169,
+         0.122,
+         0.046,
+         0.009
+        ],
+        "moon_value": [
+         0.1988,
+         0.3527,
+         0.2443,
+         0.1515,
+         0.0514,
+         0.0013
+        ],
+        "s": 0.865,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2237.0,
+        "moon_value": 2077,
+        "s": 0.994,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": -77.53,
+      "lon": 161.6,
+      "name_en": "McMurdo Dry Valleys, Antarctica",
+      "name_zh": "南極乾谷",
+      "score": 88.9,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.156,
+         0.333,
+         0.341,
+         0.147,
+         0.023,
+         0.0
+        ],
+        "moon_value": [
+         0.1988,
+         0.3527,
+         0.2443,
+         0.1515,
+         0.0514,
+         0.0013
+        ],
+        "s": 0.903,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1409.0,
+        "moon_value": 2077,
+        "s": 0.855,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": -26.5,
+      "lon": -68.5,
+      "name_en": "-26.5, -68.5",
+      "name_zh": "-26.5, -68.5",
+      "score": 85.8,
+      "known_analog_region": "Atacama",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.172,
+         0.233,
+         0.21,
+         0.163,
+         0.181,
+         0.041
+        ],
+        "moon_value": [
+         0.1988,
+         0.3527,
+         0.2443,
+         0.1515,
+         0.0514,
+         0.0013
+        ],
+        "s": 0.819,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 1666.0,
+        "moon_value": 2077,
+        "s": 0.951,
+        "classification": "similar"
+       }
+      ]
+     },
+     {
+      "rank": 4,
+      "lat": null,
+      "lon": null,
+      "name_en": "Mauna Kea, Hawaii",
+      "name_zh": "夏威夷 Mauna Kea",
+      "score": 79.6,
+      "known_analog_region": "Hawaii",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.049,
+         0.22,
+         0.329,
+         0.265,
+         0.132,
+         0.006
+        ],
+        "moon_value": [
+         0.1988,
+         0.3527,
+         0.2443,
+         0.1515,
+         0.0514,
+         0.0013
+        ],
+        "s": 0.717,
+        "classification": "similar"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 2390.0,
+        "moon_value": 2077,
+        "s": 0.98,
+        "classification": "similar"
+       }
+      ]
+     }
+    ],
+    "least_similar": [
+     {
+      "rank": 1,
+      "lat": -72.5,
+      "lon": 30.5,
+      "name_en": "-72.5, 30.5",
+      "name_zh": "-72.5, 30.5",
+      "score": 14.0,
+      "known_analog_region": "Antarctica",
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         1.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.1988,
+         0.3527,
+         0.2443,
+         0.1515,
+         0.0514,
+         0.0013
+        ],
+        "s": 0.199,
+        "classification": "different"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 192.0,
+        "moon_value": 2077,
+        "s": 0.003,
+        "classification": "different"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "lat": 28.5,
+      "lon": 84.5,
+      "name_en": "28.5, 84.5",
+      "name_zh": "28.5, 84.5",
+      "score": 22.7,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.012,
+         0.032,
+         0.05,
+         0.072,
+         0.208,
+         0.625
+        ],
+        "moon_value": [
+         0.1988,
+         0.3527,
+         0.2443,
+         0.1515,
+         0.0514,
+         0.0013
+        ],
+        "s": 0.219,
+        "classification": "different"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 6637.0,
+        "moon_value": 2077,
+        "s": 0.245,
+        "classification": "different"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "lat": -28.5,
+      "lon": -66.5,
+      "name_en": "-28.5, -66.5",
+      "name_zh": "-28.5, -66.5",
+      "score": 26.7,
+      "known_analog_region": null,
+      "features": [
+       {
+        "feature": "slope_histogram_30m",
+        "value": [
+         0.817,
+         0.169,
+         0.013,
+         0.001,
+         0.0,
+         0.0
+        ],
+        "moon_value": [
+         0.1988,
+         0.3527,
+         0.2443,
+         0.1515,
+         0.0514,
+         0.0013
+        ],
+        "s": 0.382,
+        "classification": "partial"
+       },
+       {
+        "feature": "relief_16km_m",
+        "value": 135.0,
+        "moon_value": 2077,
+        "s": 0.0,
+        "classification": "different"
+       }
+      ]
+     }
+    ]
+   }
+  }
+ }
+}

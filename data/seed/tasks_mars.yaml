@@ -433,8 +433,8 @@
     stat_threshold: 0
     rank_stat_threshold: null
   - id: r5_roughness
-    name: Detrended topographic roughness
-    name_en: Detrended topographic roughness
+    name: Regional detrended topographic roughness
+    name_en: Regional detrended topographic roughness
     type: profile
     compare_mode: absolute
     unit: m
@@ -444,21 +444,20 @@
     out_of_earth_range: false
     earth_proxy: false
     planet_data:
-    - name: HiRISE
-      official: true
+    - name: USGS MGS MOLA / Mars Express HRSC 200 m DEM blend
+      official: false
       source_id: pds
-      url: https://pds.nasa.gov/
+      url: https://astrogeology.usgs.gov/search/map/mars_mgs_mola_mex_hrsc_blended_dem_global_200m
     earth_data:
-    - name: Copernicus DEM
+    - name: Copernicus GLO-30 DSM
       official: true
       source_id: copernicus
-      url: https://dataspace.copernicus.eu/
-    - name: RADARSAT-1 long-term change
-      official: true
-      source_id: radarsat
-      url: https://www.asc-csa.gc.ca/eng/satellites/radarsat1/
+      url: https://registry.opendata.aws/copernicus-dem/
     notes:
-    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do not score Earth candidates.'
+    - Compare planar-detrended RMS height over 20 km windows on 500 m grids. Source resolution and effective resolution
+      differ.
+    - Regional terrain similarity does not identify glacial landforms, ice-wedge polygons or centimetre landing
+      hazards.
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null

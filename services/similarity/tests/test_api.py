@@ -39,7 +39,7 @@ def test_catalog_complete_seed_and_models():
     measurements=MeasurementRepository()
     assert len(measurements.candidates)==3 and sum(s['known_analog'] for s in measurements.candidates)==1
     assert len(repo.sites('moon'))==10 and len(repo.sites('mars'))==7
-    assert sum(s.lat is not None for s in repo.sites('moon'))==1
+    assert sum(s.lat is not None for s in repo.sites('moon'))==10
     assert sum(len(t.features) for m in repo.missions() for t in repo.tasks(m.id))==37
     for path in ['/health','/missions','/earth-facts','/data-sources','/method','/openapi.json','/docs']:
         assert c.get(path).status_code==200,path
@@ -144,7 +144,10 @@ def test_actual_mars_target_values_and_missing_wind(client):
     assert wind['target_value'] is None and wind['score'] is None
     ap=client.post('/score',json={**request('mars'),'site_id':'mars-ap105'}).json()
     features=ap['candidates'][0]['tasks']['R1']['features']
-    assert next(f for f in features if f['feature']['id']=='r1_slope_100m')['target_value'] is None
+    coarse=next(f for f in features if f['feature']['id']=='r1_slope_100m')
+    assert coarse['target_value'] is not None and coarse['score'] is None
+    assert coarse['target_evidence']['status']=='context_only'
+    assert '1 km gradient support' in coarse['target_evidence']['quantity']
     ti=next(f for f in features if f['feature']['id']=='r1_thermal_inertia')
     assert ti['target_value']==181 and ti['score'] is None and ti['classification']=='incomparable'
 
@@ -174,7 +177,7 @@ def test_observed_snapshot_rejects_synthetic_inputs_and_has_no_seed_fallback(tmp
     assert empty.candidates==[] and empty.targets=={}
 
 
-@pytest.mark.parametrize('mission,comparable,met,sites', [('moon',6,3,2),('mars',3,2,1)])
+@pytest.mark.parametrize('mission,comparable,met,sites', [('moon',6,3,2),('mars',3,2,2)])
 def test_feature_network_uses_real_data_without_claiming_complete_tasks(planning,mission,comparable,met,sites):
     response=planning.post('/optimize',json=request(mission))
     assert response.status_code==200,response.text
@@ -209,3 +212,28 @@ def test_known_site_exclusion_is_applied_to_feature_network(planning):
     assert 'earth-pilot-nevada' not in network['selected']
     row=next(r for r in network['coverage'] if r['feature_id']=='m1_slope')
     assert row['best_candidate_id']=='earth-pilot-gobi' and row['status']=='met'
+
+
+@pytest.mark.parametrize('mission,site',[
+    ('moon',sid) for sid in ['moon-scr','moon-cabeus-b-peak','moon-haworth','moon-malapert',
+        'moon-mouton-plateau','moon-mouton','moon-nobile-1','moon-nobile-2','moon-degerlache-2','moon-slater']
+]+[('mars',sid) for sid in ['mars-gale','mars-ap105','mars-deuteronilus','mars-utopia','mars-phlegra','mars-erebus','mars-jezero']])
+def test_every_catalog_target_has_its_own_comparable_observations(client,mission,site):
+    response=client.post('/score',json={**request(mission),'site_id':site})
+    assert response.status_code==200,response.text
+    data=response.json()
+    assert data['site_id']==site and data['data_status']=='partial'
+    assert not data['uses_placeholder'] and len(data['candidates'])==3
+    for candidate in data['candidates']:
+        assert candidate['partial_score'] is not None and candidate['overall'] is None
+        if mission=='moon':
+            assert candidate['tasks']['M2']['available_features']==3
+            assert candidate['tasks']['M1']['available_features']==1
+        else:
+            rough=next(f for f in candidate['tasks']['R5']['features'] if f['feature']['id']=='r5_roughness')
+            assert rough['score'] is not None
+            assert rough['target_evidence']['comparison_key']==rough['candidate_evidence']['comparison_key']=='detrended_rms_grid500_window20000'
+            assert rough['target_evidence']['hashes']!=rough['candidate_evidence']['hashes']
+            if site!='mars-gale':
+                assert candidate['tasks']['R1']['available_features']==0
+                assert candidate['tasks']['R6']['available_features']==0

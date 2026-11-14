@@ -18,3 +18,9 @@ class SimilarityClient:
         async with httpx.AsyncClient(timeout=15) as client:
             response=await client.get(f'{self.url}/health')
             response.raise_for_status()
+
+    async def lunar_sensitivity(self,request):
+        async with httpx.AsyncClient(timeout=60) as client:
+            response=await client.post(self.url+'/lunar/wizard-sensitivity',json=request.model_dump(exclude={'n_samples','seed','alpha'}))
+            response.raise_for_status()
+            return response.json()

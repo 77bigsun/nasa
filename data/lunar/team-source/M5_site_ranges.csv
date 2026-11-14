@@ -1,0 +1,13 @@
+site,category,lat,lon,S_G_endmember_class,S_G_low,S_G_high,S_T,S_V,M5_low,M5_high
+DEATHVALLEY_UBEHEBE,known,37.01,-117.45,arid_desert_soil,0.45,0.96,not_evaluated,not_evaluated,27,98
+NV_LUNAR_CRATER,known,38.38,-116.07,arid_desert_soil,0.45,0.96,not_evaluated,not_evaluated,27,98
+AZ_BLACK_POINT_LAVA,known,35.67,-111.47,none,0,1,not_evaluated,not_evaluated,0,100
+ATACAMA_YUNGAY,known,-24.09,-69.92,arid_desert_soil,0.45,0.96,not_evaluated,not_evaluated,27,98
+HAWAII_MAUNAKEA,known,19.82,-155.47,none,0,1,not_evaluated,not_evaluated,0,100
+ID_CRATERS_OF_MOON,known,43.42,-113.52,none,0,1,not_evaluated,not_evaluated,0,100
+HAWAII_KAU_DESERT,known,19.35,-155.36,none,0,1,not_evaluated,not_evaluated,0,100
+CA_IMPERIAL_CROPS,control,33.0,-115.5,cultivated_alluvial,0.38,0.78,not_evaluated,not_evaluated,23,87
+NV_CUPRITE_CLAY,control,37.54,-117.18,arid_desert_soil,0.45,0.96,not_evaluated,not_evaluated,27,98
+ALGERIA_GRAND_ERG,control,30.5,7.5,aeolian_sand,0.57,0.89,not_evaluated,not_evaluated,34,93
+NM_WHITE_SANDS,control,32.78,-106.3,aeolian_sand,0.57,0.89,not_evaluated,not_evaluated,34,93
+BOLIVIA_UYUNI_SALT,control,-20.2,-67.6,none,0,1,not_evaluated,not_evaluated,0,100

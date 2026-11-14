@@ -4,7 +4,13 @@ A NASA Space Apps Challenge 2026 team prototype for connecting lunar and Martian
 
 The website switches between English and Traditional Chinese with the header language button and remembers the choice. Developer documentation and source definitions remain English. New browsers default to Traditional Chinese. The system runs as **six services, including four backend APIs**. Start with the [service guide](docs/SERVICES.md), [Docker instructions](docs/DOCKER.md), and [GitHub setup](docs/GIT.md). The [specification](docs/SPEC.md) incorporates the original brief and subsequent service and language requirements.
 
-**The mission wizard now reads observed data only.** All 12 tests have dataset mappings across 37 features: nine are comparable, twelve have context only and sixteen lack validated numeric pairs. Missing quantities never use demo values or another target. Partial scores do not count as complete test coverage. Coverage diagnostics distinguish missing data, individual feature matches and fully assessed tests below threshold; a separate available-feature network shows which Earth sites can already be used. See [the observed-data report](docs/OBSERVED_DATA.md).
+**The lunar experience is task-first.** `/moon` shows M2, M3, M4 and M6. Each task opens a page with lunar suitability first, then two groups: the three most-similar new Earth candidates and three least-similar locations. The original visual style, maps, evidence drawer and English/Traditional Chinese switch are retained. Scores use the supplied 0-100 scale. See [LUNAR_METHOD.md](docs/LUNAR_METHOD.md).
+
+The two supplied handoff ZIPs now supply 19599 global land cells, a 4881-cell permanent-snow/ice mask and independent M4 terrain references for all ten lunar locations. M2/M3/M6 retain common Earth-achievable anchors; M4 changes with the chosen lunar reference. The source's revised feature weights and fitness factors are used, with raw inputs, per-feature similarity, formulas and sources inspectable in the drawer. Known analogs are a separate validation group.
+
+Lunar suitability is a preliminary team assessment from published studies, not mission certification. M4's final comparison covers 135 eligible entries from the supplied fine-terrain pool, not a complete global 30 m search; its global grid is relief-only screening. Imported files retain hashes and a reproducible importer. Source JSON nonfinite values and the M4 ice-mask inconsistency are corrected explicitly. Earth names are approximate grid labels.
+
+`/mars` retains the observed-comparison wizard. Earlier observed and 15-site lunar research APIs remain available as separate archived models. Old lunar shared links preserve their site selection and open the first retained selected task. The home globe keeps its original design. The active lunar map shows the six comparison locations; the full source grid is downloadable.
 
 ## Start with Docker
 
@@ -60,13 +66,14 @@ This workspace already has `.venv` and `frontend/node_modules` installed. These 
 ## Features
 
 - `/`: a NASA Blue Marble globe, mission selection, and Earth/Moon/Mars comparisons with source attribution. A static globe is available when WebGL initialization fails. Solar days are distinguished from sidereal rotation periods.
-- `/moon` and `/mars`: select tests, choose one target, and explore results. Pinia state is synchronized with URL query parameters for reloading and sharing.
+- `/moon`: four task cards, followed by lunar suitability and two groups of three Earth locations. Each task preserves source scores and exposes raw inputs, similarity, feature weights and data fitness. All ten lunar sites have their own M4 reference.
+- `/mars`: the original three-step observed-comparison wizard, with threshold and weight controls, evidence details, coverage and sensitivity analysis.
 - Top-ten rankings for each test, overall rankings, and a candidate detail drawer with feature values, scores, similarities, differences, Earth limitations, sources, and proxy flags.
 - Phase overlays, empirical CDFs, and Wasserstein distance. The Leaflet map uses NASA GIBS first and falls back to OpenStreetMap. Planetary targets use a coordinate diagram without an Earth basemap.
 - Adjustable coverage threshold, ROC/rank-sum/custom weights, and known-analog exclusion. Minimum set cover, coverage tables, uncoverable tests, marginal benefit, and Dirichlet sensitivity analysis.
 - `/method`: English and Traditional Chinese methodology served by catalog, with KaTeX formulas.
-- `/data`: 27 product-level records with access requirements, resolution, feature usage and import status; observed terrain tables, ECDFs, meteorology cycles and SHA-256 provenance; plus the original 22 portals. The `official` flag denotes inclusion in the competition Resources list, not institutional ownership.
-- `/research`: nine bilingual sections from the four supplied planning PDFs, separating implemented scope, partial work, proposed work and source-review needs.
+- `/data`: 31 product-level records with access requirements, resolution, feature usage and import status; observed terrain tables, ECDFs, meteorology cycles and SHA-256 provenance; plus the original 22 portals. The `official` flag denotes inclusion in the competition Resources list, not institutional ownership.
+- `/research`: ten bilingual sections from the supplied planning PDFs and lunar-method revision, separating implemented scope, partial work, proposed work and source-review needs.
 - Persistent English / Traditional Chinese navigation, task descriptions, source notes, limitations, research content and methodology.
 - Visible evidence coverage, source metadata and missing/incompatible-data notices. Actual inputs and scoped models never imply certified sites or new discoveries.
 

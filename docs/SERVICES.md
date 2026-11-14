@@ -2,6 +2,8 @@
 
 The current architecture runs **six services, including four backend APIs**. All source remains in the same GitHub repository; separate repositories are not required.
 
+For the active lunar task pages, catalog owns `/lunar-handoff` (four definitions, ten lunar references and suitability assessments). Measurements owns `/lunar-handoff` (reviewed rankings) and `/lunar-grid` (global screening data). Similarity fetches both services, validates matching versions and serves `/lunar/tasks/{task_id}?site_id=...`, selecting three new candidates and three least-similar entries from imported rankings. The frontend does no scientific scoring. Planning and the older PDF/observed APIs remain available separately; the active lunar pages do not present their older coverage or sensitivity results as current handoff results. See [LUNAR_METHOD.md](LUNAR_METHOD.md).
+
 A service is a program with a specific job and its own entry point. A Docker container supplies the environment for that program. Compose starts the programs together, connects their network, and waits for dependencies to become healthy.
 
 | Service | Question it answers | Responsibility | Main location |

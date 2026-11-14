@@ -402,5 +402,70 @@
     "notes": [
       "Real ephemerides plus measured DEM products produce a finite-horizon solar model. Observer 2 m, horizon radius 1 km; no distant terrain, cloud, refraction or solar-disc model."
     ]
+  },
+  {
+    "id": "pgda-lola-polar20m",
+    "name": "Adjusted LOLA south-polar DEM",
+    "url": "https://pgda.gsfc.nasa.gov/products/90",
+    "resolution": "20 m native; 100 m grid, 2 km windows",
+    "access": "public",
+    "status": "imported",
+    "uses": [
+      "M1",
+      "M2",
+      "M3",
+      "M4"
+    ],
+    "notes": [
+      "Native DEM crops are imported independently at all nine additional lunar study points. Common-grid slopes and finite 1 km horizon models do not establish landing safety."
+    ]
+  },
+  {
+    "id": "wueller-study-points",
+    "name": "Published Artemis-region representative study points",
+    "url": "https://doi.org/10.5281/zenodo.17084058",
+    "resolution": "Named study points; 2 km analysis windows",
+    "access": "public",
+    "status": "imported",
+    "uses": [
+      "M1",
+      "M2",
+      "M3",
+      "M4"
+    ],
+    "notes": [
+      "Wueller et al. (2026), doi:10.1029/2025JE009434. Nine named points are checked against original shapefile geometry. A point is not the entire region or a finalized landing selection."
+    ]
+  },
+  {
+    "id": "usgs-mars-global200m",
+    "name": "USGS MOLA / HRSC global DEM blend",
+    "url": "https://astrogeology.usgs.gov/search/map/mars_mgs_mola_mex_hrsc_blended_dem_global_200m",
+    "resolution": "200 m nominal native grid; 500 m analysis grid, 20 km windows",
+    "access": "public",
+    "status": "imported",
+    "uses": [
+      "R1",
+      "R5"
+    ],
+    "notes": [
+      "Seven Mars study windows have independent native elevation crops. R5 compares regional RMS height against Earth at the same analysis scale. Regional slopes remain context only for the finer R1 landing-slope requirement."
+    ]
+  },
+  {
+    "id": "usgs-mars-gazetteer",
+    "name": "USGS Gazetteer of Planetary Nomenclature",
+    "url": "https://planetarynames.wr.usgs.gov/",
+    "resolution": "Current named-feature centres",
+    "access": "public",
+    "status": "imported",
+    "uses": [
+      "R1",
+      "R3",
+      "R5"
+    ],
+    "notes": [
+      "Current footprint centres locate Deuteronilus Mensae, Utopia Planitia, Phlegra Montes and Erebus Montes regional samples. Some centres lie outside the provisional 30-45 N landing band. These are not selected SkyFall landing sites."
+    ]
   }
 ]

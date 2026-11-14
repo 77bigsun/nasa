@@ -20,7 +20,9 @@ def fetch_range(client,url,path,first,last,total):
     import json
     if path.exists() and sidecar.exists():
         metadata=json.loads(sidecar.read_text(encoding='utf-8'))
-        if metadata['sha256']==hashlib.sha256(path.read_bytes()).hexdigest():
+        if (metadata.get('url')==url and metadata.get('byte_range')==[first,last]
+                and metadata.get('total_source_bytes')==total
+                and metadata['sha256']==hashlib.sha256(path.read_bytes()).hexdigest()):
             return path.read_bytes(),metadata
     response=client.get(url,headers={'Range':f'bytes={first}-{last}'})
     response.raise_for_status()

@@ -24,6 +24,14 @@
       {
         "title": "LOLA adjusted Site01 DEM",
         "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Site01_final_adj_5mpp_surf.tif"
+      },
+      {
+        "title": "Adjusted LOLA south-polar 20 m DEM",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF"
+      },
+      {
+        "title": "Published study point SP01",
+        "url": "https://doi.org/10.5281/zenodo.17084058"
       }
     ],
     "earth_products": [
@@ -42,10 +50,28 @@
     ],
     "status": "paired",
     "ready_sites": [
-      "moon-scr"
+      "moon-scr",
+      "moon-cabeus-b-peak",
+      "moon-haworth",
+      "moon-malapert",
+      "moon-mouton-plateau",
+      "moon-mouton",
+      "moon-nobile-1",
+      "moon-nobile-2",
+      "moon-degerlache-2",
+      "moon-slater"
     ],
     "observed_sites": [
-      "moon-scr"
+      "moon-scr",
+      "moon-cabeus-b-peak",
+      "moon-haworth",
+      "moon-malapert",
+      "moon-mouton-plateau",
+      "moon-mouton",
+      "moon-nobile-1",
+      "moon-nobile-2",
+      "moon-degerlache-2",
+      "moon-slater"
     ],
     "reason": "Comparable source quantities imported; see each feature for support and limitations."
   },
@@ -173,6 +199,14 @@
       {
         "title": "LOLA Site01",
         "url": "https://pgda.gsfc.nasa.gov/products/78"
+      },
+      {
+        "title": "Adjusted LOLA south-polar 20 m DEM",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF"
+      },
+      {
+        "title": "Published study point SP01",
+        "url": "https://doi.org/10.5281/zenodo.17084058"
       }
     ],
     "earth_products": [
@@ -203,10 +237,28 @@
     ],
     "status": "paired",
     "ready_sites": [
-      "moon-scr"
+      "moon-scr",
+      "moon-cabeus-b-peak",
+      "moon-haworth",
+      "moon-malapert",
+      "moon-mouton-plateau",
+      "moon-mouton",
+      "moon-nobile-1",
+      "moon-nobile-2",
+      "moon-degerlache-2",
+      "moon-slater"
     ],
     "observed_sites": [
-      "moon-scr"
+      "moon-scr",
+      "moon-cabeus-b-peak",
+      "moon-haworth",
+      "moon-malapert",
+      "moon-mouton-plateau",
+      "moon-mouton",
+      "moon-nobile-1",
+      "moon-nobile-2",
+      "moon-degerlache-2",
+      "moon-slater"
     ],
     "reason": "Comparable source quantities imported; see each feature for support and limitations."
   },
@@ -261,6 +313,14 @@
       {
         "title": "LOLA Site01",
         "url": "https://pgda.gsfc.nasa.gov/products/78"
+      },
+      {
+        "title": "Adjusted LOLA south-polar 20 m DEM",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF"
+      },
+      {
+        "title": "Published study point SP01",
+        "url": "https://doi.org/10.5281/zenodo.17084058"
       }
     ],
     "earth_products": [
@@ -291,10 +351,28 @@
     ],
     "status": "paired",
     "ready_sites": [
-      "moon-scr"
+      "moon-scr",
+      "moon-cabeus-b-peak",
+      "moon-haworth",
+      "moon-malapert",
+      "moon-mouton-plateau",
+      "moon-mouton",
+      "moon-nobile-1",
+      "moon-nobile-2",
+      "moon-degerlache-2",
+      "moon-slater"
     ],
     "observed_sites": [
-      "moon-scr"
+      "moon-scr",
+      "moon-cabeus-b-peak",
+      "moon-haworth",
+      "moon-malapert",
+      "moon-mouton-plateau",
+      "moon-mouton",
+      "moon-nobile-1",
+      "moon-nobile-2",
+      "moon-degerlache-2",
+      "moon-slater"
     ],
     "reason": "Comparable source quantities imported; see each feature for support and limitations."
   },
@@ -343,6 +421,14 @@
       {
         "title": "LOLA Site01",
         "url": "https://pgda.gsfc.nasa.gov/products/78"
+      },
+      {
+        "title": "Adjusted LOLA south-polar 20 m DEM",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF"
+      },
+      {
+        "title": "Published study point SP01",
+        "url": "https://doi.org/10.5281/zenodo.17084058"
       }
     ],
     "earth_products": [
@@ -373,10 +459,28 @@
     ],
     "status": "paired",
     "ready_sites": [
-      "moon-scr"
+      "moon-scr",
+      "moon-cabeus-b-peak",
+      "moon-haworth",
+      "moon-malapert",
+      "moon-mouton-plateau",
+      "moon-mouton",
+      "moon-nobile-1",
+      "moon-nobile-2",
+      "moon-degerlache-2",
+      "moon-slater"
     ],
     "observed_sites": [
-      "moon-scr"
+      "moon-scr",
+      "moon-cabeus-b-peak",
+      "moon-haworth",
+      "moon-malapert",
+      "moon-mouton-plateau",
+      "moon-mouton",
+      "moon-nobile-1",
+      "moon-nobile-2",
+      "moon-degerlache-2",
+      "moon-slater"
     ],
     "reason": "Comparable source quantities imported; see each feature for support and limitations."
   },
@@ -434,7 +538,16 @@
     "status": "context_only",
     "ready_sites": [],
     "observed_sites": [
-      "moon-scr"
+      "moon-scr",
+      "moon-cabeus-b-peak",
+      "moon-haworth",
+      "moon-malapert",
+      "moon-mouton-plateau",
+      "moon-mouton",
+      "moon-nobile-1",
+      "moon-nobile-2",
+      "moon-degerlache-2",
+      "moon-slater"
     ],
     "reason": "Actual thermal samples are present, but a multi-year lunar cycle and sparse Earth overpasses do not measure the same diurnal extrema."
   },
@@ -517,6 +630,14 @@
       {
         "title": "LOLA Site01",
         "url": "https://pgda.gsfc.nasa.gov/products/78"
+      },
+      {
+        "title": "Adjusted LOLA south-polar 20 m DEM",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF"
+      },
+      {
+        "title": "Published study point SP01",
+        "url": "https://doi.org/10.5281/zenodo.17084058"
       }
     ],
     "earth_products": [
@@ -547,10 +668,28 @@
     ],
     "status": "paired",
     "ready_sites": [
-      "moon-scr"
+      "moon-scr",
+      "moon-cabeus-b-peak",
+      "moon-haworth",
+      "moon-malapert",
+      "moon-mouton-plateau",
+      "moon-mouton",
+      "moon-nobile-1",
+      "moon-nobile-2",
+      "moon-degerlache-2",
+      "moon-slater"
     ],
     "observed_sites": [
-      "moon-scr"
+      "moon-scr",
+      "moon-cabeus-b-peak",
+      "moon-haworth",
+      "moon-malapert",
+      "moon-mouton-plateau",
+      "moon-mouton",
+      "moon-nobile-1",
+      "moon-nobile-2",
+      "moon-degerlache-2",
+      "moon-slater"
     ],
     "reason": "Comparable source quantities imported; see each feature for support and limitations."
   },
@@ -602,7 +741,16 @@
     "status": "context_only",
     "ready_sites": [],
     "observed_sites": [
-      "moon-scr"
+      "moon-scr",
+      "moon-cabeus-b-peak",
+      "moon-haworth",
+      "moon-malapert",
+      "moon-mouton-plateau",
+      "moon-mouton",
+      "moon-nobile-1",
+      "moon-nobile-2",
+      "moon-degerlache-2",
+      "moon-slater"
     ],
     "reason": "Observed temperatures are shown, but the lunar extreme is outside the Earth-reproducible test range and is excluded."
   },
@@ -631,6 +779,14 @@
       {
         "title": "LOLA adjusted Site01 DEM",
         "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Site01_final_adj_5mpp_surf.tif"
+      },
+      {
+        "title": "Adjusted LOLA south-polar 20 m DEM",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF"
+      },
+      {
+        "title": "Published study point SP01",
+        "url": "https://doi.org/10.5281/zenodo.17084058"
       }
     ],
     "earth_products": [
@@ -649,10 +805,28 @@
     ],
     "status": "paired",
     "ready_sites": [
-      "moon-scr"
+      "moon-scr",
+      "moon-cabeus-b-peak",
+      "moon-haworth",
+      "moon-malapert",
+      "moon-mouton-plateau",
+      "moon-mouton",
+      "moon-nobile-1",
+      "moon-nobile-2",
+      "moon-degerlache-2",
+      "moon-slater"
     ],
     "observed_sites": [
-      "moon-scr"
+      "moon-scr",
+      "moon-cabeus-b-peak",
+      "moon-haworth",
+      "moon-malapert",
+      "moon-mouton-plateau",
+      "moon-mouton",
+      "moon-nobile-1",
+      "moon-nobile-2",
+      "moon-degerlache-2",
+      "moon-slater"
     ],
     "reason": "Comparable source quantities imported; see each feature for support and limitations."
   },
@@ -1018,6 +1192,14 @@
       {
         "title": "LOLA Site01",
         "url": "https://pgda.gsfc.nasa.gov/products/78"
+      },
+      {
+        "title": "Adjusted LOLA south-polar 20 m DEM",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF"
+      },
+      {
+        "title": "Published study point SP01",
+        "url": "https://doi.org/10.5281/zenodo.17084058"
       }
     ],
     "earth_products": [
@@ -1049,7 +1231,16 @@
     "status": "context_only",
     "ready_sites": [],
     "observed_sites": [
-      "moon-scr"
+      "moon-scr",
+      "moon-cabeus-b-peak",
+      "moon-haworth",
+      "moon-malapert",
+      "moon-mouton-plateau",
+      "moon-mouton",
+      "moon-nobile-1",
+      "moon-nobile-2",
+      "moon-degerlache-2",
+      "moon-slater"
     ],
     "reason": "A finite near-field horizon is imported as context; one local cycle does not establish permanent shadow or buried ice."
   },
@@ -1078,6 +1269,10 @@
       {
         "title": "HiRISE Gale DTM",
         "url": "https://hirise-pds.lpl.arizona.edu/PDS/DTM/ESP/ORB_040700_040799/ESP_040770_1755_ESP_039280_1755/DTEEC_040770_1755_039280_1755_A01.IMG"
+      },
+      {
+        "title": "USGS HRSC/MOLA elevation raster",
+        "url": "https://planetarymaps.usgs.gov/mosaic/Mars/HRSC_MOLA_Blend/Mars_HRSC_MOLA_BlendDEM_Global_200mp_v2.tif"
       }
     ],
     "earth_products": [
@@ -1099,7 +1294,13 @@
       "mars-gale"
     ],
     "observed_sites": [
-      "mars-gale"
+      "mars-gale",
+      "mars-ap105",
+      "mars-deuteronilus",
+      "mars-utopia",
+      "mars-phlegra",
+      "mars-erebus",
+      "mars-jezero"
     ],
     "reason": "Comparable source quantities imported; see each feature for support and limitations."
   },
@@ -1217,7 +1418,13 @@
     "status": "context_only",
     "ready_sites": [],
     "observed_sites": [
-      "mars-ap105"
+      "mars-gale",
+      "mars-ap105",
+      "mars-deuteronilus",
+      "mars-utopia",
+      "mars-phlegra",
+      "mars-erebus",
+      "mars-jezero"
     ],
     "reason": "TES thermal inertia and Earth sampled LST contrast have different units and physics; percentile defaults are not invented."
   },
@@ -1333,7 +1540,13 @@
     "status": "context_only",
     "ready_sites": [],
     "observed_sites": [
-      "mars-ap105"
+      "mars-gale",
+      "mars-ap105",
+      "mars-deuteronilus",
+      "mars-utopia",
+      "mars-phlegra",
+      "mars-erebus",
+      "mars-jezero"
     ],
     "reason": "Actual SWIM ice consistency is imported; it is not comparable to Earth soil moisture, ice fraction or active-layer thickness."
   },
@@ -1493,33 +1706,31 @@
     "mission": "mars",
     "task_id": "R5",
     "feature_id": "r5_roughness",
-    "name": "Detrended topographic roughness",
+    "name": "Regional detrended topographic roughness",
     "planet_sources": [
       {
-        "name": "HiRISE",
-        "official": true,
+        "name": "USGS MGS MOLA / Mars Express HRSC 200 m DEM blend",
+        "official": false,
         "source_id": "pds",
-        "url": "https://pds.nasa.gov/"
+        "url": "https://astrogeology.usgs.gov/search/map/mars_mgs_mola_mex_hrsc_blended_dem_global_200m"
       }
     ],
     "earth_sources": [
       {
-        "name": "Copernicus DEM",
+        "name": "Copernicus GLO-30 DSM",
         "official": true,
         "source_id": "copernicus",
-        "url": "https://dataspace.copernicus.eu/"
-      },
-      {
-        "name": "RADARSAT-1 long-term change",
-        "official": true,
-        "source_id": "radarsat",
-        "url": "https://www.asc-csa.gc.ca/eng/satellites/radarsat1/"
+        "url": "https://registry.opendata.aws/copernicus-dem/"
       }
     ],
     "planet_products": [
       {
-        "title": "HiRISE Gale DTM",
-        "url": "https://hirise-pds.lpl.arizona.edu/PDS/DTM/ESP/ORB_040700_040799/ESP_040770_1755_ESP_039280_1755/DTEEC_040770_1755_039280_1755_A01.IMG"
+        "title": "USGS HRSC/MOLA 200 m blend",
+        "url": "https://astrogeology.usgs.gov/search/map/mars_mgs_mola_mex_hrsc_blended_dem_global_200m"
+      },
+      {
+        "title": "Numeric elevation raster",
+        "url": "https://planetarymaps.usgs.gov/mosaic/Mars/HRSC_MOLA_Blend/Mars_HRSC_MOLA_BlendDEM_Global_200mp_v2.tif"
       }
     ],
     "earth_products": [
@@ -1538,10 +1749,22 @@
     ],
     "status": "paired",
     "ready_sites": [
-      "mars-gale"
+      "mars-gale",
+      "mars-ap105",
+      "mars-deuteronilus",
+      "mars-utopia",
+      "mars-phlegra",
+      "mars-erebus",
+      "mars-jezero"
     ],
     "observed_sites": [
-      "mars-gale"
+      "mars-gale",
+      "mars-ap105",
+      "mars-deuteronilus",
+      "mars-utopia",
+      "mars-phlegra",
+      "mars-erebus",
+      "mars-jezero"
     ],
     "reason": "Comparable source quantities imported; see each feature for support and limitations."
   },

@@ -182,10 +182,10 @@ def read_terrain(out, client):
         return {'id': 'mars-gale-dtm', 'name': 'Gale Crater HiRISE study window', 'lat': lat, 'lon': lon, 'planet': 'mars', 'source_id': 'hirise-gale-dtm', 'source_url': 'https://hirise.lpl.arizona.edu/dtm/dtm.php?ID=ESP_040770_1755', 'raw_url': HIRISE, 'source_product_id': 'DTEEC_040770_1755_039280_1755_A01', 'source_bytes': source_bytes, 'raw_byte_range': [first, last], 'downloaded_bytes': raw_metadata['bytes'], 'raw_sha256': raw_metadata['sha256'], 'header_sha256': header_metadata['sha256'], 'retrieved_at': raw_metadata['retrieved_at'], 'raw_file': str(raw), 'native_pixel_size_m': src.res[0], 'native_crs': src.crs.to_wkt(), 'native_transform': list(src.transform), 'native_row_range': [row0, row1], 'native_col_range': [col0, col1], 'nodata': float(src.nodata), 'metrics': metrics, 'is_placeholder': False, 'provenance': [header_metadata, raw_metadata], 'caveats': ['Actual Gale photogrammetric DTM, not AP-105 and not a new site selection.', 'Elevations reference Mars2000 areoid; Earth/Mars absolute elevation is not a similarity feature.', '50m analysis grid gives100m central-difference support; no1-5m Earth slopes are synthesized.', '100m-grid detrended RMS height is a2km terrain roughness proxy, not radar backscatter.', 'Photogrammetric error covariance and image-matching artifacts are not propagated.', 'Raw SHA256 identifies the downloaded row stripe, not the full302MB source product.']}
 
 
-def read_tes(out, client):
+def read_tes(out, client, sites=None):
     provenance = [fetch(client, TES + 'global_ti_night_2007.lbl', out/'tes_label.txt'), fetch(client, TES + 'global_ti_msk_night_2007.lbl', out/'tes_mask_label.txt')]
     samples = {}
-    for key, (lat, lon) in SITES.items():
+    for key, (lat, lon) in (sites or SITES).items():
         row = int((90-lat)*20)
         col = int((lon+180)*20)
         index = row*7200+col
@@ -199,14 +199,14 @@ def read_tes(out, client):
     return {'name': 'MGS TES nighttime thermal inertia2007', 'source_url': 'https://pds-geosciences.wustl.edu/missions/mgs/tes-timap.html', 'data_url': TES+'global_ti_night_2007.img', 'mask_url': TES+'global_ti_msk_night_2007.img', 'label_url': TES+'global_ti_night_2007.lbl', 'dtype': '>i2', 'mask_dtype': 'u1', 'shape': [3600, 7200], 'pixel_per_degree': 20, 'units': 'J m^-2 K^-1 s^-0.5', 'pixel_native_km': 2.96, 'grid_origin': [-180, 90], 'samples': samples, 'ap105': samples['ap105'], 'provenance': provenance, 'caveats': ['Interpolation mask0 is excluded, not silently treated as a measured pixel.', 'Native2.96km TES support is not100m THEMIS or a landing slope.', 'Measurements span1999-2004;2007 is the map release year.', 'Earth thermal inertia requires calibrated land-surface thermal data, not POWER air temperature.']}
 
 
-def read_swim(out, client):
+def read_swim(out, client, sites=None):
     path = out/'swim-1-5m.tif'
     provenance = fetch(client, SWIM, path)
     with rasterio.open(path) as src:
         samples = {}
         radius = src.crs.to_dict().get('R', 3396190)
         lonlat = CRS.from_proj4(f'+proj=longlat +R={radius} +no_defs')
-        for name, (lat, lon) in SITES.items():
+        for name, (lat, lon) in (sites or SITES).items():
             xx, yy = transform(lonlat, src.crs, [lon], [lat])
             row, col = src.index(xx[0], yy[0])
             value = src.read(1, window=Window(col, row, 1, 1), masked=True)[0, 0]

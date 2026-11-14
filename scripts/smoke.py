@@ -1,6 +1,7 @@
 """Verify real HTTP routing and service-to-service calls in a running stack."""
 import argparse
 import httpx
+import hashlib
 
 def main():
     parser=argparse.ArgumentParser()
@@ -58,6 +59,101 @@ def main():
             print('Observed pilot not imported; no synthetic fallback')
         else:observed.raise_for_status()
         print('Bilingual research/product catalog: OK')
+        method=client.get('/api/catalog/lunar-method');method.raise_for_status();method=method.json()
+        study=client.get('/api/measurements/lunar-study');study.raise_for_status();study=study.json()
+        assert [t['id'] for t in method['tasks']]==['M2','M3','M4','M6']
+        assert len(study['sites'])==15 and study['global_scan']['imported_land_cells']==0
+        lunar=client.post('/api/similarity/lunar/score',json={});lunar.raise_for_status();lunar=lunar.json()
+        assert lunar['weights']=={'M2':.183,'M3':.429,'M4':.28,'M6':.108}
+        assert len(lunar['candidates'])==15 and lunar['candidates'][0]['id']=='HAWAII_MAUNAKEA'
+        assert all(c['score'] is None for c in lunar['candidates'] if c['group']=='polar')
+        assert abs(lunar['candidates'][0]['tasks']['M6']['score']-40.8)<.1
+        assert abs(lunar['validation']['M6']['known_over_control']-.73)<.01
+        for ice in ['reported','exclude','temperature_proxy']:
+            response=client.post('/api/similarity/lunar/score',json={'tasks':['M6'],'ice_mode':ice})
+            response.raise_for_status();assert len(response.json()['candidates'])==15
+        for task in ['M1','M5']:
+            assert client.post('/api/similarity/lunar/score',json={'tasks':[task]}).status_code==422
+        sensitivity=client.post('/api/similarity/lunar/sensitivity',json={});sensitivity.raise_for_status()
+        assert sensitivity.json()['scenario_count']==18
+        pdf=client.get(method['document_url']);pdf.raise_for_status()
+        assert hashlib.sha256(pdf.content).hexdigest()==study['provenance']['document_sha256']
+        assert len(client.get('/api/catalog/research').json())==10
+        client.get('/moon').raise_for_status();client.get('/moon/observed').raise_for_status()
+        print('Lunar PDF study: four tests, 15 points, fitness, M6/AUC, sensitivity and unchanged source PDF OK')
+        bundle=client.get('/api/catalog/missions/moon/bundle',params={'profile':'lunar_pdf'})
+        bundle.raise_for_status();bundle=bundle.json()
+        assert [t['id'] for t in bundle['tasks']]==['M2','M3','M4','M6']
+        assert len(bundle['sites'])==10 and bundle['settings']['scoring_profile']=='lunar_pdf'
+        request={'profile':'lunar_pdf','mission':'moon','site_id':'moon-scr',
+                 'task_ids':['M2','M3','M4','M6'],'weight_scheme':'roc','tau':.7}
+        response=client.post('/api/similarity/score',json=request)
+        response.raise_for_status();score=response.json()
+        assert score['profile']=='lunar_pdf' and score['site_id']=='moon-scr'
+        assert len(score['candidates'])==15 and score['weights']==lunar['weights']
+        mauna=next(c for c in score['candidates'] if c['id']=='HAWAII_MAUNAKEA')
+        assert abs(mauna['tasks']['M6']['partial_score']-.408)<.001
+        assert all(c['overall'] is None or 0<=c['overall']<=1 for c in score['candidates'])
+        assert all(f['data_fitness'] is not None and f['feature_weight'] is not None
+                   for task in mauna['tasks'].values() for f in task['features'])
+        plan=client.post('/api/planning/optimize',json=request);plan.raise_for_status();plan=plan.json()
+        assert plan['total_tasks']==4 and plan['feature_network']['comparable_features']==10
+        assert 'M4' in plan['covered_tasks']
+        sensitivity=client.post('/api/planning/sensitivity',json=request)
+        sensitivity.raise_for_status();sensitivity=sensitivity.json()
+        assert sensitivity['method']=='pdf_anchor_rank' and sensitivity['n_samples']==18
+        coverage=client.get('/api/similarity/lunar/coverage');coverage.raise_for_status();coverage=coverage.json()
+        assert len(coverage['targets']['moon-scr']['usable'])==10
+        assert len(coverage['targets']['moon-mouton']['usable'])==8
+        mouton=client.post('/api/similarity/score',json={**request,'site_id':'moon-mouton'})
+        mouton.raise_for_status();mouton=mouton.json()
+        assert mouton['site_id']=='moon-mouton' and 'pdf_target_terrain_missing' in mouton['warnings']
+        assert all(c['tasks']['M4']['partial_score'] is None for c in mouton['candidates'])
+        assert any(f['candidate_value'] is not None for c in mouton['candidates']
+                   for f in c['tasks']['M4']['features'])
+        custom=client.post('/api/similarity/score',json={**request,'task_ids':['M2','M6'],
+                          'weight_scheme':'custom','custom_weights':{'M2':1,'M6':3},'exclude_known':True})
+        custom.raise_for_status();custom=custom.json()
+        assert custom['weights']=={'M2':.25,'M6':.75}
+        assert len(custom['candidates'])==8 and not any(c['known_analog'] for c in custom['candidates'])
+        print('Archived lunar wizard API: original contracts, four tasks, ten targets, 0-1 scores, coverage and planning OK')
+        handoff=client.get('/api/catalog/lunar-handoff');handoff.raise_for_status();handoff=handoff.json()
+        assert set(handoff['tasks'])=={'M2','M3','M4','M6'} and len(handoff['moon_sites'])==10
+        assert handoff['provenance']['global_cells']==19599
+        assert handoff['provenance']['excluded_ice_cells']==4881
+        grid=client.get('/api/measurements/lunar-grid');grid.raise_for_status()
+        assert len(grid.json()['rows'])==19599 and 'NaN' not in grid.text
+        rankings=client.get('/api/measurements/lunar-handoff');rankings.raise_for_status()
+        assert rankings.json()['version']==handoff['version'] and 'NaN' not in rankings.text
+        top_scores={}
+        for tid in ['M2','M3','M4','M6']:
+            selected=next(s for s in handoff['moon_sites'] if tid in s['suitable_tasks']['primary'])
+            response=client.get(f'/api/similarity/lunar/tasks/{tid}',params={'site_id':selected['id']})
+            response.raise_for_status();response=response.json()
+            assert response['selected_site']['id']==selected['id'] and response['site_status']=='primary'
+            assert len(response['most_similar'])==len(response['least_similar'])==3
+            assert all(c['known_analog_region'] is None for c in response['most_similar'])
+            assert all(c['available_features']>0 for c in response['most_similar']+response['least_similar'])
+            top_scores[tid]=response['most_similar'][0]['score']
+            client.get(f'/moon/{tid}').raise_for_status()
+        assert top_scores=={'M2':52.9,'M3':92.7,'M4':89.8,'M6':58.7}
+        references=[]
+        for site in handoff['moon_sites']:
+            response=client.get('/api/similarity/lunar/tasks/M4',params={'site_id':site['id']})
+            response.raise_for_status();response=response.json()
+            references.append(response['most_similar'][0]['features'][1]['moon_value'])
+        assert len(set(references))==10
+        shared=client.get('/api/similarity/lunar/tasks/M3',params={'site_id':'moon-scr'})
+        shared.raise_for_status();shared=shared.json()
+        assert shared['selected_site']['id']=='ConnectingRidge' and shared['site_status']=='unassessed'
+        assert shared['most_similar'][0]['score']==92.7
+        assert client.get('/api/similarity/lunar/tasks/M5').status_code==404
+        assert client.get('/api/similarity/lunar/tasks/M4',params={'site_id':'unknown'}).status_code==404
+        principles=client.get('/docs/lunar-principles-2026-11-14.pdf');principles.raise_for_status()
+        assert hashlib.sha256(principles.content).hexdigest()==handoff['provenance']['artifact_sha256']['lunar-principles.pdf']
+        method_page=client.get('/api/catalog/method').json()
+        assert '12,459' in method_page['markdown'] and '0.70' in method_page['markdown_zh']
+        print('Active lunar missions: four task pages, 3+3 comparisons, 19599 cells, ice exclusion and ten independent M4 references OK')
         print('All live HTTP checks passed.')
 
 if __name__=='__main__':main()

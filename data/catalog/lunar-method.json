@@ -1,0 +1,56 @@
+{
+  "id": "lunar-earth-achievable-2026-11-14",
+  "status": "provisional",
+  "title": "Lunar south-pole analog study",
+  "reference_id": "moon-scr",
+  "reference_name": "Shackleton Connecting Ridge",
+  "document_url": "/docs/lunar-method-2026-11-14.pdf",
+  "score_scale": 100,
+  "ai_disclosure": "The supplied team document attributes its analysis scripts and text to Claude assistance with team review. This website integration was implemented with Codex assistance; provisional choices remain labelled for team review.",
+  "formula": "100 * sum(w * c * s) / sum(w * c)",
+  "fitness": {"direct": 1.0, "proxy": 0.6, "literature": 0.3, "missing": 0.0},
+  "tasks": [
+    {"id":"M2","name":"Low-angle illumination and power","weight":0.183,"features":["noon_elevation","low_sun_fraction"]},
+    {"id":"M3","name":"Extended darkness and extreme cold","weight":0.429,"features":["longest_dark","annual_min","diurnal_range"]},
+    {"id":"M4","name":"Steep terrain mobility","weight":0.280,"features":["slope_histogram","relief"]},
+    {"id":"M6","name":"Cold-trap ice prospecting","weight":0.108,"features":["annual_mean","annual_max","ice_checklist"]}
+  ],
+  "retired": [
+    {"id":"M1","name":"Precision landing","reason":"Removed from this study: 1-5 m terrestrial terrain is unavailable and its terrain features overlap M4."},
+    {"id":"M5","name":"Regolith operations","reason":"Removed from scoring: grain-size classes cannot discriminate the sites, spectral references fail the control test, and the missing-data score intervals overlap. Archived code and results remain available."}
+  ],
+  "features": [
+    {"id":"noon_elevation","name":"Equinox noon solar elevation","task":"M2","unit":"deg","formula":"linear","b":90,"t":5,"weight":1,"note":"90 - absolute latitude. This is the PDF's equinox geometric proxy, not annual maximum elevation or the actual lunar solar angle."},
+    {"id":"low_sun_fraction","name":"Fraction of daylight below 10 degrees","task":"M2","unit":"fraction","formula":"linear","b":0,"t":1,"weight":1,"note":"Annual ten-minute geometric solar calculation; sunrise threshold -0.833 degrees; no terrain horizon."},
+    {"id":"longest_dark","name":"Longest continuous annual darkness","task":"M3","unit":"h","formula":"linear","b":12,"t":120,"weight":1,"note":"Circular annual night run at ten-minute spacing. The 120 h anchor is a team test requirement, not lunar night duration."},
+    {"id":"annual_min","name":"Annual minimum 2 m air temperature","task":"M3","unit":"C","formula":"linear","b":0,"t":-89,"weight":1,"note":"Team-reported 2014-2023 reanalysis summary. Air temperature is a proxy for a surface thermal test."},
+    {"id":"diurnal_range","name":"Mean daily 2 m air-temperature range","task":"M3","unit":"C","formula":"linear","b":10,"t":40,"weight":1,"note":"Team-reported air-temperature range; not a measured lunar or terrestrial surface-temperature waveform."},
+    {"id":"slope_histogram","name":"Slope histogram overlap","task":"M4","unit":"fraction","formula":"histogram","bins_deg":[0,5,10,15,20,30],"reference":[0.098,0.2757,0.3035,0.2206,0.1023,0.0],"weight":1,"note":"Six slope bins, with a final bin above 30 degrees. The team CSV reports 30 m-grid statistics; raw DEM windows are not included in that archive."},
+    {"id":"relief","name":"Elevation range in a 16 km window","task":"M4","unit":"m","formula":"log_gaussian","mu":2477,"sigma":0.6931471805599453,"weight":1,"note":"Reference relief is the team-reported 2477 m Connecting Ridge value. A factor of two gives exp(-0.5)."},
+    {"id":"annual_mean","name":"Annual mean 2 m air temperature","task":"M6","unit":"C","formula":"linear","b":15,"t":-55,"weight":1,"note":"An Earth-achievable cold-environment anchor; not annual lunar ground temperature."},
+    {"id":"annual_max","name":"Annual maximum 2 m air temperature","task":"M6","unit":"C","formula":"linear","b":40,"t":-20,"weight":1,"note":"Correlated with annual mean temperature. The thermal-block option shares half the M6 weight between the two temperatures."},
+    {"id":"ice_checklist","name":"Permafrost and subsurface-ice evidence","task":"M6","unit":"fraction","formula":"checklist","components":{"permafrost":0.4,"subsurface_ice":0.3,"cold_trap_ice":0.3},"weight":1,"note":"Only assessments explicitly listed in the PDF enter at c=0.3; other sites remain unknown. Component-level supporting literature is unverified. The optional temperature proxy cannot establish cold-trap ice."}
+  ],
+  "assumptions": [
+    "Anchors and weights are team proposals. Scores describe Earth-achievable test environments, not physical equivalence to the Moon.",
+    "Feature importance and uncertainty values were not supplied. Features use equal weights within each test unless the M6 thermal-block option is selected.",
+    "The four rounded PDF ROC weights are retained exactly. Selecting fewer tests renormalizes only those test weights.",
+    "The current slope and relief reference is Connecting Ridge only. Scores must not be relabelled as another lunar target.",
+    "A score based on available evidence is shown alongside completeness and data fitness. Missing data is never a measured zero.",
+    "Astronomical features ignore terrain obstruction. Air temperatures do not reproduce lunar surface temperatures, vacuum or one-sixth gravity.",
+    "Reported validation results are preliminary team results. Their original climate API responses and DEM processing windows were not included."
+  ],
+  "global_scan": {
+    "status":"not_imported","reported_land_cells":19599,"imported_land_cells":0,
+    "resolution_deg":1,"stage1":"Astronomy, POWER climatological mean temperature, coarse 16 km relief and an explicit temperature-based frozen-ground proxy.",
+    "stage2":"Refine the top 20 non-ice candidates plus the 15 validation locations using point climate summaries and 30 m terrain.",
+    "ice_policy":"Permanent ice-cover screening requires annual-maximum temperature or a verified ice-cover product. Annual mean alone cannot identify ice sheets."
+  },
+  "sources": [
+    {"title":"Team moon branch at the imported commit","url":"https://github.com/77bigsun/nasa/tree/2eb163e0d7ad92ddb565a9c249193e7f3924e955"},
+    {"title":"NASA PGDA LOLA Site01","url":"https://pgda.gsfc.nasa.gov/products/78"},
+    {"title":"Open-Meteo historical reanalysis documentation","url":"https://open-meteo.com/en/docs/historical-weather-api"},
+    {"title":"NASA POWER API","url":"https://power.larc.nasa.gov/docs/services/api/"},
+    {"title":"AWS Terrain Tiles","url":"https://registry.opendata.aws/terrain-tiles/"}
+  ]
+}

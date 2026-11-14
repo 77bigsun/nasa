@@ -8,165 +8,281 @@
   lat: -89.43875806135662
   lon: 222.92251707637553
   coords_status: approx
+  coordinate_reference:
+    title: Published LOLA Site01 ROI
+    url: https://pgda.gsfc.nasa.gov/products/78
+  study_window_m: 2000
 - id: moon-cabeus-b-peak
   mission: moon
   name: Peak near Cabeus B
   name_en: Peak near Cabeus B
-  source: Artemis candidate landing region, October 2024
-  description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
-  lat: null
-  lon: null
-  coords_status: todo
+  source: Wueller et al. (2026), doi:10.1029/2025JE009434; Zenodo 10.5281/zenodo.17084058
+  description: Published study point PCB01; 2 km terrain and finite-horizon solar models imported, with native-cell
+    Diviner temperatures. This is a study window, not a finalized landing site.
+  description_en: Published study point PCB01; 2 km terrain and finite-horizon solar models imported, with native-cell
+    Diviner temperatures. This is a study window, not a finalized landing site.
+  lat: -83.7633
+  lon: 290.0171
+  coords_status: approx
+  coordinate_reference:
+    title: Wueller et al. published point PCB01
+    url: https://doi.org/10.5281/zenodo.17084058
+  study_window_m: 2000
 - id: moon-haworth
   mission: moon
   name: Haworth
   name_en: Haworth
-  source: Artemis candidate landing region, October 2024
-  description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
-  lat: null
-  lon: null
-  coords_status: todo
+  source: Wueller et al. (2026), doi:10.1029/2025JE009434; Zenodo 10.5281/zenodo.17084058
+  description: Published study point HW01; 2 km terrain and finite-horizon solar models imported, with native-cell
+    Diviner temperatures. This is a study window, not a finalized landing site.
+  description_en: Published study point HW01; 2 km terrain and finite-horizon solar models imported, with native-cell
+    Diviner temperatures. This is a study window, not a finalized landing site.
+  lat: -86.7682
+  lon: 339.486
+  coords_status: approx
+  coordinate_reference:
+    title: Wueller et al. published point HW01
+    url: https://doi.org/10.5281/zenodo.17084058
+  study_window_m: 2000
 - id: moon-malapert
   mission: moon
   name: Malapert Massif
   name_en: Malapert Massif
-  source: Artemis candidate landing region, October 2024
-  description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
-  lat: null
-  lon: null
-  coords_status: todo
+  source: Wueller et al. (2026), doi:10.1029/2025JE009434; Zenodo 10.5281/zenodo.17084058
+  description: Published study point MMA01; 2 km terrain and finite-horizon solar models imported, with native-cell
+    Diviner temperatures. This is a study window, not a finalized landing site.
+  description_en: Published study point MMA01; 2 km terrain and finite-horizon solar models imported, with native-cell
+    Diviner temperatures. This is a study window, not a finalized landing site.
+  lat: -85.9425
+  lon: 359.05635
+  coords_status: approx
+  coordinate_reference:
+    title: Wueller et al. published point MMA01
+    url: https://doi.org/10.5281/zenodo.17084058
+  study_window_m: 2000
 - id: moon-mouton-plateau
   mission: moon
   name: Mons Mouton Plateau
   name_en: Mons Mouton Plateau
-  source: Artemis candidate landing region, October 2024
-  description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
-  lat: null
-  lon: null
-  coords_status: todo
+  source: Wueller et al. (2026), doi:10.1029/2025JE009434; Zenodo 10.5281/zenodo.17084058
+  description: Published study point MMP01; 2 km terrain and finite-horizon solar models imported, with native-cell
+    Diviner temperatures. This is a study window, not a finalized landing site.
+  description_en: Published study point MMP01; 2 km terrain and finite-horizon solar models imported, with native-cell
+    Diviner temperatures. This is a study window, not a finalized landing site.
+  lat: -85.1114
+  lon: 26.7102
+  coords_status: approx
+  coordinate_reference:
+    title: Wueller et al. published point MMP01
+    url: https://doi.org/10.5281/zenodo.17084058
+  study_window_m: 2000
 - id: moon-mouton
   mission: moon
   name: Mons Mouton
   name_en: Mons Mouton
-  source: Artemis candidate landing region, October 2024
-  description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
-  lat: null
-  lon: null
-  coords_status: todo
+  source: Wueller et al. (2026), doi:10.1029/2025JE009434; Zenodo 10.5281/zenodo.17084058
+  description: Published study point MMO01; 2 km terrain and finite-horizon solar models imported, with native-cell
+    Diviner temperatures. This is a study window, not a finalized landing site.
+  description_en: Published study point MMO01; 2 km terrain and finite-horizon solar models imported, with native-cell
+    Diviner temperatures. This is a study window, not a finalized landing site.
+  lat: -85.416
+  lon: 31.8506
+  coords_status: approx
+  coordinate_reference:
+    title: Wueller et al. published point MMO01
+    url: https://doi.org/10.5281/zenodo.17084058
+  study_window_m: 2000
 - id: moon-nobile-1
   mission: moon
   name: Nobile Rim 1
   name_en: Nobile Rim 1
-  source: Artemis candidate landing region, October 2024
-  description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
-  lat: null
-  lon: null
-  coords_status: todo
+  source: Wueller et al. (2026), doi:10.1029/2025JE009434; Zenodo 10.5281/zenodo.17084058
+  description: Published study point NR101; 2 km terrain and finite-horizon solar models imported, with native-cell
+    Diviner temperatures. This is a study window, not a finalized landing site.
+  description_en: Published study point NR101; 2 km terrain and finite-horizon solar models imported, with native-cell
+    Diviner temperatures. This is a study window, not a finalized landing site.
+  lat: -85.295
+  lon: 36.9168
+  coords_status: approx
+  coordinate_reference:
+    title: Wueller et al. published point NR101
+    url: https://doi.org/10.5281/zenodo.17084058
+  study_window_m: 2000
 - id: moon-nobile-2
   mission: moon
   name: Nobile Rim 2
   name_en: Nobile Rim 2
-  source: Artemis candidate landing region, October 2024
-  description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
-  lat: null
-  lon: null
-  coords_status: todo
+  source: Wueller et al. (2026), doi:10.1029/2025JE009434; Zenodo 10.5281/zenodo.17084058
+  description: Published study point NR201; 2 km terrain and finite-horizon solar models imported, with native-cell
+    Diviner temperatures. This is a study window, not a finalized landing site.
+  description_en: Published study point NR201; 2 km terrain and finite-horizon solar models imported, with native-cell
+    Diviner temperatures. This is a study window, not a finalized landing site.
+  lat: -84.0539
+  lon: 56.4813
+  coords_status: approx
+  coordinate_reference:
+    title: Wueller et al. published point NR201
+    url: https://doi.org/10.5281/zenodo.17084058
+  study_window_m: 2000
 - id: moon-degerlache-2
   mission: moon
   name: de Gerlache Rim 2
   name_en: de Gerlache Rim 2
-  source: Artemis candidate landing region, October 2024
-  description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
-  lat: null
-  lon: null
-  coords_status: todo
+  source: Wueller et al. (2026), doi:10.1029/2025JE009434; Zenodo 10.5281/zenodo.17084058
+  description: Published study point dGR201; 2 km terrain and finite-horizon solar models imported, with native-cell
+    Diviner temperatures. This is a study window, not a finalized landing site.
+  description_en: Published study point dGR201; 2 km terrain and finite-horizon solar models imported, with native-cell
+    Diviner temperatures. This is a study window, not a finalized landing site.
+  lat: -88.3891
+  lon: 291.13530000000003
+  coords_status: approx
+  coordinate_reference:
+    title: Wueller et al. published point dGR201
+    url: https://doi.org/10.5281/zenodo.17084058
+  study_window_m: 2000
 - id: moon-slater
   mission: moon
   name: Slater Plain
   name_en: Slater Plain
-  source: Artemis candidate landing region, October 2024
-  description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
-  lat: null
-  lon: null
-  coords_status: todo
+  source: Wueller et al. (2026), doi:10.1029/2025JE009434; Zenodo 10.5281/zenodo.17084058
+  description: Published study point SP01; 2 km terrain and finite-horizon solar models imported, with native-cell
+    Diviner temperatures. This is a study window, not a finalized landing site.
+  description_en: Published study point SP01; 2 km terrain and finite-horizon solar models imported, with native-cell
+    Diviner temperatures. This is a study window, not a finalized landing site.
+  lat: -87.4783
+  lon: 124.521
+  coords_status: approx
+  coordinate_reference:
+    title: Wueller et al. published point SP01
+    url: https://doi.org/10.5281/zenodo.17084058
+  study_window_m: 2000
 - id: mars-gale
   mission: mars
   name: Gale crater (optional)
   name_en: Gale crater (optional)
   source: HiRISE Gale DTM and Curiosity REMS sol 1000
-  description: Approximate Gale study point with actual terrain and quality-filtered air-temperature evidence. This
-    is separate from AP-105.
-  description_en: Approximate Gale study point with actual terrain and quality-filtered air-temperature evidence.
-    This is separate from AP-105.
+  description: 'Regional study window: 20 km terrain with a 500 m comparison grid, plus native TES/SWIM context
+    where valid. Regional roughness is comparable; it does not resolve 100 m landing slopes, rocks or polygonal
+    landforms. Gale also retains its own finer HiRISE slope and regional REMS air-temperature evidence.'
+  description_en: 'Regional study window: 20 km terrain with a 500 m comparison grid, plus native TES/SWIM context
+    where valid. Regional roughness is comparable; it does not resolve 100 m landing slopes, rocks or polygonal
+    landforms. Gale also retains its own finer HiRISE slope and regional REMS air-temperature evidence.'
   lat: -4.67
   lon: 137.37
   coords_status: approx
+  coordinate_reference:
+    title: Study-point reference
+    url: https://hirise.lpl.arizona.edu/dtm/dtm.php?ID=ESP_040770_1755
+  study_window_m: 20000
 - id: mars-ap105
   mission: mars
   name: Arcadia Planitia (AP-105)
   name_en: Arcadia Planitia (AP-105)
   source: SkyFall design reference; polygonal terrain and very few rocks
-  description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
+  description: 'Regional study window: 20 km terrain with a 500 m comparison grid, plus native TES/SWIM context
+    where valid. Regional roughness is comparable; it does not resolve 100 m landing slopes, rocks or polygonal
+    landforms.'
+  description_en: 'Regional study window: 20 km terrain with a 500 m comparison grid, plus native TES/SWIM context
+    where valid. Regional roughness is comparable; it does not resolve 100 m landing slopes, rocks or polygonal
+    landforms.'
   lat: 43.3295
   lon: 198.5228
   coords_status: exact
+  coordinate_reference:
+    title: Study-point reference
+    url: https://science.nasa.gov/wp-content/uploads/2026/09/skyfall-mission-information-package-final.pdf
+  study_window_m: 20000
 - id: mars-deuteronilus
   mission: mars
   name: Deuteronilus Mensae
   name_en: Deuteronilus Mensae
-  source: SkyFall study region at 30-45 N
-  description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
-  lat: null
-  lon: null
-  coords_status: todo
+  source: USGS Gazetteer current named-feature centre; regional sample only
+  description: 'Regional study window: 20 km terrain with a 500 m comparison grid, plus native TES/SWIM context
+    where valid. Regional roughness is comparable; it does not resolve 100 m landing slopes, rocks or polygonal
+    landforms. The point is a Gazetteer feature centre, not a selected SkyFall landing site. This centre lies outside
+    the provisional 30-45 N landing band.'
+  description_en: 'Regional study window: 20 km terrain with a 500 m comparison grid, plus native TES/SWIM context
+    where valid. Regional roughness is comparable; it does not resolve 100 m landing slopes, rocks or polygonal
+    landforms. The point is a Gazetteer feature centre, not a selected SkyFall landing site. This centre lies outside
+    the provisional 30-45 N landing band.'
+  lat: 45.11
+  lon: 23.92
+  coords_status: approx
+  coordinate_reference:
+    title: Study-point reference
+    url: https://planetarynames.wr.usgs.gov/Feature/1509
+  study_window_m: 20000
 - id: mars-utopia
   mission: mars
   name: Utopia Planitia
   name_en: Utopia Planitia
-  source: SkyFall study region at 30-45 N
-  description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
-  lat: null
-  lon: null
-  coords_status: todo
+  source: USGS Gazetteer current named-feature centre; regional sample only
+  description: 'Regional study window: 20 km terrain with a 500 m comparison grid, plus native TES/SWIM context
+    where valid. Regional roughness is comparable; it does not resolve 100 m landing slopes, rocks or polygonal
+    landforms. The point is a Gazetteer feature centre, not a selected SkyFall landing site. This centre lies outside
+    the provisional 30-45 N landing band.'
+  description_en: 'Regional study window: 20 km terrain with a 500 m comparison grid, plus native TES/SWIM context
+    where valid. Regional roughness is comparable; it does not resolve 100 m landing slopes, rocks or polygonal
+    landforms. The point is a Gazetteer feature centre, not a selected SkyFall landing site. This centre lies outside
+    the provisional 30-45 N landing band.'
+  lat: 46.74
+  lon: 117.52
+  coords_status: approx
+  coordinate_reference:
+    title: Study-point reference
+    url: https://planetarynames.wr.usgs.gov/Feature/6260
+  study_window_m: 20000
 - id: mars-phlegra
   mission: mars
   name: Phlegra Montes
   name_en: Phlegra Montes
-  source: SkyFall study region at 30-45 N
-  description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
-  lat: null
-  lon: null
-  coords_status: todo
+  source: USGS Gazetteer current named-feature centre; regional sample only
+  description: 'Regional study window: 20 km terrain with a 500 m comparison grid, plus native TES/SWIM context
+    where valid. Regional roughness is comparable; it does not resolve 100 m landing slopes, rocks or polygonal
+    landforms. The point is a Gazetteer feature centre, not a selected SkyFall landing site.'
+  description_en: 'Regional study window: 20 km terrain with a 500 m comparison grid, plus native TES/SWIM context
+    where valid. Regional roughness is comparable; it does not resolve 100 m landing slopes, rocks or polygonal
+    landforms. The point is a Gazetteer feature centre, not a selected SkyFall landing site.'
+  lat: 40.4
+  lon: 163.71
+  coords_status: approx
+  coordinate_reference:
+    title: Study-point reference
+    url: https://planetarynames.wr.usgs.gov/Feature/4701
+  study_window_m: 20000
 - id: mars-erebus
   mission: mars
   name: Erebus Montes
   name_en: Erebus Montes
-  source: SkyFall study region at 30-45 N
-  description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
-  lat: null
-  lon: null
-  coords_status: todo
+  source: USGS Gazetteer current named-feature centre; regional sample only
+  description: 'Regional study window: 20 km terrain with a 500 m comparison grid, plus native TES/SWIM context
+    where valid. Regional roughness is comparable; it does not resolve 100 m landing slopes, rocks or polygonal
+    landforms. The point is a Gazetteer feature centre, not a selected SkyFall landing site.'
+  description_en: 'Regional study window: 20 km terrain with a 500 m comparison grid, plus native TES/SWIM context
+    where valid. Regional roughness is comparable; it does not resolve 100 m landing slopes, rocks or polygonal
+    landforms. The point is a Gazetteer feature centre, not a selected SkyFall landing site.'
+  lat: 35.66
+  lon: 185.02
+  coords_status: approx
+  coordinate_reference:
+    title: Study-point reference
+    url: https://planetarynames.wr.usgs.gov/Feature/1821
+  study_window_m: 20000
 - id: mars-jezero
   mission: mars
   name: Jezero crater (optional)
   name_en: Jezero crater (optional)
   source: Perseverance site with in-situ measurements for method validation
-  description: Team-supplied target. Feature values currently use deterministic placeholders.
-  description_en: Team-supplied target. Feature values currently use deterministic placeholders.
+  description: 'Regional study window: 20 km terrain with a 500 m comparison grid, plus native TES/SWIM context
+    where valid. Regional roughness is comparable; it does not resolve 100 m landing slopes, rocks or polygonal
+    landforms.'
+  description_en: 'Regional study window: 20 km terrain with a 500 m comparison grid, plus native TES/SWIM context
+    where valid. Regional roughness is comparable; it does not resolve 100 m landing slopes, rocks or polygonal
+    landforms.'
   lat: 18.4
   lon: 77.5
   coords_status: approx
+  coordinate_reference:
+    title: Study-point reference
+    url: https://mars.nasa.gov/files/m2020/SDT_Appendices_Final_v6.pdf
+  study_window_m: 20000

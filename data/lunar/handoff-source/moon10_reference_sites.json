@@ -1,0 +1,152 @@
+{
+ "ConnectingRidge": {
+  "label": "Shackleton 連接脊 Connecting Ridge",
+  "lat": -89.45,
+  "lon": null,
+  "relief_16km_m": 2477,
+  "slope_frac": [
+   0.098,
+   0.2757,
+   0.3035,
+   0.2206,
+   0.1023,
+   0
+  ],
+  "source": "LOLA 5 m PGDA Site01"
+ },
+ "PeakNearCabeusB": {
+  "label": "Peak near Cabeus B",
+  "lat": -83.6,
+  "lon": -68.8,
+  "relief_16km_m": 3628,
+  "slope_frac": [
+   0.0202,
+   0.0815,
+   0.1873,
+   0.2826,
+   0.4174,
+   0.0111
+  ],
+  "source": "LOLA 20 m, LROC ROI centre"
+ },
+ "Haworth": {
+  "label": "Haworth",
+  "lat": -86.7,
+  "lon": -23.7,
+  "relief_16km_m": 2127,
+  "slope_frac": [
+   0.1964,
+   0.4104,
+   0.244,
+   0.109,
+   0.04,
+   0.0003
+  ],
+  "source": "LOLA 20 m, LROC ROI centre"
+ },
+ "MalapertMassif": {
+  "label": "Malapert Massif",
+  "lat": -86.0,
+  "lon": 0.3,
+  "relief_16km_m": 3186,
+  "slope_frac": [
+   0.0422,
+   0.1193,
+   0.1929,
+   0.2736,
+   0.3599,
+   0.0121
+  ],
+  "source": "LOLA 20 m, LROC ROI centre"
+ },
+ "MonsMoutonPlateau": {
+  "label": "Mons Mouton Plateau",
+  "lat": -84.3,
+  "lon": 30.6,
+  "relief_16km_m": 1526,
+  "slope_frac": [
+   0.2799,
+   0.4513,
+   0.1855,
+   0.062,
+   0.0203,
+   0.001
+  ],
+  "source": "LOLA 20 m, LROC ROI centre"
+ },
+ "MonsMouton": {
+  "label": "Mons Mouton",
+  "lat": -85.4,
+  "lon": 35.3,
+  "relief_16km_m": 3454,
+  "slope_frac": [
+   0.0979,
+   0.2242,
+   0.283,
+   0.2311,
+   0.1581,
+   0.0058
+  ],
+  "source": "LOLA 20 m, LROC ROI centre (shared with Nobile Rim 1)"
+ },
+ "NobileRim1": {
+  "label": "Nobile Rim 1",
+  "lat": -85.28,
+  "lon": 37.01,
+  "relief_16km_m": 4447,
+  "slope_frac": [
+   0.1293,
+   0.2211,
+   0.2072,
+   0.1536,
+   0.2705,
+   0.0183
+  ],
+  "source": "LOLA 20 m, literature centre"
+ },
+ "NobileRim2": {
+  "label": "Nobile Rim 2",
+  "lat": -83.9,
+  "lon": 58.7,
+  "relief_16km_m": 2738,
+  "slope_frac": [
+   0.1835,
+   0.3138,
+   0.2607,
+   0.1685,
+   0.0731,
+   0.0003
+  ],
+  "source": "LOLA 20 m, LROC ROI centre"
+ },
+ "deGerlacheRim2": {
+  "label": "de Gerlache Rim 2",
+  "lat": -88.5,
+  "lon": -66.7,
+  "relief_16km_m": 2725,
+  "slope_frac": [
+   0.038,
+   0.1503,
+   0.3273,
+   0.3229,
+   0.1606,
+   0.0009
+  ],
+  "source": "LOLA 20 m, LROC ROI centre"
+ },
+ "SlaterPlain": {
+  "label": "Slater Plain",
+  "lat": -86.96,
+  "lon": 126.82,
+  "relief_16km_m": 2077,
+  "slope_frac": [
+   0.1988,
+   0.3527,
+   0.2443,
+   0.1515,
+   0.0514,
+   0.0013
+  ],
+  "source": "LOLA 20 m, literature centre"
+ }
+}

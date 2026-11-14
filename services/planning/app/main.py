@@ -16,7 +16,8 @@ def create_app(catalog=None,similarity=None):
 
     async def execute(request,operation):
         try:
-            bundle,score=await asyncio.gather(catalog.bundle(request.mission),similarity.score(request))
+            if request.profile=='lunar_pdf' and operation=='sensitivity':return await similarity.lunar_sensitivity(request)
+            bundle,score=await asyncio.gather(catalog.bundle(request.mission,request.profile) if request.profile!='observed' else catalog.bundle(request.mission),similarity.score(request))
         except httpx.HTTPStatusError as error:
             if error.response.status_code==422:
                 raise HTTPException(422,error.response.json().get('detail','Invalid scoring request')) from error

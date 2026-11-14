@@ -36,6 +36,6 @@ describe('Observed evidence and research',()=>{
   i18n.global.locale.value='zh-TW';await flushPromises()
   expect(wrapper.text()).toContain(zh.status_planned)
   expect(wrapper.text()).toContain(translations[research[1].title as keyof typeof translations])
-  expect(wrapper.findAll('article')).toHaveLength(9);wrapper.unmount()
+  expect(wrapper.findAll('article')).toHaveLength(10);wrapper.unmount()
  })
 })

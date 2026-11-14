@@ -26,8 +26,70 @@ def create_app(catalog=None,measurements=None):
 
     @app.post('/score',response_model=ScoreResponse)
     async def score(request:ScoreRequest):
+        if request.profile=='lunar_pdf':
+            from .lunar_wizard import calculate
+            bundle,(method,study)=await wizard_inputs()
+            try:return await run_in_threadpool(calculate,request,bundle,method,study)
+            except ValueError as error:raise HTTPException(422,str(error)) from error
         bundle,repo=await inputs(request.mission)
         try:return await run_in_threadpool(engine.calculate,request,bundle,repo)
+        except ValueError as error:raise HTTPException(422,str(error)) from error
+
+    from services.shared.lunar import LunarRequest
+    async def lunar_inputs():
+        try:
+            async with httpx.AsyncClient(timeout=20) as client:
+                config,data=await asyncio.gather(client.get(catalog.url+'/lunar-method'),client.get(measurements.url+'/lunar-study'))
+                config.raise_for_status();data.raise_for_status()
+                from services.shared.lunar import LunarStudy
+                return config.json(),LunarStudy.model_validate(data.json()).model_dump()
+        except (httpx.HTTPError,ValueError) as error:raise HTTPException(503,'Lunar method or study unavailable') from error
+
+    async def wizard_inputs():
+        try:return await asyncio.gather(catalog.bundle('moon','lunar_pdf'),lunar_inputs())
+        except (httpx.HTTPError,ValueError) as error:raise HTTPException(503,'Lunar wizard inputs unavailable') from error
+
+    from services.shared.lunar_handoff import HandoffCatalog,HandoffRankings,LunarTaskComparison
+    @app.get('/lunar/tasks/{task_id}',response_model=LunarTaskComparison)
+    async def lunar_task_comparison(task_id:str,site_id:str=Query('ConnectingRidge')):
+        from .lunar_handoff import task_comparison
+        if task_id not in {'M2','M3','M4','M6'}:raise HTTPException(404,'Unknown retained lunar task')
+        try:
+            async with httpx.AsyncClient(timeout=20) as client:
+                config,data=await asyncio.gather(client.get(catalog.url+'/lunar-handoff'),client.get(measurements.url+'/lunar-handoff'))
+                config.raise_for_status();data.raise_for_status()
+                config=HandoffCatalog.model_validate(config.json());data=HandoffRankings.model_validate(data.json())
+        except (httpx.HTTPError,ValueError) as error:raise HTTPException(503,'Lunar task inputs unavailable or invalid') from error
+        try:return task_comparison(task_id,site_id,config,data)
+        except ValueError as error:raise HTTPException(404,str(error)) from error
+        except RuntimeError as error:raise HTTPException(503,str(error)) from error
+
+    @app.post('/lunar/score')
+    async def lunar_score(request:LunarRequest):
+        from .lunar import calculate
+        config,data=await lunar_inputs()
+        try:return await run_in_threadpool(calculate,request,config,data)
+        except ValueError as error:raise HTTPException(422,str(error)) from error
+
+    @app.post('/lunar/sensitivity')
+    async def lunar_sensitivity(request:LunarRequest):
+        from .lunar import sensitivity
+        config,data=await lunar_inputs()
+        try:return await run_in_threadpool(sensitivity,request,config,data)
+        except ValueError as error:raise HTTPException(422,str(error)) from error
+
+    @app.get('/lunar/coverage')
+    async def lunar_coverage():
+        from .lunar_wizard import coverage
+        bundle,(method,study)=await wizard_inputs()
+        return coverage(bundle,method,study)
+
+    @app.post('/lunar/wizard-sensitivity')
+    async def lunar_wizard_sensitivity(request:ScoreRequest):
+        if request.profile!='lunar_pdf':raise HTTPException(422,'Lunar PDF profile is required')
+        from .lunar_wizard import sensitivity
+        bundle,(method,study)=await wizard_inputs()
+        try:return await run_in_threadpool(sensitivity,request,bundle,method,study)
         except ValueError as error:raise HTTPException(422,str(error)) from error
 
     @app.get('/candidates/{candidate_id}/series/{feature_id}',response_model=SeriesResponse)

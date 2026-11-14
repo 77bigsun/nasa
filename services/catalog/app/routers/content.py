@@ -1,5 +1,5 @@
 from services.shared.contracts import DatasetProduct, ResearchSection
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Query
 from ..models import Mission, Task, Site, EarthLimit, Constraint, DataSource, Facts, Method, Bundle
 from ..repository import FileRepository
 
@@ -37,9 +37,16 @@ def create_router(repo: FileRepository):
     def constraints(mission: str):check(mission);return repo.constraints[mission]
 
     @router.get('/missions/{mission}/bundle',response_model=Bundle)
-    def bundle(mission: str):
+    def bundle(mission: str,profile:str=Query('observed',pattern='^(observed|lunar_pdf)$')):
         check(mission)
-        return Bundle(mission=repo.mission(mission),tasks=tasks(mission),sites=sites(mission),limits=limits(mission),constraints=constraints(mission),settings=repo.settings,categorical_tables=repo.tables)
+        result=Bundle(mission=repo.mission(mission),tasks=tasks(mission),sites=sites(mission),limits=limits(mission),constraints=constraints(mission),settings=repo.settings,categorical_tables=repo.tables)
+        if profile=='lunar_pdf':
+            if mission!='moon':raise HTTPException(422,'Lunar PDF profile requires a lunar mission')
+            import json
+            from ..lunar import wizard_bundle
+            method=json.loads((repo.data_root/'catalog/lunar-method.json').read_text(encoding='utf-8'))
+            return Bundle.model_validate(wizard_bundle(result.model_dump(),method))
+        return result
 
     @router.get('/data-sources',response_model=list[DataSource])
     def sources():return repo.sources
@@ -48,12 +55,27 @@ def create_router(repo: FileRepository):
     def facts():return repo.facts
 
     @router.get('/method',response_model=Method)
-    def method():return Method(settings=repo.settings,markdown=(repo.docs/'METHOD.md').read_text(encoding='utf-8'),markdown_zh=(repo.data_root/'content/method.zh-TW.md').read_text(encoding='utf-8'))
+    def method():
+        en=(repo.data_root/'content/lunar-tasks.en.md').read_text(encoding='utf-8')
+        zh=(repo.data_root/'content/lunar-tasks.zh-TW.md').read_text(encoding='utf-8')
+        return Method(settings=repo.settings,markdown=en+(repo.docs/'METHOD.md').read_text(encoding='utf-8'),markdown_zh=zh+(repo.data_root/'content/method.zh-TW.md').read_text(encoding='utf-8'))
     @router.get('/datasets',response_model=list[DatasetProduct])
     def datasets():return repo.products
 
     @router.get('/research',response_model=list[ResearchSection])
     def research():return repo.research
+
+    @router.get('/lunar-method')
+    def lunar_method():
+        import json
+        return json.loads((repo.data_root/'catalog/lunar-method.json').read_text(encoding='utf-8'))
+
+    from services.shared.lunar_handoff import HandoffCatalog
+    @router.get('/lunar-handoff',response_model=HandoffCatalog)
+    def lunar_handoff():
+        path=repo.data_root/'catalog/lunar-handoff.json'
+        if not path.exists():raise HTTPException(404,'Lunar task handoff is not imported')
+        return HandoffCatalog.model_validate_json(path.read_text(encoding='utf-8'))
 
     @router.get('/translations/{locale}',response_model=dict[str,str])
     def translations(locale: str):

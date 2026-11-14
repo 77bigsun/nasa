@@ -1,16 +1,19 @@
 import axios from 'axios'
 import type {Bundle,Mission,Facts,DataSource,ScoreRequest,ScoreResponse,OptimizeResponse,SensitivityResponse,SeriesResponse,DatasetProduct,ResearchSection,ObservedPilot,MeasurementCoverage} from './types'
+import type {LunarHandoffCatalog,LunarTaskComparison,LunarTaskId} from './lunarHandoffTypes'
 const catalog=axios.create({baseURL:'/api/catalog',timeout:15000})
 const similarity=axios.create({baseURL:'/api/similarity',timeout:120000})
 const measurements=axios.create({baseURL:'/api/measurements',timeout:15000})
 const planning=axios.create({baseURL:'/api/planning',timeout:120000})
 export const api={
+ lunarHandoff:()=>catalog.get<LunarHandoffCatalog>('/lunar-handoff').then(r=>r.data),
+ lunarTask:(task:LunarTaskId,site:string,signal?:AbortSignal)=>similarity.get<LunarTaskComparison>(`/lunar/tasks/${task}`,{params:{site_id:site},signal}).then(r=>r.data),
  missions:()=>catalog.get<Mission[]>('/missions').then(r=>r.data),
- bundle:(id:string)=>catalog.get<Bundle>(`/missions/${id}/bundle`).then(r=>r.data),
+ bundle:(id:string)=>catalog.get<Bundle>(`/missions/${id}/bundle`,{params:id==='moon'?{profile:'lunar_pdf'}:undefined}).then(r=>r.data),
  facts:()=>catalog.get<Facts>('/earth-facts').then(r=>r.data),
  datasets:()=>catalog.get<DatasetProduct[]>('/datasets').then(r=>r.data),
  research:()=>catalog.get<ResearchSection[]>('/research').then(r=>r.data),
- coverage:()=>measurements.get<MeasurementCoverage>('/coverage').then(r=>r.data),
+ coverage:(profile?:string)=>profile==='lunar_pdf'?similarity.get<MeasurementCoverage>('/lunar/coverage').then(r=>r.data):measurements.get<MeasurementCoverage>('/coverage').then(r=>r.data),
  observations:()=>measurements.get<ObservedPilot>('/observations').then(r=>r.data).catch(e=>{if(axios.isAxiosError(e)&&e.response?.status===404)return null;throw e}),
  sources:()=>catalog.get<DataSource[]>('/data-sources').then(r=>r.data),
  method:()=>catalog.get<{settings:Record<string,unknown>;markdown:string;markdown_zh?:string}>('/method').then(r=>r.data),

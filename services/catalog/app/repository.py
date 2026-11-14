@@ -30,6 +30,11 @@ class FileRepository:
         self.products=[DatasetProduct.model_validate(x) for x in json.loads((self.data_root/'catalog/datasets.json').read_text(encoding='utf-8'))]
         self.research=[ResearchSection.model_validate(x) for x in json.loads((self.data_root/'catalog/research.json').read_text(encoding='utf-8'))]
         self.translations=json.loads((self.data_root/'locales/zh-TW.json').read_text(encoding='utf-8'))
+        lunar_locale=self.data_root/'locales/lunar-method.zh-TW.json'
+        if lunar_locale.exists():self.translations.update(json.loads(lunar_locale.read_text(encoding='utf-8')))
+        for name in ['lunar-handoff-source.zh-TW.json','lunar-handoff.zh-TW.json']:
+            path=self.data_root/'locales'/name
+            if path.exists():self.translations.update(json.loads(path.read_text(encoding='utf-8')))
         self.validate_links()
 
     def read(self,name):

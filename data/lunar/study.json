@@ -1,0 +1,2053 @@
+{
+  "version": "lunar-study-2026-11-14",
+  "reference_id": "moon-scr",
+  "sites": [
+    {
+      "id": "ATACAMA_YUNGAY",
+      "name": "Atacama - Yungay",
+      "lat": -24.09,
+      "lon": -69.92,
+      "group": "known",
+      "coordinate_status": "document_study_point",
+      "coordinate_source": {
+        "title": "Team lunar method PDF, pages 3-4",
+        "url": "/docs/lunar-method-2026-11-14.pdf"
+      },
+      "features": {
+        "noon_elevation": {
+          "value": 65.91,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "low_sun_fraction": {
+          "value": 0.13797659494148734,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "longest_dark": {
+          "value": 13.5,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "slope_histogram": {
+          "value": [
+            0.6033,
+            0.2076,
+            0.0916,
+            0.0613,
+            0.035,
+            0.0012
+          ],
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Rounded team CSV histogram; raw DEM windows and processing metadata were not included."
+          ]
+        },
+        "relief": {
+          "value": 637.0,
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Team-reported 16 km elevation range, not the older 2 km pilot metric."
+          ]
+        },
+        "annual_mean": {
+          "value": 20.39,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_max": {
+          "value": 35.3,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_min": {
+          "value": 3.33,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "diurnal_range": {
+          "value": 16.7,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "ice_checklist": {
+          "value": null,
+          "fitness": 0,
+          "kind": "team_reported_assessment",
+          "source": {
+            "title": "Team lunar method PDF, pages 3-4",
+            "url": "/docs/lunar-method-2026-11-14.pdf"
+          },
+          "notes": [
+            "PDF aggregate judgement only; component evidence and site-specific literature need verification."
+          ]
+        }
+      },
+      "ice_cover_status": "not_verified"
+    },
+    {
+      "id": "DEATHVALLEY_UBEHEBE",
+      "name": "Death Valley - Ubehebe",
+      "lat": 37.01,
+      "lon": -117.45,
+      "group": "known",
+      "coordinate_status": "document_study_point",
+      "coordinate_source": {
+        "title": "Team lunar method PDF, pages 3-4",
+        "url": "/docs/lunar-method-2026-11-14.pdf"
+      },
+      "features": {
+        "noon_elevation": {
+          "value": 52.99,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "low_sun_fraction": {
+          "value": 0.15975577780274938,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "longest_dark": {
+          "value": 14.5,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "slope_histogram": {
+          "value": [
+            0.3591,
+            0.2752,
+            0.1212,
+            0.0943,
+            0.1199,
+            0.0303
+          ],
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Rounded team CSV histogram; raw DEM windows and processing metadata were not included."
+          ]
+        },
+        "relief": {
+          "value": 1219.0,
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Team-reported 16 km elevation range, not the older 2 km pilot metric."
+          ]
+        },
+        "annual_mean": {
+          "value": 21.13,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_max": {
+          "value": 43.37,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_min": {
+          "value": -2.5,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "diurnal_range": {
+          "value": 9.81,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "ice_checklist": {
+          "value": 0,
+          "fitness": 0.3,
+          "kind": "team_reported_assessment",
+          "source": {
+            "title": "Team lunar method PDF, pages 3-4",
+            "url": "/docs/lunar-method-2026-11-14.pdf"
+          },
+          "notes": [
+            "PDF aggregate judgement only; component evidence and site-specific literature need verification."
+          ]
+        }
+      },
+      "ice_cover_status": "not_verified"
+    },
+    {
+      "id": "HAWAII_MAUNAKEA",
+      "name": "Mauna Kea",
+      "lat": 19.82,
+      "lon": -155.47,
+      "group": "known",
+      "coordinate_status": "document_study_point",
+      "coordinate_source": {
+        "title": "Team lunar method PDF, pages 3-4",
+        "url": "/docs/lunar-method-2026-11-14.pdf"
+      },
+      "features": {
+        "noon_elevation": {
+          "value": 70.18,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "low_sun_fraction": {
+          "value": 0.13314500941619586,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "longest_dark": {
+          "value": 13.166666666666666,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "slope_histogram": {
+          "value": [
+            0.0488,
+            0.2201,
+            0.3286,
+            0.265,
+            0.132,
+            0.0056
+          ],
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Rounded team CSV histogram; raw DEM windows and processing metadata were not included."
+          ]
+        },
+        "relief": {
+          "value": 2390.0,
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Team-reported 16 km elevation range, not the older 2 km pilot metric."
+          ]
+        },
+        "annual_mean": {
+          "value": 1.23,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_max": {
+          "value": 11.68,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_min": {
+          "value": -9.82,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "diurnal_range": {
+          "value": 8.66,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "ice_checklist": {
+          "value": 0.7,
+          "fitness": 0.3,
+          "kind": "team_reported_assessment",
+          "source": {
+            "title": "Team lunar method PDF, pages 3-4",
+            "url": "/docs/lunar-method-2026-11-14.pdf"
+          },
+          "notes": [
+            "PDF aggregate judgement only; component evidence and site-specific literature need verification."
+          ]
+        }
+      },
+      "ice_cover_status": "not_verified"
+    },
+    {
+      "id": "HAWAII_KAU_DESERT",
+      "name": "Hawaii - Kau Desert",
+      "lat": 19.35,
+      "lon": -155.36,
+      "group": "known",
+      "coordinate_status": "document_study_point",
+      "coordinate_source": {
+        "title": "Team lunar method PDF, pages 3-4",
+        "url": "/docs/lunar-method-2026-11-14.pdf"
+      },
+      "features": {
+        "noon_elevation": {
+          "value": 70.65,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "low_sun_fraction": {
+          "value": 0.13289661923047963,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "longest_dark": {
+          "value": 13.166666666666666,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "slope_histogram": {
+          "value": [
+            0.7303,
+            0.2153,
+            0.0307,
+            0.0082,
+            0.0078,
+            0.0077
+          ],
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Rounded team CSV histogram; raw DEM windows and processing metadata were not included."
+          ]
+        },
+        "relief": {
+          "value": 1702.0,
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Team-reported 16 km elevation range, not the older 2 km pilot metric."
+          ]
+        },
+        "annual_mean": {
+          "value": 19.25,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_max": {
+          "value": 29.08,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_min": {
+          "value": 10.06,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "diurnal_range": {
+          "value": 6.97,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "ice_checklist": {
+          "value": null,
+          "fitness": 0,
+          "kind": "team_reported_assessment",
+          "source": {
+            "title": "Team lunar method PDF, pages 3-4",
+            "url": "/docs/lunar-method-2026-11-14.pdf"
+          },
+          "notes": [
+            "PDF aggregate judgement only; component evidence and site-specific literature need verification."
+          ]
+        }
+      },
+      "ice_cover_status": "not_verified"
+    },
+    {
+      "id": "AZ_BLACK_POINT_LAVA",
+      "name": "Black Point Lava Flow",
+      "lat": 35.67,
+      "lon": -111.47,
+      "group": "known",
+      "coordinate_status": "document_study_point",
+      "coordinate_source": {
+        "title": "Team lunar method PDF, pages 3-4",
+        "url": "/docs/lunar-method-2026-11-14.pdf"
+      },
+      "features": {
+        "noon_elevation": {
+          "value": 54.33,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "low_sun_fraction": {
+          "value": 0.15746880971113858,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "longest_dark": {
+          "value": 14.166666666666666,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "slope_histogram": {
+          "value": [
+            0.9062,
+            0.0642,
+            0.0227,
+            0.0059,
+            0.0009,
+            0.0
+          ],
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Rounded team CSV histogram; raw DEM windows and processing metadata were not included."
+          ]
+        },
+        "relief": {
+          "value": 381.0,
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Team-reported 16 km elevation range, not the older 2 km pilot metric."
+          ]
+        },
+        "annual_mean": {
+          "value": 14.3,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_max": {
+          "value": 38.47,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_min": {
+          "value": -11.55,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "diurnal_range": {
+          "value": 13.28,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "ice_checklist": {
+          "value": null,
+          "fitness": 0,
+          "kind": "team_reported_assessment",
+          "source": {
+            "title": "Team lunar method PDF, pages 3-4",
+            "url": "/docs/lunar-method-2026-11-14.pdf"
+          },
+          "notes": [
+            "PDF aggregate judgement only; component evidence and site-specific literature need verification."
+          ]
+        }
+      },
+      "ice_cover_status": "not_verified"
+    },
+    {
+      "id": "NV_LUNAR_CRATER",
+      "name": "Nevada Lunar Crater",
+      "lat": 38.38,
+      "lon": -116.07,
+      "group": "known",
+      "coordinate_status": "document_study_point",
+      "coordinate_source": {
+        "title": "Team lunar method PDF, pages 3-4",
+        "url": "/docs/lunar-method-2026-11-14.pdf"
+      },
+      "features": {
+        "noon_elevation": {
+          "value": 51.62,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "low_sun_fraction": {
+          "value": 0.16348457622042528,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "longest_dark": {
+          "value": 14.5,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "slope_histogram": {
+          "value": [
+            0.6088,
+            0.1799,
+            0.0807,
+            0.051,
+            0.0577,
+            0.0219
+          ],
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Rounded team CSV histogram; raw DEM windows and processing metadata were not included."
+          ]
+        },
+        "relief": {
+          "value": 644.0,
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Team-reported 16 km elevation range, not the older 2 km pilot metric."
+          ]
+        },
+        "annual_mean": {
+          "value": 11.83,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_max": {
+          "value": 36.27,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_min": {
+          "value": -17.05,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "diurnal_range": {
+          "value": 11.64,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "ice_checklist": {
+          "value": null,
+          "fitness": 0,
+          "kind": "team_reported_assessment",
+          "source": {
+            "title": "Team lunar method PDF, pages 3-4",
+            "url": "/docs/lunar-method-2026-11-14.pdf"
+          },
+          "notes": [
+            "PDF aggregate judgement only; component evidence and site-specific literature need verification."
+          ]
+        }
+      },
+      "ice_cover_status": "not_verified"
+    },
+    {
+      "id": "ID_CRATERS_OF_MOON",
+      "name": "Craters of the Moon",
+      "lat": 43.42,
+      "lon": -113.52,
+      "group": "known",
+      "coordinate_status": "document_study_point",
+      "coordinate_source": {
+        "title": "Team lunar method PDF, pages 3-4",
+        "url": "/docs/lunar-method-2026-11-14.pdf"
+      },
+      "features": {
+        "noon_elevation": {
+          "value": 46.58,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "low_sun_fraction": {
+          "value": 0.1786968542180378,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "longest_dark": {
+          "value": 15.166666666666666,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "slope_histogram": {
+          "value": [
+            0.8375,
+            0.0679,
+            0.027,
+            0.0224,
+            0.0416,
+            0.0035
+          ],
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Rounded team CSV histogram; raw DEM windows and processing metadata were not included."
+          ]
+        },
+        "relief": {
+          "value": 726.0,
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Team-reported 16 km elevation range, not the older 2 km pilot metric."
+          ]
+        },
+        "annual_mean": {
+          "value": 6.95,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_max": {
+          "value": 35.15,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_min": {
+          "value": -23.06,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "diurnal_range": {
+          "value": 10.35,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "ice_checklist": {
+          "value": null,
+          "fitness": 0,
+          "kind": "team_reported_assessment",
+          "source": {
+            "title": "Team lunar method PDF, pages 3-4",
+            "url": "/docs/lunar-method-2026-11-14.pdf"
+          },
+          "notes": [
+            "PDF aggregate judgement only; component evidence and site-specific literature need verification."
+          ]
+        }
+      },
+      "ice_cover_status": "not_verified"
+    },
+    {
+      "id": "BOLIVIA_UYUNI_SALT",
+      "name": "Uyuni Salt Flat",
+      "lat": -20.2,
+      "lon": -67.6,
+      "group": "control",
+      "coordinate_status": "document_study_point",
+      "coordinate_source": {
+        "title": "Team lunar method PDF, pages 3-4",
+        "url": "/docs/lunar-method-2026-11-14.pdf"
+      },
+      "features": {
+        "noon_elevation": {
+          "value": 69.8,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "low_sun_fraction": {
+          "value": 0.1338567815484504,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "longest_dark": {
+          "value": 13.166666666666666,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "slope_histogram": {
+          "value": [
+            0.9969,
+            0.0024,
+            0.0003,
+            0.0003,
+            0.0001,
+            0.0
+          ],
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Rounded team CSV histogram; raw DEM windows and processing metadata were not included."
+          ]
+        },
+        "relief": {
+          "value": 68.0,
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Team-reported 16 km elevation range, not the older 2 km pilot metric."
+          ]
+        },
+        "annual_mean": {
+          "value": 7.0,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_max": {
+          "value": 22.5,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_min": {
+          "value": -9.07,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "diurnal_range": {
+          "value": 15.79,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "ice_checklist": {
+          "value": 0,
+          "fitness": 0.3,
+          "kind": "team_reported_assessment",
+          "source": {
+            "title": "Team lunar method PDF, pages 3-4",
+            "url": "/docs/lunar-method-2026-11-14.pdf"
+          },
+          "notes": [
+            "PDF aggregate judgement only; component evidence and site-specific literature need verification."
+          ]
+        }
+      },
+      "ice_cover_status": "not_verified"
+    },
+    {
+      "id": "NM_WHITE_SANDS",
+      "name": "White Sands",
+      "lat": 32.78,
+      "lon": -106.3,
+      "group": "control",
+      "coordinate_status": "document_study_point",
+      "coordinate_source": {
+        "title": "Team lunar method PDF, pages 3-4",
+        "url": "/docs/lunar-method-2026-11-14.pdf"
+      },
+      "features": {
+        "noon_elevation": {
+          "value": 57.22,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "low_sun_fraction": {
+          "value": 0.14989494221822003,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "longest_dark": {
+          "value": 14.166666666666666,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "slope_histogram": {
+          "value": [
+            0.9996,
+            0.0004,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Rounded team CSV histogram; raw DEM windows and processing metadata were not included."
+          ]
+        },
+        "relief": {
+          "value": 64.0,
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Team-reported 16 km elevation range, not the older 2 km pilot metric."
+          ]
+        },
+        "annual_mean": {
+          "value": 17.85,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_max": {
+          "value": 40.0,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_min": {
+          "value": -7.0,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "diurnal_range": {
+          "value": 13.12,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "ice_checklist": {
+          "value": 0,
+          "fitness": 0.3,
+          "kind": "team_reported_assessment",
+          "source": {
+            "title": "Team lunar method PDF, pages 3-4",
+            "url": "/docs/lunar-method-2026-11-14.pdf"
+          },
+          "notes": [
+            "PDF aggregate judgement only; component evidence and site-specific literature need verification."
+          ]
+        }
+      },
+      "ice_cover_status": "not_verified"
+    },
+    {
+      "id": "NV_CUPRITE_CLAY",
+      "name": "Cuprite",
+      "lat": 37.54,
+      "lon": -117.18,
+      "group": "control",
+      "coordinate_status": "document_study_point",
+      "coordinate_source": {
+        "title": "Team lunar method PDF, pages 3-4",
+        "url": "/docs/lunar-method-2026-11-14.pdf"
+      },
+      "features": {
+        "noon_elevation": {
+          "value": 52.46,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "low_sun_fraction": {
+          "value": 0.16041939711664482,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "longest_dark": {
+          "value": 14.5,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "slope_histogram": {
+          "value": [
+            0.7188,
+            0.1364,
+            0.0622,
+            0.0394,
+            0.0359,
+            0.0073
+          ],
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Rounded team CSV histogram; raw DEM windows and processing metadata were not included."
+          ]
+        },
+        "relief": {
+          "value": 791.0,
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Team-reported 16 km elevation range, not the older 2 km pilot metric."
+          ]
+        },
+        "annual_mean": {
+          "value": 14.03,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_max": {
+          "value": 37.82,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_min": {
+          "value": -12.46,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "diurnal_range": {
+          "value": 11.94,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "ice_checklist": {
+          "value": null,
+          "fitness": 0,
+          "kind": "team_reported_assessment",
+          "source": {
+            "title": "Team lunar method PDF, pages 3-4",
+            "url": "/docs/lunar-method-2026-11-14.pdf"
+          },
+          "notes": [
+            "PDF aggregate judgement only; component evidence and site-specific literature need verification."
+          ]
+        }
+      },
+      "ice_cover_status": "not_verified"
+    },
+    {
+      "id": "ALGERIA_GRAND_ERG",
+      "name": "Algerian Grand Erg",
+      "lat": 30.5,
+      "lon": 7.5,
+      "group": "control",
+      "coordinate_status": "document_study_point",
+      "coordinate_source": {
+        "title": "Team lunar method PDF, pages 3-4",
+        "url": "/docs/lunar-method-2026-11-14.pdf"
+      },
+      "features": {
+        "noon_elevation": {
+          "value": 59.5,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "low_sun_fraction": {
+          "value": 0.14750900360144056,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "longest_dark": {
+          "value": 13.833333333333334,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "slope_histogram": {
+          "value": [
+            0.3048,
+            0.4167,
+            0.1956,
+            0.0611,
+            0.0209,
+            0.0009
+          ],
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Rounded team CSV histogram; raw DEM windows and processing metadata were not included."
+          ]
+        },
+        "relief": {
+          "value": 135.0,
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Team-reported 16 km elevation range, not the older 2 km pilot metric."
+          ]
+        },
+        "annual_mean": {
+          "value": 23.61,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_max": {
+          "value": 46.7,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_min": {
+          "value": -1.76,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "diurnal_range": {
+          "value": 13.65,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "ice_checklist": {
+          "value": 0,
+          "fitness": 0.3,
+          "kind": "team_reported_assessment",
+          "source": {
+            "title": "Team lunar method PDF, pages 3-4",
+            "url": "/docs/lunar-method-2026-11-14.pdf"
+          },
+          "notes": [
+            "PDF aggregate judgement only; component evidence and site-specific literature need verification."
+          ]
+        }
+      },
+      "ice_cover_status": "not_verified"
+    },
+    {
+      "id": "CA_IMPERIAL_CROPS",
+      "name": "Imperial Valley Cropland",
+      "lat": 33,
+      "lon": -115.5,
+      "group": "control",
+      "coordinate_status": "document_study_point",
+      "coordinate_source": {
+        "title": "Team lunar method PDF, pages 3-4",
+        "url": "/docs/lunar-method-2026-11-14.pdf"
+      },
+      "features": {
+        "noon_elevation": {
+          "value": 57,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "low_sun_fraction": {
+          "value": 0.15003190570924516,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "longest_dark": {
+          "value": 14.166666666666666,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "slope_histogram": {
+          "value": [
+            0.9888,
+            0.0102,
+            0.001,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Rounded team CSV histogram; raw DEM windows and processing metadata were not included."
+          ]
+        },
+        "relief": {
+          "value": 42.0,
+          "fitness": 1,
+          "kind": "team_derived_terrain",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Team-reported 16 km elevation range, not the older 2 km pilot metric."
+          ]
+        },
+        "annual_mean": {
+          "value": 24.75,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_max": {
+          "value": 49.12,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "annual_min": {
+          "value": 0.47,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "diurnal_range": {
+          "value": 15.77,
+          "fitness": 0.6,
+          "kind": "team_reported_reanalysis",
+          "source": {
+            "title": "Team CSV results at imported commit",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "Reported ERA5/Open-Meteo 2014-2023 summary; original API responses/model settings absent.",
+            "2 m air temperature is a proxy for the surface thermal environment."
+          ]
+        },
+        "ice_checklist": {
+          "value": 0,
+          "fitness": 0.3,
+          "kind": "team_reported_assessment",
+          "source": {
+            "title": "Team lunar method PDF, pages 3-4",
+            "url": "/docs/lunar-method-2026-11-14.pdf"
+          },
+          "notes": [
+            "PDF aggregate judgement only; component evidence and site-specific literature need verification."
+          ]
+        }
+      },
+      "ice_cover_status": "not_verified"
+    },
+    {
+      "id": "CA_HAUGHTON",
+      "name": "Haughton Crater",
+      "lat": 75.38,
+      "lon": -89.67,
+      "group": "polar",
+      "coordinate_status": "approximate_regional_point",
+      "coordinate_source": {
+        "title": "Regional coordinate reference",
+        "url": "https://ntrs.nasa.gov/citations/20050169531"
+      },
+      "features": {
+        "noon_elevation": {
+          "value": 14.620000000000005,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "low_sun_fraction": {
+          "value": 0.3745769496706576,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "longest_dark": {
+          "value": 2279.1666666666665,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "annual_mean": {
+          "value": -15,
+          "fitness": 0.6,
+          "kind": "pdf_reported_rounded",
+          "source": {
+            "title": "Team lunar method PDF, pages 3-4",
+            "url": "/docs/lunar-method-2026-11-14.pdf"
+          },
+          "notes": [
+            "Rounded regional climate summary from the PDF; source period, raw records and exact pixel support were not supplied."
+          ]
+        },
+        "annual_max": {
+          "value": 16,
+          "fitness": 0.6,
+          "kind": "pdf_reported_rounded",
+          "source": {
+            "title": "Team lunar method PDF, pages 3-4",
+            "url": "/docs/lunar-method-2026-11-14.pdf"
+          },
+          "notes": [
+            "Rounded regional climate summary from the PDF; source period, raw records and exact pixel support were not supplied."
+          ]
+        },
+        "ice_checklist": {
+          "value": 0.7,
+          "fitness": 0.3,
+          "kind": "team_reported_assessment",
+          "source": {
+            "title": "Team lunar method PDF, pages 3-4",
+            "url": "/docs/lunar-method-2026-11-14.pdf"
+          },
+          "notes": [
+            "PDF aggregate judgement; site-specific supporting references need verification."
+          ]
+        }
+      },
+      "ice_cover_status": "not_verified",
+      "reported_m6_score": 46.8
+    },
+    {
+      "id": "SJ_ADVENTDALEN",
+      "name": "Adventdalen",
+      "lat": 78.2,
+      "lon": 15.8,
+      "group": "polar",
+      "coordinate_status": "approximate_regional_point",
+      "coordinate_source": {
+        "title": "Regional coordinate reference",
+        "url": "https://egusphere.copernicus.org/preprints/2024/egusphere-2024-2972/"
+      },
+      "features": {
+        "noon_elevation": {
+          "value": 11.799999999999997,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "low_sun_fraction": {
+          "value": 0.33468035532255713,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "longest_dark": {
+          "value": 2710.5,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "annual_mean": {
+          "value": -4,
+          "fitness": 0.6,
+          "kind": "pdf_reported_rounded",
+          "source": {
+            "title": "Team lunar method PDF, pages 3-4",
+            "url": "/docs/lunar-method-2026-11-14.pdf"
+          },
+          "notes": [
+            "Rounded regional climate summary from the PDF; source period, raw records and exact pixel support were not supplied."
+          ]
+        },
+        "annual_max": {
+          "value": 14,
+          "fitness": 0.6,
+          "kind": "pdf_reported_rounded",
+          "source": {
+            "title": "Team lunar method PDF, pages 3-4",
+            "url": "/docs/lunar-method-2026-11-14.pdf"
+          },
+          "notes": [
+            "Rounded regional climate summary from the PDF; source period, raw records and exact pixel support were not supplied."
+          ]
+        },
+        "ice_checklist": {
+          "value": 0.7,
+          "fitness": 0.3,
+          "kind": "team_reported_assessment",
+          "source": {
+            "title": "Team lunar method PDF, pages 3-4",
+            "url": "/docs/lunar-method-2026-11-14.pdf"
+          },
+          "notes": [
+            "PDF aggregate judgement; site-specific supporting references need verification."
+          ]
+        }
+      },
+      "ice_cover_status": "not_verified",
+      "reported_m6_score": 41.9
+    },
+    {
+      "id": "AQ_DRY_VALLEYS",
+      "name": "McMurdo Dry Valleys",
+      "lat": -77.53,
+      "lon": 161.7,
+      "group": "polar",
+      "coordinate_status": "approximate_regional_point",
+      "coordinate_source": {
+        "title": "Regional coordinate reference",
+        "url": "https://science.nasa.gov/earth/earth-observatory/martian-landscape-antarctica-4420/"
+      },
+      "features": {
+        "noon_elevation": {
+          "value": 12.469999999999999,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "low_sun_fraction": {
+          "value": 0.34879055153878186,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "longest_dark": {
+          "value": 2758.8333333333335,
+          "fitness": 1,
+          "kind": "astronomical_model",
+          "source": {
+            "title": "Reviewed team astronomical calculation",
+            "url": "https://github.com/77bigsun/nasa/blob/2eb163e0d7ad92ddb565a9c249193e7f3924e955/moon_branch_2026-11-14.zip"
+          },
+          "notes": [
+            "365-day year; ten-minute step; no terrain obstruction."
+          ]
+        },
+        "annual_mean": {
+          "value": -19,
+          "fitness": 0.6,
+          "kind": "pdf_reported_rounded",
+          "source": {
+            "title": "Team lunar method PDF, pages 3-4",
+            "url": "/docs/lunar-method-2026-11-14.pdf"
+          },
+          "notes": [
+            "Rounded regional climate summary from the PDF; source period, raw records and exact pixel support were not supplied."
+          ]
+        },
+        "annual_max": {
+          "value": 0,
+          "fitness": 0.6,
+          "kind": "pdf_reported_rounded",
+          "source": {
+            "title": "Team lunar method PDF, pages 3-4",
+            "url": "/docs/lunar-method-2026-11-14.pdf"
+          },
+          "notes": [
+            "Rounded regional climate summary from the PDF; source period, raw records and exact pixel support were not supplied."
+          ]
+        },
+        "ice_checklist": {
+          "value": 0.7,
+          "fitness": 0.3,
+          "kind": "team_reported_assessment",
+          "source": {
+            "title": "Team lunar method PDF, pages 3-4",
+            "url": "/docs/lunar-method-2026-11-14.pdf"
+          },
+          "notes": [
+            "PDF aggregate judgement; site-specific supporting references need verification."
+          ]
+        }
+      },
+      "ice_cover_status": "not_verified",
+      "reported_m6_score": 59.9
+    }
+  ],
+  "provenance": {
+    "branch": "moon",
+    "commit": "2eb163e0d7ad92ddb565a9c249193e7f3924e955",
+    "artifacts": [
+      {
+        "path": "team-source/M4_slope_results.csv",
+        "sha256": "d170c4f2a7d9f9708f5a6e08ce6099e8f099327751945b487a3702aef1fba358",
+        "upstream_path": "moon/results/M4_slope_results.csv"
+      },
+      {
+        "path": "team-source/new_features_results.csv",
+        "sha256": "3b7fffbff52558fed925b0407346d40ff8c456137ea4d06c5d0667e03ed6fab6",
+        "upstream_path": "moon/results/new_features_results.csv"
+      },
+      {
+        "path": "team-source/M5_site_ranges.csv",
+        "sha256": "9e5da26531951b1b87d991e34ae24ec6c40b5f3f96574a499a8de14a434e41ee",
+        "upstream_path": "moon/results/M5_site_ranges.csv"
+      }
+    ],
+    "document_sha256": "580690050989b2c0f4031f9dea1384ccebdf16afd09847570276c9ed96f5c008",
+    "document_pages": 6,
+    "scope": "12 team CSV validation points plus 3 PDF-reported polar regional examples. No global overall-score grid was supplied.",
+    "verification": "Astronomy recomputed from coordinates; reported climate/terrain summaries retain their original source-verification limits."
+  },
+  "global_scan": {
+    "status": "not_imported",
+    "cells": [],
+    "reported_land_cells": 19599,
+    "imported_land_cells": 0
+  }
+}

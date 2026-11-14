@@ -266,6 +266,9 @@ def build(data_dir, source_dir):
             notes=['A unitless multi-instrument consistency index cannot be scored against Earth soil moisture or permafrost temperature.']))
     targets['mars-ap105'] = ap
     snapshot = {'mode':'observed','candidates':candidates,'targets':targets}
+    if (data_dir/'observed/regional-evidence.json').exists():
+        from .regional import enrich
+        enrich(snapshot,data_dir)
     from services.shared.contracts import MeasurementSnapshot
     MeasurementSnapshot.model_validate(snapshot)
     save_json(data_dir/'observed/mission-measurements.json',snapshot)

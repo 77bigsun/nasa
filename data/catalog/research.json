@@ -1,5 +1,38 @@
 [
   {
+    "id": "lunar-pdf-revision",
+    "title": "Lunar missions: ten lunar references and global Earth comparisons",
+    "status": "implemented",
+    "pdf": "lunar-principles",
+    "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "items": [
+      "The lunar page starts with four tasks. Each task shows lunar suitability first, then three most-similar new Earth candidates and three least-similar locations; known analogs remain a separate validation group.",
+      "The latest two ZIPs supply 19599 land cells, a 4881-cell ice mask and independent 30 m slope / 16 km relief references for all ten lunar locations. M4 now changes with the selected lunar site.",
+      "Revised feature weights are M2 0.3/0.7, M3 0.5/0.35/0.15, M4 0.7/0.3 and M6 0.25/0.25/0.5, multiplied by data fitness. The drawer shows inputs, feature scores, weights and sources on the handoff 0-100 task scale.",
+      "The importer preserves source hashes, converts nonfinite JSON values to null and applies the MODIS mask consistently to M4 new and least-similar groups. The final M4 pool has 135 eligible entries; the global M4 grid is relief-only screening.",
+      "Lunar suitability is a preliminary literature-based team assessment. Earth place names are approximate grid labels. The older 15-site PDF model and observed APIs are retained separately, not mixed into current task rankings."
+    ],
+    "links": [
+      {
+        "title": "Current lunar mission explorer",
+        "url": "http://localhost:8080/moon"
+      },
+      {
+        "title": "Current lunar principles and sources",
+        "url": "http://localhost:8080/docs/lunar-principles-2026-11-14.pdf"
+      }
+    ]
+  },
+  {
     "id": "pipeline",
     "title": "Requirements before similarity",
     "status": "implemented",
@@ -166,7 +199,7 @@
       5
     ],
     "items": [
-      "The mission wizard reads only the observed measurement snapshot. All 12 tests and 37 features have product pairings: nine are comparable, twelve have context only and sixteen lack validated data pairs.",
+      "The Mars wizard and observed API profile read the observed measurement snapshot. Its 12 tests and 37 features have product pairings: nine are comparable, twelve have context only and sixteen lack validated data pairs. The lunar wizard uses the separately labelled PDF study inputs and data-fitness model.",
       "LOLA, Copernicus, HiRISE, Diviner, MODIS, Sentinel-2, REMS, TES, SWIM, POWER and NAIF products now supply imported measurements or explicitly scoped models.",
       "There is no demo or cross-target fallback. Partial scores never count as complete test coverage; incompatible units, depth sensitivity and sampling remain visible instead of being filled."
     ],

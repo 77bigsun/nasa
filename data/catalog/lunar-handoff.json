@@ -1,0 +1,681 @@
+{
+  "version": "lunar-handoff-2026-11-14-2330",
+  "meta": {
+    "generated": "2026-11-14T23:21",
+    "status": "preliminary - verify place names before publishing",
+    "score_formula": "task score = 100·Σ(w·c·s)/Σ(w·c); total (optional) = Σ W_task·task over the tasks the user selects, W renormalised",
+    "task_weights_roc": {
+      "M2": 0.183,
+      "M3": 0.429,
+      "M4": 0.28,
+      "M6": 0.108
+    },
+    "classification_cutoffs": {
+      "similar": 0.6,
+      "different": 0.3
+    },
+    "ice_mask": "NASA MODIS MCD12Q1 IGBP 'Permanent Snow and Ice' >=50% of 1-deg cell (GIBS layer, 2023)",
+    "known_analog_regions_excluded_from_new_candidates": [
+      "Antarctica",
+      "Atacama",
+      "Iceland",
+      "Hawaii",
+      "Devon Island/Haughton",
+      "Death Valley"
+    ],
+    "data_sources": [
+      "LRO LOLA 5 m (NASA GSFC PGDA)",
+      "LRO LOLA LDEM_80S_20M (NASA PDS)",
+      "LROC NAC ROI centres",
+      "NASA POWER climatology 2001-2025",
+      "MODIS MCD12Q1 via NASA GIBS",
+      "SRTM-based AWS Terrain Tiles",
+      "ERA5 via Open-Meteo (validation sites)"
+    ],
+    "ai_disclosure": "Computation scripts and data assembly produced with Claude (Anthropic)."
+  },
+  "tasks": {
+    "M2": {
+      "name": "Low-sun illumination & solar power",
+      "weight": 0.183,
+      "depends_on_moon_site": false,
+      "features": [
+        {
+          "id": "noon_sun_elevation",
+          "name": "Equinox noon solar elevation",
+          "unit": "deg",
+          "w": 0.3,
+          "c": 1.0,
+          "formula": "D(x=90-|lat|, b=90°, t=5°)"
+        },
+        {
+          "id": "low_sun_fraction",
+          "name": "Daylight below 10 degrees",
+          "unit": "fraction",
+          "w": 0.7,
+          "c": 1.0,
+          "formula": "D(x=share of daylight with sun<10°, b=0, t=1)"
+        }
+      ]
+    },
+    "M3": {
+      "name": "Long darkness & extreme cold",
+      "weight": 0.429,
+      "depends_on_moon_site": false,
+      "features": [
+        {
+          "id": "longest_darkness_h",
+          "name": "Longest continuous darkness",
+          "unit": "h",
+          "w": 0.5,
+          "c": 1.0,
+          "formula": "D(b=12 h, t=120 h)"
+        },
+        {
+          "id": "annual_min_temp_C",
+          "name": "Annual minimum 2 m air temperature",
+          "unit": "C",
+          "w": 0.35,
+          "c": 0.6,
+          "formula": "D(b=0, t=-89)"
+        },
+        {
+          "id": "diurnal_range_C",
+          "name": "Daily 2 m air-temperature range",
+          "unit": "C",
+          "w": 0.15,
+          "c": 0.6,
+          "formula": "D(b=10, t=40)"
+        }
+      ]
+    },
+    "M4": {
+      "name": "Steep-slope & extreme-terrain mobility",
+      "weight": 0.28,
+      "depends_on_moon_site": true,
+      "features": [
+        {
+          "id": "slope_histogram_30m",
+          "name": "30 m slope distribution",
+          "unit": "fraction",
+          "w": 0.7,
+          "c": 1.0,
+          "formula": "sum(min(p_earth,p_moon)) over bins 0-5,5-10,10-15,15-20,20-30,>30°"
+        },
+        {
+          "id": "relief_16km_m",
+          "name": "16 km terrain relief",
+          "unit": "m",
+          "w": 0.3,
+          "c": 1.0,
+          "formula": "exp(-[ln(R_E/R_M)]^2/(2 ln2^2))"
+        }
+      ]
+    },
+    "M6": {
+      "name": "Cold-trap ice / permafrost",
+      "weight": 0.108,
+      "depends_on_moon_site": false,
+      "features": [
+        {
+          "id": "annual_mean_temp_C",
+          "name": "Annual mean 2 m air temperature",
+          "unit": "C",
+          "w": 0.25,
+          "c": 0.6,
+          "formula": "D(b=15, t=-55)"
+        },
+        {
+          "id": "annual_max_temp_C",
+          "name": "Annual maximum 2 m air temperature",
+          "unit": "C",
+          "w": 0.25,
+          "c": 0.6,
+          "formula": "D(b=40, t=-20)"
+        },
+        {
+          "id": "ice_permafrost_proxy",
+          "name": "Temperature-based permafrost and ice proxy",
+          "unit": "index",
+          "w": 0.5,
+          "c": 0.3,
+          "formula": "0.4·[Tmean<=-2]+0.3·[Tmean<=-8]"
+        }
+      ]
+    }
+  },
+  "moon_sites": [
+    {
+      "id": "ConnectingRidge",
+      "legacy_id": "moon-scr",
+      "name": "Shackleton Connecting Ridge",
+      "lat": -89.45,
+      "lon": null,
+      "map_lat": -89.46316283403667,
+      "map_lon": -137.48955292199918,
+      "coordinate_note": "Report latitude retained; map marker uses the sourced PGDA Site01 tile centre because report longitude is missing.",
+      "dem_source": "LOLA 5 m PGDA Site01",
+      "terrain": {
+        "relief_16km_m": 2477.0,
+        "slope_fraction_bins_deg": [
+          "0-5",
+          "5-10",
+          "10-15",
+          "15-20",
+          "20-30",
+          ">30"
+        ],
+        "slope_fraction": [
+          0.098,
+          0.2757,
+          0.3035,
+          0.2206,
+          0.1023,
+          0.0
+        ],
+        "class": "moderate"
+      },
+      "suitable_tasks": {
+        "primary": [
+          "M2",
+          "M4"
+        ],
+        "secondary": [],
+        "basis": "team assessment (Canva, 2026-11-14) from published studies",
+        "note": "Ridge illumination is well studied; sunlit crest and dark lowland should be scored separately."
+      },
+      "assessment_source": {
+        "title": "Study cited by the supplied principles PDF",
+        "url": "https://www.sciencedirect.com/science/article/pii/S0019103524000460"
+      }
+    },
+    {
+      "id": "PeakNearCabeusB",
+      "legacy_id": "moon-cabeus-b-peak",
+      "name": "Peak near Cabeus B",
+      "lat": -83.6,
+      "lon": -68.8,
+      "map_lat": -83.6,
+      "map_lon": -68.8,
+      "coordinate_note": "Team-reported 16 km study-window centre; not the earlier observed-profile study point.",
+      "dem_source": "LOLA 20 m, LROC ROI centre",
+      "terrain": {
+        "relief_16km_m": 3628.0,
+        "slope_fraction_bins_deg": [
+          "0-5",
+          "5-10",
+          "10-15",
+          "15-20",
+          "20-30",
+          ">30"
+        ],
+        "slope_fraction": [
+          0.0202,
+          0.0815,
+          0.1873,
+          0.2826,
+          0.4174,
+          0.0111
+        ],
+        "class": "very steep"
+      },
+      "suitable_tasks": {
+        "primary": [
+          "M2",
+          "M4"
+        ],
+        "secondary": [],
+        "basis": "team assessment (Canva, 2026-11-14) from published studies",
+        "note": "Do not assume cold-trap ice from the Cabeus B name; trap location and access must be checked."
+      },
+      "assessment_source": {
+        "title": "Study cited by the supplied principles PDF",
+        "url": "https://www.sciencedirect.com/science/article/pii/S0019103524000460"
+      }
+    },
+    {
+      "id": "Haworth",
+      "legacy_id": "moon-haworth",
+      "name": "Haworth",
+      "lat": -86.7,
+      "lon": -23.7,
+      "map_lat": -86.7,
+      "map_lon": -23.7,
+      "coordinate_note": "Team-reported 16 km study-window centre; not the earlier observed-profile study point.",
+      "dem_source": "LOLA 20 m, LROC ROI centre",
+      "terrain": {
+        "relief_16km_m": 2127.0,
+        "slope_fraction_bins_deg": [
+          "0-5",
+          "5-10",
+          "10-15",
+          "15-20",
+          "20-30",
+          ">30"
+        ],
+        "slope_fraction": [
+          0.1964,
+          0.4104,
+          0.244,
+          0.109,
+          0.04,
+          0.0003
+        ],
+        "class": "gentle"
+      },
+      "suitable_tasks": {
+        "primary": [
+          "M3",
+          "M6"
+        ],
+        "secondary": [],
+        "basis": "team assessment (Canva, 2026-11-14) from published studies",
+        "note": "Colder, darker PSRs identified (ShadowCam/Diviner); crater-floor conditions do not apply to sunlit landing spots."
+      },
+      "assessment_source": {
+        "title": "Study cited by the supplied principles PDF",
+        "url": "https://www.hou.usra.edu/meetings/lpsc2024/pdf/1177.pdf"
+      }
+    },
+    {
+      "id": "MalapertMassif",
+      "legacy_id": "moon-malapert",
+      "name": "Malapert Massif",
+      "lat": -86.0,
+      "lon": 0.3,
+      "map_lat": -86.0,
+      "map_lon": 0.3,
+      "coordinate_note": "Team-reported 16 km study-window centre; not the earlier observed-profile study point.",
+      "dem_source": "LOLA 20 m, LROC ROI centre",
+      "terrain": {
+        "relief_16km_m": 3186.0,
+        "slope_fraction_bins_deg": [
+          "0-5",
+          "5-10",
+          "10-15",
+          "15-20",
+          "20-30",
+          ">30"
+        ],
+        "slope_fraction": [
+          0.0422,
+          0.1193,
+          0.1929,
+          0.2736,
+          0.3599,
+          0.0121
+        ],
+        "class": "very steep"
+      },
+      "suitable_tasks": {
+        "primary": [
+          "M4"
+        ],
+        "secondary": [
+          "M2"
+        ],
+        "basis": "team assessment (Canva, 2026-11-14) from published studies",
+        "note": "Peak-like massif with ridges; slope and trafficability computed here."
+      },
+      "assessment_source": {
+        "title": "Study cited by the supplied principles PDF",
+        "url": "https://doi.org/10.1029/2025JE009127"
+      }
+    },
+    {
+      "id": "MonsMoutonPlateau",
+      "legacy_id": "moon-mouton-plateau",
+      "name": "Mons Mouton Plateau",
+      "lat": -84.3,
+      "lon": 30.6,
+      "map_lat": -84.3,
+      "map_lon": 30.6,
+      "coordinate_note": "Team-reported 16 km study-window centre; not the earlier observed-profile study point.",
+      "dem_source": "LOLA 20 m, LROC ROI centre",
+      "terrain": {
+        "relief_16km_m": 1526.0,
+        "slope_fraction_bins_deg": [
+          "0-5",
+          "5-10",
+          "10-15",
+          "15-20",
+          "20-30",
+          ">30"
+        ],
+        "slope_fraction": [
+          0.2799,
+          0.4513,
+          0.1855,
+          0.062,
+          0.0203,
+          0.001
+        ],
+        "class": "gentle"
+      },
+      "suitable_tasks": {
+        "primary": [
+          "M2"
+        ],
+        "secondary": [
+          "M3",
+          "M6"
+        ],
+        "basis": "team assessment (Canva, 2026-11-14) from published studies",
+        "note": "Whole-mountain results must not be transferred to the plateau box."
+      },
+      "assessment_source": {
+        "title": "Study cited by the supplied principles PDF",
+        "url": "https://www.nasa.gov/centers-and-facilities/ames/nasa-ames-astrogram-february-2023/"
+      }
+    },
+    {
+      "id": "MonsMouton",
+      "legacy_id": "moon-mouton",
+      "name": "Mons Mouton",
+      "lat": -85.4,
+      "lon": 35.3,
+      "map_lat": -85.4,
+      "map_lon": 35.3,
+      "coordinate_note": "Team-reported 16 km study-window centre; not the earlier observed-profile study point.",
+      "dem_source": "LOLA 20 m, LROC ROI centre (shared with Nobile Rim 1)",
+      "terrain": {
+        "relief_16km_m": 3454.0,
+        "slope_fraction_bins_deg": [
+          "0-5",
+          "5-10",
+          "10-15",
+          "15-20",
+          "20-30",
+          ">30"
+        ],
+        "slope_fraction": [
+          0.0979,
+          0.2242,
+          0.283,
+          0.2311,
+          0.1581,
+          0.0058
+        ],
+        "class": "moderate"
+      },
+      "suitable_tasks": {
+        "primary": [
+          "M2",
+          "M6"
+        ],
+        "secondary": [],
+        "basis": "team assessment (Canva, 2026-11-14) from published studies",
+        "note": "USGS water-ice prospectivity model exists (model, not confirmed ice)."
+      },
+      "assessment_source": {
+        "title": "Study cited by the supplied principles PDF",
+        "url": "https://www.usgs.gov/publications/prospectivity-modeling-nasa-viper-landing-site-mons-mouton-near-lunar-south-pole"
+      }
+    },
+    {
+      "id": "NobileRim1",
+      "legacy_id": "moon-nobile-1",
+      "name": "Nobile Rim 1",
+      "lat": -85.28,
+      "lon": 37.01,
+      "map_lat": -85.28,
+      "map_lon": 37.01,
+      "coordinate_note": "Team-reported 16 km study-window centre; not the earlier observed-profile study point.",
+      "dem_source": "LOLA 20 m, literature centre",
+      "terrain": {
+        "relief_16km_m": 4447.0,
+        "slope_fraction_bins_deg": [
+          "0-5",
+          "5-10",
+          "10-15",
+          "15-20",
+          "20-30",
+          ">30"
+        ],
+        "slope_fraction": [
+          0.1293,
+          0.2211,
+          0.2072,
+          0.1536,
+          0.2705,
+          0.0183
+        ],
+        "class": "moderate"
+      },
+      "suitable_tasks": {
+        "primary": [
+          "M2",
+          "M4"
+        ],
+        "secondary": [
+          "M3",
+          "M6"
+        ],
+        "basis": "team assessment (Canva, 2026-11-14) from published studies",
+        "note": "M3/M6 need a chosen shadowed sub-area."
+      },
+      "assessment_source": {
+        "title": "Study cited by the supplied principles PDF",
+        "url": "https://doi.org/10.1029/2025JE009434"
+      }
+    },
+    {
+      "id": "NobileRim2",
+      "legacy_id": "moon-nobile-2",
+      "name": "Nobile Rim 2",
+      "lat": -83.9,
+      "lon": 58.7,
+      "map_lat": -83.9,
+      "map_lon": 58.7,
+      "coordinate_note": "Team-reported 16 km study-window centre; not the earlier observed-profile study point.",
+      "dem_source": "LOLA 20 m, LROC ROI centre",
+      "terrain": {
+        "relief_16km_m": 2738.0,
+        "slope_fraction_bins_deg": [
+          "0-5",
+          "5-10",
+          "10-15",
+          "15-20",
+          "20-30",
+          ">30"
+        ],
+        "slope_fraction": [
+          0.1835,
+          0.3138,
+          0.2607,
+          0.1685,
+          0.0731,
+          0.0003
+        ],
+        "class": "moderate"
+      },
+      "suitable_tasks": {
+        "primary": [
+          "M3",
+          "M6"
+        ],
+        "secondary": [
+          "M4"
+        ],
+        "basis": "team assessment (Canva, 2026-11-14) from published studies",
+        "note": "Colder, darker PSRs identified; worth detailed study."
+      },
+      "assessment_source": {
+        "title": "Study cited by the supplied principles PDF",
+        "url": "https://www.hou.usra.edu/meetings/lpsc2024/pdf/1177.pdf"
+      }
+    },
+    {
+      "id": "deGerlacheRim2",
+      "legacy_id": "moon-degerlache-2",
+      "name": "de Gerlache Rim 2",
+      "lat": -88.5,
+      "lon": -66.7,
+      "map_lat": -88.5,
+      "map_lon": -66.7,
+      "coordinate_note": "Team-reported 16 km study-window centre; not the earlier observed-profile study point.",
+      "dem_source": "LOLA 20 m, LROC ROI centre",
+      "terrain": {
+        "relief_16km_m": 2725.0,
+        "slope_fraction_bins_deg": [
+          "0-5",
+          "5-10",
+          "10-15",
+          "15-20",
+          "20-30",
+          ">30"
+        ],
+        "slope_fraction": [
+          0.038,
+          0.1503,
+          0.3273,
+          0.3229,
+          0.1606,
+          0.0009
+        ],
+        "class": "moderate"
+      },
+      "suitable_tasks": {
+        "primary": [
+          "M2",
+          "M4"
+        ],
+        "secondary": [],
+        "basis": "team assessment (Canva, 2026-11-14) from published studies",
+        "note": "Some PSRs show strong scattered light and temperature swings; permanent shadow does not guarantee surface ice."
+      },
+      "assessment_source": {
+        "title": "Study cited by the supplied principles PDF",
+        "url": "https://www.hou.usra.edu/meetings/lpsc2024/pdf/1177.pdf"
+      }
+    },
+    {
+      "id": "SlaterPlain",
+      "legacy_id": "moon-slater",
+      "name": "Slater Plain",
+      "lat": -86.96,
+      "lon": 126.82,
+      "map_lat": -86.96,
+      "map_lon": 126.82,
+      "coordinate_note": "Team-reported 16 km study-window centre; not the earlier observed-profile study point.",
+      "dem_source": "LOLA 20 m, literature centre",
+      "terrain": {
+        "relief_16km_m": 2077.0,
+        "slope_fraction_bins_deg": [
+          "0-5",
+          "5-10",
+          "10-15",
+          "15-20",
+          "20-30",
+          ">30"
+        ],
+        "slope_fraction": [
+          0.1988,
+          0.3527,
+          0.2443,
+          0.1515,
+          0.0514,
+          0.0013
+        ],
+        "class": "gentle"
+      },
+      "suitable_tasks": {
+        "primary": [
+          "M2"
+        ],
+        "secondary": [],
+        "basis": "team assessment (Canva, 2026-11-14) from published studies",
+        "note": "Official candidate; evidence insufficient for M3/M4/M6. Computed terrain: mostly gentle slopes."
+      },
+      "assessment_source": {
+        "title": "Study cited by the supplied principles PDF",
+        "url": "https://www.nasa.gov/news-release/nasa-provides-update-on-artemis-iii-moon-landing-regions/"
+      }
+    }
+  ],
+  "limitations": [
+    "Lunar suitability is a preliminary team assessment from published studies, not a mission feasibility certification. An unlisted task means insufficient evidence, not proven infeasibility.",
+    "Earth place names are approximate labels for grid coordinates. A 1-degree cell is a research region, not a confirmed field site.",
+    "M2, M3 and M6 use common Earth-achievable anchors. Only M4 compares the selected lunar site directly, using its own 30 m slope and 16 km relief reference.",
+    "NASA POWER provides approximately 50 km, 2 m air-temperature climatology for 2001-2025, not surface temperatures. Daily range is missing in 12459 of 19599 cells and missing features are skipped.",
+    "Sunlight and darkness are latitude-based astronomy without terrain obstruction. Equal-latitude M2 results can tie.",
+    "M4 final rankings cover the supplied fine-terrain pool, not a complete global 30 m search. The global M4 grid contains relief-only screening scores and must not be mixed with final rankings.",
+    "The global MODIS mask excludes 4881 permanent-snow/ice cells from new candidates and least-similar comparisons. Named local validation sites remain separate; exposed terrain can differ from its surrounding 1-degree cell.",
+    "Permafrost and subsurface ice are temperature-based proxies with fitness 0.3; the cold-trap-ice term is zero. No confirmed ice measurement is inferred.",
+    "Vacuum, one-sixth gravity, radiation and electrostatic lunar dust cannot be reproduced by these Earth analogs. M1 and M5 are not scored."
+  ],
+  "sources": [
+    {
+      "title": "LRO LOLA 5 m PGDA terrain",
+      "url": "https://pgda.gsfc.nasa.gov/products/78"
+    },
+    {
+      "title": "LRO LOLA 20 m polar terrain",
+      "url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/polar/img/"
+    },
+    {
+      "title": "LROC NAC candidate-region mosaics",
+      "url": "https://data.lroc.im-ldi.com/lroc/view_rdr/NAC_ROI_CABEUSPKLOB"
+    },
+    {
+      "title": "NASA POWER climatology",
+      "url": "https://power.larc.nasa.gov/docs/services/api/temporal/climatology/"
+    },
+    {
+      "title": "NASA MODIS MCD12Q1 land cover",
+      "url": "https://lpdaac.usgs.gov/products/mcd12q1v061/"
+    },
+    {
+      "title": "AWS Terrain Tiles",
+      "url": "https://registry.opendata.aws/terrain-tiles/"
+    }
+  ],
+  "documents": [
+    {
+      "title": "Lunar formulas, sites and sources (23:50)",
+      "url": "/docs/lunar-principles-2026-11-14.pdf"
+    },
+    {
+      "title": "Earlier lunar method and sources (21:10)",
+      "url": "/docs/lunar-method-2026-11-14.pdf"
+    }
+  ],
+  "provenance": {
+    "version": "lunar-handoff-2026-11-14-2330",
+    "input_sha256": {
+      "global_by_task.csv": "10104b0446bf3c746ea95bf65dd1e2bb5a66a4b97320faf8bcdff868e5f25c68",
+      "m4_global_by_moonsite.csv": "524a361c391ada290aba8b364bcf2bcaedde7c438f4749036876aacad3a5c92e",
+      "m4_slope_global_cells.csv": "24d80a2dcf92426a1a156de5aa71b13b1b3ca53aed4e790050085a9eae64345c",
+      "M4_slope_results.csv": "d170c4f2a7d9f9708f5a6e08ce6099e8f099327751945b487a3702aef1fba358",
+      "moon10_reference_sites.json": "3794bbb32c0818282dc65a78ee5861239fd1f40f8c6ae94fa1edac01c31cc502",
+      "moon_global_grid.json": "ec6f827bf7c0874ce8f51507ed93f4a8d827e0746e45d030e33847c0dabda24f",
+      "moon_results.json": "25f0de3ffa3c5abd25d6f869a965aea114a8351fe14520e5fea8c12e58966b22",
+      "new_features_results.csv": "3b7fffbff52558fed925b0407346d40ff8c456137ea4d06c5d0667e03ed6fab6",
+      "provided-artifact-sha256.json": "c00a500e997ca92ee88df08cf59f59aee6874ea9d7dca95d21de6f3dadae1fb6",
+      "site01-map-centre.json": "689e323870b99b9e5f1966479a99a9eac3db6beeb03c679918052968ef36c3d8",
+      "stage2_scores.csv": "11c019abd15de8e16750476749dc9f5b2475a3c129e3142257df7fe53e976632",
+      "stage2_top_with_slope.csv": "cae4d8f03ddc98063ba0b9d9ce3e900b7ee988cac8a7d813b7d6b90171b6d7bf"
+    },
+    "artifact_sha256": {
+      "web_handoff_2026-11-14.zip": "b6a3134876580cbac569d7de819c978044d78af22d93ab1721a486c24336b560",
+      "moon_branch_2026-11-14.zip": "4cfd6b4f9492b9569ee5992eb6858c7add4255059f840df5c816085f89983703",
+      "lunar-principles.pdf": "12122d803c935abbf2c5fc1f425397b35fa533df1528e67b92bf59c92353287d",
+      "lunar-method.pdf": "580690050989b2c0f4031f9dea1384ccebdf16afd09847570276c9ed96f5c008"
+    },
+    "global_cells": 19599,
+    "excluded_ice_cells": 4881,
+    "eligible_global_cells": 14718,
+    "missing_daily_range_cells": 12459,
+    "m4_supplied_pool": 151,
+    "m4_nonice_pool": 135,
+    "m4_new_candidate_pool": 130,
+    "maximum_score_reconstruction_error": 0.0899999999999892,
+    "corrections": [
+      "Nonfinite upstream JSON values converted to null.",
+      "Noon elevation and ice proxy raw values recovered from the coordinate-matched global CSV.",
+      "Mauna Kea validation coordinates recovered from the supplied six-page PDF.",
+      "M4 new and least-similar groups rebuilt from the full supplied pool after applying its MODIS ice mask; imported scores preserved.",
+      "The missing Connecting Ridge map longitude uses the georeferenced PGDA tile centre, explicitly separate from report coordinates."
+    ]
+  }
+}
