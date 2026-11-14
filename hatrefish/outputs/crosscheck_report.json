@@ -4,119 +4,119 @@
   "global": {
    "n_sites": 26,
    "loso_auc": {
-    "logreg_nonneg (ours)": 0.706468416036521,
-    "random_forest": 0.7932851026706622,
-    "xgboost": 0.8184807191875978
+    "logreg_nonneg (ours)": 0.700679466763865,
+    "random_forest": 0.8013357045331645,
+    "xgboost": 0.8223979044608632
    },
    "importance": {
     "logreg_weight": {
      "slope": 0.0,
      "roughness": 0.0,
-     "thermal_inertia": 0.0,
-     "lithology": 0.2161777847449084,
-     "ice": 0.22381154754598626,
-     "temperature": 0.052094868553883074,
+     "thermal_inertia": 0.00012111463419963236,
+     "lithology": 0.2412832568590256,
+     "ice": 0.12532051906231437,
+     "temperature": 0.07628429670649925,
      "diurnal_range": 0.0,
-     "aridity": 0.08015944036217224,
-     "barrenness": 0.42775635879305013,
+     "aridity": 0.07332738035694841,
+     "barrenness": 0.48366343238101267,
      "dust": 0.0
     },
     "rf_permutation": {
-     "slope": 0.013089389736203844,
-     "roughness": 0.014429448995500175,
-     "thermal_inertia": 0.029617244593765833,
-     "lithology": 0.03699097701788998,
-     "ice": 0.14393272636658855,
-     "temperature": 0.12163013617921094,
-     "diurnal_range": 0.19432323889756484,
-     "aridity": 0.12587200574866167,
-     "barrenness": 0.17685832460059372,
-     "dust": 0.14325650786402064
+     "slope": 0.012600344571102743,
+     "roughness": 0.011675950770426803,
+     "thermal_inertia": 0.0234979672322835,
+     "lithology": 0.03103964410938366,
+     "ice": 0.1830508814634958,
+     "temperature": 0.10673730344841278,
+     "diurnal_range": 0.204246134019581,
+     "aridity": 0.12304473025118494,
+     "barrenness": 0.1720970914092623,
+     "dust": 0.1320099527248665
     },
     "xgb_shap": {
-     "slope": 0.037025753408670425,
-     "roughness": 0.014773931354284286,
-     "thermal_inertia": 0.04210426285862923,
-     "lithology": 0.04674817621707916,
-     "ice": 0.12564384937286377,
-     "temperature": 0.14338675141334534,
-     "diurnal_range": 0.2122245877981186,
-     "aridity": 0.0745440274477005,
-     "barrenness": 0.1530447006225586,
-     "dust": 0.1505039930343628
+     "slope": 0.03881430625915527,
+     "roughness": 0.011958092451095581,
+     "thermal_inertia": 0.04346157982945442,
+     "lithology": 0.05954006686806679,
+     "ice": 0.13745763897895813,
+     "temperature": 0.1316337287425995,
+     "diurnal_range": 0.19802556931972504,
+     "aridity": 0.07482690364122391,
+     "barrenness": 0.15261289477348328,
+     "dust": 0.1516692191362381
     }
    },
    "spearman": {
-    "logreg_vs_rf": 0.42023031949290335,
-    "logreg_vs_xgb": 0.2909286827258562,
-    "rf_vs_xgb": 0.9272727272727272
+    "logreg_vs_rf": 0.26888132177671065,
+    "logreg_vs_xgb": 0.23761605180267453,
+    "rf_vs_xgb": 0.9515151515151514
    }
   },
   "geology": {
    "n_sites": 21,
    "loso_auc": {
-    "logreg_nonneg (ours)": 0.6299174548241763,
-    "random_forest": 0.7113794237030056,
-    "xgboost": 0.7336194990983289
+    "logreg_nonneg (ours)": 0.6214603723931578,
+    "random_forest": 0.7132196738534271,
+    "xgboost": 0.7407513267568423
    },
    "importance": {
     "logreg_weight": {
-     "slope": 0.06636362486537976,
-     "roughness": 0.09534527666103013,
-     "thermal_inertia": 0.0545710379579389,
-     "lithology": 0.023733483303183114,
+     "slope": 0.06636092055496315,
+     "roughness": 0.09534492572538913,
+     "thermal_inertia": 0.054569159834401824,
+     "lithology": 0.023736132134557535,
      "ice": 0.0,
      "temperature": 0.0,
-     "diurnal_range": 0.14941939580869376,
-     "aridity": 0.05417845605482692,
-     "barrenness": 0.5563887253489473,
+     "diurnal_range": 0.14942230457549396,
+     "aridity": 0.05418006533036782,
+     "barrenness": 0.5563864918448266,
      "dust": 0.0
     },
     "rf_permutation": {
-     "slope": 0.0303622865367277,
-     "roughness": 0.017679544841932977,
-     "thermal_inertia": 0.04671984307959158,
-     "lithology": 0.02167151272908545,
-     "ice": 0.022611816858314426,
-     "temperature": 0.15008229902531284,
-     "diurnal_range": 0.15637498598133118,
-     "aridity": 0.11955563996527174,
-     "barrenness": 0.24227443709474616,
-     "dust": 0.19266763388768582
+     "slope": 0.025479700977850288,
+     "roughness": 0.01603837355585571,
+     "thermal_inertia": 0.045228940539124934,
+     "lithology": 0.02213335246760551,
+     "ice": 0.012962425651569208,
+     "temperature": 0.15381135397376375,
+     "diurnal_range": 0.15144441310695378,
+     "aridity": 0.12003561062534178,
+     "barrenness": 0.251374392833439,
+     "dust": 0.20149143626849603
     },
     "xgb_shap": {
-     "slope": 0.056339893490076065,
-     "roughness": 0.025953462347388268,
-     "thermal_inertia": 0.07697588205337524,
-     "lithology": 0.03896836191415787,
-     "ice": 0.04917512461543083,
-     "temperature": 0.16753940284252167,
-     "diurnal_range": 0.17929746210575104,
-     "aridity": 0.094807468354702,
-     "barrenness": 0.14027278125286102,
-     "dust": 0.17067015171051025
+     "slope": 0.05255972594022751,
+     "roughness": 0.025972403585910797,
+     "thermal_inertia": 0.07981058210134506,
+     "lithology": 0.03527964651584625,
+     "ice": 0.04571319743990898,
+     "temperature": 0.16145238280296326,
+     "diurnal_range": 0.19210605323314667,
+     "aridity": 0.09734196960926056,
+     "barrenness": 0.13927413523197174,
+     "dust": 0.17048990726470947
     }
    },
    "spearman": {
-    "logreg_vs_rf": 0.14111491740216522,
+    "logreg_vs_rf": 0.1533857797849622,
     "logreg_vs_xgb": 0.018406293574195463,
-    "rf_vs_xgb": 0.9151515151515152
+    "rf_vs_xgb": 0.8545454545454544
    }
   }
  },
  "drop_column": {
   "jezero/geology": {
-   "base_auc": 0.6374247247371394,
+   "base_auc": 0.6249397108878691,
    "auc_drop_if_removed": {
-    "slope": -0.007152011244780709,
-    "roughness": -0.016839610291179308,
-    "thermal_inertia": 0.0005925558449432211,
-    "lithology": 0.0325354499979329,
-    "ice": -0.0017638871663429034,
-    "temperature": 0.005870436975484616,
-    "aridity": -0.03396860832058657,
-    "barrenness": 0.046894593961442466,
-    "dust": -0.005870436975484727
+    "slope": -0.00493337191836507,
+    "roughness": -0.008020174459465013,
+    "thermal_inertia": -0.0036931387545302563,
+    "lithology": 0.03254923036641999,
+    "ice": -0.014248901015613158,
+    "temperature": 0.0045750823377017635,
+    "aridity": -0.03152948309837811,
+    "barrenness": 0.045240949742996084,
+    "dust": -0.00508495597172276
    }
   },
   "jezero/rover": {
@@ -133,17 +133,17 @@
    }
   },
   "gale/geology": {
-   "base_auc": 0.7321834600142922,
+   "base_auc": 0.7404447909222807,
    "auc_drop_if_removed": {
-    "slope": 0.001894800666969898,
-    "roughness": 0.008542844149938222,
-    "thermal_inertia": -0.0010502609411204844,
-    "lithology": -0.025704324476493623,
-    "ice": -0.0005846813486649616,
-    "temperature": -0.0025227917451654536,
-    "aridity": 0.0014400485068970514,
-    "barrenness": 0.11756426081119131,
-    "dust": -0.002717685528053848
+    "slope": 0.0017540440459948847,
+    "roughness": 0.006474804564845504,
+    "thermal_inertia": -1.082743238267625e-05,
+    "lithology": -0.030035297429567565,
+    "ice": 0.007676649559323456,
+    "temperature": -0.0015591502631066012,
+    "aridity": 0.0002057212152710708,
+    "barrenness": 0.1176183979731047,
+    "dust": -0.0028259598518807216
    }
   },
   "gale/rover": {
@@ -160,31 +160,141 @@
    }
   },
   "arcadia/isru_base": {
-   "base_auc": 0.723359102622404,
+   "base_auc": 0.6592769440654843,
    "auc_drop_if_removed": {
-    "slope": -0.13422767924814316,
-    "roughness": -0.10394876458996527,
-    "thermal_inertia": -0.02353342428376548,
-    "lithology": 0.047483704714264,
-    "ice": 0.13021070183416694,
-    "temperature": 0.10122025162952841,
-    "aridity": -0.0011368804001820054,
-    "barrenness": 0.18557677732302547,
-    "dust": 0.001591632560254519
+    "slope": -0.17754282249507358,
+    "roughness": -0.1306654539942398,
+    "thermal_inertia": -0.02830832196452937,
+    "lithology": 0.04039715021979695,
+    "ice": 0.04070031832651211,
+    "temperature": 0.16427921782628463,
+    "aridity": -0.009398211308170423,
+    "barrenness": 0.26819008640291037,
+    "dust": -0.000644232226769792
    }
   },
   "arcadia/landing": {
-   "base_auc": 0.014552069122328315,
+   "base_auc": 0.01288464453539484,
    "auc_drop_if_removed": {
-    "slope": -0.028649386084583894,
-    "roughness": -0.02167651963013495,
+    "slope": -0.025162952857359477,
+    "roughness": -0.01819008640291042,
     "thermal_inertia": 0.0,
-    "lithology": 0.0013642564802183177,
-    "ice": 0.0024253448537213673,
-    "temperature": 0.0007579202667878926,
-    "aridity": -0.04411095952705779,
-    "barrenness": 0.006214946187661052,
-    "dust": 0.00757920266787937
+    "lithology": 0.00045475216007273556,
+    "ice": 0.0,
+    "temperature": 0.00030316810671515704,
+    "aridity": -0.04123086251326369,
+    "barrenness": 0.005760194027588317,
+    "dust": 0.007579202667879259
+   }
+  },
+  "oxia/geology": {
+   "base_auc": NaN,
+   "auc_drop_if_removed": {
+    "slope": NaN,
+    "roughness": NaN,
+    "thermal_inertia": NaN,
+    "lithology": NaN,
+    "ice": NaN,
+    "temperature": NaN,
+    "aridity": NaN,
+    "barrenness": NaN,
+    "dust": NaN
+   }
+  },
+  "oxia/rover": {
+   "base_auc": NaN,
+   "auc_drop_if_removed": {
+    "slope": NaN,
+    "roughness": NaN,
+    "thermal_inertia": NaN,
+    "lithology": NaN,
+    "temperature": NaN,
+    "aridity": NaN,
+    "barrenness": NaN,
+    "dust": NaN
+   }
+  },
+  "meridiani/geology": {
+   "base_auc": NaN,
+   "auc_drop_if_removed": {
+    "slope": NaN,
+    "roughness": NaN,
+    "thermal_inertia": NaN,
+    "lithology": NaN,
+    "ice": NaN,
+    "temperature": NaN,
+    "aridity": NaN,
+    "barrenness": NaN,
+    "dust": NaN
+   }
+  },
+  "meridiani/rover": {
+   "base_auc": NaN,
+   "auc_drop_if_removed": {
+    "slope": NaN,
+    "roughness": NaN,
+    "thermal_inertia": NaN,
+    "lithology": NaN,
+    "temperature": NaN,
+    "aridity": NaN,
+    "barrenness": NaN,
+    "dust": NaN
+   }
+  },
+  "protonilus/isru_base": {
+   "base_auc": NaN,
+   "auc_drop_if_removed": {
+    "slope": NaN,
+    "roughness": NaN,
+    "thermal_inertia": NaN,
+    "lithology": NaN,
+    "ice": NaN,
+    "temperature": NaN,
+    "aridity": NaN,
+    "barrenness": NaN,
+    "dust": NaN
+   }
+  },
+  "protonilus/landing": {
+   "base_auc": NaN,
+   "auc_drop_if_removed": {
+    "slope": NaN,
+    "roughness": NaN,
+    "thermal_inertia": NaN,
+    "lithology": NaN,
+    "ice": NaN,
+    "temperature": NaN,
+    "aridity": NaN,
+    "barrenness": NaN,
+    "dust": NaN
+   }
+  },
+  "ap105/landing": {
+   "base_auc": NaN,
+   "auc_drop_if_removed": {
+    "slope": NaN,
+    "roughness": NaN,
+    "thermal_inertia": NaN,
+    "lithology": NaN,
+    "ice": NaN,
+    "temperature": NaN,
+    "aridity": NaN,
+    "barrenness": NaN,
+    "dust": NaN
+   }
+  },
+  "ap105/isru_base": {
+   "base_auc": NaN,
+   "auc_drop_if_removed": {
+    "slope": NaN,
+    "roughness": NaN,
+    "thermal_inertia": NaN,
+    "lithology": NaN,
+    "ice": NaN,
+    "temperature": NaN,
+    "aridity": NaN,
+    "barrenness": NaN,
+    "dust": NaN
    }
   }
  }

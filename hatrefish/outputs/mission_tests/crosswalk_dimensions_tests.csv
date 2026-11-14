@@ -1,0 +1,7 @@
+﻿test,name,terrain,surface,environment,water_ice,atmosphere_dust,biology,subsurface
+R1,著陸地表條件,●,●,,,,,
+R2,視覺導航可行性,○,○,,,,,
+R3,淺層地下冰,,,●,●,,,○
+R4,含水礦物辨識,,●,,,,,
+R5,冰河與冰緣地形,●,,○,●,,,
+R6,沙塵與近地表氣象,,,●,,●,,

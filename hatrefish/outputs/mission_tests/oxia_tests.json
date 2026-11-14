@@ -1,0 +1,4286 @@
+{
+ "target": {
+  "name": "Oxia Planum (ExoMars Rosalind Franklin landing site)",
+  "lat": 18.2,
+  "lon": -24.55,
+  "radius_km": 25,
+  "missions": [
+   "geology",
+   "rover"
+  ]
+ },
+ "target_id": "oxia",
+ "generated_at": "2026-11-14T15:38:50+08:00",
+ "ice_target": 0.0,
+ "status": {
+  "R1": {
+   "status": "scored",
+   "features": {
+    "slope": "scored",
+    "roughness": "scored",
+    "thermal_inertia": "scored",
+    "barrenness": "scored",
+    "ice_free": "scored"
+   }
+  },
+  "R2": {
+   "status": "not_evaluated",
+   "features": {}
+  },
+  "R3": {
+   "status": "not_applicable",
+   "features": {}
+  },
+  "R4": {
+   "status": "scored",
+   "features": {
+    "lithology": "scored",
+    "barrenness": "scored",
+    "ice_free": "scored",
+    "mineral_signature": "not_applicable_for_target"
+   }
+  },
+  "R5": {
+   "status": "not_applicable",
+   "features": {}
+  },
+  "R6": {
+   "status": "scored",
+   "features": {
+    "dust": "scored",
+    "temperature": "scored",
+    "diurnal_range": "scored",
+    "dust_season_shape": "scored",
+    "dust_season_amplitude": "scored",
+    "temperature_season_shape": "scored"
+   }
+  }
+ },
+ "tests": {
+  "R1": {
+   "n_cells": 791247,
+   "share_ge": {
+    "0.8": 0.0968,
+    "0.9": 0.0173
+   },
+   "optional_missing_in_top": {},
+   "top": [
+    {
+     "rank": 1,
+     "cell_id": "e_1604537",
+     "lat": 45.45,
+     "lon": 73.75,
+     "score": 1.0,
+     "features": {
+      "slope": 1.0,
+      "roughness": 0.999,
+      "thermal_inertia": 1.0,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "roughness",
+     "values": {
+      "slope": {
+       "earth": 0.353,
+       "mars": "≤5 滿分，≥15 為 0",
+       "unit": "deg"
+      },
+      "roughness": {
+       "earth": 2.202,
+       "mars": 2.767,
+       "unit": "m"
+      },
+      "thermal_inertia": {
+       "earth": 1.0,
+       "mars": "火星熱慣量 100→150 = 火星第 21→29 百分位",
+       "unit": "J m-2 K-1 s-1/2"
+      },
+      "barrenness": {
+       "earth": -0.002,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.01,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.998,
+      "surface": 0.922,
+      "environment": 0.756,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.836
+     },
+     "profile_overall": 89.8,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=72.75,44.45,74.75,46.45&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 1676.0,
+     "name": "near Mynaral (KZ)"
+    },
+    {
+     "rank": 2,
+     "cell_id": "e_2090686",
+     "lat": 31.95,
+     "lon": 88.65,
+     "score": 1.0,
+     "features": {
+      "slope": 1.0,
+      "roughness": 1.0,
+      "thermal_inertia": 1.0,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "slope",
+     "values": {
+      "slope": {
+       "earth": 0.508,
+       "mars": "≤5 滿分，≥15 為 0",
+       "unit": "deg"
+      },
+      "roughness": {
+       "earth": 2.78,
+       "mars": 2.767,
+       "unit": "m"
+      },
+      "thermal_inertia": {
+       "earth": 0.785,
+       "mars": "火星熱慣量 100→150 = 火星第 21→29 百分位",
+       "unit": "J m-2 K-1 s-1/2"
+      },
+      "barrenness": {
+       "earth": -0.003,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.0,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 1.0,
+      "surface": 0.897,
+      "environment": 0.725,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.54
+     },
+     "profile_overall": 81.1,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=87.65,30.95,89.65,32.95&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 761.0,
+     "name": "76 km from Xungmai (CN)"
+    },
+    {
+     "rank": 3,
+     "cell_id": "e_2040241",
+     "lat": 33.35,
+     "lon": 84.15,
+     "score": 1.0,
+     "features": {
+      "slope": 1.0,
+      "roughness": 0.999,
+      "thermal_inertia": 1.0,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "roughness",
+     "values": {
+      "slope": {
+       "earth": 0.674,
+       "mars": "≤5 滿分，≥15 為 0",
+       "unit": "deg"
+      },
+      "roughness": {
+       "earth": 3.232,
+       "mars": 2.767,
+       "unit": "m"
+      },
+      "thermal_inertia": {
+       "earth": 0.781,
+       "mars": "火星熱慣量 100→150 = 火星第 21→29 百分位",
+       "unit": "J m-2 K-1 s-1/2"
+      },
+      "barrenness": {
+       "earth": -0.014,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.0,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.999,
+      "surface": 0.862,
+      "environment": 0.836,
+      "water_ice": 0.743,
+      "atmosphere_dust": 0.638
+     },
+     "profile_overall": 80.7,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=83.15,32.35,85.15,34.35&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 875.0,
+     "name": "83 km from Zhabu (CN)"
+    },
+    {
+     "rank": 4,
+     "cell_id": "e_2069023",
+     "lat": 32.55,
+     "lon": 82.35,
+     "score": 1.0,
+     "features": {
+      "slope": 1.0,
+      "roughness": 0.999,
+      "thermal_inertia": 1.0,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "roughness",
+     "values": {
+      "slope": {
+       "earth": 0.429,
+       "mars": "≤5 滿分，≥15 為 0",
+       "unit": "deg"
+      },
+      "roughness": {
+       "earth": 3.282,
+       "mars": 2.767,
+       "unit": "m"
+      },
+      "thermal_inertia": {
+       "earth": 0.474,
+       "mars": "火星熱慣量 100→150 = 火星第 21→29 百分位",
+       "unit": "J m-2 K-1 s-1/2"
+      },
+      "barrenness": {
+       "earth": -0.015,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.029,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.999,
+      "surface": 0.733,
+      "environment": 0.808,
+      "water_ice": 0.868,
+      "atmosphere_dust": 0.611
+     },
+     "profile_overall": 79.3,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=81.35,31.55,83.35,33.55&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 1060.0,
+     "name": "117 km from Xagmakajor (CN)"
+    },
+    {
+     "rank": 5,
+     "cell_id": "e_2115354",
+     "lat": 31.25,
+     "lon": 35.45,
+     "score": 1.0,
+     "features": {
+      "slope": 1.0,
+      "roughness": 0.998,
+      "thermal_inertia": 1.0,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "roughness",
+     "values": {
+      "slope": {
+       "earth": 0.632,
+       "mars": "≤5 滿分，≥15 為 0",
+       "unit": "deg"
+      },
+      "roughness": {
+       "earth": 3.566,
+       "mars": 2.767,
+       "unit": "m"
+      },
+      "thermal_inertia": {
+       "earth": 0.883,
+       "mars": "火星熱慣量 100→150 = 火星第 21→29 百分位",
+       "unit": "J m-2 K-1 s-1/2"
+      },
+      "barrenness": {
+       "earth": -0.011,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.0,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.999,
+      "surface": 0.858,
+      "environment": 0.397,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.854
+     },
+     "profile_overall": 78.1,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=34.45,30.25,36.45,32.25&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "lake_salda",
+     "nearest_known_km": 878.0,
+     "name": "near `En Boqeq (IL)"
+    },
+    {
+     "rank": 6,
+     "cell_id": "e_1971829",
+     "lat": 35.25,
+     "lon": 82.95,
+     "score": 1.0,
+     "features": {
+      "slope": 1.0,
+      "roughness": 0.999,
+      "thermal_inertia": 1.0,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "roughness",
+     "values": {
+      "slope": {
+       "earth": 0.517,
+       "mars": "≤5 滿分，≥15 為 0",
+       "unit": "deg"
+      },
+      "roughness": {
+       "earth": 2.186,
+       "mars": 2.767,
+       "unit": "m"
+      },
+      "thermal_inertia": {
+       "earth": 0.731,
+       "mars": "火星熱慣量 100→150 = 火星第 21→29 百分位",
+       "unit": "J m-2 K-1 s-1/2"
+      },
+      "barrenness": {
+       "earth": -0.036,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.038,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.999,
+      "surface": 0.721,
+      "environment": 0.857,
+      "water_ice": 0.01,
+      "atmosphere_dust": 0.794
+     },
+     "profile_overall": 34.5,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=81.95,34.25,83.95,36.25&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 848.0,
+     "name": "160 km from Yeyik (CN)"
+    },
+    {
+     "rank": 7,
+     "cell_id": "e_2051098",
+     "lat": 33.05,
+     "lon": 89.85,
+     "score": 1.0,
+     "features": {
+      "slope": 1.0,
+      "roughness": 1.0,
+      "thermal_inertia": 1.0,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "slope",
+     "values": {
+      "slope": {
+       "earth": 0.481,
+       "mars": "≤5 滿分，≥15 為 0",
+       "unit": "deg"
+      },
+      "roughness": {
+       "earth": 2.562,
+       "mars": 2.767,
+       "unit": "m"
+      },
+      "thermal_inertia": {
+       "earth": 0.884,
+       "mars": "火星熱慣量 100→150 = 火星第 21→29 百分位",
+       "unit": "J m-2 K-1 s-1/2"
+      },
+      "barrenness": {
+       "earth": -0.026,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.0,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 1.0,
+      "surface": 0.815,
+      "environment": 0.723,
+      "water_ice": 0.01,
+      "atmosphere_dust": 0.597
+     },
+     "profile_overall": 32.3,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=88.85,32.05,90.85,34.05&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 610.0,
+     "name": "158 km from Maqian (CN)"
+    },
+    {
+     "rank": 8,
+     "cell_id": "e_4155529",
+     "lat": -25.45,
+     "lon": -67.05,
+     "score": 0.999,
+     "features": {
+      "slope": 1.0,
+      "roughness": 0.993,
+      "thermal_inertia": 1.0,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "roughness",
+     "values": {
+      "slope": {
+       "earth": 0.31,
+       "mars": "≤5 滿分，≥15 為 0",
+       "unit": "deg"
+      },
+      "roughness": {
+       "earth": 1.263,
+       "mars": 2.767,
+       "unit": "m"
+      },
+      "thermal_inertia": {
+       "earth": 0.317,
+       "mars": "火星熱慣量 100→150 = 火星第 21→29 百分位",
+       "unit": "J m-2 K-1 s-1/2"
+      },
+      "barrenness": {
+       "earth": -0.013,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.006,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.995,
+      "surface": 0.552,
+      "environment": 0.794,
+      "water_ice": null,
+      "atmosphere_dust": 0.052
+     },
+     "profile_overall": 38.8,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-68.05,-26.45,-66.05,-24.45&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "atacama_yungay",
+     "nearest_known_km": 327.0,
+     "name": "77 km from Antofagasta de la Sierra (AR)"
+    },
+    {
+     "rank": 9,
+     "cell_id": "e_1889090",
+     "lat": 37.55,
+     "lon": 89.05,
+     "score": 0.999,
+     "features": {
+      "slope": 1.0,
+      "roughness": 0.997,
+      "thermal_inertia": 1.0,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "roughness",
+     "values": {
+      "slope": {
+       "earth": 0.78,
+       "mars": "≤5 滿分，≥15 為 0",
+       "unit": "deg"
+      },
+      "roughness": {
+       "earth": 3.671,
+       "mars": 2.767,
+       "unit": "m"
+      },
+      "thermal_inertia": {
+       "earth": 0.989,
+       "mars": "火星熱慣量 100→150 = 火星第 21→29 百分位",
+       "unit": "J m-2 K-1 s-1/2"
+      },
+      "barrenness": {
+       "earth": -0.04,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.0,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.997,
+      "surface": 0.463,
+      "environment": 0.809,
+      "water_ice": 0.01,
+      "atmosphere_dust": 0.849
+     },
+     "profile_overall": 31.6,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=88.05,36.55,90.05,38.55&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 246.0,
+     "name": "117 km from Qimantage (CN)"
+    },
+    {
+     "rank": 10,
+     "cell_id": "e_1744728",
+     "lat": 41.55,
+     "lon": 52.85,
+     "score": 0.998,
+     "features": {
+      "slope": 1.0,
+      "roughness": 0.988,
+      "thermal_inertia": 1.0,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "roughness",
+     "values": {
+      "slope": {
+       "earth": 0.124,
+       "mars": "≤5 滿分，≥15 為 0",
+       "unit": "deg"
+      },
+      "roughness": {
+       "earth": 0.828,
+       "mars": 2.767,
+       "unit": "m"
+      },
+      "thermal_inertia": {
+       "earth": 0.998,
+       "mars": "火星熱慣量 100→150 = 火星第 21→29 百分位",
+       "unit": "J m-2 K-1 s-1/2"
+      },
+      "barrenness": {
+       "earth": -0.002,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.0,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.989,
+      "surface": 0.923,
+      "environment": 0.718,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.895
+     },
+     "profile_overall": 89.9,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=51.85,40.55,53.85,42.55&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "lake_salda",
+     "nearest_known_km": 2029.0,
+     "name": "170 km from Turkmenbasy (TM)"
+    },
+    {
+     "rank": 11,
+     "cell_id": "e_1590259",
+     "lat": 45.85,
+     "lon": 85.95,
+     "score": 0.998,
+     "features": {
+      "slope": 1.0,
+      "roughness": 0.991,
+      "thermal_inertia": 1.0,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "roughness",
+     "values": {
+      "slope": {
+       "earth": 0.216,
+       "mars": "≤5 滿分，≥15 為 0",
+       "unit": "deg"
+      },
+      "roughness": {
+       "earth": 1.136,
+       "mars": 2.767,
+       "unit": "m"
+      },
+      "thermal_inertia": {
+       "earth": 0.818,
+       "mars": "火星熱慣量 100→150 = 火星第 21→29 百分位",
+       "unit": "J m-2 K-1 s-1/2"
+      },
+      "barrenness": {
+       "earth": -0.025,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.012,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.992,
+      "surface": 0.748,
+      "environment": 0.75,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.851
+     },
+     "profile_overall": 86.1,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=84.95,44.85,86.95,46.85&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 960.0,
+     "name": "36 km from Urho (CN)"
+    },
+    {
+     "rank": 12,
+     "cell_id": "e_1960304",
+     "lat": 35.55,
+     "lon": 10.45,
+     "score": 0.998,
+     "features": {
+      "slope": 1.0,
+      "roughness": 0.991,
+      "thermal_inertia": 1.0,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "roughness",
+     "values": {
+      "slope": {
+       "earth": 0.247,
+       "mars": "≤5 滿分，≥15 為 0",
+       "unit": "deg"
+      },
+      "roughness": {
+       "earth": 1.095,
+       "mars": 2.767,
+       "unit": "m"
+      },
+      "thermal_inertia": {
+       "earth": 0.961,
+       "mars": "火星熱慣量 100→150 = 火星第 21→29 百分位",
+       "unit": "J m-2 K-1 s-1/2"
+      },
+      "barrenness": {
+       "earth": -0.053,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.0,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.993,
+      "surface": 0.788,
+      "environment": 0.575,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.841
+     },
+     "profile_overall": 82.3,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=9.45,34.55,11.45,36.55&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "ries_crater",
+     "nearest_known_km": 1482.0,
+     "name": "near Sidi el Hani (TN)"
+    },
+    {
+     "rank": 13,
+     "cell_id": "e_2324391",
+     "lat": 25.45,
+     "lon": 59.15,
+     "score": 0.998,
+     "features": {
+      "slope": 1.0,
+      "roughness": 0.992,
+      "thermal_inertia": 1.0,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "roughness",
+     "values": {
+      "slope": {
+       "earth": 0.247,
+       "mars": "≤5 滿分，≥15 為 0",
+       "unit": "deg"
+      },
+      "roughness": {
+       "earth": 1.183,
+       "mars": 2.767,
+       "unit": "m"
+      },
+      "thermal_inertia": {
+       "earth": 0.945,
+       "mars": "火星熱慣量 100→150 = 火星第 21→29 百分位",
+       "unit": "J m-2 K-1 s-1/2"
+      },
+      "barrenness": {
+       "earth": -0.008,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.0,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.993,
+      "surface": 0.784,
+      "environment": 0.403,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.952
+     },
+     "profile_overall": 78.5,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=58.15,24.45,60.15,26.45&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "dhofar_amadee18",
+     "nearest_known_km": 910.0,
+     "name": "126 km from Konarak (IR)"
+    },
+    {
+     "rank": 14,
+     "cell_id": "e_1761063",
+     "lat": 41.05,
+     "lon": -113.65,
+     "score": 0.998,
+     "features": {
+      "slope": 1.0,
+      "roughness": 0.992,
+      "thermal_inertia": 1.0,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "roughness",
+     "values": {
+      "slope": {
+       "earth": 0.297,
+       "mars": "≤5 滿分，≥15 為 0",
+       "unit": "deg"
+      },
+      "roughness": {
+       "earth": 1.196,
+       "mars": 2.767,
+       "unit": "m"
+      },
+      "thermal_inertia": {
+       "earth": 0.8,
+       "mars": "火星熱慣量 100→150 = 火星第 21→29 百分位",
+       "unit": "J m-2 K-1 s-1/2"
+      },
+      "barrenness": {
+       "earth": -0.015,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.002,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.994,
+      "surface": 0.743,
+      "environment": 0.723,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.543
+     },
+     "profile_overall": 78.1,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-114.65,40.05,-112.65,42.05&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": true,
+     "nearest_known": "pilot_valley_utah",
+     "nearest_known_km": 30.0,
+     "name": "Pilot Valley paleolake playa (Utah)"
+    },
+    {
+     "rank": 15,
+     "cell_id": "e_2407307",
+     "lat": 23.15,
+     "lon": 70.75,
+     "score": 0.998,
+     "features": {
+      "slope": 1.0,
+      "roughness": 0.988,
+      "thermal_inertia": 1.0,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "roughness",
+     "values": {
+      "slope": {
+       "earth": 0.183,
+       "mars": "≤5 滿分，≥15 為 0",
+       "unit": "deg"
+      },
+      "roughness": {
+       "earth": 0.848,
+       "mars": 2.767,
+       "unit": "m"
+      },
+      "thermal_inertia": {
+       "earth": 0.956,
+       "mars": "火星熱慣量 100→150 = 火星第 21→29 百分位",
+       "unit": "J m-2 K-1 s-1/2"
+      },
+      "barrenness": {
+       "earth": -0.021,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.0,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.99,
+      "surface": 0.787,
+      "environment": 0.361,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.88
+     },
+     "profile_overall": 75.6,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=69.75,22.15,71.75,24.15&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "kachchh_matanumadh",
+     "nearest_known_km": 189.0,
+     "name": "38 km from Morbi (IN)"
+    },
+    {
+     "rank": 16,
+     "cell_id": "e_2382094",
+     "lat": 23.85,
+     "lon": 69.45,
+     "score": 0.998,
+     "features": {
+      "slope": 1.0,
+      "roughness": 0.989,
+      "thermal_inertia": 1.0,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "roughness",
+     "values": {
+      "slope": {
+       "earth": 0.183,
+       "mars": "≤5 滿分，≥15 為 0",
+       "unit": "deg"
+      },
+      "roughness": {
+       "earth": 0.964,
+       "mars": 2.767,
+       "unit": "m"
+      },
+      "thermal_inertia": {
+       "earth": 0.989,
+       "mars": "火星熱慣量 100→150 = 火星第 21→29 百分位",
+       "unit": "J m-2 K-1 s-1/2"
+      },
+      "barrenness": {
+       "earth": -0.057,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.0,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.991,
+      "surface": 0.792,
+      "environment": 0.316,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.934
+     },
+     "profile_overall": 74.6,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=68.45,22.85,70.45,24.85&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "kachchh_matanumadh",
+     "nearest_known_km": 61.0,
+     "name": "61 km from Dayapar (IN)"
+    },
+    {
+     "rank": 17,
+     "cell_id": "e_2115850",
+     "lat": 31.25,
+     "lon": 85.05,
+     "score": 0.998,
+     "features": {
+      "slope": 1.0,
+      "roughness": 0.999,
+      "thermal_inertia": 1.0,
+      "barrenness": 0.991,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "barrenness",
+     "values": {
+      "slope": {
+       "earth": 0.566,
+       "mars": "≤5 滿分，≥15 為 0",
+       "unit": "deg"
+      },
+      "roughness": {
+       "earth": 3.26,
+       "mars": 2.767,
+       "unit": "m"
+      },
+      "thermal_inertia": {
+       "earth": 0.752,
+       "mars": "火星熱慣量 100→150 = 火星第 21→29 百分位",
+       "unit": "J m-2 K-1 s-1/2"
+      },
+      "barrenness": {
+       "earth": 0.003,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.0,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 1.0,
+      "surface": 0.424,
+      "environment": 0.785,
+      "water_ice": 0.955,
+      "atmosphere_dust": 0.469
+     },
+     "profile_overall": 68.4,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=84.05,30.25,86.05,32.25&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 992.0,
+     "name": "36 km from Maindong (CN)"
+    },
+    {
+     "rank": 18,
+     "cell_id": "e_2018608",
+     "lat": 33.95,
+     "lon": 80.85,
+     "score": 0.998,
+     "features": {
+      "slope": 1.0,
+      "roughness": 0.991,
+      "thermal_inertia": 1.0,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "roughness",
+     "values": {
+      "slope": {
+       "earth": 0.785,
+       "mars": "≤5 滿分，≥15 為 0",
+       "unit": "deg"
+      },
+      "roughness": {
+       "earth": 4.398,
+       "mars": 2.767,
+       "unit": "m"
+      },
+      "thermal_inertia": {
+       "earth": 0.967,
+       "mars": "火星熱慣量 100→150 = 火星第 21→29 百分位",
+       "unit": "J m-2 K-1 s-1/2"
+      },
+      "barrenness": {
+       "earth": -0.027,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.0,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.994,
+      "surface": 0.79,
+      "environment": 0.844,
+      "water_ice": 0.195,
+      "atmosphere_dust": 0.608
+     },
+     "profile_overall": 60.1,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=79.85,32.95,81.85,34.95&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 1086.0,
+     "name": "near Jisegumen (CN)"
+    },
+    {
+     "rank": 19,
+     "cell_id": "e_3932317",
+     "lat": -19.25,
+     "lon": -68.25,
+     "score": 0.998,
+     "features": {
+      "slope": 1.0,
+      "roughness": 0.993,
+      "thermal_inertia": 1.0,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "roughness",
+     "values": {
+      "slope": {
+       "earth": 0.007,
+       "mars": "≤5 滿分，≥15 為 0",
+       "unit": "deg"
+      },
+      "roughness": {
+       "earth": 1.261,
+       "mars": 2.767,
+       "unit": "m"
+      },
+      "thermal_inertia": {
+       "earth": 0.631,
+       "mars": "火星熱慣量 100→150 = 火星第 21→29 百分位",
+       "unit": "J m-2 K-1 s-1/2"
+      },
+      "barrenness": {
+       "earth": -0.009,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.0,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.988,
+      "surface": 0.638,
+      "environment": 0.73,
+      "water_ice": null,
+      "atmosphere_dust": 0.058
+     },
+     "profile_overall": 40.4,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-69.25,-20.25,-67.25,-18.25&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "atacama_yungay",
+     "nearest_known_km": 564.0,
+     "name": "44 km from Cruz de Machacamarca (BO)"
+    },
+    {
+     "rank": 20,
+     "cell_id": "e_3979124",
+     "lat": -20.55,
+     "lon": -67.55,
+     "score": 0.998,
+     "features": {
+      "slope": 1.0,
+      "roughness": 0.988,
+      "thermal_inertia": 1.0,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "roughness",
+     "values": {
+      "slope": {
+       "earth": 0.157,
+       "mars": "≤5 滿分，≥15 為 0",
+       "unit": "deg"
+      },
+      "roughness": {
+       "earth": 0.862,
+       "mars": 2.767,
+       "unit": "m"
+      },
+      "thermal_inertia": {
+       "earth": 0.413,
+       "mars": "火星熱慣量 100→150 = 火星第 21→29 百分位",
+       "unit": "J m-2 K-1 s-1/2"
+      },
+      "barrenness": {
+       "earth": -0.004,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.0,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.99,
+      "surface": 0.351,
+      "environment": 0.753,
+      "water_ice": null,
+      "atmosphere_dust": 0.06
+     },
+     "profile_overall": 35.4,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-68.55,-21.55,-66.55,-19.55&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "atacama_yungay",
+     "nearest_known_km": 462.0,
+     "name": "70 km from Colchani (BO)"
+    }
+   ]
+  },
+  "R4": {
+   "n_cells": 1434366,
+   "share_ge": {
+    "0.8": 0.0243,
+    "0.9": 0.0012
+   },
+   "optional_missing_in_top": {},
+   "top": [
+    {
+     "rank": 1,
+     "cell_id": "e_1744728",
+     "lat": 41.55,
+     "lon": 52.85,
+     "score": 0.928,
+     "features": {
+      "lithology": 0.8,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "lithology",
+     "values": {
+      "lithology": {
+       "earth": "sm",
+       "mars": "sedimentary_carbonate_clay",
+       "unit": "class"
+      },
+      "barrenness": {
+       "earth": -0.002,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.0,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.989,
+      "surface": 0.923,
+      "environment": 0.718,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.895
+     },
+     "profile_overall": 89.9,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=51.85,40.55,53.85,42.55&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "lake_salda",
+     "nearest_known_km": 2029.0,
+     "name": "170 km from Turkmenbasy (TM)"
+    },
+    {
+     "rank": 2,
+     "cell_id": "e_1604537",
+     "lat": 45.45,
+     "lon": 73.75,
+     "score": 0.928,
+     "features": {
+      "lithology": 0.8,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "lithology",
+     "values": {
+      "lithology": {
+       "earth": "sm",
+       "mars": "sedimentary_carbonate_clay",
+       "unit": "class"
+      },
+      "barrenness": {
+       "earth": -0.002,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.01,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.998,
+      "surface": 0.922,
+      "environment": 0.756,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.836
+     },
+     "profile_overall": 89.8,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=72.75,44.45,74.75,46.45&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 1676.0,
+     "name": "near Mynaral (KZ)"
+    },
+    {
+     "rank": 3,
+     "cell_id": "e_1597171",
+     "lat": 45.65,
+     "lon": 57.15,
+     "score": 0.928,
+     "features": {
+      "lithology": 0.8,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "lithology",
+     "values": {
+      "lithology": {
+       "earth": "sm",
+       "mars": "sedimentary_carbonate_clay",
+       "unit": "class"
+      },
+      "barrenness": {
+       "earth": -0.014,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.066,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.979,
+      "surface": 0.892,
+      "environment": 0.722,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.828
+     },
+     "profile_overall": 87.8,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=56.15,44.65,58.15,46.65&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "lake_salda",
+     "nearest_known_km": 2440.0,
+     "name": "156 km from Beyneu (KZ)"
+    },
+    {
+     "rank": 4,
+     "cell_id": "e_2040241",
+     "lat": 33.35,
+     "lon": 84.15,
+     "score": 0.928,
+     "features": {
+      "lithology": 0.8,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "lithology",
+     "values": {
+      "lithology": {
+       "earth": "sm",
+       "mars": "sedimentary_carbonate_clay",
+       "unit": "class"
+      },
+      "barrenness": {
+       "earth": -0.014,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.0,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.999,
+      "surface": 0.862,
+      "environment": 0.836,
+      "water_ice": 0.743,
+      "atmosphere_dust": 0.638
+     },
+     "profile_overall": 80.7,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=83.15,32.35,85.15,34.35&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 875.0,
+     "name": "83 km from Zhabu (CN)"
+    },
+    {
+     "rank": 5,
+     "cell_id": "e_2069023",
+     "lat": 32.55,
+     "lon": 82.35,
+     "score": 0.928,
+     "features": {
+      "lithology": 0.8,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "lithology",
+     "values": {
+      "lithology": {
+       "earth": "sm",
+       "mars": "sedimentary_carbonate_clay",
+       "unit": "class"
+      },
+      "barrenness": {
+       "earth": -0.015,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.029,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.999,
+      "surface": 0.733,
+      "environment": 0.808,
+      "water_ice": 0.868,
+      "atmosphere_dust": 0.611
+     },
+     "profile_overall": 79.3,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=81.35,31.55,83.35,33.55&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 1060.0,
+     "name": "117 km from Xagmakajor (CN)"
+    },
+    {
+     "rank": 6,
+     "cell_id": "e_2097895",
+     "lat": 31.75,
+     "lon": 89.55,
+     "score": 0.928,
+     "features": {
+      "lithology": 0.8,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "lithology",
+     "values": {
+      "lithology": {
+       "earth": "sm",
+       "mars": "sedimentary_carbonate_clay",
+       "unit": "class"
+      },
+      "barrenness": {
+       "earth": -0.019,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.007,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.994,
+      "surface": 0.707,
+      "environment": 0.706,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.522
+     },
+     "profile_overall": 76.3,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=88.55,30.75,90.55,32.75&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 757.0,
+     "name": "42 km from Maintang (CN)"
+    },
+    {
+     "rank": 7,
+     "cell_id": "e_2076280",
+     "lat": 32.35,
+     "lon": 88.05,
+     "score": 0.928,
+     "features": {
+      "lithology": 0.8,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "lithology",
+     "values": {
+      "lithology": {
+       "earth": "sm",
+       "mars": "sedimentary_carbonate_clay",
+       "unit": "class"
+      },
+      "barrenness": {
+       "earth": -0.049,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.0,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.909,
+      "surface": 0.886,
+      "environment": 0.747,
+      "water_ice": 0.656,
+      "atmosphere_dust": 0.544
+     },
+     "profile_overall": 73.5,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=87.05,31.35,89.05,33.35&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 741.0,
+     "name": "110 km from Cuozheqiangma (CN)"
+    },
+    {
+     "rank": 8,
+     "cell_id": "e_3982726",
+     "lat": -20.65,
+     "lon": -67.35,
+     "score": 0.928,
+     "features": {
+      "lithology": 0.8,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "lithology",
+     "values": {
+      "lithology": {
+       "earth": "sm",
+       "mars": "sedimentary_carbonate_clay",
+       "unit": "class"
+      },
+      "barrenness": {
+       "earth": -0.027,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.0,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.979,
+      "surface": 0.814,
+      "environment": 0.766,
+      "water_ice": null,
+      "atmosphere_dust": 0.058
+     },
+     "profile_overall": 43.3,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-68.35,-21.65,-66.35,-19.65&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "atacama_yungay",
+     "nearest_known_km": 464.0,
+     "name": "58 km from Colchani (BO)"
+    },
+    {
+     "rank": 9,
+     "cell_id": "e_495617",
+     "lat": 76.25,
+     "lon": 61.75,
+     "score": 0.928,
+     "features": {
+      "lithology": 0.8,
+      "barrenness": 0.998,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "lithology",
+     "values": {
+      "lithology": {
+       "earth": "sm",
+       "mars": "sedimentary_carbonate_clay",
+       "unit": "class"
+      },
+      "barrenness": {
+       "earth": 0.001,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.099,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.777,
+      "surface": 0.894,
+      "environment": 0.235,
+      "water_ice": 0.128,
+      "atmosphere_dust": 0.255
+     },
+     "profile_overall": 35.1,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=60.75,75.25,62.75,77.25&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "svalbard_bockfjorden",
+     "nearest_known_km": 1148.0,
+     "name": "966 km from Vorgashor (RU)"
+    },
+    {
+     "rank": 10,
+     "cell_id": "e_2018614",
+     "lat": 33.95,
+     "lon": 81.45,
+     "score": 0.928,
+     "features": {
+      "lithology": 0.8,
+      "barrenness": 0.999,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "lithology",
+     "values": {
+      "lithology": {
+       "earth": "sm",
+       "mars": "sedimentary_carbonate_clay",
+       "unit": "class"
+      },
+      "barrenness": {
+       "earth": 0.0,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.0,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.865,
+      "surface": 0.778,
+      "environment": 0.864,
+      "water_ice": 0.01,
+      "atmosphere_dust": 0.615
+     },
+     "profile_overall": 32.4,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=80.45,32.95,82.45,34.95&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 1038.0,
+     "name": "64 km from Jisegumen (CN)"
+    },
+    {
+     "rank": 11,
+     "cell_id": "e_969515",
+     "lat": 63.05,
+     "lon": -68.45,
+     "score": 0.928,
+     "features": {
+      "lithology": 0.8,
+      "barrenness": 0.998,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "lithology",
+     "values": {
+      "lithology": {
+       "earth": "sm",
+       "mars": "sedimentary_carbonate_clay",
+       "unit": "class"
+      },
+      "barrenness": {
+       "earth": 0.001,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.0,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.687,
+      "surface": 0.894,
+      "environment": 0.295,
+      "water_ice": 0.09,
+      "atmosphere_dust": 0.214
+     },
+     "profile_overall": 32.2,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-69.45,62.05,-67.45,64.05&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "haughton_crater",
+     "nearest_known_km": 1586.0,
+     "name": "78 km from Iqaluit (CA)"
+    },
+    {
+     "rank": 12,
+     "cell_id": "e_619885",
+     "lat": 72.75,
+     "lon": -111.45,
+     "score": 0.928,
+     "features": {
+      "lithology": 0.8,
+      "barrenness": 0.999,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "lithology",
+     "values": {
+      "lithology": {
+       "earth": "sm",
+       "mars": "sedimentary_carbonate_clay",
+       "unit": "class"
+      },
+      "barrenness": {
+       "earth": 0.0,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.018,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.997,
+      "surface": 0.894,
+      "environment": 0.787,
+      "water_ice": 0.01,
+      "atmosphere_dust": 0.234
+     },
+     "profile_overall": 27.7,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-112.45,71.75,-110.45,73.75&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "haughton_crater",
+     "nearest_known_km": 721.0,
+     "name": "564 km from Kugluktuk (CA)"
+    },
+    {
+     "rank": 13,
+     "cell_id": "e_605533",
+     "lat": 73.15,
+     "lon": -106.65,
+     "score": 0.928,
+     "features": {
+      "lithology": 0.8,
+      "barrenness": 0.999,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "lithology",
+     "values": {
+      "lithology": {
+       "earth": "sm",
+       "mars": "sedimentary_carbonate_clay",
+       "unit": "class"
+      },
+      "barrenness": {
+       "earth": 0.0,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.038,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.995,
+      "surface": 0.894,
+      "environment": 0.772,
+      "water_ice": 0.01,
+      "atmosphere_dust": 0.221
+     },
+     "profile_overall": 27.3,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-107.65,72.15,-105.65,74.15&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "haughton_crater",
+     "nearest_known_km": 566.0,
+     "name": "668 km from Kugluktuk (CA)"
+    },
+    {
+     "rank": 14,
+     "cell_id": "e_429093",
+     "lat": 78.05,
+     "lon": -110.65,
+     "score": 0.928,
+     "features": {
+      "lithology": 0.8,
+      "barrenness": 0.998,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "lithology",
+     "values": {
+      "lithology": {
+       "earth": "sm",
+       "mars": "sedimentary_carbonate_clay",
+       "unit": "class"
+      },
+      "barrenness": {
+       "earth": 0.001,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.081,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.995,
+      "surface": 0.893,
+      "environment": 0.783,
+      "water_ice": 0.01,
+      "atmosphere_dust": 0.216
+     },
+     "profile_overall": 27.3,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-111.65,77.05,-109.65,79.05&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "axel_heiberg_lost_hammer",
+     "nearest_known_km": 462.0,
+     "name": "1145 km from Kugluktuk (CA)"
+    },
+    {
+     "rank": 15,
+     "cell_id": "e_307032",
+     "lat": 81.45,
+     "lon": -76.75,
+     "score": 0.928,
+     "features": {
+      "lithology": 0.8,
+      "barrenness": 1.0,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "lithology",
+     "values": {
+      "lithology": {
+       "earth": "sm",
+       "mars": "sedimentary_carbonate_clay",
+       "unit": "class"
+      },
+      "barrenness": {
+       "earth": 0.0,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.004,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.99,
+      "surface": 0.894,
+      "environment": 0.759,
+      "water_ice": 0.01,
+      "atmosphere_dust": 0.173
+     },
+     "profile_overall": 25.9,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-77.75,80.45,-75.75,82.45&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "axel_heiberg_lost_hammer",
+     "nearest_known_km": 364.0,
+     "name": "1238 km from Clyde River (CA)"
+    },
+    {
+     "rank": 16,
+     "cell_id": "e_515443",
+     "lat": 75.65,
+     "lon": -115.65,
+     "score": 0.928,
+     "features": {
+      "lithology": 0.8,
+      "barrenness": 0.999,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "lithology",
+     "values": {
+      "lithology": {
+       "earth": "sm",
+       "mars": "sedimentary_carbonate_clay",
+       "unit": "class"
+      },
+      "barrenness": {
+       "earth": 0.0,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.025,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.748,
+      "surface": 0.894,
+      "environment": 0.766,
+      "water_ice": 0.01,
+      "atmosphere_dust": 0.226
+     },
+     "profile_overall": 25.9,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-116.65,74.65,-114.65,76.65&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "haughton_crater",
+     "nearest_known_km": 717.0,
+     "name": "870 km from Kugluktuk (CA)"
+    },
+    {
+     "rank": 17,
+     "cell_id": "e_533678",
+     "lat": 75.15,
+     "lon": -92.15,
+     "score": 0.928,
+     "features": {
+      "lithology": 0.8,
+      "barrenness": 0.999,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "lithology",
+     "values": {
+      "lithology": {
+       "earth": "sm",
+       "mars": "sedimentary_carbonate_clay",
+       "unit": "class"
+      },
+      "barrenness": {
+       "earth": 0.0,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.022,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.986,
+      "surface": 0.894,
+      "environment": 0.596,
+      "water_ice": 0.01,
+      "atmosphere_dust": 0.197
+     },
+     "profile_overall": 25.3,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-93.15,74.15,-91.15,76.15&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "haughton_crater",
+     "nearest_known_km": 74.0,
+     "name": "736 km from Gjoa Haven (CA)"
+    },
+    {
+     "rank": 18,
+     "cell_id": "e_321299",
+     "lat": 81.05,
+     "lon": -90.05,
+     "score": 0.928,
+     "features": {
+      "lithology": 0.8,
+      "barrenness": 0.999,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "lithology",
+     "values": {
+      "lithology": {
+       "earth": "sm",
+       "mars": "sedimentary_carbonate_clay",
+       "unit": "class"
+      },
+      "barrenness": {
+       "earth": 0.0,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.027,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.864,
+      "surface": 0.894,
+      "environment": 0.686,
+      "water_ice": 0.01,
+      "atmosphere_dust": 0.195
+     },
+     "profile_overall": 25.3,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-91.05,80.05,-89.05,82.05&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "axel_heiberg_lost_hammer",
+     "nearest_known_km": 219.0,
+     "name": "1390 km from Gjoa Haven (CA)"
+    },
+    {
+     "rank": 19,
+     "cell_id": "e_422110",
+     "lat": 78.25,
+     "lon": -88.95,
+     "score": 0.928,
+     "features": {
+      "lithology": 0.8,
+      "barrenness": 0.998,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "lithology",
+     "values": {
+      "lithology": {
+       "earth": "sm",
+       "mars": "sedimentary_carbonate_clay",
+       "unit": "class"
+      },
+      "barrenness": {
+       "earth": 0.0,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.041,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.909,
+      "surface": 0.894,
+      "environment": 0.663,
+      "water_ice": 0.01,
+      "atmosphere_dust": 0.189
+     },
+     "profile_overall": 25.2,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-89.95,77.25,-87.95,79.25&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "axel_heiberg_lost_hammer",
+     "nearest_known_km": 96.0,
+     "name": "1091 km from Gjoa Haven (CA)"
+    },
+    {
+     "rank": 20,
+     "cell_id": "e_427668",
+     "lat": 78.15,
+     "lon": 106.85,
+     "score": 0.928,
+     "features": {
+      "lithology": 0.8,
+      "barrenness": 0.997,
+      "ice_free": 1.0
+     },
+     "optional_missing": [],
+     "weakest_feature": "lithology",
+     "values": {
+      "lithology": {
+       "earth": "sm",
+       "mars": "sedimentary_carbonate_clay",
+       "unit": "class"
+      },
+      "barrenness": {
+       "earth": 0.001,
+       "mars": 0.0,
+       "unit": "NDVI"
+      },
+      "ice_free": {
+       "earth": 0.086,
+       "mars": "≤0.1 滿分，≥0.5 為 0",
+       "unit": "fraction"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.998,
+      "surface": 0.893,
+      "environment": 0.414,
+      "water_ice": 0.01,
+      "atmosphere_dust": 0.277
+     },
+     "profile_overall": 25.2,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=105.85,77.15,107.85,79.15&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "svalbard_bockfjorden",
+     "nearest_known_km": 1813.0,
+     "name": "697 km from Khatanga (RU)"
+    }
+   ]
+  },
+  "R6": {
+   "n_cells": 1441481,
+   "share_ge": {
+    "0.8": 0.0,
+    "0.9": 0.0
+   },
+   "optional_missing_in_top": {},
+   "top": [
+    {
+     "rank": 1,
+     "cell_id": "e_1719889",
+     "lat": 42.25,
+     "lon": 88.95,
+     "score": 0.742,
+     "features": {
+      "dust": 0.967,
+      "temperature": 0.613,
+      "diurnal_range": 0.951,
+      "dust_season_shape": 0.408,
+      "dust_season_amplitude": 0.748,
+      "temperature_season_shape": 0.97
+     },
+     "optional_missing": [],
+     "weakest_feature": "dust_season_shape",
+     "values": {
+      "dust": {
+       "earth": 0.928,
+       "mars": 0.961,
+       "unit": "percentile"
+      },
+      "temperature": {
+       "earth": 14.573,
+       "mars": -50.75,
+       "unit": "C"
+      },
+      "diurnal_range": {
+       "earth": 25.125,
+       "mars": 77.07,
+       "unit": "C"
+      },
+      "dust_season_shape": {
+       "earth": "地球高峰在 10 月",
+       "mars": "火星高峰在 Ls 240°",
+       "unit": "correlation"
+      },
+      "dust_season_amplitude": {
+       "earth": 0.917,
+       "mars": 1.555,
+       "unit": "ratio"
+      },
+      "temperature_season_shape": {
+       "earth": "地球高峰在 7 月",
+       "mars": "火星高峰在 Ls 135°",
+       "unit": "correlation"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.91,
+      "surface": 0.522,
+      "environment": 0.738,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.967
+     },
+     "profile_overall": 80.5,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=87.95,41.25,89.95,43.25&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 493.0,
+     "name": "66 km from Toksun (CN)"
+    },
+    {
+     "rank": 2,
+     "cell_id": "e_1979232",
+     "lat": 35.05,
+     "lon": 103.25,
+     "score": 0.734,
+     "features": {
+      "dust": 0.786,
+      "temperature": 0.731,
+      "diurnal_range": 0.939,
+      "dust_season_shape": 0.3,
+      "dust_season_amplitude": 0.999,
+      "temperature_season_shape": 0.97
+     },
+     "optional_missing": [],
+     "weakest_feature": "dust_season_shape",
+     "values": {
+      "dust": {
+       "earth": 0.747,
+       "mars": 0.961,
+       "unit": "percentile"
+      },
+      "temperature": {
+       "earth": 6.355,
+       "mars": -50.75,
+       "unit": "C"
+      },
+      "diurnal_range": {
+       "earth": 24.571,
+       "mars": 77.07,
+       "unit": "C"
+      },
+      "dust_season_shape": {
+       "earth": "地球高峰在 4 月",
+       "mars": "火星高峰在 Ls 240°",
+       "unit": "correlation"
+      },
+      "dust_season_amplitude": {
+       "earth": 1.498,
+       "mars": 1.555,
+       "unit": "ratio"
+      },
+      "temperature_season_shape": {
+       "earth": "地球高峰在 7 月",
+       "mars": "火星高峰在 Ls 135°",
+       "unit": "correlation"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.707,
+      "surface": 0.084,
+      "environment": 0.544,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.786
+     },
+     "profile_overall": 47.9,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=102.25,34.05,104.25,36.05&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 1094.0,
+     "name": "near Zuogaiduoma (CN)"
+    },
+    {
+     "rank": 3,
+     "cell_id": "e_1910833",
+     "lat": 36.95,
+     "lon": 103.35,
+     "score": 0.727,
+     "features": {
+      "dust": 0.825,
+      "temperature": 0.709,
+      "diurnal_range": 0.976,
+      "dust_season_shape": 0.278,
+      "dust_season_amplitude": 0.965,
+      "temperature_season_shape": 0.965
+     },
+     "optional_missing": [],
+     "weakest_feature": "dust_season_shape",
+     "values": {
+      "dust": {
+       "earth": 0.786,
+       "mars": 0.961,
+       "unit": "percentile"
+      },
+      "temperature": {
+       "earth": 8.167,
+       "mars": -50.75,
+       "unit": "C"
+      },
+      "diurnal_range": {
+       "earth": 26.966,
+       "mars": 77.07,
+       "unit": "C"
+      },
+      "dust_season_shape": {
+       "earth": "地球高峰在 4 月",
+       "mars": "火星高峰在 Ls 240°",
+       "unit": "correlation"
+      },
+      "dust_season_amplitude": {
+       "earth": 1.292,
+       "mars": 1.555,
+       "unit": "ratio"
+      },
+      "temperature_season_shape": {
+       "earth": "地球高峰在 7 月",
+       "mars": "火星高峰在 Ls 135°",
+       "unit": "correlation"
+      }
+     },
+     "breaks": [
+      {
+       "feature": "dust_season_shape",
+       "score": 0.278,
+       "earth": "地球高峰在 4 月",
+       "mars": "火星高峰在 Ls 240°",
+       "unit": "correlation"
+      }
+     ],
+     "dimension_scores": {
+      "terrain": 0.735,
+      "surface": 0.289,
+      "environment": 0.683,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.825
+     },
+     "profile_overall": 65.4,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=102.35,35.95,104.35,37.95&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 1039.0,
+     "name": "near Huazangsi (CN)"
+    },
+    {
+     "rank": 4,
+     "cell_id": "e_2068568",
+     "lat": 32.55,
+     "lon": 36.85,
+     "score": 0.725,
+     "features": {
+      "dust": 0.8,
+      "temperature": 0.504,
+      "diurnal_range": 0.948,
+      "dust_season_shape": 0.393,
+      "dust_season_amplitude": 0.986,
+      "temperature_season_shape": 0.983
+     },
+     "optional_missing": [],
+     "weakest_feature": "dust_season_shape",
+     "values": {
+      "dust": {
+       "earth": 0.761,
+       "mars": 0.961,
+       "unit": "percentile"
+      },
+      "temperature": {
+       "earth": 20.847,
+       "mars": -50.75,
+       "unit": "C"
+      },
+      "diurnal_range": {
+       "earth": 24.975,
+       "mars": 77.07,
+       "unit": "C"
+      },
+      "dust_season_shape": {
+       "earth": "地球高峰在 4 月",
+       "mars": "火星高峰在 Ls 240°",
+       "unit": "correlation"
+      },
+      "dust_season_amplitude": {
+       "earth": 1.746,
+       "mars": 1.555,
+       "unit": "ratio"
+      },
+      "temperature_season_shape": {
+       "earth": "地球高峰在 7 月",
+       "mars": "火星高峰在 Ls 135°",
+       "unit": "correlation"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.987,
+      "surface": 0.236,
+      "environment": 0.627,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.8
+     },
+     "profile_overall": 65.1,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=35.85,31.55,37.85,33.55&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "lake_salda",
+     "nearest_known_km": 857.0,
+     "name": "near Malah (SY)"
+    },
+    {
+     "rank": 5,
+     "cell_id": "e_1946845",
+     "lat": 35.95,
+     "lon": 104.55,
+     "score": 0.724,
+     "features": {
+      "dust": 0.808,
+      "temperature": 0.663,
+      "diurnal_range": 0.87,
+      "dust_season_shape": 0.325,
+      "dust_season_amplitude": 0.982,
+      "temperature_season_shape": 0.965
+     },
+     "optional_missing": [],
+     "weakest_feature": "dust_season_shape",
+     "values": {
+      "dust": {
+       "earth": 0.769,
+       "mars": 0.961,
+       "unit": "percentile"
+      },
+      "temperature": {
+       "earth": 11.278,
+       "mars": -50.75,
+       "unit": "C"
+      },
+      "diurnal_range": {
+       "earth": 22.69,
+       "mars": 77.07,
+       "unit": "C"
+      },
+      "dust_season_shape": {
+       "earth": "地球高峰在 4 月",
+       "mars": "火星高峰在 Ls 240°",
+       "unit": "correlation"
+      },
+      "dust_season_amplitude": {
+       "earth": 1.362,
+       "mars": 1.555,
+       "unit": "ratio"
+      },
+      "temperature_season_shape": {
+       "earth": "地球高峰在 7 月",
+       "mars": "火星高峰在 Ls 135°",
+       "unit": "correlation"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.01,
+      "surface": 0.306,
+      "environment": 0.656,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.808
+     },
+     "profile_overall": 27.7,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=103.55,34.95,105.55,36.95&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 1171.0,
+     "name": "39 km from Zhonghualu (CN)"
+    },
+    {
+     "rank": 6,
+     "cell_id": "e_1914463",
+     "lat": 36.85,
+     "lon": 106.35,
+     "score": 0.72,
+     "features": {
+      "dust": 0.83,
+      "temperature": 0.641,
+      "diurnal_range": 0.913,
+      "dust_season_shape": 0.32,
+      "dust_season_amplitude": 0.925,
+      "temperature_season_shape": 0.964
+     },
+     "optional_missing": [],
+     "weakest_feature": "dust_season_shape",
+     "values": {
+      "dust": {
+       "earth": 0.791,
+       "mars": 0.961,
+       "unit": "percentile"
+      },
+      "temperature": {
+       "earth": 12.66,
+       "mars": -50.75,
+       "unit": "C"
+      },
+      "diurnal_range": {
+       "earth": 23.725,
+       "mars": 77.07,
+       "unit": "C"
+      },
+      "dust_season_shape": {
+       "earth": "地球高峰在 4 月",
+       "mars": "火星高峰在 Ls 240°",
+       "unit": "correlation"
+      },
+      "dust_season_amplitude": {
+       "earth": 1.183,
+       "mars": 1.555,
+       "unit": "ratio"
+      },
+      "temperature_season_shape": {
+       "earth": "地球高峰在 7 月",
+       "mars": "火星高峰在 Ls 135°",
+       "unit": "correlation"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.884,
+      "surface": 0.377,
+      "environment": 0.667,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.83
+     },
+     "profile_overall": 71.3,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=105.35,35.85,107.35,37.85&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 1302.0,
+     "name": "near Yuwang (CN)"
+    },
+    {
+     "rank": 7,
+     "cell_id": "e_1593606",
+     "lat": 45.75,
+     "lon": 60.65,
+     "score": 0.719,
+     "features": {
+      "dust": 0.823,
+      "temperature": 0.594,
+      "diurnal_range": 0.949,
+      "dust_season_shape": 0.311,
+      "dust_season_amplitude": 0.998,
+      "temperature_season_shape": 0.958
+     },
+     "optional_missing": [],
+     "weakest_feature": "dust_season_shape",
+     "values": {
+      "dust": {
+       "earth": 0.784,
+       "mars": 0.961,
+       "unit": "percentile"
+      },
+      "temperature": {
+       "earth": 15.845,
+       "mars": -50.75,
+       "unit": "C"
+      },
+      "diurnal_range": {
+       "earth": 25.005,
+       "mars": 77.07,
+       "unit": "C"
+      },
+      "dust_season_shape": {
+       "earth": "地球高峰在 5 月",
+       "mars": "火星高峰在 Ls 240°",
+       "unit": "correlation"
+      },
+      "dust_season_amplitude": {
+       "earth": 1.486,
+       "mars": 1.555,
+       "unit": "ratio"
+      },
+      "temperature_season_shape": {
+       "earth": "地球高峰在 7 月",
+       "mars": "火星高峰在 Ls 135°",
+       "unit": "correlation"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.988,
+      "surface": 0.384,
+      "environment": 0.7,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.823
+     },
+     "profile_overall": 73.8,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=59.65,44.75,61.65,46.75&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "kachchh_matanumadh",
+     "nearest_known_km": 2579.0,
+     "name": "154 km from Sekseuil (KZ)"
+    },
+    {
+     "rank": 8,
+     "cell_id": "e_1874879",
+     "lat": 37.95,
+     "lon": 107.95,
+     "score": 0.716,
+     "features": {
+      "dust": 0.83,
+      "temperature": 0.651,
+      "diurnal_range": 0.936,
+      "dust_season_shape": 0.325,
+      "dust_season_amplitude": 0.844,
+      "temperature_season_shape": 0.969
+     },
+     "optional_missing": [],
+     "weakest_feature": "dust_season_shape",
+     "values": {
+      "dust": {
+       "earth": 0.791,
+       "mars": 0.961,
+       "unit": "percentile"
+      },
+      "temperature": {
+       "earth": 12.001,
+       "mars": -50.75,
+       "unit": "C"
+      },
+      "diurnal_range": {
+       "earth": 24.449,
+       "mars": 77.07,
+       "unit": "C"
+      },
+      "dust_season_shape": {
+       "earth": "地球高峰在 4 月",
+       "mars": "火星高峰在 Ls 240°",
+       "unit": "correlation"
+      },
+      "dust_season_amplitude": {
+       "earth": 1.039,
+       "mars": 1.555,
+       "unit": "ratio"
+      },
+      "temperature_season_shape": {
+       "earth": "地球高峰在 7 月",
+       "mars": "火星高峰在 Ls 135°",
+       "unit": "correlation"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.996,
+      "surface": 0.358,
+      "environment": 0.679,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.83
+     },
+     "profile_overall": 72.6,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=106.95,36.95,108.95,38.95&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 1423.0,
+     "name": "51 km from Dingbian (CN)"
+    },
+    {
+     "rank": 9,
+     "cell_id": "e_1830973",
+     "lat": 39.15,
+     "lon": 37.35,
+     "score": 0.713,
+     "features": {
+      "dust": 0.723,
+      "temperature": 0.652,
+      "diurnal_range": 0.88,
+      "dust_season_shape": 0.34,
+      "dust_season_amplitude": 0.946,
+      "temperature_season_shape": 0.983
+     },
+     "optional_missing": [],
+     "weakest_feature": "dust_season_shape",
+     "values": {
+      "dust": {
+       "earth": 0.684,
+       "mars": 0.961,
+       "unit": "percentile"
+      },
+      "temperature": {
+       "earth": 11.961,
+       "mars": -50.75,
+       "unit": "C"
+      },
+      "diurnal_range": {
+       "earth": 22.888,
+       "mars": 77.07,
+       "unit": "C"
+      },
+      "dust_season_shape": {
+       "earth": "地球高峰在 4 月",
+       "mars": "火星高峰在 Ls 240°",
+       "unit": "correlation"
+      },
+      "dust_season_amplitude": {
+       "earth": 1.959,
+       "mars": 1.555,
+       "unit": "ratio"
+      },
+      "temperature_season_shape": {
+       "earth": "地球高峰在 8 月",
+       "mars": "火星高峰在 Ls 135°",
+       "unit": "correlation"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.927,
+      "surface": 0.388,
+      "environment": 0.646,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.723
+     },
+     "profile_overall": 70.0,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=36.35,38.15,38.35,40.15&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "lake_salda",
+     "nearest_known_km": 692.0,
+     "name": "near Kangal (TR)"
+    },
+    {
+     "rank": 10,
+     "cell_id": "e_2014564",
+     "lat": 34.05,
+     "lon": 36.45,
+     "score": 0.713,
+     "features": {
+      "dust": 0.79,
+      "temperature": 0.628,
+      "diurnal_range": 0.742,
+      "dust_season_shape": 0.374,
+      "dust_season_amplitude": 0.977,
+      "temperature_season_shape": 0.977
+     },
+     "optional_missing": [],
+     "weakest_feature": "dust_season_shape",
+     "values": {
+      "dust": {
+       "earth": 0.751,
+       "mars": 0.961,
+       "unit": "percentile"
+      },
+      "temperature": {
+       "earth": 13.563,
+       "mars": -50.75,
+       "unit": "C"
+      },
+      "diurnal_range": {
+       "earth": 19.732,
+       "mars": 77.07,
+       "unit": "C"
+      },
+      "dust_season_shape": {
+       "earth": "地球高峰在 4 月",
+       "mars": "火星高峰在 Ls 240°",
+       "unit": "correlation"
+      },
+      "dust_season_amplitude": {
+       "earth": 1.804,
+       "mars": 1.555,
+       "unit": "ratio"
+      },
+      "temperature_season_shape": {
+       "earth": "地球高峰在 7 月",
+       "mars": "火星高峰在 Ls 135°",
+       "unit": "correlation"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.169,
+      "surface": 0.525,
+      "environment": 0.618,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.79
+     },
+     "profile_overall": 53.4,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=35.45,33.05,37.45,35.05&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "lake_salda",
+     "nearest_known_km": 724.0,
+     "name": "near `Assal al Ward (SY)"
+    },
+    {
+     "rank": 11,
+     "cell_id": "e_2008046",
+     "lat": 34.25,
+     "lon": 104.65,
+     "score": 0.712,
+     "features": {
+      "dust": 0.771,
+      "temperature": 0.725,
+      "diurnal_range": 0.702,
+      "dust_season_shape": 0.345,
+      "dust_season_amplitude": 0.985,
+      "temperature_season_shape": 0.976
+     },
+     "optional_missing": [],
+     "weakest_feature": "dust_season_shape",
+     "values": {
+      "dust": {
+       "earth": 0.732,
+       "mars": 0.961,
+       "unit": "percentile"
+      },
+      "temperature": {
+       "earth": 6.896,
+       "mars": -50.75,
+       "unit": "C"
+      },
+      "diurnal_range": {
+       "earth": 18.622,
+       "mars": 77.07,
+       "unit": "C"
+      },
+      "dust_season_shape": {
+       "earth": "地球高峰在 4 月",
+       "mars": "火星高峰在 Ls 240°",
+       "unit": "correlation"
+      },
+      "dust_season_amplitude": {
+       "earth": 1.377,
+       "mars": 1.555,
+       "unit": "ratio"
+      },
+      "temperature_season_shape": {
+       "earth": "地球高峰在 7 月",
+       "mars": "火星高峰在 Ls 135°",
+       "unit": "correlation"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.012,
+      "surface": 0.032,
+      "environment": 0.508,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.771
+     },
+     "profile_overall": 17.1,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=103.65,33.25,105.65,35.25&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 1247.0,
+     "name": "near Lujing Zhen (CN)"
+    },
+    {
+     "rank": 12,
+     "cell_id": "e_2222833",
+     "lat": 28.25,
+     "lon": -16.65,
+     "score": 0.711,
+     "features": {
+      "dust": 0.821,
+      "temperature": 0.544,
+      "diurnal_range": 0.916,
+      "dust_season_shape": 0.338,
+      "dust_season_amplitude": 0.957,
+      "temperature_season_shape": 0.975
+     },
+     "optional_missing": [],
+     "weakest_feature": "dust_season_shape",
+     "values": {
+      "dust": {
+       "earth": 0.782,
+       "mars": 0.961,
+       "unit": "percentile"
+      },
+      "temperature": {
+       "earth": 18.617,
+       "mars": -50.75,
+       "unit": "C"
+      },
+      "diurnal_range": {
+       "earth": 23.813,
+       "mars": 77.07,
+       "unit": "C"
+      },
+      "dust_season_shape": {
+       "earth": "地球高峰在 7 月",
+       "mars": "火星高峰在 Ls 240°",
+       "unit": "correlation"
+      },
+      "dust_season_amplitude": {
+       "earth": 1.266,
+       "mars": 1.555,
+       "unit": "ratio"
+      },
+      "temperature_season_shape": {
+       "earth": "地球高峰在 7 月",
+       "mars": "火星高峰在 Ls 135°",
+       "unit": "correlation"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.01,
+      "surface": 0.233,
+      "environment": 0.624,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.821
+     },
+     "profile_overall": 26.0,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-17.65,27.25,-15.65,29.25&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "lanzarote",
+     "nearest_known_km": 307.0,
+     "name": "near Vilaflor (ES)"
+    },
+    {
+     "rank": 13,
+     "cell_id": "e_1694706",
+     "lat": 42.95,
+     "lon": 90.65,
+     "score": 0.709,
+     "features": {
+      "dust": 0.92,
+      "temperature": 0.534,
+      "diurnal_range": 0.977,
+      "dust_season_shape": 0.363,
+      "dust_season_amplitude": 0.751,
+      "temperature_season_shape": 0.967
+     },
+     "optional_missing": [],
+     "weakest_feature": "dust_season_shape",
+     "values": {
+      "dust": {
+       "earth": 0.881,
+       "mars": 0.961,
+       "unit": "percentile"
+      },
+      "temperature": {
+       "earth": 19.152,
+       "mars": -50.75,
+       "unit": "C"
+      },
+      "diurnal_range": {
+       "earth": 27.085,
+       "mars": 77.07,
+       "unit": "C"
+      },
+      "dust_season_shape": {
+       "earth": "地球高峰在 10 月",
+       "mars": "火星高峰在 Ls 240°",
+       "unit": "correlation"
+      },
+      "dust_season_amplitude": {
+       "earth": 0.921,
+       "mars": 1.555,
+       "unit": "ratio"
+      },
+      "temperature_season_shape": {
+       "earth": "地球高峰在 7 月",
+       "mars": "火星高峰在 Ls 135°",
+       "unit": "correlation"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 1.0,
+      "surface": 0.417,
+      "environment": 0.711,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.92
+     },
+     "profile_overall": 77.1,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=89.65,41.95,91.65,43.95&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 521.0,
+     "name": "37 km from Shanshan (CN)"
+    },
+    {
+     "rank": 14,
+     "cell_id": "e_1813689",
+     "lat": 39.65,
+     "lon": 108.95,
+     "score": 0.708,
+     "features": {
+      "dust": 0.83,
+      "temperature": 0.681,
+      "diurnal_range": 0.909,
+      "dust_season_shape": 0.302,
+      "dust_season_amplitude": 0.838,
+      "temperature_season_shape": 0.967
+     },
+     "optional_missing": [],
+     "weakest_feature": "dust_season_shape",
+     "values": {
+      "dust": {
+       "earth": 0.791,
+       "mars": 0.961,
+       "unit": "percentile"
+      },
+      "temperature": {
+       "earth": 10.063,
+       "mars": -50.75,
+       "unit": "C"
+      },
+      "diurnal_range": {
+       "earth": 23.608,
+       "mars": 77.07,
+       "unit": "C"
+      },
+      "dust_season_shape": {
+       "earth": "地球高峰在 5 月",
+       "mars": "火星高峰在 Ls 240°",
+       "unit": "correlation"
+      },
+      "dust_season_amplitude": {
+       "earth": 1.029,
+       "mars": 1.555,
+       "unit": "ratio"
+      },
+      "temperature_season_shape": {
+       "earth": "地球高峰在 7 月",
+       "mars": "火星高峰在 Ls 135°",
+       "unit": "correlation"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 1.0,
+      "surface": 0.409,
+      "environment": 0.698,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.83
+     },
+     "profile_overall": 75.0,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=107.95,38.65,109.95,40.65&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 1498.0,
+     "name": "near Xinli (CN)"
+    },
+    {
+     "rank": 15,
+     "cell_id": "e_1964167",
+     "lat": 35.45,
+     "lon": 36.75,
+     "score": 0.708,
+     "features": {
+      "dust": 0.804,
+      "temperature": 0.449,
+      "diurnal_range": 0.935,
+      "dust_season_shape": 0.382,
+      "dust_season_amplitude": 0.994,
+      "temperature_season_shape": 0.981
+     },
+     "optional_missing": [],
+     "weakest_feature": "dust_season_shape",
+     "values": {
+      "dust": {
+       "earth": 0.765,
+       "mars": 0.961,
+       "unit": "percentile"
+      },
+      "temperature": {
+       "earth": 22.982,
+       "mars": -50.75,
+       "unit": "C"
+      },
+      "diurnal_range": {
+       "earth": 24.413,
+       "mars": 77.07,
+       "unit": "C"
+      },
+      "dust_season_shape": {
+       "earth": "地球高峰在 4 月",
+       "mars": "火星高峰在 Ls 240°",
+       "unit": "correlation"
+      },
+      "dust_season_amplitude": {
+       "earth": 1.68,
+       "mars": 1.555,
+       "unit": "ratio"
+      },
+      "temperature_season_shape": {
+       "earth": "地球高峰在 7 月",
+       "mars": "火星高峰在 Ls 135°",
+       "unit": "correlation"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.995,
+      "surface": 0.304,
+      "environment": 0.58,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.804
+     },
+     "profile_overall": 67.6,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=35.75,34.45,37.75,36.45&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "lake_salda",
+     "nearest_known_km": 673.0,
+     "name": "near At Tamani`ah (SY)"
+    },
+    {
+     "rank": 16,
+     "cell_id": "e_1852590",
+     "lat": 38.55,
+     "lon": 39.05,
+     "score": 0.707,
+     "features": {
+      "dust": 0.756,
+      "temperature": 0.577,
+      "diurnal_range": 0.831,
+      "dust_season_shape": 0.358,
+      "dust_season_amplitude": 0.982,
+      "temperature_season_shape": 0.98
+     },
+     "optional_missing": [],
+     "weakest_feature": "dust_season_shape",
+     "values": {
+      "dust": {
+       "earth": 0.717,
+       "mars": 0.961,
+       "unit": "percentile"
+      },
+      "temperature": {
+       "earth": 16.88,
+       "mars": -50.75,
+       "unit": "C"
+      },
+      "diurnal_range": {
+       "earth": 21.861,
+       "mars": 77.07,
+       "unit": "C"
+      },
+      "dust_season_shape": {
+       "earth": "地球高峰在 4 月",
+       "mars": "火星高峰在 Ls 240°",
+       "unit": "correlation"
+      },
+      "dust_season_amplitude": {
+       "earth": 1.777,
+       "mars": 1.555,
+       "unit": "ratio"
+      },
+      "temperature_season_shape": {
+       "earth": "地球高峰在 7 月",
+       "mars": "火星高峰在 Ls 135°",
+       "unit": "correlation"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.692,
+      "surface": 0.128,
+      "environment": 0.602,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.756
+     },
+     "profile_overall": 52.6,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=38.05,37.55,40.05,39.55&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "lake_salda",
+     "nearest_known_km": 828.0,
+     "name": "near Hankendi (TR)"
+    },
+    {
+     "rank": 17,
+     "cell_id": "e_1874820",
+     "lat": 37.95,
+     "lon": 102.05,
+     "score": 0.707,
+     "features": {
+      "dust": 0.864,
+      "temperature": 0.721,
+      "diurnal_range": 0.961,
+      "dust_season_shape": 0.239,
+      "dust_season_amplitude": 0.899,
+      "temperature_season_shape": 0.969
+     },
+     "optional_missing": [],
+     "weakest_feature": "dust_season_shape",
+     "values": {
+      "dust": {
+       "earth": 0.825,
+       "mars": 0.961,
+       "unit": "percentile"
+      },
+      "temperature": {
+       "earth": 7.185,
+       "mars": -50.75,
+       "unit": "C"
+      },
+      "diurnal_range": {
+       "earth": 25.685,
+       "mars": 77.07,
+       "unit": "C"
+      },
+      "dust_season_shape": {
+       "earth": "地球高峰在 5 月",
+       "mars": "火星高峰在 Ls 240°",
+       "unit": "correlation"
+      },
+      "dust_season_amplitude": {
+       "earth": 1.129,
+       "mars": 1.555,
+       "unit": "ratio"
+      },
+      "temperature_season_shape": {
+       "earth": "地球高峰在 7 月",
+       "mars": "火星高峰在 Ls 135°",
+       "unit": "correlation"
+      }
+     },
+     "breaks": [
+      {
+       "feature": "dust_season_shape",
+       "score": 0.239,
+       "earth": "地球高峰在 5 月",
+       "mars": "火星高峰在 Ls 240°",
+       "unit": "correlation"
+      }
+     ],
+     "dimension_scores": {
+      "terrain": 0.374,
+      "surface": 0.158,
+      "environment": 0.673,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.864
+     },
+     "profile_overall": 51.0,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=101.05,36.95,103.05,38.95&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 908.0,
+     "name": "near Yangxiang (CN)"
+    },
+    {
+     "rank": 18,
+     "cell_id": "e_1979214",
+     "lat": 35.05,
+     "lon": 101.45,
+     "score": 0.706,
+     "features": {
+      "dust": 0.733,
+      "temperature": 0.767,
+      "diurnal_range": 0.959,
+      "dust_season_shape": 0.247,
+      "dust_season_amplitude": 0.955,
+      "temperature_season_shape": 0.978
+     },
+     "optional_missing": [],
+     "weakest_feature": "dust_season_shape",
+     "values": {
+      "dust": {
+       "earth": 0.694,
+       "mars": 0.961,
+       "unit": "percentile"
+      },
+      "temperature": {
+       "earth": 3.675,
+       "mars": -50.75,
+       "unit": "C"
+      },
+      "diurnal_range": {
+       "earth": 25.508,
+       "mars": 77.07,
+       "unit": "C"
+      },
+      "dust_season_shape": {
+       "earth": "地球高峰在 4 月",
+       "mars": "火星高峰在 Ls 240°",
+       "unit": "correlation"
+      },
+      "dust_season_amplitude": {
+       "earth": 1.92,
+       "mars": 1.555,
+       "unit": "ratio"
+      },
+      "temperature_season_shape": {
+       "earth": "地球高峰在 7 月",
+       "mars": "火星高峰在 Ls 135°",
+       "unit": "correlation"
+      }
+     },
+     "breaks": [
+      {
+       "feature": "dust_season_shape",
+       "score": 0.247,
+       "earth": "地球高峰在 4 月",
+       "mars": "火星高峰在 Ls 240°",
+       "unit": "correlation"
+      }
+     ],
+     "dimension_scores": {
+      "terrain": 0.954,
+      "surface": 0.122,
+      "environment": 0.604,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.733
+     },
+     "profile_overall": 55.3,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=100.45,34.05,102.45,36.05&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 945.0,
+     "name": "near Qiakeri (CN)"
+    },
+    {
+     "rank": 19,
+     "cell_id": "e_2025382",
+     "lat": 33.75,
+     "lon": 38.25,
+     "score": 0.704,
+     "features": {
+      "dust": 0.81,
+      "temperature": 0.44,
+      "diurnal_range": 0.873,
+      "dust_season_shape": 0.399,
+      "dust_season_amplitude": 0.998,
+      "temperature_season_shape": 0.98
+     },
+     "optional_missing": [],
+     "weakest_feature": "dust_season_shape",
+     "values": {
+      "dust": {
+       "earth": 0.771,
+       "mars": 0.961,
+       "unit": "percentile"
+      },
+      "temperature": {
+       "earth": 23.234,
+       "mars": -50.75,
+       "unit": "C"
+      },
+      "diurnal_range": {
+       "earth": 22.753,
+       "mars": 77.07,
+       "unit": "C"
+      },
+      "dust_season_shape": {
+       "earth": "地球高峰在 5 月",
+       "mars": "火星高峰在 Ls 240°",
+       "unit": "correlation"
+      },
+      "dust_season_amplitude": {
+       "earth": 1.623,
+       "mars": 1.555,
+       "unit": "ratio"
+      },
+      "temperature_season_shape": {
+       "earth": "地球高峰在 7 月",
+       "mars": "火星高峰在 Ls 135°",
+       "unit": "correlation"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.997,
+      "surface": 0.405,
+      "environment": 0.629,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.81
+     },
+     "profile_overall": 72.9,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=37.25,32.75,39.25,34.75&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "lake_salda",
+     "nearest_known_km": 882.0,
+     "name": "33 km from Nahiyat as Sab` Biyar (SY)"
+    },
+    {
+     "rank": 20,
+     "cell_id": "e_1629827",
+     "lat": 44.75,
+     "lon": 82.75,
+     "score": 0.701,
+     "features": {
+      "dust": 0.862,
+      "temperature": 0.655,
+      "diurnal_range": 0.89,
+      "dust_season_shape": 0.363,
+      "dust_season_amplitude": 0.673,
+      "temperature_season_shape": 0.966
+     },
+     "optional_missing": [],
+     "weakest_feature": "dust_season_shape",
+     "values": {
+      "dust": {
+       "earth": 0.823,
+       "mars": 0.961,
+       "unit": "percentile"
+      },
+      "temperature": {
+       "earth": 11.765,
+       "mars": -50.75,
+       "unit": "C"
+      },
+      "diurnal_range": {
+       "earth": 23.138,
+       "mars": 77.07,
+       "unit": "C"
+      },
+      "dust_season_shape": {
+       "earth": "地球高峰在 5 月",
+       "mars": "火星高峰在 Ls 240°",
+       "unit": "correlation"
+      },
+      "dust_season_amplitude": {
+       "earth": 0.839,
+       "mars": 1.555,
+       "unit": "ratio"
+      },
+      "temperature_season_shape": {
+       "earth": "地球高峰在 7 月",
+       "mars": "火星高峰在 Ls 135°",
+       "unit": "correlation"
+      }
+     },
+     "breaks": [],
+     "dimension_scores": {
+      "terrain": 0.993,
+      "surface": 0.425,
+      "environment": 0.729,
+      "water_ice": 1.0,
+      "atmosphere_dust": 0.862
+     },
+     "profile_overall": 76.7,
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=81.75,43.75,83.75,45.75&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 1029.0,
+     "name": "60 km from Dostyq (KZ)"
+    }
+   ]
+  }
+ },
+ "cross_check": {
+  "R1": {
+   "dimensions": [
+    "terrain",
+    "surface"
+   ],
+   "top_overlap": 0.1,
+   "spearman_all_cells": 0.642,
+   "top_dim_based": [
+    {
+     "lat": 75.45,
+     "lon": -97.45,
+     "score": 1.0
+    },
+    {
+     "lat": 78.05,
+     "lon": 107.55,
+     "score": 1.0
+    },
+    {
+     "lat": 78.65,
+     "lon": -110.25,
+     "score": 0.999
+    },
+    {
+     "lat": 79.95,
+     "lon": -100.05,
+     "score": 0.999
+    },
+    {
+     "lat": 78.95,
+     "lon": 28.55,
+     "score": 0.996
+    }
+   ]
+  },
+  "R4": {
+   "dimensions": [
+    "surface"
+   ],
+   "top_overlap": 0.15,
+   "spearman_all_cells": 0.88,
+   "top_dim_based": [
+    {
+     "lat": -49.25,
+     "lon": 68.95,
+     "score": 1.0
+    },
+    {
+     "lat": 80.05,
+     "lon": 28.05,
+     "score": 1.0
+    },
+    {
+     "lat": 61.65,
+     "lon": -65.35,
+     "score": 1.0
+    },
+    {
+     "lat": 78.55,
+     "lon": -109.45,
+     "score": 1.0
+    },
+    {
+     "lat": 79.95,
+     "lon": -100.05,
+     "score": 1.0
+    }
+   ]
+  },
+  "R6": {
+   "dimensions": [
+    "atmosphere_dust",
+    "environment"
+   ],
+   "top_overlap": 0.0,
+   "spearman_all_cells": 0.783,
+   "top_dim_based": [
+    {
+     "lat": 36.05,
+     "lon": 81.75,
+     "score": 0.945
+    },
+    {
+     "lat": 36.75,
+     "lon": 78.45,
+     "score": 0.94
+    },
+    {
+     "lat": 36.55,
+     "lon": 83.85,
+     "score": 0.926
+    },
+    {
+     "lat": 18.05,
+     "lon": 56.45,
+     "score": 0.925
+    },
+    {
+     "lat": 36.05,
+     "lon": 79.95,
+     "score": 0.923
+    }
+   ]
+  }
+ },
+ "weighted_reference": {
+  "weights_used": {
+   "R1": 0.651,
+   "R6": 0.252,
+   "R4": 0.097
+  },
+  "top": [
+   {
+    "rank": 1,
+    "lat": 48.05,
+    "lon": 63.15,
+    "score": 0.881,
+    "tests": {
+     "R1": 0.995,
+     "R6": 0.656,
+     "R4": 0.843
+    },
+    "known_analog": false,
+    "nearest_known": "qaidam_dalangtan",
+    "nearest_known_km": 2533.0,
+    "name": "178 km from Torghay (KZ)"
+   },
+   {
+    "rank": 2,
+    "lat": 31.75,
+    "lon": 89.55,
+    "score": 0.877,
+    "tests": {
+     "R1": 0.999,
+     "R6": 0.612,
+     "R4": 0.928
+    },
+    "known_analog": false,
+    "nearest_known": "qaidam_dalangtan",
+    "nearest_known_km": 757.0,
+    "name": "42 km from Maintang (CN)"
+   },
+   {
+    "rank": 3,
+    "lat": 46.85,
+    "lon": 61.95,
+    "score": 0.875,
+    "tests": {
+     "R1": 0.969,
+     "R6": 0.67,
+     "R4": 0.883
+    },
+    "known_analog": false,
+    "nearest_known": "qaidam_dalangtan",
+    "nearest_known_km": 2592.0,
+    "name": "near Aral (KZ)"
+   },
+   {
+    "rank": 4,
+    "lat": 45.55,
+    "lon": 55.25,
+    "score": 0.873,
+    "tests": {
+     "R1": 0.987,
+     "R6": 0.628,
+     "R4": 0.908
+    },
+    "known_analog": false,
+    "nearest_known": "lake_salda",
+    "nearest_known_km": 2294.0,
+    "name": "near Beyneu (KZ)"
+   },
+   {
+    "rank": 5,
+    "lat": 44.95,
+    "lon": 82.75,
+    "score": 0.873,
+    "tests": {
+     "R1": 0.997,
+     "R6": 0.644,
+     "R4": 0.794
+    },
+    "known_analog": false,
+    "nearest_known": "qaidam_dalangtan",
+    "nearest_known_km": 1043.0,
+    "name": "40 km from Dostyq (KZ)"
+   },
+   {
+    "rank": 6,
+    "lat": 32.55,
+    "lon": 82.35,
+    "score": 0.873,
+    "tests": {
+     "R1": 1.0,
+     "R6": 0.6,
+     "R4": 0.928
+    },
+    "known_analog": false,
+    "nearest_known": "qaidam_dalangtan",
+    "nearest_known_km": 1060.0,
+    "name": "117 km from Xagmakajor (CN)"
+   },
+   {
+    "rank": 7,
+    "lat": 45.25,
+    "lon": 51.75,
+    "score": 0.871,
+    "tests": {
+     "R1": 0.977,
+     "R6": 0.64,
+     "R4": 0.896
+    },
+    "known_analog": false,
+    "nearest_known": "lake_salda",
+    "nearest_known_km": 2021.0,
+    "name": "105 km from Taushyq (KZ)"
+   },
+   {
+    "rank": 8,
+    "lat": 44.85,
+    "lon": 91.95,
+    "score": 0.87,
+    "tests": {
+     "R1": 0.965,
+     "R6": 0.665,
+     "R4": 0.878
+    },
+    "known_analog": false,
+    "nearest_known": "qaidam_dalangtan",
+    "nearest_known_km": 725.0,
+    "name": "109 km from Altay sumu (MN)"
+   },
+   {
+    "rank": 9,
+    "lat": 42.55,
+    "lon": 91.85,
+    "score": 0.869,
+    "tests": {
+     "R1": 0.946,
+     "R6": 0.688,
+     "R4": 0.902
+    },
+    "known_analog": false,
+    "nearest_known": "qaidam_dalangtan",
+    "nearest_known_km": 469.0,
+    "name": "150 km from Barkol (CN)"
+   },
+   {
+    "rank": 10,
+    "lat": 42.75,
+    "lon": 88.15,
+    "score": 0.869,
+    "tests": {
+     "R1": 0.97,
+     "R6": 0.691,
+     "R4": 0.755
+    },
+    "known_analog": false,
+    "nearest_known": "qaidam_dalangtan",
+    "nearest_known_km": 574.0,
+    "name": "40 km from Toksun (CN)"
+   }
+  ]
+ },
+ "known_analogs": [
+  {
+   "site_id": "atacama_yungay",
+   "name": "Atacama Desert Yungay core (Chile)",
+   "missions": [
+    "geology",
+    "rover"
+   ],
+   "tests": {
+    "R1": {
+     "score": 0.337,
+     "global_top_pct": 83.3
+    },
+    "R4": {
+     "score": 0.71,
+     "global_top_pct": 9.8
+    },
+    "R6": {
+     "score": 0.364,
+     "global_top_pct": 82.5
+    }
+   }
+  },
+  {
+   "site_id": "mcmurdo_dry_valleys",
+   "name": "McMurdo Dry Valleys (Antarctica)",
+   "missions": [
+    "geology",
+    "landing"
+   ],
+   "tests": {
+    "R1": null,
+    "R4": {
+     "score": 0.182,
+     "global_top_pct": 53.0
+    },
+    "R6": {
+     "score": 0.172,
+     "global_top_pct": 100.0
+    }
+   }
+  },
+  {
+   "site_id": "beacon_valley",
+   "name": "Beacon Valley ancient buried ice (Antarctica)",
+   "missions": [
+    "geology",
+    "isru_base"
+   ],
+   "tests": {
+    "R1": null,
+    "R4": {
+     "score": 0.182,
+     "global_top_pct": 53.0
+    },
+    "R6": {
+     "score": 0.172,
+     "global_top_pct": 100.0
+    }
+   }
+  },
+  {
+   "site_id": "haughton_crater",
+   "name": "Haughton impact crater Devon Island (Canada)",
+   "missions": [
+    "geology",
+    "rover",
+    "isru_base"
+   ],
+   "tests": {
+    "R1": null,
+    "R4": {
+     "score": 0.914,
+     "global_top_pct": 0.1
+    },
+    "R6": {
+     "score": 0.274,
+     "global_top_pct": 97.6
+    }
+   }
+  },
+  {
+   "site_id": "axel_heiberg_lost_hammer",
+   "name": "Lost Hammer cold saline spring Axel Heiberg Island (Canada)",
+   "missions": [
+    "geology"
+   ],
+   "tests": {
+    "R1": null,
+    "R4": {
+     "score": 0.2,
+     "global_top_pct": 40.1
+    },
+    "R6": {
+     "score": 0.267,
+     "global_top_pct": 98.1
+    }
+   }
+  },
+  {
+   "site_id": "svalbard_bockfjorden",
+   "name": "Bockfjorden Volcanic Complex Svalbard (Norway)",
+   "missions": [
+    "geology",
+    "rover"
+   ],
+   "tests": {
+    "R1": null,
+    "R4": {
+     "score": 0.2,
+     "global_top_pct": 40.1
+    },
+    "R6": {
+     "score": 0.266,
+     "global_top_pct": 98.2
+    }
+   }
+  },
+  {
+   "site_id": "mdrs_hanksville",
+   "name": "Mars Desert Research Station Hanksville (Utah)",
+   "missions": [
+    "geology",
+    "isru_base"
+   ],
+   "tests": {
+    "R1": {
+     "score": 0.497,
+     "global_top_pct": 30.7
+    },
+    "R4": {
+     "score": 0.689,
+     "global_top_pct": 13.1
+    },
+    "R6": {
+     "score": 0.601,
+     "global_top_pct": 12.6
+    }
+   }
+  },
+  {
+   "site_id": "utah_navajo_concretions",
+   "name": "Navajo Sandstone hematite concretions southern Utah",
+   "missions": [
+    "geology"
+   ],
+   "tests": {
+    "R1": {
+     "score": 0.41,
+     "global_top_pct": 32.7
+    },
+    "R4": {
+     "score": 0.584,
+     "global_top_pct": 20.6
+    },
+    "R6": {
+     "score": 0.572,
+     "global_top_pct": 18.8
+    }
+   }
+  },
+  {
+   "site_id": "pilot_valley_utah",
+   "name": "Pilot Valley paleolake playa (Utah)",
+   "missions": [
+    "geology"
+   ],
+   "tests": {
+    "R1": {
+     "score": 0.824,
+     "global_top_pct": 7.4
+    },
+    "R4": {
+     "score": 0.692,
+     "global_top_pct": 12.7
+    },
+    "R6": {
+     "score": 0.583,
+     "global_top_pct": 16.4
+    }
+   }
+  },
+  {
+   "site_id": "black_point_lava_flow",
+   "name": "Black Point Lava Flow (Arizona)",
+   "missions": [
+    "geology",
+    "rover"
+   ],
+   "tests": {
+    "R1": {
+     "score": 0.354,
+     "global_top_pct": 80.0
+    },
+    "R4": {
+     "score": 0.706,
+     "global_top_pct": 10.3
+    },
+    "R6": {
+     "score": 0.592,
+     "global_top_pct": 14.3
+    }
+   }
+  },
+  {
+   "site_id": "death_valley_badwater",
+   "name": "Badwater Basin Death Valley (California)",
+   "missions": [
+    "geology"
+   ],
+   "tests": {
+    "R1": {
+     "score": 0.413,
+     "global_top_pct": 32.6
+    },
+    "R4": {
+     "score": 0.729,
+     "global_top_pct": 7.9
+    },
+    "R6": {
+     "score": 0.519,
+     "global_top_pct": 34.5
+    }
+   }
+  },
+  {
+   "site_id": "mojave_lavic_lake",
+   "name": "Lavic Lake and Sunshine volcanic field Mojave Desert (California)",
+   "missions": [
+    "rover",
+    "landing"
+   ],
+   "tests": {
+    "R1": {
+     "score": 0.673,
+     "global_top_pct": 21.7
+    },
+    "R4": {
+     "score": 0.686,
+     "global_top_pct": 13.6
+    },
+    "R6": {
+     "score": 0.565,
+     "global_top_pct": 20.8
+    }
+   }
+  },
+  {
+   "site_id": "white_sands_lake_lucero",
+   "name": "White Sands gypsum dunes and Lake Lucero (New Mexico)",
+   "missions": [
+    "geology"
+   ],
+   "tests": {
+    "R1": {
+     "score": 0.356,
+     "global_top_pct": 79.0
+    },
+    "R4": {
+     "score": 0.656,
+     "global_top_pct": 16.3
+    },
+    "R6": {
+     "score": 0.55,
+     "global_top_pct": 25.2
+    }
+   }
+  },
+  {
+   "site_id": "pavilion_lake",
+   "name": "Pavilion Lake (British Columbia)",
+   "missions": [
+    "geology",
+    "rover"
+   ],
+   "tests": {
+    "R1": {
+     "score": 0.12,
+     "global_top_pct": 97.3
+    },
+    "R4": {
+     "score": 0.1,
+     "global_top_pct": 79.8
+    },
+    "R6": {
+     "score": 0.488,
+     "global_top_pct": 45.1
+    }
+   }
+  },
+  {
+   "site_id": "lake_salda",
+   "name": "Lake Salda (Turkey)",
+   "missions": [
+    "geology",
+    "rover"
+   ],
+   "tests": {
+    "R1": {
+     "score": 0.322,
+     "global_top_pct": 85.1
+    },
+    "R4": {
+     "score": 0.171,
+     "global_top_pct": 64.4
+    },
+    "R6": {
+     "score": 0.633,
+     "global_top_pct": 7.0
+    }
+   }
+  },
+  {
+   "site_id": "rio_tinto",
+   "name": "Rio Tinto acid river headwaters (Spain)",
+   "missions": [
+    "geology"
+   ],
+   "tests": {
+    "R1": {
+     "score": 0.29,
+     "global_top_pct": 87.6
+    },
+    "R4": {
+     "score": 0.2,
+     "global_top_pct": 40.1
+    },
+    "R6": {
+     "score": 0.604,
+     "global_top_pct": 12.0
+    }
+   }
+  },
+  {
+   "site_id": "ries_crater",
+   "name": "Ries impact crater (Germany)",
+   "missions": [
+    "geology"
+   ],
+   "tests": {
+    "R1": null,
+    "R4": {
+     "score": 0.182,
+     "global_top_pct": 53.0
+    },
+    "R6": {
+     "score": 0.582,
+     "global_top_pct": 16.6
+    }
+   }
+  },
+  {
+   "site_id": "askja_vikrahraun",
+   "name": "Askja lava fields Vikrahraun (Iceland)",
+   "missions": [
+    "geology",
+    "rover"
+   ],
+   "tests": {
+    "R1": null,
+    "R4": {
+     "score": 0.1,
+     "global_top_pct": 79.8
+    },
+    "R6": {
+     "score": 0.405,
+     "global_top_pct": 70.9
+    }
+   }
+  },
+  {
+   "site_id": "lanzarote",
+   "name": "Lanzarote volcanic fields (Spain)",
+   "missions": [
+    "geology",
+    "rover"
+   ],
+   "tests": {
+    "R1": {
+     "score": 0.763,
+     "global_top_pct": 13.6
+    },
+    "R4": null,
+    "R6": {
+     "score": 0.64,
+     "global_top_pct": 5.9
+    }
+   }
+  },
+  {
+   "site_id": "mauna_kea_palagonite",
+   "name": "Mauna Kea upper slopes palagonitic tephra (Hawaii)",
+   "missions": [
+    "geology",
+    "isru_base"
+   ],
+   "tests": {
+    "R1": {
+     "score": 0.247,
+     "global_top_pct": 89.9
+    },
+    "R4": {
+     "score": 0.195,
+     "global_top_pct": 48.5
+    },
+    "R6": {
+     "score": 0.481,
+     "global_top_pct": 47.4
+    }
+   }
+  },
+  {
+   "site_id": "hiseas_mauna_loa",
+   "name": "HI-SEAS habitat Mauna Loa (Hawaii)",
+   "missions": [
+    "isru_base"
+   ],
+   "tests": {
+    "R1": {
+     "score": 0.574,
+     "global_top_pct": 27.9
+    },
+    "R4": {
+     "score": 0.431,
+     "global_top_pct": 28.6
+    },
+    "R6": {
+     "score": 0.469,
+     "global_top_pct": 51.0
+    }
+   }
+  },
+  {
+   "site_id": "kau_desert_kilauea",
+   "name": "Ka'u Desert Kilauea (Hawaii)",
+   "missions": [
+    "geology"
+   ],
+   "tests": {
+    "R1": null,
+    "R4": {
+     "score": 0.138,
+     "global_top_pct": 79.6
+    },
+    "R6": {
+     "score": 0.434,
+     "global_top_pct": 61.9
+    }
+   }
+  },
+  {
+   "site_id": "lonar_crater",
+   "name": "Lonar crater (India)",
+   "missions": [
+    "geology"
+   ],
+   "tests": {
+    "R1": {
+     "score": 0.397,
+     "global_top_pct": 53.0
+    },
+    "R4": {
+     "score": 0.1,
+     "global_top_pct": 79.8
+    },
+    "R6": {
+     "score": 0.437,
+     "global_top_pct": 61.0
+    }
+   }
+  },
+  {
+   "site_id": "kachchh_matanumadh",
+   "name": "Matanumadh jarosite locality Kachchh (India)",
+   "missions": [
+    "geology"
+   ],
+   "tests": {
+    "R1": {
+     "score": 0.398,
+     "global_top_pct": 38.4
+    },
+    "R4": {
+     "score": 0.182,
+     "global_top_pct": 53.0
+    },
+    "R6": {
+     "score": 0.444,
+     "global_top_pct": 58.6
+    }
+   }
+  },
+  {
+   "site_id": "qaidam_dalangtan",
+   "name": "Dalangtan saline playa Qaidam Basin (China)",
+   "missions": [
+    "geology"
+   ],
+   "tests": {
+    "R1": {
+     "score": 0.384,
+     "global_top_pct": 61.2
+    },
+    "R4": {
+     "score": 0.753,
+     "global_top_pct": 5.6
+    },
+    "R6": {
+     "score": 0.593,
+     "global_top_pct": 14.2
+    }
+   }
+  },
+  {
+   "site_id": "dallol",
+   "name": "Dallol geothermal area Afar (Ethiopia)",
+   "missions": [
+    "geology"
+   ],
+   "tests": {
+    "R1": {
+     "score": 0.95,
+     "global_top_pct": 0.2
+    },
+    "R4": {
+     "score": 0.731,
+     "global_top_pct": 7.8
+    },
+    "R6": {
+     "score": 0.288,
+     "global_top_pct": 96.0
+    }
+   }
+  },
+  {
+   "site_id": "dhofar_amadee18",
+   "name": "AMADEE-18 field site Marmul area Dhofar (Oman)",
+   "missions": [
+    "rover",
+    "isru_base"
+   ],
+   "tests": {
+    "R1": {
+     "score": 0.364,
+     "global_top_pct": 74.5
+    },
+    "R4": {
+     "score": 0.796,
+     "global_top_pct": 2.6
+    },
+    "R6": {
+     "score": 0.376,
+     "global_top_pct": 79.3
+    }
+   }
+  },
+  {
+   "site_id": "pilbara_dresser",
+   "name": "Dresser Formation stromatolites Pilbara (Australia)",
+   "missions": [
+    "geology"
+   ],
+   "tests": {
+    "R1": {
+     "score": 0.734,
+     "global_top_pct": 16.4
+    },
+    "R4": {
+     "score": 0.55,
+     "global_top_pct": 22.7
+    },
+    "R6": {
+     "score": 0.263,
+     "global_top_pct": 98.4
+    }
+   }
+  }
+ ],
+ "mission_check": {
+  "R1": {
+   "missions": [
+    "landing",
+    "rover"
+   ],
+   "n_tagged": 7,
+   "n_other": 13,
+   "median_top_pct_tagged": 80.0,
+   "median_top_pct_other": 32.7
+  },
+  "R4": {
+   "missions": [
+    "geology"
+   ],
+   "n_tagged": 24,
+   "n_other": 3,
+   "median_top_pct_tagged": 40.1,
+   "median_top_pct_other": 13.6
+  },
+  "R6": {
+   "missions": [],
+   "n_tagged": 0,
+   "n_other": 28,
+   "median_top_pct_tagged": null,
+   "median_top_pct_other": 49.2
+  }
+ }
+}

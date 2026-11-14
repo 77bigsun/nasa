@@ -1,0 +1,191 @@
+# 火星測試項目 R1–R6（定義來自整合者 Harris 的規劃：nasa/docs/火星.pdf、nasa/docs/總覽.pdf）
+# 程式：src/mars_analog/mission_tests.py；執行：python scripts/make_mission_tests.py；輸出：outputs/mission_tests/
+#
+# 特徵種類（kind）
+#   similarity        沿用類比剖面的單項相似度 s_<var>（和火星目標值比）
+#   threshold         門檻型滿意度函數（Derringer & Suich 1980 的梯形，線性）：
+#                       smaller_is_better：x <= full_at → 1，x >= zero_at → 0
+#                       larger_is_better ：x <= zero_at → 0，x >= full_at → 1
+#   mars_rank_threshold 火星門檻是絕對值、地球只能比相對排名：把火星的 zero_at / full_at 換成火星百分位，
+#                       再用地球同一變數的百分位（column）做 larger_is_better
+#   seasonal_shape    季節曲線形狀：地球 12 個月與火星 Ls 曲線依「當地季節」對齊後的相關係數 r → (1 + r) / 2
+#   seasonal_amplitude 季節相對振幅（(最大 − 最小) / 平均）的對數比，高斯（σ = ln 2）
+#   index_rank        地球礦物指標的全球百分位（larger_is_better），只對 target_attributes 有列出指標的目標計算
+# required: true  → 這個特徵缺資料，該格這項測試就不評分（不准用其他特徵補，避免「缺資料反而佔便宜」）
+# required: false → 有資料才納入（目前沒有用到：會讓缺資料的格子佔便宜）
+# fill → 只在指定範圍內把缺資料補成固定值（例如南極沒有 NDVI → 無植被 = 1），其他地方缺資料照樣不評分
+# when_available: true → 需要的地球資料檔還沒產生時，整個特徵跳過，並在結果裡列為「待補資料」
+#   （地球月平均：data/processed/earth_monthly.parquet；冰河距離與礦物指標：data/processed/earth_extra.parquet，
+#     兩者都由 scripts/fetch_earth_extra_gee.py 產生）
+
+eps: 0.01                 # 幾何平均的下限（同類比剖面）
+top_n: 20
+min_sep_km: 150
+known_radius_km: 50
+break_threshold: 0.3
+strong: [0.8, 0.9]
+pool: {top: 200, min_sep_km: 50}     # 給下一步集合覆蓋的候選池
+cross_check: {top: 20, match_km: 100}
+ice_min_ci: 0.1         # applies: ice 的門檻：SWIM Ci ≥ 0.1 才算有冰（Ci 接近 0 的訊號不可靠；Gale 0.06、Meridiani 0.03 不算）
+
+# 測試之間的權重（Harris 規劃第三節）：依《Moon to Mars 架構定義文件》Rev C 附錄 D.2 技術缺口排名排序後用 ROC 公式
+# （Barron & Barrett 1996）轉換；* = 規劃中手動排入。這次只用來算「參考用加權總分」。
+test_weights:
+  roc: {R1: 0.408, R3: 0.242, R6: 0.158, R2: 0.103, R4: 0.061, R5: 0.028}
+  equal_difference: {R1: 0.286, R3: 0.238, R6: 0.190, R2: 0.143, R4: 0.095, R5: 0.048}
+
+# known_analogs.csv 的任務標籤 → 測試（只是檢查用）
+mission_to_tests: {landing: [R1], rover: [R1, R2], isru_base: [R3], geology: [R4, R5]}
+
+# 只對部分目標成立的條件（每筆都要有出處）
+target_attributes:
+  jezero:
+    aster_indices: [carbonate, mafic]
+    aster_source: "Horgan, B. H. N., et al. (2020). The mineral diversity of Jezero crater: Evidence for possible lacustrine carbonates on Mars. Icarus 339, 113526."
+  arcadia:
+    aster_indices: [mafic]
+    aster_source: "SIM3292 unit Av (Amazonian volcanic) → basalt (USGS SIM 3292)."
+  ap105:
+    aster_indices: [mafic]
+    aster_source: "SIM3292 unit Av (Amazonian volcanic) → basalt (USGS SIM 3292)."
+  protonilus:
+    glacial_landforms: true
+    glacial_source: "Plaut, J. J., et al. (2009). Radar evidence for ice in lobate debris aprons in the mid-northern latitudes of Mars. Geophysical Research Letters 36, L02203 — Deuteronilus Mensae lobate debris aprons, the region next to Protonilus Mensae."
+
+tests:
+  R1:
+    name_zh: 著陸地表條件
+    name_en: Landing surface
+    goal: 坡度、岩石、承重是否適合降落
+    basis: SkyFall 工程限制 V.e–g；技術缺口 #10（等級 2）、#37（等級 5）
+    applies: all
+    dimensions: {terrain: main, surface: main}
+    features:
+      - {id: slope, kind: threshold, column: slope_deg, rule: smaller_is_better, full_at: 5, zero_at: 15, required: true,
+         unit: deg, mars_requirement: "100 m 尺度坡度 < 5–15°（SkyFall，待定；規劃建議先取 15°）",
+         mars_data: "CTX／HRSC 地形（本隊用 HRSC+MOLA 200 m）", earth_data: "GMTED2010 230 m 坡度，0.1° 格內中位數",
+         note: 地球端是 200 m 尺度坡度的格內中位數，不是 100 m；格內可能有局部陡坡}
+      - {id: roughness, kind: similarity, var: roughness, required: true, unit: m,
+         mars_requirement: "和目標的 5×5 視窗高程標準差相近（高斯）", mars_data: HRSC+MOLA 200 m, earth_data: GMTED2010 230 m}
+      - {id: thermal_inertia, kind: mars_rank_threshold, column: ati_pct, mars_zero_at: 100, mars_full_at: 150, required: true,
+         unit: J m-2 K-1 s-1/2, mars_requirement: "熱慣量 > 100（最好 > 150），避開厚塵；只比相對排名",
+         mars_data: TES 夜間熱慣量 2007 的全球分位數, earth_data: 表觀熱慣量 ATI（MODIS）的全球百分位}
+      - {id: barrenness, kind: similarity, var: barrenness, required: true, unit: NDVI,
+         mars_requirement: 無植被, mars_data: —, earth_data: MODIS NDVI, fill: {south_of: -60, value: 1.0, reason: 南緯 60° 以南沒有這個資料（南極是極地沙漠、沒有植被），補 1；其他地方缺資料就不評分}}
+      - {id: ice_free, kind: threshold, column: icy_frac, rule: smaller_is_better, full_at: 0.1, zero_at: 0.5, required: true,
+         unit: fraction, mars_requirement: "降落面是岩石與風化層，不是冰", mars_data: —, earth_data: MCD12Q1 冰雪比例、GLIMS 冰河比例、年均 NDVI < 0 且年均溫 < 0 °C 取最大,
+         note: 排除冰河、冰原覆蓋的格子}
+    not_evaluated:
+      - 1–5 m 尺度坡度（火星要 HiRISE 地形模型；地球沒有全球資料，只有極區 ArcticDEM／REMA 與美國光達，留到放大階段）
+      - 岩石高度 < 11 cm、覆蓋率 < 5%（地球沒有全球岩石資料；代理用雷達後向散射，留到放大階段）
+      - 雷達粗糙度（Sentinel-1／PALSAR，波段和火星不同，只能比相對排名，留到放大階段）
+
+  R2:
+    name_zh: 視覺導航可行性
+    name_en: Visual navigation
+    goal: 直升機靠影像特徵導航
+    basis: SkyFall 工程限制 V.h；技術缺口未列入
+    applies: all
+    status: not_evaluated
+    reason: 全球網格沒有影像紋理與沙丘比例；需要 Sentinel-2 紋理（地球）與 CTX 紋理、MGD3 沙丘資料庫（火星），留到放大階段
+    dimensions: {terrain: related, surface: related}
+    features: []
+
+  R3:
+    name_zh: 淺層地下冰
+    name_en: Shallow ground ice
+    goal: 透地雷達偵測 3–5 m 內的分層與埋藏冰（這裡測「有沒有冰可以偵測」，不是比 Ci 機率）
+    basis: SkyFall 透地雷達；載人選址重視取水；技術缺口 #52（等級 6）
+    applies: ice           # 只對 SWIM Ci ≥ ice_min_ci 的目標
+    dimensions: {water_ice: main, environment: main, subsurface: related}
+    features:
+      - {id: permafrost, kind: threshold, column: permafrost_frac, rule: larger_is_better, zero_at: 0.1, full_at: 0.9,
+         required: true, unit: fraction, mars_requirement: "目標區有淺層地下冰（SWIM Ci > 0）",
+         mars_data: SWIM4MIM Ci, earth_data: ESA CCI 永凍土 v5.0（2023）}
+      - {id: cold, kind: threshold, column: lst_mean_c, rule: smaller_is_better, full_at: -2, zero_at: 2, required: true,
+         unit: C, mars_requirement: "年均地表溫 < 0 °C（地球能維持永凍土）", mars_data: MCD 年均地表溫,
+         earth_data: MODIS MOD11A2+MYD11A2 2015–2024}
+      - {id: dryness, kind: similarity, var: aridity, required: true, unit: aridity index,
+         mars_requirement: 極乾（火星地下冰在乾燥環境中）, mars_data: —, earth_data: Global Aridity Index v3,
+         fill: {south_of: -60, value: 1.0, reason: 南緯 60° 以南沒有這個資料（南極是極地沙漠、沒有植被），補 1；其他地方缺資料就不評分}}
+    not_evaluated:
+      - 多邊形地（地球沒有全球資料）
+      - 地下雷達與 3–5 m 深度（SHARAD；地球沒有同深度的全球資料）
+
+  R4:
+    name_zh: 含水礦物辨識
+    name_en: Hydrated minerals
+    goal: 近紅外辨識含水礦物與變質產物
+    basis: SkyFall 近紅外相機；生命起源科學目標；技術缺口未列入
+    applies: all
+    dimensions: {surface: main}
+    features:
+      - {id: lithology, kind: similarity, var: lithology, required: true, unit: class,
+         mars_requirement: 和目標同類的岩性（oxia、meridiani 用文獻覆寫的礦物類別）,
+         mars_data: USGS SIM3292 全球地質圖＋文獻覆寫, earth_data: GLiM 0.5°,
+         note: 只是岩性大類代理，很粗}
+      - {id: barrenness, kind: similarity, var: barrenness, required: true, unit: NDVI,
+         mars_requirement: 岩石裸露（植被會遮住光譜）, mars_data: —, earth_data: MODIS NDVI, fill: {south_of: -60, value: 1.0, reason: 南緯 60° 以南沒有這個資料（南極是極地沙漠、沒有植被），補 1；其他地方缺資料就不評分}}
+      - {id: ice_free, kind: threshold, column: icy_frac, rule: smaller_is_better, full_at: 0.1, zero_at: 0.5, required: true,
+         unit: fraction, mars_requirement: "岩石裸露（冰雪會遮住光譜）", mars_data: —, earth_data: MCD12Q1 冰雪比例、GLIMS 冰河比例、年均 NDVI < 0 且年均溫 < 0 °C 取最大,
+         note: 排除冰河、冰原覆蓋的格子}
+      - {id: mineral_signature, kind: index_rank, attribute: aster_indices, zero_at: 0.5, full_at: 0.9, required: true,
+         when_available: true, unit: global percentile,
+         mars_requirement: 目標的主要礦物（碳酸鹽、鎂鐵質）在地球同樣明顯,
+         mars_data: 文獻（見 target_attributes）, earth_data: ASTER GED AG100 熱紅外放射率算的 Ninomiya 指標,
+         note: 只對有列出指標的目標計算；黏土、硫酸鹽、赤鐵礦沒有熱紅外指標}
+    not_evaluated:
+      - 逐條光譜比對（CRISM／OMEGA 對 EMIT／ASTER 短波紅外）
+
+  R5:
+    name_zh: 冰河與冰緣地形
+    name_en: Periglacial landforms
+    goal: 多邊形地等地貌與地下冰的關係
+    basis: SkyFall 彩色相機；技術缺口未列入
+    applies: ice
+    dimensions: {water_ice: main, terrain: main, environment: related}
+    features:
+      - {id: permafrost, kind: threshold, column: permafrost_frac, rule: larger_is_better, zero_at: 0.1, full_at: 0.9,
+         required: true, unit: fraction, mars_requirement: 有地下冰, mars_data: SWIM4MIM Ci, earth_data: ESA CCI 永凍土}
+      - {id: cold, kind: threshold, column: lst_mean_c, rule: smaller_is_better, full_at: -2, zero_at: 2, required: true,
+         unit: C, mars_requirement: 年均地表溫 < 0 °C, mars_data: MCD, earth_data: MODIS LST}
+      - {id: slope, kind: similarity, var: slope, required: true, unit: deg,
+         mars_requirement: 地形起伏和目標相近, mars_data: HRSC+MOLA 200 m, earth_data: GMTED2010}
+      - {id: roughness, kind: similarity, var: roughness, required: true, unit: m,
+         mars_requirement: 地形粗糙度和目標相近, mars_data: HRSC+MOLA 200 m, earth_data: GMTED2010}
+      - {id: barrenness, kind: similarity, var: barrenness, required: true, unit: NDVI,
+         mars_requirement: 無植被, mars_data: —, earth_data: MODIS NDVI, fill: {south_of: -60, value: 1.0, reason: 南緯 60° 以南沒有這個資料（南極是極地沙漠、沒有植被），補 1；其他地方缺資料就不評分}}
+      - {id: glacier_distance, kind: threshold, column: glacier_km, rule: smaller_is_better, full_at: 20, zero_at: 300,
+         required: true, when_available: true, attribute: glacial_landforms, unit: km,
+         mars_requirement: 目標附近有類冰河地形或葉狀碎屑裙, mars_data: 文獻（見 target_attributes）,
+         earth_data: GLIMS 冰河輪廓（離最近冰河的距離）, note: 只對 target_attributes 標了 glacial_landforms 的目標計算}
+    not_evaluated:
+      - 多邊形尺寸（地球冰楔多邊形 10–30 m，沒有全球資料）
+
+  R6:
+    name_zh: 沙塵與近地表氣象
+    name_en: Dust and near-surface weather
+    goal: 塵埃揚起、風、近地表溫度日變化
+    basis: SkyFall 氣象感測；架構決策 MD-07；技術缺口 #35（等級 4）
+    applies: all
+    dimensions: {atmosphere_dust: main, environment: main}
+    features:
+      - {id: dust, kind: similarity, var: dust, required: true, unit: percentile,
+         mars_requirement: 年均沙塵光學厚度的相對排名相近, mars_data: MCD 全球沙塵（Ls 每 30°）, earth_data: MERRA-2 DUEXTTAU}
+      - {id: temperature, kind: similarity, var: temperature, required: true, unit: C,
+         mars_requirement: 盡量冷（地球到不了火星溫度，取極端百分位）, mars_data: MCD, earth_data: MODIS LST}
+      - {id: diurnal_range, kind: similarity, var: diurnal_range, required: true, unit: C,
+         mars_requirement: 日溫差盡量大（取極端百分位）, mars_data: MCD, earth_data: MODIS LST 日夜差,
+         note: R6 本來就包含近地表溫度日變化，所以納入；類比剖面的環境面向仍不納入}
+      - {id: dust_season_shape, kind: seasonal_shape, earth_prefix: dust_m, mars_key: dust_tau, required: true,
+         when_available: true, unit: correlation, mars_requirement: 沙塵季節變化的形狀相近（依當地季節對齊）,
+         mars_data: MCD tauref（Ls 每 15°）, earth_data: MERRA-2 DUEXTTAU 月平均}
+      - {id: dust_season_amplitude, kind: seasonal_amplitude, earth_prefix: dust_m, mars_key: dust_tau, required: true,
+         when_available: true, unit: ratio, mars_requirement: 沙塵季節振幅（相對平均）相近,
+         mars_data: MCD tauref, earth_data: MERRA-2 DUEXTTAU 月平均}
+      - {id: temperature_season_shape, kind: seasonal_shape, earth_prefix: lst_m, mars_key: tsurf_mean_c, required: true,
+         when_available: true, unit: correlation, mars_requirement: 地表溫度季節變化的形狀相近,
+         mars_data: MCD 地表溫（Ls 每 15°）, earth_data: MODIS LST 月平均}
+    not_evaluated:
+      - 風（地球有 MERRA-2，火星只有 MCD；還沒做）
+      - 逐日時間序列的分布比較（Wasserstein）與 TOST 等價性檢定

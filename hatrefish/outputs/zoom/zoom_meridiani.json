@@ -1,0 +1,726 @@
+{
+ "target": "meridiani",
+ "generated_at": "2026-11-14T15:50:38+08:00",
+ "settings": {
+  "half_deg": 0.25,
+  "sub_deg": 0.01,
+  "dem": "copernicus",
+  "mode": "overall"
+ },
+ "results": [
+  {
+   "target": "meridiani",
+   "mode": "overall",
+   "candidate": {
+    "rank": 1,
+    "name": "127 km from Mazongshan (CN)",
+    "lat": 42.85,
+    "lon": 97.65,
+    "overall": 89.6,
+    "dimension_scores": {
+     "terrain": 0.999,
+     "surface": 0.818,
+     "environment": 0.748,
+     "water_ice": 0.966,
+     "atmosphere_dust": 0.979,
+     "biology": null,
+     "subsurface": null
+    },
+    "known_analog": false,
+    "nearest_known": "qaidam_dalangtan",
+    "nearest_known_km": 712.0
+   },
+   "box": {
+    "x0": 97.31,
+    "y0": 43.1,
+    "half": 0.25,
+    "half_lon": 0.34,
+    "sub": 0.01,
+    "nx": 68,
+    "ny": 50,
+    "dem": "copernicus",
+    "n_subcells": 3400,
+    "n_land": 3400,
+    "n_ranked": 3400,
+    "rgb_source": "NASA HLS S30+L30 median, 80 least-cloudy scenes, 2022–2024, summer-first"
+   },
+   "parent_cell_1km_median": {
+    "overall": 89.1,
+    "dimension_scores": {
+     "terrain": 0.996,
+     "surface": 0.816,
+     "environment": 0.742,
+     "water_ice": 0.966,
+     "atmosphere_dust": 0.979
+    },
+    "n_subcells": 100
+   },
+   "share_ge_coarse_overall": 0.029,
+   "best_subsites": [
+    {
+     "rank": 1,
+     "lat": 42.905,
+     "lon": 97.595,
+     "overall": 90.8,
+     "confidence": 1.0,
+     "variable_coverage": 0.89,
+     "dimension_scores": {
+      "terrain": 0.972,
+      "surface": 0.901,
+      "environment": 0.744,
+      "water_ice": 0.966,
+      "atmosphere_dust": 0.982
+     },
+     "strongest_dimension": "atmosphere_dust",
+     "weakest_dimension": "environment",
+     "variable_scores": {
+      "slope": 0.983,
+      "roughness": 0.961,
+      "thermal_inertia": 0.948,
+      "lithology": null,
+      "ice": 0.966,
+      "temperature": 0.609,
+      "diurnal_range": 0.919,
+      "aridity": 0.908,
+      "barrenness": 0.857,
+      "dust": 0.982
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 1.836,
+      "roughness_m": 9.836,
+      "elev_m": 1459.875,
+      "lst_mean_c": 14.812,
+      "dtr_c": 23.905,
+      "aridity_index": 0.036,
+      "ndvi_mean": 0.043,
+      "ati": 0.037
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "nd",
+      "permafrost_frac": 0.0,
+      "dust_aod": 0.115
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=97.50,42.80,97.69,43.01&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@42.9050,97.5950,12000m/data=!3m1!1e3",
+     "name": "131 km from Mazongshan (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 4.55,
+      "slope_p90_deg": 8.57,
+      "slope_max_deg": 18.39,
+      "s1_vv_db": -11.05,
+      "s1_vh_db": -19.82,
+      "s1_period": "2022–2024",
+      "s1_scenes": 212,
+      "palsar_hh_db": -15.95,
+      "palsar_hv_db": -27.44
+     }
+    },
+    {
+     "rank": 2,
+     "lat": 42.945,
+     "lon": 97.535,
+     "overall": 90.8,
+     "confidence": 1.0,
+     "variable_coverage": 0.89,
+     "dimension_scores": {
+      "terrain": 0.997,
+      "surface": 0.867,
+      "environment": 0.753,
+      "water_ice": 0.966,
+      "atmosphere_dust": 0.982
+     },
+     "strongest_dimension": "terrain",
+     "weakest_dimension": "environment",
+     "variable_scores": {
+      "slope": 0.998,
+      "roughness": 0.996,
+      "thermal_inertia": 0.913,
+      "lithology": null,
+      "ice": 0.966,
+      "temperature": 0.624,
+      "diurnal_range": 0.929,
+      "aridity": 0.909,
+      "barrenness": 0.823,
+      "dust": 0.982
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 1.485,
+      "roughness_m": 7.444,
+      "elev_m": 1445.433,
+      "lst_mean_c": 13.847,
+      "dtr_c": 24.207,
+      "aridity_index": 0.035,
+      "ndvi_mean": 0.053,
+      "ati": 0.036
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "nd",
+      "permafrost_frac": 0.0,
+      "dust_aod": 0.115
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=97.44,42.84,97.63,43.05&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@42.9450,97.5350,12000m/data=!3m1!1e3",
+     "name": "133 km from Mazongshan (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 5.06,
+      "slope_p90_deg": 11.42,
+      "slope_max_deg": 24.6,
+      "s1_vv_db": -10.59,
+      "s1_vh_db": -18.91,
+      "s1_period": "2022–2024",
+      "s1_scenes": 212,
+      "palsar_hh_db": -16.43,
+      "palsar_hv_db": -26.7
+     }
+    },
+    {
+     "rank": 3,
+     "lat": 42.895,
+     "lon": 97.775,
+     "overall": 90.3,
+     "confidence": 1.0,
+     "variable_coverage": 0.89,
+     "dimension_scores": {
+      "terrain": 0.998,
+      "surface": 0.858,
+      "environment": 0.742,
+      "water_ice": 0.966,
+      "atmosphere_dust": 0.979
+     },
+     "strongest_dimension": "terrain",
+     "weakest_dimension": "environment",
+     "variable_scores": {
+      "slope": 0.999,
+      "roughness": 0.996,
+      "thermal_inertia": 0.876,
+      "lithology": null,
+      "ice": 0.966,
+      "temperature": 0.605,
+      "diurnal_range": 0.949,
+      "aridity": 0.909,
+      "barrenness": 0.841,
+      "dust": 0.979
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 1.425,
+      "roughness_m": 7.41,
+      "elev_m": 1411.456,
+      "lst_mean_c": 15.099,
+      "dtr_c": 25.023,
+      "aridity_index": 0.035,
+      "ndvi_mean": 0.048,
+      "ati": 0.034
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "nd",
+      "permafrost_frac": 0.0,
+      "dust_aod": 0.112
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=97.68,42.80,97.88,43.00&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@42.8950,97.7750,12000m/data=!3m1!1e3",
+     "name": "136 km from Mazongshan (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 2.47,
+      "slope_p90_deg": 5.09,
+      "slope_max_deg": 13.47,
+      "s1_vv_db": -12.01,
+      "s1_vh_db": -21.54,
+      "s1_period": "2022–2024",
+      "s1_scenes": 123,
+      "palsar_hh_db": -18.76,
+      "palsar_hv_db": -28.34
+     }
+    }
+   ],
+   "figure": "zoom_meridiani_1.png"
+  },
+  {
+   "target": "meridiani",
+   "mode": "overall",
+   "candidate": {
+    "rank": 2,
+    "name": "92 km from Wentugaole (CN)",
+    "lat": 42.25,
+    "lon": 102.05,
+    "overall": 89.6,
+    "dimension_scores": {
+     "terrain": 0.999,
+     "surface": 0.825,
+     "environment": 0.746,
+     "water_ice": 0.966,
+     "atmosphere_dust": 0.97,
+     "biology": null,
+     "subsurface": null
+    },
+    "known_analog": false,
+    "nearest_known": "qaidam_dalangtan",
+    "nearest_known_km": 981.0
+   },
+   "box": {
+    "x0": 101.71,
+    "y0": 42.5,
+    "half": 0.25,
+    "half_lon": 0.34,
+    "sub": 0.01,
+    "nx": 68,
+    "ny": 50,
+    "dem": "copernicus",
+    "n_subcells": 3400,
+    "n_land": 3400,
+    "n_ranked": 3400,
+    "rgb_source": "NASA HLS S30+L30 median, 80 least-cloudy scenes, 2022–2024, summer-first"
+   },
+   "parent_cell_1km_median": {
+    "overall": 88.5,
+    "dimension_scores": {
+     "terrain": 0.981,
+     "surface": 0.817,
+     "environment": 0.746,
+     "water_ice": 0.966,
+     "atmosphere_dust": 0.97
+    },
+    "n_subcells": 100
+   },
+   "share_ge_coarse_overall": 0.026,
+   "best_subsites": [
+    {
+     "rank": 1,
+     "lat": 42.235,
+     "lon": 102.025,
+     "overall": 90.4,
+     "confidence": 1.0,
+     "variable_coverage": 0.89,
+     "dimension_scores": {
+      "terrain": 1.0,
+      "surface": 0.866,
+      "environment": 0.746,
+      "water_ice": 0.966,
+      "atmosphere_dust": 0.97
+     },
+     "strongest_dimension": "terrain",
+     "weakest_dimension": "environment",
+     "variable_scores": {
+      "slope": 1.0,
+      "roughness": 0.999,
+      "thermal_inertia": 0.974,
+      "lithology": null,
+      "ice": 0.966,
+      "temperature": 0.597,
+      "diurnal_range": 0.877,
+      "aridity": 0.932,
+      "barrenness": 0.77,
+      "dust": 0.97
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 1.301,
+      "roughness_m": 6.877,
+      "elev_m": 1168.458,
+      "lst_mean_c": 15.603,
+      "dtr_c": 22.828,
+      "aridity_index": 0.022,
+      "ndvi_mean": 0.069,
+      "ati": 0.038
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "nd",
+      "permafrost_frac": 0.0,
+      "dust_aod": 0.105
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=101.93,42.13,102.12,42.34&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@42.2350,102.0250,12000m/data=!3m1!1e3",
+     "name": "90 km from Wentugaole (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 4.96,
+      "slope_p90_deg": 9.2,
+      "slope_max_deg": 20.59,
+      "s1_vv_db": -11.34,
+      "s1_vh_db": -20.19,
+      "s1_period": "2022–2024",
+      "s1_scenes": 182,
+      "palsar_hh_db": -16.86,
+      "palsar_hv_db": -27.13
+     }
+    },
+    {
+     "rank": 2,
+     "lat": 42.185,
+     "lon": 102.065,
+     "overall": 90.2,
+     "confidence": 1.0,
+     "variable_coverage": 0.89,
+     "dimension_scores": {
+      "terrain": 0.999,
+      "surface": 0.855,
+      "environment": 0.745,
+      "water_ice": 0.966,
+      "atmosphere_dust": 0.97
+     },
+     "strongest_dimension": "terrain",
+     "weakest_dimension": "environment",
+     "variable_scores": {
+      "slope": 0.997,
+      "roughness": 1.0,
+      "thermal_inertia": 0.918,
+      "lithology": null,
+      "ice": 0.966,
+      "temperature": 0.596,
+      "diurnal_range": 0.92,
+      "aridity": 0.932,
+      "barrenness": 0.797,
+      "dust": 0.97
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 1.505,
+      "roughness_m": 6.246,
+      "elev_m": 1138.543,
+      "lst_mean_c": 15.691,
+      "dtr_c": 23.924,
+      "aridity_index": 0.022,
+      "ndvi_mean": 0.061,
+      "ati": 0.036
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "nd",
+      "permafrost_frac": 0.0,
+      "dust_aod": 0.105
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=101.97,42.09,102.16,42.29&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@42.1850,102.0650,12000m/data=!3m1!1e3",
+     "name": "84 km from Wentugaole (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 4.81,
+      "slope_p90_deg": 9.56,
+      "slope_max_deg": 19.93,
+      "s1_vv_db": -11.31,
+      "s1_vh_db": -19.93,
+      "s1_period": "2022–2024",
+      "s1_scenes": 182,
+      "palsar_hh_db": -16.75,
+      "palsar_hv_db": -26.51
+     }
+    },
+    {
+     "rank": 3,
+     "lat": 42.145,
+     "lon": 102.035,
+     "overall": 90.2,
+     "confidence": 1.0,
+     "variable_coverage": 0.89,
+     "dimension_scores": {
+      "terrain": 0.999,
+      "surface": 0.854,
+      "environment": 0.746,
+      "water_ice": 0.966,
+      "atmosphere_dust": 0.97
+     },
+     "strongest_dimension": "terrain",
+     "weakest_dimension": "environment",
+     "variable_scores": {
+      "slope": 0.999,
+      "roughness": 0.999,
+      "thermal_inertia": 0.918,
+      "lithology": null,
+      "ice": 0.966,
+      "temperature": 0.596,
+      "diurnal_range": 0.907,
+      "aridity": 0.933,
+      "barrenness": 0.795,
+      "dust": 0.97
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 1.415,
+      "roughness_m": 5.926,
+      "elev_m": 1115.295,
+      "lst_mean_c": 15.694,
+      "dtr_c": 23.566,
+      "aridity_index": 0.022,
+      "ndvi_mean": 0.062,
+      "ati": 0.036
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "nd",
+      "permafrost_frac": 0.0,
+      "dust_aod": 0.105
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=101.94,42.05,102.13,42.25&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@42.1450,102.0350,12000m/data=!3m1!1e3",
+     "name": "80 km from Wentugaole (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 4.07,
+      "slope_p90_deg": 7.44,
+      "slope_max_deg": 18.66,
+      "s1_vv_db": -9.85,
+      "s1_vh_db": -17.91,
+      "s1_period": "2022–2024",
+      "s1_scenes": 182,
+      "palsar_hh_db": -15.21,
+      "palsar_hv_db": -24.94
+     }
+    }
+   ],
+   "figure": "zoom_meridiani_2.png"
+  },
+  {
+   "target": "meridiani",
+   "mode": "overall",
+   "candidate": {
+    "rank": 3,
+    "name": "near Takeshiken (CN)",
+    "lat": 45.95,
+    "lon": 90.65,
+    "overall": 89.4,
+    "dimension_scores": {
+     "terrain": 0.98,
+     "surface": 0.858,
+     "environment": 0.763,
+     "water_ice": 0.966,
+     "atmosphere_dust": 0.925,
+     "biology": null,
+     "subsurface": null
+    },
+    "known_analog": false,
+    "nearest_known": "qaidam_dalangtan",
+    "nearest_known_km": 851.0
+   },
+   "box": {
+    "x0": 90.29,
+    "y0": 46.2,
+    "half": 0.25,
+    "half_lon": 0.36,
+    "sub": 0.01,
+    "nx": 72,
+    "ny": 50,
+    "dem": "copernicus",
+    "n_subcells": 3600,
+    "n_land": 3600,
+    "n_ranked": 3600,
+    "rgb_source": "NASA HLS S30+L30 median, 80 least-cloudy scenes, 2022–2024, summer-first"
+   },
+   "parent_cell_1km_median": {
+    "overall": 88.2,
+    "dimension_scores": {
+     "terrain": 0.977,
+     "surface": 0.806,
+     "environment": 0.764,
+     "water_ice": 0.966,
+     "atmosphere_dust": 0.925
+    },
+    "n_subcells": 100
+   },
+   "share_ge_coarse_overall": 0.005,
+   "best_subsites": [
+    {
+     "rank": 1,
+     "lat": 45.955,
+     "lon": 90.515,
+     "overall": 90.1,
+     "confidence": 1.0,
+     "variable_coverage": 0.89,
+     "dimension_scores": {
+      "terrain": 0.989,
+      "surface": 0.872,
+      "environment": 0.772,
+      "water_ice": 0.966,
+      "atmosphere_dust": 0.925
+     },
+     "strongest_dimension": "terrain",
+     "weakest_dimension": "environment",
+     "variable_scores": {
+      "slope": 0.992,
+      "roughness": 0.986,
+      "thermal_inertia": 0.929,
+      "lithology": null,
+      "ice": 0.966,
+      "temperature": 0.718,
+      "diurnal_range": 0.75,
+      "aridity": 0.831,
+      "barrenness": 0.818,
+      "dust": 0.925
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 1.665,
+      "roughness_m": 8.433,
+      "elev_m": 1026.242,
+      "lst_mean_c": 7.479,
+      "dtr_c": 19.93,
+      "aridity_index": 0.092,
+      "ndvi_mean": 0.055,
+      "ati": 0.036
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "nd",
+      "permafrost_frac": 0.0,
+      "dust_aod": 0.071
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=90.42,45.85,90.61,46.05&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@45.9550,90.5150,12000m/data=!3m1!1e3",
+     "name": "38 km from Agax Obo (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 2.45,
+      "slope_p90_deg": 11.1,
+      "slope_max_deg": 24.79,
+      "s1_vv_db": -14.16,
+      "s1_vh_db": -24.5,
+      "s1_period": "2022–2024",
+      "s1_scenes": 65,
+      "palsar_hh_db": -16.64,
+      "palsar_hv_db": -27.72
+     }
+    },
+    {
+     "rank": 2,
+     "lat": 45.745,
+     "lon": 90.985,
+     "overall": 89.9,
+     "confidence": 1.0,
+     "variable_coverage": 0.89,
+     "dimension_scores": {
+      "terrain": 0.999,
+      "surface": 0.877,
+      "environment": 0.759,
+      "water_ice": 0.966,
+      "atmosphere_dust": 0.917
+     },
+     "strongest_dimension": "terrain",
+     "weakest_dimension": "environment",
+     "variable_scores": {
+      "slope": 0.997,
+      "roughness": 1.0,
+      "thermal_inertia": 0.906,
+      "lithology": null,
+      "ice": 0.966,
+      "temperature": 0.698,
+      "diurnal_range": 0.804,
+      "aridity": 0.826,
+      "barrenness": 0.849,
+      "dust": 0.917
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 1.066,
+      "roughness_m": 6.65,
+      "elev_m": 1391.32,
+      "lst_mean_c": 8.942,
+      "dtr_c": 21.276,
+      "aridity_index": 0.095,
+      "ndvi_mean": 0.045,
+      "ati": 0.035
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "nd",
+      "permafrost_frac": 0.0,
+      "dust_aod": 0.067
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=90.89,45.64,91.08,45.84&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@45.7450,90.9850,12000m/data=!3m1!1e3",
+     "name": "51 km from Takeshiken (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 4.07,
+      "slope_p90_deg": 11.83,
+      "slope_max_deg": 27.98,
+      "s1_vv_db": -14.17,
+      "s1_vh_db": -23.01,
+      "s1_period": "2022–2024",
+      "s1_scenes": 65,
+      "palsar_hh_db": -17.87,
+      "palsar_hv_db": -27.59
+     }
+    },
+    {
+     "rank": 3,
+     "lat": 45.915,
+     "lon": 90.635,
+     "overall": 89.7,
+     "confidence": 1.0,
+     "variable_coverage": 0.89,
+     "dimension_scores": {
+      "terrain": 1.0,
+      "surface": 0.847,
+      "environment": 0.769,
+      "water_ice": 0.966,
+      "atmosphere_dust": 0.925
+     },
+     "strongest_dimension": "terrain",
+     "weakest_dimension": "environment",
+     "variable_scores": {
+      "slope": 1.0,
+      "roughness": 1.0,
+      "thermal_inertia": 0.904,
+      "lithology": null,
+      "ice": 0.966,
+      "temperature": 0.715,
+      "diurnal_range": 0.753,
+      "aridity": 0.828,
+      "barrenness": 0.793,
+      "dust": 0.925
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 1.217,
+      "roughness_m": 6.041,
+      "elev_m": 1146.359,
+      "lst_mean_c": 7.713,
+      "dtr_c": 20.003,
+      "aridity_index": 0.094,
+      "ndvi_mean": 0.062,
+      "ati": 0.035
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "nd",
+      "permafrost_frac": 0.0,
+      "dust_aod": 0.071
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=90.54,45.81,90.73,46.02&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@45.9150,90.6350,12000m/data=!3m1!1e3",
+     "name": "33 km from Takeshiken (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 1.69,
+      "slope_p90_deg": 2.69,
+      "slope_max_deg": 17.34,
+      "s1_vv_db": -17.08,
+      "s1_vh_db": -29.17,
+      "s1_period": "2022–2024",
+      "s1_scenes": 65,
+      "palsar_hh_db": -19.52,
+      "palsar_hv_db": -31.54
+     }
+    }
+   ],
+   "figure": "zoom_meridiani_3.png"
+  }
+ ]
+}

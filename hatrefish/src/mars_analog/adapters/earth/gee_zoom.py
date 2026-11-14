@@ -31,6 +31,7 @@ import ee  # noqa: E402
 
 HLS_DATES = ("2022-01-01", "2025-01-01")
 HLS_MAX_CLOUD = 20
+HLS_MAX_SCENES = 80     # 取雲量最低的 80 張做中位數（11/14 本機：不設上限時一個方框有數百張，GEE 記憶體不足）
 
 
 def local_crs(lat: float, lon: float) -> str:
@@ -99,15 +100,38 @@ def masks(tf: list[float]) -> ee.Image:
     return _on(ee.Image.cat([fr, w]), tf)
 
 
-def hls_collection(region: ee.Geometry) -> ee.ImageCollection:
+def utm_zones(lon_w: float, lon_e: float) -> list[int]:
+    """方框經度範圍涵蓋的 UTM 區號，前後各多一區（MGRS 圖幅會跨區重疊）。"""
+    zw, ze = int((lon_w + 180) // 6) + 1, int((lon_e + 180) // 6) + 1
+    return sorted({(z - 1) % 60 + 1 for z in range(zw - 1, ze + 2)})
+
+
+def hls_collection(region: ee.Geometry, lon_range: tuple[float, float] | None = None,
+                   lat: float | None = None) -> ee.ImageCollection:
+    # 11/14 本機：只用 filterBounds 會抓進大量 UTM 1／60 區（換日線）的影像——它們的 footprint 跨換日線被當成全球，
+    # 一個蒙古的方框選到 1,756 張、大多不在框內。所以再用影像編號（T<區號><圖幅>_<日期>）限定 UTM 區。
+    # 只挑「雲量最低」會挑到冬天的雪景（雪不算雲），所以南北回歸線以外先限定當地夏季，夏季沒有影像才用全年。
+    zf = None
+    if lon_range is not None:
+        zf = ee.Filter.Or(*[ee.Filter.stringStartsWith("system:index", f"T{z:02d}") for z in utm_zones(*lon_range)])
+
     def prep(c):
-        return (ee.ImageCollection(c).filterBounds(region).filterDate(*HLS_DATES)
-                .filter(ee.Filter.lt("CLOUD_COVERAGE", HLS_MAX_CLOUD)).select(["B4", "B3", "B2"]))
-    return prep("NASA/HLS/HLSS30/v002").merge(prep("NASA/HLS/HLSL30/v002"))
+        col = (ee.ImageCollection(c).filterBounds(region).filterDate(*HLS_DATES)
+               .filter(ee.Filter.lt("CLOUD_COVERAGE", HLS_MAX_CLOUD)))
+        if zf is not None:
+            col = col.filter(zf)
+        return col.select(["B4", "B3", "B2"])
+    col = prep("NASA/HLS/HLSS30/v002").merge(prep("NASA/HLS/HLSL30/v002"))
+    if lat is not None and abs(lat) > 23.5:
+        summer = col.filter(ee.Filter.calendarRange(6, 9, "month") if lat > 0
+                            else ee.Filter.calendarRange(12, 3, "month"))
+        col = ee.ImageCollection(ee.Algorithms.If(summer.size().gt(0), summer, col))
+    return col.sort("CLOUD_COVERAGE").limit(HLS_MAX_SCENES)
 
 
-def rgb(region: ee.Geometry, tf: list[float]) -> tuple[ee.Image | None, int]:
-    col = hls_collection(region)
+def rgb(region: ee.Geometry, tf: list[float], lon_range: tuple[float, float] | None = None,
+        lat: float | None = None) -> tuple[ee.Image | None, int]:
+    col = hls_collection(region, lon_range, lat)
     n = int(col.size().getInfo())
     if n == 0:
         return None, 0
@@ -154,3 +178,56 @@ def fetch(img: ee.Image, bands: list[str], x0: float, y0: float, w: int, h: int,
                 raise TooBig(msg) from e
             time.sleep(min(60, 2 ** attempt + np.random.rand()))
     raise RuntimeError(f"computePixels failed at ({x0:.2f}, {y0:.2f}): {last}")
+
+
+# ---------------- 最佳小區的地點細節（R1 無法全球評估的部分） ----------------
+# 高解析坡度：北緯 60° 以北 ArcticDEM v3 2 m 鑲嵌、南緯 60° 以南 REMA v1.1 8 m、其他 Copernicus GLO-30。
+# 雷達後向散射：Sentinel-1 C 波段（VV、VH，dB，2022–2024 中位數）、ALOS-2 PALSAR-2 L 波段年度鑲嵌
+# （HH、HV，dB = 10·log10(DN²) − 83）。地球和火星波段不同，只能當岩石／粗糙度的相對代理。
+# 出處：Porter, C., et al. (2018) ArcticDEM, doi:10.7910/DVN/OHHUKH；Howat, I., et al. (2019) REMA,
+# The Cryosphere 13, 665–674；Copernicus Sentinel-1 GRD（ESA）；Shimada, M., et al. (2014) PALSAR mosaics, RSE 155, 13–31。
+def _hires_dem(lat: float):
+    if lat >= 60:
+        return ee.Image("UMN/PGC/ArcticDEM/V3/2m_mosaic").select("elevation"), 2, "ArcticDEM v3 2 m"
+    if lat <= -60:
+        return ee.Image("UMN/PGC/REMA/V1_1/8m").select("elevation"), 8, "REMA v1.1 8 m"
+    col = ee.ImageCollection("COPERNICUS/DEM/GLO30").select("DEM")
+    return col.mosaic().setDefaultProjection(col.first().projection()), 30, "Copernicus GLO-30"
+
+
+def site_details(lat: float, lon: float, half_m: float = 500) -> dict:
+    """以 (lat, lon) 為中心、邊長 2·half_m 的方塊：高解析坡度中位數／90 百分位／最大、雷達後向散射平均。一次 getInfo。"""
+    box = ee.Geometry.Point([lon, lat]).buffer(half_m).bounds()
+    dem, res, dem_name = _hires_dem(lat)
+    slope = ee.Terrain.slope(dem).rename("slope")
+    st = slope.reduceRegion(ee.Reducer.percentile([50, 90]).combine(ee.Reducer.max(), "", True),
+                            box, scale=res, maxPixels=1e9, bestEffort=True)
+    def s1col(d0, d1):
+        return (ee.ImageCollection("COPERNICUS/S1_GRD").filterBounds(box).filterDate(d0, d1)
+                .filter(ee.Filter.eq("instrumentMode", "IW"))
+                .filter(ee.Filter.listContains("transmitterReceiverPolarisation", "VH")).select(["VV", "VH"]))
+    # 11/14 本機：Sentinel-1B 2021 年底故障後，中亞等地 2022–2024 沒有 IW 影像（蒙古西部測試點 0 張）；
+    # 這時改用 2017–2021（S1A+S1B），並記下用了哪段時間。
+    s1r, s1o = s1col("2022-01-01", "2025-01-01"), s1col("2017-01-01", "2022-01-01")
+    recent = s1r.size().gt(0)
+    s1c = ee.ImageCollection(ee.Algorithms.If(recent, s1r, s1o))
+    s1_period = ee.Algorithms.If(recent, "2022–2024", ee.Algorithms.If(s1o.size().gt(0), "2017–2021", None))
+    s1 = ee.Algorithms.If(s1c.size().gt(0),
+                          s1c.median().reduceRegion(ee.Reducer.mean(), box, scale=10, maxPixels=1e9, bestEffort=True),
+                          ee.Dictionary({}))
+    pc = (ee.ImageCollection("JAXA/ALOS/PALSAR/YEARLY/SAR_EPOCH").filterDate("2019-01-01", "2024-01-01")
+          .select(["HH", "HV"]))
+    pdb = pc.median().toFloat().pow(2).log10().multiply(10).subtract(83)
+    pal = ee.Algorithms.If(pc.size().gt(0),
+                           pdb.reduceRegion(ee.Reducer.mean(), box, scale=25, maxPixels=1e9, bestEffort=True),
+                           ee.Dictionary({}))
+    d = ee.Dictionary({"slope": st, "s1": s1, "s1_period": s1_period, "s1_n": s1c.size(),
+                       "palsar": pal}).getInfo()
+    sl, s1d, pd_ = d.get("slope") or {}, d.get("s1") or {}, d.get("palsar") or {}
+    r = lambda x, n=2: None if x is None else round(float(x), n)  # noqa: E731
+    return {"box_m": int(2 * half_m), "dem": dem_name, "dem_res_m": res,
+            "slope_p50_deg": r(sl.get("slope_p50")), "slope_p90_deg": r(sl.get("slope_p90")),
+            "slope_max_deg": r(sl.get("slope_max")),
+            "s1_vv_db": r(s1d.get("VV")), "s1_vh_db": r(s1d.get("VH")),
+            "s1_period": d.get("s1_period"), "s1_scenes": d.get("s1_n"),
+            "palsar_hh_db": r(pd_.get("HH")), "palsar_hv_db": r(pd_.get("HV"))}

@@ -1,0 +1,726 @@
+{
+ "target": "protonilus",
+ "generated_at": "2026-11-14T15:50:38+08:00",
+ "settings": {
+  "half_deg": 0.25,
+  "sub_deg": 0.01,
+  "dem": "copernicus",
+  "mode": "overall"
+ },
+ "results": [
+  {
+   "target": "protonilus",
+   "mode": "overall",
+   "candidate": {
+    "rank": 1,
+    "name": "93 km from Maindong (CN)",
+    "lat": 30.95,
+    "lon": 84.55,
+    "overall": 89.9,
+    "dimension_scores": {
+     "terrain": 0.941,
+     "surface": 0.874,
+     "environment": 0.776,
+     "water_ice": 0.957,
+     "atmosphere_dust": 0.961,
+     "biology": null,
+     "subsurface": null
+    },
+    "known_analog": false,
+    "nearest_known": "qaidam_dalangtan",
+    "nearest_known_km": 1047.0
+   },
+   "box": {
+    "x0": 84.26,
+    "y0": 31.2,
+    "half": 0.25,
+    "half_lon": 0.29,
+    "sub": 0.01,
+    "nx": 58,
+    "ny": 50,
+    "dem": "copernicus",
+    "n_subcells": 2900,
+    "n_land": 2747,
+    "n_ranked": 2747,
+    "rgb_source": "NASA HLS S30+L30 median, 13 least-cloudy scenes, 2022–2024, summer-first"
+   },
+   "parent_cell_1km_median": {
+    "overall": 73.0,
+    "dimension_scores": {
+     "terrain": 0.406,
+     "surface": 0.688,
+     "environment": 0.774,
+     "water_ice": 0.957,
+     "atmosphere_dust": 0.961
+    },
+    "n_subcells": 84
+   },
+   "share_ge_coarse_overall": 0.0,
+   "best_subsites": [
+    {
+     "rank": 1,
+     "lat": 30.805,
+     "lon": 84.505,
+     "overall": 87.7,
+     "confidence": 1.0,
+     "variable_coverage": 1.0,
+     "dimension_scores": {
+      "terrain": 0.966,
+      "surface": 0.748,
+      "environment": 0.767,
+      "water_ice": 0.975,
+      "atmosphere_dust": 0.961
+     },
+     "strongest_dimension": "water_ice",
+     "weakest_dimension": "surface",
+     "variable_scores": {
+      "slope": 0.964,
+      "roughness": 0.969,
+      "thermal_inertia": 0.646,
+      "lithology": 0.9,
+      "ice": 0.975,
+      "temperature": 0.736,
+      "diurnal_range": 0.985,
+      "aridity": 0.798,
+      "barrenness": 0.72,
+      "dust": 0.961
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 3.781,
+      "roughness_m": 19.5,
+      "elev_m": 4767.813,
+      "lst_mean_c": 5.931,
+      "dtr_c": 28.334,
+      "aridity_index": 0.118,
+      "ndvi_mean": 0.084,
+      "ati": 0.027
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "ss",
+      "permafrost_frac": 0.187,
+      "dust_aod": 0.018
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=84.41,30.70,84.60,30.91&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@30.8050,84.5050,12000m/data=!3m1!1e3",
+     "name": "105 km from Maindong (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 4.07,
+      "slope_p90_deg": 7.2,
+      "slope_max_deg": 18.57,
+      "s1_vv_db": -16.27,
+      "s1_vh_db": -26.9,
+      "s1_period": "2022–2024",
+      "s1_scenes": 250,
+      "palsar_hh_db": -19.69,
+      "palsar_hv_db": -30.96
+     }
+    },
+    {
+     "rank": 2,
+     "lat": 30.835,
+     "lon": 84.625,
+     "overall": 87.3,
+     "confidence": 1.0,
+     "variable_coverage": 1.0,
+     "dimension_scores": {
+      "terrain": 0.983,
+      "surface": 0.729,
+      "environment": 0.771,
+      "water_ice": 0.954,
+      "atmosphere_dust": 0.961
+     },
+     "strongest_dimension": "terrain",
+     "weakest_dimension": "surface",
+     "variable_scores": {
+      "slope": 0.994,
+      "roughness": 0.972,
+      "thermal_inertia": 0.642,
+      "lithology": 0.9,
+      "ice": 0.954,
+      "temperature": 0.739,
+      "diurnal_range": 0.985,
+      "aridity": 0.804,
+      "barrenness": 0.672,
+      "dust": 0.961
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 4.271,
+      "roughness_m": 19.663,
+      "elev_m": 4731.567,
+      "lst_mean_c": 5.723,
+      "dtr_c": 28.332,
+      "aridity_index": 0.113,
+      "ndvi_mean": 0.098,
+      "ati": 0.027
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "ss",
+      "permafrost_frac": 0.208,
+      "dust_aod": 0.018
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=84.53,30.73,84.72,30.94&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@30.8350,84.6250,12000m/data=!3m1!1e3",
+     "name": "94 km from Maindong (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 4.42,
+      "slope_p90_deg": 6.6,
+      "slope_max_deg": 8.9,
+      "s1_vv_db": -14.01,
+      "s1_vh_db": -23.29,
+      "s1_period": "2022–2024",
+      "s1_scenes": 178,
+      "palsar_hh_db": -17.55,
+      "palsar_hv_db": -29.53
+     }
+    },
+    {
+     "rank": 3,
+     "lat": 30.855,
+     "lon": 84.515,
+     "overall": 86.9,
+     "confidence": 1.0,
+     "variable_coverage": 1.0,
+     "dimension_scores": {
+      "terrain": 0.992,
+      "surface": 0.691,
+      "environment": 0.769,
+      "water_ice": 0.975,
+      "atmosphere_dust": 0.961
+     },
+     "strongest_dimension": "terrain",
+     "weakest_dimension": "surface",
+     "variable_scores": {
+      "slope": 0.986,
+      "roughness": 0.999,
+      "thermal_inertia": 0.583,
+      "lithology": 0.9,
+      "ice": 0.975,
+      "temperature": 0.741,
+      "diurnal_range": 0.991,
+      "aridity": 0.798,
+      "barrenness": 0.628,
+      "dust": 0.961
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 5.095,
+      "roughness_m": 23.217,
+      "elev_m": 4820.104,
+      "lst_mean_c": 5.564,
+      "dtr_c": 30.23,
+      "aridity_index": 0.118,
+      "ndvi_mean": 0.111,
+      "ati": 0.025
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "ss",
+      "permafrost_frac": 0.187,
+      "dust_aod": 0.018
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=84.42,30.75,84.61,30.96&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@30.8550,84.5150,12000m/data=!3m1!1e3",
+     "name": "101 km from Maindong (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 7.32,
+      "slope_p90_deg": 13.58,
+      "slope_max_deg": 22.33,
+      "s1_vv_db": -18.55,
+      "s1_vh_db": -28.45,
+      "s1_period": "2022–2024",
+      "s1_scenes": 178,
+      "palsar_hh_db": -18.49,
+      "palsar_hv_db": -31.06
+     }
+    }
+   ],
+   "figure": "zoom_protonilus_1.png"
+  },
+  {
+   "target": "protonilus",
+   "mode": "overall",
+   "candidate": {
+    "rank": 2,
+    "name": "81 km from Zhabu (CN)",
+    "lat": 32.45,
+    "lon": 82.95,
+    "overall": 88.7,
+    "dimension_scores": {
+     "terrain": 0.944,
+     "surface": 0.884,
+     "environment": 0.804,
+     "water_ice": 0.999,
+     "atmosphere_dust": 0.818,
+     "biology": null,
+     "subsurface": null
+    },
+    "known_analog": false,
+    "nearest_known": "qaidam_dalangtan",
+    "nearest_known_km": 1025.0
+   },
+   "box": {
+    "x0": 82.66,
+    "y0": 32.7,
+    "half": 0.25,
+    "half_lon": 0.295,
+    "sub": 0.01,
+    "nx": 59,
+    "ny": 50,
+    "dem": "copernicus",
+    "n_subcells": 2950,
+    "n_land": 2881,
+    "n_ranked": 2881,
+    "rgb_source": "NASA HLS S30+L30 median, 80 least-cloudy scenes, 2022–2024, summer-first"
+   },
+   "parent_cell_1km_median": {
+    "overall": 70.1,
+    "dimension_scores": {
+     "terrain": 0.358,
+     "surface": 0.751,
+     "environment": 0.798,
+     "water_ice": 0.999,
+     "atmosphere_dust": 0.818
+    },
+    "n_subcells": 67
+   },
+   "share_ge_coarse_overall": 0.0,
+   "best_subsites": [
+    {
+     "rank": 1,
+     "lat": 32.465,
+     "lon": 82.935,
+     "overall": 88.7,
+     "confidence": 1.0,
+     "variable_coverage": 1.0,
+     "dimension_scores": {
+      "terrain": 0.992,
+      "surface": 0.851,
+      "environment": 0.795,
+      "water_ice": 0.999,
+      "atmosphere_dust": 0.818
+     },
+     "strongest_dimension": "water_ice",
+     "weakest_dimension": "environment",
+     "variable_scores": {
+      "slope": 0.996,
+      "roughness": 0.987,
+      "thermal_inertia": 0.807,
+      "lithology": 0.8,
+      "ice": 0.999,
+      "temperature": 0.718,
+      "diurnal_range": 0.917,
+      "aridity": 0.881,
+      "barrenness": 0.956,
+      "dust": 0.818
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 4.342,
+      "roughness_m": 20.627,
+      "elev_m": 4450.97,
+      "lst_mean_c": 7.464,
+      "dtr_c": 23.852,
+      "aridity_index": 0.056,
+      "ndvi_mean": 0.013,
+      "ati": 0.033
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "sm",
+      "permafrost_frac": 0.163,
+      "dust_aod": 0.023
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=82.84,32.37,83.03,32.57&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@32.4650,82.9350,12000m/data=!3m1!1e3",
+     "name": "80 km from Zhabu (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 4.33,
+      "slope_p90_deg": 5.42,
+      "slope_max_deg": 6.34,
+      "s1_vv_db": -14.45,
+      "s1_vh_db": -24.1,
+      "s1_period": "2022–2024",
+      "s1_scenes": 173,
+      "palsar_hh_db": -18.73,
+      "palsar_hv_db": -30.91
+     }
+    },
+    {
+     "rank": 2,
+     "lat": 32.435,
+     "lon": 82.975,
+     "overall": 87.5,
+     "confidence": 1.0,
+     "variable_coverage": 1.0,
+     "dimension_scores": {
+      "terrain": 0.986,
+      "surface": 0.8,
+      "environment": 0.797,
+      "water_ice": 0.999,
+      "atmosphere_dust": 0.818
+     },
+     "strongest_dimension": "water_ice",
+     "weakest_dimension": "environment",
+     "variable_scores": {
+      "slope": 0.975,
+      "roughness": 0.996,
+      "thermal_inertia": 0.828,
+      "lithology": 0.8,
+      "ice": 0.999,
+      "temperature": 0.72,
+      "diurnal_range": 0.896,
+      "aridity": 0.881,
+      "barrenness": 0.773,
+      "dust": 0.818
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 3.921,
+      "roughness_m": 21.542,
+      "elev_m": 4432.556,
+      "lst_mean_c": 7.256,
+      "dtr_c": 23.271,
+      "aridity_index": 0.056,
+      "ndvi_mean": 0.068,
+      "ati": 0.034
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "sm",
+      "permafrost_frac": 0.163,
+      "dust_aod": 0.023
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=82.88,32.34,83.07,32.54&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@32.4350,82.9750,12000m/data=!3m1!1e3",
+     "name": "82 km from Zhabu (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 4.13,
+      "slope_p90_deg": 11.12,
+      "slope_max_deg": 39.21,
+      "s1_vv_db": -13.61,
+      "s1_vh_db": -22.35,
+      "s1_period": "2022–2024",
+      "s1_scenes": 173,
+      "palsar_hh_db": -16.06,
+      "palsar_hv_db": -27.65
+     }
+    },
+    {
+     "rank": 3,
+     "lat": 32.525,
+     "lon": 83.205,
+     "overall": 85.8,
+     "confidence": 1.0,
+     "variable_coverage": 1.0,
+     "dimension_scores": {
+      "terrain": 0.989,
+      "surface": 0.891,
+      "environment": 0.797,
+      "water_ice": 0.838,
+      "atmosphere_dust": 0.788
+     },
+     "strongest_dimension": "terrain",
+     "weakest_dimension": "atmosphere_dust",
+     "variable_scores": {
+      "slope": 0.998,
+      "roughness": 0.98,
+      "thermal_inertia": 0.89,
+      "lithology": 0.9,
+      "ice": 0.838,
+      "temperature": 0.72,
+      "diurnal_range": 0.942,
+      "aridity": 0.883,
+      "barrenness": 0.882,
+      "dust": 0.788
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 4.429,
+      "roughness_m": 25.08,
+      "elev_m": 4449.631,
+      "lst_mean_c": 7.305,
+      "dtr_c": 24.716,
+      "aridity_index": 0.054,
+      "ndvi_mean": 0.035,
+      "ati": 0.036
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "ss",
+      "permafrost_frac": 0.0,
+      "dust_aod": 0.026
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=83.11,32.42,83.30,32.62&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@32.5250,83.2050,12000m/data=!3m1!1e3",
+     "name": "67 km from Zhabu (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 4.14,
+      "slope_p90_deg": 18.15,
+      "slope_max_deg": 33.01,
+      "s1_vv_db": -16.38,
+      "s1_vh_db": -26.45,
+      "s1_period": "2022–2024",
+      "s1_scenes": 263,
+      "palsar_hh_db": -20.98,
+      "palsar_hv_db": -31.08
+     }
+    }
+   ],
+   "figure": "zoom_protonilus_2.png"
+  },
+  {
+   "target": "protonilus",
+   "mode": "overall",
+   "candidate": {
+    "rank": 3,
+    "name": "80 km from Jiajuedibu (CN)",
+    "lat": 31.35,
+    "lon": 87.95,
+    "overall": 87.9,
+    "dimension_scores": {
+     "terrain": 0.962,
+     "surface": 0.819,
+     "environment": 0.727,
+     "water_ice": 0.979,
+     "atmosphere_dust": 0.935,
+     "biology": null,
+     "subsurface": null
+    },
+    "known_analog": false,
+    "nearest_known": "qaidam_dalangtan",
+    "nearest_known_km": 847.0
+   },
+   "box": {
+    "x0": 87.66,
+    "y0": 31.6,
+    "half": 0.25,
+    "half_lon": 0.295,
+    "sub": 0.01,
+    "nx": 59,
+    "ny": 50,
+    "dem": "copernicus",
+    "n_subcells": 2950,
+    "n_land": 2738,
+    "n_ranked": 2738,
+    "rgb_source": "NASA HLS S30+L30 median, 46 least-cloudy scenes, 2022–2024, summer-first"
+   },
+   "parent_cell_1km_median": {
+    "overall": 73.9,
+    "dimension_scores": {
+     "terrain": 0.449,
+     "surface": 0.697,
+     "environment": 0.725,
+     "water_ice": 0.979,
+     "atmosphere_dust": 0.935
+    },
+    "n_subcells": 68
+   },
+   "share_ge_coarse_overall": 0.0,
+   "best_subsites": [
+    {
+     "rank": 1,
+     "lat": 31.395,
+     "lon": 87.905,
+     "overall": 89.2,
+     "confidence": 1.0,
+     "variable_coverage": 1.0,
+     "dimension_scores": {
+      "terrain": 0.999,
+      "surface": 0.857,
+      "environment": 0.721,
+      "water_ice": 0.979,
+      "atmosphere_dust": 0.935
+     },
+     "strongest_dimension": "terrain",
+     "weakest_dimension": "environment",
+     "variable_scores": {
+      "slope": 0.999,
+      "roughness": 0.999,
+      "thermal_inertia": 0.984,
+      "lithology": 0.9,
+      "ice": 0.979,
+      "temperature": 0.739,
+      "diurnal_range": 0.742,
+      "aridity": 0.705,
+      "barrenness": 0.71,
+      "dust": 0.935
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 4.463,
+      "roughness_m": 22.175,
+      "elev_m": 4651.475,
+      "lst_mean_c": 5.739,
+      "dtr_c": 19.721,
+      "aridity_index": 0.233,
+      "ndvi_mean": 0.087,
+      "ati": 0.041
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "ss",
+      "permafrost_frac": 0.141,
+      "dust_aod": 0.018
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=87.81,31.29,88.00,31.50&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@31.3950,87.9050,12000m/data=!3m1!1e3",
+     "name": "86 km from Jiajuedibu (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 3.95,
+      "slope_p90_deg": 9.57,
+      "slope_max_deg": 23.25,
+      "s1_vv_db": -16.68,
+      "s1_vh_db": -25.23,
+      "s1_period": "2022–2024",
+      "s1_scenes": 269,
+      "palsar_hh_db": -17.03,
+      "palsar_hv_db": -29.99
+     }
+    },
+    {
+     "rank": 2,
+     "lat": 31.365,
+     "lon": 87.975,
+     "overall": 87.9,
+     "confidence": 1.0,
+     "variable_coverage": 1.0,
+     "dimension_scores": {
+      "terrain": 0.948,
+      "surface": 0.835,
+      "environment": 0.724,
+      "water_ice": 0.979,
+      "atmosphere_dust": 0.935
+     },
+     "strongest_dimension": "water_ice",
+     "weakest_dimension": "environment",
+     "variable_scores": {
+      "slope": 0.985,
+      "roughness": 0.913,
+      "thermal_inertia": 0.979,
+      "lithology": 0.9,
+      "ice": 0.979,
+      "temperature": 0.749,
+      "diurnal_range": 0.732,
+      "aridity": 0.699,
+      "barrenness": 0.66,
+      "dust": 0.935
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 5.118,
+      "roughness_m": 27.827,
+      "elev_m": 4679.999,
+      "lst_mean_c": 4.983,
+      "dtr_c": 19.464,
+      "aridity_index": 0.241,
+      "ndvi_mean": 0.102,
+      "ati": 0.041
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "ss",
+      "permafrost_frac": 0.141,
+      "dust_aod": 0.018
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=87.88,31.26,88.07,31.46&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@31.3650,87.9750,12000m/data=!3m1!1e3",
+     "name": "79 km from Jiajuedibu (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 7.9,
+      "slope_p90_deg": 21.57,
+      "slope_max_deg": 28.07,
+      "s1_vv_db": -11.31,
+      "s1_vh_db": -19.5,
+      "s1_period": "2022–2024",
+      "s1_scenes": 359,
+      "palsar_hh_db": -15.0,
+      "palsar_hv_db": -26.81
+     }
+    },
+    {
+     "rank": 3,
+     "lat": 31.345,
+     "lon": 87.925,
+     "overall": 87.5,
+     "confidence": 1.0,
+     "variable_coverage": 1.0,
+     "dimension_scores": {
+      "terrain": 0.985,
+      "surface": 0.773,
+      "environment": 0.735,
+      "water_ice": 0.979,
+      "atmosphere_dust": 0.935
+     },
+     "strongest_dimension": "terrain",
+     "weakest_dimension": "environment",
+     "variable_scores": {
+      "slope": 0.985,
+      "roughness": 0.985,
+      "thermal_inertia": 0.726,
+      "lithology": 0.9,
+      "ice": 0.979,
+      "temperature": 0.774,
+      "diurnal_range": 0.61,
+      "aridity": 0.697,
+      "barrenness": 0.707,
+      "dust": 0.935
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 4.067,
+      "roughness_m": 20.429,
+      "elev_m": 4673.885,
+      "lst_mean_c": 3.21,
+      "dtr_c": 15.982,
+      "aridity_index": 0.243,
+      "ndvi_mean": 0.088,
+      "ati": 0.056
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "ss",
+      "permafrost_frac": 0.141,
+      "dust_aod": 0.018
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=87.83,31.24,88.02,31.45&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@31.3450,87.9250,12000m/data=!3m1!1e3",
+     "name": "81 km from Jiajuedibu (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 3.93,
+      "slope_p90_deg": 11.12,
+      "slope_max_deg": 30.41,
+      "s1_vv_db": -16.03,
+      "s1_vh_db": -25.8,
+      "s1_period": "2022–2024",
+      "s1_scenes": 268,
+      "palsar_hh_db": -19.48,
+      "palsar_hv_db": -30.38
+     }
+    }
+   ],
+   "figure": "zoom_protonilus_3.png"
+  }
+ ]
+}

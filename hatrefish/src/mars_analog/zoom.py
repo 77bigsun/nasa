@@ -106,20 +106,30 @@ def fetch_box(box: dict, dem: str = "copernicus", with_rgb: bool = True, refresh
             k = max(1, k // 2); mx, my, res2 = nx * k, ny * k, sub / k
         tf2 = G.transform(x0, y0, res2)
         region = ee.Geometry.Rectangle([x0, y0 - 2 * box["half"], x0 + 2 * box["half_lon"], y0], None, False)
+        why = "no HLS scenes here"
         try:
-            img, nimg = G.rgb(region, tf2)
+            img, nimg = G.rgb(region, tf2, (x0, x0 + 2 * box["half_lon"]), lat_c)
             if img is not None:
                 r = G.fetch(img, ["red", "green", "blue"], x0, y0, mx, my, res2)
                 rgb = np.dstack([r["red"], r["green"], r["blue"]]).astype("float32")
-                meta["rgb_source"] = f"NASA HLS S30+L30 median {G.HLS_DATES[0]}–{G.HLS_DATES[1]}, cloud < {G.HLS_MAX_CLOUD}% ({nimg} scenes)"
-            else:
+                if not np.isfinite(rgb).all(2).any():
+                    rgb, why = None, "HLS composite empty"
+                else:
+                    season = "" if abs(lat_c) <= 23.5 else ", summer-first"
+                    meta["rgb_source"] = (f"NASA HLS S30+L30 median, {nimg} least-cloudy scenes, "
+                                          f"{G.HLS_DATES[0][:4]}–{int(G.HLS_DATES[1][:4]) - 1}{season}")
+        except Exception as e:  # noqa: BLE001  底圖失敗不影響計分；改畫陰影圖
+            print(f"  ! HLS 底圖失敗 {box['center']}，改用陰影圖: {str(e)[:120]}", flush=True)
+            rgb, why = None, "HLS failed"
+        if rgb is None:
+            try:
                 h = G.fetch(G.hillshade(lat_c, lon_c, tf2), ["hillshade"], x0, y0, mx, my, res2)["hillshade"]
                 rgb = np.dstack([h, h, h]).astype("float32") / 255.0
-                meta["rgb_source"] = "Copernicus GLO-30 hillshade (no HLS scenes here)"
-        except Exception as e:  # noqa: BLE001  底圖失敗不影響計分
-            print(f"  ! 底圖失敗 {box['center']}: {str(e)[:120]}", flush=True)
-            rgb = None
-            meta["rgb_source"] = None
+                meta["rgb_source"] = f"Copernicus GLO-30 hillshade ({why})"
+            except Exception as e:  # noqa: BLE001
+                print(f"  ! 陰影圖也失敗 {box['center']}: {str(e)[:120]}", flush=True)
+                rgb = None
+                meta["rgb_source"] = None
         meta["rgb_tried"] = True
     meta["seconds"] = round(time.time() - t0, 1)
     meta["fetched_at"] = datetime.now().isoformat(timespec="seconds")
@@ -429,6 +439,15 @@ def manual_candidate(target_id: str, lat: float, lon: float) -> dict:
     return rec
 
 
+def _detail_cells(b: dict | None) -> str:
+    d = (b or {}).get("site_details") or {}
+    if not d or "error" in d:
+        return "— | — | "
+    sl = (f"{d['slope_p50_deg']}°／{d['slope_p90_deg']}°（{d['dem']}）" if d.get("slope_p90_deg") is not None else "—")
+    vv = f"{d['s1_vv_db']}" if d.get("s1_vv_db") is not None else "—"
+    return f"{sl} | {vv} | "
+
+
 def summary_md() -> str:
     """把 outputs/zoom/ 裡所有 zoom_*.json 整理成一張表（不同次執行的結果都會列進來）。"""
     dims = profiles.dimensions()
@@ -438,7 +457,9 @@ def summary_md() -> str:
          "> 每個候選地以 0.1° 格為中心取方框，在約 1 km 子格重算坡度、粗糙度、溫度、乾燥度、NDVI、熱慣量；"
          "岩性、永凍土、沙塵沿用所在 0.1° 格。計分方法和全球版完全相同（面向等權重）。",
          "> 「0.1° 格內 1 km 中位數」和「0.1° 原分數」的差，是換資料（地形 GMTED → Copernicus）和換尺度本身造成的，"
-         "不是找到更好的地點；看「最佳 1 km」要和這個中位數比。", ""]
+         "不是找到更好的地點；看「最佳 1 km」要和這個中位數比。",
+         "> 高解析坡度與雷達是最佳小區 1 km 方塊內的統計（R1 在全球尺度評估不了的部分），只列出、不計分；"
+         "SkyFall 要求 1–5 m 尺度坡度 < 15°。坡度解析度：北緯 60° 以北 2 m、南緯 60° 以南 8 m、其他 30 m。", ""]
     for fp in files:
         d = json.loads(fp.read_text(encoding="utf-8"))
         tid, recs, st = d["target"], d["results"], d.get("settings", {})
@@ -450,8 +471,8 @@ def summary_md() -> str:
                 (f"{dims[m.split(':', 1)[1]]['label_zh']}面向前幾名" if m.startswith("dimension:") else m))
         L += [f"## {t.get('name', tid)}（{mode}；子格 {st.get('sub_deg')}°，方框半寬 {st.get('half_deg')}°，"
               f"地形 {st.get('dem')}）", "",
-              "| 候選 | 0.1° 格 | 0.1° 原分數 | 0.1° 格內 1 km 中位數 | 最佳 1 km 子格 | 1 km 分數 | 最弱面向 | 框內 ≥ 原分數 | 連結 |",
-              "|---|---|---|---|---|---|---|---|---|"]
+              "| 候選 | 0.1° 格 | 0.1° 原分數 | 0.1° 格內 1 km 中位數 | 最佳 1 km 子格 | 1 km 分數 | 最弱面向 | 框內 ≥ 原分數 | 高解析坡度 p50／p90 | 雷達 VV（dB） | 連結 |",
+              "|---|---|---|---|---|---|---|---|---|---|---|"]
         for r in recs:
             c, b = r["candidate"], (r["best_subsites"][0] if r["best_subsites"] else None)
             pm = r["parent_cell_1km_median"]["overall"]
@@ -462,16 +483,38 @@ def summary_md() -> str:
                 f"{c['overall'] if c.get('overall') is not None else '—'} | {pm if pm is not None else '—'} | "
                 + (f"{b['lat']:.3f}, {b['lon']:.3f}（{b.get('name', '')}） | {b['overall']} | {wk} | " if b else "— | — | — | ")
                 + (f"{share * 100:.0f}% | " if share is not None else "— | ")
+                + _detail_cells(b)
                 + (f"[Worldview]({b['worldview_url']}) · [衛星圖]({b['google_maps_url']}) · 圖 `{r.get('figure', '')}` |"
                    if b else "— |"))
         L.append("")
     return "\n".join(L)
 
 
+def add_site_details(all_recs: dict, workers: int = 6) -> None:
+    """最佳小區的地點細節（高解析坡度、雷達後向散射）。失敗不影響其他結果。"""
+    try:
+        from .adapters.earth import gee_zoom as G
+    except Exception as e:  # noqa: BLE001
+        print(f"  ! 地點細節略過（沒有 Earth Engine）：{str(e)[:120]}", flush=True)
+        return
+    subs = [b for recs in all_recs.values() for r in recs for b in r["best_subsites"]]
+    if not subs:
+        return
+    print(f"地點細節：{len(subs)} 個最佳小區（高解析坡度、雷達）…", flush=True)
+    with cf.ThreadPoolExecutor(max_workers=workers) as ex:
+        futs = {ex.submit(G.site_details, b["lat"], b["lon"]): b for b in subs}
+        for f in cf.as_completed(futs):
+            b = futs[f]
+            try:
+                b["site_details"] = f.result()
+            except Exception as e:  # noqa: BLE001
+                b["site_details"] = {"error": str(e)[:200]}
+
+
 def run(targets: list[str] | None = None, top: int = 5, dimension: str | None = None,
         point: tuple[float, float] | None = None, half: float = HALF_DEG, sub: float = SUB_DEG,
         dem: str = "copernicus", with_rgb: bool = True, workers: int = 4, refresh: bool = False,
-        make_figures: bool = True) -> dict:
+        make_figures: bool = True, site_details: bool = True) -> dict:
     OUT.mkdir(parents=True, exist_ok=True)
     targets = targets or list(config.mars_targets())
     jobs = []   # (target, candidate, box)
@@ -508,6 +551,8 @@ def run(targets: list[str] | None = None, top: int = 5, dimension: str | None = 
             figure(rec, tab, arrs[key], fp, config.mars_targets()[tid].get("name", tid))
             rec["figure"] = fp.name
         all_recs[tid].append(rec)
+    if site_details:
+        add_site_details(all_recs)
     mode = f"dimension:{dimension}" if dimension else ("point" if point else "overall")
     for tid, recs in all_recs.items():
         if recs:

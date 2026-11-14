@@ -1,0 +1,726 @@
+{
+ "target": "gale",
+ "generated_at": "2026-11-14T15:50:38+08:00",
+ "settings": {
+  "half_deg": 0.25,
+  "sub_deg": 0.01,
+  "dem": "copernicus",
+  "mode": "overall"
+ },
+ "results": [
+  {
+   "target": "gale",
+   "mode": "overall",
+   "candidate": {
+    "rank": 1,
+    "name": "near Altanteel (MN)",
+    "lat": 47.05,
+    "lon": 92.85,
+    "overall": 88.2,
+    "dimension_scores": {
+     "terrain": 0.991,
+     "surface": 0.684,
+     "environment": 0.827,
+     "water_ice": 0.991,
+     "atmosphere_dust": 0.958,
+     "biology": null,
+     "subsurface": null
+    },
+    "known_analog": false,
+    "nearest_known": "qaidam_dalangtan",
+    "nearest_known_km": 974.0
+   },
+   "box": {
+    "x0": 92.48,
+    "y0": 47.3,
+    "half": 0.25,
+    "half_lon": 0.365,
+    "sub": 0.01,
+    "nx": 73,
+    "ny": 50,
+    "dem": "copernicus",
+    "n_subcells": 3650,
+    "n_land": 3620,
+    "n_ranked": 3620,
+    "rgb_source": "NASA HLS S30+L30 median, 80 least-cloudy scenes, 2022–2024, summer-first"
+   },
+   "parent_cell_1km_median": {
+    "overall": 77.4,
+    "dimension_scores": {
+     "terrain": 0.554,
+     "surface": 0.669,
+     "environment": 0.794,
+     "water_ice": 0.991,
+     "atmosphere_dust": 0.958
+    },
+    "n_subcells": 100
+   },
+   "share_ge_coarse_overall": 0.001,
+   "best_subsites": [
+    {
+     "rank": 1,
+     "lat": 47.065,
+     "lon": 92.815,
+     "overall": 88.4,
+     "confidence": 1.0,
+     "variable_coverage": 1.0,
+     "dimension_scores": {
+      "terrain": 0.999,
+      "surface": 0.71,
+      "environment": 0.803,
+      "water_ice": 0.991,
+      "atmosphere_dust": 0.958
+     },
+     "strongest_dimension": "terrain",
+     "weakest_dimension": "surface",
+     "variable_scores": {
+      "slope": 0.999,
+      "roughness": 0.998,
+      "thermal_inertia": 0.677,
+      "lithology": 0.7,
+      "ice": 0.991,
+      "temperature": 0.741,
+      "diurnal_range": 0.713,
+      "aridity": 0.87,
+      "barrenness": 0.755,
+      "dust": 0.958
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 5.348,
+      "roughness_m": 26.481,
+      "elev_m": 1313.839,
+      "lst_mean_c": 5.539,
+      "dtr_c": 18.94,
+      "aridity_index": 0.064,
+      "ndvi_mean": 0.074,
+      "ati": 0.043
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "su",
+      "permafrost_frac": 0.068,
+      "dust_aod": 0.046
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=92.72,46.96,92.91,47.16&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@47.0650,92.8150,12000m/data=!3m1!1e3",
+     "name": "near Altanteel (MN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 5.42,
+      "slope_p90_deg": 6.18,
+      "slope_max_deg": 6.89,
+      "s1_vv_db": -9.11,
+      "s1_vh_db": -16.58,
+      "s1_period": "2017–2021",
+      "s1_scenes": 99,
+      "palsar_hh_db": -12.21,
+      "palsar_hv_db": -21.24
+     }
+    },
+    {
+     "rank": 2,
+     "lat": 47.045,
+     "lon": 92.895,
+     "overall": 87.8,
+     "confidence": 1.0,
+     "variable_coverage": 1.0,
+     "dimension_scores": {
+      "terrain": 0.996,
+      "surface": 0.691,
+      "environment": 0.797,
+      "water_ice": 0.991,
+      "atmosphere_dust": 0.958
+     },
+     "strongest_dimension": "terrain",
+     "weakest_dimension": "surface",
+     "variable_scores": {
+      "slope": 0.993,
+      "roughness": 0.998,
+      "thermal_inertia": 0.616,
+      "lithology": 0.7,
+      "ice": 0.991,
+      "temperature": 0.728,
+      "diurnal_range": 0.742,
+      "aridity": 0.872,
+      "barrenness": 0.766,
+      "dust": 0.958
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 5.109,
+      "roughness_m": 26.473,
+      "elev_m": 1365.478,
+      "lst_mean_c": 6.62,
+      "dtr_c": 19.72,
+      "aridity_index": 0.063,
+      "ndvi_mean": 0.07,
+      "ati": 0.04
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "su",
+      "permafrost_frac": 0.068,
+      "dust_aod": 0.046
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=92.80,46.95,92.99,47.15&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@47.0450,92.8950,12000m/data=!3m1!1e3",
+     "name": "near Altanteel (MN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 5.18,
+      "slope_p90_deg": 7.93,
+      "slope_max_deg": 21.49,
+      "s1_vv_db": -10.27,
+      "s1_vh_db": -18.48,
+      "s1_period": "2017–2021",
+      "s1_scenes": 99,
+      "palsar_hh_db": -14.32,
+      "palsar_hv_db": -24.12
+     }
+    },
+    {
+     "rank": 3,
+     "lat": 47.265,
+     "lon": 92.515,
+     "overall": 87.7,
+     "confidence": 1.0,
+     "variable_coverage": 1.0,
+     "dimension_scores": {
+      "terrain": 0.98,
+      "surface": 0.74,
+      "environment": 0.796,
+      "water_ice": 0.941,
+      "atmosphere_dust": 0.955
+     },
+     "strongest_dimension": "terrain",
+     "weakest_dimension": "surface",
+     "variable_scores": {
+      "slope": 0.995,
+      "roughness": 0.965,
+      "thermal_inertia": 0.707,
+      "lithology": 0.7,
+      "ice": 0.941,
+      "temperature": 0.729,
+      "diurnal_range": 0.706,
+      "aridity": 0.87,
+      "barrenness": 0.817,
+      "dust": 0.955
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 5.762,
+      "roughness_m": 30.517,
+      "elev_m": 1251.958,
+      "lst_mean_c": 6.522,
+      "dtr_c": 18.737,
+      "aridity_index": 0.064,
+      "ndvi_mean": 0.055,
+      "ati": 0.044
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "su",
+      "permafrost_frac": 0.0,
+      "dust_aod": 0.045
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=92.42,47.16,92.61,47.37&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@47.2650,92.5150,12000m/data=!3m1!1e3",
+     "name": "near Togrog (MN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 5.87,
+      "slope_p90_deg": 12.38,
+      "slope_max_deg": 35.23,
+      "s1_vv_db": -9.05,
+      "s1_vh_db": -18.42,
+      "s1_period": "2017–2021",
+      "s1_scenes": 242,
+      "palsar_hh_db": -15.95,
+      "palsar_hv_db": -25.3
+     }
+    }
+   ],
+   "figure": "zoom_gale_1.png"
+  },
+  {
+   "target": "gale",
+   "mode": "overall",
+   "candidate": {
+    "rank": 2,
+    "name": "111 km from Barkol (CN)",
+    "lat": 43.75,
+    "lon": 91.65,
+    "overall": 87.7,
+    "dimension_scores": {
+     "terrain": 0.997,
+     "surface": 0.748,
+     "environment": 0.781,
+     "water_ice": 0.941,
+     "atmosphere_dust": 0.95,
+     "biology": null,
+     "subsurface": null
+    },
+    "known_analog": false,
+    "nearest_known": "qaidam_dalangtan",
+    "nearest_known_km": 603.0
+   },
+   "box": {
+    "x0": 91.3,
+    "y0": 44.0,
+    "half": 0.25,
+    "half_lon": 0.345,
+    "sub": 0.01,
+    "nx": 69,
+    "ny": 50,
+    "dem": "copernicus",
+    "n_subcells": 3450,
+    "n_land": 3450,
+    "n_ranked": 3450,
+    "rgb_source": "NASA HLS S30+L30 median, 80 least-cloudy scenes, 2022–2024, summer-first"
+   },
+   "parent_cell_1km_median": {
+    "overall": 84.3,
+    "dimension_scores": {
+     "terrain": 0.876,
+     "surface": 0.728,
+     "environment": 0.759,
+     "water_ice": 0.941,
+     "atmosphere_dust": 0.95
+    },
+    "n_subcells": 100
+   },
+   "share_ge_coarse_overall": 0.005,
+   "best_subsites": [
+    {
+     "rank": 1,
+     "lat": 43.615,
+     "lon": 91.555,
+     "overall": 88.3,
+     "confidence": 1.0,
+     "variable_coverage": 1.0,
+     "dimension_scores": {
+      "terrain": 0.979,
+      "surface": 0.816,
+      "environment": 0.751,
+      "water_ice": 0.941,
+      "atmosphere_dust": 0.95
+     },
+     "strongest_dimension": "terrain",
+     "weakest_dimension": "environment",
+     "variable_scores": {
+      "slope": 0.995,
+      "roughness": 0.963,
+      "thermal_inertia": 0.73,
+      "lithology": 0.9,
+      "ice": 0.941,
+      "temperature": 0.634,
+      "diurnal_range": 0.727,
+      "aridity": 0.889,
+      "barrenness": 0.828,
+      "dust": 0.95
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 5.744,
+      "roughness_m": 30.648,
+      "elev_m": 1414.568,
+      "lst_mean_c": 13.121,
+      "dtr_c": 19.322,
+      "aridity_index": 0.05,
+      "ndvi_mean": 0.052,
+      "ati": 0.045
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "ss",
+      "permafrost_frac": 0.0,
+      "dust_aod": 0.095
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=91.46,43.52,91.66,43.72&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@43.6150,91.5550,12000m/data=!3m1!1e3",
+     "name": "112 km from Mori (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 17.86,
+      "slope_p90_deg": 29.64,
+      "slope_max_deg": 48.32,
+      "s1_vv_db": -11.74,
+      "s1_vh_db": -20.31,
+      "s1_period": "2022–2024",
+      "s1_scenes": 221,
+      "palsar_hh_db": -14.58,
+      "palsar_hv_db": -24.72
+     }
+    },
+    {
+     "rank": 2,
+     "lat": 43.535,
+     "lon": 91.425,
+     "overall": 88.2,
+     "confidence": 1.0,
+     "variable_coverage": 1.0,
+     "dimension_scores": {
+      "terrain": 0.995,
+      "surface": 0.815,
+      "environment": 0.738,
+      "water_ice": 0.941,
+      "atmosphere_dust": 0.95
+     },
+     "strongest_dimension": "terrain",
+     "weakest_dimension": "environment",
+     "variable_scores": {
+      "slope": 0.992,
+      "roughness": 0.998,
+      "thermal_inertia": 0.644,
+      "lithology": 0.9,
+      "ice": 0.941,
+      "temperature": 0.597,
+      "diurnal_range": 0.81,
+      "aridity": 0.912,
+      "barrenness": 0.934,
+      "dust": 0.95
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 5.078,
+      "roughness_m": 26.479,
+      "elev_m": 1095.333,
+      "lst_mean_c": 15.626,
+      "dtr_c": 21.41,
+      "aridity_index": 0.033,
+      "ndvi_mean": 0.02,
+      "ati": 0.041
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "ss",
+      "permafrost_frac": 0.0,
+      "dust_aod": 0.095
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=91.33,43.43,91.52,43.63&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@43.5350,91.4250,12000m/data=!3m1!1e3",
+     "name": "104 km from Mori (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 3.9,
+      "slope_p90_deg": 28.36,
+      "slope_max_deg": 42.15,
+      "s1_vv_db": -10.7,
+      "s1_vh_db": -19.54,
+      "s1_period": "2022–2024",
+      "s1_scenes": 221,
+      "palsar_hh_db": -15.84,
+      "palsar_hv_db": -25.9
+     }
+    },
+    {
+     "rank": 3,
+     "lat": 43.615,
+     "lon": 91.665,
+     "overall": 88.1,
+     "confidence": 1.0,
+     "variable_coverage": 1.0,
+     "dimension_scores": {
+      "terrain": 0.979,
+      "surface": 0.812,
+      "environment": 0.747,
+      "water_ice": 0.941,
+      "atmosphere_dust": 0.95
+     },
+     "strongest_dimension": "terrain",
+     "weakest_dimension": "environment",
+     "variable_scores": {
+      "slope": 0.96,
+      "roughness": 0.998,
+      "thermal_inertia": 0.675,
+      "lithology": 0.9,
+      "ice": 0.941,
+      "temperature": 0.629,
+      "diurnal_range": 0.778,
+      "aridity": 0.885,
+      "barrenness": 0.882,
+      "dust": 0.95
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 4.6,
+      "roughness_m": 26.53,
+      "elev_m": 1478.504,
+      "lst_mean_c": 13.446,
+      "dtr_c": 20.654,
+      "aridity_index": 0.052,
+      "ndvi_mean": 0.035,
+      "ati": 0.043
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "ss",
+      "permafrost_frac": 0.0,
+      "dust_aod": 0.095
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=91.57,43.52,91.77,43.72&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@43.6150,91.6650,12000m/data=!3m1!1e3",
+     "name": "108 km from Barkol (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 14.11,
+      "slope_p90_deg": 29.38,
+      "slope_max_deg": 41.88,
+      "s1_vv_db": -12.83,
+      "s1_vh_db": -21.48,
+      "s1_period": "2022–2024",
+      "s1_scenes": 221,
+      "palsar_hh_db": -15.41,
+      "palsar_hv_db": -24.79
+     }
+    }
+   ],
+   "figure": "zoom_gale_2.png"
+  },
+  {
+   "target": "gale",
+   "mode": "overall",
+   "candidate": {
+    "rank": 3,
+    "name": "near Bayinbaolige (CN)",
+    "lat": 41.05,
+    "lon": 106.95,
+    "overall": 86.6,
+    "dimension_scores": {
+     "terrain": 0.968,
+     "surface": 0.772,
+     "environment": 0.744,
+     "water_ice": 0.941,
+     "atmosphere_dust": 0.933,
+     "biology": null,
+     "subsurface": null
+    },
+    "known_analog": false,
+    "nearest_known": "qaidam_dalangtan",
+    "nearest_known_km": 1340.0
+   },
+   "box": {
+    "x0": 106.62,
+    "y0": 41.3,
+    "half": 0.25,
+    "half_lon": 0.33,
+    "sub": 0.01,
+    "nx": 66,
+    "ny": 50,
+    "dem": "copernicus",
+    "n_subcells": 3300,
+    "n_land": 3300,
+    "n_ranked": 3300,
+    "rgb_source": "NASA HLS S30+L30 median, 80 least-cloudy scenes, 2022–2024, summer-first"
+   },
+   "parent_cell_1km_median": {
+    "overall": 48.0,
+    "dimension_scores": {
+     "terrain": 0.143,
+     "surface": 0.706,
+     "environment": 0.745,
+     "water_ice": 0.941,
+     "atmosphere_dust": 0.933
+    },
+    "n_subcells": 100
+   },
+   "share_ge_coarse_overall": 0.0,
+   "best_subsites": [
+    {
+     "rank": 1,
+     "lat": 41.175,
+     "lon": 106.725,
+     "overall": 86.7,
+     "confidence": 1.0,
+     "variable_coverage": 1.0,
+     "dimension_scores": {
+      "terrain": 0.978,
+      "surface": 0.743,
+      "environment": 0.766,
+      "water_ice": 0.941,
+      "atmosphere_dust": 0.933
+     },
+     "strongest_dimension": "terrain",
+     "weakest_dimension": "surface",
+     "variable_scores": {
+      "slope": 0.964,
+      "roughness": 0.992,
+      "thermal_inertia": 0.705,
+      "lithology": 0.8,
+      "ice": 0.941,
+      "temperature": 0.726,
+      "diurnal_range": 0.692,
+      "aridity": 0.809,
+      "barrenness": 0.727,
+      "dust": 0.933
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 6.263,
+      "roughness_m": 28.779,
+      "elev_m": 2000.791,
+      "lst_mean_c": 6.796,
+      "dtr_c": 18.321,
+      "aridity_index": 0.108,
+      "ndvi_mean": 0.082,
+      "ati": 0.044
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "sm",
+      "permafrost_frac": 0.0,
+      "dust_aod": 0.11
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=106.62,41.07,106.82,41.27&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@41.1750,106.7250,12000m/data=!3m1!1e3",
+     "name": "30 km from Bayinbaolige (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 16.39,
+      "slope_p90_deg": 25.08,
+      "slope_max_deg": 38.23,
+      "s1_vv_db": -11.21,
+      "s1_vh_db": -19.77,
+      "s1_period": "2022–2024",
+      "s1_scenes": 51,
+      "palsar_hh_db": -11.03,
+      "palsar_hv_db": -20.89
+     }
+    },
+    {
+     "rank": 2,
+     "lat": 41.195,
+     "lon": 106.805,
+     "overall": 86.5,
+     "confidence": 1.0,
+     "variable_coverage": 1.0,
+     "dimension_scores": {
+      "terrain": 0.997,
+      "surface": 0.732,
+      "environment": 0.755,
+      "water_ice": 0.941,
+      "atmosphere_dust": 0.933
+     },
+     "strongest_dimension": "terrain",
+     "weakest_dimension": "surface",
+     "variable_scores": {
+      "slope": 0.995,
+      "roughness": 0.998,
+      "thermal_inertia": 0.671,
+      "lithology": 0.8,
+      "ice": 0.941,
+      "temperature": 0.697,
+      "diurnal_range": 0.733,
+      "aridity": 0.817,
+      "barrenness": 0.731,
+      "dust": 0.933
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 5.15,
+      "roughness_m": 26.567,
+      "elev_m": 1912.648,
+      "lst_mean_c": 9.033,
+      "dtr_c": 19.475,
+      "aridity_index": 0.102,
+      "ndvi_mean": 0.081,
+      "ati": 0.043
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "sm",
+      "permafrost_frac": 0.0,
+      "dust_aod": 0.11
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=106.71,41.09,106.91,41.30&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@41.1950,106.8050,12000m/data=!3m1!1e3",
+     "name": "near Bayinbaolige (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 15.91,
+      "slope_p90_deg": 30.34,
+      "slope_max_deg": 46.79,
+      "s1_vv_db": -11.07,
+      "s1_vh_db": -19.82,
+      "s1_period": "2022–2024",
+      "s1_scenes": 51,
+      "palsar_hh_db": -13.27,
+      "palsar_hv_db": -22.78
+     }
+    },
+    {
+     "rank": 3,
+     "lat": 41.275,
+     "lon": 106.685,
+     "overall": 86.2,
+     "confidence": 1.0,
+     "variable_coverage": 1.0,
+     "dimension_scores": {
+      "terrain": 0.962,
+      "surface": 0.743,
+      "environment": 0.757,
+      "water_ice": 0.941,
+      "atmosphere_dust": 0.933
+     },
+     "strongest_dimension": "terrain",
+     "weakest_dimension": "surface",
+     "variable_scores": {
+      "slope": 0.938,
+      "roughness": 0.987,
+      "thermal_inertia": 0.63,
+      "lithology": 0.8,
+      "ice": 0.941,
+      "temperature": 0.701,
+      "diurnal_range": 0.767,
+      "aridity": 0.817,
+      "barrenness": 0.815,
+      "dust": 0.933
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 6.528,
+      "roughness_m": 29.219,
+      "elev_m": 2033.879,
+      "lst_mean_c": 8.718,
+      "dtr_c": 20.365,
+      "aridity_index": 0.103,
+      "ndvi_mean": 0.056,
+      "ati": 0.041
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "sm",
+      "permafrost_frac": 0.0,
+      "dust_aod": 0.11
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=106.59,41.17,106.78,41.38&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@41.2750,106.6850,12000m/data=!3m1!1e3",
+     "name": "38 km from Bayinbaolige (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 11.89,
+      "slope_p90_deg": 31.38,
+      "slope_max_deg": 51.9,
+      "s1_vv_db": -11.11,
+      "s1_vh_db": -19.24,
+      "s1_period": "2022–2024",
+      "s1_scenes": 76,
+      "palsar_hh_db": -11.44,
+      "palsar_hv_db": -20.9
+     }
+    }
+   ],
+   "figure": "zoom_gale_3.png"
+  }
+ ]
+}

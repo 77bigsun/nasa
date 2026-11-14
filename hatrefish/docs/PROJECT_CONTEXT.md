@@ -98,7 +98,7 @@
 - 面向分數 = 面向內有資料變數的等權重幾何平均；整體相似度 = 有分數面向的等權重幾何平均 × 100。不依任務加權。
 - `diurnal_range` 不計入任何面向（火星日溫差主要來自稀薄大氣，地球無法模擬），只在 breaks 當參考。
 - 排名只用面向和變數都至少 80% 有資料的格子；每個面向的前幾名只用該面向變數全部有資料的格子；地點彼此至少相距 150 km。
-- 目標（11/14 起 6 個）：jezero、gale、arcadia（IanChen）＋ oxia、meridiani、protonilus（B 用 IanChen 的擷取程式新增，見 `docs/NEW_TARGETS_AND_ZOOM.md`）。oxia、meridiani 的岩性類別用文獻覆寫（`lithology.group_source = literature_override`）。
+- 目標（11/14 起 7 個）：jezero、gale、arcadia（IanChen）＋ oxia、meridiani、protonilus、ap105（SkyFall 設計參考著陸點；B 用 IanChen 的擷取程式新增，見 `docs/NEW_TARGETS_AND_ZOOM.md`）。oxia、meridiani 的岩性類別用文獻覆寫（`lithology.group_source = literature_override`）。
 - 沒有已知類比地標給某目標時，總表與雷達圖改列全部已知類比地中全球排名最前的 8 個。
 
 ### 3.5 缺資料規則（兩人都要遵守）
@@ -106,6 +106,16 @@
 - 每個變數都要有 `coverage`（true/false）。資料缺漏時 **coverage = false，不要補 0**。
 - 計分時只用 coverage = true 的變數，權重在這些變數之間重新正規化。
 - 信心度 `confidence` = 有資料的變數原始權重總和（0–1）。
+
+### 3.6 測試項目分數 R1–R6（11/14 新增）
+
+測試定義來自整合者 Harris 的規劃（`nasa/docs/火星.pdf`），特徵、門檻、適用性、面向 × 測試交叉表寫在 `config/mission_tests.yaml`；程式 `src/mars_analog/mission_tests.py`；執行 `python scripts/make_mission_tests.py`；輸出 `outputs/mission_tests/`（總表、需求矩陣、候選池）。
+
+- 測試分數 = 測試內特徵的等權重幾何平均（下限 0.01）。特徵有三類：跟火星目標比（沿用單項相似度）、門檻型滿意度函數（梯形）、季節曲線與礦物指標。
+- 特徵全部是必要的：缺資料就不評分。只有在 `fill` 指定的範圍補值（南緯 60° 以南的乾燥指數與 NDVI 補 1）。
+- R3、R5 只對 SWIM Ci ≥ 0.1 的目標適用；R2 全球沒有資料，標為無法評估。
+- 季節曲線（R6）、冰河距離（R5）、礦物指標（R4）需要 `scripts/fetch_earth_extra_gee.py` 產生的補資料；沒有時列為「待補資料」。
+- 測試之間的 ROC 權重只用來算參考用加權總分。最後的地點組合用集合覆蓋決定（下一步）。
 
 ## 4. 計分公式
 

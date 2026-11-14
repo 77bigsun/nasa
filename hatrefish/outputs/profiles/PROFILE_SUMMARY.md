@@ -1,6 +1,6 @@
 # 類比剖面總表（自動產生）
 
-> 產生時間 2026-11-14 12:21。由 `scripts/make_profiles.py` 產生，數字以 `outputs/profiles/*.json` 為準。
+> 產生時間 2026-11-14 15:12。由 `scripts/make_profiles.py` 產生，數字以 `outputs/profiles/*.json` 為準。
 > 面向分數 = 面向內變數的等權重幾何平均；整體 = 面向的等權重幾何平均 × 100；不依任務加權。
 > 尚未評估的面向：生物與棲息性、洞穴與地下（沒有變數）。
 > 排名只用「面向」和「變數」都至少 80% 有資料的格子；每個面向的前 5 名只用該面向變數全部有資料的格子；地點彼此至少相距 150 km。
@@ -263,3 +263,43 @@
 | Black Point Lava Flow (Arizona) | 66.8 | 2.7 | 0.45 | 0.71 | 0.65 | 0.84 | 0.89 | 大氣與沙塵 | 地形 |
 | White Sands gypsum dunes and Lake Lucero (New Mexico) | 62.7 | 5.2 | 0.28 | 0.63 | 0.62 | 0.84 | 1.00 | 大氣與沙塵 | 地形 |
 | Atacama Desert Yungay core (Chile) | 62.2 | 5.6 | 0.77 | 0.65 | 0.46 | 0.84 | 0.74 | 水與冰 | 環境極端 |
+
+## Arcadia Planitia AP-105 (SkyFall design reference landing site)（43.3295, -161.4772）
+
+**各面向「分數 ≥ 0.9」的陸地比例**：地形 55.0%、地表物質與裸露 0.1%、環境極端 0.0%、水與冰 1.7%、大氣與沙塵 20.0%；整體 ≥ 90 分：0.00%
+
+### 整體相似度前 10 名
+
+| # | 地點 | 座標 | 整體 | 地形 | 地表物質與裸露 | 環境極端 | 水與冰 | 大氣與沙塵 | 最弱面向 | 已知類比地 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 46 km from Urdgol (MN) | 48.25, 92.65 | 88.7 | 1.00 | 0.83 | 0.79 | 0.94 | 0.90 | 環境極端 | 否（新候選） |
+| 2 | near Kosh-Agach (RU) | 49.95, 88.65 | 85.0 | 0.99 | 0.70 | 0.80 | 0.82 | 0.97 | 地表物質與裸露 | 否（新候選） |
+| 3 | 49 km from Zhabu (CN) | 33.45, 82.95 | 85.0 | 0.97 | 0.57 | 0.83 | 0.98 | 0.98 | 地表物質與裸露 | 否（新候選） |
+| 4 | 46 km from Erzin (RU) | 49.85, 95.15 | 84.1 | 0.91 | 0.65 | 0.76 | 0.99 | 0.95 | 地表物質與裸露 | 否（新候選） |
+| 5 | 62 km from Hoshoot (MN) | 48.55, 88.55 | 82.5 | 0.90 | 0.57 | 0.79 | 0.98 | 0.96 | 地表物質與裸露 | 否（新候選） |
+| 6 | 234 km from Zhabu (CN) | 34.85, 84.75 | 81.7 | 0.92 | 0.88 | 0.86 | 0.58 | 0.91 | 水與冰 | 否（新候選） |
+| 7 | 191 km from Qimantage (CN) | 35.75, 89.45 | 81.6 | 0.94 | 0.93 | 0.80 | 0.58 | 0.90 | 水與冰 | 否（新候選） |
+| 8 | near Qimantage (CN) | 37.35, 90.25 | 81.6 | 0.99 | 0.57 | 0.83 | 0.94 | 0.82 | 地表物質與裸露 | 否（新候選） |
+| 9 | 199 km from Koramlik (CN) | 35.65, 86.35 | 81.5 | 0.98 | 0.88 | 0.83 | 0.58 | 0.86 | 水與冰 | 否（新候選） |
+| 10 | 121 km from Murghob (TJ) | 39.15, 73.35 | 81.4 | 0.96 | 0.76 | 0.76 | 0.76 | 0.86 | 地表物質與裸露 | 否（新候選） |
+
+### 每個面向最像的前 5 名
+
+- **地形**：46 km from Urdgol (MN)（1.00，整體 89）；55 km from Tsetserleg (MN)（1.00，整體 83）；near Kosh-Agach (RU)（1.00，整體 82）；near Qimantage (CN)（1.00，整體 82）；175 km from Qimantage (CN)（1.00，整體 81）
+- **地表物質與裸露**：74 km from Assab (ER)（0.97，整體 39）；91 km from Karakenja (TJ)（0.97，整體 32）；180 km from Qimantage (CN)（0.95，整體 78）；39 km from Pahalgam (IN)（0.96，整體 36）；79 km from Colbun (CL)（0.95，整體 25）
+- **環境極端**：127 km from Nur (CN)（0.92，整體 45）；109 km from Layka (CN)（0.91，整體 29）；1337 km from Gjoa Haven (CA)（0.90，整體 62）；77 km from Zangkaxa (CN)（0.90，整體 30）；57 km from Thang (IN)（0.89，整體 31）
+- **水與冰**：30 km from Qimantage (CN)（1.00，整體 80）；56 km from Qiangma (CN)（1.00，整體 78）；51 km from Jargalant (MN)（1.00，整體 77）；43 km from Evensk (RU)（0.99，整體 76）；near Altan (MN)（1.00，整體 76）
+- **大氣與沙塵**：90 km from Luring (CN)（1.00，整體 75）；31 km from Vlaa Vula (MN)（1.00，整體 73）；77 km from Kyzyl-Khaya (RU)（1.00，整體 71）；123 km from Jisegumen (CN)（1.00，整體 70）；72 km from Cuozheqiangma (CN)（1.00，整體 70）
+
+### 已知類比地的剖面（沒有標給這個目標的；列出全部已知類比地中全球排名最前的 8 個，供參考）
+
+| 類比地 | 整體 | 全球前 % | 地形 | 地表物質與裸露 | 環境極端 | 水與冰 | 大氣與沙塵 | 最強 | 最弱 |
+|---|---|---|---|---|---|---|---|---|---|
+| Dalangtan saline playa Qaidam Basin (China) | 65.2 | 1.8 | 0.99 | 0.54 | 0.79 | 0.42 | 0.76 | 地形 | 水與冰 |
+| Mars Desert Research Station Hanksville (Utah) | 63.1 | 3.4 | 0.78 | 0.51 | 0.69 | 0.42 | 0.88 | 大氣與沙塵 | 水與冰 |
+| White Sands gypsum dunes and Lake Lucero (New Mexico) | 62.8 | 3.7 | 1.00 | 0.49 | 0.62 | 0.42 | 0.77 | 地形 | 水與冰 |
+| Black Point Lava Flow (Arizona) | 62.2 | 4.7 | 0.94 | 0.44 | 0.65 | 0.42 | 0.88 | 地形 | 水與冰 |
+| Pilot Valley paleolake playa (Utah) | 61.9 | 5.1 | 0.72 | 0.53 | 0.72 | 0.42 | 0.94 | 大氣與沙塵 | 水與冰 |
+| Lavic Lake and Sunshine volcanic field Mojave Desert (California) | 58.5 | 10.2 | 0.60 | 0.55 | 0.53 | 0.42 | 0.96 | 大氣與沙塵 | 水與冰 |
+| Lanzarote volcanic fields (Spain) | 58.0 | 11.0 | 0.62 | 0.67 | 0.55 | 0.42 | 0.78 | 大氣與沙塵 | 水與冰 |
+| Askja lava fields Vikrahraun (Iceland) | 49.0 | 27.2 | 0.80 | 1.00 | 0.13 | 0.42 | 0.54 | 地表物質與裸露 | 環境極端 |

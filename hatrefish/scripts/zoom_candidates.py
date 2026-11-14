@@ -10,6 +10,7 @@ r"""
     python scripts\zoom_candidates.py --target jezero --dimension terrain   # 地形面向的前 5 名
     python scripts\zoom_candidates.py --target oxia --point 41.85 57.85     # 手動座標
     python scripts\zoom_candidates.py --dem gmted                      # 地形改用和全球版相同的 GMTED2010
+    python scripts\zoom_candidates.py --no-site-details                # 不算最佳小區的高解析坡度與雷達
 
 輸出在 outputs/zoom/（每個候選一張圖、zoom_<目標>.json、ZOOM_SUMMARY.md）；
 下載的方框存在 data/interim/zoom/，重跑或換目標時不會重抓（加 --refresh 才重抓）。
@@ -37,6 +38,7 @@ def main():
     ap.add_argument("--dem", choices=["copernicus", "gmted"], default="copernicus")
     ap.add_argument("--no-rgb", action="store_true", help="不抓 HLS 真彩色底圖（比較快）")
     ap.add_argument("--no-figures", action="store_true")
+    ap.add_argument("--no-site-details", action="store_true", help="不算最佳小區的高解析坡度與雷達")
     ap.add_argument("--workers", type=int, default=4, help="同時下載幾個方框")
     ap.add_argument("--refresh", action="store_true", help="忽略快取，重新下載")
     ap.add_argument("--project", default="nasa-spaceapp-hackathon")
@@ -67,12 +69,22 @@ def main():
         tab = zoom.score_box(tid, sdf)
         print(f"陸地子格 {int(sdf.land.sum())} / {len(sdf)}；整體相似度 中位數 {np.nanmedian(tab.overall):.1f}、"
               f"最高 {np.nanmax(tab.overall):.1f}；0.1° 格原分數 {c.get('overall')}")
-        print("0.1° 格的值（對照）：", {k: c.get('earth_values', {}).get(k) for k in
-                                     ("slope_deg", "roughness_m", "lst_mean_c", "ndvi_mean", "aridity_index")})
+        keys = ("slope_deg", "roughness_m", "lst_mean_c", "dtr_c", "ndvi_mean", "aridity_index")
+        inside = ((np.abs(sdf.lat - float(c["lat"])) < zoom.GRID_RES / 2) &
+                  (np.abs(sdf.lon - float(c["lon"])) < zoom.GRID_RES / 2) & sdf.land)
+        print("0.1° 格的值（對照）：", {k: c.get('earth_values', {}).get(k) for k in keys})
+        print(f"同一 0.1° 格內 {int(inside.sum())} 個子格的中位數：",
+              {k: round(float(np.nanmedian(sdf.loc[inside, k])), 3) for k in keys},
+              f"；整體相似度中位數 {np.nanmedian(tab.overall[inside]):.1f}")
+        if not a.no_site_details:
+            from mars_analog.adapters.earth import gee_zoom as G
+            t = time.time()
+            print("地點細節（候選格中心 1 km 方塊）：", G.site_details(float(c["lat"]), float(c["lon"])),
+                  f"{time.time() - t:.0f} 秒")
         return
 
     zoom.run(a.target, a.top, a.dimension, tuple(a.point) if a.point else None, a.half, a.sub, a.dem,
-             not a.no_rgb, a.workers, a.refresh, not a.no_figures)
+             not a.no_rgb, a.workers, a.refresh, not a.no_figures, not a.no_site_details)
 
 
 if __name__ == "__main__":
