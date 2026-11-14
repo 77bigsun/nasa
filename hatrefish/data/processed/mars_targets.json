@@ -1,0 +1,846 @@
+{
+ "body": "mars",
+ "generated_at": "2026-11-13T08:48:50+00:00",
+ "variables": [
+  "slope",
+  "roughness",
+  "thermal_inertia",
+  "lithology",
+  "ice",
+  "temperature",
+  "diurnal_range",
+  "dust",
+  "aridity",
+  "barrenness",
+  "slope_fine",
+  "roughness_fine"
+ ],
+ "targets": {
+  "jezero": {
+   "name": "Jezero Crater",
+   "lat": 18.4,
+   "lon": 77.5,
+   "radius_km": 25,
+   "missions": [
+    "geology",
+    "rover"
+   ],
+   "source": "Teammate's targets.yaml (rounded centre of the Jezero area). A 25 km circle contains the Perseverance landing site (Octavia E. Butler Landing, 18.4447 N 77.4508 E): https://www.jpl.nasa.gov/images/pia24483-welcome-to-octavia-e-butler-landing/",
+   "features": {
+    "slope": {
+     "value": 2.236,
+     "coverage": true,
+     "source": "hrsc_mola_blend_200m_v2",
+     "n_pixels": 49080,
+     "unit": "deg",
+     "p90": 8.334,
+     "seconds": 127.6
+    },
+    "roughness": {
+     "value": 10.608,
+     "coverage": true,
+     "source": "hrsc_mola_blend_200m_v2",
+     "n_pixels": 49080,
+     "unit": "m",
+     "window_px": 5,
+     "seconds": 0.3
+    },
+    "thermal_inertia": {
+     "value": 296.0,
+     "pct": 0.877,
+     "coverage": true,
+     "source": "tes_night_2007",
+     "n_pixels": 238,
+     "unit": "tiu",
+     "seconds": 0.1
+    },
+    "lithology": {
+     "value": "HNt",
+     "unit_desc": "Hesperian and Noachian transition unit",
+     "group": "clastic",
+     "coverage": true,
+     "source": "usgs_sim3292",
+     "n_pixels": 0,
+     "units_in_radius": [
+      {
+       "unit": "HNt",
+       "share": 0.725,
+       "group": "clastic"
+      },
+      {
+       "unit": "mNhm",
+       "share": 0.275,
+       "group": "impact_breccia_carbonate"
+      }
+     ],
+     "seconds": 1.1
+    },
+    "ice": {
+     "value": -0.206,
+     "p": 0.397,
+     "coverage": true,
+     "source": "swim4mim_ci_composite",
+     "n_pixels": 236,
+     "median": -0.191,
+     "seconds": 0.1
+    },
+    "temperature": {
+     "value": -49.47,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 600,
+     "unit": "C",
+     "min_c": -87.35,
+     "max_c": 13.66,
+     "note": "point value at the target centre (MCD grid ~5 deg); radius not used",
+     "seconds": 0.0
+    },
+    "diurnal_range": {
+     "value": 84.69,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 600,
+     "unit": "C",
+     "min_season": 75.03,
+     "max_season": 95.34,
+     "seconds": 0.0
+    },
+    "dust": {
+     "value": 0.5542,
+     "pct": 0.869,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 1,
+     "unit": "tau",
+     "seconds": 0.0
+    },
+    "aridity": {
+     "value": "max",
+     "coverage": true,
+     "source": "fixed_max",
+     "n_pixels": 0,
+     "seconds": 0.0
+    },
+    "barrenness": {
+     "value": 0.0,
+     "coverage": true,
+     "source": "fixed_zero_ndvi",
+     "n_pixels": 0,
+     "unit": "ndvi",
+     "seconds": 0.0
+    },
+    "slope_fine": {
+     "value": null,
+     "coverage": false,
+     "source": "usgs_ctx_dtm_jezero_20m",
+     "n_pixels": 1011669,
+     "unit": "deg",
+     "resolution_m": 30,
+     "window_px": 5,
+     "radius_km": 25,
+     "coverage_fraction": 0.464,
+     "dataset": "USGS CTX DTM of Jezero crater, 20 m/px (Mars 2020 TRN), resampled to 30 m (average)",
+     "note": "fine DEM covers only 46% of the 25 km circle (< 50%)",
+     "seconds": 0.6
+    },
+    "roughness_fine": {
+     "value": null,
+     "coverage": false,
+     "source": "usgs_ctx_dtm_jezero_20m",
+     "n_pixels": 1007832,
+     "unit": "m",
+     "resolution_m": 30,
+     "window_px": 5,
+     "radius_km": 25,
+     "coverage_fraction": 0.462,
+     "dataset": "USGS CTX DTM of Jezero crater, 20 m/px (Mars 2020 TRN), resampled to 30 m (average)",
+     "note": "fine DEM covers only 46% of the 25 km circle (< 50%)",
+     "seconds": 0.2
+    }
+   }
+  },
+  "gale": {
+   "name": "Gale Crater",
+   "lat": -5.4,
+   "lon": 137.8,
+   "radius_km": 25,
+   "missions": [
+    "geology",
+    "rover"
+   ],
+   "source": "Teammate's targets.yaml (Gale crater centre). Note: Curiosity's Bradbury Landing (4.5895 S 137.4417 E) is about 48 km away, outside the 25 km circle, so the circle covers the crater floor and the foot of Mount Sharp, not the landing site.",
+   "features": {
+    "slope": {
+     "value": 5.455,
+     "coverage": true,
+     "source": "hrsc_mola_blend_200m_v2",
+     "n_pixels": 49080,
+     "unit": "deg",
+     "p90": 16.873,
+     "seconds": 123.7
+    },
+    "roughness": {
+     "value": 27.254,
+     "coverage": true,
+     "source": "hrsc_mola_blend_200m_v2",
+     "n_pixels": 49080,
+     "unit": "m",
+     "window_px": 5,
+     "seconds": 0.0
+    },
+    "thermal_inertia": {
+     "value": 283.0,
+     "pct": 0.843,
+     "coverage": true,
+     "source": "tes_night_2007",
+     "n_pixels": 224,
+     "unit": "tiu",
+     "seconds": 0.0
+    },
+    "lithology": {
+     "value": "Htu",
+     "unit_desc": "Hesperian transition undivided unit",
+     "group": "clastic",
+     "coverage": true,
+     "source": "usgs_sim3292",
+     "n_pixels": 0,
+     "units_in_radius": [
+      {
+       "unit": "Htu",
+       "share": 0.624,
+       "group": "clastic"
+      },
+      {
+       "unit": "AHi",
+       "share": 0.376,
+       "group": "impact_breccia_carbonate"
+      }
+     ],
+     "seconds": 0.0
+    },
+    "ice": {
+     "value": 0.059,
+     "p": 0.529,
+     "coverage": true,
+     "source": "swim4mim_ci_composite",
+     "n_pixels": 216,
+     "median": 0.055,
+     "seconds": 0.0
+    },
+    "temperature": {
+     "value": -50.85,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 600,
+     "unit": "C",
+     "min_c": -94.62,
+     "max_c": 20.63,
+     "note": "point value at the target centre (MCD grid ~5 deg); radius not used",
+     "seconds": 0.0
+    },
+    "diurnal_range": {
+     "value": 93.3,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 600,
+     "unit": "C",
+     "min_season": 78.16,
+     "max_season": 103.8,
+     "seconds": 0.0
+    },
+    "dust": {
+     "value": 0.4639,
+     "pct": 0.735,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 1,
+     "unit": "tau",
+     "seconds": 0.0
+    },
+    "aridity": {
+     "value": "max",
+     "coverage": true,
+     "source": "fixed_max",
+     "n_pixels": 0,
+     "seconds": 0.0
+    },
+    "barrenness": {
+     "value": 0.0,
+     "coverage": true,
+     "source": "fixed_zero_ndvi",
+     "n_pixels": 0,
+     "unit": "ndvi",
+     "seconds": 0.0
+    },
+    "slope_fine": {
+     "value": 5.396,
+     "coverage": true,
+     "source": "hrsc_dtm_mosaic_gale_30m",
+     "n_pixels": 2181705,
+     "unit": "deg",
+     "resolution_m": 30,
+     "window_px": 5,
+     "radius_km": 25,
+     "coverage_fraction": 1.0,
+     "dataset": "HRSC 30 m DTM mosaic of Gale crater (Persaud, Putri & Muller 2021, doi:10.5281/zenodo.5808354)",
+     "p90": 17.219,
+     "seconds": 0.6
+    },
+    "roughness_fine": {
+     "value": 4.078,
+     "coverage": true,
+     "source": "hrsc_dtm_mosaic_gale_30m",
+     "n_pixels": 2181705,
+     "unit": "m",
+     "resolution_m": 30,
+     "window_px": 5,
+     "radius_km": 25,
+     "coverage_fraction": 1.0,
+     "dataset": "HRSC 30 m DTM mosaic of Gale crater (Persaud, Putri & Muller 2021, doi:10.5281/zenodo.5808354)",
+     "p90": 13.069,
+     "seconds": 0.2
+    }
+   }
+  },
+  "arcadia": {
+   "name": "Arcadia Planitia (shallow ground ice)",
+   "lat": 47.2,
+   "lon": -175.7,
+   "radius_km": 50,
+   "missions": [
+    "isru_base",
+    "landing"
+   ],
+   "source": "Teammate's targets.yaml. Inside the SWIM Arcadia study region (150-225 E, 0-60 N); SWIM ice consistency about 0.5 here. Morgan et al. 2021, Nature Astronomy 5:230; https://swim.psi.edu/resources/abstracts/LPSC2019/2069.pdf",
+   "features": {
+    "slope": {
+     "value": 0.209,
+     "coverage": true,
+     "source": "hrsc_mola_blend_200m_v2",
+     "n_pixels": 196364,
+     "unit": "deg",
+     "p90": 0.473,
+     "seconds": 244.2
+    },
+    "roughness": {
+     "value": 1.008,
+     "coverage": true,
+     "source": "hrsc_mola_blend_200m_v2",
+     "n_pixels": 196364,
+     "unit": "m",
+     "window_px": 5,
+     "seconds": 0.1
+    },
+    "thermal_inertia": {
+     "value": 233.0,
+     "pct": 0.64,
+     "coverage": true,
+     "source": "tes_night_2007",
+     "n_pixels": 1322,
+     "unit": "tiu",
+     "seconds": 0.1
+    },
+    "lithology": {
+     "value": "Av",
+     "unit_desc": "Amazonian volcanic unit",
+     "group": "basalt",
+     "coverage": true,
+     "source": "usgs_sim3292",
+     "n_pixels": 0,
+     "units_in_radius": [
+      {
+       "unit": "Av",
+       "share": 1.0,
+       "group": "basalt"
+      }
+     ],
+     "seconds": 0.1
+    },
+    "ice": {
+     "value": 0.526,
+     "p": 0.763,
+     "coverage": true,
+     "source": "swim4mim_ci_composite",
+     "n_pixels": 1324,
+     "median": 0.524,
+     "seconds": 0.1
+    },
+    "temperature": {
+     "value": -75.93,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 600,
+     "unit": "C",
+     "min_c": -120.81,
+     "max_c": -1.56,
+     "note": "point value at the target centre (MCD grid ~5 deg); radius not used",
+     "seconds": 0.0
+    },
+    "diurnal_range": {
+     "value": 62.61,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 600,
+     "unit": "C",
+     "min_season": 25.36,
+     "max_season": 85.72,
+     "seconds": 0.0
+    },
+    "dust": {
+     "value": 0.3547,
+     "pct": 0.415,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 1,
+     "unit": "tau",
+     "seconds": 0.0
+    },
+    "aridity": {
+     "value": "max",
+     "coverage": true,
+     "source": "fixed_max",
+     "n_pixels": 0,
+     "seconds": 0.0
+    },
+    "barrenness": {
+     "value": 0.0,
+     "coverage": true,
+     "source": "fixed_zero_ndvi",
+     "n_pixels": 0,
+     "unit": "ndvi",
+     "seconds": 0.0
+    },
+    "slope_fine": {
+     "value": null,
+     "coverage": false,
+     "source": null,
+     "n_pixels": 0,
+     "unit": "deg",
+     "resolution_m": 30,
+     "window_px": 5,
+     "radius_km": 50,
+     "coverage_fraction": 0.0,
+     "dataset": null,
+     "note": "no fine (<=30 m) DEM on disk contains this point (only Jezero CTX 20 m and Gale HRSC 30 m)",
+     "seconds": 0.1
+    },
+    "roughness_fine": {
+     "value": null,
+     "coverage": false,
+     "source": null,
+     "n_pixels": 0,
+     "unit": "m",
+     "resolution_m": 30,
+     "window_px": 5,
+     "radius_km": 50,
+     "coverage_fraction": 0.0,
+     "dataset": null,
+     "note": "no fine (<=30 m) DEM on disk contains this point (only Jezero CTX 20 m and Gale HRSC 30 m)",
+     "seconds": 0.0
+    }
+   }
+  },
+  "oxia": {
+   "name": "Oxia Planum (ExoMars Rosalind Franklin landing site)",
+   "lat": 18.2,
+   "lon": -24.55,
+   "radius_km": 25,
+   "missions": [
+    "geology",
+    "rover"
+   ],
+   "source": "ESA: Oxia Planum site 18.20N 335.45E; landing ellipse 104 x 19 km, clay-bearing Noachian plains. https://exploration.esa.int/mars/54724-oxia-planum/",
+   "features": {
+    "slope": {
+     "value": 0.559,
+     "coverage": true,
+     "source": "hrsc_mola_blend_200m_v2",
+     "n_pixels": 49080,
+     "unit": "deg",
+     "p90": 1.839
+    },
+    "roughness": {
+     "value": 2.767,
+     "coverage": true,
+     "source": "hrsc_mola_blend_200m_v2",
+     "n_pixels": 49080,
+     "unit": "m",
+     "window_px": 5
+    },
+    "thermal_inertia": {
+     "value": 416.0,
+     "pct": 0.981,
+     "coverage": true,
+     "source": "tes_night_2007",
+     "n_pixels": 235,
+     "unit": "tiu"
+    },
+    "lithology": {
+     "value": "lNh",
+     "unit_desc": "Late Noachian highland unit",
+     "group": "sedimentary_carbonate_clay",
+     "coverage": true,
+     "source": "usgs_sim3292",
+     "n_pixels": 0,
+     "units_in_radius": [
+      {
+       "unit": "lNh",
+       "share": 0.975,
+       "group": "impact_breccia_carbonate"
+      },
+      {
+       "unit": "mNh",
+       "share": 0.025,
+       "group": "impact_breccia_carbonate"
+      }
+     ],
+     "group_sim3292": "impact_breccia_carbonate",
+     "group_source": "literature_override",
+     "group_note": "Literature override: SIM3292 maps lNh (highland, impact breccia) at 1:20M, but the rover target is the Fe/Mg clay-bearing layered unit; Quantin-Nataf et al. 2021, Astrobiology 21(3):345, doi:10.1089/ast.2019.2191"
+    },
+    "ice": {
+     "value": -0.323,
+     "p": 0.339,
+     "coverage": true,
+     "source": "swim4mim_ci_composite",
+     "n_pixels": 236,
+     "median": -0.341
+    },
+    "temperature": {
+     "value": -50.75,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 600,
+     "unit": "C",
+     "min_c": -87.02,
+     "max_c": 7.94,
+     "note": "point value at the target centre (MCD grid ~5 deg); radius not used"
+    },
+    "diurnal_range": {
+     "value": 77.07,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 600,
+     "unit": "C",
+     "min_season": 66.82,
+     "max_season": 86.69
+    },
+    "dust": {
+     "value": 0.62,
+     "pct": 0.961,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 1,
+     "unit": "tau"
+    },
+    "aridity": {
+     "value": "max",
+     "coverage": true,
+     "source": "fixed_max",
+     "n_pixels": 0
+    },
+    "barrenness": {
+     "value": 0.0,
+     "coverage": true,
+     "source": "fixed_zero_ndvi",
+     "n_pixels": 0,
+     "unit": "ndvi"
+    },
+    "slope_fine": {
+     "value": null,
+     "coverage": false,
+     "source": null,
+     "n_pixels": 0,
+     "unit": "deg",
+     "resolution_m": 30,
+     "window_px": 5,
+     "radius_km": 25,
+     "coverage_fraction": 0.0,
+     "dataset": null,
+     "note": "no fine (<=30 m) DEM on disk contains this point (only Jezero CTX 20 m and Gale HRSC 30 m)"
+    },
+    "roughness_fine": {
+     "value": null,
+     "coverage": false,
+     "source": null,
+     "n_pixels": 0,
+     "unit": "m",
+     "resolution_m": 30,
+     "window_px": 5,
+     "radius_km": 25,
+     "coverage_fraction": 0.0,
+     "dataset": null,
+     "note": "no fine (<=30 m) DEM on disk contains this point (only Jezero CTX 20 m and Gale HRSC 30 m)"
+    }
+   }
+  },
+  "meridiani": {
+   "name": "Meridiani Planum (Opportunity landing site, Eagle crater)",
+   "lat": -1.95,
+   "lon": -5.53,
+   "radius_km": 25,
+   "missions": [
+    "geology",
+    "rover"
+   ],
+   "source": "NASA/JPL: Eagle crater 1.95S 354.47E, Opportunity landing site (hematite spherules, sulfate-rich sandstones). https://www.jpl.nasa.gov/images/rovers-landing-hardware-at-eagle-crater-mars",
+   "features": {
+    "slope": {
+     "value": 1.279,
+     "coverage": true,
+     "source": "hrsc_mola_blend_200m_v2",
+     "n_pixels": 49080,
+     "unit": "deg",
+     "p90": 3.828
+    },
+    "roughness": {
+     "value": 6.363,
+     "coverage": true,
+     "source": "hrsc_mola_blend_200m_v2",
+     "n_pixels": 49080,
+     "unit": "m",
+     "window_px": 5
+    },
+    "thermal_inertia": {
+     "value": 190.0,
+     "pct": 0.425,
+     "coverage": true,
+     "source": "tes_night_2007",
+     "n_pixels": 222,
+     "unit": "tiu"
+    },
+    "lithology": {
+     "value": "HNhu",
+     "unit_desc": "Hesperian and Noachian highland undivided unit",
+     "group": "evaporite_sulfate_clastic",
+     "coverage": true,
+     "source": "usgs_sim3292",
+     "n_pixels": 0,
+     "units_in_radius": [
+      {
+       "unit": "HNhu",
+       "share": 1.0,
+       "group": "impact_breccia_carbonate"
+      }
+     ],
+     "group_sim3292": "impact_breccia_carbonate",
+     "group_source": "literature_override",
+     "group_note": "Literature override: SIM3292 maps HNhu (highland undivided) at 1:20M, but Opportunity found sulfate-rich sandstones with hematite spherules; Squyres et al. 2004, Science 306:1709, doi:10.1126/science.1104559"
+    },
+    "ice": {
+     "value": 0.034,
+     "p": 0.517,
+     "coverage": true,
+     "source": "swim4mim_ci_composite",
+     "n_pixels": 222,
+     "median": 0.036
+    },
+    "temperature": {
+     "value": -46.09,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 600,
+     "unit": "C",
+     "min_c": -91.74,
+     "max_c": 25.11,
+     "note": "point value at the target centre (MCD grid ~5 deg); radius not used"
+    },
+    "diurnal_range": {
+     "value": 95.43,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 600,
+     "unit": "C",
+     "min_season": 79.86,
+     "max_season": 106.5
+    },
+    "dust": {
+     "value": 0.5207,
+     "pct": 0.826,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 1,
+     "unit": "tau"
+    },
+    "aridity": {
+     "value": "max",
+     "coverage": true,
+     "source": "fixed_max",
+     "n_pixels": 0
+    },
+    "barrenness": {
+     "value": 0.0,
+     "coverage": true,
+     "source": "fixed_zero_ndvi",
+     "n_pixels": 0,
+     "unit": "ndvi"
+    },
+    "slope_fine": {
+     "value": null,
+     "coverage": false,
+     "source": null,
+     "n_pixels": 0,
+     "unit": "deg",
+     "resolution_m": 30,
+     "window_px": 5,
+     "radius_km": 25,
+     "coverage_fraction": 0.0,
+     "dataset": null,
+     "note": "no fine (<=30 m) DEM on disk contains this point (only Jezero CTX 20 m and Gale HRSC 30 m)"
+    },
+    "roughness_fine": {
+     "value": null,
+     "coverage": false,
+     "source": null,
+     "n_pixels": 0,
+     "unit": "m",
+     "resolution_m": 30,
+     "window_px": 5,
+     "radius_km": 25,
+     "coverage_fraction": 0.0,
+     "dataset": null,
+     "note": "no fine (<=30 m) DEM on disk contains this point (only Jezero CTX 20 m and Gale HRSC 30 m)"
+    }
+   }
+  },
+  "protonilus": {
+   "name": "Protonilus Mensae (candidate human exploration zone, buried glacial ice)",
+   "lat": 41.905,
+   "lon": 48.548,
+   "radius_km": 50,
+   "missions": [
+    "isru_base",
+    "landing"
+   ],
+   "source": "Gallegos & Newsom 2015 EZ at 48.548E 41.905N, First Landing Site/Exploration Zone Workshop; described in IAC-17,A5,IP,1,x39861. https://iafastro.directory/iac/archive/browse/IAC-17/A5/IP/39861/",
+   "features": {
+    "slope": {
+     "value": 4.594,
+     "coverage": true,
+     "source": "hrsc_mola_blend_200m_v2",
+     "n_pixels": 196364,
+     "unit": "deg",
+     "p90": 17.658
+    },
+    "roughness": {
+     "value": 22.599,
+     "coverage": true,
+     "source": "hrsc_mola_blend_200m_v2",
+     "n_pixels": 196364,
+     "unit": "m",
+     "window_px": 5
+    },
+    "thermal_inertia": {
+     "value": 197.0,
+     "pct": 0.457,
+     "coverage": true,
+     "source": "tes_night_2007",
+     "n_pixels": 1207,
+     "unit": "tiu"
+    },
+    "lithology": {
+     "value": "HNt",
+     "unit_desc": "Hesperian and Noachian transition unit",
+     "group": "clastic",
+     "coverage": true,
+     "source": "usgs_sim3292",
+     "n_pixels": 0,
+     "units_in_radius": [
+      {
+       "unit": "HNt",
+       "share": 0.776,
+       "group": "clastic"
+      },
+      {
+       "unit": "ANa",
+       "share": 0.152,
+       "group": "clastic"
+      },
+      {
+       "unit": "mNh",
+       "share": 0.073,
+       "group": "impact_breccia_carbonate"
+      }
+     ]
+    },
+    "ice": {
+     "value": 0.162,
+     "p": 0.581,
+     "coverage": true,
+     "source": "swim4mim_ci_composite",
+     "n_pixels": 1203,
+     "median": 0.152
+    },
+    "temperature": {
+     "value": -71.24,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 600,
+     "unit": "C",
+     "min_c": -113.26,
+     "max_c": 2.31,
+     "note": "point value at the target centre (MCD grid ~5 deg); radius not used"
+    },
+    "diurnal_range": {
+     "value": 79.45,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 600,
+     "unit": "C",
+     "min_season": 48.33,
+     "max_season": 96.35
+    },
+    "dust": {
+     "value": 0.3385,
+     "pct": 0.361,
+     "coverage": true,
+     "source": "mcd_v6_web_climatology",
+     "n_pixels": 1,
+     "unit": "tau"
+    },
+    "aridity": {
+     "value": "max",
+     "coverage": true,
+     "source": "fixed_max",
+     "n_pixels": 0
+    },
+    "barrenness": {
+     "value": 0.0,
+     "coverage": true,
+     "source": "fixed_zero_ndvi",
+     "n_pixels": 0,
+     "unit": "ndvi"
+    },
+    "slope_fine": {
+     "value": null,
+     "coverage": false,
+     "source": null,
+     "n_pixels": 0,
+     "unit": "deg",
+     "resolution_m": 30,
+     "window_px": 5,
+     "radius_km": 50,
+     "coverage_fraction": 0.0,
+     "dataset": null,
+     "note": "no fine (<=30 m) DEM on disk contains this point (only Jezero CTX 20 m and Gale HRSC 30 m)"
+    },
+    "roughness_fine": {
+     "value": null,
+     "coverage": false,
+     "source": null,
+     "n_pixels": 0,
+     "unit": "m",
+     "resolution_m": 30,
+     "window_px": 5,
+     "radius_km": 50,
+     "coverage_fraction": 0.0,
+     "dataset": null,
+     "note": "no fine (<=30 m) DEM on disk contains this point (only Jezero CTX 20 m and Gale HRSC 30 m)"
+    }
+   }
+  }
+ },
+ "notes": [
+  "2026-11-14: oxia, meridiani, protonilus added by B with IanChen's extractor (scripts/run_task_a.py code path); reproduced jezero exactly first. Lithology group of oxia/meridiani is a literature override (see group_note)."
+ ]
+}

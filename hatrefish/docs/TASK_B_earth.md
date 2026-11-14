@@ -360,7 +360,7 @@ def flag_known(results: pd.DataFrame, buffer_km: float = 50) -> pd.DataFrame:
 **每個地點要附**：總分、信心度、每一項的單項分數、是不是已知類比地、**哪裡不像**（例如「仍比 Jezero 暖 23 °C」），以及地球無法模擬的項目（重力、氣壓、輻射、大氣成分）。
 
 **技術細節**：
-- 格式照 `PROJECT_CONTEXT.md` 第 7.1 節。新增兩個欄位（只能增加）：
+- 格式照 `PROJECT_CONTEXT.md` 第 7.1 節。其中這兩個欄位是這次新增的：
   - `breaks`：單項分數低於 0.3 的變數，附絕對差距，例如 `{"variable": "temperature", "earth": -26.7, "mars": -49.5, "unit": "C"}`
   - `worldview_url`：這個地點的 NASA Worldview 連結
 - 熱度圖：全球網格總分，PNG 給前端顯示，GeoTIFF 視需要。

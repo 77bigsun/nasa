@@ -1,0 +1,1149 @@
+{
+ "method": "logreg_l2_nonneg_logs + shrinkage_blend(alpha=n/(n+20))",
+ "N0": 20,
+ "trained_at": "2026-11-13T21:13:33.310604+00:00",
+ "labels_source": "C:\\Users\\plusl\\nasa\\hatrefish\\data\\provisional\\known_analogs_seed.csv",
+ "mars_targets_source": "C:\\Users\\plusl\\nasa\\hatrefish\\data\\provisional\\mars_targets_provisional.json",
+ "n_pos": 29,
+ "n_neg": 19788,
+ "epsilon": 0.01,
+ "learned_global": {
+  "slope": 0.0,
+  "roughness": 0.0,
+  "thermal_inertia": 0.0,
+  "lithology": 0.0,
+  "ice": 0.45373693143398197,
+  "temperature": 0.16759873455441263,
+  "diurnal_range": 0.0440515168629874,
+  "aridity": 0.03881154474243132,
+  "barrenness": 0.29580127240618664,
+  "dust": 0.0
+ },
+ "learned_global_detail": {
+  "mission": "global",
+  "lambda": 0.003,
+  "lambda_loso_auc": {
+   "0.003": 0.7240035978455001,
+   "0.01": 0.7176547769272681,
+   "0.03": 0.7119680052603314,
+   "0.1": 0.7103896654202029,
+   "0.3": 0.7046650280221436
+  },
+  "n_sites": 29,
+  "n_pairs": 57,
+  "n_pos_cells": 1313,
+  "n_neg_cells": 19788,
+  "intercept": 2.16507203226678,
+  "beta": {
+   "slope": 0.0,
+   "roughness": 0.0,
+   "thermal_inertia": 0.0,
+   "lithology": 0.0,
+   "ice": 0.771749953271832,
+   "temperature": 0.2850645530484122,
+   "diurnal_range": 0.0749261383090883,
+   "aridity": 0.06601359899604531,
+   "barrenness": 0.5031210870046581,
+   "dust": 0.0
+  },
+  "w_learned": {
+   "slope": 0.0,
+   "roughness": 0.0,
+   "thermal_inertia": 0.0,
+   "lithology": 0.0,
+   "ice": 0.45373693143398197,
+   "temperature": 0.16759873455441263,
+   "diurnal_range": 0.0440515168629874,
+   "aridity": 0.03881154474243132,
+   "barrenness": 0.29580127240618664,
+   "dust": 0.0
+  },
+  "sites": [
+   "arkaroola",
+   "askja_iceland",
+   "atacama_yungay",
+   "axel_heiberg",
+   "black_point_lava",
+   "craters_of_the_moon",
+   "death_valley",
+   "dhofar_amadee18",
+   "dumont_dunes",
+   "el_tatio",
+   "haughton_crater",
+   "hawaii_mauna_kea_loa",
+   "kilauea_basalt",
+   "lake_salda",
+   "lanzarote_timanfaya",
+   "lonar_crater",
+   "makhtesh_ramon",
+   "mcmurdo_dry_valleys",
+   "mdrs_utah",
+   "meteor_crater",
+   "mojave_xombie",
+   "pilbara_strelley",
+   "qaidam_dalangtan",
+   "ries_crater",
+   "rio_tinto",
+   "svalbard_bockfjorden",
+   "teide_tenerife",
+   "tuktoyaktuk",
+   "white_sands"
+  ],
+  "w_learned_ci90": {
+   "slope": [
+    0.0,
+    0.08530582979632266
+   ],
+   "roughness": [
+    0.0,
+    0.03283246478383077
+   ],
+   "thermal_inertia": [
+    0.0,
+    0.0
+   ],
+   "lithology": [
+    0.0,
+    0.08318349136755339
+   ],
+   "ice": [
+    0.19688865641474146,
+    0.5643176814155739
+   ],
+   "temperature": [
+    0.004360948621918151,
+    0.4017975148786784
+   ],
+   "diurnal_range": [
+    0.0,
+    0.2025311469064693
+   ],
+   "aridity": [
+    0.0,
+    0.22638741404678175
+   ],
+   "barrenness": [
+    0.12474279855978473,
+    0.4419248889786068
+   ],
+   "dust": [
+    0.0,
+    0.10134470170021735
+   ]
+  },
+  "w_learned_p_nonzero": {
+   "slope": 0.385,
+   "roughness": 0.115,
+   "thermal_inertia": 0.01,
+   "lithology": 0.435,
+   "ice": 1.0,
+   "temperature": 0.945,
+   "diurnal_range": 0.625,
+   "aridity": 0.51,
+   "barrenness": 1.0,
+   "dust": 0.165
+  }
+ },
+ "learned_per_mission": {
+  "geology": {
+   "mission": "geology",
+   "lambda": 0.01,
+   "lambda_loso_auc": {
+    "0.003": 0.6589401313675605,
+    "0.01": 0.658961859161755,
+    "0.03": 0.6552470647725297,
+    "0.1": 0.6493779266680362,
+    "0.3": 0.6450547540413698
+   },
+   "n_sites": 24,
+   "n_pairs": 44,
+   "n_pos_cells": 924,
+   "n_neg_cells": 13192,
+   "intercept": 1.6536901220574443,
+   "beta": {
+    "slope": 0.08303360161658796,
+    "roughness": 0.0,
+    "thermal_inertia": 0.0,
+    "lithology": 0.0,
+    "ice": 0.0,
+    "temperature": 0.32622089532591286,
+    "diurnal_range": 0.21601629319921634,
+    "aridity": 0.0,
+    "barrenness": 0.4432819404500706,
+    "dust": 0.0
+   },
+   "w_learned": {
+    "slope": 0.07770660187317302,
+    "roughness": 0.0,
+    "thermal_inertia": 0.0,
+    "lithology": 0.0,
+    "ice": 0.0,
+    "temperature": 0.3052922761661417,
+    "diurnal_range": 0.20215782245915168,
+    "aridity": 0.0,
+    "barrenness": 0.41484329950153365,
+    "dust": 0.0
+   },
+   "sites": [
+    "arkaroola",
+    "askja_iceland",
+    "atacama_yungay",
+    "black_point_lava",
+    "craters_of_the_moon",
+    "death_valley",
+    "dhofar_amadee18",
+    "el_tatio",
+    "haughton_crater",
+    "hawaii_mauna_kea_loa",
+    "kilauea_basalt",
+    "lake_salda",
+    "lanzarote_timanfaya",
+    "lonar_crater",
+    "makhtesh_ramon",
+    "mcmurdo_dry_valleys",
+    "mdrs_utah",
+    "meteor_crater",
+    "pilbara_strelley",
+    "qaidam_dalangtan",
+    "ries_crater",
+    "rio_tinto",
+    "svalbard_bockfjorden",
+    "teide_tenerife"
+   ],
+   "w_learned_ci90": {
+    "slope": [
+     0.0,
+     0.20317003219001062
+    ],
+    "roughness": [
+     0.0,
+     0.13703871235361692
+    ],
+    "thermal_inertia": [
+     0.0,
+     0.0
+    ],
+    "lithology": [
+     0.0,
+     0.060659102618366725
+    ],
+    "ice": [
+     0.0,
+     0.0
+    ],
+    "temperature": [
+     0.009002569551531756,
+     0.48284520694637023
+    ],
+    "diurnal_range": [
+     0.0,
+     0.45672310744268346
+    ],
+    "aridity": [
+     0.0,
+     0.38601919059667394
+    ],
+    "barrenness": [
+     0.1469483386903884,
+     0.5813978119008436
+    ],
+    "dust": [
+     0.0,
+     0.12062625202912501
+    ]
+   },
+   "w_learned_p_nonzero": {
+    "slope": 0.62,
+    "roughness": 0.305,
+    "thermal_inertia": 0.015,
+    "lithology": 0.135,
+    "ice": 0.0,
+    "temperature": 0.95,
+    "diurnal_range": 0.845,
+    "aridity": 0.445,
+    "barrenness": 1.0,
+    "dust": 0.135
+   }
+  },
+  "rover": {
+   "mission": "rover",
+   "lambda": 0.3,
+   "lambda_loso_auc": {
+    "0.003": 0.780439425962575,
+    "0.01": 0.7845857996786,
+    "0.03": 0.791603257032586,
+    "0.1": 0.7982621090922131,
+    "0.3": 0.8007902764174435
+   },
+   "n_sites": 13,
+   "n_pairs": 25,
+   "n_pos_cells": 661,
+   "n_neg_cells": 13192,
+   "intercept": 0.9458864226520894,
+   "beta": {
+    "slope": 0.024275616723014544,
+    "roughness": 0.0,
+    "thermal_inertia": 0.0,
+    "lithology": 0.0,
+    "ice": 0.0,
+    "temperature": 0.03999526599105463,
+    "diurnal_range": 0.026441659075966937,
+    "aridity": 0.04470975507145373,
+    "barrenness": 0.42566322387166045,
+    "dust": 0.011824412033299174
+   },
+   "w_learned": {
+    "slope": 0.042372483587067876,
+    "roughness": 0.0,
+    "thermal_inertia": 0.0,
+    "lithology": 0.0,
+    "ice": 0.0,
+    "temperature": 0.06981073935640589,
+    "diurnal_range": 0.04615325649580953,
+    "aridity": 0.0780397624728911,
+    "barrenness": 0.7429845417694736,
+    "dust": 0.020639216318351864
+   },
+   "sites": [
+    "arkaroola",
+    "askja_iceland",
+    "atacama_yungay",
+    "black_point_lava",
+    "dhofar_amadee18",
+    "dumont_dunes",
+    "haughton_crater",
+    "lanzarote_timanfaya",
+    "makhtesh_ramon",
+    "mdrs_utah",
+    "qaidam_dalangtan",
+    "svalbard_bockfjorden",
+    "teide_tenerife"
+   ],
+   "w_learned_ci90": {
+    "slope": [
+     0.0,
+     0.10897362905260277
+    ],
+    "roughness": [
+     0.0,
+     0.12195757908966262
+    ],
+    "thermal_inertia": [
+     0.0,
+     0.0
+    ],
+    "lithology": [
+     0.0,
+     0.04980974003598384
+    ],
+    "ice": [
+     0.0,
+     0.0
+    ],
+    "temperature": [
+     0.0,
+     0.22680469174926318
+    ],
+    "diurnal_range": [
+     0.0,
+     0.21564721845412094
+    ],
+    "aridity": [
+     0.0,
+     0.20672938453286818
+    ],
+    "barrenness": [
+     0.4668167207823014,
+     0.8717684472901477
+    ],
+    "dust": [
+     0.0,
+     0.10830305444017609
+    ]
+   },
+   "w_learned_p_nonzero": {
+    "slope": 0.63,
+    "roughness": 0.465,
+    "thermal_inertia": 0.015,
+    "lithology": 0.21,
+    "ice": 0.0,
+    "temperature": 0.78,
+    "diurnal_range": 0.665,
+    "aridity": 0.745,
+    "barrenness": 1.0,
+    "dust": 0.67
+   }
+  },
+  "isru_base": {
+   "mission": "isru_base",
+   "lambda": 0.1,
+   "lambda_loso_auc": {
+    "0.003": 0.6808334906550879,
+    "0.01": 0.6789810269964129,
+    "0.03": 0.718614309986785,
+    "0.1": 0.7627784595053804,
+    "0.3": 0.7606192184255239
+   },
+   "n_sites": 8,
+   "n_pairs": 8,
+   "n_pos_cells": 287,
+   "n_neg_cells": 6596,
+   "intercept": 1.5685743817766755,
+   "beta": {
+    "slope": 0.0,
+    "roughness": 0.0,
+    "thermal_inertia": 0.0,
+    "lithology": 0.023007197575927122,
+    "ice": 0.30485601001314,
+    "temperature": 0.1764653702481526,
+    "diurnal_range": 0.0,
+    "aridity": 0.0,
+    "barrenness": 0.509790914728193,
+    "dust": 0.0
+   },
+   "w_learned": {
+    "slope": 0.0,
+    "roughness": 0.0,
+    "thermal_inertia": 0.0,
+    "lithology": 0.022686870476896104,
+    "ice": 0.300611527781551,
+    "temperature": 0.17400845910352147,
+    "diurnal_range": 0.0,
+    "aridity": 0.0,
+    "barrenness": 0.5026931426380313,
+    "dust": 0.0
+   },
+   "sites": [
+    "axel_heiberg",
+    "dhofar_amadee18",
+    "haughton_crater",
+    "hawaii_mauna_kea_loa",
+    "makhtesh_ramon",
+    "mcmurdo_dry_valleys",
+    "svalbard_bockfjorden",
+    "tuktoyaktuk"
+   ],
+   "w_learned_ci90": {
+    "slope": [
+     0.0,
+     0.0012377790648285276
+    ],
+    "roughness": [
+     0.0,
+     0.010623457937653158
+    ],
+    "thermal_inertia": [
+     0.0,
+     0.019147427826419736
+    ],
+    "lithology": [
+     0.0,
+     0.30575437392102683
+    ],
+    "ice": [
+     0.0938396775522967,
+     0.40717324428313345
+    ],
+    "temperature": [
+     0.0,
+     0.33575312168933413
+    ],
+    "diurnal_range": [
+     0.0,
+     0.0
+    ],
+    "aridity": [
+     0.0,
+     0.038808061319757135
+    ],
+    "barrenness": [
+     0.2498475133882073,
+     0.7223786889659887
+    ],
+    "dust": [
+     0.0,
+     0.0
+    ]
+   },
+   "w_learned_p_nonzero": {
+    "slope": 0.05,
+    "roughness": 0.065,
+    "thermal_inertia": 0.125,
+    "lithology": 0.595,
+    "ice": 0.995,
+    "temperature": 0.885,
+    "diurnal_range": 0.0,
+    "aridity": 0.1,
+    "barrenness": 1.0,
+    "dust": 0.03
+   }
+  },
+  "landing": {
+   "mission": "landing",
+   "n_sites": 3,
+   "skipped": "too few sites"
+  }
+ },
+ "decision": {
+  "geology": {
+   "used": "blend",
+   "alpha": 0.5454545454545454,
+   "n_sites": 24,
+   "learned_source": "mission",
+   "loso_auc_prior": 0.6670726748993879,
+   "loso_auc_blend": 0.7042508545123767,
+   "loso_auc_prior_x_learned": 0.7264285517393462,
+   "loso_auc_learned_only": 0.7020663349688516,
+   "w_prior_x_learned": {
+    "slope": 0.04799191290384884,
+    "roughness": 0.010943740124203401,
+    "thermal_inertia": 0.010943740124203401,
+    "lithology": 0.0383030904347119,
+    "ice": 0.005471870062101701,
+    "temperature": 0.17252383667654123,
+    "diurnal_range": 0.0,
+    "aridity": 0.010943740124203401,
+    "barrenness": 0.6974061994880845,
+    "dust": 0.005471870062101701
+   }
+  },
+  "rover": {
+   "used": "blend",
+   "alpha": 0.3939393939393939,
+   "n_sites": 13,
+   "learned_source": "global",
+   "loso_auc_prior": 0.6202880533656762,
+   "loso_auc_blend": 0.7701121892055792,
+   "loso_auc_prior_x_learned": 0.8287386294724075,
+   "loso_auc_learned_only": 0.8006943602183141,
+   "w_prior_x_learned": {
+    "slope": 0.07120361361008384,
+    "roughness": 0.07120361361008384,
+    "thermal_inertia": 0.05696289088806707,
+    "lithology": 0.014240722722016768,
+    "ice": 0.0,
+    "temperature": 0.25291343345704487,
+    "diurnal_range": 0.0,
+    "aridity": 0.06951116743102799,
+    "barrenness": 0.4354831128376422,
+    "dust": 0.028481445444033537
+   }
+  },
+  "isru_base": {
+   "used": "blend",
+   "alpha": 0.2857142857142857,
+   "n_sites": 8,
+   "learned_source": "global",
+   "loso_auc_prior": 0.5791957246816252,
+   "loso_auc_blend": 0.7527099757428745,
+   "loso_auc_prior_x_learned": 0.748483929654336,
+   "loso_auc_learned_only": 0.8064546694966647,
+   "w_prior_x_learned": {
+    "slope": 0.004564994511228656,
+    "roughness": 0.002282497255614328,
+    "thermal_inertia": 0.004564994511228656,
+    "lithology": 0.002282497255614328,
+    "ice": 0.7409347913275514,
+    "temperature": 0.16214744968840972,
+    "diurnal_range": 0.0,
+    "aridity": 0.011141221691689547,
+    "barrenness": 0.06979905650304905,
+    "dust": 0.002282497255614328
+   }
+  },
+  "landing": {
+   "used": "prior",
+   "alpha": 0.13043478260869565,
+   "n_sites": 3,
+   "learned_source": "global",
+   "loso_auc_prior": 0.6860218314129776,
+   "loso_auc_blend": 0.6841520113199918,
+   "loso_auc_prior_x_learned": 0.805690317364059,
+   "loso_auc_learned_only": 0.841570648878108,
+   "w_prior_x_learned": {
+    "slope": 0.11223075481058002,
+    "roughness": 0.11223075481058002,
+    "thermal_inertia": 0.05611537740529001,
+    "lithology": 0.0,
+    "ice": 0.0,
+    "temperature": 0.0,
+    "diurnal_range": 0.0,
+    "aridity": 0.09130260849855779,
+    "barrenness": 0.5720051270697021,
+    "dust": 0.05611537740529001
+   }
+  }
+ },
+ "final": {
+  "geology": {
+   "slope": 0.06511269193082166,
+   "roughness": 0.04545454545454547,
+   "thermal_inertia": 0.04545454545454547,
+   "lithology": 0.15909090909090912,
+   "ice": 0.022727272727272735,
+   "temperature": 0.18925033245425912,
+   "diurnal_range": 0.11026790315953729,
+   "aridity": 0.04545454545454547,
+   "barrenness": 0.2944599815462911,
+   "dust": 0.022727272727272735
+  },
+  "rover": {
+   "slope": 0.15151515151515152,
+   "roughness": 0.15151515151515152,
+   "thermal_inertia": 0.12121212121212122,
+   "lithology": 0.030303030303030304,
+   "ice": 0.1787448517770232,
+   "temperature": 0.09632677421840498,
+   "diurnal_range": 0.01735362785511625,
+   "aridity": 0.04559242671671537,
+   "barrenness": 0.14683080428122502,
+   "dust": 0.06060606060606061
+  },
+  "isru_base": {
+   "slope": 0.07142857142857145,
+   "roughness": 0.035714285714285726,
+   "thermal_inertia": 0.07142857142857145,
+   "lithology": 0.035714285714285726,
+   "ice": 0.37963912326685206,
+   "temperature": 0.19074249558697506,
+   "diurnal_range": 0.01258614767513926,
+   "aridity": 0.046803298497837535,
+   "barrenness": 0.12022893497319619,
+   "dust": 0.035714285714285726
+  },
+  "landing": {
+   "slope": 0.3,
+   "roughness": 0.3,
+   "thermal_inertia": 0.15,
+   "lithology": 0.0,
+   "ice": 0.0,
+   "temperature": 0.0,
+   "diurnal_range": 0.0,
+   "aridity": 0.05,
+   "barrenness": 0.05,
+   "dust": 0.15
+  }
+ },
+ "loso": {
+  "geology": {
+   "prior": {
+    "scheme": "prior",
+    "n_sites": 24,
+    "learned_from": "mission",
+    "loso_auc": 0.6670726748993879,
+    "top1pct": 0.0,
+    "top5pct": 0.22727272727272727,
+    "top10pct": 0.3181818181818182,
+    "median_rank_pct": 0.2884833333333333,
+    "ranks": {
+     "arkaroola@jezero": 0.6294066666666667,
+     "arkaroola@gale": 0.5024466666666667,
+     "askja_iceland@jezero": 0.3586933333333333,
+     "askja_iceland@gale": 0.36301333333333335,
+     "atacama_yungay@jezero": 0.17286,
+     "atacama_yungay@gale": 0.09327333333333333,
+     "black_point_lava@jezero": 0.022593333333333333,
+     "black_point_lava@gale": 0.0516,
+     "craters_of_the_moon@jezero": 0.26398666666666665,
+     "craters_of_the_moon@gale": 0.31142,
+     "death_valley@jezero": 0.12592,
+     "death_valley@gale": 0.041966666666666666,
+     "dhofar_amadee18@jezero": 0.18695333333333333,
+     "dhofar_amadee18@gale": 0.22134,
+     "el_tatio@jezero": 0.6227666666666667,
+     "el_tatio@gale": 0.22064,
+     "haughton_crater@jezero": 0.045693333333333336,
+     "haughton_crater@gale": 0.02082,
+     "hawaii_mauna_kea_loa@jezero": 0.9187933333333334,
+     "hawaii_mauna_kea_loa@gale": 0.79616,
+     "kilauea_basalt@jezero": 0.8035133333333333,
+     "kilauea_basalt@gale": 0.7731266666666666,
+     "lake_salda@jezero": 0.36596,
+     "lanzarote_timanfaya@jezero": 0.09735333333333333,
+     "lanzarote_timanfaya@gale": 0.032793333333333334,
+     "lonar_crater@jezero": 0.7209733333333334,
+     "lonar_crater@gale": 0.7757666666666667,
+     "makhtesh_ramon@jezero": 0.03136,
+     "makhtesh_ramon@gale": 0.018306666666666666,
+     "mcmurdo_dry_valleys@jezero": 0.6726266666666667,
+     "mdrs_utah@jezero": 0.0378,
+     "mdrs_utah@gale": 0.029333333333333333,
+     "meteor_crater@jezero": 0.2768933333333333,
+     "meteor_crater@gale": 0.33398,
+     "pilbara_strelley@jezero": 0.20449333333333333,
+     "qaidam_dalangtan@gale": 0.060173333333333336,
+     "qaidam_dalangtan@jezero": 0.031086666666666665,
+     "ries_crater@jezero": 0.34618666666666664,
+     "ries_crater@gale": 0.43699333333333334,
+     "rio_tinto@gale": 0.30007333333333336,
+     "rio_tinto@jezero": 0.49621333333333334,
+     "svalbard_bockfjorden@jezero": 0.7114,
+     "teide_tenerife@jezero": 0.9342466666666667,
+     "teide_tenerife@gale": 0.80832
+    }
+   },
+   "learned": {
+    "scheme": "learned",
+    "n_sites": 24,
+    "learned_from": "mission",
+    "loso_auc": 0.7020663349688516,
+    "top1pct": 0.045454545454545456,
+    "top5pct": 0.1590909090909091,
+    "top10pct": 0.4318181818181818,
+    "median_rank_pct": 0.19097,
+    "ranks": {
+     "arkaroola@jezero": 0.15947333333333333,
+     "arkaroola@gale": 0.14782666666666666,
+     "askja_iceland@jezero": 0.22281333333333334,
+     "askja_iceland@gale": 0.22246666666666667,
+     "atacama_yungay@jezero": 0.08992666666666667,
+     "atacama_yungay@gale": 0.08564,
+     "black_point_lava@jezero": 0.03966,
+     "black_point_lava@gale": 0.049126666666666666,
+     "craters_of_the_moon@jezero": 0.054926666666666665,
+     "craters_of_the_moon@gale": 0.05252,
+     "death_valley@jezero": 0.12672,
+     "death_valley@gale": 0.09398666666666666,
+     "dhofar_amadee18@jezero": 0.2985933333333333,
+     "dhofar_amadee18@gale": 0.3094266666666667,
+     "el_tatio@jezero": 0.057986666666666666,
+     "el_tatio@gale": 0.02306,
+     "haughton_crater@jezero": 0.3316,
+     "haughton_crater@gale": 0.32870666666666665,
+     "hawaii_mauna_kea_loa@jezero": 0.42954,
+     "hawaii_mauna_kea_loa@gale": 0.43096666666666666,
+     "kilauea_basalt@jezero": 0.81584,
+     "kilauea_basalt@gale": 0.81312,
+     "lake_salda@jezero": 0.50452,
+     "lanzarote_timanfaya@jezero": 0.08589333333333334,
+     "lanzarote_timanfaya@gale": 0.08076666666666667,
+     "lonar_crater@jezero": 0.8948466666666667,
+     "lonar_crater@gale": 0.9118933333333333,
+     "makhtesh_ramon@jezero": 0.06572,
+     "makhtesh_ramon@gale": 0.06420666666666666,
+     "mcmurdo_dry_valleys@jezero": 0.95184,
+     "mdrs_utah@jezero": 0.03187333333333333,
+     "mdrs_utah@gale": 0.02858,
+     "meteor_crater@jezero": 0.05605333333333333,
+     "meteor_crater@gale": 0.06781333333333334,
+     "pilbara_strelley@jezero": 0.39348666666666665,
+     "qaidam_dalangtan@gale": 0.006873333333333334,
+     "qaidam_dalangtan@jezero": 0.00212,
+     "ries_crater@jezero": 0.4839733333333333,
+     "ries_crater@gale": 0.49605333333333335,
+     "rio_tinto@gale": 0.48872666666666664,
+     "rio_tinto@jezero": 0.5479333333333334,
+     "svalbard_bockfjorden@jezero": 0.39647333333333334,
+     "teide_tenerife@jezero": 0.9195,
+     "teide_tenerife@gale": 0.6936266666666666
+    }
+   },
+   "prior_x_learned": {
+    "scheme": "prior_x_learned",
+    "n_sites": 24,
+    "learned_from": "mission",
+    "loso_auc": 0.7264285517393462,
+    "top1pct": 0.045454545454545456,
+    "top5pct": 0.09090909090909091,
+    "top10pct": 0.3409090909090909,
+    "median_rank_pct": 0.15536666666666665,
+    "ranks": {
+     "arkaroola@jezero": 0.26732,
+     "arkaroola@gale": 0.25960666666666665,
+     "askja_iceland@jezero": 0.18108,
+     "askja_iceland@gale": 0.17868666666666666,
+     "atacama_yungay@jezero": 0.07767333333333333,
+     "atacama_yungay@gale": 0.07591333333333333,
+     "black_point_lava@jezero": 0.09177333333333333,
+     "black_point_lava@gale": 0.09844666666666667,
+     "craters_of_the_moon@jezero": 0.13725333333333334,
+     "craters_of_the_moon@gale": 0.14916,
+     "death_valley@jezero": 0.10158666666666667,
+     "death_valley@gale": 0.07964,
+     "dhofar_amadee18@jezero": 0.20634,
+     "dhofar_amadee18@gale": 0.21668666666666667,
+     "el_tatio@jezero": 0.12880666666666668,
+     "el_tatio@gale": 0.05262666666666667,
+     "haughton_crater@jezero": 0.00258,
+     "haughton_crater@gale": 0.0022333333333333333,
+     "hawaii_mauna_kea_loa@jezero": 0.5996066666666666,
+     "hawaii_mauna_kea_loa@gale": 0.5851066666666667,
+     "kilauea_basalt@jezero": 0.9140266666666667,
+     "kilauea_basalt@gale": 0.9129933333333333,
+     "lake_salda@jezero": 0.5185933333333334,
+     "lanzarote_timanfaya@jezero": 0.10410666666666667,
+     "lanzarote_timanfaya@gale": 0.09214666666666667,
+     "lonar_crater@jezero": 0.9522333333333334,
+     "lonar_crater@gale": 0.96706,
+     "makhtesh_ramon@jezero": 0.06560666666666666,
+     "makhtesh_ramon@gale": 0.06126,
+     "mcmurdo_dry_valleys@jezero": 0.3828666666666667,
+     "mdrs_utah@jezero": 0.05399333333333333,
+     "mdrs_utah@gale": 0.05026666666666667,
+     "meteor_crater@jezero": 0.15094,
+     "meteor_crater@gale": 0.15979333333333334,
+     "pilbara_strelley@jezero": 0.35807333333333335,
+     "qaidam_dalangtan@gale": 0.016826666666666667,
+     "qaidam_dalangtan@jezero": 0.011993333333333333,
+     "ries_crater@jezero": 0.48850666666666664,
+     "ries_crater@gale": 0.5345733333333333,
+     "rio_tinto@gale": 0.52708,
+     "rio_tinto@jezero": 0.5987866666666667,
+     "svalbard_bockfjorden@jezero": 0.14675333333333335,
+     "teide_tenerife@jezero": 0.9596866666666667,
+     "teide_tenerife@gale": 0.87186
+    }
+   },
+   "blend": {
+    "scheme": "blend",
+    "n_sites": 24,
+    "learned_from": "mission",
+    "loso_auc": 0.7042508545123767,
+    "top1pct": 0.022727272727272728,
+    "top5pct": 0.22727272727272727,
+    "top10pct": 0.3409090909090909,
+    "median_rank_pct": 0.24767666666666666,
+    "ranks": {
+     "arkaroola@jezero": 0.28574666666666665,
+     "arkaroola@gale": 0.24952,
+     "askja_iceland@jezero": 0.2684666666666667,
+     "askja_iceland@gale": 0.2787733333333333,
+     "atacama_yungay@jezero": 0.07666666666666666,
+     "atacama_yungay@gale": 0.06612666666666667,
+     "black_point_lava@jezero": 0.02766,
+     "black_point_lava@gale": 0.0345,
+     "craters_of_the_moon@jezero": 0.09633333333333334,
+     "craters_of_the_moon@gale": 0.12174666666666667,
+     "death_valley@jezero": 0.10548666666666667,
+     "death_valley@gale": 0.06028,
+     "dhofar_amadee18@jezero": 0.24583333333333332,
+     "dhofar_amadee18@gale": 0.28174,
+     "el_tatio@jezero": 0.23528666666666667,
+     "el_tatio@gale": 0.047733333333333336,
+     "haughton_crater@jezero": 0.2584,
+     "haughton_crater@gale": 0.23615333333333333,
+     "hawaii_mauna_kea_loa@jezero": 0.6072533333333333,
+     "hawaii_mauna_kea_loa@gale": 0.5793666666666667,
+     "kilauea_basalt@jezero": 0.8477866666666667,
+     "kilauea_basalt@gale": 0.8152133333333333,
+     "lake_salda@jezero": 0.4587333333333333,
+     "lanzarote_timanfaya@jezero": 0.06978,
+     "lanzarote_timanfaya@gale": 0.04806,
+     "lonar_crater@jezero": 0.8323733333333333,
+     "lonar_crater@gale": 0.8821333333333333,
+     "makhtesh_ramon@jezero": 0.0403,
+     "makhtesh_ramon@gale": 0.02862,
+     "mcmurdo_dry_valleys@jezero": 0.8296933333333333,
+     "mdrs_utah@jezero": 0.018133333333333335,
+     "mdrs_utah@gale": 0.015513333333333334,
+     "meteor_crater@jezero": 0.11150666666666667,
+     "meteor_crater@gale": 0.13314666666666666,
+     "pilbara_strelley@jezero": 0.3624266666666667,
+     "qaidam_dalangtan@gale": 0.011033333333333332,
+     "qaidam_dalangtan@jezero": 0.0029066666666666668,
+     "ries_crater@jezero": 0.44272,
+     "ries_crater@gale": 0.47798,
+     "rio_tinto@gale": 0.4238,
+     "rio_tinto@jezero": 0.5177933333333333,
+     "svalbard_bockfjorden@jezero": 0.41548,
+     "teide_tenerife@jezero": 0.94256,
+     "teide_tenerife@gale": 0.7692866666666667
+    }
+   }
+  },
+  "rover": {
+   "prior": {
+    "scheme": "prior",
+    "n_sites": 13,
+    "learned_from": "global",
+    "loso_auc": 0.6202880533656762,
+    "top1pct": 0.0,
+    "top5pct": 0.08,
+    "top10pct": 0.28,
+    "median_rank_pct": 0.2225,
+    "ranks": {
+     "arkaroola@jezero": 0.24826666666666666,
+     "arkaroola@gale": 0.15073333333333333,
+     "askja_iceland@jezero": 0.22104,
+     "askja_iceland@gale": 0.2900466666666667,
+     "atacama_yungay@jezero": 0.7522333333333333,
+     "atacama_yungay@gale": 0.19792666666666667,
+     "black_point_lava@jezero": 0.2225,
+     "black_point_lava@gale": 0.38298666666666664,
+     "dhofar_amadee18@jezero": 0.6900933333333333,
+     "dhofar_amadee18@gale": 0.8355933333333333,
+     "dumont_dunes@jezero": 0.44554,
+     "dumont_dunes@gale": 0.05893333333333333,
+     "haughton_crater@jezero": 0.02198,
+     "haughton_crater@gale": 0.07822666666666667,
+     "lanzarote_timanfaya@jezero": 0.021573333333333333,
+     "lanzarote_timanfaya@gale": 0.06973333333333333,
+     "makhtesh_ramon@jezero": 0.05858,
+     "makhtesh_ramon@gale": 0.08190666666666667,
+     "mdrs_utah@jezero": 0.12292,
+     "mdrs_utah@gale": 0.17990666666666666,
+     "qaidam_dalangtan@gale": 0.55126,
+     "qaidam_dalangtan@jezero": 0.3959666666666667,
+     "svalbard_bockfjorden@jezero": 0.9947066666666666,
+     "teide_tenerife@jezero": 0.9141,
+     "teide_tenerife@gale": 0.92166
+    }
+   },
+   "learned": {
+    "scheme": "learned",
+    "n_sites": 13,
+    "learned_from": "global",
+    "loso_auc": 0.8006943602183141,
+    "top1pct": 0.04,
+    "top5pct": 0.12,
+    "top10pct": 0.24,
+    "median_rank_pct": 0.14217333333333335,
+    "ranks": {
+     "arkaroola@jezero": 0.21879333333333334,
+     "arkaroola@gale": 0.24536666666666668,
+     "askja_iceland@jezero": 0.17846666666666666,
+     "askja_iceland@gale": 0.20900666666666667,
+     "atacama_yungay@jezero": 0.10188666666666667,
+     "atacama_yungay@gale": 0.14217333333333335,
+     "black_point_lava@jezero": 0.06316,
+     "black_point_lava@gale": 0.10164,
+     "dhofar_amadee18@jezero": 0.36094,
+     "dhofar_amadee18@gale": 0.36742,
+     "dumont_dunes@jezero": 0.13943333333333333,
+     "dumont_dunes@gale": 0.1734,
+     "haughton_crater@jezero": 0.29358666666666666,
+     "haughton_crater@gale": 0.1888,
+     "lanzarote_timanfaya@jezero": 0.1016,
+     "lanzarote_timanfaya@gale": 0.14182,
+     "makhtesh_ramon@jezero": 0.07577333333333333,
+     "makhtesh_ramon@gale": 0.11863333333333333,
+     "mdrs_utah@jezero": 0.045893333333333335,
+     "mdrs_utah@gale": 0.08234,
+     "qaidam_dalangtan@gale": 0.023486666666666666,
+     "qaidam_dalangtan@jezero": 0.007073333333333333,
+     "svalbard_bockfjorden@jezero": 0.35008,
+     "teide_tenerife@jezero": 0.7412466666666667,
+     "teide_tenerife@gale": 0.62776
+    }
+   },
+   "prior_x_learned": {
+    "scheme": "prior_x_learned",
+    "n_sites": 13,
+    "learned_from": "global",
+    "loso_auc": 0.8287386294724075,
+    "top1pct": 0.08,
+    "top5pct": 0.24,
+    "top10pct": 0.48,
+    "median_rank_pct": 0.10463333333333333,
+    "ranks": {
+     "arkaroola@jezero": 0.20207333333333333,
+     "arkaroola@gale": 0.16393333333333332,
+     "askja_iceland@jezero": 0.15742,
+     "askja_iceland@gale": 0.159,
+     "atacama_yungay@jezero": 0.13876666666666668,
+     "atacama_yungay@gale": 0.10463333333333333,
+     "black_point_lava@jezero": 0.07542666666666667,
+     "black_point_lava@gale": 0.09162,
+     "dhofar_amadee18@jezero": 0.3592666666666667,
+     "dhofar_amadee18@gale": 0.37024666666666667,
+     "dumont_dunes@jezero": 0.14532666666666666,
+     "dumont_dunes@gale": 0.12071333333333334,
+     "haughton_crater@jezero": 0.002086666666666667,
+     "haughton_crater@gale": 0.0016266666666666667,
+     "lanzarote_timanfaya@jezero": 0.0958,
+     "lanzarote_timanfaya@gale": 0.06477333333333334,
+     "makhtesh_ramon@jezero": 0.07136666666666666,
+     "makhtesh_ramon@gale": 0.05667333333333333,
+     "mdrs_utah@jezero": 0.04762,
+     "mdrs_utah@gale": 0.041613333333333336,
+     "qaidam_dalangtan@gale": 0.03473333333333333,
+     "qaidam_dalangtan@jezero": 0.01698,
+     "svalbard_bockfjorden@jezero": 0.38076,
+     "teide_tenerife@jezero": 0.9422933333333333,
+     "teide_tenerife@gale": 0.78618
+    }
+   },
+   "blend": {
+    "scheme": "blend",
+    "n_sites": 13,
+    "learned_from": "global",
+    "loso_auc": 0.7701121892055792,
+    "top1pct": 0.0,
+    "top5pct": 0.28,
+    "top10pct": 0.48,
+    "median_rank_pct": 0.12627333333333332,
+    "ranks": {
+     "arkaroola@jezero": 0.14914,
+     "arkaroola@gale": 0.07318666666666666,
+     "askja_iceland@jezero": 0.14097333333333334,
+     "askja_iceland@gale": 0.13526,
+     "atacama_yungay@jezero": 0.23426666666666668,
+     "atacama_yungay@gale": 0.07793333333333333,
+     "black_point_lava@jezero": 0.07632666666666667,
+     "black_point_lava@gale": 0.12627333333333332,
+     "dhofar_amadee18@jezero": 0.38981333333333335,
+     "dhofar_amadee18@gale": 0.6402733333333334,
+     "dumont_dunes@jezero": 0.16688666666666666,
+     "dumont_dunes@gale": 0.040486666666666664,
+     "haughton_crater@jezero": 0.13655333333333333,
+     "haughton_crater@gale": 0.048813333333333334,
+     "lanzarote_timanfaya@jezero": 0.025806666666666665,
+     "lanzarote_timanfaya@gale": 0.034273333333333336,
+     "makhtesh_ramon@jezero": 0.02972,
+     "makhtesh_ramon@gale": 0.03816666666666667,
+     "mdrs_utah@jezero": 0.031786666666666664,
+     "mdrs_utah@gale": 0.06032,
+     "qaidam_dalangtan@gale": 0.14824666666666667,
+     "qaidam_dalangtan@jezero": 0.052246666666666663,
+     "svalbard_bockfjorden@jezero": 0.93698,
+     "teide_tenerife@jezero": 0.9399466666666667,
+     "teide_tenerife@gale": 0.9271133333333333
+    }
+   }
+  },
+  "isru_base": {
+   "prior": {
+    "scheme": "prior",
+    "n_sites": 8,
+    "learned_from": "global",
+    "loso_auc": 0.5791957246816252,
+    "top1pct": 0.0,
+    "top5pct": 0.125,
+    "top10pct": 0.25,
+    "median_rank_pct": 0.4692,
+    "ranks": {
+     "axel_heiberg@arcadia": 0.36278666666666665,
+     "dhofar_amadee18@arcadia": 0.8499133333333333,
+     "haughton_crater@arcadia": 0.055433333333333334,
+     "hawaii_mauna_kea_loa@arcadia": 0.6067266666666666,
+     "makhtesh_ramon@arcadia": 0.37861333333333336,
+     "mcmurdo_dry_valleys@arcadia": 0.5597866666666667,
+     "svalbard_bockfjorden@arcadia": 0.6554333333333333,
+     "tuktoyaktuk@arcadia": 0.03522666666666667
+    }
+   },
+   "learned": {
+    "scheme": "learned",
+    "n_sites": 8,
+    "learned_from": "global",
+    "loso_auc": 0.8064546694966647,
+    "top1pct": 0.0,
+    "top5pct": 0.125,
+    "top10pct": 0.5,
+    "median_rank_pct": 0.12349666666666667,
+    "ranks": {
+     "axel_heiberg@arcadia": 0.03418,
+     "dhofar_amadee18@arcadia": 0.3819533333333333,
+     "haughton_crater@arcadia": 0.055253333333333335,
+     "hawaii_mauna_kea_loa@arcadia": 0.5783333333333334,
+     "makhtesh_ramon@arcadia": 0.15502666666666667,
+     "mcmurdo_dry_valleys@arcadia": 0.28818666666666665,
+     "svalbard_bockfjorden@arcadia": 0.09196666666666667,
+     "tuktoyaktuk@arcadia": 0.09103333333333333
+    }
+   },
+   "prior_x_learned": {
+    "scheme": "prior_x_learned",
+    "n_sites": 8,
+    "learned_from": "global",
+    "loso_auc": 0.748483929654336,
+    "top1pct": 0.0,
+    "top5pct": 0.25,
+    "top10pct": 0.625,
+    "median_rank_pct": 0.07855666666666666,
+    "ranks": {
+     "axel_heiberg@arcadia": 0.037886666666666666,
+     "dhofar_amadee18@arcadia": 0.9514133333333333,
+     "haughton_crater@arcadia": 0.027246666666666666,
+     "hawaii_mauna_kea_loa@arcadia": 0.55372,
+     "makhtesh_ramon@arcadia": 0.25127333333333335,
+     "mcmurdo_dry_valleys@arcadia": 0.076,
+     "svalbard_bockfjorden@arcadia": 0.08111333333333333,
+     "tuktoyaktuk@arcadia": 0.07384666666666667
+    }
+   },
+   "blend": {
+    "scheme": "blend",
+    "n_sites": 8,
+    "learned_from": "global",
+    "loso_auc": 0.7527099757428745,
+    "top1pct": 0.0,
+    "top5pct": 0.25,
+    "top10pct": 0.25,
+    "median_rank_pct": 0.24453666666666665,
+    "ranks": {
+     "axel_heiberg@arcadia": 0.12388,
+     "dhofar_amadee18@arcadia": 0.7062533333333333,
+     "haughton_crater@arcadia": 0.04652,
+     "hawaii_mauna_kea_loa@arcadia": 0.5068,
+     "makhtesh_ramon@arcadia": 0.21958,
+     "mcmurdo_dry_valleys@arcadia": 0.31310666666666664,
+     "svalbard_bockfjorden@arcadia": 0.2694933333333333,
+     "tuktoyaktuk@arcadia": 0.047613333333333334
+    }
+   }
+  },
+  "landing": {
+   "prior": {
+    "scheme": "prior",
+    "n_sites": 3,
+    "learned_from": "global",
+    "loso_auc": 0.6860218314129776,
+    "top1pct": 0.0,
+    "top5pct": 0.0,
+    "top10pct": 0.6666666666666666,
+    "median_rank_pct": 0.08728,
+    "ranks": {
+     "death_valley@arcadia": 0.8212533333333333,
+     "mojave_xombie@arcadia": 0.08728,
+     "white_sands@arcadia": 0.05024
+    }
+   },
+   "learned": {
+    "scheme": "learned",
+    "n_sites": 3,
+    "learned_from": "global",
+    "loso_auc": 0.841570648878108,
+    "top1pct": 0.0,
+    "top5pct": 0.0,
+    "top10pct": 0.0,
+    "median_rank_pct": 0.17352,
+    "ranks": {
+     "death_valley@arcadia": 0.17352,
+     "mojave_xombie@arcadia": 0.21141333333333334,
+     "white_sands@arcadia": 0.1472
+    }
+   },
+   "prior_x_learned": {
+    "scheme": "prior_x_learned",
+    "n_sites": 3,
+    "learned_from": "global",
+    "loso_auc": 0.805690317364059,
+    "top1pct": 0.0,
+    "top5pct": 0.0,
+    "top10pct": 0.0,
+    "median_rank_pct": 0.22766666666666666,
+    "ranks": {
+     "death_valley@arcadia": 0.28204666666666667,
+     "mojave_xombie@arcadia": 0.22766666666666666,
+     "white_sands@arcadia": 0.12435333333333333
+    }
+   },
+   "blend": {
+    "scheme": "blend",
+    "n_sites": 3,
+    "learned_from": "global",
+    "loso_auc": 0.6841520113199918,
+    "top1pct": 0.0,
+    "top5pct": 0.0,
+    "top10pct": 0.3333333333333333,
+    "median_rank_pct": 0.10044,
+    "ranks": {
+     "death_valley@arcadia": 0.8135133333333333,
+     "mojave_xombie@arcadia": 0.10044,
+     "white_sands@arcadia": 0.05239333333333333
+    }
+   }
+  }
+ }
+}

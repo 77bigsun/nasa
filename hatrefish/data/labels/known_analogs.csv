@@ -1,0 +1,29 @@
+site_id,name,lat,lon,radius_km,analog_for,mars_target_ids,missions,reference_url,verified
+atacama_yungay,Atacama Desert Yungay core (Chile),-24.08,-69.92,30,hyper-arid oxidized soil with very low organics,"gale","geology;rover",https://doi.org/10.1126/science.1089143,true
+mcmurdo_dry_valleys,McMurdo Dry Valleys (Antarctica),-77.5,162.0,50,cold polar desert soils and ground ice like the Martian northern plains,"arcadia","geology;landing",https://doi.org/10.1017/S0954102011000800,true
+beacon_valley,Beacon Valley ancient buried ice (Antarctica),-77.82,160.66,15,buried massive ground ice under dry soil,"arcadia","geology;isru_base",https://doi.org/10.1029/2005GL023881,true
+haughton_crater,Haughton impact crater Devon Island (Canada),75.38,-89.68,20,impact crater in polar desert with permafrost,"arcadia;jezero","geology;rover;isru_base",https://science.nasa.gov/solar-system/planetary-analogs/10-things-to-know-about-planetary-analogs/,true
+axel_heiberg_lost_hammer,Lost Hammer cold saline spring Axel Heiberg Island (Canada),79.08,-90.21,10,cold saline spring through permafrost,"arcadia","geology",https://doi.org/10.1016/j.epsl.2018.10.001,true
+svalbard_bockfjorden,Bockfjorden Volcanic Complex Svalbard (Norway),79.43,13.33,20,carbonate globules in volcanic rocks (ALH84001-type) in permafrost terrain,"jezero;arcadia","geology;rover",https://ntrs.nasa.gov/citations/20110007828,true
+mdrs_hanksville,Mars Desert Research Station Hanksville (Utah),38.41,-110.79,25,exhumed inverted fluvial channels and floodplain clays,"jezero;gale","geology;isru_base",https://doi.org/10.1017/S1473550411000048,true
+utah_navajo_concretions,Navajo Sandstone hematite concretions southern Utah,37.6,-111.5,50,hematite concretions from groundwater diagenesis,"gale","geology",https://doi.org/10.1038/nature02600,true
+pilot_valley_utah,Pilot Valley paleolake playa (Utah),40.9,-113.95,15,hypersaline paleolake with perchlorate-type salts,"gale;arcadia","geology",https://science.nasa.gov/solar-system/analog-explorer/,true
+black_point_lava_flow,Black Point Lava Flow (Arizona),35.68,-111.43,15,basaltic lava over sedimentary deposits for surface operations,"jezero","geology;rover",https://news.asu.edu/content/arizona-stands-moon-and-mars,true
+death_valley_badwater,Badwater Basin Death Valley (California),36.23,-116.77,20,playa evaporites (sulfates and carbonates) for remote sensing,"gale","geology",https://doi.org/10.1029/2004JE002315,true
+mojave_lavic_lake,Lavic Lake and Sunshine volcanic field Mojave Desert (California),34.66,-116.34,30,rover field geology traverses on playa and basalt,"gale;jezero","rover;landing",https://doi.org/10.1029/98JE01768,true
+white_sands_lake_lucero,White Sands gypsum dunes and Lake Lucero (New Mexico),32.80,-106.35,25,sulfate (gypsum) eolian dunes and playa,"gale","geology",https://doi.org/10.1130/G22101.1,true
+pavilion_lake,Pavilion Lake (British Columbia),50.87,-121.74,10,freshwater lake carbonate microbialites,"jezero","geology;rover",https://www.nasa.gov/missions/analog-field-testing/pavilion-lake-canada/,true
+lake_salda,Lake Salda (Turkey),37.55,29.68,10,lake carbonates and deltas like Jezero crater,"jezero","geology;rover",https://science.nasa.gov/earth/earth-observatory/jez-like-mars-147041/,true
+rio_tinto,Rio Tinto acid river headwaters (Spain),37.72,-6.55,30,acid-sulfate jarosite and hematite deposits,"gale","geology",https://doi.org/10.1016/j.epsl.2005.09.043,true
+ries_crater,Ries impact crater (Germany),48.88,10.56,15,impact crater with double-layer ejecta and crater lake sediments,"jezero","geology",https://doi.org/10.1130/G33934.1,true
+askja_vikrahraun,Askja lava fields Vikrahraun (Iceland),65.05,-16.75,15,basaltic lava flow morphology and aeolian ripples,"jezero;gale","geology;rover",https://doi.org/10.1186/s40623-022-01711-5,true
+lanzarote,Lanzarote volcanic fields (Spain),29.03,-13.63,30,basaltic volcanic terrain and lava tubes,"arcadia","geology;rover",https://www.esa.int/ESA_Multimedia/Images/2016/11/Lanzarote,true
+mauna_kea_palagonite,Mauna Kea upper slopes palagonitic tephra (Hawaii),19.80,-155.46,15,palagonitic dust/soil spectral and magnetic analog,"gale;arcadia","geology;isru_base",https://doi.org/10.1029/2000JE001328,true
+hiseas_mauna_loa,HI-SEAS habitat Mauna Loa (Hawaii),19.60,-155.49,10,isolated Mars simulation habitat on volcanic terrain,"arcadia","isru_base",https://www.hawaii.edu/news/2017/01/19/mission-v-crew-enters-hi-seas-mars-simulation-habitat-on-mauna-loa/,true
+kau_desert_kilauea,Ka'u Desert Kilauea (Hawaii),19.35,-155.35,15,acid-sulfate alteration and silica coatings on basalt,"gale","geology",https://doi.org/10.1029/2009JE003473,true
+lonar_crater,Lonar crater (India),19.976,76.508,10,impact crater in basalt with hydrothermal clays and crater lake,"jezero;gale","geology",https://doi.org/10.1111/j.1945-5100.2003.tb00272.x,true
+kachchh_matanumadh,Matanumadh jarosite locality Kachchh (India),23.55,68.95,15,jarosite with kaolinite and smectite in altered basalt,"gale;jezero","geology",https://doi.org/10.1002/2015JE004949,true
+qaidam_dalangtan,Dalangtan saline playa Qaidam Basin (China),38.33,91.67,40,hyperarid saline playa with sulfates and chlorides,"gale","geology",https://doi.org/10.1089/ast.2018.1830,true
+dallol,Dallol geothermal area Afar (Ethiopia),14.24,40.30,10,hydrothermal acid-sulfate deposits,"gale","geology",https://doi.org/10.1089/ast.2018.1926,true
+dhofar_amadee18,AMADEE-18 field site Marmul area Dhofar (Oman),18.13,55.20,40,desert sedimentary terrain and salt domes,"gale","rover;isru_base",https://oewf.org/en/amadee-18,true
+pilbara_dresser,Dresser Formation stromatolites Pilbara (Australia),-21.17,119.42,20,ancient hydrothermal lagoon stromatolites,"jezero","geology",https://www.nasa.gov/solar-system/mars-scientists-investigate-ancient-life-in-australia,true

@@ -1,0 +1,47 @@
+mars_group,glim_class,similarity,rationale
+basalt,vb,1.0,同為基性火山岩（玄武岩）
+basalt,pb,0.6,成分接近（基性），但為深成岩
+basalt,vi,0.6,中性火山岩，火山地貌相近
+basalt,py,0.6,火山碎屑岩，常與玄武岩火山共生
+basalt,va,0.3,酸性火山岩，成分差異大
+basalt,su,0.2,未固結沉積物（可能含玄武岩質砂）
+clastic,ss,1.0,碎屑沉積岩
+clastic,su,0.8,未固結碎屑沉積物
+clastic,sm,0.8,混合沉積岩，以碎屑為主
+clastic,ev,0.4,蒸發岩，常與碎屑沉積互層
+clastic,py,0.4,火山碎屑岩，同屬碎屑但來源不同
+clastic,sc,0.3,碳酸鹽岩，化學沉積
+clastic,vb,0.3,火星碎屑多來自玄武岩
+clastic,mt,0.2,變質岩
+mudstone_clastic,ss,0.9,碎屑沉積岩（含泥岩、頁岩）
+mudstone_clastic,sm,0.8,混合沉積岩
+mudstone_clastic,su,0.6,未固結細粒沉積
+mudstone_clastic,ev,0.5,湖相泥岩常與蒸發岩共生（如 Gale 的硫酸鹽層）
+mudstone_clastic,sc,0.4,碳酸鹽岩
+evaporite_sulfate_clastic,ev,1.0,蒸發岩
+evaporite_sulfate_clastic,sm,0.6,混合沉積岩
+evaporite_sulfate_clastic,ss,0.5,碎屑沉積岩
+evaporite_sulfate_clastic,su,0.5,未固結沉積（鹽湖、乾湖）
+evaporite_sulfate_clastic,sc,0.4,碳酸鹽岩
+sedimentary_carbonate_clay,sm,0.9,混合沉積岩，可含碳酸鹽與黏土
+sedimentary_carbonate_clay,sc,0.7,碳酸鹽沉積岩
+sedimentary_carbonate_clay,ss,0.7,碎屑沉積岩（含黏土）
+sedimentary_carbonate_clay,ev,0.5,蒸發岩
+sedimentary_carbonate_clay,su,0.5,未固結沉積
+impact_breccia_carbonate,mt,0.5,GLiM 沒有撞擊岩類別；撞擊會造成衝擊變質
+impact_breccia_carbonate,sm,0.5,撞擊角礫常與沉積層混合
+impact_breccia_carbonate,vb,0.5,火星高地地殼以玄武岩為主
+impact_breccia_carbonate,pb,0.4,基性深成岩（古老地殼）
+impact_breccia_carbonate,ss,0.4,碎屑沉積岩
+impact_breccia_carbonate,sc,0.4,碳酸鹽岩（如 Haughton 撞擊於碳酸鹽岩）
+impact_breccia_carbonate,su,0.3,未固結沉積
+impact_breccia_carbonate,pa,0.3,酸性深成岩
+impact_breccia_carbonate,pi,0.3,中性深成岩
+hydrothermal_sulfate,vi,0.7,熱液活動常見於中性火山區
+hydrothermal_sulfate,py,0.7,火山碎屑岩（熱液蝕變）
+hydrothermal_sulfate,va,0.6,酸性火山岩
+hydrothermal_sulfate,vb,0.5,基性火山岩
+hydrothermal_sulfate,ev,0.5,蒸發岩（硫酸鹽）
+polar_layered,ig,0.8,極地層狀沉積以冰為主
+polar_layered,su,0.5,未固結沉積
+polar_layered,ss,0.4,碎屑沉積岩

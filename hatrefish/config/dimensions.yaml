@@ -1,0 +1,34 @@
+# 七個類比面向（對應題目 Potential Considerations 的面向）。最後更新：2026-11-14。
+# 面向分數 = 面向內「有資料的變數」等權重幾何平均；整體相似度 = 有分數的面向等權重幾何平均 × 100。
+# variables 留空 = 目前沒有變數，結果檔標成 not_evaluated。
+# 「無植被」（barrenness，原名荒蕪度）歸在地表物質：它描述地表是否裸露，不代表生物類比。
+dimensions:
+  terrain:
+    label_zh: 地形
+    label_en: Terrain
+    variables: [slope, roughness]
+  surface:
+    label_zh: 地表物質與裸露
+    label_en: Surface
+    variables: [lithology, thermal_inertia, barrenness]
+  environment:
+    label_zh: 環境極端
+    label_en: Environment
+    variables: [temperature, aridity]   # 日溫差（diurnal_range）不計入：火星日溫差主要來自稀薄大氣，地球無法模擬，
+                                        # 而且會把極地類比地（日溫差只有幾度）壓到底。只在 breaks 裡當參考。
+  water_ice:
+    label_zh: 水與冰
+    label_en: Water/ice
+    variables: [ice]
+  atmosphere_dust:
+    label_zh: 大氣與沙塵
+    label_en: Dust
+    variables: [dust]
+  biology:
+    label_zh: 生物與棲息性
+    label_en: Biology
+    variables: []        # 待補：土壤有機碳、土壤鹽度（GEE 有現成資料，見 docs/MISSION_WEIGHTS_BASIS.md 1.1）
+  subsurface:
+    label_zh: 洞穴與地下
+    label_en: Subsurface
+    variables: []        # 沒有全球資料

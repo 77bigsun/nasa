@@ -6,3 +6,8 @@
 .env
 __pycache__/
 .ipynb_checkpoints/
+
+data/interim/
+data/ca_bundle_windows.pem
+*.npy
+*.egg-info/

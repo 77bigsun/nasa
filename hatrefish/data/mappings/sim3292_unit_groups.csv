@@ -1,0 +1,45 @@
+unit,unit_desc,mars_group,note
+mNh,Middle Noachian highland unit,impact_breccia_carbonate,heavily cratered ancient crust: impact breccia mixed with volcanic and sedimentary rock
+eNh,Early Noachian highland unit,impact_breccia_carbonate,oldest cratered crust and impact breccia
+lNh,Late Noachian highland unit,impact_breccia_carbonate,cratered highland plains; impact breccia with some sediment
+eNhm,Early Noachian highland massif unit,impact_breccia_carbonate,uplifted crustal massifs around impact basins
+mNhm,Middle Noachian highland massif unit,impact_breccia_carbonate,uplifted crustal massifs around impact basins
+Nhu,Noachian highland undivided unit,impact_breccia_carbonate,undivided Noachian highland crust
+HNhu,Hesperian and Noachian highland undivided unit,impact_breccia_carbonate,undivided highland crust
+eHh,Early Hesperian highland unit,impact_breccia_carbonate,highland plains; mixed volcanic and impact material (uncertain)
+Nhe,Noachian highland edifice unit,impact_breccia_carbonate,isolated highland edifices of uncertain origin (uncertain)
+AHi,Amazonian and Hesperian impact unit,impact_breccia_carbonate,ejecta and breccia of large young craters
+AHv,Amazonian and Hesperian volcanic,basalt,lava flows (basaltic plains)
+eHv,Early Hesperian volcanic unit,basalt,ridged volcanic plains (flood basalt)
+lHv,Late Hesperian volcanic unit,basalt,lava flow plains
+lNv,Late Noachian volcanic unit,basalt,old volcanic plains
+lAv,Late Amazonian volcanic unit,basalt,young lava flows
+Av,Amazonian volcanic unit,basalt,lava flows
+Ave,Amazonian volcanic edifice,basalt,shield volcano edifices
+Hve,Hesperian volcanic edifice unit,basalt,volcano edifices
+Nve,Noachian volcanic edifice unit,basalt,ancient volcano edifices
+lHvf,Late Hesperian volcanic field unit,basalt,volcanic fields
+lAvf,Late Amazonian volcanic field unit,basalt,volcanic fields
+lHl,Late Hesperian lowland unit,clastic,northern plains sediments (Vastitas Borealis)
+mAl,Middle Amazonian lowland unit,clastic,lowland plains sediments
+eHt,Early Hesperian transition unit,clastic,highland-lowland transition: sedimentary and volcanic plains
+HNt,Hesperian and Noachian transition unit,clastic,transition-zone sediments and plains (Jezero region)
+lHt,Late Hesperian transition unit,clastic,transition-zone plains
+AHtu,Amazonian and Hesperian transition undivided unit,clastic,undivided transition plains
+Hto,Hesperian transition outflow unit,clastic,outflow channel floors and flood sediments
+Ht,Hesperian transition unit,clastic,transition plains
+Htu,Hesperian transition undivided unit,clastic,undivided transition material (includes Gale interior)
+Aa,Amazonian apron unit,clastic,debris aprons (mass-wasted debris; may be ice-rich but ice is scored separately)
+ANa,Amazonian and Noachian apron unit,clastic,debris aprons
+lAa,Late Amazonian apron unit,clastic,young debris aprons and lobate deposits
+lApd,Late Amazonian polar dunes unit,clastic,aeolian dune fields (sand)
+eAb,Early Amazonian basin unit,mudstone_clastic,impact-basin fill sediments (fine-grained)
+lHb,Late Hesperian basin unit,mudstone_clastic,impact-basin fill sediments
+HNb,Hesperian and Noachian basin unit,mudstone_clastic,impact-basin fill sediments
+eHb,Early Hesperian basin unit,mudstone_clastic,impact-basin fill sediments
+Apu,Amazonian polar undivided unit,polar_layered,polar layered deposits (ice and dust layers)
+lApc,Late Amazonian polar cap unit,polar_layered,residual polar ice cap
+Hp,Hesperian polar unit,polar_layered,older polar deposits
+Hpe,Hesperian polar edifice unit,polar_layered,polar-region edifices within older polar deposits (uncertain)
+Ap,Amazonian polar unit,polar_layered,polar layered deposits
+Hpu,Hesperian polar undivided unit,polar_layered,undivided polar deposits

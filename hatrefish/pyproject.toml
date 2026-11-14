@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mars_analog"
+version = "0.1.0"
+description = "Earth analog finder for Mars targets (NASA Space Apps 2026, Mars team)"
+requires-python = ">=3.10"
+
+[tool.setuptools.packages.find]
+where = ["src"]

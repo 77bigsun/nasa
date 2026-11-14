@@ -1,0 +1,231 @@
+{
+ "_provisional": true,
+ "_note": "B 製作的暫用火星目標檔（IanChen 的 mars_targets.json 交了之後自動不再使用）。",
+ "targets": {
+  "jezero": {
+   "name": "Jezero Crater delta",
+   "lat": 18.38,
+   "lon": 77.58,
+   "radius_km": 25,
+   "missions": [
+    "geology",
+    "rover"
+   ],
+   "slope": {
+    "value": 2.41146933266801,
+    "coverage": true,
+    "unit": "deg",
+    "source": "hrsc_mola_200m",
+    "n_pixels": 51742
+   },
+   "roughness": {
+    "value": 11.087722916693881,
+    "coverage": true,
+    "unit": "m",
+    "source": "hrsc_mola_200m",
+    "window_px": 5
+   },
+   "thermal_inertia": {
+    "value": 294.0,
+    "pct": 0.8739481076114576,
+    "coverage": true,
+    "unit": "tiu",
+    "source": "tes_ti_night_2007",
+    "n_pixels": 236,
+    "a2_reference": 281
+   },
+   "lithology": {
+    "value": "HNt",
+    "unit_desc": "Hesperian and Noachian transition unit",
+    "group": "clastic",
+    "coverage": true,
+    "source": "usgs_sim3292"
+   },
+   "ice": {
+    "value": -0.19,
+    "p": 0.405,
+    "coverage": true,
+    "source": "swim (TASK_A A2 reference value)"
+   },
+   "temperature": {
+    "value": -49.5,
+    "coverage": true,
+    "unit": "C",
+    "source": "mcd_v62_tsurf (TASK_A A2 reference value)"
+   },
+   "diurnal_range": {
+    "value": null,
+    "coverage": true,
+    "unit": "C",
+    "source": "earth_extreme_pct 不需要火星值；MCD 日溫差待 IanChen 補"
+   },
+   "aridity": {
+    "value": "max",
+    "coverage": true,
+    "source": "fixed_max"
+   },
+   "barrenness": {
+    "value": 0.0,
+    "coverage": true,
+    "source": "fixed_zero_ndvi"
+   },
+   "dust": {
+    "value": 0.55,
+    "pct": 0.87,
+    "coverage": true,
+    "unit": "tau",
+    "source": "mcd_v62_tauref (TASK_A A2 reference value)"
+   }
+  },
+  "gale": {
+   "name": "Gale Crater (Aeolis Mons / Curiosity area)",
+   "lat": -5.4,
+   "lon": 137.8,
+   "radius_km": 25,
+   "missions": [
+    "geology",
+    "rover"
+   ],
+   "slope": {
+    "value": 5.480527325351785,
+    "coverage": true,
+    "unit": "deg",
+    "source": "hrsc_mola_200m",
+    "n_pixels": 49307
+   },
+   "roughness": {
+    "value": 27.32424564371326,
+    "coverage": true,
+    "unit": "m",
+    "source": "hrsc_mola_200m",
+    "window_px": 5
+   },
+   "thermal_inertia": {
+    "value": 269.0,
+    "pct": 0.8008324415760855,
+    "coverage": true,
+    "unit": "tiu",
+    "source": "tes_ti_night_2007",
+    "n_pixels": 216,
+    "a2_reference": 433
+   },
+   "lithology": {
+    "value": "Htu",
+    "unit_desc": "Hesperian transition undivided unit",
+    "group": "clastic",
+    "coverage": true,
+    "source": "usgs_sim3292"
+   },
+   "ice": {
+    "value": 0.06,
+    "p": 0.53,
+    "coverage": true,
+    "source": "swim (TASK_A A2 reference value)"
+   },
+   "temperature": {
+    "value": -50.9,
+    "coverage": true,
+    "unit": "C",
+    "source": "mcd_v62_tsurf (TASK_A A2 reference value)"
+   },
+   "diurnal_range": {
+    "value": null,
+    "coverage": true,
+    "unit": "C",
+    "source": "earth_extreme_pct 不需要火星值；MCD 日溫差待 IanChen 補"
+   },
+   "aridity": {
+    "value": "max",
+    "coverage": true,
+    "source": "fixed_max"
+   },
+   "barrenness": {
+    "value": 0.0,
+    "coverage": true,
+    "source": "fixed_zero_ndvi"
+   },
+   "dust": {
+    "value": 0.46,
+    "pct": 0.73,
+    "coverage": true,
+    "unit": "tau",
+    "source": "mcd_v62_tauref (TASK_A A2 reference value)"
+   }
+  },
+  "arcadia": {
+   "name": "Arcadia Planitia (shallow ice)",
+   "lat": 47.2,
+   "lon": -175.7,
+   "radius_km": 50,
+   "missions": [
+    "isru_base",
+    "landing"
+   ],
+   "slope": {
+    "value": 0.2548755240879314,
+    "coverage": true,
+    "unit": "deg",
+    "source": "hrsc_mola_200m",
+    "n_pixels": 289005
+   },
+   "roughness": {
+    "value": 0.89442720599392,
+    "coverage": true,
+    "unit": "m",
+    "source": "hrsc_mola_200m",
+    "window_px": 5
+   },
+   "thermal_inertia": {
+    "value": 231.0,
+    "pct": 0.6328243395446105,
+    "coverage": true,
+    "unit": "tiu",
+    "source": "tes_ti_night_2007",
+    "n_pixels": 1324,
+    "a2_reference": 241
+   },
+   "lithology": {
+    "value": "Av",
+    "unit_desc": "Amazonian volcanic unit",
+    "group": "basalt",
+    "coverage": true,
+    "source": "usgs_sim3292"
+   },
+   "ice": {
+    "value": 0.51,
+    "p": 0.755,
+    "coverage": true,
+    "source": "swim (TASK_A A2 reference value)"
+   },
+   "temperature": {
+    "value": -75.9,
+    "coverage": true,
+    "unit": "C",
+    "source": "mcd_v62_tsurf (TASK_A A2 reference value)"
+   },
+   "diurnal_range": {
+    "value": null,
+    "coverage": true,
+    "unit": "C",
+    "source": "earth_extreme_pct 不需要火星值；MCD 日溫差待 IanChen 補"
+   },
+   "aridity": {
+    "value": "max",
+    "coverage": true,
+    "source": "fixed_max"
+   },
+   "barrenness": {
+    "value": 0.0,
+    "coverage": true,
+    "source": "fixed_zero_ndvi"
+   },
+   "dust": {
+    "value": 0.35,
+    "pct": 0.42,
+    "coverage": true,
+    "unit": "tau",
+    "source": "mcd_v62_tauref (TASK_A A2 reference value)"
+   }
+  }
+ }
+}

@@ -1,0 +1,57 @@
+mars_group,glim_class,similarity,rationale
+basalt,vb,1.0,both basic volcanic rock (basalt)
+basalt,vi,0.7,intermediate volcanics; close in composition and texture
+basalt,pb,0.6,same basic composition but plutonic (coarse grained)
+basalt,py,0.6,basaltic pyroclastics are common on Mars
+basalt,su,0.3,unconsolidated sediment; basaltic sand only where the source is volcanic
+basalt,va,0.3,acid volcanics; volcanic texture but very different composition
+basalt,mt,0.2,metamorphic; little in common
+basalt,ss,0.2,siliciclastic sediment; little in common
+basalt,wb,0.0,water body is not a rock surface
+impact_breccia_carbonate,mt,0.6,impact-altered ancient crust resembles old metamorphic basement
+impact_breccia_carbonate,sm,0.5,mixed sediments as reworked crust
+impact_breccia_carbonate,vb,0.5,Noachian crust is largely basaltic
+impact_breccia_carbonate,pb,0.5,basic plutonic like deep ancient crust
+impact_breccia_carbonate,py,0.4,fragmental volcanic rock resembles breccia texture
+impact_breccia_carbonate,ss,0.4,clastic sediment
+impact_breccia_carbonate,sc,0.3,carbonate targets give carbonate breccia (e.g. Haughton) but SIM3292 cannot show carbonate
+impact_breccia_carbonate,su,0.3,loose regolith over cratered crust
+impact_breccia_carbonate,wb,0.0,water body is not a rock surface
+clastic,ss,0.9,siliciclastic sedimentary rock
+clastic,sm,0.8,mixed sedimentary rock
+clastic,su,0.7,unconsolidated sediment (plains fill and dunes)
+clastic,py,0.4,volcaniclastic material is common in Mars plains
+clastic,ev,0.3,some plains sediments contain salts
+clastic,sc,0.3,carbonate sediment; minor on Mars
+clastic,vb,0.3,basaltic source rock of Mars sediments
+clastic,mt,0.2,metamorphic; little in common
+clastic,wb,0.0,water body is not a rock surface
+mudstone_clastic,sm,0.8,mixed sedimentary rock incl. fine-grained mudstone
+mudstone_clastic,ss,0.8,siliciclastic sedimentary rock
+mudstone_clastic,su,0.6,unconsolidated basin fill
+mudstone_clastic,sc,0.4,lake-basin carbonates are possible
+mudstone_clastic,ev,0.4,basin evaporites are possible
+mudstone_clastic,wb,0.0,water body is not a rock surface
+polar_layered,ig,0.8,ice-rich layered deposits; ice and glaciers is the closest Earth class
+polar_layered,su,0.4,dust and sand layers within the deposits
+polar_layered,ss,0.2,layered sediment but lithified
+polar_layered,wb,0.0,water body is not a rock surface
+evaporite_sulfate_clastic,ev,1.0,evaporites; GLiM does not split sulfate from other salts
+evaporite_sulfate_clastic,sm,0.6,mixed sediments with salts
+evaporite_sulfate_clastic,ss,0.5,clastic host sediment
+evaporite_sulfate_clastic,su,0.5,salt flats are often unconsolidated
+evaporite_sulfate_clastic,sc,0.4,chemical sediment
+evaporite_sulfate_clastic,wb,0.0,water body is not a rock surface
+sedimentary_carbonate_clay,sm,0.8,mixed sediments can hold carbonate and clay
+sedimentary_carbonate_clay,sc,0.7,carbonate sedimentary rock
+sedimentary_carbonate_clay,ss,0.6,clay-bearing clastic rock
+sedimentary_carbonate_clay,su,0.5,unconsolidated lake sediment
+sedimentary_carbonate_clay,ev,0.4,lake chemical sediments
+sedimentary_carbonate_clay,wb,0.0,water body is not a rock surface
+hydrothermal_sulfate,ev,0.6,sulfate salts precipitated from fluids
+hydrothermal_sulfate,vb,0.5,hydrothermal systems sit in basaltic volcanics
+hydrothermal_sulfate,vi,0.5,volcanic host rock
+hydrothermal_sulfate,va,0.5,acid volcanic hosts of hydrothermal alteration
+hydrothermal_sulfate,py,0.5,altered pyroclastics
+hydrothermal_sulfate,mt,0.3,altered rock but not hydrothermal per se
+hydrothermal_sulfate,wb,0.0,water body is not a rock surface

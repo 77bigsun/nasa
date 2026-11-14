@@ -1,0 +1,1200 @@
+{
+ "body": "mars",
+ "version": "v1",
+ "generated_at": "2026-11-14T11:17:20.348762+08:00",
+ "target": {
+  "id": "arcadia",
+  "name": "Arcadia Planitia (shallow ground ice)",
+  "lat": 47.2,
+  "lon": -175.7
+ },
+ "mission": "geology",
+ "method": "B",
+ "variables": [
+  "slope",
+  "roughness",
+  "thermal_inertia",
+  "lithology",
+  "ice",
+  "temperature",
+  "diurnal_range",
+  "aridity",
+  "barrenness",
+  "dust"
+ ],
+ "weights": {
+  "slope": 0.05,
+  "roughness": 0.1,
+  "thermal_inertia": 0.1,
+  "lithology": 0.35,
+  "ice": 0.05,
+  "temperature": 0.05,
+  "diurnal_range": 0.0,
+  "aridity": 0.1,
+  "barrenness": 0.15,
+  "dust": 0.05
+ },
+ "results": [
+  {
+   "rank": 1,
+   "cell_id": "e_6037066",
+   "lat": -77.6500015258789,
+   "lon": 166.64999389648438,
+   "name": "near McMurdo Station (AQ)",
+   "total": 90.8,
+   "confidence": 0.65,
+   "scores": {
+    "slope": 0.903,
+    "roughness": 0.834,
+    "thermal_inertia": null,
+    "lithology": 1.0,
+    "ice": 0.763,
+    "temperature": 1.0,
+    "diurnal_range": 0.001,
+    "aridity": null,
+    "barrenness": null,
+    "dust": 0.599
+   },
+   "coverage": {
+    "slope": true,
+    "roughness": true,
+    "thermal_inertia": false,
+    "lithology": true,
+    "ice": true,
+    "temperature": true,
+    "diurnal_range": true,
+    "aridity": false,
+    "barrenness": false,
+    "dust": true
+   },
+   "known_analog": false,
+   "nearest_known": "mcmurdo_dry_valleys",
+   "nearest_known_km": 112.0,
+   "breaks": [],
+   "gaps": [
+    "gravity",
+    "pressure",
+    "radiation",
+    "atmosphere_composition"
+   ],
+   "worldview_url": "https://worldview.earthdata.nasa.gov/?v=165.65,-78.65,167.65,-76.65&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+   "earth_values": {
+    "slope_deg": 1.56,
+    "roughness_m": 8.4,
+    "lst_mean_c": -25.8,
+    "dtr_c": 1.7,
+    "aridity_index": null,
+    "ndvi_mean": null,
+    "permafrost_frac": 1.0,
+    "glim_class": "vb",
+    "elev_m": 0
+   }
+  },
+  {
+   "rank": 2,
+   "cell_id": "e_1943088",
+   "lat": 36.04999923706055,
+   "lon": 88.8499984741211,
+   "name": "193 km from Qimantage (CN)",
+   "total": 90.8,
+   "confidence": 1.0,
+   "scores": {
+    "slope": 0.957,
+    "roughness": 0.855,
+    "thermal_inertia": 0.91,
+    "lithology": 1.0,
+    "ice": 0.763,
+    "temperature": 0.878,
+    "diurnal_range": 0.493,
+    "aridity": 0.741,
+    "barrenness": 1.0,
+    "dust": 0.685
+   },
+   "coverage": {
+    "slope": true,
+    "roughness": true,
+    "thermal_inertia": true,
+    "lithology": true,
+    "ice": true,
+    "temperature": true,
+    "diurnal_range": true,
+    "aridity": true,
+    "barrenness": true,
+    "dust": true
+   },
+   "known_analog": false,
+   "nearest_known": "qaidam_dalangtan",
+   "nearest_known_km": 356.0,
+   "breaks": [],
+   "gaps": [
+    "gravity",
+    "pressure",
+    "radiation",
+    "atmosphere_composition"
+   ],
+   "worldview_url": "https://worldview.earthdata.nasa.gov/?v=87.85,35.05,89.85,37.05&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+   "earth_values": {
+    "slope_deg": 1.1,
+    "roughness_m": 7.9,
+    "lst_mean_c": -3.6,
+    "dtr_c": 13.1,
+    "aridity_index": 0.1804,
+    "ndvi_mean": -0.025,
+    "permafrost_frac": 1.0,
+    "glim_class": "vb",
+    "elev_m": 4869
+   }
+  },
+  {
+   "rank": 3,
+   "cell_id": "e_411105",
+   "lat": 78.55000305175781,
+   "lon": -109.44999694824219,
+   "name": "1205 km from Kugluktuk (CA)",
+   "total": 87.5,
+   "confidence": 0.55,
+   "scores": {
+    "slope": 0.999,
+    "roughness": 1.0,
+    "thermal_inertia": null,
+    "lithology": null,
+    "ice": 0.763,
+    "temperature": 1.0,
+    "diurnal_range": 0.001,
+    "aridity": 0.631,
+    "barrenness": 1.0,
+    "dust": 0.762
+   },
+   "coverage": {
+    "slope": true,
+    "roughness": true,
+    "thermal_inertia": false,
+    "lithology": false,
+    "ice": true,
+    "temperature": true,
+    "diurnal_range": true,
+    "aridity": true,
+    "barrenness": true,
+    "dust": true
+   },
+   "known_analog": false,
+   "nearest_known": "axel_heiberg_lost_hammer",
+   "nearest_known_km": 417.0,
+   "breaks": [],
+   "gaps": [
+    "gravity",
+    "pressure",
+    "radiation",
+    "atmosphere_composition"
+   ],
+   "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-110.45,77.55,-108.45,79.55&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+   "earth_values": {
+    "slope_deg": 0.37,
+    "roughness_m": 1.2,
+    "lst_mean_c": -20.5,
+    "dtr_c": 1.8,
+    "aridity_index": 0.3436,
+    "ndvi_mean": -0.012,
+    "permafrost_frac": 1.0,
+    "glim_class": "nd",
+    "elev_m": 7
+   }
+  },
+  {
+   "rank": 4,
+   "cell_id": "e_1957463",
+   "lat": 35.650001525878906,
+   "lon": 86.3499984741211,
+   "name": "199 km from Koramlik (CN)",
+   "total": 86.0,
+   "confidence": 1.0,
+   "scores": {
+    "slope": 0.991,
+    "roughness": 0.978,
+    "thermal_inertia": 0.545,
+    "lithology": 1.0,
+    "ice": 0.763,
+    "temperature": 0.85,
+    "diurnal_range": 0.926,
+    "aridity": 0.811,
+    "barrenness": 0.845,
+    "dust": 0.679
+   },
+   "coverage": {
+    "slope": true,
+    "roughness": true,
+    "thermal_inertia": true,
+    "lithology": true,
+    "ice": true,
+    "temperature": true,
+    "diurnal_range": true,
+    "aridity": true,
+    "barrenness": true,
+    "dust": true
+   },
+   "known_analog": false,
+   "nearest_known": "qaidam_dalangtan",
+   "nearest_known_km": 558.0,
+   "breaks": [],
+   "gaps": [
+    "gravity",
+    "pressure",
+    "radiation",
+    "atmosphere_composition"
+   ],
+   "worldview_url": "https://worldview.earthdata.nasa.gov/?v=85.35,34.65,87.35,36.65&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+   "earth_values": {
+    "slope_deg": 0.62,
+    "roughness_m": 3.6,
+    "lst_mean_c": -1.8,
+    "dtr_c": 24.1,
+    "aridity_index": 0.1075,
+    "ndvi_mean": 0.047,
+    "permafrost_frac": 1.0,
+    "glim_class": "vb",
+    "elev_m": 5000
+   }
+  },
+  {
+   "rank": 5,
+   "cell_id": "e_1986247",
+   "lat": 34.849998474121094,
+   "lon": 84.75,
+   "name": "234 km from Zhabu (CN)",
+   "total": 85.8,
+   "confidence": 1.0,
+   "scores": {
+    "slope": 0.944,
+    "roughness": 0.894,
+    "thermal_inertia": 0.587,
+    "lithology": 1.0,
+    "ice": 0.763,
+    "temperature": 0.845,
+    "diurnal_range": 0.915,
+    "aridity": 0.867,
+    "barrenness": 0.802,
+    "dust": 0.727
+   },
+   "coverage": {
+    "slope": true,
+    "roughness": true,
+    "thermal_inertia": true,
+    "lithology": true,
+    "ice": true,
+    "temperature": true,
+    "diurnal_range": true,
+    "aridity": true,
+    "barrenness": true,
+    "dust": true
+   },
+   "known_analog": false,
+   "nearest_known": "qaidam_dalangtan",
+   "nearest_known_km": 729.0,
+   "breaks": [],
+   "gaps": [
+    "gravity",
+    "pressure",
+    "radiation",
+    "atmosphere_composition"
+   ],
+   "worldview_url": "https://worldview.earthdata.nasa.gov/?v=83.75,33.85,85.75,35.85&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+   "earth_values": {
+    "slope_deg": 1.22,
+    "roughness_m": 6.8,
+    "lst_mean_c": -1.5,
+    "dtr_c": 23.8,
+    "aridity_index": 0.0667,
+    "ndvi_mean": 0.06,
+    "permafrost_frac": 1.0,
+    "glim_class": "vb",
+    "elev_m": 5075
+   }
+  },
+  {
+   "rank": 6,
+   "cell_id": "e_695595",
+   "lat": 70.6500015258789,
+   "lon": -100.44999694824219,
+   "name": "286 km from Gjoa Haven (CA)",
+   "total": 85.1,
+   "confidence": 0.55,
+   "scores": {
+    "slope": 1.0,
+    "roughness": 1.0,
+    "thermal_inertia": null,
+    "lithology": null,
+    "ice": 0.763,
+    "temperature": 0.996,
+    "diurnal_range": 0.008,
+    "aridity": 0.591,
+    "barrenness": 0.94,
+    "dust": 0.77
+   },
+   "coverage": {
+    "slope": true,
+    "roughness": true,
+    "thermal_inertia": false,
+    "lithology": false,
+    "ice": true,
+    "temperature": true,
+    "diurnal_range": true,
+    "aridity": true,
+    "barrenness": true,
+    "dust": true
+   },
+   "known_analog": false,
+   "nearest_known": "haughton_crater",
+   "nearest_known_km": 630.0,
+   "breaks": [],
+   "gaps": [
+    "gravity",
+    "pressure",
+    "radiation",
+    "atmosphere_composition"
+   ],
+   "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-101.45,69.65,-99.45,71.65&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+   "earth_values": {
+    "slope_deg": 0.12,
+    "roughness_m": 0.9,
+    "lst_mean_c": -16.5,
+    "dtr_c": 3.7,
+    "aridity_index": 0.4078,
+    "ndvi_mean": 0.018,
+    "permafrost_frac": 1.0,
+    "glim_class": "nd",
+    "elev_m": 5
+   }
+  },
+  {
+   "rank": 7,
+   "cell_id": "e_3910727",
+   "lat": -18.649999618530273,
+   "lon": -67.25,
+   "name": "42 km from Poopo (BO)",
+   "total": 84.3,
+   "confidence": 0.6,
+   "scores": {
+    "slope": 0.998,
+    "roughness": 0.997,
+    "thermal_inertia": 0.943,
+    "lithology": null,
+    "ice": null,
+    "temperature": 0.618,
+    "diurnal_range": 0.706,
+    "aridity": 0.723,
+    "barrenness": 0.911,
+    "dust": 0.6
+   },
+   "coverage": {
+    "slope": true,
+    "roughness": true,
+    "thermal_inertia": true,
+    "lithology": false,
+    "ice": false,
+    "temperature": true,
+    "diurnal_range": true,
+    "aridity": true,
+    "barrenness": true,
+    "dust": true
+   },
+   "known_analog": false,
+   "nearest_known": "atacama_yungay",
+   "nearest_known_km": 664.0,
+   "breaks": [],
+   "gaps": [
+    "gravity",
+    "pressure",
+    "radiation",
+    "atmosphere_composition"
+   ],
+   "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-68.25,-19.65,-66.25,-17.65&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+   "earth_values": {
+    "slope_deg": 0.0,
+    "roughness_m": 0.0,
+    "lst_mean_c": 14.2,
+    "dtr_c": 18.7,
+    "aridity_index": 0.2056,
+    "ndvi_mean": 0.027,
+    "permafrost_frac": null,
+    "glim_class": "wb",
+    "elev_m": 3694
+   }
+  },
+  {
+   "rank": 8,
+   "cell_id": "e_1867575",
+   "lat": 38.150001525878906,
+   "lon": 97.55000305175781,
+   "name": "73 km from Gahe (CN)",
+   "total": 84.1,
+   "confidence": 0.65,
+   "scores": {
+    "slope": 0.983,
+    "roughness": 0.964,
+    "thermal_inertia": 0.99,
+    "lithology": null,
+    "ice": 0.763,
+    "temperature": 0.86,
+    "diurnal_range": 0.566,
+    "aridity": 0.702,
+    "barrenness": 0.81,
+    "dust": 0.686
+   },
+   "coverage": {
+    "slope": true,
+    "roughness": true,
+    "thermal_inertia": true,
+    "lithology": false,
+    "ice": true,
+    "temperature": true,
+    "diurnal_range": true,
+    "aridity": true,
+    "barrenness": true,
+    "dust": true
+   },
+   "known_analog": false,
+   "nearest_known": "qaidam_dalangtan",
+   "nearest_known_km": 514.0,
+   "breaks": [],
+   "gaps": [
+    "gravity",
+    "pressure",
+    "radiation",
+    "atmosphere_composition"
+   ],
+   "worldview_url": "https://worldview.earthdata.nasa.gov/?v=96.55,37.15,98.55,39.15&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+   "earth_values": {
+    "slope_deg": 0.77,
+    "roughness_m": 4.3,
+    "lst_mean_c": -2.4,
+    "dtr_c": 14.9,
+    "aridity_index": 0.2373,
+    "ndvi_mean": 0.057,
+    "permafrost_frac": 1.0,
+    "glim_class": "wb",
+    "elev_m": 4141
+   }
+  },
+  {
+   "rank": 9,
+   "cell_id": "e_756796",
+   "lat": 68.94999694824219,
+   "lon": -100.3499984741211,
+   "name": "183 km from Gjoa Haven (CA)",
+   "total": 84.0,
+   "confidence": 0.55,
+   "scores": {
+    "slope": 0.999,
+    "roughness": 1.0,
+    "thermal_inertia": null,
+    "lithology": null,
+    "ice": 0.763,
+    "temperature": 0.994,
+    "diurnal_range": 0.019,
+    "aridity": 0.587,
+    "barrenness": 0.897,
+    "dust": 0.78
+   },
+   "coverage": {
+    "slope": true,
+    "roughness": true,
+    "thermal_inertia": false,
+    "lithology": false,
+    "ice": true,
+    "temperature": true,
+    "diurnal_range": true,
+    "aridity": true,
+    "barrenness": true,
+    "dust": true
+   },
+   "known_analog": false,
+   "nearest_known": "haughton_crater",
+   "nearest_known_km": 799.0,
+   "breaks": [],
+   "gaps": [
+    "gravity",
+    "pressure",
+    "radiation",
+    "atmosphere_composition"
+   ],
+   "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-101.35,67.95,-99.35,69.95&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+   "earth_values": {
+    "slope_deg": 0.37,
+    "roughness_m": 1.1,
+    "lst_mean_c": -15.5,
+    "dtr_c": 4.7,
+    "aridity_index": 0.415,
+    "ndvi_mean": 0.031,
+    "permafrost_frac": 1.0,
+    "glim_class": "nd",
+    "elev_m": 27
+   }
+  },
+  {
+   "rank": 10,
+   "cell_id": "e_4141118",
+   "lat": -25.049999237060547,
+   "lon": -68.1500015258789,
+   "name": "135 km from Antofagasta de la Sierra (AR)",
+   "total": 83.5,
+   "confidence": 0.95,
+   "scores": {
+    "slope": 1.0,
+    "roughness": 0.999,
+    "thermal_inertia": 0.397,
+    "lithology": 1.0,
+    "ice": null,
+    "temperature": 0.63,
+    "diurnal_range": 0.997,
+    "aridity": 0.923,
+    "barrenness": 0.863,
+    "dust": 0.596
+   },
+   "coverage": {
+    "slope": true,
+    "roughness": true,
+    "thermal_inertia": true,
+    "lithology": true,
+    "ice": false,
+    "temperature": true,
+    "diurnal_range": true,
+    "aridity": true,
+    "barrenness": true,
+    "dust": true
+   },
+   "known_analog": false,
+   "nearest_known": "atacama_yungay",
+   "nearest_known_km": 209.0,
+   "breaks": [],
+   "gaps": [
+    "gravity",
+    "pressure",
+    "radiation",
+    "atmosphere_composition"
+   ],
+   "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-69.15,-26.05,-67.15,-24.05&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+   "earth_values": {
+    "slope_deg": 0.16,
+    "roughness_m": 0.6,
+    "lst_mean_c": 13.4,
+    "dtr_c": 32.4,
+    "aridity_index": 0.0264,
+    "ndvi_mean": 0.041,
+    "permafrost_frac": null,
+    "glim_class": "vb",
+    "elev_m": 3664
+   }
+  },
+  {
+   "rank": 11,
+   "cell_id": "e_360799",
+   "lat": 79.94999694824219,
+   "lon": -100.05000305175781,
+   "name": "1265 km from Gjoa Haven (CA)",
+   "total": 83.4,
+   "confidence": 0.55,
+   "scores": {
+    "slope": 0.982,
+    "roughness": 0.997,
+    "thermal_inertia": null,
+    "lithology": null,
+    "ice": 0.763,
+    "temperature": 1.0,
+    "diurnal_range": 0.001,
+    "aridity": 0.495,
+    "barrenness": 1.0,
+    "dust": 0.749
+   },
+   "coverage": {
+    "slope": true,
+    "roughness": true,
+    "thermal_inertia": false,
+    "lithology": false,
+    "ice": true,
+    "temperature": true,
+    "diurnal_range": true,
+    "aridity": true,
+    "barrenness": true,
+    "dust": true
+   },
+   "known_analog": false,
+   "nearest_known": "axel_heiberg_lost_hammer",
+   "nearest_known_km": 221.0,
+   "breaks": [],
+   "gaps": [
+    "gravity",
+    "pressure",
+    "radiation",
+    "atmosphere_composition"
+   ],
+   "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-101.05,78.95,-99.05,80.95&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+   "earth_values": {
+    "slope_deg": 0.78,
+    "roughness_m": 2.0,
+    "lst_mean_c": -20.2,
+    "dtr_c": 1.4,
+    "aridity_index": 0.542,
+    "ndvi_mean": -0.014,
+    "permafrost_frac": 1.0,
+    "glim_class": "nd",
+    "elev_m": 24
+   }
+  },
+  {
+   "rank": 12,
+   "cell_id": "e_3983533",
+   "lat": -20.649999618530273,
+   "lon": 13.350000381469727,
+   "name": "171 km from Khorixas (NA)",
+   "total": 83.1,
+   "confidence": 1.0,
+   "scores": {
+    "slope": 0.998,
+    "roughness": 0.988,
+    "thermal_inertia": 0.874,
+    "lithology": 1.0,
+    "ice": 0.237,
+    "temperature": 0.427,
+    "diurnal_range": 0.768,
+    "aridity": 0.949,
+    "barrenness": 0.766,
+    "dust": 0.812
+   },
+   "coverage": {
+    "slope": true,
+    "roughness": true,
+    "thermal_inertia": true,
+    "lithology": true,
+    "ice": true,
+    "temperature": true,
+    "diurnal_range": true,
+    "aridity": true,
+    "barrenness": true,
+    "dust": true
+   },
+   "known_analog": false,
+   "nearest_known": "dallol",
+   "nearest_known_km": 4870.0,
+   "breaks": [
+    {
+     "variable": "ice",
+     "score": 0.237,
+     "earth": 0.0,
+     "mars": 0.763,
+     "unit": "fraction"
+    }
+   ],
+   "gaps": [
+    "gravity",
+    "pressure",
+    "radiation",
+    "atmosphere_composition"
+   ],
+   "worldview_url": "https://worldview.earthdata.nasa.gov/?v=12.35,-21.65,14.35,-19.65&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+   "earth_values": {
+    "slope_deg": 0.4,
+    "roughness_m": 3.0,
+    "lst_mean_c": 23.5,
+    "dtr_c": 20.4,
+    "aridity_index": 0.0147,
+    "ndvi_mean": 0.07,
+    "permafrost_frac": 0.0,
+    "glim_class": "vb",
+    "elev_m": 4
+   }
+  },
+  {
+   "rank": 13,
+   "cell_id": "e_1926620",
+   "lat": 36.45000076293945,
+   "lon": -117.94999694824219,
+   "name": "near Lone Pine (US)",
+   "total": 83.0,
+   "confidence": 1.0,
+   "scores": {
+    "slope": 1.0,
+    "roughness": 1.0,
+    "thermal_inertia": 0.743,
+    "lithology": 1.0,
+    "ice": 0.237,
+    "temperature": 0.508,
+    "diurnal_range": 0.78,
+    "aridity": 0.874,
+    "barrenness": 0.81,
+    "dust": 0.9
+   },
+   "coverage": {
+    "slope": true,
+    "roughness": true,
+    "thermal_inertia": true,
+    "lithology": true,
+    "ice": true,
+    "temperature": true,
+    "diurnal_range": true,
+    "aridity": true,
+    "barrenness": true,
+    "dust": true
+   },
+   "known_analog": false,
+   "nearest_known": "death_valley_badwater",
+   "nearest_known_km": 108.0,
+   "breaks": [
+    {
+     "variable": "ice",
+     "score": 0.237,
+     "earth": 0.0,
+     "mars": 0.763,
+     "unit": "fraction"
+    }
+   ],
+   "gaps": [
+    "gravity",
+    "pressure",
+    "radiation",
+    "atmosphere_composition"
+   ],
+   "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-118.95,35.45,-116.95,37.45&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+   "earth_values": {
+    "slope_deg": 0.15,
+    "roughness_m": 0.7,
+    "lst_mean_c": 20.6,
+    "dtr_c": 20.7,
+    "aridity_index": 0.0613,
+    "ndvi_mean": 0.057,
+    "permafrost_frac": 0.0,
+    "glim_class": "vb",
+    "elev_m": 1083
+   }
+  },
+  {
+   "rank": 14,
+   "cell_id": "e_778313",
+   "lat": 68.3499984741211,
+   "lon": -108.6500015258789,
+   "name": "274 km from Kugluktuk (CA)",
+   "total": 82.2,
+   "confidence": 1.0,
+   "scores": {
+    "slope": 0.992,
+    "roughness": 0.997,
+    "thermal_inertia": 0.664,
+    "lithology": 1.0,
+    "ice": 0.763,
+    "temperature": 0.974,
+    "diurnal_range": 0.035,
+    "aridity": 0.526,
+    "barrenness": 0.655,
+    "dust": 0.795
+   },
+   "coverage": {
+    "slope": true,
+    "roughness": true,
+    "thermal_inertia": true,
+    "lithology": true,
+    "ice": true,
+    "temperature": true,
+    "diurnal_range": true,
+    "aridity": true,
+    "barrenness": true,
+    "dust": true
+   },
+   "known_analog": false,
+   "nearest_known": "haughton_crater",
+   "nearest_known_km": 1011.0,
+   "breaks": [],
+   "gaps": [
+    "gravity",
+    "pressure",
+    "radiation",
+    "atmosphere_composition"
+   ],
+   "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-109.65,67.35,-107.65,69.35&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+   "earth_values": {
+    "slope_deg": 0.6,
+    "roughness_m": 2.0,
+    "lst_mean_c": -12.7,
+    "dtr_c": 5.5,
+    "aridity_index": 0.4991,
+    "ndvi_mean": 0.104,
+    "permafrost_frac": 1.0,
+    "glim_class": "vb",
+    "elev_m": 15
+   }
+  },
+  {
+   "rank": 15,
+   "cell_id": "e_857665",
+   "lat": 66.1500015258789,
+   "lon": -93.44999694824219,
+   "name": "294 km from Gjoa Haven (CA)",
+   "total": 82.2,
+   "confidence": 0.9,
+   "scores": {
+    "slope": 0.981,
+    "roughness": 0.986,
+    "thermal_inertia": null,
+    "lithology": 1.0,
+    "ice": 0.763,
+    "temperature": 0.99,
+    "diurnal_range": 0.034,
+    "aridity": 0.323,
+    "barrenness": 0.796,
+    "dust": 0.766
+   },
+   "coverage": {
+    "slope": true,
+    "roughness": true,
+    "thermal_inertia": false,
+    "lithology": true,
+    "ice": true,
+    "temperature": true,
+    "diurnal_range": true,
+    "aridity": true,
+    "barrenness": true,
+    "dust": true
+   },
+   "known_analog": false,
+   "nearest_known": "haughton_crater",
+   "nearest_known_km": 1035.0,
+   "breaks": [],
+   "gaps": [
+    "gravity",
+    "pressure",
+    "radiation",
+    "atmosphere_composition"
+   ],
+   "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-94.45,65.15,-92.45,67.15&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+   "earth_values": {
+    "slope_deg": 0.79,
+    "roughness_m": 3.1,
+    "lst_mean_c": -14.7,
+    "dtr_c": 5.5,
+    "aridity_index": 0.7997,
+    "ndvi_mean": 0.061,
+    "permafrost_frac": 1.0,
+    "glim_class": "vb",
+    "elev_m": 347
+   }
+  },
+  {
+   "rank": 16,
+   "cell_id": "e_634572",
+   "lat": 72.3499984741211,
+   "lon": -82.75,
+   "name": "1128 km from Rankin Inlet (CA)",
+   "total": 82.0,
+   "confidence": 0.9,
+   "scores": {
+    "slope": 0.944,
+    "roughness": 0.984,
+    "thermal_inertia": null,
+    "lithology": 1.0,
+    "ice": 0.763,
+    "temperature": 0.997,
+    "diurnal_range": 0.008,
+    "aridity": 0.24,
+    "barrenness": 0.984,
+    "dust": 0.73
+   },
+   "coverage": {
+    "slope": true,
+    "roughness": true,
+    "thermal_inertia": false,
+    "lithology": true,
+    "ice": true,
+    "temperature": true,
+    "diurnal_range": true,
+    "aridity": true,
+    "barrenness": true,
+    "dust": true
+   },
+   "known_analog": false,
+   "nearest_known": "haughton_crater",
+   "nearest_known_km": 399.0,
+   "breaks": [
+    {
+     "variable": "aridity",
+     "score": 0.24,
+     "earth": 0.951,
+     "mars": "hyper-arid (Mars)",
+     "unit": "aridity_index"
+    }
+   ],
+   "gaps": [
+    "gravity",
+    "pressure",
+    "radiation",
+    "atmosphere_composition"
+   ],
+   "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-83.75,71.35,-81.75,73.35&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+   "earth_values": {
+    "slope_deg": 1.23,
+    "roughness_m": 3.2,
+    "lst_mean_c": -17.1,
+    "dtr_c": 3.6,
+    "aridity_index": 0.951,
+    "ndvi_mean": 0.005,
+    "permafrost_frac": 1.0,
+    "glim_class": "vb",
+    "elev_m": 430
+   }
+  },
+  {
+   "rank": 17,
+   "cell_id": "e_4853908",
+   "lat": -44.849998474121094,
+   "lon": -69.1500015258789,
+   "name": "82 km from Sarmiento (AR)",
+   "total": 81.8,
+   "confidence": 1.0,
+   "scores": {
+    "slope": 0.947,
+    "roughness": 0.943,
+    "thermal_inertia": 0.985,
+    "lithology": 1.0,
+    "ice": 0.237,
+    "temperature": 0.643,
+    "diurnal_range": 0.641,
+    "aridity": 0.83,
+    "barrenness": 0.685,
+    "dust": 0.656
+   },
+   "coverage": {
+    "slope": true,
+    "roughness": true,
+    "thermal_inertia": true,
+    "lithology": true,
+    "ice": true,
+    "temperature": true,
+    "diurnal_range": true,
+    "aridity": true,
+    "barrenness": true,
+    "dust": true
+   },
+   "known_analog": false,
+   "nearest_known": "atacama_yungay",
+   "nearest_known_km": 2311.0,
+   "breaks": [
+    {
+     "variable": "ice",
+     "score": 0.237,
+     "earth": 0.0,
+     "mars": 0.763,
+     "unit": "fraction"
+    }
+   ],
+   "gaps": [
+    "gravity",
+    "pressure",
+    "radiation",
+    "atmosphere_composition"
+   ],
+   "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-70.15,-45.85,-68.15,-43.85&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+   "earth_values": {
+    "slope_deg": 1.2,
+    "roughness_m": 5.2,
+    "lst_mean_c": 12.5,
+    "dtr_c": 16.9,
+    "aridity_index": 0.092,
+    "ndvi_mean": 0.095,
+    "permafrost_frac": 0.0,
+    "glim_class": "vb",
+    "elev_m": 373
+   }
+  },
+  {
+   "rank": 18,
+   "cell_id": "e_1662408",
+   "lat": 43.849998474121094,
+   "lon": 100.8499984741211,
+   "name": "71 km from Urt (MN)",
+   "total": 81.8,
+   "confidence": 1.0,
+   "scores": {
+    "slope": 0.99,
+    "roughness": 0.98,
+    "thermal_inertia": 0.701,
+    "lithology": 1.0,
+    "ice": 0.237,
+    "temperature": 0.637,
+    "diurnal_range": 0.861,
+    "aridity": 0.9,
+    "barrenness": 0.793,
+    "dust": 0.632
+   },
+   "coverage": {
+    "slope": true,
+    "roughness": true,
+    "thermal_inertia": true,
+    "lithology": true,
+    "ice": true,
+    "temperature": true,
+    "diurnal_range": true,
+    "aridity": true,
+    "barrenness": true,
+    "dust": true
+   },
+   "known_analog": false,
+   "nearest_known": "qaidam_dalangtan",
+   "nearest_known_km": 983.0,
+   "breaks": [
+    {
+     "variable": "ice",
+     "score": 0.237,
+     "earth": 0.0,
+     "mars": 0.763,
+     "unit": "fraction"
+    }
+   ],
+   "gaps": [
+    "gravity",
+    "pressure",
+    "radiation",
+    "atmosphere_composition"
+   ],
+   "worldview_url": "https://worldview.earthdata.nasa.gov/?v=99.85,42.85,101.85,44.85&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+   "earth_values": {
+    "slope_deg": 0.64,
+    "roughness_m": 3.5,
+    "lst_mean_c": 12.9,
+    "dtr_c": 22.5,
+    "aridity_index": 0.0416,
+    "ndvi_mean": 0.062,
+    "permafrost_frac": 0.0,
+    "glim_class": "vb",
+    "elev_m": 1050
+   }
+  },
+  {
+   "rank": 19,
+   "cell_id": "e_4522708",
+   "lat": -35.650001525878906,
+   "lon": -69.1500015258789,
+   "name": "44 km from Malargue (AR)",
+   "total": 81.7,
+   "confidence": 1.0,
+   "scores": {
+    "slope": 0.998,
+    "roughness": 0.999,
+    "thermal_inertia": 0.933,
+    "lithology": 1.0,
+    "ice": 0.237,
+    "temperature": 0.592,
+    "diurnal_range": 0.68,
+    "aridity": 0.699,
+    "barrenness": 0.752,
+    "dust": 0.698
+   },
+   "coverage": {
+    "slope": true,
+    "roughness": true,
+    "thermal_inertia": true,
+    "lithology": true,
+    "ice": true,
+    "temperature": true,
+    "diurnal_range": true,
+    "aridity": true,
+    "barrenness": true,
+    "dust": true
+   },
+   "known_analog": false,
+   "nearest_known": "atacama_yungay",
+   "nearest_known_km": 1289.0,
+   "breaks": [
+    {
+     "variable": "ice",
+     "score": 0.237,
+     "earth": 0.0,
+     "mars": 0.763,
+     "unit": "fraction"
+    }
+   ],
+   "gaps": [
+    "gravity",
+    "pressure",
+    "radiation",
+    "atmosphere_composition"
+   ],
+   "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-70.15,-36.65,-68.15,-34.65&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+   "earth_values": {
+    "slope_deg": 0.0,
+    "roughness_m": 0.4,
+    "lst_mean_c": 16.0,
+    "dtr_c": 18.0,
+    "aridity_index": 0.2409,
+    "ndvi_mean": 0.075,
+    "permafrost_frac": 0.0,
+    "glim_class": "vb",
+    "elev_m": 1335
+   }
+  },
+  {
+   "rank": 20,
+   "cell_id": "e_4933120",
+   "lat": -47.04999923706055,
+   "lon": -67.94999694824219,
+   "name": "near Pico Truncado (AR)",
+   "total": 81.5,
+   "confidence": 1.0,
+   "scores": {
+    "slope": 1.0,
+    "roughness": 1.0,
+    "thermal_inertia": 0.967,
+    "lithology": 1.0,
+    "ice": 0.237,
+    "temperature": 0.655,
+    "diurnal_range": 0.652,
+    "aridity": 0.775,
+    "barrenness": 0.581,
+    "dust": 0.965
+   },
+   "coverage": {
+    "slope": true,
+    "roughness": true,
+    "thermal_inertia": true,
+    "lithology": true,
+    "ice": true,
+    "temperature": true,
+    "diurnal_range": true,
+    "aridity": true,
+    "barrenness": true,
+    "dust": true
+   },
+   "known_analog": false,
+   "nearest_known": "atacama_yungay",
+   "nearest_known_km": 2560.0,
+   "breaks": [
+    {
+     "variable": "ice",
+     "score": 0.237,
+     "earth": 0.0,
+     "mars": 0.763,
+     "unit": "fraction"
+    }
+   ],
+   "gaps": [
+    "gravity",
+    "pressure",
+    "radiation",
+    "atmosphere_composition"
+   ],
+   "worldview_url": "https://worldview.earthdata.nasa.gov/?v=-68.95,-48.05,-66.95,-46.05&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+   "earth_values": {
+    "slope_deg": 0.23,
+    "roughness_m": 1.4,
+    "lst_mean_c": 11.8,
+    "dtr_c": 17.2,
+    "aridity_index": 0.1395,
+    "ndvi_mean": 0.126,
+    "permafrost_frac": 0.0,
+    "glim_class": "vb",
+    "elev_m": 136
+   }
+  }
+ ],
+ "heatmap": "mars_arcadia_geology.png",
+ "provenance": {
+  "mars_targets": "C:\\Users\\plusl\\nasa\\hatrefish\\data\\processed\\mars_targets.json",
+  "labels": "C:\\Users\\plusl\\nasa\\hatrefish\\data\\labels\\known_analogs.csv"
+ }
+}

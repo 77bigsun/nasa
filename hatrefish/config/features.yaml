@@ -51,7 +51,7 @@ variables:
     mars_source: usgs_sim3292
     earth_source: glim
   ice:
-    compare: abs_prob_diff    # p_mars = (SWIM + 1) / 2
+    compare: abs_prob_diff    # 目標 = clip(SWIM Ci, 0, 1)（11/14 修正；Ci ≤ 0 視為沒有冰）
     mars_source: swim         # SWIM 範圍外設沒資料
     earth_source: esa_cci_permafrost_v5
     earth_coverage: "北緯 25～85 度、南緯 60～85 度"
