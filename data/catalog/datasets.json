@@ -1,0 +1,348 @@
+[
+  {
+    "id": "pgda-lola-5m",
+    "name": "LOLA Site01 adjusted DEM",
+    "url": "https://pgda.gsfc.nasa.gov/products/78",
+    "resolution": "5 m native; 100 m pilot grid",
+    "access": "public",
+    "status": "imported",
+    "uses": [
+      "M1",
+      "M2",
+      "M4"
+    ],
+    "notes": [
+      "Connecting Ridge ROI 1 supplies the lunar pilot. It is an interpolated research product, not a finalized base location; uncertainty clones are not propagated."
+    ]
+  },
+  {
+    "id": "copernicus-glo30",
+    "name": "Copernicus GLO-30 DSM",
+    "url": "https://registry.opendata.aws/copernicus-dem/",
+    "resolution": "1 arc-second (about 30 m); 100 m pilot grid",
+    "access": "public",
+    "status": "imported",
+    "uses": [
+      "M1",
+      "M2",
+      "M4",
+      "R1",
+      "R5"
+    ],
+    "notes": [
+      "Public AWS mirror needs no account. DSM includes vegetation and structures. Three manual Earth windows validate the pipeline; they are not discoveries. Credit: Copernicus DEM GLO-30 / DLR / Airbus."
+    ]
+  },
+  {
+    "id": "nasa-power-hourly",
+    "name": "NASA POWER hourly meteorology",
+    "url": "https://power.larc.nasa.gov/docs/services/api/temporal/hourly/",
+    "resolution": "Coarse meteorological grid; hourly, January 2025",
+    "access": "public",
+    "status": "imported",
+    "uses": [
+      "M2",
+      "M5",
+      "R6"
+    ],
+    "notes": [
+      "Air temperature, wind speed and surface shortwave radiation are context only. Local solar time is explicit. Air temperature is not land-surface temperature; radiation is not lunar geometric illumination."
+    ]
+  },
+  {
+    "id": "pgda-illumination",
+    "name": "LOLA polar illumination",
+    "url": "https://pgda.gsfc.nasa.gov/products/69",
+    "resolution": "60 / 120 / 240 m long-term products",
+    "access": "public",
+    "status": "planned",
+    "uses": [
+      "M2"
+    ],
+    "notes": [
+      "Long-term averages are not an hourly illumination time series. Use native-resolution pixels and consistent horizon/observer-height assumptions."
+    ]
+  },
+  {
+    "id": "diviner",
+    "name": "LRO Diviner PRP / PCP / Level 3",
+    "url": "https://pds-geosciences.wustl.edu/missions/lro/diviner.htm",
+    "resolution": "Product-dependent; PCP 240 m",
+    "access": "public",
+    "status": "planned",
+    "uses": [
+      "M3",
+      "M4"
+    ],
+    "notes": [
+      "Select the specific thermal product and channels. Mask invalid values such as -9999; align local lunar phase, not Earth calendar time."
+    ]
+  },
+  {
+    "id": "minirf",
+    "name": "LRO Mini-RF radar",
+    "url": "https://pds-geosciences.wustl.edu/missions/lro/mrf.htm",
+    "resolution": "Product-dependent S / X band radar",
+    "access": "public",
+    "status": "planned",
+    "uses": [
+      "M1",
+      "M4"
+    ],
+    "notes": [
+      "Mini-RF, Sentinel-1 and PALSAR use different wavelengths and geometries. Raw backscatter is not directly comparable; validate any CPR or roughness proxy."
+    ]
+  },
+  {
+    "id": "m3",
+    "name": "Chandrayaan-1 Moon Mineralogy Mapper",
+    "url": "https://pds-imaging.jpl.nasa.gov/volumes/m3.html",
+    "resolution": "Product-dependent visible / near-infrared spectra",
+    "access": "public",
+    "status": "planned",
+    "uses": [
+      "M4"
+    ],
+    "notes": [
+      "Match wavelengths, corrections and units before spectral-angle comparison. Mineral composition is distinct from thermal-emissivity proxies."
+    ]
+  },
+  {
+    "id": "mod11a1",
+    "name": "MOD11A1 v061 land-surface temperature",
+    "url": "https://catalog.data.gov/dataset/modis-terra-land-surface-temperature-emissivity-daily-l3-global-1km-sin-grid-v061",
+    "resolution": "Daily, 1 km, day / night",
+    "access": "earthdata",
+    "status": "account_required",
+    "uses": [
+      "M3",
+      "R6"
+    ],
+    "notes": [
+      "Apply QA flags and scale factors; preserve overpass time and missing-cloud observations. A day/night pair is not a complete daily waveform."
+    ]
+  },
+  {
+    "id": "aster-ag100",
+    "name": "ASTER AG100 v003 emissivity",
+    "url": "https://catalog.data.gov/dataset/aster-global-emissivity-dataset-100-meter-hdf5-v003",
+    "resolution": "100 m emissivity",
+    "access": "earthdata",
+    "status": "account_required",
+    "uses": [
+      "M4",
+      "R2",
+      "R4"
+    ],
+    "notes": [
+      "Use emissivity channels with matching spectral response. ASTER SWIR stopped functioning in April 2008; later SWIR observations cannot be assumed available."
+    ]
+  },
+  {
+    "id": "emit",
+    "name": "EMIT surface mineral spectra",
+    "url": "https://cmr.earthdata.nasa.gov/search/concepts/C2408034484-LPCLOUD.html",
+    "resolution": "Approximately 60 m; coverage-limited",
+    "access": "earthdata",
+    "status": "account_required",
+    "uses": [
+      "M4",
+      "R4"
+    ],
+    "notes": [
+      "Check dryland coverage, latitude limits, quality masks and collection version for each ROI. No global spectral coverage is implied."
+    ]
+  },
+  {
+    "id": "cci-permafrost",
+    "name": "ESA CCI permafrost active-layer thickness",
+    "url": "https://catalogue.ceda.ac.uk/uuid/67a3f8c8dc914ef99f7f08eb0d997e23",
+    "resolution": "Northern high latitudes; version-dependent",
+    "access": "public",
+    "status": "planned",
+    "uses": [
+      "M6",
+      "R3"
+    ],
+    "notes": [
+      "The linked 1997-2019 product is an older release. Review newer versions. Active-layer thickness is a proxy, not lunar or Martian subsurface ice depth."
+    ]
+  },
+  {
+    "id": "smap",
+    "name": "SMAP SPL3SMP_E soil moisture",
+    "url": "https://nsidc.org/data/SPL3SMP_E",
+    "resolution": "Enhanced grid; shallow soil moisture",
+    "access": "earthdata",
+    "status": "account_required",
+    "uses": [
+      "M6",
+      "R3"
+    ],
+    "notes": [
+      "Review the selected version and native footprint. Soil moisture does not measure buried ice or a 3-5 m excavation profile."
+    ]
+  },
+  {
+    "id": "mola",
+    "name": "MGS MOLA MEGDR",
+    "url": "https://pds-geosciences.wustl.edu/missions/mgs/megdr.html",
+    "resolution": "Up to 128 pixels/degree (about 463 m)",
+    "access": "public",
+    "status": "planned",
+    "uses": [
+      "R1",
+      "R5"
+    ],
+    "notes": [
+      "Regional elevation context only; it cannot resolve 100 m landing slopes. Keep the Mars geoid height reference distinct from Earth elevation."
+    ]
+  },
+  {
+    "id": "ctx",
+    "name": "CTX global image mosaic",
+    "url": "https://murray-lab.caltech.edu/CTX/",
+    "resolution": "About 5-6 m imagery; not a DTM",
+    "access": "public",
+    "status": "planned",
+    "uses": [
+      "R1",
+      "R5"
+    ],
+    "notes": [
+      "Imagery supports morphology and context. Slopes require a separately produced stereo DTM, not brightness gradients in a mosaic."
+    ]
+  },
+  {
+    "id": "mars-ode",
+    "name": "CTX / HiRISE / HRSC terrain products",
+    "url": "https://ode.rsl.wustl.edu/mars/",
+    "resolution": "DTM resolution and coverage vary",
+    "access": "public",
+    "status": "planned",
+    "uses": [
+      "R1",
+      "R5"
+    ],
+    "notes": [
+      "Inventory actual DTM footprints first. HiRISE 1-5 m terrain coverage is limited; images alone do not establish a fine-scale slope limit."
+    ]
+  },
+  {
+    "id": "themis",
+    "name": "THEMIS thermal products",
+    "url": "https://www.mars.asu.edu/data",
+    "resolution": "Product-dependent thermal inertia",
+    "access": "public",
+    "status": "planned",
+    "uses": [
+      "R2"
+    ],
+    "notes": [
+      "Atmosphere and retrieval methods differ between planets. Use a documented rank-based proxy where absolute thermal inertia is not comparable."
+    ]
+  },
+  {
+    "id": "swim",
+    "name": "Mars SWIM subsurface ice mapping",
+    "url": "https://swim.psi.edu/",
+    "resolution": "Regional synthesis, not a uniform depth sounding",
+    "access": "public",
+    "status": "planned",
+    "uses": [
+      "R3"
+    ],
+    "notes": [
+      "Combine ice evidence and depth uncertainty. Orbital radar evidence does not guarantee ice at the 3-5 m sampling depth."
+    ]
+  },
+  {
+    "id": "crism",
+    "name": "MRO CRISM spectra",
+    "url": "https://pds-geosciences.wustl.edu/missions/mro/crism.htm",
+    "resolution": "Product-dependent targeted / mapping spectra",
+    "access": "public",
+    "status": "planned",
+    "uses": [
+      "R4"
+    ],
+    "notes": [
+      "Apply atmospheric and photometric corrections, bad-band masks and common wavelength sampling before comparison with Earth spectra."
+    ]
+  },
+  {
+    "id": "mars-climate",
+    "name": "Mars Climate Database and lander weather",
+    "url": "https://www-mars.lmd.jussieu.fr/mcd_python/",
+    "resolution": "Model grid; in-situ records at specific landers",
+    "access": "public",
+    "status": "planned",
+    "uses": [
+      "R6"
+    ],
+    "notes": [
+      "Align local solar phase and seasonal solar longitude Ls. REMS at Gale and MEDA at Jezero do not directly observe the five northern reference regions."
+    ]
+  },
+  {
+    "id": "sentinel",
+    "name": "Sentinel-1 / Sentinel-2",
+    "url": "https://dataspace.copernicus.eu/browser/",
+    "resolution": "C-band radar / optical bands at 10-60 m",
+    "access": "cdse",
+    "status": "account_required",
+    "uses": [
+      "M1",
+      "M4",
+      "R3",
+      "R5"
+    ],
+    "notes": [
+      "Choose acquisition geometry and quality masks. Ten-metre imagery is marginal for 10-30 m polygons and cannot resolve centimetre rocks."
+    ]
+  },
+  {
+    "id": "palsar",
+    "name": "ALOS PALSAR products",
+    "url": "https://gportal.jaxa.jp/gpr/information/product?lang=en",
+    "resolution": "L-band radar; product-dependent",
+    "access": "jaxa",
+    "status": "account_required",
+    "uses": [
+      "M4",
+      "R3"
+    ],
+    "notes": [
+      "Download access may need a JAXA account. Dry-sand radar penetration cannot be generalized to all soils or used as a direct ice-depth measurement."
+    ]
+  },
+  {
+    "id": "merra2",
+    "name": "MERRA-2 aerosol diagnostics",
+    "url": "https://catalog.data.gov/dataset/merra-2-tavg1-2d-aer-nx-2d1-hourlytime-averagedsingle-levelassimilationaerosol-diagnostics",
+    "resolution": "Hourly gridded reanalysis",
+    "access": "earthdata",
+    "status": "account_required",
+    "uses": [
+      "R6"
+    ],
+    "notes": [
+      "Select aerosol diagnostics separately from air temperature. Preserve units, grid support and the same analysis years across candidate sites."
+    ]
+  },
+  {
+    "id": "csa-sar",
+    "name": "CSA synthetic-aperture radar tutorial",
+    "url": "https://github.com/asc-csa/Synthetic_Aperture_Radar_Tutorial",
+    "resolution": "Tutorial code; not a measurement dataset",
+    "access": "public",
+    "status": "reference",
+    "uses": [
+      "M1",
+      "R3"
+    ],
+    "notes": [
+      "Use as a processing reference. NASA Worldview and other viewers are also discovery tools, not automatically quantitative input products."
+    ]
+  }
+]

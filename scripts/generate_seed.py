@@ -1,7 +1,6 @@
-"""Rebuild deterministic placeholder fixtures from the supplied SPEC tables.
+"""Rebuild deterministic English placeholder fixtures from SPEC tables.
 
-Run only when intentionally resetting seed data: this overwrites data/seed.
-Scientific content stays in YAML; no discovery claims are generated here.
+Run only to intentionally reset data/seed. Scientific values remain synthetic.
 """
 from pathlib import Path
 import json
@@ -34,7 +33,7 @@ SOURCES = [
  ('jaxa','JAXA G-Portal',True,'https://gportal.jaxa.jp/gpr/'),
  ('rcm','CSA RADARSAT Constellation Mission (RCM)',True,'https://www.asc-csa.gc.ca/eng/satellites/radarsat/'),
  ('radarsat','CSA RADARSAT-1',True,'https://www.asc-csa.gc.ca/eng/satellites/radarsat1/'),
- ('sar','CSA SAR Python Tutorial',True,None),
+ ('sar','CSA SAR Python Tutorial',True,'https://github.com/asc-csa/Synthetic_Aperture_Radar_Tutorial'),
  ('pgda','NASA PGDA',False,'https://pgda.gsfc.nasa.gov/'),
  ('trek','Moon Trek / Mars Trek',False,'https://trek.nasa.gov/'),
  ('ctx','Caltech CTX Global Mosaic',False,'https://murray-lab.caltech.edu/CTX/'),
@@ -57,12 +56,12 @@ FEATURE_NAMES={}
 SOURCE_USE={x[0]:[] for x in SOURCES}
 
 def source_entries(raw, side):
-    # Resources badge means inclusion in the supplied competition list, not ownership.
+    # Resources denotes the competition list, not institutional ownership.
     out=[]
-    for part in re.split('[；;]', raw):
+    for part in raw.split(';'):
         label=part.replace('✅','').replace('➕','').strip()
         if not label: continue
-        key = ('cci' if 'CCI' in label else 'mcd' if 'MCD' in label else 'swim' if 'SWIM' in label else 'ctx' if '➕' in part and 'CTX' in part else 'pgda' if 'PGDA' in label else 'dunes' if '沙丘資料庫' in label else 'rgi' if 'RGI' in label else 'diviner' if 'Diviner' in label else 'lro' if any(t in label for t in ['LOLA','Mini-RF','LEND','SPICE']) else 'pds' if side=='planet' else 'copernicus' if any(t in label for t in ['Copernicus','Sentinel']) else 'jaxa' if 'PALSAR' in label else 'radarsat' if 'RADARSAT' in label else 'earthdata')
+        key = ('cci' if 'CCI' in label else 'mcd' if 'MCD' in label else 'swim' if 'SWIM' in label else 'ctx' if '➕' in part and 'CTX' in part else 'pgda' if 'PGDA' in label else 'dunes' if 'dune database' in label.lower() else 'rgi' if 'RGI' in label else 'diviner' if 'Diviner' in label else 'lro' if any(t in label for t in ['LOLA','Mini-RF','LEND','SPICE']) else 'pds' if side=='planet' else 'copernicus' if any(t in label for t in ['Copernicus','Sentinel']) else 'jaxa' if 'PALSAR' in label else 'radarsat' if 'RADARSAT' in label else 'earthdata')
         entry=next(s for s in SOURCES if s[0]==key)
         out.append({'name':label,'official':'➕' not in part,'source_id':key,'url':entry[3]})
     return out
@@ -71,33 +70,33 @@ all_tasks=[]
 findex=0
 for mission, section in [('moon','### 4.2'),('mars','### 4.3')]:
     block=SPEC.split(section,1)[1].split('### 4.',1)[0]
-    taskrows=[[x.strip() for x in l.strip('|').split('|')] for l in block.splitlines() if re.match(r'^\| [MR]\d \|',l)]
+    taskrows=[[x.strip() for x in line.strip('|').split('|')] for line in block.splitlines() if re.match(r'^\| [MR]\d \|',line)]
     tasks=[]
     for idx,row in enumerate(taskrows[:6]):
         tid,name,verify,basis,rank,order,manual=row
         n=RANKS[mission][idx]
         task={'id':tid,'mission':mission,'name':name,'name_en':TASK_EN[(0 if mission=='moon' else 6)+idx], 'verify':verify,'nasa_basis':basis,'nasa_url':NASA_MOON if mission=='moon' else NASA_MARS,'tech_gap':{'rank':n[0],'bin':n[1],'label':rank} if n else None,'order':ORDERS[mission][idx], 'manual_adjust':None if manual=='—' else {'reason':manual},'notes':[],'features':[]}
-        task['notes']=[('當地太陽時相位對齊；月球太陽日約 29.5 地球日。' if mission=='moon' else '以當地時間與太陽經度 Ls 對齊；火星年約 687 地球日。'),'地形使用 Copernicus DEM；所有示範數值均非觀測。']
-        if tid in ['M1','M4']:task['notes'].append('坡度與岩石門檻待補文獻，目前採剖面比對。')
-        if tid in ['M4','M6']:task['notes'].append('M4 與 M6 可同地整合；只用於最小地點數固定後的取捨。')
-        if mission=='mars':task['notes'].append('SkyFall 五區缺少著陸器實測；工程限制及技術缺口排名沿用團隊規格，待查原文。')
+        task['notes']=[('Align local solar phase; a lunar solar day is about 29.5 Earth days.' if mission=='moon' else 'Align local time and solar longitude Ls; a Martian year is about 687 Earth days.'),'Use Copernicus DEM for terrain. All demo values are synthetic, not observations.']
+        if tid in ['M1','M4']:task['notes'].append('Quantitative slope and rock thresholds need literature review; use profile comparisons for now.')
+        if tid in ['M4','M6']:task['notes'].append('M4 and M6 can share a site; integration bonuses apply after fixing minimum site count.')
+        if mission=='mars':task['notes'].append('The five SkyFall regions lack lander measurements. Engineering constraints and gap ranks follow the team brief and require source review.')
         tasks.append(task)
-    frows=[[x.strip() for x in l.strip('|').split('|')] for l in block.splitlines() if re.match(r'^\| [MR]\d \| [mr]\d_',l)]
+    frows=[[x.strip() for x in line.strip('|').split('|')] for line in block.splitlines() if re.match(r'^\| [MR]\d \| [mr]\d_',line)]
     for tid,fid,name,kind,mode,pdata,edata,note in frows:
         threshold={'r1_slope_100m':{'ideal_max':5,'zero_at':15},'r1_slope_1_5m':{'ideal_max':12,'zero_at':15},'r2_dune_fraction':{'ideal_max':.05,'zero_at':.3}}.get(fid)
         stat={'m2_illum_fraction':'fraction_above','m2_sun_elevation':'mean','m3_diurnal_range':'range','m3_cold_hours':'hours_below','m3_max_dark':'longest_below','r6_dust':'mean','r6_wind_temp':'range'}.get(fid,'mean')
         f={'id':fid,'name':name,'name_en':FEATURE_EN[findex],'type':kind,'compare_mode':mode,'unit':'deg' if any(x in fid for x in ['slope','elevation','horizon']) else 'h' if fid in ['m3_cold_hours','m3_max_dark'] else '°C' if fid=='m3_abs_temp' else 'm' if fid in ['m6_ice_depth','r5_polygon_size'] else '', 'weight':1.,'threshold':threshold,'planet_threshold':{'max':.05} if fid=='r1_rock' else {'zero_at':100,'ideal_min':150} if fid=='r1_thermal_inertia' else None,'out_of_earth_range':fid=='m3_abs_temp','earth_proxy':'earth_proxy' in note or fid in ['m1_rock_proxy','m4_looseness','m5_grain_proxy','r1_rock','r1_slope_1_5m'],'planet_data':source_entries(pdata,'planet'),'earth_data':source_entries(edata,'earth'),'notes':[note] if note else [],'stat':stat,'stat_threshold':0,'rank_stat_threshold':5 if fid=='m3_cold_hours' else None}
-        if mode=='relative_rank': f['notes'].append('跨星球不同單位：只比百分位，行星門檻不套用於地球分數。')
-        for s in f['planet_data']+f['earth_data']:SOURCE_USE[s['source_id']].append(fid)
+        if mode=='relative_rank':f['notes'].append('Cross-planet units differ: compare percentiles only; planetary thresholds do not score Earth candidates.')
+        for source in f['planet_data']+f['earth_data']:SOURCE_USE[source['source_id']].append(fid)
         FEATURE_NAMES[fid]=f
-        next(t for t in tasks if t['id']==tid)['features'].append(f)
+        next(task for task in tasks if task['id']==tid)['features'].append(f)
         findex+=1
     write(f'tasks_{mission}.yaml',tasks)
     all_tasks+=tasks
 
 write('missions.yaml',[
- {'id':'moon','name':'月球：永久基地候選地','name_en':'Moon: Permanent Base Candidates','goal':'以最少地球場址涵蓋月球南極基地的六項測試。','goal_en':'Find a compact network of Earth sites for six lunar base tests.','summary':'南極的光照、長黑暗與冷陷資源，形成相互連結的工程測試。5 kW、120 小時黑暗與技術缺口排序依團隊規格，待原文核對。','summary_en':'Explore linked tests for illumination, darkness and cold-trap resources. Engineering values follow the team brief and require source review.','nasa_sources':[{'title':"Moon Base User’s Guide",'url':NASA_MOON},{'title':'Moon to Mars Architecture','url':'https://www.nasa.gov/moontomarsarchitecture/'}]},
- {'id':'mars','name':'火星：著陸與探索地點','name_en':'Mars: Landing & Exploration','goal':'連結著陸、導航與地下冰探索需求，尋找互補的地球場址。','goal_en':'Connect landing, navigation and ice science to complementary Earth sites.','summary':'SkyFall 三架直升機探索火星地質、氣候與地下冰。AP-105 座標與工程限制沿用團隊提供的設計案例，並非本工具確認的最終選址。','summary_en':'SkyFall connects rotorcraft exploration with geology, climate and ice. AP-105 and engineering constraints are team-provided design cases, not a confirmed landing selection.','nasa_sources':[{'title':'NASA SkyFall','url':NASA_MARS},{'title':'SR-1 Freedom','url':'https://www.nasa.gov/mission/space-reactor-1-freedom/'}]}
+ {'id':'moon','name':'Moon: Permanent Base Candidates','name_en':'Moon: Permanent Base Candidates','goal':'Find a compact network of Earth sites for six lunar south-polar base tests.','goal_en':'Find a compact network of Earth sites for six lunar south-polar base tests.','summary':'South-polar illumination, long darkness, and cold-trap resources create linked engineering tests. The 5 kW and 120-hour targets and gap ordering follow the team brief and require original-source review.','summary_en':'South-polar illumination, long darkness, and cold-trap resources create linked engineering tests. The 5 kW and 120-hour targets and gap ordering follow the team brief and require original-source review.','nasa_sources':[{'title':"Moon Base User's Guide",'url':NASA_MOON},{'title':'Moon to Mars Architecture','url':'https://www.nasa.gov/moontomarsarchitecture/'}]},
+ {'id':'mars','name':'Mars: Landing & Exploration','name_en':'Mars: Landing & Exploration','goal':'Connect landing, navigation, and subsurface ice requirements to complementary Earth sites.','goal_en':'Connect landing, navigation, and subsurface ice requirements to complementary Earth sites.','summary':'SkyFall links three-helicopter exploration to geology, climate, and subsurface ice. AP-105 coordinates and engineering constraints are team-supplied design cases, not a confirmed landing selection.','summary_en':'SkyFall links three-helicopter exploration to geology, climate, and subsurface ice. AP-105 coordinates and engineering constraints are team-supplied design cases, not a confirmed landing selection.','nasa_sources':[{'title':'NASA SkyFall','url':NASA_MARS},{'title':'SR-1 Freedom','url':'https://www.nasa.gov/mission/space-reactor-1-freedom/'}]}
 ])
 sites=[]
 for mission in ['moon','mars']:
@@ -108,24 +107,24 @@ for mission in ['moon','mars']:
         if sid=='mars-ap105':lat,lon,status=43.3295,198.5228,'exact'
         if sid=='mars-jezero':lat,lon,status=18.4,77.5,'approx'
         if sid=='mars-gale':lat,lon,status=-5.4,137.8,'approx'
-        sites.append({'id':sid,'mission':mission,'name':name,'name_en':'Shackleton Connecting Ridge' if sid=='moon-scr' else name,'source':rest[-1], 'description':'團隊規格提供；地點特徵值目前為固定種子的示範資料。','description_en':'Team-supplied target. Feature values currently use deterministic placeholders.','lat':lat,'lon':lon,'coords_status':status})
+        description='Team-supplied target. Feature values currently use deterministic placeholders.'
+        sites.append({'id':sid,'mission':mission,'name':name,'name_en':name,'source':rest[-1],'description':description,'description_en':description,'lat':lat,'lon':lon,'coords_status':status})
 write('target_sites.yaml',sites)
 limits={}
-constraints=[]
 for mission in ['moon','mars']:
-    block=SPEC.split(f'**地球無法重現的條件（earth_limits，mission: {mission}）**',1)[1].split('### ',1)[0]
-    limits[mission]=[dict(zip(['condition','planet','reproducible','handling'],[x.strip() for x in l.strip('|').split('|')])) for l in block.splitlines() if l.startswith('| ') and not l.startswith('| 條件')]
-block=SPEC.split('**SkyFall 著陸工程限制**',1)[1].split('**分支任務**',1)[0]
-constraints=[dict(zip(['condition','requirement','earth_analog'],[x.strip() for x in l.strip('|').split('|')])) for l in block.splitlines() if l.startswith('| ') and not l.startswith('| 條件')]
+    block=SPEC.split(f'**Earth limitations (earth_limits, mission: {mission})**',1)[1].split('### ',1)[0]
+    limits[mission]=[dict(zip(['condition','planet','reproducible','handling'],[x.strip() for x in line.strip('|').split('|')])) for line in block.splitlines() if line.startswith('| ') and not line.startswith('| Condition')]
+block=SPEC.split('**SkyFall landing engineering constraints**',1)[1].split('| id |',1)[0]
+constraints=[dict(zip(['condition','requirement','earth_analog'],[x.strip() for x in line.strip('|').split('|')])) for line in block.splitlines() if line.startswith('| ') and not line.startswith('| Condition')]
 write('earth_limits.yaml',limits)
 write('constraints.yaml',{'moon':[],'mars':constraints})
-write('data_sources.yaml',[{'id':key,'name':name,'portal':name,'official':official,'url':url,'status':'TODO' if url is None else 'portal','used_by':sorted(set(SOURCE_USE[key])),'notes':'official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。'} for key,name,official,url in SOURCES])
-write('earth_facts.yaml',{'source':{'title':'NASA Planetary Fact Sheet','url':'https://nssdc.gsfc.nasa.gov/planetary/factsheet/'},'notes':'一天採太陽日（非恆星自轉週期）；月球陰影溫度為局部極值，非全球平均。','rows':[
- {'name':'重力','name_en':'Surface gravity','earth':'1 g','moon':'0.166 g','mars':'0.38 g'},
- {'name':'一天長度（太陽日）','name_en':'Solar day','earth':'24 h','moon':'29.5 Earth days','mars':'24 h 39 min'},
- {'name':'地表氣壓','name_en':'Surface pressure','earth':'1013 hPa','moon':'≈ 0 hPa','mars':'≈ 6 hPa'},
- {'name':'地表溫度','name_en':'Surface temperature','earth':'≈ 15°C','moon':'< −230°C / > 100°C','mars':'≈ −60°C'},
- {'name':'全球內生磁場','name_en':'Global intrinsic magnetic field','earth':'有 / Yes','moon':'無 / No','mars':'無 / No'}]})
+write('data_sources.yaml',[{'id':key,'name':name,'portal':name,'official':official,'url':url,'status':'TODO' if url is None else 'portal','used_by':sorted(set(SOURCE_USE[key])),'notes':'Official denotes the competition Resources list. Product links, versions, coverage, and licensing require team review.'} for key,name,official,url in SOURCES])
+write('earth_facts.yaml',{'source':{'title':'NASA Planetary Fact Sheet','url':'https://nssdc.gsfc.nasa.gov/planetary/factsheet/'},'notes':'Day length is the solar day, not sidereal rotation. Lunar shadow temperatures are local extremes, not global averages.','rows':[
+ {'name':'Surface gravity','name_en':'Surface gravity','earth':'1 g','moon':'0.166 g','mars':'0.38 g'},
+ {'name':'Solar day','name_en':'Solar day','earth':'24 h','moon':'29.5 Earth days','mars':'24 h 39 min'},
+ {'name':'Surface pressure','name_en':'Surface pressure','earth':'1013 hPa','moon':'≈ 0 hPa','mars':'≈ 6 hPa'},
+ {'name':'Surface temperature','name_en':'Surface temperature','earth':'≈ 15°C','moon':'< −230°C / > 100°C','mars':'≈ −60°C'},
+ {'name':'Global intrinsic magnetic field','name_en':'Global intrinsic magnetic field','earth':'Yes','moon':'No','mars':'No'}]})
 write('categorical_tables.yaml',{'m6_permafrost':{'yes':{'yes':1.,'no':0.,'unknown':.5},'no':{'yes':0.,'no':1.,'unknown':.5}},'r3_polygons':{'present':{'present':1.,'absent':0.},'absent':{'present':0.,'absent':1.}},'r5_landform':{a:{b:(1. if a==b else .7 if {a,b}=={'polygonal_terrain','patterned_ground'} else .4 if 'debris_apron' in [a,b] else .3) for b in ['polygonal_terrain','patterned_ground','debris_apron','plain']} for a in ['polygonal_terrain','patterned_ground','debris_apron','plain']}})
 write('method.yaml',{'tau':.7,'sigma':1.,'sigma_rank':.15,'epsilon':1e-6,'similar_cutoff':.7,'different_cutoff':.4,'weight_scheme':'roc','sensitivity':{'n_samples':500,'alpha':1.,'seed':42},'integration_bonus':[{'tasks':['M4','M6'],'bonus':.05}],'map':{'gibs_url':'https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/BlueMarble_ShadedRelief_Bathymetry/default/GoogleMapsCompatible_Level8/{z}/{y}/{x}.jpeg','max_zoom':8,'fallback_url':'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'}})
 

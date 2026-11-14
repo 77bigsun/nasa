@@ -140,6 +140,7 @@ class Facts(Record):
 class Method(Record):
     settings: dict[str,Any]
     markdown: str
+    markdown_zh: str = ''
 
 class Bundle(Record):
     mission: Mission
@@ -280,3 +281,95 @@ class SeriesResponse(Model):
 class MeasurementSnapshot(Model):
     candidates: list[Candidate]
     targets: dict[str,Measurements]
+
+
+class DatasetProduct(Record):
+    id: str
+    name: str
+    url: str
+    resolution: str
+    access: Literal['public','earthdata','cdse','jaxa']
+    status: Literal['imported','planned','account_required','reference']
+    uses: list[str]
+    notes: list[str]
+
+class ResearchSection(Record):
+    id: str
+    title: str
+    status: Literal['implemented','partial','planned','review']
+    pdf: Literal['overview','moon','mars','download-matrix']
+    pages: list[int]
+    items: list[str]
+    links: list[Link] = []
+
+class TerrainStatistics(Record):
+    mean_slope_deg: float = Field(ge=0,le=90)
+    median_slope_deg: float = Field(ge=0,le=90)
+    p90_slope_deg: float = Field(ge=0,le=90)
+    relief_p95_p05_m: float = Field(ge=0)
+    sample_count: int = Field(gt=0)
+    valid_fraction: float = Field(ge=.9,le=1)
+
+class TerrainObservation(Record):
+    id: str
+    name: str
+    planet: Literal['earth','moon']
+    lat: float = Field(ge=-90,le=90)
+    lon: float = Field(ge=-180,le=180)
+    native_crs: str
+    native_pixel_size: list[float]
+    analysis_crs: str
+    grid_m: float = Field(gt=0)
+    window_m: float = Field(gt=0)
+    gradient_support_m: float = Field(gt=0)
+    statistics: TerrainStatistics
+    slope_samples_deg: list[float]
+    is_placeholder: Literal[False]
+    derived_file: str
+    source_id: str
+    source_url: str
+    raw_url: str
+    sha256: str = Field(pattern=r'^[a-f0-9]{64}$')
+    roi_index: int | None = None
+    selection: str
+
+class WeatherParameter(Record):
+    mean: float
+    sample_count: int = Field(gt=0)
+    phase: list[float]
+    mean_cycle: list[float]
+    units: str
+
+class WeatherObservation(Record):
+    id: str
+    name: str
+    lat: float
+    lon: float
+    start: str
+    end: str
+    time_standard: Literal['LST']
+    source_id: str
+    source_url: str
+    raw_url: str
+    sha256: str = Field(pattern=r'^[a-f0-9]{64}$')
+    parameters: dict[str,WeatherParameter]
+    is_placeholder: Literal[False]
+
+class DownloadProvenance(Record):
+    url: str
+    bytes: int = Field(gt=0)
+    sha256: str = Field(pattern=r'^[a-f0-9]{64}$')
+    retrieved_at: str
+
+class ObservedPilot(Record):
+    status: Literal['available']
+    created_at: str
+    scope: str
+    grid_m: float = Field(gt=0)
+    window_m: float = Field(gt=0)
+    target: TerrainObservation
+    candidates: list[TerrainObservation]
+    meteorology: list[WeatherObservation]
+    downloads: list[DownloadProvenance]
+    uses_placeholder: Literal[False]
+    caveats: list[str]

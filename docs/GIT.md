@@ -1,16 +1,14 @@
-# 這個資料夾與 GitHub 的關係
+# GitHub connection
 
-`D:\NASA` 已初始化為 Git working tree。
+`D:\NASA` is a Git working tree connected to:
 
-- 遠端名稱：`origin`
-- 遠端網址：`https://github.com/77bigsun/nasa.git`
-- 本機分支：`main`
-- 追蹤分支：`origin/main`
-- 綁定時遠端內容：初始 README，commit `d150af2`。
+- Remote name: `origin`
+- Remote URL: `https://github.com/77bigsun/nasa.git`
+- Local branch: `main`
+- Upstream branch: `origin/main`
+- Remote content at initial connection: an initial README, commit `d150af2`.
 
-設定時保留了本機網站檔案，並將本機 main 接到遠端既有歷史。這份專案目前是未提交的工作目錄變更，未執行 push。
-
-確認連結：
+Connecting the repository preserved the local website files and attached main to the existing remote history. The setup did not push files. Later commits and pushes remain the responsibility of the person making them; inspect Git status for the current state.
 
 ```powershell
 cd D:\NASA
@@ -19,16 +17,16 @@ git branch -vv
 git status
 ```
 
-`.gitignore` 已排除 `.venv`、`node_modules`、dist、`.env`、暫存與日誌。套件 lockfile、示範資料、NASA 貼圖及原始碼會納入版本控制。
+`.gitignore` excludes `.venv`, node_modules, dist, `.env`, temporary files, and logs. Source, lockfiles, demonstration data, documentation, and the NASA texture belong in version control.
 
-準備好上傳時，可在確認 `git status` 的檔案清單後執行：
+After reviewing the file list, commit and push with:
 
 ```powershell
 git add .
-git commit -m "Add Earth Analog Finder prototype and service boundaries"
+git commit -m "Update Earth Analog Finder"
 git push -u origin main
 ```
 
-GitHub 若要求登入，請用你自己的帳號完成驗證。若 Git 要求 user.name / user.email，請設定你希望提交紀錄顯示的身分；此任務沒有替你猜測或更改 Git 身分。
+Complete GitHub authentication with your own account when requested. If Git requests user.name or user.email, set the identity you want in commit history; setup did not guess or change it.
 
-之後的變更可透過自己的 feature 分支處理，再開 PR 回 main。服務集中於同一個 repo，仍可按資料夾分工與審查。
+Use feature branches and pull requests for subsequent work. Services remain in one repository and can be reviewed and assigned by directory. Keep code, documentation, fixtures, and commit descriptions in English.

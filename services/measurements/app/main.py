@@ -1,7 +1,7 @@
 """The sole owner of candidate and planetary measurements."""
 import os
 from fastapi import FastAPI, HTTPException
-from services.shared.contracts import Candidate, Measurements, MeasurementSnapshot
+from services.shared.contracts import Candidate, Measurements, MeasurementSnapshot, ObservedPilot
 from .repository import MeasurementRepository
 
 def create_app(repository=None):
@@ -27,6 +27,12 @@ def create_app(repository=None):
     def target(site_id:str):
         if site_id not in repo.targets:raise HTTPException(404,'Unknown target measurements')
         return repo.targets[site_id]
+
+    @app.get('/observations',response_model=ObservedPilot)
+    def observations():
+        result=repo.observed()
+        if result is None:raise HTTPException(404,'No observed pilot imported; run the ingestion worker')
+        return result
 
     return app
 

@@ -1,3 +1,4 @@
+from services.shared.contracts import DatasetProduct, ResearchSection
 from fastapi import APIRouter, HTTPException
 from ..models import Mission, Task, Site, EarthLimit, Constraint, DataSource, Facts, Method, Bundle
 from ..repository import FileRepository
@@ -47,6 +48,17 @@ def create_router(repo: FileRepository):
     def facts():return repo.facts
 
     @router.get('/method',response_model=Method)
-    def method():return Method(settings=repo.settings,markdown=(repo.docs/'METHOD.md').read_text(encoding='utf-8'))
+    def method():return Method(settings=repo.settings,markdown=(repo.docs/'METHOD.md').read_text(encoding='utf-8'),markdown_zh=(repo.data_root/'content/method.zh-TW.md').read_text(encoding='utf-8'))
+    @router.get('/datasets',response_model=list[DatasetProduct])
+    def datasets():return repo.products
+
+    @router.get('/research',response_model=list[ResearchSection])
+    def research():return repo.research
+
+    @router.get('/translations/{locale}',response_model=dict[str,str])
+    def translations(locale: str):
+        if locale!='zh-TW':raise HTTPException(404,'Unknown translation locale')
+        return repo.translations
+
     return router
 

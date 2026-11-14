@@ -1,12 +1,15 @@
-# Future ingestion worker
+# Public-data ingestion worker
 
-Not implemented in this prototype. The Compose file reserves the role in a comment.
+The optional `ingest` Compose profile imports a scoped terrain pilot and Earth meteorology. Run from the repository root:
 
-Planned boundary: use earthaccess / openEO to retrieve products, apply quality masks,
-record acquisition time, footprint, units, native resolution and product version,
-align spatial scales and spectral wavelength grids, convert temporal axes to local
-solar phase / Mars Ls, then export the validated measurement contract in data/README.md.
+```powershell
+docker compose --profile ingest run --rm --build ingest
+```
 
-Do not flip `is_placeholder` to false merely because a download succeeded. Product
-provenance, calibration, coverage and uncertainty need team review first. Never add
-Earthdata credentials to Git; the future worker must read runtime secrets.
+Or install `requirements-dev.txt` and run locally:
+
+```powershell
+.\.venv\Scripts\python.exe -m services.ingest.run --config data/ingest/pilot.yaml
+```
+
+Read [the ingestion guide](../../docs/DATA_INGESTION.md) before interpreting results. This worker does not alter demonstration measurement fixtures. Other products and account-based retrieval are future work. Never put Earthdata, Copernicus or JAXA credentials in Git.

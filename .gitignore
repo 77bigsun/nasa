@@ -6,4 +6,5 @@ __pycache__/
 .env
 .runtime/
 *.pyc
+data/raw/
 

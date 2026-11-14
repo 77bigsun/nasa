@@ -1,66 +1,66 @@
 moon:
-- condition: 重力
-  planet: 地球的 1/6
-  reproducible: 否
-  handling: 列入無法重現清單
-- condition: 大氣
-  planet: 幾乎真空，無風、無天氣
-  reproducible: 否
-  handling: 列入無法重現清單
-- condition: 溫度
-  planet: 陰影區可低於 -230°C，向陽處超過 100°C
-  reproducible: 否（絕對值）
-  handling: 只比相對特徵
-- condition: 光照
-  planet: 太陽貼近地平線、長陰影
-  reproducible: 部分（高緯度）
-  handling: 納入 M2
-- condition: 輻射
-  planet: 無磁場、無大氣保護
-  reproducible: 否
-  handling: 列入無法重現清單
-- condition: 月塵
-  planet: 尖銳、帶靜電、未受風化
-  reproducible: 部分（火山碎屑）
-  handling: 納入 M5，標註靜電特性無法模擬
-- condition: 地質
-  planet: 無水、無生命作用
-  reproducible: 部分
-  handling: 在地點描述中說明
+- condition: Gravity
+  planet: One sixth of Earth gravity
+  reproducible: 'No'
+  handling: List as not reproducible
+- condition: Atmosphere
+  planet: Nearly vacuum, without wind or weather
+  reproducible: 'No'
+  handling: List as not reproducible
+- condition: Temperature
+  planet: Shadows below -230 C; sunlit terrain above 100 C
+  reproducible: No for absolute values
+  handling: Compare relative features only
+- condition: Illumination
+  planet: Low Sun near the horizon and long shadows
+  reproducible: Partly at high latitudes
+  handling: Include in M2
+- condition: Lunar dust
+  planet: Sharp, electrostatic, and unweathered
+  reproducible: Partly with volcanic fragments
+  handling: Include in M5; electrostatics cannot be reproduced
+- condition: Radiation
+  planet: No global field or atmospheric protection
+  reproducible: 'No'
+  handling: List as not reproducible
+- condition: Geology
+  planet: No water or biological weathering
+  reproducible: Partly
+  handling: Explain in site descriptions
 mars:
-- condition: 大氣
-  planet: 氣壓不到地球 1%，主要是 CO₂
-  reproducible: 否
-  handling: 列入無法重現清單
-- condition: 著陸海拔
-  planet: 需低於 -3 公里
-  reproducible: 不適用
-  handling: 不評分，在地點描述中說明
-- condition: 重力
-  planet: 約地球的 38%
-  reproducible: 否
-  handling: 列入無法重現清單
-- condition: 輻射
-  planet: 無全球磁場、大氣薄；SkyFall 劑量計要量測的就是這項
-  reproducible: 否
-  handling: 列入無法重現清單
-- condition: 溫度
-  planet: 平均約 -60°C，日夜溫差大
-  reproducible: 部分（極地、高山）
-  handling: 比相對特徵
-- condition: 水
-  planet: 地表無液態水，只有冰與含水礦物
-  reproducible: 部分（極乾沙漠、永凍土）
-  handling: 納入 R3、R4
-- condition: 土壤化學
-  planet: 含過氯酸鹽等氧化性物質
-  reproducible: 部分
-  handling: 在地點描述中說明
-- condition: 沙塵
-  planet: 有全球性沙塵暴
-  reproducible: 部分（規模與成因不同）
-  handling: 納入 R6
-- condition: 地質
-  planet: 火山、隕石坑、河道、冰緣地貌
-  reproducible: 可
-  handling: 地球類比最豐富的部分
+- condition: Atmosphere
+  planet: Below 1% of Earth's pressure, mostly CO2
+  reproducible: 'No'
+  handling: List as not reproducible
+- condition: Landing elevation
+  planet: Below -3 km
+  reproducible: Not applicable
+  handling: Do not score; explain in site descriptions
+- condition: Gravity
+  planet: Approximately 38% of Earth's gravity
+  reproducible: 'No'
+  handling: List as not reproducible
+- condition: Radiation
+  planet: No global field and a thin atmosphere; relevant to SkyFall dosimetry
+  reproducible: 'No'
+  handling: List as not reproducible
+- condition: Temperature
+  planet: Mean about -60 C with large diurnal range
+  reproducible: Partly in polar or alpine areas
+  handling: Compare relative features
+- condition: Water
+  planet: No surface liquid water; ice and hydrated minerals
+  reproducible: Partly in hyperarid deserts and permafrost
+  handling: Include in R3 and R4
+- condition: Soil chemistry
+  planet: Perchlorates and other oxidants
+  reproducible: Partly
+  handling: Explain in site descriptions
+- condition: Dust
+  planet: Global dust storms
+  reproducible: Partly; scale and mechanisms differ
+  handling: Include in R6
+- condition: Geology
+  planet: Volcanic, cratered, fluvial, and periglacial landforms
+  reproducible: 'Yes'
+  handling: A rich source of terrestrial analog processes

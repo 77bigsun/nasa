@@ -1,25 +1,32 @@
 - id: moon
-  name: 月球：永久基地候選地
+  name: 'Moon: Permanent Base Candidates'
   name_en: 'Moon: Permanent Base Candidates'
-  goal: 以最少地球場址涵蓋月球南極基地的六項測試。
-  goal_en: Find a compact network of Earth sites for six lunar base tests.
-  summary: 南極的光照、長黑暗與冷陷資源，形成相互連結的工程測試。5 kW、120 小時黑暗與技術缺口排序依團隊規格，待原文核對。
-  summary_en: Explore linked tests for illumination, darkness and cold-trap resources.
-    Engineering values follow the team brief and require source review.
+  goal: Find a compact network of Earth sites for six lunar south-polar base tests.
+  goal_en: Find a compact network of Earth sites for six lunar south-polar base tests.
+  summary: South-polar illumination, long darkness, and cold-trap resources create
+    linked engineering tests. The 5 kW and 120-hour targets and gap ordering follow
+    the team brief and require original-source review.
+  summary_en: South-polar illumination, long darkness, and cold-trap resources create
+    linked engineering tests. The 5 kW and 120-hour targets and gap ordering follow
+    the team brief and require original-source review.
   nasa_sources:
-  - title: Moon Base User’s Guide
+  - title: Moon Base User's Guide
     url: https://www.nasa.gov/moonbase-phases/
   - title: Moon to Mars Architecture
     url: https://www.nasa.gov/moontomarsarchitecture/
 - id: mars
-  name: 火星：著陸與探索地點
+  name: 'Mars: Landing & Exploration'
   name_en: 'Mars: Landing & Exploration'
-  goal: 連結著陸、導航與地下冰探索需求，尋找互補的地球場址。
-  goal_en: Connect landing, navigation and ice science to complementary Earth sites.
-  summary: SkyFall 三架直升機探索火星地質、氣候與地下冰。AP-105 座標與工程限制沿用團隊提供的設計案例，並非本工具確認的最終選址。
-  summary_en: SkyFall connects rotorcraft exploration with geology, climate and ice.
-    AP-105 and engineering constraints are team-provided design cases, not a confirmed
-    landing selection.
+  goal: Connect landing, navigation, and subsurface ice requirements to complementary
+    Earth sites.
+  goal_en: Connect landing, navigation, and subsurface ice requirements to complementary
+    Earth sites.
+  summary: SkyFall links three-helicopter exploration to geology, climate, and subsurface
+    ice. AP-105 coordinates and engineering constraints are team-supplied design cases,
+    not a confirmed landing selection.
+  summary_en: SkyFall links three-helicopter exploration to geology, climate, and
+    subsurface ice. AP-105 coordinates and engineering constraints are team-supplied
+    design cases, not a confirmed landing selection.
   nasa_sources:
   - title: NASA SkyFall
     url: https://science.nasa.gov/mission/skyfall/

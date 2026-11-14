@@ -32,6 +32,21 @@ def main():
             response=client.get(f'/api/similarity/candidates/demo-01/series/{feature}',params={'site_id':site,'mission':mission})
             response.raise_for_status()
             assert len(response.json()['phase'])>0
+        for path in ['/research','/data','/api/catalog/datasets','/api/catalog/research','/api/catalog/translations/zh-TW']:
+            client.get(path).raise_for_status()
+        translations=client.get('/api/catalog/translations/zh-TW').json()
+        assert len(translations)>300
+        observed=client.get('/api/measurements/observations')
+        if observed.status_code==200:
+            pilot=observed.json()
+            assert pilot['uses_placeholder'] is False
+            assert pilot['target']['statistics']['sample_count']>0
+            assert pilot['downloads'] and all(len(p['sha256'])==64 for p in pilot['downloads'])
+            print('Observed pilot: measured terrain and hashed provenance OK')
+        elif observed.status_code==404:
+            print('Observed pilot not imported; no synthetic fallback')
+        else:observed.raise_for_status()
+        print('Bilingual research/product catalog: OK')
         print('All live HTTP checks passed.')
 
 if __name__=='__main__':main()

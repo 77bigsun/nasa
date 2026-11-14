@@ -1,42 +1,43 @@
-# 驗證紀錄 · 2026-11-14
+# Validation record - 2026-11-14
 
-環境：Windows、Python 3.13.1、Node 26.13.0、Vite 8.3.8、FastAPI 0.162.7、PuLP 4.2.0 + cbcbox 2.929。Docker 設計目標為 python:3.12-slim / node:26-alpine。
+Local environment: Windows, Python 3.13.1, Node 26.13.0. Production images use Python 3.12 and Node 26. The default stack has six containers; ingestion is an optional one-off profile.
 
-## 已執行
+## Completed checks
 
-| 檢查 | 結果 |
+| Check | Result |
 |---|---|
-| pytest：公式邊界、ROC／等差、幾何平均、SAM、百分位、時間序列 | 通過 |
-| pytest：最少集合覆蓋、次階段品質取捨、uncoverable、固定種子敏感度 | 通過 |
-| pytest：seed schema、來源引用、月球／火星 score／optimize／sensitivity／series | 通過 |
-| pytest：無效任務、跨星球 site、缺目標 fallback、排除已知場址、placeholder | 通過 |
-| 後端測試總數（拆分後新增服務邊界與依賴失敗案例） | 27 passed |
-| Vitest：分享 URL 還原／驗證、精靈選擇→目標→結果、零任務阻擋、詳情與序列載入、語系切換 | 5 passed |
-| vue-tsc + Vite production build | 通過 |
-| 本機四個 FastAPI + Vite 啟動器 | 成功，port 8001／8002／8003／8004／8080 |
-| HTTP GET `/` `/moon` `/mars` `/method` `/data` | 全部 200（路由可服務，非畫面驗證） |
-| HTTP catalog／measurements／similarity／planning 的 health、docs 與 OpenAPI | 四套 API 均成功；規劃與評分分開運行，保留代理前綴 |
-| 透過本機代理 POST 月球／火星 score、optimize、sensitivity | similarity 評分、planning 規劃均成功，舊 API 別名保留轉送 |
-| NASA Blue Marble 本機資產 | 已下載公開鏡像，HTTP 200 |
-| NASA GIBS WMTS Level8 範例圖磚 | 200 image/jpeg，17,819 bytes |
+| Backend methods, scoring, optimization, boundaries and failures | 27 existing tests passed |
+| Terrain plane slope, fill handling, tile selection, observed/demo separation, missing observations, product/research/translation contracts | 5 additional tests passed |
+| Total backend tests | 32 passed |
+| Frontend URL restoration, wizard flow, empty selection, evidence drawer | Passed |
+| Stored language preference, English/Traditional Chinese switch and document language | Passed |
+| Observed table and loaded-content translation, planned research status | Passed |
+| Total frontend tests | 7 passed |
+| TypeScript and Vite production build, including Docker build | Passed |
+| English development content and matching UI locale keys | Passed; intentional translation files excluded |
+| Production Compose web build/start | Six healthy containers |
+| Four API health/docs/OpenAPI prefixes and both mission pipelines | Live HTTP smoke passed after gateway address refresh |
+| Observed/product/research/translation endpoints | HTTP 200; actual statistics and hashed provenance checked |
+| Optional ingestion container | Built and reran successfully using hash-checked cached downloads |
+| Source files | Eight successful public downloads, 152.69 MiB total |
+| Observed output | Four 2 km terrain windows, 400 valid samples each; three POWER records, 744 hours per parameter |
+| Demonstration numeric fixtures | Candidate and target files match pre-translation Git versions after CRLF normalization |
 
-## 尚未實測
+English source definitions and developer documentation are retained. The frontend has 196 matching UI keys per language and 338 translated content strings. A valid stored preference is respected; new browsers default to Traditional Chinese. Document language updates to `en` or `zh-Hant`. Tests verify reactive content translation without another data request. The method endpoint serves both English and Traditional Chinese Markdown.
 
-- Docker build／Compose 正式與開發模式：主機沒有 docker 指令，僅提供設定與 YAML 結構檢查。
-- 真人瀏覽器視覺與互動：browser access host unavailable；原生 Edge 的 app approval timed out。未以其他未授權瀏覽器控制技術繞過。
-- WebGL 實際旋轉、Leaflet 實際繪製與 fallback、ECharts/KaTeX 視覺、手機斷點、鍵盤焦點與螢幕閱讀器均待人工驗收。
-- 真實資料下載、光譜重採樣、時間序列自相關 bootstrap 與科學效度：原型未實作／未驗證。
+All four source PDFs were read in full, with representative page layouts inspected. Their SHA-256 identifiers, official cross-checks and website additions are recorded in `PDF_REVIEW.md`. Product records include public/account-required access and explicit import status.
 
-## 對照原規格驗收清單
+The original mission scoring fixtures remain synthetic and visibly labelled. The observed terrain pilot uses real derived product values but does not certify landing conditions, establish new analogs or replace full mission-ranking measurements. No block-bootstrap equivalence claims, multi-target joint optimization or global novelty search are made.
 
-1. 首頁與 Compose：程式已實作；HTTP／正式前端建置通過；Docker 與畫面待實測。
-2. 月球任務卡、來源、權重、注意事項與限制表：已實作，catalog 資料契約通過。
-3. 任務選擇、Shackleton、排名與詳情地圖：API／精靈元件通過；地圖與抽屜視覺待實測。
-4. τ／權重／排除、集合覆蓋、邊際效益、敏感度：API／核心通過；圖表視覺待實測。
-5. 火星流程、R1 threshold、工程表：API／核心通過；視覺待實測。
-6. placeholder 橫幅：API flag 與精靈元件測試通過。
-7. zh-TW／en：介面字串與切換已實作；內容缺翻譯回退中文，待人工瀏覽器確認。
-8. 兩個代理前綴 docs：本機 Vite 代理實測通過；Nginx Compose 待實測。
-9. pytest／README／資料替換／新增特徵與方法位置：完成。
+## Manual and scientific limits
 
-目前沒有任何經真實觀測支持的場址發現。NASA 工程條件、來源版本與技術缺口排名的細節仍待團隊確認。
+- Docker development override has not been started; production build, health and HTTP integration were checked.
+- Browser automation was unavailable and native Edge approval previously timed out. DOM simulation is not visual acceptance; mobile layout, WebGL, Leaflet, ECharts, formula appearance, focus and screen-reader behavior still need manual browser review.
+- Account-based retrieval, spectral calibration, cross-sensor proxy validation and uncertainty propagation remain unfinished.
+- The terrain pilot's 100 m grid has 200 m central-difference support; it is not a 100 m landing-slope certification. Copernicus DSM and interpolated LOLA have different error structures.
+- POWER meteorology is gridded context, not local surface-temperature measurements or lunar geometric illumination.
+- Existing framework deprecation warnings do not fail the test suite. They are separate maintenance work.
+
+Nginx cached old backend addresses after container recreation during validation. Restarting the gateway restored all service identities and pipelines; the Docker guide now documents this required refresh after backend recreation.
+
+The ingestion image explicitly installs `libexpat1`, required by the Linux Rasterio wheel. The same public-data configuration completed on both the Windows virtual environment and the Python 3.12 container.

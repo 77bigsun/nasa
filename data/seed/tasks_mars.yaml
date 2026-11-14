@@ -1,23 +1,24 @@
 - id: R1
   mission: mars
-  name: 著陸地表條件
+  name: Landing surface conditions
   name_en: Landing surface conditions
-  verify: 坡度、岩石、承重是否適合降落
-  nasa_basis: SkyFall 工程限制 V.e–g
+  verify: Evaluate slope, rocks, and bearing conditions for landing
+  nasa_basis: SkyFall engineering constraints V.e-g
   nasa_url: https://science.nasa.gov/mission/skyfall/
   tech_gap:
     rank: 10
     bin: 2
-    label: 10（2）、37（5）
+    label: 10 (2), 37 (5)
   order: 1
   manual_adjust: null
   notes:
-  - 以當地時間與太陽經度 Ls 對齊；火星年約 687 地球日。
-  - 地形使用 Copernicus DEM；所有示範數值均非觀測。
-  - SkyFall 五區缺少著陸器實測；工程限制及技術缺口排名沿用團隊規格，待查原文。
+  - Align local time and solar longitude Ls; a Martian year is about 687 Earth days.
+  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
+  - The five SkyFall regions lack lander measurements. Engineering constraints and
+    gap ranks follow the team brief and require source review.
   features:
   - id: r1_slope_100m
-    name: 100 m 坡度
+    name: 100 m slope
     name_en: 100 m slope
     type: threshold
     compare_mode: absolute
@@ -30,7 +31,7 @@
     out_of_earth_range: false
     earth_proxy: false
     planet_data:
-    - name: CTX 或 HRSC 地形 （MOLA 約 463 m 太粗）
+    - name: CTX or HRSC terrain  (MOLA at approximately 463 m is too coarse)
       official: false
       source_id: ctx
       url: https://murray-lab.caltech.edu/CTX/
@@ -40,12 +41,12 @@
       source_id: copernicus
       url: https://dataspace.copernicus.eu/
     notes:
-    - '`{ideal_max: 5, zero_at: 15}`（待定）'
+    - '`{ideal_max: 5, zero_at: 15}` (provisional)'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
   - id: r1_slope_1_5m
-    name: 1–5 m 坡度
+    name: 1-5 m slope
     name_en: 1–5 m slope
     type: threshold
     compare_mode: absolute
@@ -58,22 +59,26 @@
     out_of_earth_range: false
     earth_proxy: true
     planet_data:
-    - name: HiRISE 地形模型 （覆蓋有限）
+    - name: HiRISE terrain models  (limited coverage)
       official: true
       source_id: pds
       url: https://pds.nasa.gov/
     earth_data:
-    - name: 無全球資料，用 30 m 坡度 + 雷達代理
+    - name: No global data
+      official: true
+      source_id: earthdata
+      url: https://search.earthdata.nasa.gov/
+    - name: use 30 m slope and radar proxies
       official: true
       source_id: earthdata
       url: https://search.earthdata.nasa.gov/
     notes:
-    - '`{ideal_max: 12, zero_at: 15}`；earth_proxy'
+    - '`{ideal_max: 12, zero_at: 15}`; earth_proxy'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
   - id: r1_rock
-    name: 岩石覆蓋率
+    name: Rock fraction
     name_en: Rock fraction
     type: threshold
     compare_mode: relative_rank
@@ -85,23 +90,24 @@
     out_of_earth_range: false
     earth_proxy: true
     planet_data:
-    - name: TES／THEMIS 岩石覆蓋
+    - name: TES/THEMIS rock abundance
       official: true
       source_id: pds
       url: https://pds.nasa.gov/
     earth_data:
-    - name: 表觀熱慣量 + Sentinel-1／PALSAR
+    - name: Apparent thermal inertia + Sentinel-1/PALSAR
       official: true
       source_id: copernicus
       url: https://dataspace.copernicus.eu/
     notes:
-    - 'planet_threshold `{max: 0.05}`；earth_proxy'
-    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    - 'planet_threshold `{max: 0.05}`; earth_proxy'
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
+      not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
   - id: r1_thermal_inertia
-    name: 熱慣量
+    name: Thermal inertia
     name_en: Thermal inertia
     type: threshold
     compare_mode: relative_rank
@@ -114,39 +120,42 @@
     out_of_earth_range: false
     earth_proxy: false
     planet_data:
-    - name: THEMIS 熱慣量（約 100 m）
+    - name: THEMIS thermal inertia (approximately 100 m)
       official: true
       source_id: pds
       url: https://pds.nasa.gov/
     earth_data:
-    - name: 表觀熱慣量
+    - name: Apparent thermal inertia
       official: true
       source_id: earthdata
       url: https://search.earthdata.nasa.gov/
     notes:
-    - 'planet_threshold `{zero_at: 100, ideal_min: 150}`；地球單位不同只比相對排名'
-    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    - 'planet_threshold `{zero_at: 100, ideal_min: 150}`; Earth units differ, so compare
+      relative ranks'
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
+      not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
 - id: R2
   mission: mars
-  name: 視覺導航可行性
+  name: Visual navigation
   name_en: Visual navigation
-  verify: 直升機靠影像特徵導航
-  nasa_basis: SkyFall 工程限制 V.h
+  verify: Navigate helicopters using image features
+  nasa_basis: SkyFall engineering constraint V.h
   nasa_url: https://science.nasa.gov/mission/skyfall/
   tech_gap: null
   order: 4
   manual_adjust:
-    reason: 手動排入：SkyFall 工程限制
+    reason: Manually ordered from SkyFall engineering constraints
   notes:
-  - 以當地時間與太陽經度 Ls 對齊；火星年約 687 地球日。
-  - 地形使用 Copernicus DEM；所有示範數值均非觀測。
-  - SkyFall 五區缺少著陸器實測；工程限制及技術缺口排名沿用團隊規格，待查原文。
+  - Align local time and solar longitude Ls; a Martian year is about 687 Earth days.
+  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
+  - The five SkyFall regions lack lander measurements. Engineering constraints and
+    gap ranks follow the team brief and require source review.
   features:
   - id: r2_texture
-    name: 影像紋理豐富度
+    name: Image texture
     name_en: Image texture
     type: profile
     compare_mode: relative_rank
@@ -157,23 +166,24 @@
     out_of_earth_range: false
     earth_proxy: false
     planet_data:
-    - name: CTX（6 m）、HiRISE
+    - name: CTX (6 m) and HiRISE
       official: true
       source_id: pds
       url: https://pds.nasa.gov/
     earth_data:
-    - name: Sentinel-2（10 m）
+    - name: Sentinel-2 (10 m)
       official: true
       source_id: copernicus
       url: https://dataspace.copernicus.eu/
     notes:
-    - HLS 30 m 太粗
-    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    - HLS at 30 m is too coarse
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
+      not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
   - id: r2_dune_fraction
-    name: 沙丘與沙原比例
+    name: Dune fraction
     name_en: Dune fraction
     type: threshold
     compare_mode: absolute
@@ -186,7 +196,7 @@
     out_of_earth_range: false
     earth_proxy: false
     planet_data:
-    - name: 火星全球沙丘資料庫
+    - name: Mars Global Dune Database
       official: false
       source_id: dunes
       url: https://astrogeology.usgs.gov/
@@ -196,31 +206,33 @@
       source_id: copernicus
       url: https://dataspace.copernicus.eu/
     notes:
-    - '越低越好 `{ideal_max: 0.05, zero_at: 0.3}`（暫定）'
+    - 'Lower is better: `{ideal_max: 0.05, zero_at: 0.3}` (provisional)'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
 - id: R3
   mission: mars
-  name: 淺層地下冰
+  name: Shallow subsurface ice
   name_en: Shallow subsurface ice
-  verify: 透地雷達偵測 3–5 公尺內的分層與埋藏冰
-  nasa_basis: SkyFall 透地雷達；載人選址重視取水
+  verify: Use ground-penetrating radar to detect layering and buried ice within 3-5
+    m
+  nasa_basis: SkyFall radar; accessible water for human exploration
   nasa_url: https://science.nasa.gov/mission/skyfall/
   tech_gap:
     rank: 52
     bin: 6
-    label: 52（6）
+    label: 52 (6)
   order: 2
   manual_adjust:
-    reason: 上調：SkyFall 重點、取水為關鍵
+    reason: Raised priority because water access is central to SkyFall and human exploration
   notes:
-  - 以當地時間與太陽經度 Ls 對齊；火星年約 687 地球日。
-  - 地形使用 Copernicus DEM；所有示範數值均非觀測。
-  - SkyFall 五區缺少著陸器實測；工程限制及技術缺口排名沿用團隊規格，待查原文。
+  - Align local time and solar longitude Ls; a Martian year is about 687 Earth days.
+  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
+  - The five SkyFall regions lack lander measurements. Engineering constraints and
+    gap ranks follow the team brief and require source review.
   features:
   - id: r3_ground_ice
-    name: 地下冰分布與深度
+    name: Ground ice
     name_en: Ground ice
     type: profile
     compare_mode: relative_rank
@@ -231,7 +243,7 @@
     out_of_earth_range: false
     earth_proxy: false
     planet_data:
-    - name: Odyssey 中子／伽瑪射線、SHARAD
+    - name: Odyssey neutron/gamma rays and SHARAD
       official: true
       source_id: pds
       url: https://pds.nasa.gov/
@@ -240,22 +252,23 @@
       source_id: swim
       url: https://swim.psi.edu/
     earth_data:
-    - name: MODIS 年均地表溫 < 0°C
+    - name: MODIS annual mean land temperature below 0 C
       official: true
       source_id: earthdata
       url: https://search.earthdata.nasa.gov/
-    - name: ESA CCI 永凍土
+    - name: ESA CCI permafrost
       official: false
       source_id: cci
       url: https://climate.esa.int/en/projects/permafrost/
     notes:
-    - 地球沒有 3–5 m 深度的全球資料
-    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    - No global Earth measurements of ice at 3-5 m depth
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
+      not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
   - id: r3_polygons
-    name: 多邊形地
+    name: Polygonal terrain
     name_en: Polygonal terrain
     type: categorical
     compare_mode: absolute
@@ -266,7 +279,7 @@
     out_of_earth_range: false
     earth_proxy: false
     planet_data:
-    - name: HiRISE、CTX
+    - name: HiRISE and CTX
       official: true
       source_id: pds
       url: https://pds.nasa.gov/
@@ -280,7 +293,7 @@
     stat_threshold: 0
     rank_stat_threshold: null
   - id: r3_subsurface_radar
-    name: 地表下雷達
+    name: Subsurface radar
     name_en: Subsurface radar
     type: profile
     compare_mode: relative_rank
@@ -296,34 +309,36 @@
       source_id: pds
       url: https://pds.nasa.gov/
     earth_data:
-    - name: PALSAR L 波段
+    - name: PALSAR L band
       official: true
       source_id: jaxa
       url: https://gportal.jaxa.jp/gpr/
     notes:
-    - 僅極乾沙地可穿透表層
-    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    - Surface penetration is restricted to very dry sandy terrain
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
+      not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
 - id: R4
   mission: mars
-  name: 含水礦物辨識
+  name: Hydrated minerals
   name_en: Hydrated minerals
-  verify: 近紅外辨識含水礦物與變質產物
-  nasa_basis: SkyFall 近紅外相機；生命起源科學目標
+  verify: Identify hydrated minerals and alteration products with near-infrared observations
+  nasa_basis: SkyFall near-infrared camera and origin-of-life science
   nasa_url: https://science.nasa.gov/mission/skyfall/
   tech_gap: null
   order: 5
   manual_adjust:
-    reason: 手動排入：科學目標
+    reason: Manually ordered from science goals
   notes:
-  - 以當地時間與太陽經度 Ls 對齊；火星年約 687 地球日。
-  - 地形使用 Copernicus DEM；所有示範數值均非觀測。
-  - SkyFall 五區缺少著陸器實測；工程限制及技術缺口排名沿用團隊規格，待查原文。
+  - Align local time and solar longitude Ls; a Martian year is about 687 Earth days.
+  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
+  - The five SkyFall regions lack lander measurements. Engineering constraints and
+    gap ranks follow the team brief and require source review.
   features:
   - id: r4_hydrated_spectra
-    name: 含水礦物光譜
+    name: Hydrated mineral spectrum
     name_en: Hydrated mineral spectrum
     type: spectral
     compare_mode: absolute
@@ -334,7 +349,7 @@
     out_of_earth_range: false
     earth_proxy: false
     planet_data:
-    - name: CRISM、OMEGA
+    - name: CRISM and OMEGA
       official: true
       source_id: pds
       url: https://pds.nasa.gov/
@@ -343,33 +358,35 @@
       official: true
       source_id: earthdata
       url: https://search.earthdata.nasa.gov/
-    - name: ASTER 短波紅外
+    - name: ASTER SWIR
       official: true
       source_id: earthdata
       url: https://search.earthdata.nasa.gov/
     notes:
-    - ASTER 短波紅外 2008 年 4 月故障，只用之前資料；EMIT 只涵蓋乾旱區、北緯 52° 以南
+    - ASTER SWIR failed in April 2008; use earlier data only. EMIT covers arid regions
+      south of 52 N only
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
 - id: R5
   mission: mars
-  name: 冰河與冰緣地形
+  name: Glacial and periglacial terrain
   name_en: Glacial & periglacial terrain
-  verify: 多邊形地等地貌與地下冰的關係
-  nasa_basis: SkyFall 彩色相機
+  verify: Relate polygonal and other landforms to subsurface ice
+  nasa_basis: SkyFall color camera
   nasa_url: https://science.nasa.gov/mission/skyfall/
   tech_gap: null
   order: 6
   manual_adjust:
-    reason: 手動排入：科學目標
+    reason: Manually ordered from science goals
   notes:
-  - 以當地時間與太陽經度 Ls 對齊；火星年約 687 地球日。
-  - 地形使用 Copernicus DEM；所有示範數值均非觀測。
-  - SkyFall 五區缺少著陸器實測；工程限制及技術缺口排名沿用團隊規格，待查原文。
+  - Align local time and solar longitude Ls; a Martian year is about 687 Earth days.
+  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
+  - The five SkyFall regions lack lander measurements. Engineering constraints and
+    gap ranks follow the team brief and require source review.
   features:
   - id: r5_landform
-    name: 地貌類型
+    name: Landform class
     name_en: Landform class
     type: categorical
     compare_mode: absolute
@@ -380,16 +397,16 @@
     out_of_earth_range: false
     earth_proxy: false
     planet_data:
-    - name: HiRISE、CTX
+    - name: HiRISE and CTX
       official: true
       source_id: pds
       url: https://pds.nasa.gov/
     earth_data:
-    - name: Sentinel-2、Copernicus DEM
+    - name: Sentinel-2 and Copernicus DEM
       official: true
       source_id: copernicus
       url: https://dataspace.copernicus.eu/
-    - name: RGI 冰河分布
+    - name: RGI glacier distribution
       official: false
       source_id: rgi
       url: https://www.glims.org/RGI/
@@ -398,7 +415,7 @@
     stat_threshold: 0
     rank_stat_threshold: null
   - id: r5_polygon_size
-    name: 多邊形尺寸
+    name: Polygon size
     name_en: Polygon size
     type: profile
     compare_mode: absolute
@@ -409,7 +426,7 @@
     out_of_earth_range: false
     earth_proxy: false
     planet_data:
-    - name: HiRISE、CTX
+    - name: HiRISE and CTX
       official: true
       source_id: pds
       url: https://pds.nasa.gov/
@@ -419,12 +436,12 @@
       source_id: copernicus
       url: https://dataspace.copernicus.eu/
     notes:
-    - 地球冰楔多邊形約 10–30 m，10 m 解析度勉強
+    - Earth ice-wedge polygons are about 10-30 m; 10 m resolution is marginal
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
   - id: r5_roughness
-    name: 地表粗糙度
+    name: Surface roughness
     name_en: Surface roughness
     type: profile
     compare_mode: relative_rank
@@ -444,35 +461,37 @@
       official: true
       source_id: copernicus
       url: https://dataspace.copernicus.eu/
-    - name: RADARSAT-1 長期變化
+    - name: RADARSAT-1 long-term change
       official: true
       source_id: radarsat
       url: https://www.asc-csa.gc.ca/eng/satellites/radarsat1/
     notes:
-    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
+      not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
 - id: R6
   mission: mars
-  name: 沙塵與近地表氣象
+  name: Dust and near-surface weather
   name_en: Dust & near-surface weather
-  verify: 塵埃揚起、風、近地表溫度日變化
-  nasa_basis: SkyFall 氣象感測；MD-07
+  verify: Characterize dust lifting, wind, and diurnal near-surface temperature
+  nasa_basis: SkyFall meteorology; MD-07
   nasa_url: https://science.nasa.gov/mission/skyfall/
   tech_gap:
     rank: 35
     bin: 4
-    label: 35（4）
+    label: 35 (4)
   order: 3
   manual_adjust: null
   notes:
-  - 以當地時間與太陽經度 Ls 對齊；火星年約 687 地球日。
-  - 地形使用 Copernicus DEM；所有示範數值均非觀測。
-  - SkyFall 五區缺少著陸器實測；工程限制及技術缺口排名沿用團隊規格，待查原文。
+  - Align local time and solar longitude Ls; a Martian year is about 687 Earth days.
+  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
+  - The five SkyFall regions lack lander measurements. Engineering constraints and
+    gap ranks follow the team brief and require source review.
   features:
   - id: r6_dust
-    name: 沙塵頻率與季節性
+    name: Dust seasonality
     name_en: Dust seasonality
     type: timeseries
     compare_mode: relative_rank
@@ -483,27 +502,28 @@
     out_of_earth_range: false
     earth_proxy: false
     planet_data:
-    - name: MCS、MARCI、TES
+    - name: MCS, MARCI, TES
       official: true
       source_id: pds
       url: https://pds.nasa.gov/
-    - name: 火星氣候資料庫 MCD
+    - name: Mars Climate Database MCD
       official: false
       source_id: mcd
       url: https://www-mars.lmd.jussieu.fr/
     earth_data:
-    - name: MODIS 氣膠、MERRA-2 沙塵、Sentinel-5P
+    - name: MODIS aerosols, MERRA-2 dust, and Sentinel-5P
       official: true
       source_id: copernicus
       url: https://dataspace.copernicus.eu/
     notes:
-    - SkyFall 五區無著陸器實測
-    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    - No lander measurements in the five SkyFall regions
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
+      not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
   - id: r6_wind_temp
-    name: 風、近地表溫度日變化
+    name: Wind / temperature cycle
     name_en: Wind / temperature cycle
     type: timeseries
     compare_mode: relative_rank
@@ -518,7 +538,7 @@
       official: false
       source_id: mcd
       url: https://www-mars.lmd.jussieu.fr/
-    - name: REMS、MEDA （僅兩點）
+    - name: REMS and MEDA  (two locations only)
       official: true
       source_id: pds
       url: https://pds.nasa.gov/
@@ -528,7 +548,8 @@
       source_id: earthdata
       url: https://search.earthdata.nasa.gov/
     notes:
-    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
+      not score Earth candidates.'
     stat: range
     stat_threshold: 0
     rank_stat_threshold: null

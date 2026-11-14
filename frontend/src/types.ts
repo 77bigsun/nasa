@@ -19,3 +19,9 @@ export interface SeriesResponse {phase:number[];target:number[];candidate:number
 export interface Facts {source:Link;notes:string;rows:{name:string;name_en:string;earth:string;moon:string;mars:string}[]}
 export interface DataSource {id:string;name:string;portal:string;official:boolean;url:string|null;status:string;used_by:string[];notes:string}
 export interface ScoreRequest {mission:string;site_id:string;task_ids:string[];weight_scheme:string;custom_weights:Record<string,number>|null;exclude_known:boolean;tau:number}
+
+export interface DatasetProduct {id:string;name:string;url:string;resolution:string;access:string;status:string;uses:string[];notes:string[]}
+export interface ResearchSection {id:string;title:string;status:string;pdf:string;pages:number[];items:string[];links:Link[]}
+export interface TerrainObservation {id:string;name:string;planet:string;lat:number;lon:number;grid_m:number;window_m:number;gradient_support_m:number;statistics:{mean_slope_deg:number;median_slope_deg:number;p90_slope_deg:number;relief_p95_p05_m:number;sample_count:number;valid_fraction:number};slope_samples_deg:number[];source_url:string;raw_url:string;sha256:string;selection:string}
+export interface WeatherObservation {id:string;name:string;source_url:string;start:string;end:string;time_standard:string;parameters:Record<string,{mean:number;sample_count:number;units:string;phase:number[];mean_cycle:number[]}>}
+export interface ObservedPilot {status:string;created_at:string;scope:string;target:TerrainObservation;candidates:TerrainObservation[];meteorology:WeatherObservation[];downloads:{url:string;bytes:number;sha256:string;retrieved_at:string}[];caveats:string[];uses_placeholder:false}

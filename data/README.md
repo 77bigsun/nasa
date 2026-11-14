@@ -1,19 +1,19 @@
-# Data contract / 團隊資料交接
+# Data contract and team handoff
 
-`seed/` 分為 catalog 管理的任務定義，以及 measurements 管理的量測檔。**目前 17 個目標與 20 個候選的特徵數值全部是 placeholder**，不是衛星觀測、場址驗證或科學發現。Demo 座標僅用來驗證地圖，不表示該地符合任務需求。
+`seed/` contains catalog-owned definitions and measurements-owned data files. **All feature values for the 17 targets and 20 candidates are placeholders**, not satellite observations, validated sites, or discoveries. Demo coordinates exercise map rendering; they do not establish suitability.
 
-## 替換成真實資料
+## Replace fixtures with real measurements
 
-1. 編輯 `tasks_moon.yaml` / `tasks_mars.yaml` 的特徵定義與來源；確認來源產品、版本、解析度、時間、品質旗標與單位。現有來源多為入口頁，未用的 11 項官方 Resources 也保留在列表。
-2. 候選資料存於 `earth_candidates.demo.json`（檔名為既有讀取契約，即使換真實資料也可沿用）。目標資料存於 `target_values.demo.yaml`，key 必須對應 `target_sites.yaml` 的 id。
-3. 只在完成來源及品質檢查後，將該筆 `is_placeholder` 改為 `false`。混用任何 placeholder，結果仍顯示警示。若目標整筆缺失，API 會改用同任務可用的 placeholder 並回傳 warning；若無示範替代，回傳 422。
-4. 重啟 catalog、measurements、similarity 與 planning；HTTP 定義與量測快取預設 60 秒，重啟可立即更新。執行 pytest 檢查資料契約。新增正式資料後，示範 fixture 數量驗收測試需分離。
+1. Review feature definitions and sources in `tasks_moon.yaml` and `tasks_mars.yaml`. Record the source product, version, resolution, date, quality flags, and units. Most current source links are portals. Unused competition Resources remain listed for reference.
+2. Candidate measurements use `earth_candidates.demo.json`; target measurements use `target_values.demo.yaml`, keyed by IDs from `target_sites.yaml`. These filenames are the current repository contract and may be retained after replacing fixtures.
+3. Set an item's `is_placeholder` to `false` only after provenance and quality review. Any placeholder used in a result keeps the warning visible. If an entire target record is missing, the API uses an available placeholder from the same mission and returns a warning. Without such a fallback, it returns 422.
+4. Restart catalog, measurements, similarity, and planning to reload files and clear the default 60-second definition/measurement caches. Run pytest to check contracts. After adopting real datasets, separate demo-specific fixture-count assertions from production data checks.
 
-每個候選必要欄位：`id`, `name`, `lat` (−90…90), `lon` (−180…180), `known_analog`, `is_placeholder`。可加 `name_en`；缺少英文回退中文。
+Required candidate fields: `id`, `name`, `lat` (-90 to 90), `lon` (-180 to 180), `known_analog`, and `is_placeholder`. The optional `name_en` compatibility field also contains English. Source definitions remain English; Traditional Chinese UI translations live separately in `locales/zh-TW.json`.
 
 ```json
 {
-  "id": "reviewed-site-001", "name": "待驗證場址", "name_en": "Site pending review",
+  "id": "reviewed-site-001", "name": "Site pending review", "name_en": "Site pending review",
   "lat": 36.0, "lon": -116.0,
   "known_analog": false, "is_placeholder": true,
   "values": {"m1_slope": 7.2},
@@ -27,29 +27,36 @@
 }
 ```
 
-此例也是 placeholder；光譜波段數只是格式示例，不可直接拿來作真實比較。實際目標與地球光譜須有相同波長網格及校正流程，目前 ingest 不會自動重採樣。
+This example is also a placeholder. Its three spectral samples illustrate the format, not a valid real-product comparison. Planetary and Earth spectra require a common wavelength grid and calibration workflow; ingest does not currently resample them.
 
-- `values`: absolute 使用物理值；relative_rank 的**目標**填團隊指定的百分位 0–1，**地球候選**填地球原始值，由固定完整候選母體計算百分位。
-- relative_rank 的時間序列：目標同時在 `values[feature_id]` 填指定百分位，在 `series` 保留原始序列以供圖表；候選統計量由 series 依 `stat` 萃取。
-- `planet_values`: 行星專屬條件的原始物理值，例如岩石率 .03、熱慣量 160；獨立於百分位，不套用到地球。
-- `categories`: 使用 `categorical_tables.yaml` 中的字串。未知配對為缺值。YAML 的 yes/no 請加引號，避免被轉成布林。
-- `spectra`: 一維數組、相同波長網格。零向量不可評分，會回傳 warning。
-- `series`: phase 依序遞增、建議 [0,1)；values 長度一致且不可空；step_hours 是統計時數的採樣間隔，真實月球／火星資料須按各自週期換算，不可沿用示範的 1 小時。
-- 缺值用 `null` 或省略對應 feature key；不使用 NaN / Infinity。API 顯示資料不足與可評分特徵數，不會編造值。
-- 行星目標座標使用東經 0–360；介面轉為 −180–180。所有月球座標仍為 null / todo。AP-105 與工程限制是團隊提供的設計參考案例，尚未逐項核對原始文獻。
+- `values`: absolute features use physical values. Relative target values are team-specified percentiles in [0, 1]; Earth candidates retain raw Earth values, converted to percentiles against the complete fixed Earth population.
+- Relative time series: targets also need their specified percentile in `values[feature_id]`, while retaining raw `series` for charts. Candidate statistics are extracted from series using the feature's `stat`.
+- `planet_values`: original physical values used for planet-only constraints, such as rock fraction .03 or thermal inertia 160. These are distinct from percentiles and are never applied as Earth thresholds.
+- `categories`: strings defined by `categorical_tables.yaml`. Unknown pairs are missing evidence. Quote YAML `yes` and `no` keys to prevent boolean conversion.
+- `spectra`: one-dimensional arrays on matching wavelength grids. Zero vectors cannot be scored and produce warnings.
+- `series`: ascending phase values, preferably in [0, 1), and equally sized nonempty value arrays. `step_hours` is the sampling interval used for duration statistics. Real lunar/Martian series must use the appropriate local cycle; do not inherit the demo's one-hour interval.
+- Use `null` or omit a feature key for missing data. Do not use NaN or Infinity. Responses show missing evidence and available feature counts rather than invent values.
+- Planetary target longitude is stored east-positive in 0-360 degrees and displayed as -180 to 180. Lunar coordinates remain null/todo. AP-105 and engineering constraints are team-supplied design cases that still require original-source review.
 
-若從 CSV 匯入，先轉為以上 JSON/YAML 契約；此原型未實作通用 CSV 匯入器。
+Convert CSV inputs to this JSON/YAML contract before use. A general CSV importer is not implemented.
 
-## 新增特徵或任務
+## Add a feature or test
 
-在對應 tasks YAML 增加唯一 id，補 `type` / `compare_mode` / 權重 / 來源 / notes，並在目標及候選新增值。絕對 threshold 需要 `{ideal_max, zero_at}` 或 `{zero_at, ideal_min}`；類別型需補對照表。資料來源的 `used_by` 也要加入新 id。新增任務必須有唯一 order；請一併調整請求 task_ids 數量上限（原型 6）。
+Give each feature a unique ID in its task YAML, specify its type, comparison mode, weight, sources, and notes, and add corresponding target and candidate values. Absolute threshold features need `{ideal_max, zero_at}` or `{zero_at, ideal_min}`; categorical features need a similarity table. Update source `used_by` lists. Each new test needs a unique order. If exceeding six selected tests, update the request schema limit as well.
 
-新評分演算法加在 `services/similarity/app/core/scoring.py` 的 `SCORERS`；選址與敏感度在 `services/planning/app/core/`。其餘方法見 `docs/METHOD.md`。服務分工見 `docs/SERVICES.md`。不要把科學內容放入 Vue 元件。
+Register scoring methods in `SCORERS` in `services/similarity/app/core/scoring.py`. Site selection and sensitivity live in `services/planning/app/core/`. See `docs/METHOD.md` and `docs/SERVICES.md`. Keep scientific content in configuration, not Vue components.
 
-## 重建示範資料
+## Rebuild demonstration fixtures
 
 ```powershell
 .\.venv\Scripts\python.exe scripts/generate_seed.py
 ```
 
-**這會覆寫 seed 全部內容**，只在刻意重置時執行。使用 Python random seed=42，從保存的 `docs/SPEC.md` 解析任務表，再產生確定性的示範數值。
+**This overwrites all seed files.** Run it only when intentionally resetting fixtures. It uses seed 42, parses the task tables in the English `docs/SPEC.md`, and generates deterministic values. Translating labels does not change numeric fixtures, IDs, coordinates, flags, or scoring parameters.
+
+
+## Observed pilot and localization
+
+`catalog/datasets.json` and `catalog/research.json` are catalog-owned reviewed content, not generated fixtures. `locales/zh-TW.json` translates human-readable source strings without changing identifiers, numbers, URLs or English compatibility fields. `content/method.zh-TW.md` is the translated method page. The seed generator does not overwrite these files.
+
+`observed/pilot.json` is owned by measurements and served at `/api/measurements/observations`. It contains real derived measurements for a limited terrain pilot and NASA POWER context. It does not enter the demo snapshot or its rankings. Missing observed data returns 404, never synthetic observations. `processed/` holds the four small resampled GeoTIFFs; `raw/` is an ignored, hash-checked source cache. See [the ingestion guide](../docs/DATA_INGESTION.md).

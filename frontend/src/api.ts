@@ -1,14 +1,18 @@
 import axios from 'axios'
-import type {Bundle,Mission,Facts,DataSource,ScoreRequest,ScoreResponse,OptimizeResponse,SensitivityResponse,SeriesResponse} from './types'
+import type {Bundle,Mission,Facts,DataSource,ScoreRequest,ScoreResponse,OptimizeResponse,SensitivityResponse,SeriesResponse,DatasetProduct,ResearchSection,ObservedPilot} from './types'
 const catalog=axios.create({baseURL:'/api/catalog',timeout:15000})
 const similarity=axios.create({baseURL:'/api/similarity',timeout:120000})
+const measurements=axios.create({baseURL:'/api/measurements',timeout:15000})
 const planning=axios.create({baseURL:'/api/planning',timeout:120000})
 export const api={
  missions:()=>catalog.get<Mission[]>('/missions').then(r=>r.data),
  bundle:(id:string)=>catalog.get<Bundle>(`/missions/${id}/bundle`).then(r=>r.data),
  facts:()=>catalog.get<Facts>('/earth-facts').then(r=>r.data),
+ datasets:()=>catalog.get<DatasetProduct[]>('/datasets').then(r=>r.data),
+ research:()=>catalog.get<ResearchSection[]>('/research').then(r=>r.data),
+ observations:()=>measurements.get<ObservedPilot>('/observations').then(r=>r.data).catch(e=>{if(axios.isAxiosError(e)&&e.response?.status===404)return null;throw e}),
  sources:()=>catalog.get<DataSource[]>('/data-sources').then(r=>r.data),
- method:()=>catalog.get<{settings:Record<string,unknown>;markdown:string}>('/method').then(r=>r.data),
+ method:()=>catalog.get<{settings:Record<string,unknown>;markdown:string;markdown_zh?:string}>('/method').then(r=>r.data),
  score:(r:ScoreRequest,signal?:AbortSignal)=>similarity.post<ScoreResponse>('/score',r,{signal}).then(r=>r.data),
  optimize:(r:ScoreRequest,signal?:AbortSignal)=>planning.post<OptimizeResponse>('/optimize',r,{signal}).then(r=>r.data),
  sensitivity:(r:ScoreRequest,n_samples:number,seed:number,alpha:number)=>planning.post<SensitivityResponse>('/sensitivity',{...r,n_samples,seed,alpha}).then(r=>r.data),

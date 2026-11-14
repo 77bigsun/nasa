@@ -25,6 +25,11 @@ class FileRepository:
         self.tables=self.read('categorical_tables.yaml')
         self.limits={k:[EarthLimit.model_validate(x) for x in v] for k,v in self.read('earth_limits.yaml').items()}
         self.constraints={k:[Constraint.model_validate(x) for x in v] for k,v in self.read('constraints.yaml').items()}
+        from services.shared.contracts import DatasetProduct, ResearchSection
+        self.data_root=self.directory.parent
+        self.products=[DatasetProduct.model_validate(x) for x in json.loads((self.data_root/'catalog/datasets.json').read_text(encoding='utf-8'))]
+        self.research=[ResearchSection.model_validate(x) for x in json.loads((self.data_root/'catalog/research.json').read_text(encoding='utf-8'))]
+        self.translations=json.loads((self.data_root/'locales/zh-TW.json').read_text(encoding='utf-8'))
         self.validate_links()
 
     def read(self,name):

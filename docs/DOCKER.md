@@ -1,20 +1,29 @@
-# Windows 上如何啟動這個專案
+# Run the project on Windows with Docker
 
-## 第一次準備
+## First-time setup
 
-1. 從 [Docker 官方 Windows 安裝頁](https://docs.docker.com/desktop/setup/install/windows-install/) 下載 Docker Desktop。
-2. 使用 WSL 2 backend 與 Linux containers；這個專案使用 Linux 映像。
-3. 若安裝程式要求安裝／更新 WSL 或重新開機，依官方引導完成。Docker Desktop 安裝完後需自行開啟，等待引擎就緒。
-4. 開啟新的 PowerShell，確認：
+1. Download Docker Desktop from the [official Windows installation page](https://docs.docker.com/desktop/setup/install/windows-install/).
+2. Use the WSL 2 backend and Linux containers; this project uses Linux images.
+3. Follow the installer instructions for WSL installation/updates or restarting Windows. Open Docker Desktop after installation and wait for its engine to become ready.
+4. Open a new PowerShell window and check:
 
 ```powershell
 docker version
 docker compose version
 ```
 
-`docker version` 應同時顯示 Client 與 Server。只有 Client 或出現無法連線的訊息時，先確認 Docker Desktop 已啟動。若出現找不到指令，重新開啟 PowerShell。
+`docker version` should show both Client and Server. If only Client appears or the connection fails, check Docker Desktop. If the command is not found, reopen the terminal so it reads the updated PATH.
 
-## 第一次啟動
+For the per-user installation in this workspace, a Git Bash session can temporarily add Docker with:
+
+```bash
+export PATH="/c/Users/User/AppData/Local/Programs/DockerDesktop/resources/bin:$PATH"
+docker version
+```
+
+This affects that shell only. Fully restart the terminal or VS Code to pick up installation changes for new sessions.
+
+## Start the application
 
 ```powershell
 cd D:\NASA
@@ -23,61 +32,60 @@ docker compose up --build -d
 docker compose ps
 ```
 
-- `config --quiet` 檢查 Compose 設定。
-- `up --build -d` 下載映像、建置程式，並在背景啟動服務。第一次需要下載 Python、Node、CBC 等依賴，時間取決於網路與電腦。
-- `ps` 查看六個服務，啟動初期可能顯示 starting，待 healthcheck 完成後應為 healthy。
+`config --quiet` validates configuration. `up --build -d` downloads images, builds the application, and starts it in the background. The first run downloads Python, Node, CBC, and other dependencies; duration depends on the network and computer. `ps` shows six services, initially starting and then healthy.
 
-開啟 **http://localhost:8080**。初版仍是示範資料，請留意 placeholder 橫幅。
-
-四個後端文件：
+Open **http://localhost:8080**. Placeholder warnings are expected with the demo dataset.
 
 - http://localhost:8080/api/catalog/docs
 - http://localhost:8080/api/measurements/docs
 - http://localhost:8080/api/similarity/docs
 - http://localhost:8080/api/planning/docs
 
-不需要另外在主機安裝 Python 或 Node 才能用 Docker 模式；這些環境由映像提供。
+Docker provides Python and Node inside the images; host installations are not required for this mode.
 
-## 平常會用到的指令
+## Everyday commands
 
-| 目的 | PowerShell 指令 |
+| Purpose | Command |
 |---|---|
-| 看全部狀態 | `docker compose ps` |
-| 持續看日誌，Ctrl+C 結束查看 | `docker compose logs -f` |
-| 只看相似度與規劃服務 | `docker compose logs -f similarity planning` |
-| 改程式後重新建置與啟動 | `docker compose up --build -d` |
-| 暫停容器 | `docker compose stop` |
-| 再次啟動既有容器 | `docker compose start` |
-| 停止並移除此專案容器與網路 | `docker compose down` |
+| View service status | `docker compose ps` |
+| Follow logs; Ctrl+C stops viewing | `docker compose logs -f` |
+| Follow scoring and planning logs | `docker compose logs -f similarity planning` |
+| Rebuild after source changes | `docker compose up --build -d` |
+| Pause containers | `docker compose stop` |
+| Start existing containers | `docker compose start` |
+| Remove this stack's containers and network | `docker compose down` |
 
-目前 seed 資料放在 `D:\NASA\data`，以唯讀方式掛進容器；正常 `down` 不會刪除這個主機資料夾。
+Seed files live in `D:\NASA\data` and are mounted read-only. Normal `down` does not delete that host directory.
 
-## 修改程式時使用熱更新
+## Development with hot reload
 
-先關閉一般模式，接著使用開發覆寫：
+Stop normal mode before starting the development override:
 
 ```powershell
 docker compose down
 docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
 ```
 
-此模式會在前景顯示日誌，Vue 使用 Vite，後端使用 uvicorn reload。新增套件後請重新建置；若前端 node_modules volume 保留舊版依賴，可用 README 的 npm ci 指令更新。
+This displays foreground logs and uses Vite and uvicorn reload. Rebuild after changing dependencies. If the frontend node_modules volume contains stale packages, use the npm ci command in README.md.
 
-## 遇到問題先看哪裡？
+## Troubleshooting
 
-- 8080 已被使用：停止先前的 `scripts/dev.py`，或複製 `.env.example` 為 `.env`，將 `PORT=8081`，重新執行 up，再開 localhost:8081。
-- gateway 沒啟動：看 `docker compose ps` 哪個依賴不健康，再用 `docker compose logs 服務名稱` 查看原因。
-- 改資料後仍看見舊值：執行 `docker compose restart catalog measurements similarity planning`，清除定義與量測快取並重新讀取檔案。
-- 建置下載失敗：先確認 Docker Desktop 的網路及 registry 連線；將錯誤內容交給團隊處理。
+- Port 8080 in use: stop a previous `scripts/dev.py`, or copy `.env.example` to `.env`, set `PORT=8081`, run up again, and open localhost:8081.
+- Gateway not starting: use `docker compose ps` to find an unhealthy dependency, then `docker compose logs SERVICE` to inspect it.
+- Old content after editing data: run `docker compose restart catalog measurements similarity planning` to reload files and clear caches.
+- Download/build failures: inspect Docker Desktop's network and registry connectivity, and share the relevant error with the team.
 
-可在主機已具備 Python 開發依賴時，執行真正的 HTTP 檢查：
+With host Python development dependencies installed, check real HTTP integration with:
 
 ```powershell
 .\.venv\Scripts\python.exe scripts/smoke.py
 ```
 
-此腳本會檢查四套 API 文件、health、月球／火星評分與規劃。它使用目前示範候選 demo-01 的時間序列，替換正式資料後需調整該測試案例。
+The script checks four API docs/health prefixes and lunar/Martian scoring and planning. Its time-series case uses demo-01; update it when adopting a real dataset.
 
-本環境在撰寫時尚未安裝 Docker，Docker 實際建置與啟動仍待安裝後驗收。已另以四個本機 API 程序驗證服務串接。
+Production Docker mode has been validated: six healthy containers, all smoke checks passing through localhost:8080, and HTTP 200 for the homepage and production JavaScript/CSS. The development override and manual browser visual acceptance remain outstanding.
 
-官方參考：[Windows 安裝](https://docs.docker.com/desktop/setup/install/windows-install/)、[Compose 入門](https://docs.docker.com/compose/gettingstarted/)。
+References: [Windows installation](https://docs.docker.com/desktop/setup/install/windows-install/), [Compose quickstart](https://docs.docker.com/compose/gettingstarted/).
+
+
+After rebuilding or recreating backend containers, run `docker compose restart gateway` to refresh Nginx service addresses. If a health URL reports a different service name, stale address resolution is likely; run `scripts/smoke.py` again after the gateway restart.

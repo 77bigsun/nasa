@@ -8,4 +8,4 @@ import type {EChartsOption} from 'echarts'
 use([CanvasRenderer,LineChart,BarChart,GridComponent,TooltipComponent,LegendComponent,TitleComponent])
 defineProps<{option:EChartsOption;label:string}>()
 </script>
-<template><VChart :option="option" autoresize class="chart" role="img" :aria-label="label" /></template>
+<template><VChart :option="option" :init-options="{locale:'EN'}" autoresize class="chart" role="img" :aria-label="label" /></template>

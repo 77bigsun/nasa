@@ -1,26 +1,26 @@
 moon: []
 mars:
-- condition: 緯度
-  requirement: 赤道到北緯 45°
-  earth_analog: 不適用
-- condition: 海拔
-  requirement: 低於 MOLA 基準面 -3 公里
-  earth_analog: 不適用
-- condition: 100 m 坡度
-  requirement: < 5–15°（待定）
-  earth_analog: 可（R1）
-- condition: 1–5 m 坡度
-  requirement: < 15°
-  earth_analog: 可（R1）
-- condition: 岩石
-  requirement: 高度 < 11 公分、覆蓋率 < 5%
-  earth_analog: 可（R1，地球用代理）
-- condition: 熱慣量
-  requirement: '> 100（最好 > 150）J m⁻² K⁻¹ s⁻½'
-  earth_analog: 只比相對排名（R1）
-- condition: 地表特徵
-  requirement: 需有影像特徵供導航，避開大片沙丘、沙原
-  earth_analog: 可（R2）
-- condition: 季節
-  requirement: 北半球春季抵達
-  earth_analog: 參考（R6）
+- condition: Latitude
+  requirement: Equator to 45 N
+  earth_analog: Not applicable
+- condition: Elevation
+  requirement: Below -3 km relative to MOLA datum
+  earth_analog: Not applicable
+- condition: 100 m slope
+  requirement: Below 5-15 degrees (provisional)
+  earth_analog: Yes, R1
+- condition: 1-5 m slope
+  requirement: Below 15 degrees
+  earth_analog: Yes, R1
+- condition: Rocks
+  requirement: Height below 11 cm and coverage below 5%
+  earth_analog: Yes, R1, using an Earth proxy
+- condition: Thermal inertia
+  requirement: Above 100, preferably above 150 J m^-2 K^-1 s^-1/2
+  earth_analog: Relative ranks only, R1
+- condition: Surface texture
+  requirement: Navigation landmarks; avoid extensive dunes and sand sheets
+  earth_analog: Yes, R2
+- condition: Season
+  requirement: Northern spring arrival
+  earth_analog: Context for R6

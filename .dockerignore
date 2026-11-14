@@ -5,3 +5,5 @@ frontend/dist
 .git
 __pycache__
 .pytest_cache
+
+data/raw

@@ -1,9 +1,9 @@
 - id: moon-scr
   mission: moon
-  name: Shackleton 連接脊（Shackleton Connecting Ridge）
+  name: Shackleton Connecting Ridge
   name_en: Shackleton Connecting Ridge
-  source: Moon Base I 目的地
-  description: 團隊規格提供；地點特徵值目前為固定種子的示範資料。
+  source: Moon Base I destination
+  description: Team-supplied target. Feature values currently use deterministic placeholders.
   description_en: Team-supplied target. Feature values currently use deterministic
     placeholders.
   lat: null
@@ -13,8 +13,8 @@
   mission: moon
   name: Peak near Cabeus B
   name_en: Peak near Cabeus B
-  source: 阿提米絲候選著陸區（2024 年 10 月）
-  description: 團隊規格提供；地點特徵值目前為固定種子的示範資料。
+  source: Artemis candidate landing region, October 2024
+  description: Team-supplied target. Feature values currently use deterministic placeholders.
   description_en: Team-supplied target. Feature values currently use deterministic
     placeholders.
   lat: null
@@ -24,8 +24,8 @@
   mission: moon
   name: Haworth
   name_en: Haworth
-  source: 同上
-  description: 團隊規格提供；地點特徵值目前為固定種子的示範資料。
+  source: Artemis candidate landing region, October 2024
+  description: Team-supplied target. Feature values currently use deterministic placeholders.
   description_en: Team-supplied target. Feature values currently use deterministic
     placeholders.
   lat: null
@@ -35,8 +35,8 @@
   mission: moon
   name: Malapert Massif
   name_en: Malapert Massif
-  source: 同上
-  description: 團隊規格提供；地點特徵值目前為固定種子的示範資料。
+  source: Artemis candidate landing region, October 2024
+  description: Team-supplied target. Feature values currently use deterministic placeholders.
   description_en: Team-supplied target. Feature values currently use deterministic
     placeholders.
   lat: null
@@ -46,8 +46,8 @@
   mission: moon
   name: Mons Mouton Plateau
   name_en: Mons Mouton Plateau
-  source: 同上
-  description: 團隊規格提供；地點特徵值目前為固定種子的示範資料。
+  source: Artemis candidate landing region, October 2024
+  description: Team-supplied target. Feature values currently use deterministic placeholders.
   description_en: Team-supplied target. Feature values currently use deterministic
     placeholders.
   lat: null
@@ -57,8 +57,8 @@
   mission: moon
   name: Mons Mouton
   name_en: Mons Mouton
-  source: 同上
-  description: 團隊規格提供；地點特徵值目前為固定種子的示範資料。
+  source: Artemis candidate landing region, October 2024
+  description: Team-supplied target. Feature values currently use deterministic placeholders.
   description_en: Team-supplied target. Feature values currently use deterministic
     placeholders.
   lat: null
@@ -68,8 +68,8 @@
   mission: moon
   name: Nobile Rim 1
   name_en: Nobile Rim 1
-  source: 同上
-  description: 團隊規格提供；地點特徵值目前為固定種子的示範資料。
+  source: Artemis candidate landing region, October 2024
+  description: Team-supplied target. Feature values currently use deterministic placeholders.
   description_en: Team-supplied target. Feature values currently use deterministic
     placeholders.
   lat: null
@@ -79,8 +79,8 @@
   mission: moon
   name: Nobile Rim 2
   name_en: Nobile Rim 2
-  source: 同上
-  description: 團隊規格提供；地點特徵值目前為固定種子的示範資料。
+  source: Artemis candidate landing region, October 2024
+  description: Team-supplied target. Feature values currently use deterministic placeholders.
   description_en: Team-supplied target. Feature values currently use deterministic
     placeholders.
   lat: null
@@ -90,8 +90,8 @@
   mission: moon
   name: de Gerlache Rim 2
   name_en: de Gerlache Rim 2
-  source: 同上
-  description: 團隊規格提供；地點特徵值目前為固定種子的示範資料。
+  source: Artemis candidate landing region, October 2024
+  description: Team-supplied target. Feature values currently use deterministic placeholders.
   description_en: Team-supplied target. Feature values currently use deterministic
     placeholders.
   lat: null
@@ -101,8 +101,8 @@
   mission: moon
   name: Slater Plain
   name_en: Slater Plain
-  source: 同上
-  description: 團隊規格提供；地點特徵值目前為固定種子的示範資料。
+  source: Artemis candidate landing region, October 2024
+  description: Team-supplied target. Feature values currently use deterministic placeholders.
   description_en: Team-supplied target. Feature values currently use deterministic
     placeholders.
   lat: null
@@ -110,10 +110,10 @@
   coords_status: todo
 - id: mars-ap105
   mission: mars
-  name: Arcadia Planitia（AP-105）
-  name_en: Arcadia Planitia（AP-105）
-  source: SkyFall 設計參考著陸點；多邊形地形、岩石極少
-  description: 團隊規格提供；地點特徵值目前為固定種子的示範資料。
+  name: Arcadia Planitia (AP-105)
+  name_en: Arcadia Planitia (AP-105)
+  source: SkyFall design reference; polygonal terrain and very few rocks
+  description: Team-supplied target. Feature values currently use deterministic placeholders.
   description_en: Team-supplied target. Feature values currently use deterministic
     placeholders.
   lat: 43.3295
@@ -123,8 +123,8 @@
   mission: mars
   name: Deuteronilus Mensae
   name_en: Deuteronilus Mensae
-  source: SkyFall 評估的北緯 30–45° 區域
-  description: 團隊規格提供；地點特徵值目前為固定種子的示範資料。
+  source: SkyFall study region at 30-45 N
+  description: Team-supplied target. Feature values currently use deterministic placeholders.
   description_en: Team-supplied target. Feature values currently use deterministic
     placeholders.
   lat: null
@@ -134,8 +134,8 @@
   mission: mars
   name: Utopia Planitia
   name_en: Utopia Planitia
-  source: 同上
-  description: 團隊規格提供；地點特徵值目前為固定種子的示範資料。
+  source: SkyFall study region at 30-45 N
+  description: Team-supplied target. Feature values currently use deterministic placeholders.
   description_en: Team-supplied target. Feature values currently use deterministic
     placeholders.
   lat: null
@@ -145,8 +145,8 @@
   mission: mars
   name: Phlegra Montes
   name_en: Phlegra Montes
-  source: 同上
-  description: 團隊規格提供；地點特徵值目前為固定種子的示範資料。
+  source: SkyFall study region at 30-45 N
+  description: Team-supplied target. Feature values currently use deterministic placeholders.
   description_en: Team-supplied target. Feature values currently use deterministic
     placeholders.
   lat: null
@@ -156,8 +156,8 @@
   mission: mars
   name: Erebus Montes
   name_en: Erebus Montes
-  source: 同上
-  description: 團隊規格提供；地點特徵值目前為固定種子的示範資料。
+  source: SkyFall study region at 30-45 N
+  description: Team-supplied target. Feature values currently use deterministic placeholders.
   description_en: Team-supplied target. Feature values currently use deterministic
     placeholders.
   lat: null
@@ -165,10 +165,10 @@
   coords_status: todo
 - id: mars-jezero
   mission: mars
-  name: Jezero 隕石坑（選用）
-  name_en: Jezero 隕石坑（選用）
-  source: 毅力號地點，有地面實測，可作方法驗證
-  description: 團隊規格提供；地點特徵值目前為固定種子的示範資料。
+  name: Jezero crater (optional)
+  name_en: Jezero crater (optional)
+  source: Perseverance site with in-situ measurements for method validation
+  description: Team-supplied target. Feature values currently use deterministic placeholders.
   description_en: Team-supplied target. Feature values currently use deterministic
     placeholders.
   lat: 18.4
@@ -176,10 +176,10 @@
   coords_status: approx
 - id: mars-gale
   mission: mars
-  name: Gale 隕石坑（選用）
-  name_en: Gale 隕石坑（選用）
-  source: 好奇號地點，同上
-  description: 團隊規格提供；地點特徵值目前為固定種子的示範資料。
+  name: Gale crater (optional)
+  name_en: Gale crater (optional)
+  source: Curiosity site with in-situ measurements for method validation
+  description: Team-supplied target. Feature values currently use deterministic placeholders.
   description_en: Team-supplied target. Feature values currently use deterministic
     placeholders.
   lat: -5.4

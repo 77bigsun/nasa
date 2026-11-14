@@ -1,23 +1,24 @@
 - id: M1
   mission: moon
-  name: 精準安全降落
+  name: Precision landing
   name_en: Precision landing
-  verify: 在岩塊、坑洞、陰影中辨識安全著陸點
-  nasa_basis: User's Guide「Landing Safely and Accurately」
+  verify: Identify safe landing areas among rocks, craters, and shadows
+  nasa_basis: User's Guide - Landing Safely and Accurately
   nasa_url: https://www.nasa.gov/moonbase-phases/
   tech_gap:
     rank: 27
     bin: 3
-    label: 27（3）
+    label: 27 (3)
   order: 6
   manual_adjust: null
   notes:
-  - 當地太陽時相位對齊；月球太陽日約 29.5 地球日。
-  - 地形使用 Copernicus DEM；所有示範數值均非觀測。
-  - 坡度與岩石門檻待補文獻，目前採剖面比對。
+  - Align local solar phase; a lunar solar day is about 29.5 Earth days.
+  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
+  - Quantitative slope and rock thresholds need literature review; use profile comparisons
+    for now.
   features:
   - id: m1_slope
-    name: 多尺度坡度、粗糙度
+    name: Multiscale slope
     name_en: Multiscale slope
     type: profile
     compare_mode: absolute
@@ -38,12 +39,12 @@
       source_id: copernicus
       url: https://dataspace.copernicus.eu/
     notes:
-    - 門檻待補文獻
+    - Threshold literature pending
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
   - id: m1_rock_proxy
-    name: 岩塊覆蓋（代理）
+    name: Rock coverage proxy
     name_en: Rock coverage proxy
     type: profile
     compare_mode: relative_rank
@@ -54,23 +55,24 @@
     out_of_earth_range: false
     earth_proxy: true
     planet_data:
-    - name: Diviner 岩石覆蓋率
+    - name: Diviner rock abundance
       official: true
       source_id: diviner
       url: https://pds-geosciences.wustl.edu/missions/lro/diviner.htm
     earth_data:
-    - name: 表觀熱慣量（MODIS 推算）
+    - name: Apparent thermal inertia from MODIS
       official: true
       source_id: earthdata
       url: https://search.earthdata.nasa.gov/
     notes:
     - earth_proxy
-    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
+      not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
   - id: m1_radar_rough
-    name: 公分級雷達粗糙度
+    name: Radar roughness
     name_en: Radar roughness
     type: profile
     compare_mode: relative_rank
@@ -86,35 +88,36 @@
       source_id: lro
       url: https://science.nasa.gov/mission/lro/
     earth_data:
-    - name: Sentinel-1、PALSAR
+    - name: Sentinel-1 and PALSAR
       official: true
       source_id: copernicus
       url: https://dataspace.copernicus.eu/
     notes:
-    - 波段不同，只比相對排名
-    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    - Different bands; compare relative ranks only
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
+      not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
 - id: M2
   mission: moon
-  name: 低太陽角光照與太陽能
+  name: Low-angle illumination and power
   name_en: Low-angle illumination & power
-  verify: 太陽貼近地平線時的發電與長陰影影響
-  nasa_basis: User's Guide「Lighting」；5 kW 目標
+  verify: Test power generation and long shadows near the horizon
+  nasa_basis: User's Guide - Lighting; 5 kW target
   nasa_url: https://www.nasa.gov/moonbase-phases/
   tech_gap:
     rank: 13
     bin: 2
-    label: 13（2）
+    label: 13 (2)
   order: 4
   manual_adjust: null
   notes:
-  - 當地太陽時相位對齊；月球太陽日約 29.5 地球日。
-  - 地形使用 Copernicus DEM；所有示範數值均非觀測。
+  - Align local solar phase; a lunar solar day is about 29.5 Earth days.
+  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
   features:
   - id: m2_illum_fraction
-    name: 光照比例
+    name: Illumination fraction
     name_en: Illumination fraction
     type: timeseries
     compare_mode: absolute
@@ -125,7 +128,7 @@
     out_of_earth_range: false
     earth_proxy: false
     planet_data:
-    - name: LOLA + SPICE 自算
+    - name: Computed from LOLA + SPICE
       official: true
       source_id: lro
       url: https://science.nasa.gov/mission/lro/
@@ -134,7 +137,7 @@
       source_id: pgda
       url: https://pgda.gsfc.nasa.gov/
     earth_data:
-    - name: Copernicus DEM + 太陽位置計算
+    - name: Copernicus DEM + solar position
       official: true
       source_id: copernicus
       url: https://dataspace.copernicus.eu/
@@ -143,7 +146,7 @@
     stat_threshold: 0
     rank_stat_threshold: null
   - id: m2_sun_elevation
-    name: 太陽高度角分布
+    name: Solar elevation
     name_en: Solar elevation
     type: timeseries
     compare_mode: absolute
@@ -154,21 +157,25 @@
     out_of_earth_range: false
     earth_proxy: false
     planet_data:
-    - name: 同上
+    - name: Computed from LOLA + SPICE
       official: true
-      source_id: pds
-      url: https://pds.nasa.gov/
+      source_id: lro
+      url: https://science.nasa.gov/mission/lro/
+    - name: PGDA
+      official: false
+      source_id: pgda
+      url: https://pgda.gsfc.nasa.gov/
     earth_data:
-    - name: 同上
+    - name: Copernicus DEM + solar position
       official: true
-      source_id: earthdata
-      url: https://search.earthdata.nasa.gov/
+      source_id: copernicus
+      url: https://dataspace.copernicus.eu/
     notes: []
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
   - id: m2_horizon
-    name: 地平線遮蔽
+    name: Horizon obstruction
     name_en: Horizon obstruction
     type: profile
     compare_mode: absolute
@@ -194,23 +201,23 @@
     rank_stat_threshold: null
 - id: M3
   mission: moon
-  name: 長時間黑暗與極寒
+  name: Darkness and extreme cold
   name_en: Darkness & extreme cold
-  verify: 撐過 120 小時以上黑暗、極端溫度下運作
-  nasa_basis: User's Guide「Long Durations」
+  verify: Operate through more than 120 hours of darkness and extreme temperatures
+  nasa_basis: User's Guide - Long Durations
   nasa_url: https://www.nasa.gov/moonbase-phases/
   tech_gap:
     rank: 2
     bin: 1
-    label: 2、3（1）
+    label: 2, 3 (1)
   order: 2
   manual_adjust: null
   notes:
-  - 當地太陽時相位對齊；月球太陽日約 29.5 地球日。
-  - 地形使用 Copernicus DEM；所有示範數值均非觀測。
+  - Align local solar phase; a lunar solar day is about 29.5 Earth days.
+  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
   features:
   - id: m3_diurnal_range
-    name: 日夜溫差
+    name: Diurnal temperature range
     name_en: Diurnal temperature range
     type: timeseries
     compare_mode: relative_rank
@@ -221,7 +228,7 @@
     out_of_earth_range: false
     earth_proxy: false
     planet_data:
-    - name: Diviner 極區累積產品（240 m）
+    - name: Diviner accumulated polar products (240 m)
       official: true
       source_id: diviner
       url: https://pds-geosciences.wustl.edu/missions/lro/diviner.htm
@@ -235,12 +242,13 @@
       source_id: earthdata
       url: https://search.earthdata.nasa.gov/
     notes:
-    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
+      not score Earth candidates.'
     stat: range
     stat_threshold: 0
     rank_stat_threshold: null
   - id: m3_cold_hours
-    name: 低於門檻的累積時數
+    name: Cold exposure hours
     name_en: Cold exposure hours
     type: timeseries
     compare_mode: relative_rank
@@ -251,22 +259,27 @@
     out_of_earth_range: false
     earth_proxy: false
     planet_data:
-    - name: 同上
+    - name: Diviner accumulated polar products (240 m)
       official: true
-      source_id: pds
-      url: https://pds.nasa.gov/
+      source_id: diviner
+      url: https://pds-geosciences.wustl.edu/missions/lro/diviner.htm
     earth_data:
-    - name: 同上
+    - name: MODIS MOD11A1
+      official: true
+      source_id: earthdata
+      url: https://search.earthdata.nasa.gov/
+    - name: SGLI
       official: true
       source_id: earthdata
       url: https://search.earthdata.nasa.gov/
     notes:
-    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
+      not score Earth candidates.'
     stat: hours_below
     stat_threshold: 0
     rank_stat_threshold: 5
   - id: m3_max_dark
-    name: 最長連續黑暗
+    name: Longest darkness
     name_en: Longest darkness
     type: timeseries
     compare_mode: absolute
@@ -277,12 +290,12 @@
     out_of_earth_range: false
     earth_proxy: false
     planet_data:
-    - name: 由 M2 光照計算
+    - name: Illumination calculation from M2
       official: true
       source_id: pds
       url: https://pds.nasa.gov/
     earth_data:
-    - name: 由 M2 光照計算
+    - name: Illumination calculation from M2
       official: true
       source_id: earthdata
       url: https://search.earthdata.nasa.gov/
@@ -291,7 +304,7 @@
     stat_threshold: 0
     rank_stat_threshold: null
   - id: m3_abs_temp
-    name: 絕對表面溫度
+    name: Absolute surface temperature
     name_en: Absolute surface temperature
     type: profile
     compare_mode: absolute
@@ -312,31 +325,33 @@
       source_id: earthdata
       url: https://search.earthdata.nasa.gov/
     notes:
-    - '**out_of_earth_range: true**'
+    - 'out_of_earth_range: true'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
 - id: M4
   mission: moon
-  name: 陡坡與極端地形移動
+  name: Extreme terrain mobility
   name_en: Extreme terrain mobility
-  verify: 上下陡坡、進出隕石坑
-  nasa_basis: User's Guide「Terrain」；FN-M-302 L、FN-M-304 L
+  verify: Traverse steep slopes and enter or exit craters
+  nasa_basis: User's Guide - Terrain; FN-M-302 L and FN-M-304 L
   nasa_url: https://www.nasa.gov/moonbase-phases/
   tech_gap:
     rank: 8
     bin: 2
-    label: 8（2）、19（3）
+    label: 8 (2), 19 (3)
   order: 3
   manual_adjust: null
   notes:
-  - 當地太陽時相位對齊；月球太陽日約 29.5 地球日。
-  - 地形使用 Copernicus DEM；所有示範數值均非觀測。
-  - 坡度與岩石門檻待補文獻，目前採剖面比對。
-  - M4 與 M6 可同地整合；只用於最小地點數固定後的取捨。
+  - Align local solar phase; a lunar solar day is about 29.5 Earth days.
+  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
+  - Quantitative slope and rock thresholds need literature review; use profile comparisons
+    for now.
+  - M4 and M6 can share a site; integration bonuses apply after fixing minimum site
+    count.
   features:
   - id: m4_slope_dist
-    name: 坡度分布、起伏
+    name: Slope distribution
     name_en: Slope distribution
     type: profile
     compare_mode: absolute
@@ -357,12 +372,12 @@
       source_id: copernicus
       url: https://dataspace.copernicus.eu/
     notes:
-    - 門檻待補文獻
+    - Threshold literature pending
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
   - id: m4_looseness
-    name: 表面鬆散程度
+    name: Surface looseness
     name_en: Surface looseness
     type: profile
     compare_mode: relative_rank
@@ -373,23 +388,24 @@
     out_of_earth_range: false
     earth_proxy: true
     planet_data:
-    - name: Diviner 岩石覆蓋率、土壤溫度
+    - name: Diviner rock abundance and soil temperature
       official: true
       source_id: diviner
       url: https://pds-geosciences.wustl.edu/missions/lro/diviner.htm
     earth_data:
-    - name: 表觀熱慣量
+    - name: Apparent thermal inertia
       official: true
       source_id: earthdata
       url: https://search.earthdata.nasa.gov/
     notes:
     - earth_proxy
-    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
+      not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
   - id: m4_radar_rough
-    name: 雷達粗糙度
+    name: Radar roughness
     name_en: Radar roughness
     type: profile
     compare_mode: relative_rank
@@ -405,34 +421,35 @@
       source_id: lro
       url: https://science.nasa.gov/mission/lro/
     earth_data:
-    - name: Sentinel-1、PALSAR
+    - name: Sentinel-1 and PALSAR
       official: true
       source_id: copernicus
       url: https://dataspace.copernicus.eu/
     notes:
-    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
+      not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
 - id: M5
   mission: moon
-  name: 月塵與風化層作業
+  name: Regolith operations
   name_en: Regolith operations
-  verify: 防塵、挖掘、壓實、整地
-  nasa_basis: User's Guide「Manipulating Regolith」
+  verify: Test dust protection, excavation, compaction, and grading
+  nasa_basis: User's Guide - Manipulating Regolith
   nasa_url: https://www.nasa.gov/moonbase-phases/
   tech_gap:
     rank: 1
     bin: 1
-    label: 1（1）、29–30（3）
+    label: 1 (1), 29-30 (3)
   order: 1
   manual_adjust: null
   notes:
-  - 當地太陽時相位對齊；月球太陽日約 29.5 地球日。
-  - 地形使用 Copernicus DEM；所有示範數值均非觀測。
+  - Align local solar phase; a lunar solar day is about 29.5 Earth days.
+  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
   features:
   - id: m5_tir_mineral
-    name: 熱紅外礦物特徵
+    name: Thermal infrared mineral signature
     name_en: Thermal infrared mineral signature
     type: profile
     compare_mode: absolute
@@ -443,22 +460,22 @@
     out_of_earth_range: false
     earth_proxy: false
     planet_data:
-    - name: Diviner Christiansen 特徵
+    - name: Diviner Christiansen feature
       official: true
       source_id: diviner
       url: https://pds-geosciences.wustl.edu/missions/lro/diviner.htm
     earth_data:
-    - name: ASTER GED（100 m）
+    - name: ASTER GED (100 m)
       official: true
       source_id: earthdata
       url: https://search.earthdata.nasa.gov/
     notes:
-    - 同為 8 微米附近，原理相同
+    - Both sample near 8 micrometers using related principles
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
   - id: m5_vswir_mineral
-    name: 可見光–短波紅外礦物
+    name: Visible / SWIR mineral spectrum
     name_en: Visible / SWIR mineral spectrum
     type: spectral
     compare_mode: absolute
@@ -479,12 +496,12 @@
       source_id: earthdata
       url: https://search.earthdata.nasa.gov/
     notes:
-    - EMIT 只涵蓋乾旱區、北緯 52° 以南
+    - EMIT covers arid regions south of 52 N only
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
   - id: m5_grain_proxy
-    name: 顆粒大小代理
+    name: Grain size proxy
     name_en: Grain size proxy
     type: profile
     compare_mode: relative_rank
@@ -495,42 +512,45 @@
     out_of_earth_range: false
     earth_proxy: true
     planet_data:
-    - name: Diviner 土壤溫度
+    - name: Diviner soil temperature
       official: true
       source_id: diviner
       url: https://pds-geosciences.wustl.edu/missions/lro/diviner.htm
     earth_data:
-    - name: 表觀熱慣量
+    - name: Apparent thermal inertia
       official: true
       source_id: earthdata
       url: https://search.earthdata.nasa.gov/
     notes:
     - earth_proxy
-    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
+      not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
 - id: M6
   mission: moon
-  name: 冷陷冰資源探勘
+  name: Cold-trap ice prospecting
   name_en: Cold-trap ice prospecting
-  verify: 在長期陰影的冷陷中偵測與開採冰
-  nasa_basis: User's Guide「ISRU」；LD-03-L
+  verify: Detect and extract ice in persistently shadowed cold traps
+  nasa_basis: User's Guide - ISRU; LD-03-L
   nasa_url: https://www.nasa.gov/moonbase-phases/
   tech_gap:
     rank: 55
     bin: 6
-    label: 55（6）
+    label: 55 (6)
   order: 5
   manual_adjust:
-    reason: 上調：資源辨識已移至資料缺口；LD-03-L 選址理由；官方 Resources 特別點名 Diviner 極區資源產品
+    reason: 'Raised priority: resource identification moved to data gaps; LD-03-L
+      rationale and competition Resources emphasize Diviner polar resource products'
   notes:
-  - 當地太陽時相位對齊；月球太陽日約 29.5 地球日。
-  - 地形使用 Copernicus DEM；所有示範數值均非觀測。
-  - M4 與 M6 可同地整合；只用於最小地點數固定後的取捨。
+  - Align local solar phase; a lunar solar day is about 29.5 Earth days.
+  - Use Copernicus DEM for terrain. All demo values are synthetic, not observations.
+  - M4 and M6 can share a site; integration bonuses apply after fixing minimum site
+    count.
   features:
   - id: m6_ice_depth
-    name: 冰的深度
+    name: Ice depth
     name_en: Ice depth
     type: profile
     compare_mode: absolute
@@ -541,22 +561,22 @@
     out_of_earth_range: false
     earth_proxy: false
     planet_data:
-    - name: Diviner 極區資源產品：冰永凍層深度
+    - name: 'Diviner polar resources: ice permafrost depth'
       official: true
       source_id: diviner
       url: https://pds-geosciences.wustl.edu/missions/lro/diviner.htm
     earth_data:
-    - name: 永凍土活動層厚度 ESA CCI
+    - name: ESA CCI permafrost active-layer thickness
       official: false
       source_id: cci
       url: https://climate.esa.int/en/projects/permafrost/
     notes:
-    - ESA CCI 只涵蓋北緯 30° 以北
+    - ESA CCI coverage is north of 30 N only
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
   - id: m6_annual_temp
-    name: 年均、年最高溫
+    name: Annual temperature
     name_en: Annual temperature
     type: profile
     compare_mode: relative_rank
@@ -567,22 +587,23 @@
     out_of_earth_range: false
     earth_proxy: false
     planet_data:
-    - name: Diviner 極區資源產品
+    - name: Diviner polar resource products
       official: true
       source_id: diviner
       url: https://pds-geosciences.wustl.edu/missions/lro/diviner.htm
     earth_data:
-    - name: MODIS 年統計
+    - name: MODIS annual statistics
       official: true
       source_id: earthdata
       url: https://search.earthdata.nasa.gov/
     notes:
-    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
+      not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
   - id: m6_permafrost
-    name: 永凍土有無
+    name: Permafrost
     name_en: Permafrost
     type: categorical
     compare_mode: absolute
@@ -593,12 +614,12 @@
     out_of_earth_range: false
     earth_proxy: false
     planet_data:
-    - name: Diviner 極區資源產品
+    - name: Diviner polar resource products
       official: true
       source_id: diviner
       url: https://pds-geosciences.wustl.edu/missions/lro/diviner.htm
     earth_data:
-    - name: MODIS 年均地表溫 < 0°C
+    - name: MODIS annual mean land temperature below 0 C
       official: true
       source_id: earthdata
       url: https://search.earthdata.nasa.gov/
@@ -607,7 +628,7 @@
     stat_threshold: 0
     rank_stat_threshold: null
   - id: m6_hydrogen
-    name: 含氫或冰訊號
+    name: Hydrogen / ice signal
     name_en: Hydrogen / ice signal
     type: profile
     compare_mode: relative_rank
@@ -618,7 +639,7 @@
     out_of_earth_range: false
     earth_proxy: false
     planet_data:
-    - name: LEND、Mini-RF
+    - name: LEND and Mini-RF
       official: true
       source_id: lro
       url: https://science.nasa.gov/mission/lro/
@@ -628,12 +649,13 @@
       source_id: copernicus
       url: https://dataspace.copernicus.eu/
     notes:
-    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    - 'Cross-planet units differ: compare percentiles only; planetary thresholds do
+      not score Earth candidates.'
     stat: mean
     stat_threshold: 0
     rank_stat_threshold: null
   - id: m6_cold_trap
-    name: 冷陷地形
+    name: Cold-trap terrain
     name_en: Cold-trap terrain
     type: profile
     compare_mode: absolute
@@ -644,12 +666,12 @@
     out_of_earth_range: false
     earth_proxy: false
     planet_data:
-    - name: LOLA + 光照計算
+    - name: LOLA + illumination calculation
       official: true
       source_id: lro
       url: https://science.nasa.gov/mission/lro/
     earth_data:
-    - name: Copernicus DEM + 光照計算
+    - name: Copernicus DEM + illumination calculation
       official: true
       source_id: copernicus
       url: https://dataspace.copernicus.eu/

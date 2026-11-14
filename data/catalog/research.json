@@ -1,0 +1,175 @@
+[
+  {
+    "id": "pipeline",
+    "title": "Requirements before similarity",
+    "status": "implemented",
+    "pdf": "overview",
+    "pages": [
+      1,
+      2,
+      3
+    ],
+    "items": [
+      "Identify, characterize, state limitations and connect every analog to an exploration test. Visual resemblance alone is insufficient.",
+      "Follow five stages: requirement matrix, comparable features, similarity, priority weights and minimum-site coverage. Move impossible Earth conditions to the limitations list before scoring.",
+      "Keep lunar and Martian priorities separate. The current wizard supports one target per run; its complete mission rankings still use demonstration measurements."
+    ],
+    "links": []
+  },
+  {
+    "id": "multi-target",
+    "title": "Target selection and joint coverage",
+    "status": "planned",
+    "pdf": "overview",
+    "pages": [
+      3,
+      5,
+      6
+    ],
+    "items": [
+      "Choose two or three targets per mission as a team study. No final lunar base location or final Mars shortlist is implied by the reference regions.",
+      "A future joint solver should cover target x test pairs and count a shared Earth site once across both worlds. That multi-target capability is not implemented.",
+      "Start with a coarse global scan, refine local windows, then assess novelty and field access. The three observed pilot windows only validate ingestion."
+    ],
+    "links": []
+  },
+  {
+    "id": "harmonization",
+    "title": "A shared measurement contract",
+    "status": "partial",
+    "pdf": "download-matrix",
+    "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "items": [
+      "For each target x test x feature record the threshold or profile, unit, support scale, year, quality mask, source version, proxy status and feature weight. Share Earth products between teams.",
+      "The implemented terrain pilot averages native raster pixels onto 100 m grids over 2 km windows. Central differences have 200 m support; these are not 100 m landing-slope certifications.",
+      "Store source URLs, retrieval times and SHA-256 hashes. Account-gated downloads remain pending; no credentials are embedded in the repository."
+    ],
+    "links": []
+  },
+  {
+    "id": "moon-terrain",
+    "title": "Lunar terrain, rocks and radar",
+    "status": "review",
+    "pdf": "moon",
+    "pages": [
+      1,
+      2,
+      3
+    ],
+    "items": [
+      "Obtain quantitative rover and excavation slope or rock limits before treating M1/M4 proxies as pass/fail requirements. Prefer matching measured profiles when published limits are absent.",
+      "Earth lacks a global metre-scale rock and soil-looseness inventory. Thermal and radar indicators require calibration; Mini-RF S/X, Sentinel-1 C and PALSAR L backscatter are not interchangeable.",
+      "Use Copernicus where northern SRTM coverage ends. Download lunar ROIs rather than global high-resolution mosaics."
+    ],
+    "links": [
+      {
+        "title": "NASA Moon Base Architecture",
+        "url": "https://nasa.gov/wp-content/uploads/2026/04/moon-base-architecture-users-guide.pdf"
+      }
+    ]
+  },
+  {
+    "id": "moon-thermal",
+    "title": "Lunar thermal, spectra and subsurface ice",
+    "status": "review",
+    "pdf": "moon",
+    "pages": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "items": [
+      "A lunar solar cycle is about 29.5 Earth days. Match local phase; long-term illumination averages cannot substitute for a thermal time series.",
+      "Distinguish Diviner PRP, PCP and Level 3. Check channels, missing values and spectral response before comparing Christiansen features or ASTER/EMIT proxies.",
+      "Active-layer thickness and shallow soil moisture are not ice burial depth. M6 needs an explicit proxy label and depth uncertainty; integrated M4/M6 field tests follow coverage optimization."
+    ],
+    "links": [
+      {
+        "title": "LRO Diviner data products",
+        "url": "https://pds-geosciences.wustl.edu/missions/lro/diviner.htm"
+      }
+    ]
+  },
+  {
+    "id": "skyfall",
+    "title": "SkyFall requirements are provisional",
+    "status": "review",
+    "pdf": "mars",
+    "pages": [
+      1,
+      2,
+      3
+    ],
+    "items": [
+      "Verify landing slopes at both 100 m and 1-5 m scales. MOLA provides regional elevation context, not either fine-scale DTM; a CTX image mosaic is not a DTM.",
+      "The official package adds a 100 x 25 km landing ellipse, orientation 330-350 degrees, northern spring Ls 35, atmospheric profiles and boundary-layer wind constraints. These are outside the current terrestrial terrain pilot.",
+      "Its exploration-zone radius is 100-300 km, and lifetime is six months with a one-Earth-year goal. Treat dates, reference sites and engineering limits as provisional until source review."
+    ],
+    "links": [
+      {
+        "title": "NASA SkyFall mission information package",
+        "url": "https://science.nasa.gov/wp-content/uploads/2026/09/skyfall-mission-information-package-final.pdf"
+      }
+    ]
+  },
+  {
+    "id": "mars-proxies",
+    "title": "Mars thermal, ice and mineral evidence",
+    "status": "review",
+    "pdf": "mars",
+    "pages": [
+      3,
+      4,
+      5
+    ],
+    "items": [
+      "For R2, validate relative thermal-inertia ranks rather than assuming identical Earth/Mars absolute retrievals. For R3, orbital ice evidence does not directly constrain a 3-5 m drill target.",
+      "For R4, verify CRISM/OMEGA corrections and Earth spectral coverage. ASTER SWIR failed in April 2008; EMIT coverage is incomplete.",
+      "For R5/R6, ten-metre optical pixels only marginally sample small polygons. REMS and MEDA measure Gale and Jezero, not the five northern reference regions."
+    ],
+    "links": []
+  },
+  {
+    "id": "time-series",
+    "title": "Time series and uncertainty",
+    "status": "partial",
+    "pdf": "overview",
+    "pages": [
+      4,
+      5,
+      8
+    ],
+    "items": [
+      "Align local solar phase and Mars seasonal longitude Ls before comparing cycles. Earth calendar dates and a 24-hour clock do not align lunar or Martian physics.",
+      "Report effect size and Wasserstein distance. A non-significant difference is not evidence of equivalence; TOST bounds must come from mission tolerances.",
+      "Current phase/ECDF comparisons are exploratory. Autocorrelation-aware block bootstrap, confidence bands, DTW and time-by-season heatmaps remain future work."
+    ],
+    "links": []
+  },
+  {
+    "id": "evidence-status",
+    "title": "What is observed and what is simulated",
+    "status": "implemented",
+    "pdf": "download-matrix",
+    "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "items": [
+      "The evidence library now includes measured terrain statistics for one lunar and three Earth windows, plus January 2025 NASA POWER context at the Earth points. Source files are cached separately from demo fixtures.",
+      "This is a processing pilot, not a global search, mission certification or newly discovered analog. Measurement and interpolation uncertainty are not fully propagated.",
+      "The mission wizard retains clearly labelled synthetic rankings until feature-complete, compatible observations replace its fixtures. Account-required products are listed with their access requirements."
+    ],
+    "links": []
+  }
+]

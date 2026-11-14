@@ -1,66 +1,66 @@
-# 相似度方法 / Similarity method
+# Similarity method
 
-這是團隊可替換的初版方法。網站使用固定種子產生的 **placeholder**；計算結果只能驗證流程，不能支持真實世界場址發現。This prototype uses synthetic measurements, not scientific findings.
+This is an initial, replaceable method for the team. Current measurements are seeded **placeholders**: the results validate the application workflow, not scientific discoveries about real sites.
 
-## 01 · 從任務到特徵 / From mission to evidence
+## 01 - From mission to evidence
 
-每個分支任務由設定檔中的特徵定義組成。行星資料與地球資料的來源、代理指標、單位、比較模式及限制會一起回傳。資料入口列於 `/data`，目前不代表已完成衛星資料下載或產品級品質審查。
+Each test consists of configured features. Responses include planetary and terrestrial sources, proxy indicators, units, comparison modes, and limitations. The portals on `/data` do not imply that products have already been downloaded or passed product-level quality review.
 
-任務定義唯一來源是 catalog，量測數值由 measurements 提供。評分演算法集中在 `services/similarity/app/core/`，選址與敏感度在 `services/planning/app/core/`；planning 經 HTTP 使用 similarity 的評分結果。跨星球值不在同一物理尺度時，只能採用團隊定義的百分位比較。相對模式的目標值必須為 0–1。
+Catalog is the source of mission definitions; measurements supplies the numeric data. Scoring methods live in `services/similarity/app/core/`; site selection and sensitivity live in `services/planning/app/core/`. Planning consumes similarity scores over HTTP. When measurements from different planets do not share a physical scale, compare team-specified percentiles. Relative target values must lie in [0, 1].
 
-## 02 · 五類評分 / Five feature scorers
+## 02 - Five feature scorers
 
-門檻型使用線性滿意度。低值較佳時，理想值以下得 1、零點以上得 0，中間線性遞減；高值較佳則反向。Mars R1 provisional slope limits remain subject to source review. 行星端專屬門檻只檢查行星，不套用在地球代理值。
+Threshold features use linear desirability. For lower-is-better features, values at or below the ideal point score 1, values at or above the zero point score 0, and intermediate values interpolate linearly. Higher-is-better features reverse the direction. Mars R1 slope limits are provisional and require source review. Planet-only thresholds validate the planetary target; they are not applied to terrestrial proxies.
 
 $$s=\mathrm{clip}\left(\frac{b-x}{b-a},0,1\right)$$
 
-絕對剖面以完整地球候選母體的平均與標準差標準化，目標使用相同轉換。排除已知場址不改變母體。零變異時，完全相同得 1，否則得 0。目標超過地球母體平均三個標準差會發出警告。
+Absolute profiles share the mean and standard deviation of the complete Earth candidate population. The target uses the same transformation. Excluding known sites does not change this reference population. With zero variance, identical values score 1 and different values score 0. A target more than three standard deviations from the Earth mean produces a warning.
 
 $$s=\exp\left(-\frac{(z_c-z_t)^2}{2\sigma^2}\right)$$
 
-相對百分位模式以地球 midrank ECDF 與行星的指定百分位比較。相同值的百分位採中位秩，避免 tie 造成不穩定。
+Relative comparisons use the Earth midrank empirical CDF and a specified planetary percentile. Midranks handle tied values consistently.
 
 $$s=\exp\left(-\frac{(p_c-p_t)^2}{2\sigma_{rank}^2}\right)$$
 
-類別型查詢明示的相似度表；未知類別組合保留缺值。光譜型使用 Spectral Angle Mapper，須先對齊波長與解析度；真實產品的重採樣尚待 ingest 實作，不能將未對齊波段直接比較。
+Categorical features use explicit similarity tables; unknown category pairs remain missing. Spectral features use Spectral Angle Mapper. Wavelength samples and spectral resolution must be aligned first. Real-product resampling is not implemented in ingest; unaligned bands must not be compared directly.
 
 $$\theta=\arccos\frac{a\cdot b}{\|a\|\|b\|},\qquad s=\mathrm{clip}\left(1-\frac{\theta}{\pi/2},0,1\right)$$
 
-時間序列先換成當地週期相位，再萃取設定指定的平均、極差、低溫時數、最長黑暗等統計量，依絕對或百分位模式評分。連續黑暗跨相位零點時視為同一段。圖表提供相位疊圖、ECDF 與 Wasserstein 距離；距離本身有原始資料單位，不直接等同相似度。
+Time series are normalized to local cycle phase before extracting the configured statistic: mean, range, cold-exposure hours, longest darkness, or another supported summary. Scores then use absolute or percentile comparison. Darkness spanning the phase boundary is one continuous interval. Charts show phase overlays, ECDFs, and Wasserstein distance. That distance retains the source variable's units and is not itself a similarity score.
 
-## 03 · 任務分數與權重 / Aggregation and weights
+## 03 - Aggregation and weights
 
-同任務特徵使用加權幾何平均。超出地球可重現範圍的特徵完全排除，並在詳情中說明。缺值不給分，顯示可用特徵數；全部缺值的任務為 null，整體分數保留其權重並計為零，以免缺證據反而提高名次。
+Features within a test use a weighted geometric mean. Features outside Earth's reproducible range are excluded and explained separately. Missing features are not scored; the available feature count is shown. A test with no evidence has a null score. Its mission weight remains and contributes zero, so missing evidence cannot improve the overall rank through renormalization.
 
 $$S_{task}=\exp\left(\sum_i w_i\ln(\max(s_i,\epsilon))\right),\qquad \sum_i w_i=1$$
 
-ROC 由團隊設定的 order 排序計算。等差與自訂非負權重也可用；只選部分任務時，會重新計算並正規化。技術缺口的 rank 與 order 是不同欄位，手動調整理由會顯示。原始 NASA 排名沿用提供規格，尚未逐項核對 Rev C 附錄。
+ROC weights follow the configured task order. Rank-sum and nonnegative custom weights are also supported. Selecting a subset recomputes and normalizes its weights. Technology-gap rank and task order are separate fields, with manual adjustments explained in the UI. Original NASA ranks follow the supplied brief and have not been individually verified against the Rev C appendix.
 
 $$w_k^{ROC}=\frac{1}{n}\sum_{i=k}^{n}\frac{1}{i},\qquad S_{overall}=\sum_k w_kS_k$$
 
-## 04 · 最少地點與邊際效益 / Coverage optimization
+## 04 - Coverage optimization
 
-當任務分數大於或等於 τ，該場址涵蓋該需求。PuLP + CBC 先最小化場址數，再固定最少數量，最大化各需求的最佳合格分數加權總和，加上設定中的同地整合加分。整合加分不會增加最小地點數，也不改變個別相似度。沒有候選達標的任務不進入覆蓋限制，列入 uncoverable。
+A site covers a test when its score is at least tau. PuLP + CBC first minimizes the number of sites. It then fixes that minimum count and maximizes the weighted best qualifying score for each demand plus configured same-site integration bonuses. Bonuses do not increase the minimum count or alter individual similarity scores. Tests with no qualifying candidate are excluded from cover constraints and returned as `uncoverable`.
 
 $$\min\sum_jx_j,\qquad \sum_{j:S_{ij}\ge\tau}x_j\ge1$$
 
-邊際效益採固定 k 的最大加權涵蓋率，k=1 至 min(任務數, 候選數)。20 個候選的原型以枚舉組合精確求解；相同涵蓋率時以品質取捨。未來大量候選需改用 MILP 或經證明的近似法，避免組合爆炸。
+The marginal curve maximizes weighted coverage at fixed k, from 1 to min(number of tests, number of candidates). For 20 candidates, combinations are enumerated exactly; quality breaks equal-coverage ties. Larger datasets need MILP or an established approximation to avoid combinatorial growth.
 
-## 05 · 敏感度與穩健性 / Sensitivity and robustness
+## 05 - Sensitivity and robustness
 
-敏感度從對稱 Dirichlet(α) 抽樣權重（預設 500 次，seed 42），每次固定 k 為最小集合覆蓋地點數，解最大覆蓋。比例表示此方法下的入選頻率，不是統計信賴度，也不是對真實相似度的機率。固定種子讓結果可重現。
+Sensitivity samples weights from a symmetric Dirichlet(alpha), using 500 samples and seed 42 by default. Each solve fixes k to the minimum set-cover count and maximizes coverage. Selection frequency describes acceptance under this procedure; it is not statistical confidence or the probability of real-world similarity. A fixed seed makes the results reproducible.
 
-當至少有兩個可用的絕對 profile 特徵時，計算標準化後的正則化 Mahalanobis 距離，並與主要排名計算 Spearman 相關；候選數少於三個時不回報。交叉檢查不取代主要分數。
+With at least two usable absolute profile features and three candidates, a regularized Mahalanobis distance is computed on standardized data and compared to the primary ranking with Spearman correlation. This cross-check does not replace the primary scores.
 
-`tost_equivalence` 目前是獨立配對差值的探索性實作，不在主要評分或介面結論中使用。自相關時間序列應改採 block bootstrap；目前尚未實作，不能據此宣稱等效。
+`tost_equivalence` is an exploratory helper for independent paired differences. It does not drive primary scores or UI conclusions. Autocorrelated observations require block bootstrap, which is not implemented; the current helper cannot justify claims of time-series equivalence.
 
-## 06 · 類比的界線 / What an analog cannot reproduce
+## 06 - The limits of analogy
 
-低重力、真空或稀薄大氣、輻射及月塵靜電等限制不能靠地球場址重現。高分只代表所選特徵下的測試相似性，不代表整個星球或任務可被重現。
+Earth sites cannot reproduce low gravity, vacuum or very thin atmospheres, planetary radiation environments, or lunar dust electrostatics. A high score describes similarity for the selected test features; it does not mean an entire planet or mission can be reproduced.
 
-## 參考方法 / References
+## Method references
 
-以下作者／年份沿用團隊規格，書目與原文連結待團隊確認；不表示已逐篇重現其論文方法。
+The authors and years below follow the team brief. Bibliographic details and original links require team review. Their inclusion does not imply that every published method has been reproduced in full.
 
 - Derringer & Suich (1980), desirability functions.
 - Gower (1971), general similarity coefficient.
@@ -71,13 +71,20 @@ $$\min\sum_jx_j,\qquad \sum_{j:S_{ij}\ge\tau}x_j\ge1$$
 - Church & ReVelle (1974), maximal covering.
 - Lahdelma et al. (1998), SMAA.
 - Ramdas et al. (2017), Wasserstein two-sample tests.
-- Schuirmann (1987), TOST; Künsch (1989), block bootstrap.
+- Schuirmann (1987), TOST; Kunsch (1989), block bootstrap.
 
-## 官方資料 / Official data references
+## Official data references
 
-- [NASA Planetary Fact Sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/)：太陽日與恆星日分開；主表 Mars 約 −65°C，介面以約 −60°C 表示量級。
-- [NASA Moon Base User’s Guide entry](https://www.nasa.gov/moonbase-phases/)
+- [NASA Planetary Fact Sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/): distinguish solar days and sidereal rotation. The main table gives Mars about -65 C; the UI uses approximately -60 C to convey the scale.
+- [NASA Moon Base User's Guide entry](https://www.nasa.gov/moonbase-phases/)
 - [NASA SkyFall](https://science.nasa.gov/mission/skyfall/)
 - [NASA GIBS API](https://nasa-gibs.github.io/gibs-api-docs/)
 
-查閱日：2026-11-14。精確工程數值、產品覆蓋、波段對齊、原始 NASA 排名與任務時程仍需團隊逐項審核。
+Sources reviewed on 2026-11-14. Exact engineering values, product coverage, band alignment, original gap rankings, and mission schedules still require individual team review.
+
+
+## Observed evidence pilot
+
+The data page reports downloaded LOLA and Copernicus terrain measurements separately from the synthetic mission-ranking pipeline. Native raster pixels are area-averaged onto 100 m metric grids, over 2 km windows with a one-cell halo. Central-difference slopes therefore have 200 m support. Charts compare empirical slope distributions without assigning mission suitability or discovering analogs. Copernicus is a surface model; LOLA interpolation uncertainty is not propagated. NASA POWER January 2025 hourly local-solar-time cycles are environmental context, not lunar temperature or illumination scores. See [DATA_INGESTION.md](DATA_INGESTION.md).
+
+The bilingual research page records source-review needs and future work from the four planning PDFs. Multi-target joint coverage, global novelty search, block-bootstrap confidence bands, DTW and time-by-season heatmaps are not implemented.

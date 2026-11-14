@@ -6,7 +6,6 @@
   status: portal
   used_by:
   - m1_rock_proxy
-  - m2_sun_elevation
   - m3_abs_temp
   - m3_cold_hours
   - m3_diurnal_range
@@ -22,7 +21,8 @@
   - r3_ground_ice
   - r4_hydrated_spectra
   - r6_wind_temp
-  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+  notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
+    team review.
 - id: worldview
   name: NASA Worldview
   portal: NASA Worldview
@@ -30,7 +30,8 @@
   url: https://worldview.earthdata.nasa.gov/
   status: portal
   used_by: []
-  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+  notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
+    team review.
 - id: pds
   name: NASA Planetary Data System (PDS)
   portal: NASA Planetary Data System (PDS)
@@ -38,8 +39,6 @@
   url: https://pds.nasa.gov/
   status: portal
   used_by:
-  - m2_sun_elevation
-  - m3_cold_hours
   - m3_max_dark
   - m5_vswir_mineral
   - r1_rock
@@ -55,7 +54,8 @@
   - r5_roughness
   - r6_dust
   - r6_wind_temp
-  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+  notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
+    team review.
 - id: lro
   name: NASA LRO
   portal: NASA LRO
@@ -67,11 +67,13 @@
   - m1_slope
   - m2_horizon
   - m2_illum_fraction
+  - m2_sun_elevation
   - m4_radar_rough
   - m4_slope_dist
   - m6_cold_trap
   - m6_hydrogen
-  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+  notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
+    team review.
 - id: diviner
   name: NASA LRO Diviner Lunar Data
   portal: NASA LRO Diviner Lunar Data
@@ -81,6 +83,7 @@
   used_by:
   - m1_rock_proxy
   - m3_abs_temp
+  - m3_cold_hours
   - m3_diurnal_range
   - m4_looseness
   - m5_grain_proxy
@@ -88,7 +91,8 @@
   - m6_annual_temp
   - m6_ice_depth
   - m6_permafrost
-  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+  notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
+    team review.
 - id: copernicus
   name: Copernicus Data Space Ecosystem
   portal: Copernicus Data Space Ecosystem
@@ -100,6 +104,7 @@
   - m1_slope
   - m2_horizon
   - m2_illum_fraction
+  - m2_sun_elevation
   - m4_radar_rough
   - m4_slope_dist
   - m6_cold_trap
@@ -113,7 +118,8 @@
   - r5_polygon_size
   - r5_roughness
   - r6_dust
-  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+  notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
+    team review.
 - id: esa
   name: ESA Open Science Catalog
   portal: ESA Open Science Catalog
@@ -121,7 +127,8 @@
   url: https://opensciencedata.esa.int/
   status: portal
   used_by: []
-  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+  notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
+    team review.
 - id: jaxa
   name: JAXA G-Portal
   portal: JAXA G-Portal
@@ -130,7 +137,8 @@
   status: portal
   used_by:
   - r3_subsurface_radar
-  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+  notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
+    team review.
 - id: rcm
   name: CSA RADARSAT Constellation Mission (RCM)
   portal: CSA RADARSAT Constellation Mission (RCM)
@@ -138,7 +146,8 @@
   url: https://www.asc-csa.gc.ca/eng/satellites/radarsat/
   status: portal
   used_by: []
-  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+  notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
+    team review.
 - id: radarsat
   name: CSA RADARSAT-1
   portal: CSA RADARSAT-1
@@ -147,15 +156,16 @@
   status: portal
   used_by:
   - r5_roughness
-  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+  notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
+    team review.
 - id: sar
   name: CSA SAR Python Tutorial
   portal: CSA SAR Python Tutorial
   official: true
-  url: null
-  status: TODO
+  url: https://github.com/asc-csa/Synthetic_Aperture_Radar_Tutorial
+  status: ready
   used_by: []
-  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+  notes: CSA tutorial; reference code, not a measurement dataset.
 - id: pgda
   name: NASA PGDA
   portal: NASA PGDA
@@ -164,7 +174,9 @@
   status: portal
   used_by:
   - m2_illum_fraction
-  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+  - m2_sun_elevation
+  notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
+    team review.
 - id: trek
   name: Moon Trek / Mars Trek
   portal: Moon Trek / Mars Trek
@@ -172,7 +184,8 @@
   url: https://trek.nasa.gov/
   status: portal
   used_by: []
-  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+  notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
+    team review.
 - id: ctx
   name: Caltech CTX Global Mosaic
   portal: Caltech CTX Global Mosaic
@@ -181,7 +194,8 @@
   status: portal
   used_by:
   - r1_slope_100m
-  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+  notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
+    team review.
 - id: themis
   name: ASU THEMIS Thermal Inertia
   portal: ASU THEMIS Thermal Inertia
@@ -189,7 +203,8 @@
   url: https://themis.asu.edu/
   status: portal
   used_by: []
-  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+  notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
+    team review.
 - id: swim
   name: SWIM Subsurface Ice Maps
   portal: SWIM Subsurface Ice Maps
@@ -198,7 +213,8 @@
   status: portal
   used_by:
   - r3_ground_ice
-  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+  notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
+    team review.
 - id: mcd
   name: Mars Climate Database (LMD)
   portal: Mars Climate Database (LMD)
@@ -208,7 +224,8 @@
   used_by:
   - r6_dust
   - r6_wind_temp
-  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+  notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
+    team review.
 - id: power
   name: NASA POWER
   portal: NASA POWER
@@ -216,7 +233,8 @@
   url: https://power.larc.nasa.gov/
   status: portal
   used_by: []
-  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+  notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
+    team review.
 - id: cci
   name: ESA CCI Permafrost
   portal: ESA CCI Permafrost
@@ -226,7 +244,8 @@
   used_by:
   - m6_ice_depth
   - r3_ground_ice
-  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+  notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
+    team review.
 - id: shadowcam
   name: ShadowCam
   portal: ShadowCam
@@ -234,7 +253,8 @@
   url: https://www.shadowcam.asu.edu/
   status: portal
   used_by: []
-  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+  notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
+    team review.
 - id: dunes
   name: USGS Mars Global Dune Database
   portal: USGS Mars Global Dune Database
@@ -243,7 +263,8 @@
   status: portal
   used_by:
   - r2_dune_fraction
-  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+  notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
+    team review.
 - id: rgi
   name: Randolph Glacier Inventory
   portal: Randolph Glacier Inventory
@@ -252,4 +273,5 @@
   status: portal
   used_by:
   - r5_landform
-  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+  notes: Official denotes the competition Resources list. Product links, versions, coverage, and licensing require
+    team review.

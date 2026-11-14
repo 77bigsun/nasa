@@ -1,40 +1,48 @@
-# Earth Analog Finder · 地球類比探索
+# Earth Analog Finder
 
-依 [原始規格](docs/SPEC.md) 建立的 NASA Space Apps Challenge 2026 團隊原型。專案直接位於 `D:\NASA`，沒有另外包一層 analog-finder 資料夾。
+A NASA Space Apps Challenge 2026 team prototype for connecting lunar and Martian mission requirements to terrestrial analog sites. The project lives directly in `D:\NASA`.
 
-後續已依團隊管理需求拆成 6 個服務（4 個後端 API）。先看 [服務分工與流程圖](docs/SERVICES.md)、[Docker 操作教學](docs/DOCKER.md)、[GitHub 綁定狀態](docs/GIT.md)。原始 SPEC 留作需求來源，最新服務邊界以 SERVICES 為準。
+The website switches between English and Traditional Chinese with the header language button and remembers the choice. Developer documentation and source definitions remain English. New browsers default to Traditional Chinese. The system runs as **six services, including four backend APIs**. Start with the [service guide](docs/SERVICES.md), [Docker instructions](docs/DOCKER.md), and [GitHub setup](docs/GIT.md). The [specification](docs/SPEC.md) incorporates the original brief and subsequent service and language requirements.
 
-**目前所有目標與地球候選特徵值都是示範資料。網站的分數由程式計算，但不是基於真實觀測的科學結果，也不代表 NASA 確認的場址。**
+**The mission wizard still uses placeholder measurements.** The separate [observed evidence page](http://localhost:8080/data#observed) uses downloaded LOLA, Copernicus and NASA POWER data for a limited processing pilot. Neither the pilot nor the demonstration rankings establish NASA-approved sites or new analog discoveries.
 
-## 啟動
+## Start with Docker
 
-安裝 Docker Desktop 並啟動 Linux containers 後，在專案根目錄執行：
+Open Docker Desktop with Linux containers, then run from the project root:
 
 ```powershell
-docker compose up --build
+cd D:\NASA
+docker compose up --build -d
+docker compose ps
 ```
 
-開啟 **http://localhost:8080**。
+Open **http://localhost:8080** when the services are healthy.
 
-- Catalog OpenAPI：http://localhost:8080/api/catalog/docs
-- Measurements OpenAPI：http://localhost:8080/api/measurements/docs
-- Similarity OpenAPI：http://localhost:8080/api/similarity/docs
-- Planning OpenAPI：http://localhost:8080/api/planning/docs
-- Gateway health：http://localhost:8080/health
+- Catalog API: http://localhost:8080/api/catalog/docs
+- Measurements API: http://localhost:8080/api/measurements/docs
+- Similarity API: http://localhost:8080/api/similarity/docs
+- Planning API: http://localhost:8080/api/planning/docs
+- Gateway health: http://localhost:8080/health
 
-`.env.example` 列出可調設定。預設不用複製；如需換埠可複製為 `.env` 再修改 PORT。後端的 ROOT_PATH 由 Compose 設定，資料與文件唯讀掛載。Python image 為 3.12，前端建置使用 Node 26 LTS。
+The defaults work without an `.env` file. To change the port, copy `.env.example` to `.env` and edit `PORT`. Compose configures the API root paths and mounts data and documentation read-only. Backend images use Python 3.12; the frontend build uses Node 26 LTS.
 
-開發模式（Vite + uvicorn reload）：
+Follow logs with `docker compose logs -f`. Stop the stack with `docker compose down`.
+
+### Development mode
 
 ```powershell
 docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
 ```
 
-停止：`docker compose down`。前端新增依賴後，如現有 frontend_modules volume 仍保留舊套件，可執行 `docker compose -f docker-compose.yml -f docker-compose.dev.yml run --rm --no-deps frontend npm ci` 更新後再啟動。
+This uses Vite hot reload, uvicorn reload, and source bind mounts. After adding frontend dependencies, rebuild the image. If the existing node_modules volume still contains old packages, update it with:
 
-### 不使用 Docker 的 Windows 本機模式
+```powershell
+docker compose -f docker-compose.yml -f docker-compose.dev.yml run --rm --no-deps frontend npm ci
+```
 
-需求：Python 3.12 以上（最低 3.11，依目前套件支援範圍）、Node 22 以上。建置驗證環境為 Python 3.13.1 / Node 26.13.0。
+### Windows development without Docker
+
+Use Python 3.12 or later and Node 22 or later, subject to the pinned packages' supported versions. The local validation environment used Python 3.13.1 and Node 26.13.0.
 
 ```powershell
 python -m venv .venv
@@ -45,69 +53,88 @@ Set-Location ..
 .\.venv\Scripts\python.exe scripts/dev.py
 ```
 
-同樣開啟 **http://localhost:8080**。啟動器會管理 catalog (8001)、similarity (8002)、measurements (8003)、planning (8004) 與 Vite (8080)。按 Ctrl+C 一起停止，日誌在忽略追蹤的 `.runtime/`。`PORT` 只覆寫前端埠；8001–8004 請保持可用。前端預設熱更新；後端改動後重新啟動，可選 `scripts/dev.py --reload` 開啟 uvicorn 檔案監看。
+The launcher manages catalog (8001), similarity (8002), measurements (8003), planning (8004), and Vite (8080). Open **http://localhost:8080**. Ctrl+C stops the local processes; logs are written to the ignored `.runtime/` directory. `PORT` overrides only the frontend port. Keep ports 8001-8004 available. Frontend hot reload is enabled; restart after backend changes or use `scripts/dev.py --reload`.
 
-此工作環境已安裝 `.venv` 與 `frontend/node_modules`，可以直接執行最後一行。這些本機依賴不應提交到 Git。
+This workspace already has `.venv` and `frontend/node_modules` installed. These local dependencies are excluded from Git.
 
-## 可使用的功能
+## Features
 
-- `/`：NASA Blue Marble 地球、任務選單、地球／月球／火星資料對照。WebGL 不可用時採靜態地球替代。太陽日與恆星日有區別，來源附在表格旁。
-- `/moon`、`/mars`：六項任務勾選 → 單一目標選擇 → 結果；狀態存於 Pinia 與 URL query，支援重新載入及分享。
-- 各任務前十名、整體排名、可點選候選的特徵詳情、相似／差異／不可重現條件、來源與代理指標標示。
-- 相位疊圖、ECDF、Wasserstein；Leaflet 地球候選地圖優先 NASA GIBS，圖磚錯誤切換 OSM。火星目標採純經緯度圖示意，避免誤用地球地理底圖。
-- τ、ROC／等差／自訂權重、排除已知類比場址；最小集合覆蓋、覆蓋表、uncoverable、固定 k 邊際效益與 Dirichlet 敏感度分析。
-- `/method`：由 catalog 讀取 docs/METHOD.md，公式以 KaTeX 顯示。
-- `/data`：11 項官方 Resources 與 11 項補充來源，列出 used_by 特徵。official 指競賽 Resources 清單，不表示所有補充來源都非官方機構。
-- 繁體中文／英文介面切換，內容缺英文時回退中文；原始注意事項與方法正文目前保留中文為主。
-- placeholder 與缺資料會明示；不會把示範排名當成真實發現。
+- `/`: a NASA Blue Marble globe, mission selection, and Earth/Moon/Mars comparisons with source attribution. A static globe is available when WebGL initialization fails. Solar days are distinguished from sidereal rotation periods.
+- `/moon` and `/mars`: select tests, choose one target, and explore results. Pinia state is synchronized with URL query parameters for reloading and sharing.
+- Top-ten rankings for each test, overall rankings, and a candidate detail drawer with feature values, scores, similarities, differences, Earth limitations, sources, and proxy flags.
+- Phase overlays, empirical CDFs, and Wasserstein distance. The Leaflet map uses NASA GIBS first and falls back to OpenStreetMap. Planetary targets use a coordinate diagram without an Earth basemap.
+- Adjustable coverage threshold, ROC/rank-sum/custom weights, and known-analog exclusion. Minimum set cover, coverage tables, uncoverable tests, marginal benefit, and Dirichlet sensitivity analysis.
+- `/method`: English and Traditional Chinese methodology served by catalog, with KaTeX formulas.
+- `/data`: 23 product-level records with access requirements, resolution, feature usage and import status; observed terrain tables, ECDFs, meteorology cycles and SHA-256 provenance; plus the original 22 portals. The `official` flag denotes inclusion in the competition Resources list, not institutional ownership.
+- `/research`: nine bilingual sections from the four supplied planning PDFs, separating implemented scope, partial work, proposed work and source-review needs.
+- Persistent English / Traditional Chinese navigation, task descriptions, source notes, limitations, research content and methodology.
+- Visible placeholder and missing-data notices. Demonstration rankings are never presented as real discoveries.
 
-## 結構與修改位置
+## Project structure
 
 ```text
-gateway/                       Nginx 正式 / 開發反向代理
-frontend/src/pages/            首頁、任務精靈、方法、資料來源
-frontend/src/components/       地球、地圖、圖表、詳情抽屜
-services/catalog/app/          Pydantic 模型、FileRepository、內容 API
-services/measurements/app/     候選與目標量測的唯一讀取服務
-services/similarity/app/core/   小型純函式：評分、聚合、權重、穩健性、序列
-services/similarity/app/engine.py  組合定義與量測資料，不在 Vue 計算相似度
-services/planning/app/core/     最小集合覆蓋、邊際效益、權重敏感度
-services/shared/               共用 API 契約與內容 HTTP client
-services/similarity/tests/      核心方法、服務邊界、跨服務 API 整合測試
-services/ingest/                未來下載處理 worker 說明（尚未實作）
-data/seed/                     12 任務、36 特徵、17 目標、20 示範候選
-scripts/generate_seed.py        固定種子重建示範資料（會覆寫 seed）
-scripts/dev.py                 無 Docker 本機啟動器
-scripts/smoke.py               真正 HTTP 服務串接與入口路由檢查
-docs/SPEC.md                   使用者原始規格
-docs/METHOD.md                 方法、假設、限制與參考來源
-docs/VALIDATION.md             驗證結果與未驗收項目
-docs/SERVICES.md               六個服務的責任、修改對照與資料流
-docs/DOCKER.md                 Windows Docker 操作與排錯
-docs/GIT.md                    GitHub 綁定與提交方式
+gateway/                         Production and development Nginx routing
+frontend/src/pages/              Home, mission, method, data, and research pages
+frontend/src/components/         Globe, maps, charts, and evidence drawer
+services/catalog/app/            Definition repository and content API
+services/measurements/app/       Sole reader of candidate and target measurements
+services/similarity/app/core/    Scoring, aggregation, weights, robustness, time series
+services/similarity/app/engine.py Scoring orchestration; no scoring in Vue
+services/planning/app/core/      Set cover, marginal benefit, weight sensitivity
+services/shared/                 Shared API contracts and catalog HTTP client
+services/similarity/tests/        Core methods, service boundaries, API integration
+services/ingest/                 Public-data ingestion worker (optional Compose profile)
+data/catalog/                    Product inventory and PDF research review
+data/locales/                    Traditional Chinese content translations
+data/observed/                   Derived observations and source provenance
+data/processed/                  Small common-grid GeoTIFF windows
+data/raw/                        Ignored downloaded source cache
+data/seed/                       12 tests, 36 features, 17 targets, 20 demo candidates
+scripts/generate_seed.py         Deterministic fixture generation; overwrites seed files
+scripts/dev.py                   Local stack launcher without Docker
+scripts/smoke.py                 Real HTTP routing and service integration checks
+docs/SPEC.md                     English project specification
+docs/METHOD.md                   Methods, assumptions, limitations, references
+docs/VALIDATION.md               Validation evidence and outstanding checks
+docs/SERVICES.md                 Service responsibilities and data flow
+docs/DOCKER.md                   Windows Docker setup and troubleshooting
+docs/GIT.md                      GitHub connection and contribution workflow
 ```
 
-如何替換資料、欄位格式、如何新增特徵與任務：見 [data/README.md](data/README.md)。方法說明與修改位置：見 [docs/METHOD.md](docs/METHOD.md)。
+See [data/README.md](data/README.md) for measurement formats, replacing fixtures, and adding tests or features. See [METHOD.md](docs/METHOD.md) for the scoring methods.
 
-catalog 管理定義，measurements 讀取量測；similarity 透過 HTTP 向兩者取資料並快取（預設 60 秒）。planning 再向 similarity 取得分數，以計算地點組合。similarity 與 planning 不掛載 data 目錄。兩個資料擁有者的 repository 邊界可替換成資料庫。資料變更後重啟四個後端，使量測與定義一起更新。
+Catalog owns definitions and measurements owns numeric data. Similarity obtains both over HTTP and caches them for 60 seconds by default. Planning obtains scores from similarity to select site networks. Similarity and planning do not mount the data directory. The two file repositories can later be replaced with database adapters. Restart all four backends after changing seed data to refresh loaded measurements and caches together. After recreating backend containers, run `docker compose restart gateway` so Nginx resolves their new addresses. Observed pilot updates are read directly and need only a page reload.
 
-## 驗證
+## Validation
 
 ```powershell
 .\.venv\Scripts\python.exe -m pytest -q
+.\.venv\Scripts\python.exe scripts/check_english.py
 Set-Location frontend
 npm.cmd test
 npm.cmd run build
 ```
 
-2026-11-14：拆分後端後 27 tests passed；前端 5 tests passed；TypeScript / Vite 正式建置通過。HTTP 測試涵蓋四套 health／OpenAPI／docs、月球與火星的 score／optimize／sensitivity、時間序列與舊規劃 API 轉送。NASA GIBS 公開 WMTS 圖磚先前已確認為 200 image/jpeg。
+Backend and frontend tests cover service boundaries, scoring, observed-data separation, processing math and locale switching; see the current counts in [VALIDATION.md](docs/VALIDATION.md). The TypeScript and Vite production build is also checked. Live HTTP checks cover all four health/OpenAPI/docs prefixes, lunar and Martian scoring and planning, time series, and legacy planning aliases. A NASA GIBS sample tile returned HTTP 200 with image/jpeg.
 
-**驗證限制：此環境沒有 Docker；未實際執行 Docker build / Compose。瀏覽器控制 host 不可用，原生 Edge 授權逾時，未完成畫面、WebGL、響應式與圖表的真人瀏覽器驗收。元件測試是 DOM 模擬，不等同視覺驗收。** 詳細紀錄見 docs/VALIDATION.md。
+The production Docker stack has been built and started with all six containers healthy. The Nginx entry point successfully served pages, production assets, API documentation, scoring, optimization, sensitivity analysis, and legacy aliases.
 
-## 團隊後續需補的資料
+**Validation limits:** the Docker development override has not been started. Browser automation was unavailable and native Edge approval timed out; visual layout, WebGL, responsive behavior, charts, and keyboard/screen-reader behavior still require manual browser review. DOM simulation is not visual acceptance. See [VALIDATION.md](docs/VALIDATION.md).
 
-月球座標全部保留 todo；火星 AP-105 座標、工程限制、NASA 技術缺口排名沿用團隊規格，未逐項核對原始文獻。行星時程不作已確認承諾。尚需確認實際資料版本、來源產品、覆蓋範圍、跨感測器尺度、光譜波段對齊與不確定度。
+## Remaining team work
 
-TOST 僅提供獨立差值的探索性核心函式；時間序列 block bootstrap 尚未實作，也未用來宣稱統計等效。固定 k 最大覆蓋與敏感度採 20 個候選的精確枚舉，大量候選需換 MILP。ingest 依規格只保留說明，沒有登入、資料庫或雲端部署。
+All mission-wizard lunar coordinates remain `null`/`todo`. The separate observed lunar study-window center is derived from the published ROI, and is not a final mission coordinate. The SkyFall design-reference coordinates and selected landing constraints have been checked against the official package; the complete engineering and technology-gap mapping still needs team review. Mission schedules are not confirmed commitments. Product versions, spatial coverage, cross-sensor scales, wavelength alignment, and uncertainty still require review.
 
-Blue Marble 素材來源與 NASA credit 見 [textures/README.md](frontend/public/textures/README.md)。
+TOST is an exploratory independent-differences helper; block bootstrap for autocorrelated series is not implemented or used to claim equivalence. Fixed-k coverage and sensitivity use exact enumeration for this 20-candidate prototype; larger collections need a different solver strategy. The ingestion pilot covers terrain and meteorological context only; other products, QA workflows, spectral calibration and uncertainty propagation remain unfinished. The prototype has no login, database, or cloud deployment.
+
+NASA imagery attribution is documented in [textures/README.md](frontend/public/textures/README.md).
+
+## Import public research data
+
+The current pilot has already imported eight source files (about 153 MiB), producing one lunar and three terrestrial terrain windows plus three meteorological context records. See [DATA_INGESTION.md](docs/DATA_INGESTION.md) for provenance, limitations and dataset access requirements, and [PDF_REVIEW.md](docs/PDF_REVIEW.md) for the planning-document review.
+
+```powershell
+docker compose --profile ingest run --rm --build ingest
+```
+
+This optional one-off worker writes only `data/raw`, `data/processed` and `data/observed`; it does not replace `data/seed` or change mission ranking inputs. The six web services keep running. Observations are read on request; reload the data page after ingestion.
