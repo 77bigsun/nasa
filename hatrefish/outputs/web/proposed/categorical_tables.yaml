@@ -1,0 +1,166 @@
+m6_permafrost:
+  'yes':
+    'yes': 1.0
+    'no': 0.0
+    unknown: 0.5
+  'no':
+    'yes': 0.0
+    'no': 1.0
+    unknown: 0.5
+r3_polygons:
+  present:
+    present: 1.0
+    absent: 0.0
+  absent:
+    present: 0.0
+    absent: 1.0
+r5_landform:
+  polygonal_terrain:
+    polygonal_terrain: 1.0
+    patterned_ground: 0.7
+    debris_apron: 0.4
+    plain: 0.3
+  patterned_ground:
+    polygonal_terrain: 0.7
+    patterned_ground: 1.0
+    debris_apron: 0.4
+    plain: 0.3
+  debris_apron:
+    polygonal_terrain: 0.4
+    patterned_ground: 0.4
+    debris_apron: 1.0
+    plain: 0.4
+  plain:
+    polygonal_terrain: 0.3
+    patterned_ground: 0.3
+    debris_apron: 0.4
+    plain: 1.0
+r4_lithology:
+  basalt:
+    su: 0.3
+    ss: 0.2
+    sm: 0.1
+    mt: 0.2
+    sc: 0.1
+    pa: 0.1
+    vb: 1.0
+    vi: 0.7
+    va: 0.3
+    pb: 0.6
+    py: 0.6
+    pi: 0.1
+    wb: 0.0
+    ev: 0.1
+    ig: 0.1
+  clastic:
+    su: 0.7
+    ss: 0.9
+    sm: 0.8
+    mt: 0.2
+    sc: 0.3
+    pa: 0.1
+    vb: 0.3
+    vi: 0.1
+    va: 0.1
+    pb: 0.1
+    py: 0.4
+    pi: 0.1
+    wb: 0.0
+    ev: 0.3
+    ig: 0.1
+  evaporite_sulfate_clastic:
+    su: 0.5
+    ss: 0.5
+    sm: 0.6
+    mt: 0.1
+    sc: 0.4
+    pa: 0.1
+    vb: 0.1
+    vi: 0.1
+    va: 0.1
+    pb: 0.1
+    py: 0.1
+    pi: 0.1
+    wb: 0.0
+    ev: 1.0
+    ig: 0.1
+  hydrothermal_sulfate:
+    su: 0.1
+    ss: 0.1
+    sm: 0.1
+    mt: 0.3
+    sc: 0.1
+    pa: 0.1
+    vb: 0.5
+    vi: 0.5
+    va: 0.5
+    pb: 0.1
+    py: 0.5
+    pi: 0.1
+    wb: 0.0
+    ev: 0.6
+    ig: 0.1
+  impact_breccia_carbonate:
+    su: 0.3
+    ss: 0.4
+    sm: 0.5
+    mt: 0.6
+    sc: 0.3
+    pa: 0.1
+    vb: 0.5
+    vi: 0.1
+    va: 0.1
+    pb: 0.5
+    py: 0.4
+    pi: 0.1
+    wb: 0.0
+    ev: 0.1
+    ig: 0.1
+  mudstone_clastic:
+    su: 0.6
+    ss: 0.8
+    sm: 0.8
+    mt: 0.1
+    sc: 0.4
+    pa: 0.1
+    vb: 0.1
+    vi: 0.1
+    va: 0.1
+    pb: 0.1
+    py: 0.1
+    pi: 0.1
+    wb: 0.0
+    ev: 0.4
+    ig: 0.1
+  polar_layered:
+    su: 0.4
+    ss: 0.2
+    sm: 0.1
+    mt: 0.1
+    sc: 0.1
+    pa: 0.1
+    vb: 0.1
+    vi: 0.1
+    va: 0.1
+    pb: 0.1
+    py: 0.1
+    pi: 0.1
+    wb: 0.0
+    ev: 0.1
+    ig: 0.8
+  sedimentary_carbonate_clay:
+    su: 0.5
+    ss: 0.6
+    sm: 0.8
+    mt: 0.1
+    sc: 0.7
+    pa: 0.1
+    vb: 0.1
+    vi: 0.1
+    va: 0.1
+    pb: 0.1
+    py: 0.1
+    pi: 0.1
+    wb: 0.0
+    ev: 0.4
+    ig: 0.1

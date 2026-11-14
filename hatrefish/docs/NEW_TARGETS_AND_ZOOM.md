@@ -43,9 +43,11 @@ JSON 裡 `group` 是覆寫後的類別，`group_sim3292` 保留地圖原值，`g
 
 ## 2. 類比剖面結果（`outputs/profiles/`）
 
-- **Oxia**：前幾名在中亞（最近城鎮：Shumanay 烏茲別克、Turkmenbasy 與 Gazojak 土庫曼、Priozersk 哈薩克），整體約 89–91。
-- **Meridiani**：前幾名在中國西北與蒙古西部的戈壁（最近城鎮：馬鬃山 127 km、溫圖高勒 92 km、Bayan-Ovoo 45 km）。地表物質面向前 5 名是烏尤尼鹽沼（玻利維亞）、馬卡迪卡迪鹽沼（波札那）、傑里德鹽湖（突尼西亞）——硫酸鹽覆寫有作用。已知類比地中排最前的是柴達木大浪灘（全球前 0.4%）；文獻常說的 Meridiani 類比地 Rio Tinto 只在前 40.5%（地表 0.16、地形 0.41：0.1° 格內有植被和起伏）。
-- **Protonilus**：前幾名在青藏高原西部（最近城鎮：Maindong、Zhabu、Jiajuedibu）、美國懷俄明（Rock Springs）、阿根廷（Las Heras）。SWIM Ci 在 50 km 圓內中位數只有 0.16，冰的目標值偏低，所以永凍土地區沒有被往前推；如果要「圓內某處有冰就算」，冰的目標要改用圓內高百分位，這是方法上的決定，還沒改。
+> 11/14 晚重跑後更新（地表溫度改為遮水體＋格內平均、2020–2024；見 `WORKLOG_B_1114.md` 第 13 節）。
+
+- **Oxia**：前幾名在中國西北（最近城鎮：Wutumeiren、Qilanbulak、Tieganlike、烏海）與哈薩克西部（Beyneu），整體約 87–89；中亞的 Gazojak（土庫曼）、Shumanay（烏茲別克）在第 7、9 名。（重跑前：中亞的 Shumanay、Turkmenbasy、Gazojak、Priozersk，約 89–91）
+- **Meridiani**：前幾名在中國西北與蒙古西部的戈壁（最近城鎮：馬鬃山 97 km、Jetaral 30 km、溫圖高勒 81 km、Sharbulag 37 km），整體約 89–90。地表物質面向前 5 名是烏尤尼鹽沼附近（玻利維亞 Cruz de Machacamarca）、阿他加馬鹽沼（智利 San Pedro de Atacama）、伊朗 Zahedan、傑里德鹽湖（突尼西亞 Degache）、馬卡迪卡迪鹽沼（波札那 Letlhakane）——硫酸鹽覆寫有作用（重跑前前 3 名是烏尤尼、馬卡迪卡迪、Cruz de Machacamarca）。已知類比地中排最前的是柴達木大浪灘（全球前 0.3%）；文獻常說的 Meridiani 類比地 Rio Tinto 只在前 40.7%（地表 0.16、地形 0.41：0.1° 格內有植被和起伏）。
+- **Protonilus**：前幾名在青藏高原西部（最近城鎮：Maindong、Zhabu、Jiajuedibu、Zangkaxa）、美國懷俄明（Rawlins；重跑前是 Rock Springs）、阿根廷（Las Heras），整體約 85–87（重跑前 85–90）。SWIM Ci 在 50 km 圓內中位數只有 0.16，冰的目標值偏低，所以永凍土地區沒有被往前推；如果要「圓內某處有冰就算」，冰的目標要改用圓內高百分位，這是方法上的決定，還沒改。
 - 新目標沒有標給它們的已知類比地 → 總表和雷達圖改列「全部已知類比地中全球排名最前的 8 個」，標題註明。
 
 ## 3. 發現的問題

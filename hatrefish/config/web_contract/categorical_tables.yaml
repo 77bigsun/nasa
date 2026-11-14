@@ -1,0 +1,37 @@
+m6_permafrost:
+  'yes':
+    'yes': 1.0
+    'no': 0.0
+    unknown: 0.5
+  'no':
+    'yes': 0.0
+    'no': 1.0
+    unknown: 0.5
+r3_polygons:
+  present:
+    present: 1.0
+    absent: 0.0
+  absent:
+    present: 0.0
+    absent: 1.0
+r5_landform:
+  polygonal_terrain:
+    polygonal_terrain: 1.0
+    patterned_ground: 0.7
+    debris_apron: 0.4
+    plain: 0.3
+  patterned_ground:
+    polygonal_terrain: 0.7
+    patterned_ground: 1.0
+    debris_apron: 0.4
+    plain: 0.3
+  debris_apron:
+    polygonal_terrain: 0.4
+    patterned_ground: 0.4
+    debris_apron: 1.0
+    plain: 0.4
+  plain:
+    polygonal_terrain: 0.3
+    patterned_ground: 0.3
+    debris_apron: 0.4
+    plain: 1.0

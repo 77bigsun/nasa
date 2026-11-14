@@ -20,6 +20,7 @@ UNITS = {"slope": "deg", "roughness": "m", "thermal_inertia": "percentile", "ice
          "dust": "percentile", "lithology": "class"}
 SURFACE, INK, INK2, GRID = "#fcfcfb", "#0b0b0b", "#52514e", "#e4e3df"
 MIN_SEP_KM = 150   # 前 N 名彼此至少相距 150 km（50 km 時前 20 名全擠在西藏西部同一區）
+MIN_COVERAGE = 0.8      # 排名池：加權信心度與變數覆蓋率都至少 80%（同 profiles.MIN_CONF）
 BLUE_RAMP = ["#cde2fb", "#9ec5f4", "#6da7ec", "#3987e5", "#256abf", "#184f95", "#0d366b"]
 
 
@@ -113,7 +114,11 @@ def export_one(target_id: str, mission: str, top_n: int = 20, weights: dict | No
     sim = training.sim_for(target_id, method)
     agg = aggregate(sim, w)
     df = pd.concat([g[["cell_id", "lat", "lon"]], agg], axis=1)
-    top = distinct_sites(df.dropna(subset=["total"]), top_n=top_n, min_sep_km=MIN_SEP_KM)
+    # 11/14：排名池加覆蓋率門檻（和類比剖面一致）。原本只有 5／10 個變數的南極格當上 Gale／isru_base 第 1 名。
+    used = [v for v in VARIABLES if w.get(v, 0) > 0]
+    df["var_coverage"] = np.mean([sim[f"cov_{v}"].values for v in used], axis=0) if used else 1.0
+    pool = df[(df.confidence >= MIN_COVERAGE) & (df.var_coverage >= MIN_COVERAGE)].dropna(subset=["total"])
+    top = distinct_sites(pool, top_n=top_n, min_sep_km=MIN_SEP_KM)
     top = flag_known(top)
     names = place_name(top.lat.values, top.lon.values)
     top["name"] = [n if k else p for n, k, p in zip(top.name, top.known_analog, names)]

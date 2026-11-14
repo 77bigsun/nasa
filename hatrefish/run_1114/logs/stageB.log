@@ -1,0 +1,328 @@
+
+==== 2026-11-14 23:49:00  python scripts/derive_monthly_lst.py --write
+C:\Users\plusl\nasa\hatrefish\scripts\derive_monthly_lst.py:27: RuntimeWarning: Mean of empty slice
+  old_mean = np.nanmean(old_m, axis=0)
+land cells with old monthly: 2130016
+masked (shift>1.5 K or dtr diff>3.0 K or missing new mean): 147980 (6.9%)
+kept: median |shift| 0.34 K, 95th pct 1.19 K
+written. next: python scripts\fetch_earth_extra_gee.py --assemble
+==== exit 0, 1 s
+
+==== 2026-11-14 23:49:07  python scripts/fetch_earth_extra_gee.py --assemble
+寫出 earth_monthly.parquet (1441608, 25) 缺值比例 {'dust_m01': 0.0, 'dust_m02': 0.0}
+寫出 earth_extra.parquet (1441608, 7) ['glacier_frac', 'glacier_km', 'aster_qi', 'aster_ci', 'aster_mi', 'ndvi_p90']
+==== exit 0, 8 s
+['cell_id', 'dust_m01', 'dust_m02', 'dust_m03', 'dust_m04', 'dust_m05'] ...
+new lst_m NaN share {'lst_m01': np.float64(0.0881), 'lst_m02': np.float64(0.0881), 'lst_m03': np.float64(0.0881)} all-12-NaN rows 0.0881
+old lst_m NaN share 0.0
+extra NaN {'cell_id': 0.0, 'glacier_frac': 0.0, 'glacier_km': 0.0, 'aster_qi': 0.0248, 'aster_ci': 0.0248, 'aster_mi': 0.0248, 'ndvi_p90': 0.0}
+
+==== 2026-11-14 23:49:35  python scripts/make_profiles.py
+類比剖面：jezero …
+類比剖面：gale …
+類比剖面：arcadia …
+類比剖面：oxia …
+類比剖面：meridiani …
+類比剖面：protonilus …
+類比剖面：ap105 …
+寫出 C:\Users\plusl\nasa\hatrefish\outputs\profiles
+==== exit 0, 134 s
+
+==== 2026-11-14 23:52:06  python scripts/make_mission_tests.py
+測試項目：jezero …
+C:\Users\plusl\nasa\hatrefish\src\mars_analog\mission_tests.py:243: RuntimeWarning: All-NaN slice encountered
+  re_ = np.nanmax(E, 1) - np.nanmin(E, 1)
+測試項目：gale …
+C:\Users\plusl\nasa\hatrefish\src\mars_analog\mission_tests.py:243: RuntimeWarning: All-NaN slice encountered
+  re_ = np.nanmax(E, 1) - np.nanmin(E, 1)
+測試項目：arcadia …
+C:\Users\plusl\nasa\hatrefish\src\mars_analog\mission_tests.py:243: RuntimeWarning: All-NaN slice encountered
+  re_ = np.nanmax(E, 1) - np.nanmin(E, 1)
+測試項目：oxia …
+C:\Users\plusl\nasa\hatrefish\src\mars_analog\mission_tests.py:243: RuntimeWarning: All-NaN slice encountered
+  re_ = np.nanmax(E, 1) - np.nanmin(E, 1)
+測試項目：meridiani …
+C:\Users\plusl\nasa\hatrefish\src\mars_analog\mission_tests.py:243: RuntimeWarning: All-NaN slice encountered
+  re_ = np.nanmax(E, 1) - np.nanmin(E, 1)
+測試項目：protonilus …
+C:\Users\plusl\nasa\hatrefish\src\mars_analog\mission_tests.py:243: RuntimeWarning: All-NaN slice encountered
+  re_ = np.nanmax(E, 1) - np.nanmin(E, 1)
+測試項目：ap105 …
+C:\Users\plusl\nasa\hatrefish\src\mars_analog\mission_tests.py:243: RuntimeWarning: All-NaN slice encountered
+  re_ = np.nanmax(E, 1) - np.nanmin(E, 1)
+候選池 …
+寫出 C:\Users\plusl\nasa\hatrefish\outputs\mission_tests
+==== exit 0, 136 s
+Jezero R4 old: n=20  >60N 19  >70N 15  #1 145 km from Haines Junction (CA) (59.45, -137.45) score 0.973
+Jezero R4 new: n=20  >60N 15  >70N 12  #1 548 km from Gjoa Haven (CA) (73.55, -95.35) score 0.956
+keys of a site: ['rank', 'cell_id', 'lat', 'lon', 'score', 'features', 'optional_missing', 'weakest_feature', 'values', 'breaks', 'dimension_scores', 'profile_overall', 'worldview_url', 'known_analog', 'nearest_known', 'nearest_known_km', 'name']
+  73.55   -95.35 score 0.956  ndvi_p90 0.145  ndvi_mean 0.000  lst  -16.9  glim sm  548 km from Gjoa Haven (CA)  lithology=0.80 barrenness=1.00 summer_barren=1.00 ice_free=1.00 mineral_signature=1.00
+  74.55   -84.65 score 0.955  ndvi_p90 0.143  ndvi_mean 0.002  lst  -16.3  glim sm  765 km from Gjoa Haven (CA)  lithology=0.80 barrenness=0.99 summer_barren=1.00 ice_free=1.00 mineral_signature=1.00
+  77.05  -116.65 score 0.950  ndvi_p90 0.148  ndvi_mean 0.011  lst  -19.5  glim sm  1027 km from Kugluktuk (CA)  lithology=0.80 barrenness=0.96 summer_barren=1.00 ice_free=1.00 mineral_signature=1.00
+  76.85   -82.55 score 0.943  ndvi_p90 0.164  ndvi_mean 0.004  lst  -19.3  glim sm  828 km from Clyde River (CA)  lithology=0.80 barrenness=0.99 summer_barren=0.95 ice_free=1.00 mineral_signature=1.00
+  69.85   -97.95 score 0.941  ndvi_p90 0.160  ndvi_mean 0.009  lst  -16.3  glim sm  159 km from Gjoa Haven (CA)  lithology=0.80 barrenness=0.97 summer_barren=0.96 ice_free=1.00 mineral_signature=0.99
+  72.45   -81.25 score 0.941  ndvi_p90 0.171  ndvi_mean 0.001  lst  -17.3  glim ss  498 km from Clyde River (CA)  lithology=0.90 barrenness=1.00 summer_barren=0.92 ice_free=1.00 mineral_signature=0.90
+  72.35  -110.35 score 0.937  ndvi_p90 0.170  ndvi_mean 0.006  lst  -14.7  glim sm  534 km from Kugluktuk (CA)  lithology=0.80 barrenness=0.98 summer_barren=0.92 ice_free=1.00 mineral_signature=1.00
+  72.55    53.95 score 0.936  ndvi_p90 0.198  ndvi_mean 0.003  lst   -8.7  glim ss  542 km from Iskateley (RU)  lithology=0.90 barrenness=0.99 summer_barren=0.81 ice_free=1.00 mineral_signature=1.00
+  61.75   142.55 score 0.936  ndvi_p90 0.188  ndvi_mean 0.017  lst  -11.2  glim ss  268 km from Okhotsk (RU)  lithology=0.90 barrenness=0.94 summer_barren=0.85 ice_free=1.00 mineral_signature=1.00
+  76.55   -88.95 score 0.930  ndvi_p90 0.162  ndvi_mean 0.002  lst  -18.6  glim ss  909 km from Gjoa Haven (CA)  lithology=0.90 barrenness=0.99 summer_barren=0.95 ice_free=0.98 mineral_signature=0.83
+  33.75    81.15 score 0.929  ndvi_p90 0.069  ndvi_mean 0.040  lst   -2.2  glim sm  49 km from Jisegumen (CN)  lithology=0.80 barrenness=0.87 summer_barren=1.00 ice_free=1.00 mineral_signature=1.00
+  33.35    77.55 score 0.925  ndvi_p90 0.099  ndvi_mean 0.034  lst   -0.8  glim sm  63 km from Padam (IN)  lithology=0.80 barrenness=0.89 summer_barren=1.00 ice_free=1.00 mineral_signature=0.96
+  74.95  -107.45 score 0.924  ndvi_p90 0.191  ndvi_mean 0.031  lst  -16.9  glim ss  836 km from Kugluktuk (CA)  lithology=0.90 barrenness=0.90 summer_barren=0.84 ice_free=1.00 mineral_signature=1.00
+  74.85   -90.65 score 0.922  ndvi_p90 0.131  ndvi_mean 0.003  lst  -16.9  glim sm  715 km from Gjoa Haven (CA)  lithology=0.80 barrenness=0.99 summer_barren=1.00 ice_free=1.00 mineral_signature=0.84
+  72.45   -98.65 score 0.919  ndvi_p90 0.174  ndvi_mean 0.017  lst  -17.5  glim sm  437 km from Gjoa Haven (CA)  lithology=0.80 barrenness=0.94 summer_barren=0.90 ice_free=1.00 mineral_signature=0.96
+  23.25    70.85 score 0.912  ndvi_p90 0.121  ndvi_mean 0.020  lst   30.2  glim su  41 km from Rapar (IN)  lithology=0.70 barrenness=0.93 summer_barren=1.00 ice_free=1.00 mineral_signature=0.96
+  74.05    55.25 score 0.910  ndvi_p90 0.153  ndvi_mean 0.004  lst  -10.2  glim sm  712 km from Iskateley (RU)  lithology=0.80 barrenness=0.99 summer_barren=0.99 ice_free=1.00 mineral_signature=0.80
+  63.15  -125.95 score 0.909  ndvi_p90 0.186  ndvi_mean 0.028  lst   -7.4  glim sm  241 km from Norman Wells (CA)  lithology=0.80 barrenness=0.91 summer_barren=0.85 ice_free=1.00 mineral_signature=1.00
+  15.15    50.95 score 0.908  ndvi_p90 0.115  ndvi_mean 0.094  lst   32.1  glim ss  32 km from Sayhut (YE)  lithology=0.90 barrenness=0.69 summer_barren=1.00 ice_free=1.00 mineral_signature=1.00
+ -20.75   -67.45 score 0.907  ndvi_p90 0.091  ndvi_mean 0.070  lst   13.8  glim sm  73 km from Colchani (BO)  lithology=0.80 barrenness=0.77 summer_barren=1.00 ice_free=1.00 mineral_signature=1.00
+
+==== 2026-11-14 23:55:12  python scripts/make_set_cover.py
+requirements 27, min sites (all targets) 5; curve [15, 20, 24, 26, 27]; written to C:\Users\plusl\nasa\hatrefish\outputs\set_cover
+==== exit 0, 45 s
+
+==== 2026-11-14 23:56:14  python scripts/export_web_seed.py --web-seed ../../nasa-main/data/seed --check
+候選 28 個
+current: C:\Users\plusl\nasa\hatrefish\outputs\web\current
+proposed: C:\Users\plusl\nasa\hatrefish\outputs\web\proposed
+### 網頁程式檢查：current（網頁現在的定義）
+
+沒有跑成：TypeError: COIN_CMD.__init__() got an unexpected keyword argument 'randomSeed'
+（需要 pulp 與 CBC、pydantic、scipy、httpx；網頁 repo 的路徑由 --web-seed 推出）
+
+### 網頁程式檢查：proposed（套用本隊建議）
+
+沒有跑成：TypeError: COIN_CMD.__init__() got an unexpected keyword argument 'randomSeed'
+（需要 pulp 與 CBC、pydantic、scipy、httpx；網頁 repo 的路徑由 --web-seed 推出）
+
+
+寫出 C:\Users\plusl\nasa\hatrefish\outputs\web\WEB_EXPORT.md
+==== exit 0, 11 s
+NOTE: --check failed: web repo services/planning/app/core/optimize.py uses pulp.COIN_CMD(randomSeed=42), pinned pulp[cbc]==4.2.0; local env pulp 3.3.2 -> TypeError. Rerun without --check per PROMPT.
+
+==== 2026-11-14 23:56:55  python scripts/export_web_seed.py --web-seed ../../nasa-main/data/seed
+候選 28 個
+current: C:\Users\plusl\nasa\hatrefish\outputs\web\current
+proposed: C:\Users\plusl\nasa\hatrefish\outputs\web\proposed
+寫出 C:\Users\plusl\nasa\hatrefish\outputs\web\WEB_EXPORT.md
+==== exit 0, 7 s
+old 28 candidates; keys: ['id', 'name', 'name_en', 'lat', 'lon', 'known_analog', 'is_placeholder', 'values', 'categories', 'spectra', 'series', 'planet_values']
+   old >60N: hf-e_751552 69.15 None
+   old >60N: hf-e_333927 80.75 None
+   old >60N: hf-e_391625 79.15 None
+   old >60N: hf-e_635943 72.35 None
+   old >60N: hf-e_526503 75.35 None
+   old >60N: hf-e_898032 65.05 None
+new 28 candidates; keys: ['id', 'name', 'name_en', 'lat', 'lon', 'known_analog', 'is_placeholder', 'values', 'categories', 'spectra', 'series', 'planet_values']
+   new >60N: hf-e_751549 69.15 None
+   new >60N: hf-e_333927 80.75 None
+   new >60N: hf-e_627054 72.55 None
+   new >60N: hf-e_591246 73.55 None
+   new >60N: hf-e_551752 74.65 None
+   new >60N: hf-e_526503 75.35 None
+   new >60N: hf-e_898032 65.05 None
+
+==== 2026-11-14 23:57:21  python scripts/zoom_candidates.py --test
+測試：jezero 第 1 名 92 km from Wutumeiren (CN) (37.45, 93.95)，方框 63×50 子格
+下載 27 秒；底圖：NASA HLS S30+L30 median, 80 least-cloudy scenes, 2022–2024, summer-first
+  slope_deg      中位數     0.089   有值 100.0%
+  roughness_m    中位數     0.483   有值 100.0%
+  elev_m         中位數  2692.124   有值 100.0%
+  lst_day_c      中位數    28.621   有值 100.0%
+  lst_night_c    中位數    -4.988   有值 100.0%
+  dtr_c          中位數    33.982   有值 100.0%
+  lst_mean_c     中位數    11.729   有值 100.0%
+  albedo         中位數     0.263   有值 100.0%
+  ndvi_mean      中位數     0.053   有值 100.0%
+  aridity_index  中位數     0.016   有值 100.0%
+  land_frac      中位數     1.000   有值 100.0%
+  ice_frac       中位數     0.000   有值 100.0%
+  barren_frac    中位數     1.000   有值 100.0%
+  water_frac     中位數     0.000   有值 100.0%
+陸地子格 2926 / 3150；整體相似度 中位數 76.4、最高 91.0；0.1° 格原分數 88.4
+0.1° 格的值（對照）： {'slope_deg': 0.0, 'roughness_m': 0.0, 'lst_mean_c': 6.84, 'dtr_c': 11.755, 'ndvi_mean': -0.007, 'aridity_index': 0.017}
+同一 0.1° 格內 91 個子格的中位數： {'slope_deg': 0.023, 'roughness_m': 0.119, 'lst_mean_c': 8.254, 'dtr_c': 14.966, 'ndvi_mean': -0.002, 'aridity_index': 0.017} ；整體相似度中位數 87.3
+地點細節（候選格中心 1 km 方塊）： {'box_m': 1000, 'dem': 'Copernicus GLO-30', 'dem_res_m': 30, 'slope_p50_deg': 0.51, 'slope_p90_deg': 1.16, 'slope_max_deg': 2.55, 's1_vv_db': -17.8, 's1_vh_db': -29.24, 's1_period': '2022–2024', 's1_scenes': 242, 'palsar_hh_db': -19.26, 'palsar_hv_db': -31.32} 2 秒
+==== exit 0, 36 s
+
+==== 2026-11-14 23:58:05  python scripts/zoom_candidates.py --top 3 --refresh
+放大：21 個候選、20 個方框（已下載的會用快取）
+  [1/20] box_+037.700_+0093.640_63x50_0.010_copernicus  20.5 s
+  [2/20] box_+047.300_+0092.480_73x50_0.010_copernicus  21.8 s
+  [3/20] box_+043.600_+0087.800_69x50_0.010_copernicus  28.2 s
+  [4/20] box_+040.200_+0103.220_65x50_0.010_copernicus  31.6 s
+  [5/20] box_+045.700_+0098.900_71x50_0.010_copernicus  20.0 s
+  [6/20] box_+045.200_+0091.900_71x50_0.010_copernicus  32.5 s
+  [7/20] box_+030.500_+0082.660_58x50_0.010_copernicus  21.6 s
+  [8/20] box_+064.200_+0110.080_114x50_0.010_copernicus  27.8 s
+  [9/20] box_+064.500_+0148.680_115x50_0.010_copernicus  26.8 s
+  [10/20] box_+040.700_+0090.420_66x50_0.010_copernicus  17.9 s
+  [11/20] box_+039.700_+0087.920_65x50_0.010_copernicus  21.5 s
+  [12/20] box_+042.800_+0097.310_68x50_0.010_copernicus  29.9 s
+  [13/20] box_+042.400_+0101.720_67x50_0.010_copernicus  21.9 s
+  [14/20] box_+047.400_+0086.680_74x50_0.010_copernicus  25.3 s
+  [15/20] box_+031.200_+0084.260_58x50_0.010_copernicus  20.5 s
+  [16/20] box_+032.700_+0082.660_59x50_0.010_copernicus  19.8 s
+  [17/20] box_+031.600_+0087.660_59x50_0.010_copernicus  19.8 s
+  [18/20] box_+050.200_+0088.260_78x50_0.010_copernicus  25.4 s
+  [19/20] box_+050.100_+0094.760_78x50_0.010_copernicus  25.7 s
+  [20/20] box_+033.700_+0082.650_60x50_0.010_copernicus  19.1 s
+下載完成，126 秒
+地點細節：63 個最佳小區（高解析坡度、雷達）…
+C:\Users\plusl\miniconda3\envs\nasa_hackathon\Lib\site-packages\ee\deprecation.py:215: DeprecationWarning: 
+
+Attention required for UMN/PGC/ArcticDEM/V3/2m_mosaic! You are using a deprecated asset.
+To make sure your code keeps working, please update it.
+This dataset has been superseded by UMN/PGC/ArcticDEM/V4/2m_mosaic
+
+Learn more: https://developers.google.com/earth-engine/datasets/catalog/UMN_PGC_ArcticDEM_V3_2m_mosaic
+
+  warnings.warn(warning, category=DeprecationWarning)
+寫出 C:\Users\plusl\nasa\hatrefish\outputs\zoom
+==== exit 0, 176 s
+移到 outputs\zoom\_old_1114\：0 個舊的放大圖
+
+==== 2026-11-15 00:02:41  python data/interim/before_1114pm/compare.py --md data/interim/before_1114pm/compare_out.md
+### 類比剖面（整體前 20 名）
+
+| 目標 | 第 1 名（舊 → 新） | 前 20 名重疊（150 km 內） | 前 20 名近水體（舊 → 新） |
+|---|---|---|---|
+| jezero | 33 km from Urdgol (MN)（90.4） → **92 km from Wutumeiren (CN)（88.4）** | 11/20 | 11 → 3 |
+| gale | 不變：near Altanteel (MN)（87.4） | 15/20 | 4 → 1 |
+| arcadia | 46 km from Urdgol (MN)（83.2） → **138 km from Chernyshevskiy (RU)（81.7）** | 14/20 | 8 → 7 |
+| oxia | 125 km from Shumanay Shahri (UZ)（90.9） → **92 km from Wutumeiren (CN)（88.9）** | 7/20 | 20 → 14 |
+| meridiani | 127 km from Mazongshan (CN)（89.6） → **97 km from Mazongshan (CN)（89.9）** | 17/20 | 7 → 7 |
+| protonilus | 不變：93 km from Maindong (CN)（86.6） | 17/20 | 7 → 4 |
+| ap105 | 46 km from Urdgol (MN)（88.7） → **near Kosh-Agach (RU)（86.1）** | 19/20 | 9 → 9 |
+
+### 測試第 1 名（括號是測試分數）
+
+| 目標 | R1 | R3 | R4 | R5 | R6 |
+|---|---|---|---|---|---|
+| jezero | 64 km from Jisegumen (CN)（1.0） → **113 km from Mori (CN)（0.985）** | 不適用 | 145 km from Haines Junction (CA)（0.973） → **548 km from Gjoa Haven (CA)（0.956）** | 不適用 | 不變：near Vilaflor (ES)（0.773） |
+| gale | 79 km from A'yi Take (CN)（0.989） → **39 km from Ocucaje (PE)（0.976）** | 不適用 | 167 km from Torghay (KZ)（0.965） → **92 km from Wutumeiren (CN)（0.974）** | 不適用 | 183 km from Koramlik (CN)（0.947） → **118 km from Khapalu (PK)（0.95）** |
+| arcadia | 70 km from Colchani (BO)（1.0） → **75 km from Colchani (BO)（1.0）** | 不變：67 km from McMurdo Station (AQ)（1.0） | 272 km from Talnakh (RU)（0.995） → **260 km from Talnakh (RU)（0.986）** | 1205 km from Kugluktuk (CA)（1.0） → **1196 km from Kugluktuk (CA)（1.0）** | 34 km from Todok (CN)（0.784） → **37 km from Todok (CN)（0.788）** |
+| oxia | near Mynaral (KZ)（1.0） → **160 km from Yeyik (CN)（1.0）** | 不適用 | 170 km from Turkmenbasy (TM)（0.928） → **156 km from Beyneu (KZ)（0.946）** | 不適用 | near Zuogaiduoma (CN)（0.761） → **near Zuogaiduoma (CN)（0.757）** |
+| meridiani | near Xagmakajor (CN)（0.999） → **160 km from Yeyik (CN)（0.99）** | 不適用 | 66 km from Colchani (BO)（1.0） → **65 km from Colchani (BO)（1.0）** | 不適用 | 108 km from Aqqan (CN)（0.947） → **37 km from Yeyik (CN)（0.938）** |
+| protonilus | 102 km from Cuozheqiangma (CN)（0.993） → **67 km from Khash (IR)（0.98）** | 不變：522 km from McMurdo Station (AQ)（1.0） | 847 km from Gjoa Haven (CA)（0.965） → **40 km from Xitieshan (CN)（0.974）** | 不變：881 km from Kugluktuk (CA)（1.0） | 不變：128 km from Jumla (NP)（0.742） |
+| ap105 | 142 km from Jisegumen (CN)（1.0） → **75 km from Colchani (BO)（1.0）** | 不變：67 km from McMurdo Station (AQ)（1.0） | 272 km from Talnakh (RU)（0.995） → **260 km from Talnakh (RU)（0.986）** | 1205 km from Kugluktuk (CA)（1.0） → **1196 km from Kugluktuk (CA)（1.0）** | near Kosh-Agach (RU)（0.781） → **near Kyzyl-Mazhalyk (RU)（0.788）** |
+
+### 任務版（第 1 名、前 20 名重疊、驗證 AUC）
+
+| 目標 | 任務 | 第 1 名（舊 → 新） | 前 20 名重疊（150 km 內） | AUC 最後（舊 → 新） |
+|---|---|---|---|---|
+| jezero | geology | 不變：33 km from Urdgol (MN)（90.5） | 20/20 | 0.625 → 0.625 |
+| jezero | rover | 不變：68 km from Jisegumen (CN)（93.7） | 20/20 | 0.672 → 0.672 |
+| jezero | isru_base | 不變：33 km from Urdgol (MN)（91.5） | 20/20 | 0.560 → 0.560 |
+| jezero | landing | 不變：83 km from Abu Sunbul (EG)（97.1） | 20/20 | 0.657 → 0.657 |
+| gale | geology | 不變：132 km from Bohu (CN)（86.4） | 20/20 | 0.740 → 0.740 |
+| gale | rover | 不變：111 km from Jisegumen (CN)（92.2） | 20/20 | 0.900 → 0.900 |
+| gale | isru_base | 不變：4718 km from Waitangi (NZ)（87.6） | 20/20 | 0.750 → 0.750 |
+| gale | landing | 不變：36 km from Abu Sunbul (EG)（93.3） | 20/20 | 0.724 → 0.724 |
+| arcadia | geology | 不變：193 km from Qimantage (CN)（89.2） | 20/20 | 0.519 → 0.519 |
+| arcadia | rover | 不變：1205 km from Kugluktuk (CA)（95.9） | 20/20 | 0.389 → 0.389 |
+| arcadia | isru_base | 不變：46 km from Urdgol (MN)（85.0） | 20/20 | 0.659 → 0.659 |
+| arcadia | landing | 不變：76 km from San Luis (MX)（96.5） | 20/20 | 0.013 → 0.013 |
+| oxia | geology | 不變：58 km from Turkmenbasy (TM)（91.1） | 20/20 | — → — |
+| oxia | rover | 不變：near Mynaral (KZ)（94.1） | 20/20 | — → — |
+| oxia | isru_base | 不變：30 km from Jetaral (CN)（90.7） | 20/20 | — → — |
+| oxia | landing | 不變：116 km from Aswan (EG)（97.7） | 20/20 | — → — |
+| meridiani | geology | 不變：near Sharbulag (MN)（88.2） | 20/20 | — → — |
+| meridiani | rover | 不變：214 km from Koramlik (CN)（94.4） | 20/20 | — → — |
+| meridiani | isru_base | 不變：near Tsalgar (MN)（88.9） | 20/20 | — → — |
+| meridiani | landing | 不變：near Toksun (CN)（97.1） | 20/20 | — → — |
+| protonilus | geology | 不變：93 km from Maindong (CN)（88.4） | 20/20 | — → — |
+| protonilus | rover | 不變：914 km from Kugluktuk (CA)（95.4） | 20/20 | — → — |
+| protonilus | isru_base | 不變：81 km from Zhabu (CN)（89.1） | 20/20 | — → — |
+| protonilus | landing | 不變：41 km from Santiago (PE)（95.7） | 20/20 | — → — |
+| ap105 | geology | 不變：191 km from Qimantage (CN)（89.2） | 20/20 | — → — |
+| ap105 | rover | 不變：1205 km from Kugluktuk (CA)（93.7） | 20/20 | — → — |
+| ap105 | isru_base | 不變：46 km from Urdgol (MN)（86.6） | 20/20 | — → — |
+| ap105 | landing | 不變：near Lone Pine (US)（95.9） | 20/20 | — → — |
+
+| 任務 | 採用（舊 → 新） | 留一法 AUC 先驗（舊 → 新） | 留一法 AUC 採用方案（舊 → 新） |
+|---|---|---|---|
+| geology | prior → prior | 0.681 → 0.681 | 0.681 → 0.681 |
+| rover | blend → blend | 0.596 → 0.596 | 0.724 → 0.724 |
+| isru_base | blend → blend | 0.441 → 0.441 | 0.673 → 0.673 |
+| landing | blend → blend | 0.009 → 0.009 | 0.013 → 0.013 |
+
+### 放大（每個目標第 1 名：0.1° 原分數 − 0.1° 格內 1 km 中位數）
+
+| 目標 | 舊：候選、原分數 / 1 km 中位數（差） | 新：候選、原分數 / 1 km 中位數（差） |
+|---|---|---|
+| jezero | 33 km from Urdgol (MN)：90.4 / 81.1（+9.3） | 92 km from Wutumeiren (CN)：88.4 / 87.3（+1.1） |
+| gale | near Altanteel (MN)：88.2 / 77.4（+10.8） | near Altanteel (MN)：87.4 / 77.4（+10.0） |
+| arcadia | 46 km from Urdgol (MN)：83.2 / 70.0（+13.2） | 138 km from Chernyshevskiy (RU)：81.7 / 81.4（+0.3） |
+| oxia | 125 km from Shumanay Shahri (UZ)：90.9 / 82.5（+8.4） | 92 km from Wutumeiren (CN)：88.9 / 87.5（+1.4） |
+| meridiani | 127 km from Mazongshan (CN)：89.6 / 89.1（+0.5） | 97 km from Mazongshan (CN)：89.9 / 89.1（+0.8） |
+| protonilus | 93 km from Maindong (CN)：89.9 / 73.0（+16.9） | 93 km from Maindong (CN)：86.6 / 73.1（+13.5） |
+| ap105 | 46 km from Urdgol (MN)：88.7 / 71.6（+17.1） | near Kosh-Agach (RU)：86.1 / 85.6（+0.5） |
+
+舊：全部 21 個候選，差距中位數 +7.1、平均 +8.9、≥ 5 分的有 13 個
+
+新：全部 21 個候選，差距中位數 +0.8、平均 +3.7、≥ 5 分的有 5 個
+==== exit 0, 0 s
+NOTE: rerun --check with venv C:\Users\plusl\.venvs\nasa_webcheck (Python 3.13.11, pulp 4.2.0; pulp 4 needs Python>=3.12, nasa_hackathon is 3.11)
+
+==== 2026-11-15 00:47:57  python scripts/export_web_seed.py --web-seed ../../nasa-main/data/seed --check
+候選 28 個
+current: C:\Users\plusl\nasa\hatrefish\outputs\web\current
+proposed: C:\Users\plusl\nasa\hatrefish\outputs\web\proposed
+### 網頁程式檢查：current（網頁現在的定義）
+
+契約驗證通過（catalog、measurements 的 pydantic 模型）。合併後候選 48 個，其中 28 個有火星特徵值；下面只用這 28 個（等同第 4 節第 2 點 (a)）。τ = 0.7。
+
+**mars-ap105**
+
+| 百分位母體 | 前三名（總分） | 各任務最高分 | 最少地點 | 無法覆蓋 |
+|---|---|---|---|---|
+| 候選本身（網頁現在） | 距 Jisegumen (CN) 120 km（0.47）、Zuogaiduoma (CN) 附近（0.43）、Kosh-Agach (RU) 附近（0.42） | R1 1.00, R2 —, R3 —, R4 —, R5 —, R6 0.74 | 2：南極 74.3°S 163.4°E、距 Hoit Taria (CN) 78 km | R2, R3, R4, R5 |
+| 全球分位數（建議） | 距 Mori (CN) 113 km（0.50）、Zuogaiduoma (CN) 附近（0.50）、距 Ocucaje (PE) 39 km（0.49） | R1 1.00, R2 —, R3 —, R4 —, R5 —, R6 0.84 | 1：距 Jisegumen (CN) 120 km | R2, R3, R4, R5 |
+
+**mars-jezero**
+
+| 百分位母體 | 前三名（總分） | 各任務最高分 | 最少地點 | 無法覆蓋 |
+|---|---|---|---|---|
+| 候選本身（網頁現在） | Zuogaiduoma (CN) 附近（0.43）、距 Talnakh (RU) 260 km（0.41）、72.5°N 114.5°W（最近城鎮 Kugluktuk (CA)，526 km）（0.41） | R1 1.00, R2 —, R3 —, R4 —, R5 —, R6 0.91 | 2：Zuogaiduoma (CN) 附近、距 Sultanah (SA) 147 km | R2, R3, R4, R5 |
+| 全球分位數（建議） | Zuogaiduoma (CN) 附近（0.50）、距 Talnakh (RU) 260 km（0.41）、80.8°N 92.8°E（最近城鎮 Talnakh (RU)，1258 km）（0.41） | R1 1.00, R2 —, R3 —, R4 —, R5 —, R6 0.97 | 2：南極 82.2°S 163.2°E、距 Sultanah (SA) 147 km | R2, R3, R4, R5 |
+
+**mars-gale**
+
+| 百分位母體 | 前三名（總分） | 各任務最高分 | 最少地點 | 無法覆蓋 |
+|---|---|---|---|---|
+| 候選本身（網頁現在） | Zuogaiduoma (CN) 附近（0.43）、距 Torghay (KZ) 167 km（0.41）、距 Talnakh (RU) 260 km（0.41） | R1 1.00, R2 —, R3 —, R4 —, R5 —, R6 0.84 | 2：Zuogaiduoma (CN) 附近、距 Khapalu (PK) 118 km | R2, R3, R4, R5 |
+| 全球分位數（建議） | Zuogaiduoma (CN) 附近（0.52）、Sidi el Hani (TN) 附近（0.41）、距 Talnakh (RU) 260 km（0.41） | R1 1.00, R2 —, R3 —, R4 —, R5 —, R6 0.98 | 1：Zuogaiduoma (CN) 附近 | R2, R3, R4, R5 |
+
+用全部 48 個候選時 `uses_placeholder` = true（月球 placeholder 候選造成）；邊際效益曲線要窮舉 C(48, 6) = 12,271,512 種組合，這裡沒有跑。
+
+### 網頁程式檢查：proposed（套用本隊建議）
+
+契約驗證通過（catalog、measurements 的 pydantic 模型）。合併後候選 48 個，其中 28 個有火星特徵值；下面只用這 28 個（等同第 4 節第 2 點 (a)）。τ = 0.7。
+
+**mars-ap105**
+
+| 百分位母體 | 前三名（總分） | 各任務最高分 | 最少地點 | 無法覆蓋 |
+|---|---|---|---|---|
+| 候選本身（網頁現在） | 距 Jisegumen (CN) 120 km（0.52）、距 Talnakh (RU) 260 km（0.50）、73.5°N 95.3°W（最近城鎮 Gjoa Haven (CA)，548 km）（0.46） | R1 1.00, R2 —, R3 0.98, R4 1.00, R5 1.00, R6 0.33 | 2：距 Talnakh (RU) 260 km、南極 82.2°S 163.2°E | R2, R6 |
+| 全球分位數（建議） | Kosh-Agach (RU) 附近（0.59）、距 Jisegumen (CN) 120 km（0.58）、距 Hoit Taria (CN) 78 km（0.54） | R1 1.00, R2 —, R3 1.00, R4 1.00, R5 1.00, R6 0.80 | 2：距 Talnakh (RU) 260 km、距 Khapalu (PK) 118 km | R2 |
+
+**mars-jezero**
+
+| 百分位母體 | 前三名（總分） | 各任務最高分 | 最少地點 | 無法覆蓋 |
+|---|---|---|---|---|
+| 候選本身（網頁現在） | 距 Torghay (KZ) 167 km（0.47）、73.5°N 95.3°W（最近城鎮 Gjoa Haven (CA)，548 km）（0.46）、Haughton impact crater Devon Island (Canada)（0.46） | R1 1.00, R2 —, R3 —, R4 0.95, R5 —, R6 0.33 | 1：距 Torghay (KZ) 167 km | R2, R3, R5, R6 |
+| 全球分位數（建議） | 73.5°N 95.3°W（最近城鎮 Gjoa Haven (CA)，548 km）（0.46）、Haughton impact crater Devon Island (Canada)（0.46）、74.7°N 84.8°W（最近城鎮 Gjoa Haven (CA)，772 km）（0.46） | R1 1.00, R2 —, R3 —, R4 0.95, R5 —, R6 0.84 | 2：73.5°N 95.3°W（最近城鎮 Gjoa Haven (CA)，548 km）、距 Khapalu (PK) 118 km | R2, R3, R5 |
+
+**mars-gale**
+
+| 百分位母體 | 前三名（總分） | 各任務最高分 | 最少地點 | 無法覆蓋 |
+|---|---|---|---|---|
+| 候選本身（網頁現在） | 距 Torghay (KZ) 167 km（0.47）、73.5°N 95.3°W（最近城鎮 Gjoa Haven (CA)，548 km）（0.46）、距 Xitieshan (CN) 40 km（0.46） | R1 1.00, R2 —, R3 —, R4 0.95, R5 —, R6 0.38 | 1：距 Torghay (KZ) 167 km | R2, R3, R5, R6 |
+| 全球分位數（建議） | 73.5°N 95.3°W（最近城鎮 Gjoa Haven (CA)，548 km）（0.46）、Sidi el Hani (TN) 附近（0.46）、Haughton impact crater Devon Island (Canada)（0.46） | R1 1.00, R2 —, R3 —, R4 0.95, R5 —, R6 0.94 | 2：73.5°N 95.3°W（最近城鎮 Gjoa Haven (CA)，548 km）、距 Khapalu (PK) 118 km | R2, R3, R5 |
+
+用全部 48 個候選時 `uses_placeholder` = true（月球 placeholder 候選造成）；邊際效益曲線要窮舉 C(48, 6) = 12,271,512 種組合，這裡沒有跑。
+
+
+寫出 C:\Users\plusl\nasa\hatrefish\outputs\web\WEB_EXPORT.md
+==== exit 0, 161 s

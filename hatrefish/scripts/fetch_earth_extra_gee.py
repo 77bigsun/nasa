@@ -1,7 +1,8 @@
 r"""
 下載地球端補充圖層（全球 0.1°），組成測試項目用的兩個檔案：
     data/processed/earth_monthly.parquet   dust_m01…12、lst_m01…12（R6 季節曲線）
-    data/processed/earth_extra.parquet     glacier_frac、glacier_km（R5、無冰覆蓋）、aster_qi／ci／mi（R4）
+    data/processed/earth_extra.parquet     glacier_frac、glacier_km（R5、無冰覆蓋）、aster_qi／ci／mi（R4）、
+                                           ndvi_p90（R1、R4、R5 的「夏季也沒有植被」）
 下載完重跑 python scripts\make_mission_tests.py，這些特徵就會自動納入。
 
     conda activate nasa_hackathon
@@ -31,9 +32,11 @@ MONTH_BANDS = {"dust": [f"dust_m{m:02d}" for m in range(1, 13)], "lst": [f"lst_m
 def layers(G):
     return {  # 名稱: (建立影像的函式, 波段, 塊大小 px, 平行數)
         "dust": (G.dust_monthly, MONTH_BANDS["dust"], 600, 4),
-        "lst": (G.lst_monthly, MONTH_BANDS["lst"], 200, 8),
+        # 11/14 傍晚本機：每月地表溫度、NDVI p90、ASTER 改成格內平均後運算重很多，150–200 px 的區塊會逾時，改 50 px
+        "lst": (G.lst_monthly, MONTH_BANDS["lst"], 50, 16),
         "glacier": (G.glacier_fraction, ["glacier_frac"], 100, 8),
-        "aster": (G.aster_indices, ["aster_qi", "aster_ci", "aster_mi"], 200, 8),
+        "aster": (G.aster_indices, ["aster_qi", "aster_ci", "aster_mi"], 50, 16),
+        "ndvi": (G.ndvi_peak, ["ndvi_p90"], 50, 16),
     }
 
 
@@ -77,7 +80,7 @@ def assemble():
         ext["glacier_frac"] = np.nan_to_num(fr).astype("float32")
         full = np.load(OUT / "glacier_frac.npy")
         ext["glacier_km"] = glacier_distance_km(full, g.lat.values, g.lon.values).astype("float32")
-    for b in ("aster_qi", "aster_ci", "aster_mi"):
+    for b in ("aster_qi", "aster_ci", "aster_mi", "ndvi_p90"):
         v = col(b)
         if v is not None:
             ext[b] = v.astype("float32")
@@ -89,7 +92,7 @@ def assemble():
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--test", action="store_true")
-    ap.add_argument("--only", nargs="*", choices=["dust", "lst", "glacier", "aster"])
+    ap.add_argument("--only", nargs="*", choices=["dust", "lst", "glacier", "aster", "ndvi"])
     ap.add_argument("--assemble", action="store_true", help="只重組 parquet，不下載")
     ap.add_argument("--refresh", action="store_true")
     ap.add_argument("--project", default="nasa-spaceapp-hackathon")
@@ -106,7 +109,8 @@ def main():
     if a.test:  # 智利北部 Atacama 10 × 10 格；冰河測試用阿拉斯加 Juneau 冰原
         print("ASTER GED 波段：", G.aster_band_names())
         print("GLIMS 資產：", G.glims_id())
-        boxes = {"dust": (-70.5, -23.5), "lst": (-70.5, -23.5), "aster": (-70.5, -23.5), "glacier": (-134.8, 59.0)}
+        boxes = {"dust": (-70.5, -23.5), "lst": (-70.5, -23.5), "aster": (-70.5, -23.5), "glacier": (-134.8, 59.0),
+                 "ndvi": (-96.0, 68.6)}   # ndvi：加拿大北極凍原（Gjoa Haven 附近），夏季 NDVI 應明顯 > 年平均
         for n in names:
             fn, bands, _, _ = L[n]
             x, y = boxes[n]

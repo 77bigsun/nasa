@@ -163,13 +163,24 @@ def _amplitude(a: np.ndarray) -> np.ndarray:
         return (np.nanmax(a, -1) - np.nanmin(a, -1)) / np.nanmean(a, -1)
 
 
+ASTER_VALID = (0.7, 1.3)                    # Ninomiya 指標的合理範圍，超出當缺資料（多雲熱帶的壞值）
+TEMP_BANDS = [-np.inf, -5, 5, 15, 25, np.inf]  # 年均地表溫（°C）分帶：礦物指標的百分位在同一帶內算
+
+
 @lru_cache(maxsize=8)
-def _global_pct(col: str) -> np.ndarray:
-    v = _col(col)
+def _banded_pct(col: str) -> np.ndarray:
+    """礦物指標在「同一年均地表溫帶」內的百分位。
+    11/14 修正：ASTER GED 的放射率在寒冷地區系統性偏高（雪、霜；同岩性內年均溫 < −5 °C 的格子碳酸鹽指標百分位
+    中位數約 0.83，> 10 °C 約 0.45），全球一起排會讓北極全部擠進前面。見 WORKLOG 11.5 第 1 點。"""
+    v = _col(col).copy()
+    v[(v < ASTER_VALID[0]) | (v > ASTER_VALID[1])] = np.nan
+    t = grid().lst_mean_c.values
     out = np.full(v.shape, np.nan)
-    ok = np.isfinite(v)
-    r = pd.Series(v[ok]).rank(pct=True).values
-    out[ok] = r
+    band = np.digitize(t, TEMP_BANDS[1:-1])
+    for b in np.unique(band[np.isfinite(t)]):
+        m = (band == b) & np.isfinite(v) & np.isfinite(t)
+        if m.sum() > 100:
+            out[m] = pd.Series(v[m]).rank(pct=True).values
     return out
 
 
@@ -178,7 +189,7 @@ def feature_status(target_id: str, f: dict) -> str:
     if f.get("attribute") and not target_attrs(target_id).get(f["attribute"]):
         return "not_applicable_for_target"
     k = f["kind"]
-    if k in ("seasonal_shape", "seasonal_amplitude"):
+    if k in ("seasonal_shape", "seasonal_amplitude", "seasonal_range_ratio"):
         if _monthly(f["earth_prefix"]) is None:
             return "pending_data"
         if "seasonal" not in config.mars_targets()[target_id]:
@@ -226,8 +237,17 @@ def _feature_score(target_id: str, f: dict, sim: pd.DataFrame) -> np.ndarray:
             s = np.exp(-(np.log(ae / am)) ** 2 / (2 * math.log(2) ** 2))
         s[~(np.isfinite(E).all(1) & (ae > 0))] = np.nan
         return s
+    if k == "seasonal_range_ratio":
+        E = _monthly(f["earth_prefix"])
+        with np.errstate(invalid="ignore", divide="ignore", all="ignore"):
+            re_ = np.nanmax(E, 1) - np.nanmin(E, 1)
+            mv = np.asarray(target["seasonal"][f["mars_key"]], float)
+            rm = float(mv.max() - mv.min())
+            s = np.exp(-(np.log(re_ / rm)) ** 2 / (2 * math.log(2) ** 2))
+        s[~(np.isfinite(E).all(1) & (re_ > 0))] = np.nan
+        return s
     if k == "index_rank":
-        parts = [desirability(_global_pct(ASTER_COLUMNS[x]), "larger_is_better", f["full_at"], f["zero_at"])
+        parts = [desirability(_banded_pct(ASTER_COLUMNS[x]), "larger_is_better", f["full_at"], f["zero_at"])
                  for x in target_attrs(target_id)[f["attribute"]]]
         with np.errstate(invalid="ignore", divide="ignore"):
             return np.exp(np.mean([np.log(np.maximum(p, spec()["eps"])) for p in parts], 0))
@@ -339,16 +359,18 @@ def _feature_values(target_id: str, f: dict, i, df: pd.DataFrame) -> dict:
         earth = g.at[i, f["column"]]
         mars = (f"火星熱慣量 {f['mars_zero_at']}→{f['mars_full_at']} = 火星第 "
                 f"{mars_pct(f['mars_zero_at']) * 100:.0f}→{mars_pct(f['mars_full_at']) * 100:.0f} 百分位")
-    elif k in ("seasonal_shape", "seasonal_amplitude"):
+    elif k in ("seasonal_shape", "seasonal_amplitude", "seasonal_range_ratio"):
         E = _monthly(f["earth_prefix"])[g.index.get_loc(i)]
         mv = np.asarray(target["seasonal"][f["mars_key"]], float)
-        if k == "seasonal_shape":
+        if k == "seasonal_range_ratio":
+            earth, mars = float(np.nanmax(E) - np.nanmin(E)), float(mv.max() - mv.min())
+        elif k == "seasonal_shape":
             earth = f"地球高峰在 {int(np.nanargmax(E)) + 1} 月"
             mars = f"火星高峰在 Ls {int(np.asarray(target['seasonal']['ls'])[int(np.argmax(mv))])}°"
         else:
             earth, mars = float(_amplitude(E)), float(_amplitude(mv))
     elif k == "index_rank":
-        earth = {x: _rnd(_global_pct(ASTER_COLUMNS[x])[g.index.get_loc(i)]) for x in
+        earth = {x: _rnd(_banded_pct(ASTER_COLUMNS[x])[g.index.get_loc(i)]) for x in
                  target_attrs(target_id).get(f["attribute"], [])}
         mars = target_attrs(target_id).get(f["attribute"])
     if isinstance(earth, (float, np.floating)):
@@ -533,6 +555,7 @@ def requirement_matrix(all_status: dict) -> pd.DataFrame:
                     fs = st["status"]
                 kind = {"similarity": "剖面（和目標比）", "threshold": "門檻", "mars_rank_threshold": "門檻（相對排名）",
                         "seasonal_shape": "時間序列（形狀）", "seasonal_amplitude": "時間序列（振幅）",
+                        "seasonal_range_ratio": "時間序列（季節溫差）",
                         "index_rank": "類別（礦物指標）"}[f["kind"]]
                 rows.append({"目標地點": tname, "測試代號": tid, "特徵": f["id"],
                              "目標值或門檻": f.get("mars_requirement", ""), "特徵類型": kind,

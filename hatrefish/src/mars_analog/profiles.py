@@ -5,12 +5,13 @@
 - 整體相似度 = 有分數的面向等權重幾何平均 × 100
 - 信心度 = 這一格有分數的面向數 ÷ 目前可評估的面向數
 - 生物、洞穴目前沒有變數 → 結果檔標成 not_evaluated（之後補資料只要改 config/dimensions.yaml）
-- 排名：整體相似度前 N 名；每個面向各自的前幾名（面向分數相同時，用整體相似度決定先後）
+- 排名：整體相似度前 N 名；每個面向、每個變數各自的前幾名（分數相同時，用整體相似度決定先後）
 - 已知類比地也算剖面，顯示它們在哪些面向像、哪些不像
 
 輸出（outputs/profiles/）：
-  mars_{目標}_profile.json      整體前 20、每面向前 5、已知類比地剖面、各面向「很像」的陸地比例
+  mars_{目標}_profile.json      整體前 20、每面向前 5、每變數前 5、已知類比地剖面、各面向「很像」的陸地比例
   map_{目標}_{面向}.png          每個面向＋整體的全球地圖
+  board_{目標}.png               一張圖看這個目標的不同類比地：每個面向、每個變數各自最像的前 5 名
   radar_{目標}_top.png           整體前 6 名的雷達圖
   radar_{目標}_known.png         標給這個目標的已知類比地的雷達圖
   PROFILE_SUMMARY.md             人看的總表
@@ -54,6 +55,14 @@ VALUE_KEYS = {
     "aridity": ("aridity_index", "value", "aridity index"),
     "barrenness": ("ndvi_mean", "value", "NDVI"),
     "dust": ("dust_pct", "pct", "percentile on own planet"),
+}
+
+# 變數的中英文名稱（總表與 board 圖用）
+VAR_LABELS = {
+    "slope": ("坡度", "Slope"), "roughness": ("粗糙度", "Roughness"), "thermal_inertia": ("熱慣量", "Thermal inertia"),
+    "lithology": ("岩性", "Lithology"), "barrenness": ("無植被", "Bare ground"), "temperature": ("溫度", "Temperature"),
+    "aridity": ("乾燥度", "Aridity"), "ice": ("地下冰", "Ground ice"), "dust": ("沙塵", "Dust"),
+    "diurnal_range": ("日溫差", "Diurnal range"),
 }
 
 BLUE_RAMP = ["#cde2fb", "#9ec5f4", "#6da7ec", "#3987e5", "#256abf", "#184f95", "#0d366b"]
@@ -231,6 +240,28 @@ def top_dimension(target_id: str, dim: str, n: int = TOP_PER_DIM) -> list[dict]:
     return _annotate([_record(target_id, i, k + 1) for k, i in enumerate(sel.index)])
 
 
+def profile_variables() -> list[str]:
+    """可評估面向裡的變數（日溫差不在任何面向，不列）。"""
+    return [v for k in evaluable() for v in dimensions()[k]["variables"]]
+
+
+def top_variable(target_id: str, var: str, n: int = TOP_PER_DIM) -> list[dict]:
+    """單一變數最像的前 n 名（例如溫度最像的 5 個地方）。只用這個變數有資料的格子；
+    分數取到小數第 2 位排序，同分時整體相似度高的優先（很多格子同為 1.0 時，挑整體也比較像的）。"""
+    p = _pool(target_id)
+    p = p[np.isfinite(p[f"s_{var}"])].copy()
+    p["_key"] = p[f"s_{var}"].round(2) * 1000 + p.overall / 1000
+    sel = distinct_sites(p, "_key", n, MIN_SEP_KM)
+    recs = _annotate([_record(target_id, i, k + 1) for k, i in enumerate(sel.index)])
+    col, key, unit = VALUE_KEYS[var]
+    g, t = grid(), config.mars_targets()[target_id]
+    mv = ice_target(t) if var == "ice" else (t.get(var) or {}).get(key)
+    for r, i in zip(recs, sel.index):
+        r["focus"] = {"variable": var, "score": _rnd(p.loc[i, f"s_{var}"]),
+                      "earth": _rnd(g.loc[i, col]) if col in g.columns else None, "mars": _rnd(mv), "unit": unit}
+    return recs
+
+
 def strong_share(target_id: str) -> dict:
     """各面向「分數 ≥ 0.9」的陸地面積比例（cos 緯度加權）：看出「只在某一面向像」的地方有多常見。"""
     df = profile_table(target_id)
@@ -303,6 +334,7 @@ def build_target(target_id: str) -> dict:
         "strong_share": strong_share(target_id),
         "top_overall": top_overall(target_id),
         "top_by_dimension": {k: top_dimension(target_id, k) for k in evaluable()},
+        "top_by_variable": {v: top_variable(target_id, v) for v in profile_variables()},
         "known_analogs": known_profiles(target_id),
         "provenance": {"mars_targets": config.mars_targets_source(),
                        "labels": config.known_analogs().attrs.get("source")},
@@ -347,6 +379,73 @@ def dim_map(target_id: str, col: str, title: str, path, top: list[dict] | None =
     cb.outline.set_visible(False)
     ax.legend(loc="lower left", fontsize=7, frameon=False, labelcolor=INK2)
     fig.tight_layout()
+    fig.savefig(path)
+    plt.close(fig)
+
+
+def _short(name, n=34):
+    name = name or ""
+    return name if len(name) <= n else name[: n - 1] + "…"
+
+
+def board(target_id: str, res: dict, path):
+    """一張圖看這個目標的不同類比地。每一列是一個面向：第一格是面向分數的前 5 名，後面是面向內每個變數的前 5 名；
+    只有一個變數的面向（水與冰、沙塵）變數排名和面向相同，只畫面向、併成最後一列。"""
+    plt = _plt()
+    from matplotlib.colors import ListedColormap
+    g, dims = grid(), dimensions()
+    land = np.full((1800, 3600), np.nan, dtype="float32")
+    land[g.iy.values, g.ix.values] = 1
+    rows, single = [], []
+    for k in evaluable():
+        vs = dims[k]["variables"]
+        if len(vs) > 1:
+            rows.append([("dim", k)] + [("var", v) for v in vs])
+        else:
+            single.append(("dim", k))
+    if single:
+        rows.append(single)
+    ncol = max(len(r) for r in rows)
+    fig, axes = plt.subplots(len(rows), ncol, figsize=(4.3 * ncol, 3.2 * len(rows)), dpi=120, squeeze=False)
+    for i, r in enumerate(rows):
+        for j in range(ncol):
+            ax = axes[i][j]
+            if j >= len(r):
+                ax.axis("off")
+                continue
+            kind, key = r[j]
+            if kind == "dim":
+                items = res["top_by_dimension"][key]
+                title = f"{dims[key].get('label_en', key)} — dimension"
+                sc = [x["dimension_scores"][key] for x in items]
+            else:
+                items = res["top_by_variable"][key]
+                title = VAR_LABELS.get(key, (key, key))[1]
+                sc = [x["focus"]["score"] for x in items]
+            ax.imshow(land, extent=[-180, 180, -90, 90], cmap=ListedColormap([GRID]), interpolation="nearest")
+            ax.scatter([x["lon"] for x in items], [x["lat"] for x in items], s=30, marker="o", facecolor="#eb6834",
+                       edgecolor=SURFACE, linewidth=1.0, zorder=3)
+            for x in items:
+                ax.annotate(str(x["rank"]), (x["lon"], x["lat"]), xytext=(4, 3), textcoords="offset points",
+                            fontsize=7.5, color=INK, fontweight="bold", zorder=4)
+            ax.set_xlim(-180, 180)
+            ax.set_ylim(-60, 85)
+            ax.set_xticks([])
+            ax.set_yticks([])
+            for s_ in ax.spines.values():
+                s_.set_visible(False)
+            ax.set_title(title, loc="left", fontsize=10, fontweight="bold" if kind == "dim" else "normal")
+            lines = []
+            for x, v in zip(items, sc):
+                nm = _short(x["name"] or f"{x['lat']}, {x['lon']}")
+                lines.append(f"{x['rank']}  {nm}  " + ("—" if v is None else f"{v:.2f}"))
+            ax.text(0.0, -0.03, "\n".join(lines), transform=ax.transAxes, va="top", ha="left", fontsize=7.2,
+                    color=INK2, linespacing=1.35)
+    short = res["target"]["name"].split(" (")[0]
+    fig.suptitle(f"Different Earth analogs for {short}: top {TOP_PER_DIM} per dimension (bold) and per variable "
+                 f"(score 0–1; ties broken by overall similarity; sites ≥ {MIN_SEP_KM} km apart)",
+                 x=0.01, ha="left", fontsize=11)
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.93, bottom=0.09, hspace=0.75, wspace=0.04)
     fig.savefig(path)
     plt.close(fig)
 
@@ -408,6 +507,7 @@ def figures(target_id: str, res: dict):
     lo, hi = np.nanpercentile(o, [50, 99.9])
     dim_map(target_id, "overall", f"Overall similarity to {name} (equal-weight dimensions, 0–100)",
             OUT / f"map_{target_id}_overall.png", res["top_overall"], vmin=lo, vmax=hi)
+    board(target_id, res, OUT / f"board_{target_id}.png")
     radar_grid(res["top_overall"][:6], f"Analog profiles — top 6 overall for {name.split(' (')[0]}", OUT / f"radar_{target_id}_top.png")
     kn, tagged = known_for_display(res, 9)
     short = name.split(" (")[0]
@@ -429,6 +529,18 @@ def known_for_display(res: dict, n: int) -> tuple[list[dict], bool]:
 # ---------------- 人看的總表 ----------------
 def _fmt(v, nd=2):
     return "—" if v is None else f"{v:.{nd}f}"
+
+
+def _val(v, unit) -> str:
+    """變數原始值的顯示（總表用）。"""
+    if v is None:
+        return "—"
+    if isinstance(v, str):
+        return {"max": "最乾"}.get(v, v)
+    if unit.startswith("percentile"):
+        return f"第 {v * 100:.0f} 百分位"
+    return {"deg": f"{v:.2f}°", "m": f"{v:.1f} m", "C": f"{v:.1f} °C", "NDVI": f"NDVI {v:.2f}",
+            "aridity index": f"乾燥指數 {v:.3f}"}.get(unit, f"{v:.2f}")
 
 
 def summary_md(results: list[dict]) -> str:
@@ -464,6 +576,20 @@ def summary_md(results: list[dict]) -> str:
             L.append(f"- **{dims[k]['label_zh']}**：" + "；".join(
                 f"{r['name'] or (str(r['lat']) + ', ' + str(r['lon']))}（{_fmt(r['dimension_scores'][k])}，整體 {r['overall']:.0f}）"
                 for r in items))
+        multi = [v for k in ev if len(dims[k]["variables"]) > 1 for v in dims[k]["variables"]]
+        if res.get("top_by_variable"):
+            L += ["", "### 每個變數最像的前 5 名（一張圖看：`board_" + t["id"] + ".png`）", "",
+                  "> 括號內：該變數的分數、地球的值、整體相似度。只有一個變數的面向（"
+                  + "、".join(dims[k]["label_zh"] for k in ev if len(dims[k]["variables"]) == 1)
+                  + "）和上面的面向排名相同，不重複列。", ""]
+            for v in multi:
+                items = res["top_by_variable"].get(v) or []
+                if not items:
+                    continue
+                f0 = items[0]["focus"]
+                L.append(f"- **{VAR_LABELS.get(v, (v,))[0]}**（火星 {_val(f0['mars'], f0['unit'])}）：" + "；".join(
+                    f"{r['name'] or (str(r['lat']) + ', ' + str(r['lon']))}（{_fmt(r['focus']['score'])}，"
+                    f"{_val(r['focus']['earth'], r['focus']['unit'])}，整體 {r['overall']:.0f}）" for r in items))
         rows, tagged = known_for_display(res, len(res["known_analogs"]) if any(
             e["tagged_for_this_target"] for e in res["known_analogs"]) else 8)
         L += ["", "### 已知類比地的剖面（標給這個目標的）" if tagged else

@@ -63,7 +63,7 @@
 | `thermal_inertia` | abs_pct_diff | TES 全球夜間 TI（2007） | MODIS ATI = (1−albedo)/(T_day−T_night) | 火星目標值與百分位表都用 TES；THEMIS 僅局部檢查 |
 | `lithology` | lookup | USGS SIM3292 → 火星大類 | GLiM 第一層 | `sim3292_unit_groups.csv` + `lithology_mars_to_glim.csv`，預設 0.1 |
 | `ice` | abs_prob_diff | SWIM Ci（−1～+1），目標 = clip(Ci, 0, 1) | ESA CCI Permafrost v5 比例 | 規則見 3.3（11/14 修正） |
-| `temperature` | earth_extreme_pct（`cold_pct`） | MCD v6.2 tsurf 年均 | MODIS LST 年均 | |
+| `temperature` | earth_extreme_pct（`cold_pct`） | MCD v6.2 tsurf 年均 | MODIS LST 年均 | MODIS LST 2020–2024（11/14 晚起；放大程式仍是 2015–2024） |
 | `diurnal_range` | earth_extreme_pct（`dtr_pct`） | MCD tsurf：各 Ls 日最高−日最低，取平均 | MODIS LST 日−夜 | 新增；權重暫為 0 |
 | `aridity` | earth_extreme_pct（`arid_pct`） | 固定極乾 | Global Aridity Index | 不用 CHIRPS（Atacama 偏差大） |
 | `barrenness` | ndvi_linear（ndvi_max = 0.3） | 固定 NDVI = 0 | MODIS NDVI 多年平均 | |
@@ -100,6 +100,7 @@
 - 排名只用面向和變數都至少 80% 有資料的格子；每個面向的前幾名只用該面向變數全部有資料的格子；地點彼此至少相距 150 km。
 - 目標（11/14 起 7 個）：jezero、gale、arcadia（IanChen）＋ oxia、meridiani、protonilus、ap105（SkyFall 設計參考著陸點；B 用 IanChen 的擷取程式新增，見 `docs/NEW_TARGETS_AND_ZOOM.md`）。oxia、meridiani 的岩性類別用文獻覆寫（`lithology.group_source = literature_override`）。
 - 沒有已知類比地標給某目標時，總表與雷達圖改列全部已知類比地中全球排名最前的 8 個。
+- 每個變數也有自己的前 5 名（`top_by_variable`，同分時整體相似度高的優先），例如「溫度最像的 5 個地方」。和每個面向的前 5 名一起畫在 `outputs/profiles/board_{目標}.png`，總表也列出地球值和火星值。只有一個變數的面向（水與冰、沙塵）變數排名和面向相同。
 
 ### 3.5 缺資料規則（兩人都要遵守）
 
@@ -115,9 +116,11 @@
 - 特徵全部是必要的：缺資料就不評分。只有在 `fill` 指定的範圍補值（南緯 60° 以南的乾燥指數與 NDVI 補 1）。
 - R3、R5 只對 SWIM Ci ≥ 0.1 的目標適用；R2 全球沒有資料，標為無法評估。
 - 季節曲線（R6）、冰河距離（R5）、礦物指標（R4）需要 `scripts/fetch_earth_extra_gee.py` 產生的補資料；沒有時列為「待補資料」。
-- 測試之間的 ROC 權重只用來算參考用加權總分。最後的地點組合用集合覆蓋決定（下一步）。
+- 集合覆蓋已做：`scripts/make_set_cover.py`，輸出 `outputs/set_cover/`
 
 ## 4. 計分公式
+
+> **11/14 決定：任務版停用。** 四種任務（geology、rover、isru_base、landing）加權與學習權重（本節後半、第 7.1 節、第 8 節、`docs/WEIGHTS_EXPLAINED.md`）不再更新；任務導向只用第 3.6 節的測試項目 R1–R6。程式與文件保留備查。比較方式選方法 B 的驗證結論仍然有效（類比剖面、測試項目都用它）。
 
 單項相似度 s_i ∈ [0, 1]，任務權重 w_i（每個任務總和 = 1，見 `config/missions.json`）。
 
@@ -194,6 +197,8 @@ def load(grid_spec, cfg): ...
 | 11/15 | 高解析 DEM（選做）、資料引用 | 最終輸出 |
 
 ## 7. 交付給前後端的格式
+
+> 11/14 起：網頁整合用網頁 repo（77bigsun/nasa main）的 `data/seed` 格式，由 `scripts/export_web_seed.py` 產生，見 `outputs/web/WEB_EXPORT.md`。網頁目前的排名方法是暫時的，本隊的方法不用配合它調整。第 7.1 節的任務版結果檔已停用。
 
 ### 7.1 結果檔：`outputs/mars_{target_id}_{mission}.json`
 

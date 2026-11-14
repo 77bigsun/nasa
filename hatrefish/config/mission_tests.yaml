@@ -10,7 +10,9 @@
 #                       再用地球同一變數的百分位（column）做 larger_is_better
 #   seasonal_shape    季節曲線形狀：地球 12 個月與火星 Ls 曲線依「當地季節」對齊後的相關係數 r → (1 + r) / 2
 #   seasonal_amplitude 季節相對振幅（(最大 − 最小) / 平均）的對數比，高斯（σ = ln 2）
-#   index_rank        地球礦物指標的全球百分位（larger_is_better），只對 target_attributes 有列出指標的目標計算
+#   seasonal_range_ratio 季節溫差（最高月 − 最低月，K）的對數比，高斯（σ = ln 2）；不用 (最大 − 最小) / 平均，因為攝氏平均可能接近 0
+#   index_rank        地球礦物指標的百分位（larger_is_better），在同一年均地表溫帶內算（ASTER 在寒冷地區系統性偏高），
+#                     只對 target_attributes 有列出指標的目標計算
 # required: true  → 這個特徵缺資料，該格這項測試就不評分（不准用其他特徵補，避免「缺資料反而佔便宜」）
 # required: false → 有資料才納入（目前沒有用到：會讓缺資料的格子佔便宜）
 # fill → 只在指定範圍內把缺資料補成固定值（例如南極沒有 NDVI → 無植被 = 1），其他地方缺資料照樣不評分
@@ -72,6 +74,10 @@ tests:
          mars_data: TES 夜間熱慣量 2007 的全球分位數, earth_data: 表觀熱慣量 ATI（MODIS）的全球百分位}
       - {id: barrenness, kind: similarity, var: barrenness, required: true, unit: NDVI,
          mars_requirement: 無植被, mars_data: —, earth_data: MODIS NDVI, fill: {south_of: -60, value: 1.0, reason: 南緯 60° 以南沒有這個資料（南極是極地沙漠、沒有植被），補 1；其他地方缺資料就不評分}}
+      - {id: summer_barren, kind: threshold, column: ndvi_p90, rule: smaller_is_better, full_at: 0.15, zero_at: 0.4,
+         required: true, when_available: true, unit: NDVI, mars_requirement: 夏季也沒有植被（生長季高峰 NDVI 低）,
+         mars_data: —, earth_data: MOD13A2 2015–2024 NDVI 第 90 百分位, fill: {south_of: -60, value: 1.0, reason: 南極沒有 NDVI，當作沒有植被},
+         note: 11/14 加：年平均 NDVI 在寒冷地區被積雪拉低，凍原會被誤當成荒地}
       - {id: ice_free, kind: threshold, column: icy_frac, rule: smaller_is_better, full_at: 0.1, zero_at: 0.5, required: true,
          unit: fraction, mars_requirement: "降落面是岩石與風化層，不是冰", mars_data: —, earth_data: MCD12Q1 冰雪比例、GLIMS 冰河比例、年均 NDVI < 0 且年均溫 < 0 °C 取最大,
          note: 排除冰河、冰原覆蓋的格子}
@@ -126,6 +132,10 @@ tests:
          note: 只是岩性大類代理，很粗}
       - {id: barrenness, kind: similarity, var: barrenness, required: true, unit: NDVI,
          mars_requirement: 岩石裸露（植被會遮住光譜）, mars_data: —, earth_data: MODIS NDVI, fill: {south_of: -60, value: 1.0, reason: 南緯 60° 以南沒有這個資料（南極是極地沙漠、沒有植被），補 1；其他地方缺資料就不評分}}
+      - {id: summer_barren, kind: threshold, column: ndvi_p90, rule: smaller_is_better, full_at: 0.15, zero_at: 0.4,
+         required: true, when_available: true, unit: NDVI, mars_requirement: 夏季也沒有植被（生長季高峰 NDVI 低）,
+         mars_data: —, earth_data: MOD13A2 2015–2024 NDVI 第 90 百分位, fill: {south_of: -60, value: 1.0, reason: 南極沒有 NDVI，當作沒有植被},
+         note: 11/14 加：年平均 NDVI 在寒冷地區被積雪拉低，凍原會被誤當成荒地}
       - {id: ice_free, kind: threshold, column: icy_frac, rule: smaller_is_better, full_at: 0.1, zero_at: 0.5, required: true,
          unit: fraction, mars_requirement: "岩石裸露（冰雪會遮住光譜）", mars_data: —, earth_data: MCD12Q1 冰雪比例、GLIMS 冰河比例、年均 NDVI < 0 且年均溫 < 0 °C 取最大,
          note: 排除冰河、冰原覆蓋的格子}
@@ -133,7 +143,7 @@ tests:
          when_available: true, unit: global percentile,
          mars_requirement: 目標的主要礦物（碳酸鹽、鎂鐵質）在地球同樣明顯,
          mars_data: 文獻（見 target_attributes）, earth_data: ASTER GED AG100 熱紅外放射率算的 Ninomiya 指標,
-         note: 只對有列出指標的目標計算；黏土、硫酸鹽、赤鐵礦沒有熱紅外指標}
+         note: 只對有列出指標的目標計算；黏土、硫酸鹽、赤鐵礦沒有熱紅外指標；百分位在同一年均地表溫帶內算（−5、5、15、25 °C 分帶），指標超出 0.7–1.3 當缺資料}
     not_evaluated:
       - 逐條光譜比對（CRISM／OMEGA 對 EMIT／ASTER 短波紅外）
 
@@ -155,6 +165,10 @@ tests:
          mars_requirement: 地形粗糙度和目標相近, mars_data: HRSC+MOLA 200 m, earth_data: GMTED2010}
       - {id: barrenness, kind: similarity, var: barrenness, required: true, unit: NDVI,
          mars_requirement: 無植被, mars_data: —, earth_data: MODIS NDVI, fill: {south_of: -60, value: 1.0, reason: 南緯 60° 以南沒有這個資料（南極是極地沙漠、沒有植被），補 1；其他地方缺資料就不評分}}
+      - {id: summer_barren, kind: threshold, column: ndvi_p90, rule: smaller_is_better, full_at: 0.15, zero_at: 0.4,
+         required: true, when_available: true, unit: NDVI, mars_requirement: 夏季也沒有植被（生長季高峰 NDVI 低）,
+         mars_data: —, earth_data: MOD13A2 2015–2024 NDVI 第 90 百分位, fill: {south_of: -60, value: 1.0, reason: 南極沒有 NDVI，當作沒有植被},
+         note: 11/14 加：年平均 NDVI 在寒冷地區被積雪拉低，凍原會被誤當成荒地}
       - {id: glacier_distance, kind: threshold, column: glacier_km, rule: smaller_is_better, full_at: 20, zero_at: 300,
          required: true, when_available: true, attribute: glacial_landforms, unit: km,
          mars_requirement: 目標附近有類冰河地形或葉狀碎屑裙, mars_data: 文獻（見 target_attributes）,
@@ -186,6 +200,11 @@ tests:
       - {id: temperature_season_shape, kind: seasonal_shape, earth_prefix: lst_m, mars_key: tsurf_mean_c, required: true,
          when_available: true, unit: correlation, mars_requirement: 地表溫度季節變化的形狀相近,
          mars_data: MCD 地表溫（Ls 每 15°）, earth_data: MODIS LST 月平均}
+      - {id: temperature_season_amplitude, kind: seasonal_range_ratio, earth_prefix: lst_m, mars_key: tsurf_mean_c,
+         required: true, when_available: true, unit: K,
+         mars_requirement: 地表溫度季節溫差（最高月 − 最低月）相近（對數比，σ = ln 2）,
+         mars_data: MCD 地表溫（Ls 每 15°）, earth_data: MODIS LST 月平均,
+         note: 11/14 加：只比形狀時，季節溫差只有 4 °C 的赤道高山也能拿高分}
     not_evaluated:
       - 風（地球有 MERRA-2，火星只有 MCD；還沒做）
       - 逐日時間序列的分布比較（Wasserstein）與 TOST 等價性檢定

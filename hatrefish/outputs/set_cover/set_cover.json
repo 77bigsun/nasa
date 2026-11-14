@@ -1,0 +1,770 @@
+{
+ "generated_at": "2026-11-14T23:55:17+08:00",
+ "pool": "outputs\\mission_tests\\candidate_pool.csv",
+ "n_pool": 3317,
+ "rule": "score ≥ 0.9 × best site for that requirement",
+ "rule_zh": "分數 ≥ 0.9 × 該需求的最高分",
+ "n_req": 27,
+ "requirements": [
+  "jezero R1",
+  "jezero R4",
+  "jezero R6",
+  "gale R1",
+  "gale R4",
+  "gale R6",
+  "arcadia R1",
+  "arcadia R3",
+  "arcadia R4",
+  "arcadia R5",
+  "arcadia R6",
+  "oxia R1",
+  "oxia R4",
+  "oxia R6",
+  "meridiani R1",
+  "meridiani R4",
+  "meridiani R6",
+  "protonilus R1",
+  "protonilus R3",
+  "protonilus R4",
+  "protonilus R5",
+  "protonilus R6",
+  "ap105 R1",
+  "ap105 R3",
+  "ap105 R4",
+  "ap105 R5",
+  "ap105 R6"
+ ],
+ "best_scores": {
+  "jezero R1": 0.985,
+  "jezero R4": 0.956,
+  "jezero R6": 0.773,
+  "gale R1": 0.976,
+  "gale R4": 0.974,
+  "gale R6": 0.95,
+  "arcadia R1": 1.0,
+  "arcadia R3": 1.0,
+  "arcadia R4": 0.986,
+  "arcadia R5": 1.0,
+  "arcadia R6": 0.788,
+  "oxia R1": 1.0,
+  "oxia R4": 0.946,
+  "oxia R6": 0.757,
+  "meridiani R1": 0.99,
+  "meridiani R4": 1.0,
+  "meridiani R6": 0.938,
+  "protonilus R1": 0.98,
+  "protonilus R3": 1.0,
+  "protonilus R4": 0.974,
+  "protonilus R5": 1.0,
+  "protonilus R6": 0.742,
+  "ap105 R1": 1.0,
+  "ap105 R3": 1.0,
+  "ap105 R4": 0.986,
+  "ap105 R5": 1.0,
+  "ap105 R6": 0.788
+ },
+ "all": {
+  "k_star": 5,
+  "uncoverable": [],
+  "weak": [],
+  "sites": [
+   {
+    "cell_id": "e_612880",
+    "lat": 72.95,
+    "lon": -91.95,
+    "place": "502 km from Gjoa Haven (CA)",
+    "known_analog": false,
+    "nearest_known": "haughton_crater",
+    "nearest_known_km": 279.0,
+    "assigned": [
+     {
+      "target": "jezero",
+      "test": "R4",
+      "score": 0.948
+     },
+     {
+      "target": "arcadia",
+      "test": "R5",
+      "score": 0.993
+     },
+     {
+      "target": "oxia",
+      "test": "R4",
+      "score": 0.945
+     },
+     {
+      "target": "ap105",
+      "test": "R5",
+      "score": 0.993
+     }
+    ],
+    "also_qualifies": [
+     {
+      "target": "gale",
+      "test": "R4",
+      "score": 0.945
+     },
+     {
+      "target": "protonilus",
+      "test": "R4",
+      "score": 0.945
+     }
+    ]
+   },
+   {
+    "cell_id": "e_1928839",
+    "lat": 36.45,
+    "lon": 103.95,
+    "place": "near Gaolan Chengguanzhen (CN)",
+    "known_analog": false,
+    "nearest_known": "qaidam_dalangtan",
+    "nearest_known_km": 1104.0,
+    "assigned": [
+     {
+      "target": "jezero",
+      "test": "R6",
+      "score": 0.698
+     },
+     {
+      "target": "arcadia",
+      "test": "R6",
+      "score": 0.718
+     },
+     {
+      "target": "oxia",
+      "test": "R6",
+      "score": 0.708
+     },
+     {
+      "target": "protonilus",
+      "test": "R6",
+      "score": 0.686
+     },
+     {
+      "target": "ap105",
+      "test": "R6",
+      "score": 0.754
+     }
+    ],
+    "also_qualifies": [
+     {
+      "target": "gale",
+      "test": "R6",
+      "score": 0.863
+     }
+    ]
+   },
+   {
+    "cell_id": "e_1957425",
+    "lat": 35.65,
+    "lon": 82.55,
+    "place": "105 km from Aqqan (CN)",
+    "known_analog": false,
+    "nearest_known": "qaidam_dalangtan",
+    "nearest_known_km": 863.0,
+    "assigned": [
+     {
+      "target": "gale",
+      "test": "R4",
+      "score": 0.961
+     },
+     {
+      "target": "gale",
+      "test": "R6",
+      "score": 0.937
+     },
+     {
+      "target": "arcadia",
+      "test": "R3",
+      "score": 0.956
+     },
+     {
+      "target": "meridiani",
+      "test": "R6",
+      "score": 0.931
+     },
+     {
+      "target": "protonilus",
+      "test": "R3",
+      "score": 0.956
+     },
+     {
+      "target": "protonilus",
+      "test": "R4",
+      "score": 0.961
+     },
+     {
+      "target": "protonilus",
+      "test": "R5",
+      "score": 0.99
+     },
+     {
+      "target": "ap105",
+      "test": "R3",
+      "score": 0.956
+     }
+    ],
+    "also_qualifies": [
+     {
+      "target": "oxia",
+      "test": "R4",
+      "score": 0.868
+     }
+    ]
+   },
+   {
+    "cell_id": "e_3251685",
+    "lat": -0.35,
+    "lon": -91.45,
+    "place": "86 km from Puerto Villamil (EC)",
+    "known_analog": false,
+    "nearest_known": "atacama_yungay",
+    "nearest_known_km": 3513.0,
+    "assigned": [
+     {
+      "target": "gale",
+      "test": "R1",
+      "score": 0.94
+     },
+     {
+      "target": "arcadia",
+      "test": "R4",
+      "score": 0.932
+     },
+     {
+      "target": "protonilus",
+      "test": "R1",
+      "score": 0.951
+     },
+     {
+      "target": "ap105",
+      "test": "R4",
+      "score": 0.932
+     }
+    ],
+    "also_qualifies": []
+   },
+   {
+    "cell_id": "e_3971924",
+    "lat": -20.35,
+    "lon": -67.55,
+    "place": "65 km from Colchani (BO)",
+    "known_analog": false,
+    "nearest_known": "atacama_yungay",
+    "nearest_known_km": 481.0,
+    "assigned": [
+     {
+      "target": "jezero",
+      "test": "R1",
+      "score": 0.947
+     },
+     {
+      "target": "arcadia",
+      "test": "R1",
+      "score": 1.0
+     },
+     {
+      "target": "oxia",
+      "test": "R1",
+      "score": 0.998
+     },
+     {
+      "target": "meridiani",
+      "test": "R1",
+      "score": 0.982
+     },
+     {
+      "target": "meridiani",
+      "test": "R4",
+      "score": 1.0
+     },
+     {
+      "target": "ap105",
+      "test": "R1",
+      "score": 1.0
+     }
+    ],
+    "also_qualifies": []
+   }
+  ],
+  "curve": [
+   {
+    "k": 1,
+    "covered": 15,
+    "score_sum": 14.066,
+    "sites": [
+     "e_1946684"
+    ]
+   },
+   {
+    "k": 2,
+    "covered": 20,
+    "score_sum": 17.863,
+    "sites": [
+     "e_1475129",
+     "e_1881882"
+    ]
+   },
+   {
+    "k": 3,
+    "covered": 24,
+    "score_sum": 21.582,
+    "sites": [
+     "e_1016267",
+     "e_1475129",
+     "e_1881882"
+    ]
+   },
+   {
+    "k": 4,
+    "covered": 26,
+    "score_sum": 23.489,
+    "sites": [
+     "e_785637",
+     "e_1928839",
+     "e_1997008",
+     "e_3251685"
+    ]
+   },
+   {
+    "k": 5,
+    "covered": 27,
+    "score_sum": 24.772,
+    "sites": [
+     "e_612880",
+     "e_1928839",
+     "e_1957425",
+     "e_3251685",
+     "e_3971924"
+    ]
+   }
+  ]
+ },
+ "per_target": {
+  "jezero": {
+   "tests": [
+    "R1",
+    "R4",
+    "R6"
+   ],
+   "k_star": 2,
+   "weak": [],
+   "uncoverable": [],
+   "sites": [
+    {
+     "cell_id": "e_2222833",
+     "lat": 28.25,
+     "lon": -16.65,
+     "place": "near Vilaflor (ES)",
+     "known_analog": false,
+     "nearest_known": "lanzarote",
+     "nearest_known_km": 307.0,
+     "assigned": [
+      {
+       "target": "jezero",
+       "test": "R6",
+       "score": 0.773
+      }
+     ],
+     "also_qualifies": []
+    },
+    {
+     "cell_id": "e_2403708",
+     "lat": 23.25,
+     "lon": 70.85,
+     "place": "41 km from Rapar (IN)",
+     "known_analog": false,
+     "nearest_known": "kachchh_matanumadh",
+     "nearest_known_km": 197.0,
+     "assigned": [
+      {
+       "target": "jezero",
+       "test": "R1",
+       "score": 0.936
+      },
+      {
+       "target": "jezero",
+       "test": "R4",
+       "score": 0.912
+      }
+     ],
+     "also_qualifies": []
+    }
+   ]
+  },
+  "gale": {
+   "tests": [
+    "R1",
+    "R4",
+    "R6"
+   ],
+   "k_star": 1,
+   "weak": [],
+   "uncoverable": [],
+   "sites": [
+    {
+     "cell_id": "e_1953880",
+     "lat": 35.75,
+     "lon": 88.05,
+     "place": "273 km from Cuozheqiangma (CN)",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 431.0,
+     "assigned": [
+      {
+       "target": "gale",
+       "test": "R1",
+       "score": 0.969
+      },
+      {
+       "target": "gale",
+       "test": "R4",
+       "score": 0.93
+      },
+      {
+       "target": "gale",
+       "test": "R6",
+       "score": 0.919
+      }
+     ],
+     "also_qualifies": []
+    }
+   ]
+  },
+  "arcadia": {
+   "tests": [
+    "R1",
+    "R3",
+    "R4",
+    "R5",
+    "R6"
+   ],
+   "k_star": 3,
+   "weak": [],
+   "uncoverable": [],
+   "sites": [
+    {
+     "cell_id": "e_1626237",
+     "lat": 44.85,
+     "lon": 83.75,
+     "place": "37 km from Todok (CN)",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 979.0,
+     "assigned": [
+      {
+       "target": "arcadia",
+       "test": "R6",
+       "score": 0.788
+      }
+     ],
+     "also_qualifies": []
+    },
+    {
+     "cell_id": "e_3957521",
+     "lat": -19.95,
+     "lon": -67.85,
+     "place": "103 km from Colchani (BO)",
+     "known_analog": false,
+     "nearest_known": "atacama_yungay",
+     "nearest_known_km": 506.0,
+     "assigned": [
+      {
+       "target": "arcadia",
+       "test": "R1",
+       "score": 0.999
+      },
+      {
+       "target": "arcadia",
+       "test": "R4",
+       "score": 0.93
+      }
+     ],
+     "also_qualifies": []
+    },
+    {
+     "cell_id": "e_6202632",
+     "lat": -82.25,
+     "lon": 163.25,
+     "place": "494 km from McMurdo Station (AQ)",
+     "known_analog": false,
+     "nearest_known": "beacon_valley",
+     "nearest_known_km": 495.0,
+     "assigned": [
+      {
+       "target": "arcadia",
+       "test": "R3",
+       "score": 1.0
+      },
+      {
+       "target": "arcadia",
+       "test": "R5",
+       "score": 0.982
+      }
+     ],
+     "also_qualifies": []
+    }
+   ]
+  },
+  "oxia": {
+   "tests": [
+    "R1",
+    "R4",
+    "R6"
+   ],
+   "k_star": 2,
+   "weak": [],
+   "uncoverable": [],
+   "sites": [
+    {
+     "cell_id": "e_1975632",
+     "lat": 35.15,
+     "lon": 103.25,
+     "place": "near Zuogaiduoma (CN)",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 1090.0,
+     "assigned": [
+      {
+       "target": "oxia",
+       "test": "R6",
+       "score": 0.757
+      }
+     ],
+     "also_qualifies": []
+    },
+    {
+     "cell_id": "e_3979126",
+     "lat": -20.55,
+     "lon": -67.35,
+     "place": "52 km from Colchani (BO)",
+     "known_analog": false,
+     "nearest_known": "atacama_yungay",
+     "nearest_known_km": 473.0,
+     "assigned": [
+      {
+       "target": "oxia",
+       "test": "R1",
+       "score": 0.998
+      },
+      {
+       "target": "oxia",
+       "test": "R4",
+       "score": 0.946
+      }
+     ],
+     "also_qualifies": []
+    }
+   ]
+  },
+  "meridiani": {
+   "tests": [
+    "R1",
+    "R4",
+    "R6"
+   ],
+   "k_star": 2,
+   "weak": [],
+   "uncoverable": [],
+   "sites": [
+    {
+     "cell_id": "e_1932233",
+     "lat": 36.35,
+     "lon": 83.35,
+     "place": "37 km from Yeyik (CN)",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 767.0,
+     "assigned": [
+      {
+       "target": "meridiani",
+       "test": "R6",
+       "score": 0.938
+      }
+     ],
+     "also_qualifies": []
+    },
+    {
+     "cell_id": "e_3971924",
+     "lat": -20.35,
+     "lon": -67.55,
+     "place": "65 km from Colchani (BO)",
+     "known_analog": false,
+     "nearest_known": "atacama_yungay",
+     "nearest_known_km": 481.0,
+     "assigned": [
+      {
+       "target": "meridiani",
+       "test": "R1",
+       "score": 0.982
+      },
+      {
+       "target": "meridiani",
+       "test": "R4",
+       "score": 1.0
+      }
+     ],
+     "also_qualifies": []
+    }
+   ]
+  },
+  "protonilus": {
+   "tests": [
+    "R1",
+    "R3",
+    "R4",
+    "R5",
+    "R6"
+   ],
+   "k_star": 2,
+   "weak": [],
+   "uncoverable": [],
+   "sites": [
+    {
+     "cell_id": "e_1759477",
+     "lat": 41.15,
+     "lon": 87.75,
+     "place": "132 km from Bohu (CN)",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 459.0,
+     "assigned": [
+      {
+       "target": "protonilus",
+       "test": "R1",
+       "score": 0.968
+      },
+      {
+       "target": "protonilus",
+       "test": "R4",
+       "score": 0.936
+      }
+     ],
+     "also_qualifies": []
+    },
+    {
+     "cell_id": "e_1989787",
+     "lat": 34.75,
+     "lon": 78.75,
+     "place": "125 km from Leh (IN)",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 1220.0,
+     "assigned": [
+      {
+       "target": "protonilus",
+       "test": "R3",
+       "score": 0.945
+      },
+      {
+       "target": "protonilus",
+       "test": "R5",
+       "score": 0.967
+      },
+      {
+       "target": "protonilus",
+       "test": "R6",
+       "score": 0.724
+      }
+     ],
+     "also_qualifies": [
+      {
+       "target": "protonilus",
+       "test": "R4",
+       "score": 0.903
+      }
+     ]
+    }
+   ]
+  },
+  "ap105": {
+   "tests": [
+    "R1",
+    "R3",
+    "R4",
+    "R5",
+    "R6"
+   ],
+   "k_star": 2,
+   "weak": [],
+   "uncoverable": [],
+   "sites": [
+    {
+     "cell_id": "e_1986193",
+     "lat": 34.85,
+     "lon": 79.35,
+     "place": "161 km from Rutog (CN)",
+     "known_analog": false,
+     "nearest_known": "qaidam_dalangtan",
+     "nearest_known_km": 1165.0,
+     "assigned": [
+      {
+       "target": "ap105",
+       "test": "R3",
+       "score": 0.961
+      },
+      {
+       "target": "ap105",
+       "test": "R5",
+       "score": 0.975
+      },
+      {
+       "target": "ap105",
+       "test": "R6",
+       "score": 0.714
+      }
+     ],
+     "also_qualifies": []
+    },
+    {
+     "cell_id": "e_3957521",
+     "lat": -19.95,
+     "lon": -67.85,
+     "place": "103 km from Colchani (BO)",
+     "known_analog": false,
+     "nearest_known": "atacama_yungay",
+     "nearest_known_km": 506.0,
+     "assigned": [
+      {
+       "target": "ap105",
+       "test": "R1",
+       "score": 0.999
+      },
+      {
+       "target": "ap105",
+       "test": "R4",
+       "score": 0.93
+      }
+     ],
+     "also_qualifies": []
+    }
+   ]
+  }
+ },
+ "sensitivity": [
+  {
+   "rule": "0.8 × 最高分",
+   "k_star": 3,
+   "uncoverable": [],
+   "same_as_default": 0
+  },
+  {
+   "rule": "0.85 × 最高分",
+   "k_star": 3,
+   "uncoverable": [],
+   "same_as_default": 0
+  },
+  {
+   "rule": "0.9 × 最高分",
+   "k_star": 5,
+   "uncoverable": [],
+   "same_as_default": 5
+  },
+  {
+   "rule": "0.95 × 最高分",
+   "k_star": 7,
+   "uncoverable": [],
+   "same_as_default": 3
+  }
+ ]
+}

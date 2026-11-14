@@ -1,0 +1,752 @@
+- id: R1
+  mission: mars
+  name: 著陸地表條件
+  name_en: Landing surface conditions
+  verify: 坡度、岩石、承重是否適合降落
+  nasa_basis: SkyFall 工程限制 V.e–g
+  nasa_url: https://science.nasa.gov/mission/skyfall/
+  tech_gap:
+    rank: 10
+    bin: 2
+    label: 10（2）、37（5）
+  order: 1
+  manual_adjust: null
+  notes:
+  - 以當地時間與太陽經度 Ls 對齊；火星年約 687 地球日。
+  - 地形使用 Copernicus DEM；所有示範數值均非觀測。
+  - SkyFall 五區缺少著陸器實測；工程限制及技術缺口排名沿用團隊規格，待查原文。
+  features:
+  - id: r1_slope_100m
+    name: 100 m 坡度
+    name_en: 100 m slope
+    type: threshold
+    compare_mode: absolute
+    unit: deg
+    weight: 1.0
+    threshold:
+      ideal_max: 5
+      zero_at: 15
+    planet_threshold: null
+    out_of_earth_range: false
+    earth_proxy: false
+    planet_data:
+    - name: HRSC＋MOLA 200 m 坡度
+      official: false
+      source_id: hrsc_mola
+      url: null
+    earth_data:
+    - name: GMTED2010 230 m 坡度（0.1° 格內中位數）
+      official: false
+      source_id: gmted
+      url: null
+    notes:
+    - '`{ideal_max: 5, zero_at: 15}`（待定）'
+    - 本隊資料是 200 m 尺度，不是 100 m。
+    stat: mean
+    stat_threshold: 0
+    rank_stat_threshold: null
+  - id: r1_slope_1_5m
+    name: 1–5 m 坡度
+    name_en: 1–5 m slope
+    type: threshold
+    compare_mode: absolute
+    unit: deg
+    weight: 1.0
+    threshold:
+      ideal_max: 12
+      zero_at: 15
+    planet_threshold: null
+    out_of_earth_range: false
+    earth_proxy: true
+    planet_data:
+    - name: HiRISE 地形模型 （覆蓋有限）
+      official: true
+      source_id: pds
+      url: https://pds.nasa.gov/
+    earth_data:
+    - name: 無全球資料，用 30 m 坡度 + 雷達代理
+      official: true
+      source_id: earthdata
+      url: https://search.earthdata.nasa.gov/
+    notes:
+    - '`{ideal_max: 12, zero_at: 15}`；earth_proxy'
+    stat: mean
+    stat_threshold: 0
+    rank_stat_threshold: null
+  - id: r1_rock
+    name: 岩石覆蓋率
+    name_en: Rock fraction
+    type: threshold
+    compare_mode: relative_rank
+    unit: ''
+    weight: 1.0
+    threshold: null
+    planet_threshold:
+      max: 0.05
+    out_of_earth_range: false
+    earth_proxy: true
+    planet_data:
+    - name: TES／THEMIS 岩石覆蓋
+      official: true
+      source_id: pds
+      url: https://pds.nasa.gov/
+    earth_data:
+    - name: 表觀熱慣量 + Sentinel-1／PALSAR
+      official: true
+      source_id: copernicus
+      url: https://dataspace.copernicus.eu/
+    notes:
+    - 'planet_threshold `{max: 0.05}`；earth_proxy'
+    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    stat: mean
+    stat_threshold: 0
+    rank_stat_threshold: null
+  - id: r1_thermal_inertia
+    name: 熱慣量
+    name_en: Thermal inertia
+    type: threshold
+    compare_mode: relative_rank
+    unit: ''
+    weight: 1.0
+    threshold: null
+    planet_threshold:
+      zero_at: 100
+      ideal_min: 150
+    out_of_earth_range: false
+    earth_proxy: false
+    planet_data:
+    - name: TES 夜間熱慣量（Putzig & Mellon 2007）
+      official: true
+      source_id: tes
+      url: null
+    earth_data:
+    - name: MODIS 表觀熱慣量 ATI =（1 − 反照率）／ 日夜溫差
+      official: true
+      source_id: earthdata
+      url: null
+    notes:
+    - 'planet_threshold `{zero_at: 100, ideal_min: 150}`；地球單位不同只比相對排名'
+    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    stat: mean
+    stat_threshold: 0
+    rank_stat_threshold: null
+  - id: r1_barren
+    name: 無植被
+    name_en: Bare ground
+    type: threshold
+    compare_mode: absolute
+    unit: NDVI
+    weight: 1.0
+    threshold:
+      ideal_max: 0.0
+      zero_at: 0.3
+    planet_threshold: null
+    out_of_earth_range: false
+    earth_proxy: false
+    planet_data: []
+    earth_data:
+    - name: MODIS NDVI 2015–2024
+      official: true
+      source_id: earthdata
+      url: null
+    notes:
+    - NDVI ≤ 0 得 1、≥ 0.3 得 0；南緯 60° 以南沒有 NDVI，補 0（無植被）。
+    stat: mean
+    stat_threshold: 0
+    rank_stat_threshold: null
+  - id: r1_ice_free
+    name: 不是冰面
+    name_en: Ice-free surface
+    type: threshold
+    compare_mode: absolute
+    unit: fraction
+    weight: 1.0
+    threshold:
+      ideal_max: 0.1
+      zero_at: 0.5
+    planet_threshold: null
+    out_of_earth_range: false
+    earth_proxy: false
+    planet_data: []
+    earth_data:
+    - name: MCD12Q1 冰雪比例；年均 NDVI < 0 且年均溫 < 0 °C
+      official: true
+      source_id: earthdata
+      url: null
+    notes:
+    - 降落面是岩石與風化層，不是冰：冰雪比例 ≤ 0.1 得 1、≥ 0.5 得 0。
+    stat: mean
+    stat_threshold: 0
+    rank_stat_threshold: null
+- id: R2
+  mission: mars
+  name: 視覺導航可行性
+  name_en: Visual navigation
+  verify: 直升機靠影像特徵導航
+  nasa_basis: SkyFall 工程限制 V.h
+  nasa_url: https://science.nasa.gov/mission/skyfall/
+  tech_gap: null
+  order: 4
+  manual_adjust:
+    reason: 手動排入：SkyFall 工程限制
+  notes:
+  - 以當地時間與太陽經度 Ls 對齊；火星年約 687 地球日。
+  - 地形使用 Copernicus DEM；所有示範數值均非觀測。
+  - SkyFall 五區缺少著陸器實測；工程限制及技術缺口排名沿用團隊規格，待查原文。
+  features:
+  - id: r2_texture
+    name: 影像紋理豐富度
+    name_en: Image texture
+    type: profile
+    compare_mode: relative_rank
+    unit: ''
+    weight: 1.0
+    threshold: null
+    planet_threshold: null
+    out_of_earth_range: false
+    earth_proxy: false
+    planet_data:
+    - name: CTX（6 m）、HiRISE
+      official: true
+      source_id: pds
+      url: https://pds.nasa.gov/
+    earth_data:
+    - name: Sentinel-2（10 m）
+      official: true
+      source_id: copernicus
+      url: https://dataspace.copernicus.eu/
+    notes:
+    - HLS 30 m 太粗
+    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    stat: mean
+    stat_threshold: 0
+    rank_stat_threshold: null
+  - id: r2_dune_fraction
+    name: 沙丘與沙原比例
+    name_en: Dune fraction
+    type: threshold
+    compare_mode: absolute
+    unit: ''
+    weight: 1.0
+    threshold:
+      ideal_max: 0.05
+      zero_at: 0.3
+    planet_threshold: null
+    out_of_earth_range: false
+    earth_proxy: false
+    planet_data:
+    - name: 火星全球沙丘資料庫
+      official: false
+      source_id: dunes
+      url: https://astrogeology.usgs.gov/
+    earth_data:
+    - name: Sentinel-2
+      official: true
+      source_id: copernicus
+      url: https://dataspace.copernicus.eu/
+    notes:
+    - '越低越好 `{ideal_max: 0.05, zero_at: 0.3}`（暫定）'
+    stat: mean
+    stat_threshold: 0
+    rank_stat_threshold: null
+- id: R3
+  mission: mars
+  name: 淺層地下冰
+  name_en: Shallow subsurface ice
+  verify: 透地雷達偵測 3–5 公尺內的分層與埋藏冰
+  nasa_basis: SkyFall 透地雷達；載人選址重視取水
+  nasa_url: https://science.nasa.gov/mission/skyfall/
+  tech_gap:
+    rank: 52
+    bin: 6
+    label: 52（6）
+  order: 2
+  manual_adjust:
+    reason: 上調：SkyFall 重點、取水為關鍵
+  notes:
+  - 以當地時間與太陽經度 Ls 對齊；火星年約 687 地球日。
+  - 地形使用 Copernicus DEM；所有示範數值均非觀測。
+  - SkyFall 五區缺少著陸器實測；工程限制及技術缺口排名沿用團隊規格，待查原文。
+  features:
+  - id: r3_ground_ice
+    name: 地下冰分布與深度
+    name_en: Ground ice
+    type: threshold
+    compare_mode: absolute
+    unit: fraction
+    weight: 1.0
+    threshold:
+      zero_at: 0.1
+      ideal_min: 0.9
+    planet_threshold: null
+    out_of_earth_range: false
+    earth_proxy: false
+    planet_data:
+    - name: SWIM4MIM 冰一致性 Ci
+      official: false
+      source_id: swim
+      url: null
+    earth_data:
+    - name: ESA CCI 永凍土 v5.0（0.1° 格內永凍土比例）
+      official: false
+      source_id: cci
+      url: null
+    notes:
+    - 地球沒有 3–5 m 深度的全球資料
+    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    - 本隊建議：測「有沒有冰可以偵測」，地球永凍土比例 0.1 → 0 分、0.9 → 1 分；SWIM Ci < 0.1 的目標（Jezero、Gale）不評 R3／R5（目標值留空）。
+    stat: mean
+    stat_threshold: 0
+    rank_stat_threshold: null
+  - id: r3_polygons
+    name: 多邊形地
+    name_en: Polygonal terrain
+    type: categorical
+    compare_mode: absolute
+    unit: ''
+    weight: 1.0
+    threshold: null
+    planet_threshold: null
+    out_of_earth_range: false
+    earth_proxy: false
+    planet_data:
+    - name: HiRISE、CTX
+      official: true
+      source_id: pds
+      url: https://pds.nasa.gov/
+    earth_data:
+    - name: Sentinel-2
+      official: true
+      source_id: copernicus
+      url: https://dataspace.copernicus.eu/
+    notes: []
+    stat: mean
+    stat_threshold: 0
+    rank_stat_threshold: null
+  - id: r3_subsurface_radar
+    name: 地表下雷達
+    name_en: Subsurface radar
+    type: profile
+    compare_mode: relative_rank
+    unit: ''
+    weight: 1.0
+    threshold: null
+    planet_threshold: null
+    out_of_earth_range: false
+    earth_proxy: false
+    planet_data:
+    - name: SHARAD
+      official: true
+      source_id: pds
+      url: https://pds.nasa.gov/
+    earth_data:
+    - name: PALSAR L 波段
+      official: true
+      source_id: jaxa
+      url: https://gportal.jaxa.jp/gpr/
+    notes:
+    - 僅極乾沙地可穿透表層
+    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    stat: mean
+    stat_threshold: 0
+    rank_stat_threshold: null
+  - id: r3_cold
+    name: 年均地表溫低於 0 °C
+    name_en: Below-freezing mean temperature
+    type: threshold
+    compare_mode: absolute
+    unit: °C
+    weight: 1.0
+    threshold:
+      ideal_max: -2.0
+      zero_at: 2.0
+    planet_threshold: null
+    out_of_earth_range: false
+    earth_proxy: false
+    planet_data:
+    - name: 火星氣候資料庫 MCD v6
+      official: false
+      source_id: mcd
+      url: null
+    earth_data:
+    - name: MODIS MOD11A2＋MYD11A2 地表溫 2015–2024
+      official: true
+      source_id: earthdata
+      url: null
+    notes:
+    - 年均地表溫 ≤ −2 °C 得 1、≥ 2 °C 得 0（地球能維持永凍土）。
+    stat: mean
+    stat_threshold: 0
+    rank_stat_threshold: null
+  - id: r3_dryness
+    name: 乾燥程度
+    name_en: Aridity
+    type: profile
+    compare_mode: relative_rank
+    unit: ''
+    weight: 1.0
+    threshold: null
+    planet_threshold: null
+    out_of_earth_range: false
+    earth_proxy: false
+    planet_data: []
+    earth_data:
+    - name: Global Aridity Index v3
+      official: false
+      source_id: aridity
+      url: null
+    notes:
+    - 目標百分位 0（地球最乾）；南緯 60° 以南沒有資料，補 0（極乾）。
+    stat: mean
+    stat_threshold: 0
+    rank_stat_threshold: null
+- id: R4
+  mission: mars
+  name: 含水礦物辨識
+  name_en: Hydrated minerals
+  verify: 近紅外辨識含水礦物與變質產物
+  nasa_basis: SkyFall 近紅外相機；生命起源科學目標
+  nasa_url: https://science.nasa.gov/mission/skyfall/
+  tech_gap: null
+  order: 5
+  manual_adjust:
+    reason: 手動排入：科學目標
+  notes:
+  - 以當地時間與太陽經度 Ls 對齊；火星年約 687 地球日。
+  - 地形使用 Copernicus DEM；所有示範數值均非觀測。
+  - SkyFall 五區缺少著陸器實測；工程限制及技術缺口排名沿用團隊規格，待查原文。
+  features:
+  - id: r4_hydrated_spectra
+    name: 含水礦物光譜
+    name_en: Hydrated mineral spectrum
+    type: spectral
+    compare_mode: absolute
+    unit: ''
+    weight: 1.0
+    threshold: null
+    planet_threshold: null
+    out_of_earth_range: false
+    earth_proxy: false
+    planet_data:
+    - name: CRISM、OMEGA
+      official: true
+      source_id: pds
+      url: https://pds.nasa.gov/
+    earth_data:
+    - name: EMIT
+      official: true
+      source_id: earthdata
+      url: https://search.earthdata.nasa.gov/
+    - name: ASTER 短波紅外
+      official: true
+      source_id: earthdata
+      url: https://search.earthdata.nasa.gov/
+    notes:
+    - ASTER 短波紅外 2008 年 4 月故障，只用之前資料；EMIT 只涵蓋乾旱區、北緯 52° 以南
+    stat: mean
+    stat_threshold: 0
+    rank_stat_threshold: null
+  - id: r4_lithology
+    name: 岩性大類
+    name_en: Lithology class
+    type: categorical
+    compare_mode: absolute
+    unit: ''
+    weight: 1.0
+    threshold: null
+    planet_threshold: null
+    out_of_earth_range: false
+    earth_proxy: false
+    planet_data:
+    - name: USGS SIM 3292＋文獻覆寫
+      official: false
+      source_id: sim3292
+      url: null
+    earth_data:
+    - name: GLiM 0.5°
+      official: false
+      source_id: glim
+      url: null
+    notes:
+    - 只是岩性大類代理，很粗；對照表見 categorical_tables.yaml。
+    stat: mean
+    stat_threshold: 0
+    rank_stat_threshold: null
+  - id: r4_barren
+    name: 岩石裸露
+    name_en: Exposed rock
+    type: threshold
+    compare_mode: absolute
+    unit: NDVI
+    weight: 1.0
+    threshold:
+      ideal_max: 0.0
+      zero_at: 0.3
+    planet_threshold: null
+    out_of_earth_range: false
+    earth_proxy: false
+    planet_data: []
+    earth_data:
+    - name: MODIS NDVI 2015–2024
+      official: true
+      source_id: earthdata
+      url: null
+    notes:
+    - 植被會遮住光譜。NDVI ≤ 0 得 1、≥ 0.3 得 0。
+    stat: mean
+    stat_threshold: 0
+    rank_stat_threshold: null
+- id: R5
+  mission: mars
+  name: 冰河與冰緣地形
+  name_en: Glacial & periglacial terrain
+  verify: 多邊形地等地貌與地下冰的關係
+  nasa_basis: SkyFall 彩色相機
+  nasa_url: https://science.nasa.gov/mission/skyfall/
+  tech_gap: null
+  order: 6
+  manual_adjust:
+    reason: 手動排入：科學目標
+  notes:
+  - 以當地時間與太陽經度 Ls 對齊；火星年約 687 地球日。
+  - 地形使用 Copernicus DEM；所有示範數值均非觀測。
+  - SkyFall 五區缺少著陸器實測；工程限制及技術缺口排名沿用團隊規格，待查原文。
+  features:
+  - id: r5_landform
+    name: 地貌類型
+    name_en: Landform class
+    type: categorical
+    compare_mode: absolute
+    unit: ''
+    weight: 1.0
+    threshold: null
+    planet_threshold: null
+    out_of_earth_range: false
+    earth_proxy: false
+    planet_data:
+    - name: HiRISE、CTX
+      official: true
+      source_id: pds
+      url: https://pds.nasa.gov/
+    earth_data:
+    - name: Sentinel-2、Copernicus DEM
+      official: true
+      source_id: copernicus
+      url: https://dataspace.copernicus.eu/
+    - name: RGI 冰河分布
+      official: false
+      source_id: rgi
+      url: https://www.glims.org/RGI/
+    notes: []
+    stat: mean
+    stat_threshold: 0
+    rank_stat_threshold: null
+  - id: r5_polygon_size
+    name: 多邊形尺寸
+    name_en: Polygon size
+    type: profile
+    compare_mode: absolute
+    unit: m
+    weight: 1.0
+    threshold: null
+    planet_threshold: null
+    out_of_earth_range: false
+    earth_proxy: false
+    planet_data:
+    - name: HiRISE、CTX
+      official: true
+      source_id: pds
+      url: https://pds.nasa.gov/
+    earth_data:
+    - name: Sentinel-2
+      official: true
+      source_id: copernicus
+      url: https://dataspace.copernicus.eu/
+    notes:
+    - 地球冰楔多邊形約 10–30 m，10 m 解析度勉強
+    stat: mean
+    stat_threshold: 0
+    rank_stat_threshold: null
+  - id: r5_roughness
+    name: 地表粗糙度
+    name_en: Surface roughness
+    type: profile
+    compare_mode: absolute
+    unit: m
+    weight: 1.0
+    threshold: null
+    planet_threshold: null
+    out_of_earth_range: false
+    earth_proxy: false
+    planet_data:
+    - name: HRSC＋MOLA 200 m，5×5 視窗高程標準差
+      official: false
+      source_id: hrsc_mola
+      url: null
+    earth_data:
+    - name: GMTED2010 230 m，5×5 視窗高程標準差
+      official: false
+      source_id: gmted
+      url: null
+    notes:
+    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    - 本隊建議改 absolute：兩邊都在約 200 m 尺度、同一算法，單位都是公尺，可以直接比。
+    stat: mean
+    stat_threshold: 0
+    rank_stat_threshold: null
+  - id: r5_ground_ice
+    name: 永凍土
+    name_en: Permafrost
+    type: threshold
+    compare_mode: absolute
+    unit: fraction
+    weight: 1.0
+    threshold:
+      zero_at: 0.1
+      ideal_min: 0.9
+    planet_threshold: null
+    out_of_earth_range: false
+    earth_proxy: false
+    planet_data:
+    - name: SWIM4MIM Ci
+      official: false
+      source_id: swim
+      url: null
+    earth_data:
+    - name: ESA CCI 永凍土 v5.0
+      official: false
+      source_id: cci
+      url: null
+    notes:
+    - 永凍土比例 0.1 → 0、0.9 → 1；SWIM Ci < 0.1 的目標不評。
+    stat: mean
+    stat_threshold: 0
+    rank_stat_threshold: null
+  - id: r5_cold
+    name: 年均地表溫低於 0 °C
+    name_en: Below-freezing mean temperature
+    type: threshold
+    compare_mode: absolute
+    unit: °C
+    weight: 1.0
+    threshold:
+      ideal_max: -2.0
+      zero_at: 2.0
+    planet_threshold: null
+    out_of_earth_range: false
+    earth_proxy: false
+    planet_data:
+    - name: 火星氣候資料庫 MCD v6
+      official: false
+      source_id: mcd
+      url: null
+    earth_data:
+    - name: MODIS MOD11A2＋MYD11A2 地表溫 2015–2024
+      official: true
+      source_id: earthdata
+      url: null
+    notes:
+    - 同 r3_cold。
+    stat: mean
+    stat_threshold: 0
+    rank_stat_threshold: null
+- id: R6
+  mission: mars
+  name: 沙塵與近地表氣象
+  name_en: Dust & near-surface weather
+  verify: 塵埃揚起、風、近地表溫度日變化
+  nasa_basis: SkyFall 氣象感測；MD-07
+  nasa_url: https://science.nasa.gov/mission/skyfall/
+  tech_gap:
+    rank: 35
+    bin: 4
+    label: 35（4）
+  order: 3
+  manual_adjust: null
+  notes:
+  - 以當地時間與太陽經度 Ls 對齊；火星年約 687 地球日。
+  - 地形使用 Copernicus DEM；所有示範數值均非觀測。
+  - SkyFall 五區缺少著陸器實測；工程限制及技術缺口排名沿用團隊規格，待查原文。
+  features:
+  - id: r6_dust
+    name: 沙塵頻率與季節性
+    name_en: Dust seasonality
+    type: timeseries
+    compare_mode: relative_rank
+    unit: ''
+    weight: 1.0
+    threshold: null
+    planet_threshold: null
+    out_of_earth_range: false
+    earth_proxy: false
+    planet_data:
+    - name: 火星氣候資料庫 MCD v6
+      official: false
+      source_id: mcd
+      url: null
+    earth_data:
+    - name: MERRA-2 DUEXTTAU 月平均 2019–2023
+      official: true
+      source_id: earthdata
+      url: null
+    notes:
+    - SkyFall 五區無著陸器實測
+    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    - 序列的 phase = 當地季節的太陽黃經 ／ 360（0 = 當地春分）；地球南半球、火星南半球各加半年。
+    stat: mean
+    stat_threshold: 0
+    rank_stat_threshold: null
+  - id: r6_wind_temp
+    name: 風、近地表溫度日變化
+    name_en: Wind / temperature cycle
+    type: timeseries
+    compare_mode: relative_rank
+    unit: ''
+    weight: 1.0
+    threshold: null
+    planet_threshold: null
+    out_of_earth_range: false
+    earth_proxy: false
+    planet_data:
+    - name: 火星氣候資料庫 MCD v6
+      official: false
+      source_id: mcd
+      url: null
+    earth_data:
+    - name: MODIS MOD11A2＋MYD11A2 地表溫 2015–2024
+      official: true
+      source_id: earthdata
+      url: null
+    notes:
+    - 跨星球不同單位：只比百分位，行星門檻不套用於地球分數。
+    - 本隊只有溫度日夜差，沒有風。地球序列是 MODIS 日間、夜間兩點（約 12:00、00:00），range = 日夜溫差。
+    - 火星日夜溫差（約 75–95 °C）超出地球範圍，目標百分位填 1.0（取地球最極端，同本隊 earth_extreme_pct）。
+    stat: range
+    stat_threshold: 0
+    rank_stat_threshold: null
+  - id: r6_temperature
+    name: 年均地表溫（越冷越好）
+    name_en: Mean surface temperature
+    type: profile
+    compare_mode: relative_rank
+    unit: °C
+    weight: 1.0
+    threshold: null
+    planet_threshold: null
+    out_of_earth_range: false
+    earth_proxy: false
+    planet_data:
+    - name: 火星氣候資料庫 MCD v6
+      official: false
+      source_id: mcd
+      url: null
+    earth_data:
+    - name: MODIS MOD11A2＋MYD11A2 地表溫 2015–2024
+      official: true
+      source_id: earthdata
+      url: null
+    notes:
+    - 火星比地球任何地方都冷，目標百分位填 0（取地球最冷）。
+    stat: mean
+    stat_threshold: 0
+    rank_stat_threshold: null

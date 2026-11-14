@@ -11,7 +11,7 @@
   HLS 沒有涵蓋的地方（例如南極）改畫 DEM 陰影圖。
 
 資料出處（官方規定要標出處）：
-- Copernicus DEM GLO-30, ESA, https://doi.org/10.5270/ESA-c5d3d65
+- Copernicus DEM GLO-30, ESA, https://doi.org/10.5270/ESA-c5d3d65（11/14 起用 GEE 新版 GLO30_2024_1，見 gee_layers.glo30）
 - MODIS MOD13Q1 v061: Didan, K. (2021), https://doi.org/10.5067/MODIS/MOD13Q1.061 （NASA Earthdata）
 - HLSS30 / HLSL30 v2.0: Masek, J. et al. (2021), https://doi.org/10.5067/HLS/HLSS30.002 ,
   https://doi.org/10.5067/HLS/HLSL30.002 （NASA LP DAAC）
@@ -58,7 +58,7 @@ def terrain(lat: float, lon: float, tf: list[float], dem: str = "copernicus") ->
         base = ee.Image("USGS/GMTED2010_FULL").select("mea").toFloat()
         proj = base.projection()
     else:
-        col = ee.ImageCollection("COPERNICUS/DEM/GLO30").select("DEM")
+        col = L.glo30()
         dem30 = col.mosaic().setDefaultProjection(col.first().projection())
         base = (dem30.reduceResolution(ee.Reducer.mean(), maxPixels=1024)
                 .reproject(crs=local_crs(lat, lon), scale=200))
@@ -73,7 +73,7 @@ def terrain(lat: float, lon: float, tf: list[float], dem: str = "copernicus") ->
 
 def climate(tf: list[float]) -> ee.Image:
     """MODIS 地表溫度多年平均（同全球版）。"""
-    return _on(L.lst_climatology(), tf)
+    return _on(L.lst_climatology(grid_mean=False), tf)   # 原生 1 km（全球版預設會聚合到 0.1°）
 
 
 def ndvi_q1() -> ee.Image:
@@ -83,7 +83,7 @@ def ndvi_q1() -> ee.Image:
 
 def surface(tf: list[float]) -> ee.Image:
     """反照率（ATI 用）、NDVI（250 m）、乾燥指數。"""
-    return _on(ee.Image.cat([L.albedo_climatology(), ndvi_q1(), L.aridity_index()]), tf)
+    return _on(ee.Image.cat([L.albedo_climatology(grid_mean=False), ndvi_q1(), L.aridity_index(grid_mean=False)]), tf)
 
 
 def masks(tf: list[float]) -> ee.Image:
@@ -139,7 +139,7 @@ def rgb(region: ee.Geometry, tf: list[float], lon_range: tuple[float, float] | N
 
 
 def hillshade(lat: float, lon: float, tf: list[float]) -> ee.Image:
-    col = ee.ImageCollection("COPERNICUS/DEM/GLO30").select("DEM")
+    col = L.glo30()
     dem30 = col.mosaic().setDefaultProjection(col.first().projection())
     base = dem30.reduceResolution(ee.Reducer.mean(), maxPixels=1024).reproject(crs=local_crs(lat, lon), scale=100)
     return _on(ee.Terrain.hillshade(base).toFloat().rename("hillshade"), tf)
@@ -191,7 +191,7 @@ def _hires_dem(lat: float):
         return ee.Image("UMN/PGC/ArcticDEM/V3/2m_mosaic").select("elevation"), 2, "ArcticDEM v3 2 m"
     if lat <= -60:
         return ee.Image("UMN/PGC/REMA/V1_1/8m").select("elevation"), 8, "REMA v1.1 8 m"
-    col = ee.ImageCollection("COPERNICUS/DEM/GLO30").select("DEM")
+    col = L.glo30()
     return col.mosaic().setDefaultProjection(col.first().projection()), 30, "Copernicus GLO-30"
 
 

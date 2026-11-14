@@ -70,6 +70,8 @@ def _fetch(img: ee.Image, bands: list[str], ix0: int, iy0: int, w: int, h: int) 
             msg = str(e)
             if "too large" in msg or "Too many pixels" in msg or "memory" in msg.lower():
                 raise TileTooBig(msg) from e   # 決定性錯誤：交給呼叫端切小塊
+            if "timed out" in msg.lower() and attempt >= 1 and (w > 5 or h > 5):
+                raise TileTooBig(msg) from e   # 連續逾時：切小塊（11/14，格內平均比金字塔取樣重）
             time.sleep(min(60, 2 ** attempt + np.random.rand()))
     raise RuntimeError(f"tile ({ix0},{iy0}) failed: {last}")
 

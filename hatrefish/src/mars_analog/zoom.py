@@ -41,6 +41,7 @@ SUB_DEG = 0.01           # 子格大小（度），約 1 km
 RGB_DEG = 0.001          # 底圖像素（度），約 100 m
 TOP_SUB = 3              # 每個框列出幾個最佳子格
 SUB_SEP_KM = 5           # 最佳子格彼此至少相距
+NEAR_WATER = 0.05        # 自己或鄰格水體比例超過這個值的子格不參加排名
 GRID_RES = 0.1
 FINE_COLS = ["slope_deg", "roughness_m", "elev_m", "lst_day_c", "lst_night_c", "dtr_c", "lst_mean_c",
              "albedo", "ndvi_mean", "aridity_index", "land_frac", "ice_frac", "barren_frac", "water_frac"]
@@ -166,6 +167,12 @@ def subgrid_frame(arr: dict, box: dict) -> pd.DataFrame:
     land &= ~((np.nan_to_num(df.water_frac) > 0.5) & (df.lat > -60))
     land &= ~((np.nan_to_num(df.slope_deg, nan=1) < 0.05) & (np.abs(np.nan_to_num(df.elev_m, nan=99)) <= 2))
     df["land"] = land.values
+    # 11/14：有水或緊鄰水體（自己或 8 個鄰格水體比例 > 5%）的子格不參加排名。1 km MODIS 地表溫在湖岸仍會偏涼，
+    # Jezero #1 的最佳小區原本有兩個貼著湖岸（WORKLOG 11.5 第 4 點）。分數照算，地圖上照畫。
+    wf = np.nan_to_num(df.water_frac.values.reshape(ny, nx))
+    pad = np.pad(wf, 1, mode="edge")
+    nb = np.max([pad[1 + dy:1 + dy + ny, 1 + dx:1 + dx + nx] for dy in (-1, 0, 1) for dx in (-1, 0, 1)], axis=0)
+    df["near_water"] = (nb > NEAR_WATER).ravel()
 
     # 熱慣量（ATI）與乾燥指數：同 earth_grid.build 的規則
     df.loc[df.lat < -60, "aridity_index"] = np.nan
@@ -275,7 +282,7 @@ def zoom_one(target_id: str, cand: dict, arr: dict, box: dict, dimension: str | 
     sdf = subgrid_frame(arr, box)
     tab = score_box(target_id, sdf)
     pool = tab[(tab.confidence >= profiles.MIN_CONF) & (tab.var_coverage >= profiles.MIN_CONF) &
-               np.isfinite(tab.overall)].copy()
+               np.isfinite(tab.overall) & ~sdf.near_water.values].copy()
     if dimension:
         pool = pool[np.isfinite(pool[f"dim_{dimension}"])]
         pool["_key"] = pool[f"dim_{dimension}"].round(3) * 1000 + pool.overall / 1000
@@ -300,7 +307,8 @@ def zoom_one(target_id: str, cand: dict, arr: dict, box: dict, dimension: str | 
                                                "known_analog", "nearest_known", "nearest_known_km")},
         "box": {**{k: box[k] for k in ("x0", "y0", "half", "half_lon", "sub", "nx", "ny")},
                 "dem": arr["meta"].get("dem"), "n_subcells": int(len(sdf)), "n_land": land_n,
-                "n_ranked": int(len(pool)), "rgb_source": arr["meta"].get("rgb_source")},
+                "n_ranked": int(len(pool)), "n_near_water": int((sdf.land & sdf.near_water).sum()),
+                "rgb_source": arr["meta"].get("rgb_source")},
         "parent_cell_1km_median": {
             "overall": _r(float(np.nanmedian(tab.overall[inside])) if inside.any() else None, 1),
             "dimension_scores": {k: _r(float(np.nanmedian(tab[f"dim_{k}"][inside])) if inside.any() else None)
@@ -458,6 +466,7 @@ def summary_md() -> str:
          "岩性、永凍土、沙塵沿用所在 0.1° 格。計分方法和全球版完全相同（面向等權重）。",
          "> 「0.1° 格內 1 km 中位數」和「0.1° 原分數」的差，是換資料（地形 GMTED → Copernicus）和換尺度本身造成的，"
          "不是找到更好的地點；看「最佳 1 km」要和這個中位數比。",
+         "> 有水或緊鄰水體的子格（自己或鄰格水體 > 5%）不參加排名：湖岸的 1 km 地表溫仍會偏涼。",
          "> 高解析坡度與雷達是最佳小區 1 km 方塊內的統計（R1 在全球尺度評估不了的部分），只列出、不計分；"
          "SkyFall 要求 1–5 m 尺度坡度 < 15°。坡度解析度：北緯 60° 以北 2 m、南緯 60° 以南 8 m、其他 30 m。", ""]
     for fp in files:

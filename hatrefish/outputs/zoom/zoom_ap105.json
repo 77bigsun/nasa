@@ -1,6 +1,6 @@
 {
  "target": "ap105",
- "generated_at": "2026-11-14T15:50:38+08:00",
+ "generated_at": "2026-11-15T00:01:00+08:00",
  "settings": {
   "half_deg": 0.25,
   "sub_deg": 0.01,
@@ -13,252 +13,14 @@
    "mode": "overall",
    "candidate": {
     "rank": 1,
-    "name": "46 km from Urdgol (MN)",
-    "lat": 48.25,
-    "lon": 92.65,
-    "overall": 88.7,
-    "dimension_scores": {
-     "terrain": 1.0,
-     "surface": 0.828,
-     "environment": 0.785,
-     "water_ice": 0.941,
-     "atmosphere_dust": 0.9,
-     "biology": null,
-     "subsurface": null
-    },
-    "known_analog": false,
-    "nearest_known": "qaidam_dalangtan",
-    "nearest_known_km": 1106.0
-   },
-   "box": {
-    "x0": 92.28,
-    "y0": 48.5,
-    "half": 0.25,
-    "half_lon": 0.375,
-    "sub": 0.01,
-    "nx": 75,
-    "ny": 50,
-    "dem": "copernicus",
-    "n_subcells": 3750,
-    "n_land": 3215,
-    "n_ranked": 3215,
-    "rgb_source": "NASA HLS S30+L30 median, 80 least-cloudy scenes, 2022–2024, summer-first"
-   },
-   "parent_cell_1km_median": {
-    "overall": 71.6,
-    "dimension_scores": {
-     "terrain": 0.997,
-     "surface": 0.289,
-     "environment": 0.797,
-     "water_ice": 0.941,
-     "atmosphere_dust": 0.9
-    },
-    "n_subcells": 97
-   },
-   "share_ge_coarse_overall": 0.001,
-   "best_subsites": [
-    {
-     "rank": 1,
-     "lat": 48.245,
-     "lon": 92.625,
-     "overall": 89.6,
-     "confidence": 1.0,
-     "variable_coverage": 0.89,
-     "dimension_scores": {
-      "terrain": 0.997,
-      "surface": 0.879,
-      "environment": 0.78,
-      "water_ice": 0.941,
-      "atmosphere_dust": 0.9
-     },
-     "strongest_dimension": "terrain",
-     "weakest_dimension": "environment",
-     "variable_scores": {
-      "slope": 1.0,
-      "roughness": 0.994,
-      "thermal_inertia": 0.943,
-      "lithology": null,
-      "ice": 0.941,
-      "temperature": 0.724,
-      "diurnal_range": 0.804,
-      "aridity": 0.839,
-      "barrenness": 0.819,
-      "dust": 0.9
-     },
-     "breaks": [],
-     "earth_values_1km": {
-      "slope_deg": 0.192,
-      "roughness_m": 2.34,
-      "elev_m": 1161.545,
-      "lst_mean_c": 6.933,
-      "dtr_c": 21.271,
-      "aridity_index": 0.085,
-      "ndvi_mean": 0.054,
-      "ati": 0.035
-     },
-     "earth_values_from_0p1_cell": {
-      "glim_class": "wb",
-      "permafrost_frac": 0.524,
-      "dust_aod": 0.047
-     },
-     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=92.53,48.14,92.72,48.34&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
-     "google_maps_url": "https://www.google.com/maps/@48.2450,92.6250,12000m/data=!3m1!1e3",
-     "name": "46 km from Urdgol (MN)",
-     "site_details": {
-      "box_m": 1000,
-      "dem": "Copernicus GLO-30",
-      "dem_res_m": 30,
-      "slope_p50_deg": 0.86,
-      "slope_p90_deg": 1.92,
-      "slope_max_deg": 4.79,
-      "s1_vv_db": -17.48,
-      "s1_vh_db": -29.18,
-      "s1_period": "2017–2021",
-      "s1_scenes": 237,
-      "palsar_hh_db": -21.14,
-      "palsar_hv_db": -32.56
-     }
-    },
-    {
-     "rank": 2,
-     "lat": 48.185,
-     "lon": 92.625,
-     "overall": 89.5,
-     "confidence": 1.0,
-     "variable_coverage": 0.89,
-     "dimension_scores": {
-      "terrain": 0.956,
-      "surface": 0.877,
-      "environment": 0.781,
-      "water_ice": 0.977,
-      "atmosphere_dust": 0.9
-     },
-     "strongest_dimension": "water_ice",
-     "weakest_dimension": "environment",
-     "variable_scores": {
-      "slope": 0.966,
-      "roughness": 0.947,
-      "thermal_inertia": 0.967,
-      "lithology": null,
-      "ice": 0.977,
-      "temperature": 0.734,
-      "diurnal_range": 0.746,
-      "aridity": 0.83,
-      "barrenness": 0.795,
-      "dust": 0.9
-     },
-     "breaks": [],
-     "earth_values_1km": {
-      "slope_deg": 0.994,
-      "roughness_m": 5.064,
-      "elev_m": 1172.436,
-      "lst_mean_c": 6.11,
-      "dtr_c": 19.819,
-      "aridity_index": 0.092,
-      "ndvi_mean": 0.061,
-      "ati": 0.039
-     },
-     "earth_values_from_0p1_cell": {
-      "glim_class": "wb",
-      "permafrost_frac": 0.606,
-      "dust_aod": 0.047
-     },
-     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=92.53,48.09,92.72,48.29&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
-     "google_maps_url": "https://www.google.com/maps/@48.1850,92.6250,12000m/data=!3m1!1e3",
-     "name": "39 km from Urdgol (MN)",
-     "site_details": {
-      "box_m": 1000,
-      "dem": "Copernicus GLO-30",
-      "dem_res_m": 30,
-      "slope_p50_deg": 1.05,
-      "slope_p90_deg": 1.98,
-      "slope_max_deg": 5.73,
-      "s1_vv_db": -13.19,
-      "s1_vh_db": -23.64,
-      "s1_period": "2017–2021",
-      "s1_scenes": 237,
-      "palsar_hh_db": -20.57,
-      "palsar_hv_db": -31.73
-     }
-    },
-    {
-     "rank": 3,
-     "lat": 48.295,
-     "lon": 92.795,
-     "overall": 88.1,
-     "confidence": 1.0,
-     "variable_coverage": 0.89,
-     "dimension_scores": {
-      "terrain": 0.972,
-      "surface": 0.853,
-      "environment": 0.792,
-      "water_ice": 0.898,
-      "atmosphere_dust": 0.9
-     },
-     "strongest_dimension": "terrain",
-     "weakest_dimension": "environment",
-     "variable_scores": {
-      "slope": 0.978,
-      "roughness": 0.966,
-      "thermal_inertia": 0.967,
-      "lithology": null,
-      "ice": 0.898,
-      "temperature": 0.745,
-      "diurnal_range": 0.764,
-      "aridity": 0.843,
-      "barrenness": 0.751,
-      "dust": 0.9
-     },
-     "breaks": [],
-     "earth_values_1km": {
-      "slope_deg": 0.844,
-      "roughness_m": 4.207,
-      "elev_m": 1171.423,
-      "lst_mean_c": 5.259,
-      "dtr_c": 20.289,
-      "aridity_index": 0.083,
-      "ndvi_mean": 0.075,
-      "ati": 0.036
-     },
-     "earth_values_from_0p1_cell": {
-      "glim_class": "wb",
-      "permafrost_frac": 0.685,
-      "dust_aod": 0.047
-     },
-     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=92.70,48.20,92.89,48.40&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
-     "google_maps_url": "https://www.google.com/maps/@48.2950,92.7950,12000m/data=!3m1!1e3",
-     "name": "52 km from Urdgol (MN)",
-     "site_details": {
-      "box_m": 1000,
-      "dem": "Copernicus GLO-30",
-      "dem_res_m": 30,
-      "slope_p50_deg": 0.98,
-      "slope_p90_deg": 1.65,
-      "slope_max_deg": 3.57,
-      "s1_vv_db": -15.32,
-      "s1_vh_db": -26.08,
-      "s1_period": "2017–2021",
-      "s1_scenes": 237,
-      "palsar_hh_db": -22.53,
-      "palsar_hv_db": -33.3
-     }
-    }
-   ],
-   "figure": "zoom_ap105_1.png"
-  },
-  {
-   "target": "ap105",
-   "mode": "overall",
-   "candidate": {
-    "rank": 2,
     "name": "near Kosh-Agach (RU)",
     "lat": 49.95,
     "lon": 88.65,
-    "overall": 85.0,
+    "overall": 86.1,
     "dimension_scores": {
      "terrain": 0.989,
-     "surface": 0.705,
-     "environment": 0.8,
+     "surface": 0.746,
+     "environment": 0.803,
      "water_ice": 0.819,
      "atmosphere_dust": 0.974,
      "biology": null,
@@ -279,33 +41,34 @@
     "dem": "copernicus",
     "n_subcells": 3900,
     "n_land": 3900,
-    "n_ranked": 3900,
+    "n_ranked": 3857,
+    "n_near_water": 43,
     "rgb_source": "NASA HLS S30+L30 median, 74 least-cloudy scenes, 2022–2024, summer-first"
    },
    "parent_cell_1km_median": {
     "overall": 85.6,
     "dimension_scores": {
      "terrain": 0.991,
-     "surface": 0.734,
-     "environment": 0.797,
+     "surface": 0.732,
+     "environment": 0.802,
      "water_ice": 0.819,
      "atmosphere_dust": 0.974
     },
     "n_subcells": 100
    },
-   "share_ge_coarse_overall": 0.028,
+   "share_ge_coarse_overall": 0.007,
    "best_subsites": [
     {
      "rank": 1,
      "lat": 49.935,
      "lon": 88.675,
-     "overall": 86.5,
+     "overall": 86.6,
      "confidence": 1.0,
      "variable_coverage": 1.0,
      "dimension_scores": {
       "terrain": 0.993,
-      "surface": 0.763,
-      "environment": 0.804,
+      "surface": 0.761,
+      "environment": 0.808,
       "water_ice": 0.819,
       "atmosphere_dust": 0.974
      },
@@ -314,12 +77,12 @@
      "variable_scores": {
       "slope": 0.995,
       "roughness": 0.99,
-      "thermal_inertia": 0.872,
+      "thermal_inertia": 0.865,
       "lithology": 0.7,
       "ice": 0.819,
-      "temperature": 0.843,
-      "diurnal_range": 0.763,
-      "aridity": 0.766,
+      "temperature": 0.854,
+      "diurnal_range": 0.77,
+      "aridity": 0.765,
       "barrenness": 0.727,
       "dust": 0.974
      },
@@ -359,77 +122,77 @@
     },
     {
      "rank": 2,
-     "lat": 49.985,
-     "lon": 88.615,
-     "overall": 86.4,
+     "lat": 49.975,
+     "lon": 88.555,
+     "overall": 86.5,
      "confidence": 1.0,
      "variable_coverage": 1.0,
      "dimension_scores": {
-      "terrain": 0.979,
-      "surface": 0.776,
-      "environment": 0.796,
-      "water_ice": 0.819,
+      "terrain": 0.989,
+      "surface": 0.778,
+      "environment": 0.794,
+      "water_ice": 0.812,
       "atmosphere_dust": 0.974
      },
      "strongest_dimension": "terrain",
      "weakest_dimension": "surface",
      "variable_scores": {
-      "slope": 0.975,
-      "roughness": 0.983,
-      "thermal_inertia": 0.994,
+      "slope": 0.989,
+      "roughness": 0.989,
+      "thermal_inertia": 0.929,
       "lithology": 0.7,
-      "ice": 0.819,
-      "temperature": 0.842,
-      "diurnal_range": 0.679,
-      "aridity": 0.753,
-      "barrenness": 0.673,
+      "ice": 0.812,
+      "temperature": 0.85,
+      "diurnal_range": 0.744,
+      "aridity": 0.742,
+      "barrenness": 0.726,
       "dust": 0.974
      },
      "breaks": [],
      "earth_values_1km": {
-      "slope_deg": 0.876,
-      "roughness_m": 3.247,
-      "elev_m": 1746.877,
-      "lst_mean_c": -1.26,
-      "dtr_c": 17.961,
-      "aridity_index": 0.165,
-      "ndvi_mean": 0.098,
-      "ati": 0.038
+      "slope_deg": 0.646,
+      "roughness_m": 2.854,
+      "elev_m": 1763.499,
+      "lst_mean_c": -1.135,
+      "dtr_c": 19.613,
+      "aridity_index": 0.179,
+      "ndvi_mean": 0.082,
+      "ati": 0.035
      },
      "earth_values_from_0p1_cell": {
       "glim_class": "vi",
-      "permafrost_frac": 0.764,
+      "permafrost_frac": 0.771,
       "dust_aod": 0.031
      },
-     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=88.52,49.88,88.71,50.09&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
-     "google_maps_url": "https://www.google.com/maps/@49.9850,88.6150,12000m/data=!3m1!1e3",
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=88.46,49.88,88.66,50.08&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@49.9750,88.5550,12000m/data=!3m1!1e3",
      "name": "near Kosh-Agach (RU)",
      "site_details": {
       "box_m": 1000,
       "dem": "Copernicus GLO-30",
       "dem_res_m": 30,
-      "slope_p50_deg": 2.28,
-      "slope_p90_deg": 5.52,
-      "slope_max_deg": 11.47,
-      "s1_vv_db": -15.09,
-      "s1_vh_db": -26.43,
+      "slope_p50_deg": 0.84,
+      "slope_p90_deg": 1.91,
+      "slope_max_deg": 8.62,
+      "s1_vv_db": -16.0,
+      "s1_vh_db": -26.6,
       "s1_period": "2017–2021",
       "s1_scenes": 216,
-      "palsar_hh_db": -18.34,
-      "palsar_hv_db": -28.9
+      "palsar_hh_db": -14.34,
+      "palsar_hv_db": -25.44
      }
     },
     {
      "rank": 3,
      "lat": 49.935,
      "lon": 88.605,
-     "overall": 86.2,
+     "overall": 86.3,
      "confidence": 1.0,
      "variable_coverage": 1.0,
      "dimension_scores": {
       "terrain": 0.992,
-      "surface": 0.757,
-      "environment": 0.796,
+      "surface": 0.754,
+      "environment": 0.801,
       "water_ice": 0.819,
       "atmosphere_dust": 0.974
      },
@@ -438,11 +201,11 @@
      "variable_scores": {
       "slope": 0.994,
       "roughness": 0.991,
-      "thermal_inertia": 0.88,
+      "thermal_inertia": 0.872,
       "lithology": 0.7,
       "ice": 0.819,
-      "temperature": 0.83,
-      "diurnal_range": 0.797,
+      "temperature": 0.841,
+      "diurnal_range": 0.808,
       "aridity": 0.763,
       "barrenness": 0.703,
       "dust": 0.974
@@ -482,6 +245,245 @@
      }
     }
    ],
+   "figure": "zoom_ap105_1.png"
+  },
+  {
+   "target": "ap105",
+   "mode": "overall",
+   "candidate": {
+    "rank": 2,
+    "name": "46 km from Erzin (RU)",
+    "lat": 49.85,
+    "lon": 95.15,
+    "overall": 85.4,
+    "dimension_scores": {
+     "terrain": 0.908,
+     "surface": 0.702,
+     "environment": 0.76,
+     "water_ice": 0.993,
+     "atmosphere_dust": 0.946,
+     "biology": null,
+     "subsurface": null
+    },
+    "known_analog": false,
+    "nearest_known": "qaidam_dalangtan",
+    "nearest_known_km": 1310.0
+   },
+   "box": {
+    "x0": 94.76,
+    "y0": 50.1,
+    "half": 0.25,
+    "half_lon": 0.39,
+    "sub": 0.01,
+    "nx": 78,
+    "ny": 50,
+    "dem": "copernicus",
+    "n_subcells": 3900,
+    "n_land": 3814,
+    "n_ranked": 3682,
+    "n_near_water": 132,
+    "rgb_source": "NASA HLS S30+L30 median, 80 least-cloudy scenes, 2022–2024, summer-first"
+   },
+   "parent_cell_1km_median": {
+    "overall": 85.1,
+    "dimension_scores": {
+     "terrain": 0.902,
+     "surface": 0.692,
+     "environment": 0.763,
+     "water_ice": 0.993,
+     "atmosphere_dust": 0.946
+    },
+    "n_subcells": 100
+   },
+   "share_ge_coarse_overall": 0.022,
+   "best_subsites": [
+    {
+     "rank": 1,
+     "lat": 49.785,
+     "lon": 95.215,
+     "overall": 86.8,
+     "confidence": 1.0,
+     "variable_coverage": 1.0,
+     "dimension_scores": {
+      "terrain": 0.977,
+      "surface": 0.699,
+      "environment": 0.763,
+      "water_ice": 0.998,
+      "atmosphere_dust": 0.946
+     },
+     "strongest_dimension": "water_ice",
+     "weakest_dimension": "surface",
+     "variable_scores": {
+      "slope": 0.978,
+      "roughness": 0.975,
+      "thermal_inertia": 0.804,
+      "lithology": 0.6,
+      "ice": 0.998,
+      "temperature": 0.846,
+      "diurnal_range": 0.811,
+      "aridity": 0.688,
+      "barrenness": 0.707,
+      "dust": 0.946
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 0.838,
+      "roughness_m": 3.739,
+      "elev_m": 1376.623,
+      "lst_mean_c": -0.838,
+      "dtr_c": 21.192,
+      "aridity_index": 0.258,
+      "ndvi_mean": 0.088,
+      "ati": 0.031
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "pb",
+      "permafrost_frac": 0.585,
+      "dust_aod": 0.035
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=95.12,49.68,95.31,49.88&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@49.7850,95.2150,12000m/data=!3m1!1e3",
+     "name": "53 km from Erzin (RU)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 5.32,
+      "slope_p90_deg": 9.95,
+      "slope_max_deg": 24.44,
+      "s1_vv_db": -16.61,
+      "s1_vh_db": -27.43,
+      "s1_period": "2017–2021",
+      "s1_scenes": 233,
+      "palsar_hh_db": -16.24,
+      "palsar_hv_db": -27.83
+     }
+    },
+    {
+     "rank": 2,
+     "lat": 49.855,
+     "lon": 95.145,
+     "overall": 86.6,
+     "confidence": 1.0,
+     "variable_coverage": 1.0,
+     "dimension_scores": {
+      "terrain": 0.978,
+      "surface": 0.696,
+      "environment": 0.762,
+      "water_ice": 0.993,
+      "atmosphere_dust": 0.946
+     },
+     "strongest_dimension": "water_ice",
+     "weakest_dimension": "surface",
+     "variable_scores": {
+      "slope": 0.98,
+      "roughness": 0.975,
+      "thermal_inertia": 0.71,
+      "lithology": 0.6,
+      "ice": 0.993,
+      "temperature": 0.846,
+      "diurnal_range": 0.851,
+      "aridity": 0.687,
+      "barrenness": 0.793,
+      "dust": 0.946
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 0.805,
+      "roughness_m": 3.739,
+      "elev_m": 1354.065,
+      "lst_mean_c": -0.876,
+      "dtr_c": 21.996,
+      "aridity_index": 0.26,
+      "ndvi_mean": 0.062,
+      "ati": 0.028
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "pb",
+      "permafrost_frac": 0.576,
+      "dust_aod": 0.035
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=95.05,49.75,95.24,49.95&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@49.8550,95.1450,12000m/data=!3m1!1e3",
+     "name": "45 km from Erzin (RU)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 3.85,
+      "slope_p90_deg": 7.34,
+      "slope_max_deg": 13.42,
+      "s1_vv_db": -17.1,
+      "s1_vh_db": -27.58,
+      "s1_period": "2017–2021",
+      "s1_scenes": 236,
+      "palsar_hh_db": -17.88,
+      "palsar_hv_db": -30.27
+     }
+    },
+    {
+     "rank": 3,
+     "lat": 49.805,
+     "lon": 95.135,
+     "overall": 86.3,
+     "confidence": 1.0,
+     "variable_coverage": 1.0,
+     "dimension_scores": {
+      "terrain": 0.974,
+      "surface": 0.682,
+      "environment": 0.767,
+      "water_ice": 0.993,
+      "atmosphere_dust": 0.946
+     },
+     "strongest_dimension": "water_ice",
+     "weakest_dimension": "surface",
+     "variable_scores": {
+      "slope": 0.974,
+      "roughness": 0.974,
+      "thermal_inertia": 0.758,
+      "lithology": 0.6,
+      "ice": 0.993,
+      "temperature": 0.842,
+      "diurnal_range": 0.888,
+      "aridity": 0.699,
+      "barrenness": 0.699,
+      "dust": 0.946
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 0.902,
+      "roughness_m": 3.789,
+      "elev_m": 1335.405,
+      "lst_mean_c": -0.576,
+      "dtr_c": 22.843,
+      "aridity_index": 0.242,
+      "ndvi_mean": 0.09,
+      "ati": 0.029
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "pb",
+      "permafrost_frac": 0.576,
+      "dust_aod": 0.035
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=95.04,49.70,95.23,49.91&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@49.8050,95.1350,12000m/data=!3m1!1e3",
+     "name": "51 km from Erzin (RU)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 5.45,
+      "slope_p90_deg": 9.94,
+      "slope_max_deg": 18.69,
+      "s1_vv_db": -16.97,
+      "s1_vh_db": -26.89,
+      "s1_period": "2017–2021",
+      "s1_scenes": 233,
+      "palsar_hh_db": -15.87,
+      "palsar_hv_db": -26.82
+     }
+    }
+   ],
    "figure": "zoom_ap105_2.png"
   },
   {
@@ -492,11 +494,11 @@
     "name": "49 km from Zhabu (CN)",
     "lat": 33.45,
     "lon": 82.95,
-    "overall": 85.0,
+    "overall": 84.1,
     "dimension_scores": {
      "terrain": 0.968,
-     "surface": 0.57,
-     "environment": 0.83,
+     "surface": 0.54,
+     "environment": 0.831,
      "water_ice": 0.983,
      "atmosphere_dust": 0.985,
      "biology": null,
@@ -517,95 +519,34 @@
     "dem": "copernicus",
     "n_subcells": 3000,
     "n_land": 2961,
-    "n_ranked": 2961,
+    "n_ranked": 2858,
+    "n_near_water": 103,
     "rgb_source": "NASA HLS S30+L30 median, 80 least-cloudy scenes, 2022–2024, summer-first"
    },
    "parent_cell_1km_median": {
-    "overall": 83.7,
+    "overall": 83.8,
     "dimension_scores": {
      "terrain": 0.976,
-     "surface": 0.529,
-     "environment": 0.821,
+     "surface": 0.528,
+     "environment": 0.827,
      "water_ice": 0.983,
      "atmosphere_dust": 0.985
     },
     "n_subcells": 91
    },
-   "share_ge_coarse_overall": 0.003,
+   "share_ge_coarse_overall": 0.008,
    "best_subsites": [
     {
      "rank": 1,
      "lat": 33.415,
-     "lon": 82.995,
-     "overall": 87.6,
-     "confidence": 1.0,
-     "variable_coverage": 1.0,
-     "dimension_scores": {
-      "terrain": 0.979,
-      "surface": 0.643,
-      "environment": 0.846,
-      "water_ice": 0.983,
-      "atmosphere_dust": 0.985
-     },
-     "strongest_dimension": "atmosphere_dust",
-     "weakest_dimension": "surface",
-     "variable_scores": {
-      "slope": 0.979,
-      "roughness": 0.979,
-      "thermal_inertia": 0.885,
-      "lithology": 0.3,
-      "ice": 0.983,
-      "temperature": 0.795,
-      "diurnal_range": 0.684,
-      "aridity": 0.899,
-      "barrenness": 1.0,
-      "dust": 0.985
-     },
-     "breaks": [],
-     "earth_values_1km": {
-      "slope_deg": 0.829,
-      "roughness_m": 3.536,
-      "elev_m": 4772.06,
-      "lst_mean_c": 1.677,
-      "dtr_c": 18.097,
-      "aridity_index": 0.042,
-      "ndvi_mean": -0.019,
-      "ati": 0.042
-     },
-     "earth_values_from_0p1_cell": {
-      "glim_class": "su",
-      "permafrost_frac": 0.6,
-      "dust_aod": 0.027
-     },
-     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=82.90,33.31,83.09,33.52&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
-     "google_maps_url": "https://www.google.com/maps/@33.4150,82.9950,12000m/data=!3m1!1e3",
-     "name": "44 km from Zhabu (CN)",
-     "site_details": {
-      "box_m": 1000,
-      "dem": "Copernicus GLO-30",
-      "dem_res_m": 30,
-      "slope_p50_deg": 0.8,
-      "slope_p90_deg": 1.76,
-      "slope_max_deg": 4.05,
-      "s1_vv_db": -18.12,
-      "s1_vh_db": -29.16,
-      "s1_period": "2022–2024",
-      "s1_scenes": 246,
-      "palsar_hh_db": -21.44,
-      "palsar_hv_db": -31.76
-     }
-    },
-    {
-     "rank": 2,
-     "lat": 33.415,
      "lon": 82.935,
-     "overall": 87.1,
+     "overall": 87.2,
      "confidence": 1.0,
      "variable_coverage": 1.0,
      "dimension_scores": {
       "terrain": 0.988,
-      "surface": 0.626,
-      "environment": 0.84,
+      "surface": 0.624,
+      "environment": 0.845,
       "water_ice": 0.983,
       "atmosphere_dust": 0.985
      },
@@ -614,11 +555,11 @@
      "variable_scores": {
       "slope": 0.993,
       "roughness": 0.984,
-      "thermal_inertia": 0.863,
+      "thermal_inertia": 0.856,
       "lithology": 0.3,
       "ice": 0.983,
-      "temperature": 0.786,
-      "diurnal_range": 0.893,
+      "temperature": 0.795,
+      "diurnal_range": 0.903,
       "aridity": 0.898,
       "barrenness": 0.947,
       "dust": 0.985
@@ -658,16 +599,16 @@
      }
     },
     {
-     "rank": 3,
+     "rank": 2,
      "lat": 33.485,
      "lon": 82.915,
-     "overall": 84.4,
+     "overall": 84.5,
      "confidence": 1.0,
      "variable_coverage": 1.0,
      "dimension_scores": {
       "terrain": 0.995,
       "surface": 0.539,
-      "environment": 0.825,
+      "environment": 0.83,
       "water_ice": 0.983,
       "atmosphere_dust": 0.985
      },
@@ -679,7 +620,7 @@
       "thermal_inertia": 0.622,
       "lithology": 0.3,
       "ice": 0.983,
-      "temperature": 0.753,
+      "temperature": 0.763,
       "diurnal_range": 0.992,
       "aridity": 0.903,
       "barrenness": 0.838,
@@ -717,6 +658,68 @@
       "s1_scenes": 229,
       "palsar_hh_db": -20.04,
       "palsar_hv_db": -31.91
+     }
+    },
+    {
+     "rank": 3,
+     "lat": 33.455,
+     "lon": 82.965,
+     "overall": 84.0,
+     "confidence": 1.0,
+     "variable_coverage": 1.0,
+     "dimension_scores": {
+      "terrain": 0.992,
+      "surface": 0.529,
+      "environment": 0.824,
+      "water_ice": 0.983,
+      "atmosphere_dust": 0.985
+     },
+     "strongest_dimension": "terrain",
+     "weakest_dimension": "surface",
+     "variable_scores": {
+      "slope": 0.996,
+      "roughness": 0.989,
+      "thermal_inertia": 0.622,
+      "lithology": 0.3,
+      "ice": 0.983,
+      "temperature": 0.754,
+      "diurnal_range": 0.992,
+      "aridity": 0.901,
+      "barrenness": 0.795,
+      "dust": 0.985
+     },
+     "breaks": [],
+     "earth_values_1km": {
+      "slope_deg": 0.493,
+      "roughness_m": 2.822,
+      "elev_m": 4789.823,
+      "lst_mean_c": 5.319,
+      "dtr_c": 32.485,
+      "aridity_index": 0.04,
+      "ndvi_mean": 0.062,
+      "ati": 0.023
+     },
+     "earth_values_from_0p1_cell": {
+      "glim_class": "su",
+      "permafrost_frac": 0.6,
+      "dust_aod": 0.027
+     },
+     "worldview_url": "https://worldview.earthdata.nasa.gov/?v=82.87,33.35,83.06,33.55&l=MODIS_Terra_CorrectedReflectance_TrueColor,Coastlines_15m&t=2024-07-01",
+     "google_maps_url": "https://www.google.com/maps/@33.4550,82.9650,12000m/data=!3m1!1e3",
+     "name": "49 km from Zhabu (CN)",
+     "site_details": {
+      "box_m": 1000,
+      "dem": "Copernicus GLO-30",
+      "dem_res_m": 30,
+      "slope_p50_deg": 0.84,
+      "slope_p90_deg": 1.54,
+      "slope_max_deg": 2.6,
+      "s1_vv_db": -16.18,
+      "s1_vh_db": -28.15,
+      "s1_period": "2022–2024",
+      "s1_scenes": 246,
+      "palsar_hh_db": -20.65,
+      "palsar_hv_db": -31.58
      }
     }
    ],

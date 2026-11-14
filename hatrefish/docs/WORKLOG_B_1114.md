@@ -481,3 +481,279 @@ PROMPT 第 3 步的檢查：
 11. `summary_tables.md` 的「目標 × 任務」表，新目標（沒有標給它們的已知類比地）整列是 nan，只是顯示問題。
 12. **環境檔**：`git status` 顯示 `env/nasa_hackathon.yml`、`environment.yml` 在工作目錄裡被刪除，這次執行前就是這樣，我沒動。第 1 節的重建步驟要用它，請確認是不是故意的。
 13. 之前就有、這次沒處理的：缺岩性的格子佔便宜（8.6）、Protonilus 冰的目標值用圓內中位數（8.6）、門檻型測試很多格同時滿分（10.3）、R2 無法評估、B8 人工確認新候選地。
+
+---
+
+## 12. 修正 11.5 的問題（Claude 雲端，11/14 傍晚）
+
+照 11.5 的建議改程式。全球資料要重抓、重跑，在本機做，見 `docs\PROMPT_local_rerun_1114.md`。
+
+### 12.1 全球資料的抓法（11.5 第 4 點，最重要）
+- 在目前的全球網格確認了問題：地表溫度、日夜溫差、NDVI、反照率的東西向相鄰格有 22% 數值完全相同（南北向只有 0.3%）；有做格內聚合的坡度只有 1%。Jezero 剖面第 1 名那一格日溫差 8.6 K。
+- `gee_layers.land_mean_on_grid`：先用 MOD44W 把水體像素（原生像素水體比例 > 0.5）遮掉，再 `reduceResolution(mean)` 到 0.1°。套用在：
+  - 全球的地表溫度（4 層）、反照率、NDVI、乾燥指數
+  - 每月地表溫度（`gee_extra.lst_monthly`）
+- `_gee._fetch`：連續逾時就把區塊切小（格內平均比金字塔取樣重）。`fetch_earth_gee.py` 這四層改成 150 px 的區塊、12 個平行。
+- `fetch_earth_gee.py --test --at LAT LON`：抓指定格附近 10×10 格，和目前的陣列並排比較（中心格新舊值、東西相鄰相同的比例）。
+
+### 12.2 測試計分
+- **ASTER 礦物指標**（第 1、2 點）：
+  - 百分位改在同一年均地表溫帶內算（−5、5、15、25 °C 分帶）。
+  - 指標超出 0.7–1.3 當缺資料；GEE 端也加了放射率 0.6–1.0 的檢查，並改成先 1 km 再 0.1° 的格內平均。
+  - 驗證：「碳酸鹽和鎂鐵質都在前 10%」的格子比例，各溫度帶都在 2–3%，不再偏向寒冷地區。
+- **Jezero R4 還是北極居多**：查出另一個原因——「無植被」用年平均 NDVI，積雪把凍原的年平均拉低。新增特徵 `summer_barren`（生長季高峰 NDVI，MOD13A2 2015–2024 第 90 百分位；≤ 0.15 滿分、≥ 0.4 為 0），加在 R1、R4、R5，需要本機新抓 `ndvi_p90`（`fetch_earth_extra_gee.py` 的 ndvi 層）。**這層抓到之前，Jezero 的 R4 還是不要放進簡報。**
+- **R6 加 `temperature_season_amplitude`**（第 3 點）：季節溫差（最高月 − 最低月，K）的對數比，σ = ln 2。用目前資料驗證，赤道高山不見了：
+  - Arcadia 第 1 名換成內蒙古（季節溫差 55 K，火星 67 K）
+  - AP-105 換成阿爾泰 Kosh-Agach（50 K 對 53 K）
+  - Jezero 換成特內里費島 Vilaflor（16.5 K 對 15.6 K）
+- `outputs\mission_tests\` 已用目前資料重跑一次（全球資料重抓後還要再跑）。
+
+### 12.3 任務版與放大
+- `export.py`（第 9 點）：排名池加「加權信心度 ≥ 0.8 且變數覆蓋率 ≥ 0.8」。驗證：Gale／isru_base 第 1 名從南極格換成 79 km from Xagmakajor（信心度 1.0）。Claude Code 加的 NaN 防護保留。
+- `zoom.py`（第 4 點的放大部分）：自己或 8 個鄰格水體比例 > 5% 的子格不參加排名（分數照算、地圖照畫），json 記 `n_near_water`。用一個假湖測過，湖旁一圈子格被排除，最佳小區都在湖外。
+- `gee_zoom.py`（第 6 點）：放大地形改用 `COPERNICUS/DEM/GLO30_2024_1`（`gee_layers.glo30()`，不存在時退回舊版）。全球網格的南極地形這次不重抓，所以 `gee_layers` 的全球地形函式維持舊版，以免程式和資料對不上。
+
+### 12.4 沒改的
+- isru_base 先驗 AUC 0.441（第 10 點）：簡報改用 R3 地下冰測試，不用任務版的 isru_base 排名，先不調。
+- 第 6.5 節和 `WEIGHTS_EXPLAINED.md` 的數字：等本機重跑完一次更新。
+- 環境檔 `env/nasa_hackathon.yml`、`environment.yml`：工作目錄裡確實被刪了（中午還在）。我這邊沒有刪除權限，Claude Code 也說沒動。要救回就跑 `git restore env/nasa_hackathon.yml environment.yml`，交給 B 決定。
+
+### 12.5 給網頁整合的資料（Claude 雲端，11/14 傍晚）
+整合者 Harris 的網頁在 77bigsun/nasa 的 main（c875ba6，本機 checkout 在 `C:\Users\plusl\nasa-main`）。網頁自己算分數：我們交的是**原始量測值**，放進它的 `data/seed/`，不是交排名。
+- 新程式 `scripts/export_web_seed.py`；契約快照在 `config/web_contract/`；輸出在 `outputs/web/`（說明見 `outputs/web/WEB_EXPORT.md`）。
+- `current/`：照網頁現在的任務定義填，網頁不用改。只有 R1（100 m 坡度、熱慣量）和 R6（沙塵、日夜溫差）有分數：R3 地下冰、R5 粗糙度是 relative_rank，要火星百分位，我們只有原始值。
+- `proposed/`：建議 Harris 改定義（`r3_ground_ice` 改門檻型、`r5_roughness` 改 absolute，新增 R1 無植被／不是冰面、R3 年均溫／乾燥、R4 岩性大類＋對照表／岩石裸露、R5 永凍土／年均溫、R6 年均溫），規則同 `config/mission_tests.yaml`。R2 仍然沒有資料。
+- 地球候選 28 個：AP-105、Jezero、Gale 每個測試取本隊分數前 2 名（相隔 ≥ 150 km）＋已知類比地。上限 28 是因為網頁的邊際效益曲線用窮舉 C(n, 6)。
+- `merged/`：和網頁現有檔合併（月球 placeholder 保留，placeholder 候選身上的火星特徵值移除），可以直接放進 `data/seed/`。網頁的 pydantic 契約驗證通過，評分與集合覆蓋程式在雲端跑通。
+- 網頁程式要 Harris 決定的兩件事：
+  1. 百分位母體是「候選清單本身」，不是全球。只改這一行、改用 `earth_population.json` 的全球分位數時，proposed 版 R6 的最高分從 0.33–0.41 變成 0.79–0.93（AP-105、Jezero、Gale），R6 才覆蓋得到。
+  2. 月球＋火星候選共 48 個時窮舉 C(48, 6) ≈ 1,227 萬種組合，跑不動；建議算分前只留該任務有值的候選，或改用 PuLP。
+- 還缺：SkyFall 另外四區（Deuteronilus、Utopia、Phlegra、Erebus）在網頁的 `target_sites.yaml` 沒有座標；候選要等本機重跑後再產生一次（`PROMPT_local_rerun_1114.md` 第 2 節第 8 步）。
+
+### 12.6 只留 R1–R6、類比剖面加「每個變數的前 5 名」（Claude 雲端，11/14 晚上）
+- **任務版停用**（B 決定只留一個任務導向的版本）：留測試項目 R1–R6。理由：整合者的規劃、網頁、集合覆蓋都用 R1–R6；任務版的四種任務對不上題目的測試，isru_base 先驗 AUC 只有 0.441，岩性權重因為資料太粗學到接近 0。任務版程式與文件保留備查；`PROMPT_local_rerun_1114.md` 第 7 步改成不用跑，第 6.5 節和 `WEIGHTS_EXPLAINED.md` 不再更新。方法 B 的驗證結論保留。
+- **類比剖面新增每個變數的前 5 名**：`profiles.py` 的 `top_variable()`，結果檔多 `top_by_variable`。新圖 `board_{目標}.png`：每一列是一個面向，第一格是面向前 5 名，後面是面向內每個變數的前 5 名。總表多一節，列出每個地點該變數的分數、地球值、整體相似度。用目前資料重跑了 7 個目標。
+  - 溫度的前 5 名幾乎都在高緯北極：火星比地球任何地方都冷，所以溫度分數是「越冷越好」，最冷的地方自然在北極。
+  - 岩性、無植被、坡度常常很多格子同為 1.00，排序靠「同分時整體相似度高的優先」決定。
+- 網頁的排名方法是暫時的（Harris 之後會改），本隊方法不用配合；`outputs/web/` 只當資料交付。
+
+## 13. 重抓全球資料與重跑（Claude Code，11/14 晚）
+
+> 任務定義：`docs/PROMPT_local_rerun_1114.md`；22:10 改計畫後，第 2–8 步改照 `docs/PROMPT_run_1114_night.md`。中途交接：`docs/HANDOFF_rerun_1114pm.md`。
+> log：`run_1114/logs/stageA.log`、`stageB.log`、`zoom_top3.out`；遠端下載 log 在朋友電腦的 `C:\Users\pypd\hatrefish_gee\logs\lst5.log`（本機沒有留副本）。工具：`data/interim/rerun_1114_tools/`。重抓前的備份：`data/interim/before_1114pm/`。
+> 任務版（learn、validate、crosscheck、export、figures、`summarize_results.py`）照第 12.6 節停用，**沒有跑**；第 6.5 節和 `WEIGHTS_EXPLAINED.md` 沒改。
+
+### 13.1 經過：時間、錯誤、修法
+
+**16:35 新抓法檢查**（遮水體＋格內平均，各約 20 秒）
+- Jezero 剖面第 1 名的湖邊格（48.05, 92.95）新 vs 舊：日溫差 21.48 vs 8.61 K、年均溫 4.82 vs 2.29 °C、NDVI 0.074 vs 0.033、反照率 0.264 vs 0.232；這個 10×10 塊「東西相鄰相同」的比例 49% → 0%。
+- Atacama 10×10 中位數新舊一致：年均溫 26.42 vs 26.57、日溫差 34.22 vs 34.09。沒有湖的地方新舊一樣。
+
+**16:36–21:42 全球重抓**（地表溫、反照率、NDVI、乾燥指數，以及補資料的 ASTER、夏季 NDVI）
+1. 150 px 一塊太慢：20 分鐘只完成地表溫 23／234 塊。改成 50／75 px、更多平行，地表溫從約 2 塊／分鐘變成約 5 塊／分鐘。
+2. 17:35 左右 `nasa-spaceapp-hackathon` 用完 Community 額度（每月 150 EECU 小時），進入 Restricted Mode（同時只能約 5 個請求，多的回 429）。組員把帳號加進 `active-venture-430707-a8` 的 IAM（18:39 生效）。
+3. 補抓失敗的塊（`patch_tiles.py`）：NDVI 104 塊、反照率 119 塊。乾燥指數在新專案從頭抓；請求範圍含南北極點時，遮水體的換投影會失敗（「Can't transform」）：北邊 19 塊改用 50 px 補完，南極 24 塊不補（乾燥指數在南緯 60° 以南本來就設缺值）。
+4. ASTER（36 分鐘）：缺值 3.04% → 2.48%，超出 0.7–1.3 的格子 692 → 0，新舊排名相關 QI 0.91、CI 0.93、MI 0.98。夏季 NDVI `ndvi_p90`（28 分鐘）：寒冷地區（年均溫 < −5 °C）比年平均高 0.415；北緯 55° 以北「看起來很荒」的 51,356 格裡，6,706 格夏季 NDVI ≥ 0.4（`summer_barren` = 0）。
+5. 舊專案上的全球地表溫做到 1440／1448 後卡住（只剩一條連線在等不回應的請求），19:44 停掉。程式只在整層結束才存檔，全部重來。
+6. **錯誤修正：南極被當成水**。MOD44W 不涵蓋南極，新抓法把「沒資料」當水，整個南極的地表溫都變空值（McMurdo 舊值 −27.9 °C）。`gee_layers.water_at` 改成南緯 60° 以南沒資料時當陸地，和 `earth_grid` 的水體規則（只用在 −60° 以北）一致。
+7. **錯誤修正：放大拿到 0.1° 聚合影像**。第 12 節把 `lst_climatology` 等函式改成直接回傳 0.1° 格內平均，放大程式再投到 0.01° 時，每個 1 km 子格都只拿到所屬 0.1° 格的值。加參數 `grid_mean`（預設 True），`gee_zoom.climate`、`surface` 用 False。
+   - 6、7 兩點不是方法改變，是第 12 節改動的連帶錯誤，所以直接修。
+8. 約 20:1x，本機記憶體不足，Claude Code 停掉了新專案上的全球地表溫（約 600 塊）和每月地表溫（約 300 塊）兩個背景工作，進度全丟。依規則沒有自己重開。
+9. 約 20:50，`active-venture-430707-a8` 也進入 Restricted Mode（這個月都會限速，要跟組員說）。
+10. 使用者同意在朋友電腦（Tailscale，`ssh pypd@100.119.21.3`）用自己的 GEE 帳號跑，並把 `nasa-spaceapp-hackathon` 升級成 Contributor（每月 1,000 EECU 小時）。朋友電腦沒有 scp，檔案用 `xfer.sh` 經 ssh 標準輸入輸出傳，用 SHA-256 核對。下載程式改成每 2 分鐘存檔、可續傳（`remote_fetch.py`）。21:42 依使用者要求暫停（地表溫 206／1448、每月地表溫 512／1448），寫交接文件。
+
+**22:10 改計畫（使用者決定，時間不夠）**
+- 全球地表溫的平均期間從 2015–2024 十年縮成 **2020–2024 五年**；五年仍是正常的氣候平均，運算量約減半。
+- 不再抓每月地表溫，改用推算（`scripts/derive_monthly_lst.py`）：新每月值 = 舊每月值 +（新年均 − 舊每月平均）。季節形狀沿用舊值。新舊年均差 > 1.5 K 或日夜溫差差 > 3 K 的格子設空值。
+- 總工作量約少 66%。「只重抓有水的塊」沒用：1,448 塊裡 1,175 塊至少有一個混水格。
+
+**23:11–23:46 下載**（使用者開的 `run_1114/1_start_download.cmd`，朋友電腦）
+- 1,448 塊，20 條平行，2,128 秒，0 失敗，log 裡沒有 429。
+
+**23:46 傳回**：4 個檔案都 `OK`（SHA-256 一致）。
+
+**23:47–23:49 階段 A**、**23:49–00:03 階段 B**：每一步都 exit 0，細節見 13.3、13.4。這次沒有工作因記憶體不足被停掉。
+
+### 13.2 這次改過的程式（都還沒 commit）
+
+| 檔案 | 改了什麼 |
+|---|---|
+| `scripts/fetch_earth_gee.py` | `lst` 50 px／24 平行；`albedo`、`ndvi` 75 px／12；`aridity` 50 px（避開含極點的請求） |
+| `scripts/fetch_earth_extra_gee.py` | `lst`、`aster`、`ndvi` 改 50 px／16 平行 |
+| `src/mars_analog/adapters/earth/gee_layers.py` | `water_at` 南極修正（13.1 第 6 點）；`lst_climatology`、`albedo_climatology`、`aridity_index` 加 `grid_mean`（第 7 點）；`lst_climatology` 加 `start`（預設 2015-01-01 不變，全球重抓用 2020-01-01） |
+| `src/mars_analog/adapters/earth/gee_zoom.py` | `climate`、`surface` 用 `grid_mean=False` |
+| `scripts/derive_monthly_lst.py`（新，雲端寫） | 每月地表溫推算 |
+| `data/interim/rerun_1114_tools/` | 遠端下載（`remote_fetch.py`）、傳檔（`xfer.sh`）、補抓（`patch_tiles.py`）、檢查（`check_grid.py`） |
+
+### 13.3 階段 A：檢查數字（全部通過）
+
+| 條件 | 結果 |
+|---|---|
+| 地表溫 4 層陸地缺值增加 < 0.5 個百分點 | 0.01% → 0.01%（多 80 格） |
+| 「東西相鄰相同」明顯下降 | 陣列 40.9% → 0.0%；網格 `lst_mean_c`、`dtr_c` 22.1% → 0.0% |
+| `same cell ids: True`、列數不變 | True，1,441,608 列 |
+| Jezero 湖邊格 `dtr_c` 在 15–25 K | 21.07 K（舊 8.61） |
+| McMurdo `lst_mean_c` 不是 NaN | −24.45 °C |
+| 每月地表溫推算被遮掉 < 15% | 6.9% |
+
+單格（新 vs 舊，°C 或 K）：
+
+| 地點 | 白天 | 夜間 | 日溫差 | 年均 |
+|---|---|---|---|---|
+| Jezero 湖邊格（48.05, 92.95） | 15.40 vs 6.60 | −5.67 vs −2.01 | 21.07 vs 8.61 | 4.86 vs 2.29 |
+| McMurdo（−77.2, 161.5） | −23.01 vs −27.50 | −25.89 vs −30.20 | 2.88 vs 2.70 | −24.45 vs −28.85 |
+| Atacama（−24.1, −69.9） | 45.51 vs 46.02 | 8.29 vs 8.52 | 37.22 vs 37.50 | 26.90 vs 27.27 |
+
+- McMurdo 比預期（約 −28 °C）暖 4.4 K，但不是整個南極偏暖：南緯 60° 以南的新舊差中位數 −0.11 K（5–95 百分位 −0.79 ～ +0.68）。舊值是同一個像素複製整排（周圍 5×5 每列數值相同），新值在周圍 5×5 內從 −21.6 到 −29.0 °C，是乾谷岩石與冰雪交界的真實差異。
+- 全球新舊差（網格）：年均溫差中位數 0.40 K、95 百分位 1.54 K，相關 0.9989；日溫差差中位數 0.45 K、95 百分位 1.86 K，相關 0.9902。北緯 30–60° 的年均溫差中位數 +0.64 K，其他緯度帶在 ±0.15 K 內。這同時含「遮水體」和「十年 → 五年」兩種差異。
+- 陣列層級的反照率、乾燥指數在南極是空值（`land_frac` > 0.5 的格子缺值 28%），這是 16:36 抓的時候南極修正還沒做；網格（無冰陸地）裡反照率缺值 0%，熱慣量缺值 45.11% → 45.16%，不影響計分。
+
+### 13.4 階段 B：結果
+
+1. **每月地表溫推算**：有舊月值的陸地格 2,130,016 個，遮掉 147,980 個（6.9%）；保留的格子平移量中位數 0.34 K、95 百分位 1.19 K。`earth_monthly.parquet` 裡每月地表溫缺值 8.81%（12 個月同時缺；舊版 0%）。舊月值備份在 `data/interim/earth_0p1_extra/_old_monthly/`。
+2. **剖面**：7 個目標都有；看了 `board_jezero.png`、`board_arcadia.png`，每格 5 個地點，文字沒有被裁掉（一個太長的地名用「…」截短，是設計）。
+3. **測試 R1–R6**：`TEST_SUMMARY.md` 開頭沒有「待補資料」。
+   - **Jezero R4 前 20 名：北緯 60° 以北 19 → 15 個，70° 以北 15 → 12 個。下降不多。**
+   - 第 1 名從 Haines Junction 附近（59.45°N）變成 Gjoa Haven 以北 548 km（73.55°N，加拿大北極群島）。
+   - 原因：前 20 名多數是加拿大北極群島的極地荒漠，夏季高峰 NDVI 0.13–0.17、年平均 NDVI 0.00–0.03，是真的沒有植被，不是凍原被誤判。`summer_barren` 有作用（夏季 NDVI ≥ 0.4 的凍原已經被排掉），但門檻（≤ 0.15 滿分、≥ 0.4 零分）讓極地荒漠照樣滿分。要不要再排除，是方法決定（見 13.8）。
+4. **集合覆蓋**（`outputs/set_cover/`）：
+
+   | | 重抓前（22:55 試跑） | 重抓後 |
+   |---|---|---|
+   | 需求數 | 27 | 27 |
+   | 最少地點數 | 5 | 5 |
+   | 邊際曲線 | 14 → 20 → 24 → 26 → 27 | 15 → 20 → 24 → 26 → 27 |
+   | 換門檻 0.8／0.85／0.9／0.95 × 最高分 | 地點數 3–7 | 3／3／5／7（和預設組合相同的地點 0/3、0/3、5/5、3/7） |
+   | Jezero R4 指派到 | 加拿大北極 76.95°N | **仍在北極：72.95°N, −91.95（Gjoa Haven 以北 502 km，最近的已知類比地 Haughton 隕石坑 279 km）** |
+
+   - 新的 5 個地點：加拿大北極群島（72.95, −91.95）、甘肅（36.45, 103.95）、西崑崙（35.65, 82.55）、加拉巴哥群島（−0.35, −91.45）、玻利維亞烏尤尼鹽沼（−20.35, −67.55）。
+   - 只看 Jezero 自己時，R4 指派到印度 Rapar 附近（23.2, 70.8），不在北極；七個目標一起時，北極那一點同時滿足 Jezero R4、Oxia R4、Arcadia R5、AP-105 R5，所以被選上。
+   - 「要幾個地點」比「是哪幾個」穩：換門檻時具體地點變動大。
+5. **網頁資料**（`outputs/web/`）：`--check` 失敗，`TypeError: COIN_CMD.__init__() got an unexpected keyword argument 'randomSeed'`。網頁 repo 的 `services/planning/app/core/optimize.py` 呼叫 `pulp.COIN_CMD(..., randomSeed=42, ...)`，`services/planning/requirements.txt` 指定 `pulp[cbc]==4.2.0`；本機 `nasa_hackathon` 是 pulp 3.3.2。照 PROMPT 先不加 `--check` 重跑，成功。
+   - **11/15 00:2x 補跑 `--check`（使用者要求）**：pulp 4.x 要 Python ≥ 3.12，`nasa_hackathon` 是 3.11 升不上去，所以另外建一個只跑這一步的 venv：`C:\Users\plusl\.venvs\nasa_webcheck`（miniconda 內附的 Python 3.13.11；照網頁 requirements 裝 pulp[cbc] 4.2.0、pydantic 2.14.3、numpy 2.5.4、scipy 1.18.1、httpx 0.28.1、pyyaml 6.0.3、fastapi 0.162.7，另加 pandas、pyarrow、reverse_geocoder、matplotlib）。`nasa_hackathon` 沒動。2.7 分鐘，兩段檢查都跑成。除了 `WEB_EXPORT.md` 多了檢查表，`outputs/web/` 其他檔案和不加 `--check` 那次逐位元組相同。新舊檢查表見 13.6。
+   - Jezero R4 的網頁候選：舊（59.45°N、72.35°N）→ 新（73.55°N、74.65°N），**兩個都在 70°N 以北**，和第 3 點同一個原因。
+6. **放大**：
+   - `--test`（Jezero 第 1 名 Wutumeiren 以東 92 km，37.45, 93.95，方框 63×50 子格）：下載 27 秒，14 個變數子格都有值。0.1° 格值 vs 格內 91 個子格中位數：年均溫 6.84 vs 8.25 °C、日溫差 11.76 vs 14.97 K、NDVI −0.007 vs −0.002；整體相似度 0.1° 格 88.4、格內子格中位數 87.3。
+   - `--top 3 --refresh`：21 個候選、20 個方框，下載 126 秒，63 個最佳小區的地點細節，共 2.9 分鐘，沒有錯誤。21 張圖都重畫，所以沒有舊圖要移到 `_old_1114`（0 個）。
+   - 唯一警告：`UMN/PGC/ArcticDEM/V3/2m_mosaic` 已被 V4 取代（還能用）。
+   - 看了 3 張圖：
+     - `zoom_protonilus_1`、`zoom_meridiani_1`：最佳小區離湖約 10 km 以上，正常。
+     - **`zoom_jezero_1`（和 Oxia 第 1 名同一個方框）：最佳小區 #1（37.495, 93.745）貼著方框西北角的深色湖面。** 它的 1 km 日溫差只有 12.1 K（方框中位數 34.0 K），被水面壓低。近水排除（`NEAR_WATER`）用 MOD44W，但這個湖在真彩色底圖上比 MOD44W 的水體範圍大（推測是湖面擴張或人工滷水池，沒查證），所以沒被排除。方框內被近水排除的子格有 170 個。
+   - Meridiani 第 1 名的相似度圖在 42.5°N／97.5°E 有一條方塊邊界（岩性來自 0.5° 的 GLiM）；真彩色底圖右上角沒有 HLS 影像。都只影響畫面。
+7. **前後比較**：見 13.5。
+
+### 13.5 前後比較（`data/interim/before_1114pm/compare_out.md`）
+
+備份裡各結果的產生時間不同：剖面 15:13（第 10 節版）、測試 16:31（第 12 節新程式＋舊資料，`summer_barren` 當時是待補資料）、放大 15:50、網頁資料 17:09。所以差異同時含資料和程式兩種改變；地表溫度的差異又同時含「遮水體」和「十年 → 五年」。
+
+**類比剖面（整體前 20 名）**
+
+| 目標 | 第 1 名（舊 → 新） | 前 20 名重疊（150 km 內） | 前 20 名近水體（舊 → 新） |
+|---|---|---|---|
+| jezero | 33 km from Urdgol (MN)（90.4） → **92 km from Wutumeiren (CN)（88.4）** | 11/20 | 11 → 3 |
+| gale | 不變：near Altanteel (MN)（87.4） | 15/20 | 4 → 1 |
+| arcadia | 46 km from Urdgol (MN)（83.2） → **138 km from Chernyshevskiy (RU)（81.7）** | 14/20 | 8 → 7 |
+| oxia | 125 km from Shumanay Shahri (UZ)（90.9） → **92 km from Wutumeiren (CN)（88.9）** | 7/20 | 20 → 14 |
+| meridiani | 127 km from Mazongshan (CN)（89.6） → **97 km from Mazongshan (CN)（89.9）** | 17/20 | 7 → 7 |
+| protonilus | 不變：93 km from Maindong (CN)（86.6） | 17/20 | 7 → 4 |
+| ap105 | 46 km from Urdgol (MN)（88.7） → **near Kosh-Agach (RU)（86.1）** | 19/20 | 9 → 9 |
+
+（近水體 = 3×3 鄰格 `water_frac` > 0.1。舊的 Jezero 第 1 名就是第 11.5 節說的蒙古湖邊格；Arcadia、AP-105 的舊第 1 名也在同一區（Urdgol 附近）。）
+
+**測試第 1 名（括號是測試分數）**
+
+| 目標 | R1 | R3 | R4 | R5 | R6 |
+|---|---|---|---|---|---|
+| jezero | 64 km from Jisegumen (CN)（1.0） → **113 km from Mori (CN)（0.985）** | 不適用 | 145 km from Haines Junction (CA)（0.973） → **548 km from Gjoa Haven (CA)（0.956）** | 不適用 | 不變：near Vilaflor (ES)（0.773） |
+| gale | 79 km from A'yi Take (CN)（0.989） → **39 km from Ocucaje (PE)（0.976）** | 不適用 | 167 km from Torghay (KZ)（0.965） → **92 km from Wutumeiren (CN)（0.974）** | 不適用 | 183 km from Koramlik (CN)（0.947） → **118 km from Khapalu (PK)（0.95）** |
+| arcadia | 70 km from Colchani (BO)（1.0） → **75 km from Colchani (BO)（1.0）** | 不變：67 km from McMurdo Station (AQ)（1.0） | 272 km from Talnakh (RU)（0.995） → **260 km from Talnakh (RU)（0.986）** | 1205 km from Kugluktuk (CA)（1.0） → **1196 km from Kugluktuk (CA)（1.0）** | 34 km from Todok (CN)（0.784） → **37 km from Todok (CN)（0.788）** |
+| oxia | near Mynaral (KZ)（1.0） → **160 km from Yeyik (CN)（1.0）** | 不適用 | 170 km from Turkmenbasy (TM)（0.928） → **156 km from Beyneu (KZ)（0.946）** | 不適用 | near Zuogaiduoma (CN)（0.761） → **near Zuogaiduoma (CN)（0.757）** |
+| meridiani | near Xagmakajor (CN)（0.999） → **160 km from Yeyik (CN)（0.99）** | 不適用 | 66 km from Colchani (BO)（1.0） → **65 km from Colchani (BO)（1.0）** | 不適用 | 108 km from Aqqan (CN)（0.947） → **37 km from Yeyik (CN)（0.938）** |
+| protonilus | 102 km from Cuozheqiangma (CN)（0.993） → **67 km from Khash (IR)（0.98）** | 不變：522 km from McMurdo Station (AQ)（1.0） | 847 km from Gjoa Haven (CA)（0.965） → **40 km from Xitieshan (CN)（0.974）** | 不變：881 km from Kugluktuk (CA)（1.0） | 不變：128 km from Jumla (NP)（0.742） |
+| ap105 | 142 km from Jisegumen (CN)（1.0） → **75 km from Colchani (BO)（1.0）** | 不變：67 km from McMurdo Station (AQ)（1.0） | 272 km from Talnakh (RU)（0.995） → **260 km from Talnakh (RU)（0.986）** | 1205 km from Kugluktuk (CA)（1.0） → **1196 km from Kugluktuk (CA)（1.0）** | near Kosh-Agach (RU)（0.781） → **near Kyzyl-Mazhalyk (RU)（0.788）** |
+
+- 南極的 R3 第 1 名（McMurdo 附近）都還在：南極修正有作用。
+
+**任務版**：這次沒有重跑（第 12.6 節停用），28 列（7 目標 × 4 任務）的第 1 名、前 20 名重疊、AUC 全部「不變」，完整表在 `compare_out.md`。
+
+| 任務 | 採用（舊 → 新） | 留一法 AUC 先驗（舊 → 新） | 留一法 AUC 採用方案（舊 → 新） |
+|---|---|---|---|
+| geology | prior → prior | 0.681 → 0.681 | 0.681 → 0.681 |
+| rover | blend → blend | 0.596 → 0.596 | 0.724 → 0.724 |
+| isru_base | blend → blend | 0.441 → 0.441 | 0.673 → 0.673 |
+| landing | blend → blend | 0.009 → 0.009 | 0.013 → 0.013 |
+
+**放大（每個目標第 1 名：0.1° 原分數 − 0.1° 格內 1 km 中位數）**
+
+| 目標 | 舊：候選、原分數 / 1 km 中位數（差） | 新：候選、原分數 / 1 km 中位數（差） |
+|---|---|---|
+| jezero | 33 km from Urdgol (MN)：90.4 / 81.1（+9.3） | 92 km from Wutumeiren (CN)：88.4 / 87.3（+1.1） |
+| gale | near Altanteel (MN)：88.2 / 77.4（+10.8） | near Altanteel (MN)：87.4 / 77.4（+10.0） |
+| arcadia | 46 km from Urdgol (MN)：83.2 / 70.0（+13.2） | 138 km from Chernyshevskiy (RU)：81.7 / 81.4（+0.3） |
+| oxia | 125 km from Shumanay Shahri (UZ)：90.9 / 82.5（+8.4） | 92 km from Wutumeiren (CN)：88.9 / 87.5（+1.4） |
+| meridiani | 127 km from Mazongshan (CN)：89.6 / 89.1（+0.5） | 97 km from Mazongshan (CN)：89.9 / 89.1（+0.8） |
+| protonilus | 93 km from Maindong (CN)：89.9 / 73.0（+16.9） | 93 km from Maindong (CN)：86.6 / 73.1（+13.5） |
+| ap105 | 46 km from Urdgol (MN)：88.7 / 71.6（+17.1） | near Kosh-Agach (RU)：86.1 / 85.6（+0.5） |
+
+全部 21 個候選：差距中位數 +7.1 → **+0.8**、平均 +8.9 → +3.7、≥ 5 分的 13 個 → 5 個。0.1° 分數和 1 km 子格分數變得一致，這是遮水體最主要的效果。Gale、Protonilus 第 1 名的差距還很大（+10.0、+13.5），原因沒有查（Protonilus 那一格本身有湖）。
+
+### 13.6 `WEB_EXPORT.md` 新舊差別
+
+**檢查表**（網頁自己的評分程式；舊版 17:09、新版 11/15 00:2x 用 pulp 4.2.0 補跑；只用 28 個有火星特徵值的候選，τ = 0.7）。每格是「總分第 1 名（分數）／最少地點（地點）／無法覆蓋」，「候選」= 百分位母體用候選本身（網頁現在），「全球」= 全球分位數（本隊建議）。
+
+current（網頁現在的定義）：
+
+| 目標 | 母體 | 舊 | 新 |
+|---|---|---|---|
+| AP-105 | 候選 | Zuogaiduoma 附近（0.52）／1（MDRS Hanksville）／R2–R5 | Jisegumen 以東 120 km（0.47）／2（南極 74.3°S、Hoit Taria 以東 78 km）／R2–R5 |
+| AP-105 | 全球 | Zuogaiduoma 附近（0.53）／1（Zuogaiduoma）／R2–R5 | Mori 以東 113 km（0.50）／1（Jisegumen 以東 120 km）／R2–R5 |
+| Jezero | 候選 | Zuogaiduoma 附近（0.52）／1（南極 74.3°S）／R2–R6 | Zuogaiduoma 附近（0.43）／2（Zuogaiduoma、Sultanah 以東 147 km）／R2–R5 |
+| Jezero | 全球 | Zuogaiduoma 附近（0.53）／1（Zuogaiduoma）／R2–R5 | Zuogaiduoma 附近（0.50）／2（南極 82.2°S、Sultanah 以東 147 km）／R2–R5 |
+| Gale | 候選 | Zuogaiduoma 附近（0.54）／1（Zuogaiduoma）／R2–R5 | Zuogaiduoma 附近（0.43）／2（Zuogaiduoma、Khapalu 以東 118 km）／R2–R5 |
+| Gale | 全球 | Zuogaiduoma 附近（0.56）／1（Zuogaiduoma）／R2–R5 | Zuogaiduoma 附近（0.52）／1（Zuogaiduoma）／R2–R5 |
+
+proposed（套用本隊建議的任務定義）：
+
+| 目標 | 母體 | 舊 | 新 |
+|---|---|---|---|
+| AP-105 | 候選 | Jisegumen 以東 64 km（0.52）／2（Talnakh 以東 272 km、南極 74.3°S）／R2、R6 | Jisegumen 以東 120 km（0.52）／2（Talnakh 以東 260 km、南極 82.2°S）／R2、R6 |
+| AP-105 | 全球 | A'yi Take 以東 79 km（0.64）／2（Talnakh、Khapalu）／R2 | Kosh-Agach 附近（0.59）／2（Talnakh、Khapalu）／R2 |
+| Jezero | 候選 | Aswan 以東 38 km（0.47）／1（Aswan）／R2、R3、R5、R6 | Torghay 以東 167 km（0.47）／1（Torghay）／R2、R3、R5、R6 |
+| Jezero | 全球 | Aswan 以東 38 km（0.47）／2（Aswan、Khapalu）／R2、R3、R5 | **73.5°N 95.3°W（Gjoa Haven 以北 548 km）（0.46）**／2（同一點、Khapalu）／R2、R3、R5 |
+| Gale | 候選 | Aswan 以東 38 km（0.47）／1（Aswan）／R2、R3、R5、R6 | Torghay 以東 167 km（0.47）／1（Torghay）／R2、R3、R5、R6 |
+| Gale | 全球 | Aswan 以東 38 km（0.47）／2（Aswan、Khapalu）／R2、R3、R5 | **73.5°N 95.3°W（0.46）**／2（同一點、Khapalu）／R2、R3、R5 |
+
+- 「各任務最高分」新舊大致相同：R1 都是 1.00；R6 在 current 0.74–0.98（舊 0.68–0.97）、proposed 0.33–0.94（舊 0.33–0.93）；proposed 的 R4 都是 0.95–1.00。
+- **最少地點**：current 從每個目標 1 個變成多數 2 個；proposed 不變（1–2 個）。
+- **無法覆蓋**：只有 current 的 Jezero（候選母體）從 R2–R6 變成 R2–R5（R6 現在能覆蓋），其他不變。
+- **第 1 名**：current 仍以 Zuogaiduoma 附近為主，總分從 0.52–0.56 降到 0.43–0.52；proposed 的 Jezero、Gale 全球母體第 1 名變成加拿大北極（73.5°N），和 13.4 第 3 點的 R4 問題同一個原因。Aswan 以東 38 km 這個候選已經不在新的 28 個裡。
+- **候選（28 個，每個目標 × 測試取第 1、2 名）**：22 個目標 × 測試的位置裡有 16 個換了地點（相距超過約 150 km），6 個不變。主要變動：
+  - Jezero R1：Jisegumen (CN)、Edd (ER) → Toksun (CN)、Mori (CN)
+  - Jezero R4：Haines Junction (CA) 59.45°N、Iskateley (RU) 72.35°N → Gjoa Haven (CA) 以北 73.55°N、74.65°N
+  - Gale R1：A'yi Take (CN)、Jiajuedibu (CN) → Ocucaje (PE)、Khur (IR)
+  - Gale R4：Torghay (KZ)、Aswan (EG) → Jisegumen (CN)、Torghay (KZ)
+  - AP-105 R1：Bhuj (IN)、Antofagasta de la Sierra (AR) → Xitieshan (CN)、Sidi el Hani (TN)
+  - AP-105 R3：第 1 名換成南極 82.25°S, 163.25°E，舊第 1 名（74.35°S, 163.45°E）變第 2 名；舊第 2 名（73.05°S, 66.55°E）掉出
+- 交給網頁組的打包：`_handoff/handoff_web_1115.zip`（50 個檔；11/15 補跑 `--check` 後重新打包）。
+
+### 13.7 限制（要寫在對外說明裡）
+
+- 全球地表溫度平均期間是 **2020–2024**；備份（舊）是 2015–2024。新舊比較同時含「遮水體」和「年份範圍」兩種差異，不能全部歸因給遮罩。
+- 放大程式（1 km）仍用 **2015–2024**，和全球的 2020–2024 不一致。全球新舊差中位數 0.4 K，預期影響很小，但要註明。
+- **每月地表溫度是推算值**：年均來自新資料，季節形狀來自舊資料（2015–2024，金字塔取樣）。湖邊、海岸格的舊季節幅度偏小，新舊差超過門檻的 147,980 個陸地格（6.9%）設成空值，R5／R6 的季節特徵對它們不評分。**R5／R6 的季節測試是近似值**，其他測試不受影響。
+- 反照率、NDVI、乾燥指數在南極是空值（抓的時候南極修正還沒做）。現在的計分用不到；要補的話清單在 `data/interim/rerun_1114_tools/antarctic_tiles.log`（308 塊）。
+- 近水排除用的 MOD44W 是舊的水體圖；新出現或擴張的湖（例如 13.4 第 6 點）排除不到。
+
+### 13.8 還沒解決、建議（都沒有改，要你決定）
+
+1. **Jezero R4 仍以北極為主**（13.4 第 3、4、5 點）。可選：(a) 接受，北極荒漠本來就是岩石裸露的地方，Haughton 隕石坑就在附近；(b) R4 加溫度或緯度條件；(c) 把 `summer_barren` 的滿分門檻從 0.15 調低。這是方法決定。
+2. **放大的近水排除漏掉 Jezero／Oxia 第 1 名旁邊的湖**（13.4 第 6 點）。建議改用較新的水體資料（例如 JRC Global Surface Water），或排除「1 km 日溫差遠低於方框中位數」的子格。
+3. **網頁 `--check` 要 pulp 4.2.0（已補跑）**：pulp 4 要 Python ≥ 3.12，所以用另外的 venv 跑：`C:\Users\plusl\.venvs\nasa_webcheck\Scripts\python.exe scripts\export_web_seed.py --web-seed ..\..\nasa-main\data\seed --check`。之後要重跑也用這個 venv；`nasa_hackathon` 維持 pulp 3.3.2（`make_set_cover.py` 用它，雲端測過 3.3.2 和 4 結果相同）。
+4. ArcticDEM V3 已被 V4 取代，改 `gee_zoom.py` 的資產名稱即可（資料版本改變，所以先列在這裡）。
+5. Jezero、Oxia 第 1 名那一格（37.45, 93.95）在真彩色底圖上有矩形格線，看起來像人工鹽田（沒查證）。如果是，要不要排除人工地物也是方法決定。
+6. `docs/DATA_SOURCES.md` 已新增；第 4 節列了程式註解裡沒有的引用（MERRA-2 兩處 DOI 不一致、ESA CCI 永凍土 DOI、REMA、Sentinel-1、PALSAR-2、GEE 平台、軟體），要補。
+7. 收尾：
+   - 朋友電腦上的 GEE 憑證和 `hatrefish_gee` 資料夾：使用者決定**先不刪**（11/15）。要刪時見 `PROMPT_run_1114_night.md` 第 5 節；所有 GEE 步驟做完後到 Google 帳號撤銷 Earth Engine 授權。
+   - `run_1114/1_start_download.cmd` 第 2/4 步已改（11/15）：`tasklist | findstr` 換成 `powershell.exe -NoProfile -Command (Get-Process python -ErrorAction SilentlyContinue).Id`，輸出寫到 `%TEMP%\pyids.txt`，用檔案大小判斷有沒有 Python 在跑；ssh 連不上（exit 255）就停。UTF-8 無 BOM、CRLF。判斷邏輯在本機用不存在／存在的行程測過；朋友電腦當時連不上，沒有實際跑過。改之前的版本：`data/interim/rerun_1114_tools/1_start_download.before_fix.cmd`。
+   - `run_1114/2_status.cmd` 也用 `tasklist`（在朋友電腦上會出錯），沒改。
+8. 第 11.5 節其他待辦（缺岩性佔便宜、門檻型測試很多同分、R2 無法評估等）都還在。

@@ -1,0 +1,2063 @@
+[
+ {
+  "id": "hf-e_1910756",
+  "name": "距 Xitieshan (CN) 40 km",
+  "name_en": "40 km from Xitieshan (CN)",
+  "lat": 36.95,
+  "lon": 95.65,
+  "known_analog": false,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 0.1547,
+   "r1_thermal_inertia": 0.0416,
+   "r1_barren": -0.0244,
+   "r1_ice_free": 0.0,
+   "r3_ground_ice": 0.0,
+   "r3_cold": 12.47,
+   "r3_dryness": 0.0263,
+   "r4_barren": -0.0244,
+   "r5_roughness": 0.7887,
+   "r5_ground_ice": 0.0,
+   "r5_cold": 12.47,
+   "r6_temperature": 12.47
+  },
+  "categories": {
+   "r4_lithology": "ss"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.070364,
+     0.153871,
+     0.237377,
+     0.320883,
+     0.405758,
+     0.489264,
+     0.572771,
+     0.656277,
+     0.739783,
+     0.825321,
+     0.90609,
+     0.986858
+    ],
+    "values": [
+     0.1602,
+     0.1549,
+     0.1574,
+     0.123,
+     0.1115,
+     0.1062,
+     0.0873,
+     0.0417,
+     0.025,
+     0.0306,
+     0.0507,
+     0.1174
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     2.889,
+     22.06
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_1960304",
+  "name": "Sidi el Hani (TN) 附近",
+  "name_en": "near Sidi el Hani (TN)",
+  "lat": 35.55,
+  "lon": 10.45,
+  "known_analog": false,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 0.2473,
+   "r1_thermal_inertia": 0.0666,
+   "r1_barren": -0.0157,
+   "r1_ice_free": 0.0,
+   "r3_ground_ice": 0.0,
+   "r3_cold": 24.7,
+   "r3_dryness": 0.1522,
+   "r4_barren": -0.0157,
+   "r5_roughness": 1.095,
+   "r5_ground_ice": 0.0,
+   "r5_cold": 24.7,
+   "r6_temperature": 24.7
+  },
+  "categories": {
+   "r4_lithology": "su"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.070364,
+     0.153871,
+     0.237377,
+     0.320883,
+     0.405758,
+     0.489264,
+     0.572771,
+     0.656277,
+     0.739783,
+     0.825321,
+     0.90609,
+     0.986858
+    ],
+    "values": [
+     0.1793,
+     0.164,
+     0.1932,
+     0.1157,
+     0.1001,
+     0.1485,
+     0.0863,
+     0.0593,
+     0.0378,
+     0.0263,
+     0.0617,
+     0.1393
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     19.35,
+     30.06
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_6202632",
+  "name": "南極 82.2°S 163.2°E",
+  "name_en": "Antarctica 82.2°S 163.2°E",
+  "lat": -82.25,
+  "lon": 163.25,
+  "known_analog": false,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 1.1,
+   "r1_barren": 0.0,
+   "r1_ice_free": 0.4821,
+   "r3_ground_ice": 1.0,
+   "r3_cold": -26.02,
+   "r3_dryness": 0.0,
+   "r4_barren": 0.0,
+   "r5_roughness": 5.484,
+   "r5_ground_ice": 1.0,
+   "r5_cold": -26.02,
+   "r6_temperature": -26.02
+  },
+  "categories": {
+   "r4_lithology": "mt"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.072771,
+     0.156277,
+     0.239783,
+     0.325321,
+     0.40609,
+     0.486858,
+     0.570364,
+     0.653871,
+     0.737377,
+     0.820883,
+     0.905758,
+     0.989264
+    ],
+    "values": [
+     0.0033,
+     0.004,
+     0.0038,
+     0.0032,
+     0.003,
+     0.0036,
+     0.0031,
+     0.0024,
+     0.002,
+     0.0019,
+     0.0019,
+     0.0025
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     -26.32,
+     -25.72
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_5918234",
+  "name": "南極 74.3°S 163.4°E",
+  "name_en": "Antarctica 74.3°S 163.4°E",
+  "lat": -74.35,
+  "lon": 163.45,
+  "known_analog": false,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 2.389,
+   "r1_barren": 0.0,
+   "r1_ice_free": 0.4763,
+   "r3_ground_ice": 1.0,
+   "r3_cold": -22.85,
+   "r3_dryness": 0.0,
+   "r4_barren": 0.0,
+   "r5_roughness": 11.5,
+   "r5_ground_ice": 1.0,
+   "r5_cold": -22.85,
+   "r6_temperature": -22.85
+  },
+  "categories": {
+   "r4_lithology": "pa"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.072771,
+     0.156277,
+     0.239783,
+     0.325321,
+     0.40609,
+     0.486858,
+     0.570364,
+     0.653871,
+     0.737377,
+     0.820883,
+     0.905758,
+     0.989264
+    ],
+    "values": [
+     0.003,
+     0.0034,
+     0.0031,
+     0.0026,
+     0.0028,
+     0.0033,
+     0.0028,
+     0.0021,
+     0.0017,
+     0.0017,
+     0.0017,
+     0.0023
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     -23.28,
+     -22.42
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_751549",
+  "name": "距 Talnakh (RU) 260 km",
+  "name_en": "260 km from Talnakh (RU)",
+  "lat": 69.15,
+  "lon": 94.95,
+  "known_analog": false,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 3.224,
+   "r1_barren": 0.0017,
+   "r1_ice_free": 0.0051,
+   "r3_ground_ice": 1.0,
+   "r3_cold": -16.25,
+   "r3_dryness": 2.069,
+   "r4_barren": 0.0017,
+   "r5_roughness": 11.86,
+   "r5_ground_ice": 1.0,
+   "r5_cold": -16.25,
+   "r6_temperature": -16.25
+  },
+  "categories": {
+   "r4_lithology": "vb"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.070364,
+     0.153871,
+     0.237377,
+     0.320883,
+     0.405758,
+     0.489264,
+     0.572771,
+     0.656277,
+     0.739783,
+     0.825321,
+     0.90609,
+     0.986858
+    ],
+    "values": [
+     0.0253,
+     0.0305,
+     0.0209,
+     0.0133,
+     0.0096,
+     0.0094,
+     0.0087,
+     0.0085,
+     0.0072,
+     0.008,
+     0.0152,
+     0.0189
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     -18.46,
+     -14.04
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_2313400",
+  "name": "距 Sultanah (SA) 147 km",
+  "name_en": "147 km from Sultanah (SA)",
+  "lat": 25.75,
+  "lon": 40.05,
+  "known_analog": false,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 1.845,
+   "r1_thermal_inertia": 0.0288,
+   "r1_barren": 0.0391,
+   "r1_ice_free": 0.0,
+   "r3_ground_ice": 0.0,
+   "r3_cold": 29.59,
+   "r3_dryness": 0.0457,
+   "r4_barren": 0.0391,
+   "r5_roughness": 10.12,
+   "r5_ground_ice": 0.0,
+   "r5_cold": 29.59,
+   "r6_temperature": 29.59
+  },
+  "categories": {
+   "r4_lithology": "vb"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.070364,
+     0.153871,
+     0.237377,
+     0.320883,
+     0.405758,
+     0.489264,
+     0.572771,
+     0.656277,
+     0.739783,
+     0.825321,
+     0.90609,
+     0.986858
+    ],
+    "values": [
+     0.1933,
+     0.2068,
+     0.1948,
+     0.1355,
+     0.1399,
+     0.1761,
+     0.1299,
+     0.0833,
+     0.056,
+     0.0591,
+     0.0758,
+     0.1578
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     13.89,
+     45.3
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_333927",
+  "name": "80.8°N 92.8°E（最近城鎮 Talnakh (RU)，1258 km）",
+  "name_en": "80.8°N 92.8°E (1258 km from Talnakh (RU))",
+  "lat": 80.75,
+  "lon": 92.75,
+  "known_analog": false,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 0.2473,
+   "r1_barren": -0.0209,
+   "r1_ice_free": 1.0,
+   "r3_ground_ice": 1.0,
+   "r3_cold": -16.34,
+   "r3_dryness": 0.9405,
+   "r4_barren": -0.0209,
+   "r5_roughness": 1.089,
+   "r5_ground_ice": 1.0,
+   "r5_cold": -16.34,
+   "r6_temperature": -16.34
+  },
+  "categories": {
+   "r4_lithology": "sm"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.070364,
+     0.153871,
+     0.237377,
+     0.320883,
+     0.405758,
+     0.489264,
+     0.572771,
+     0.656277,
+     0.739783,
+     0.825321,
+     0.90609,
+     0.986858
+    ],
+    "values": [
+     0.0259,
+     0.0259,
+     0.0193,
+     0.0123,
+     0.008,
+     0.0093,
+     0.0084,
+     0.0076,
+     0.0083,
+     0.0074,
+     0.0114,
+     0.0174
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     -17.06,
+     -15.61
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_627054",
+  "name": "72.5°N 114.5°W（最近城鎮 Kugluktuk (CA)，526 km）",
+  "name_en": "72.5°N 114.5°W (526 km from Kugluktuk (CA))",
+  "lat": 72.55,
+  "lon": -114.55,
+  "known_analog": false,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 0.2473,
+   "r1_barren": -0.006,
+   "r1_ice_free": 1.0,
+   "r3_ground_ice": 1.0,
+   "r3_cold": -16.79,
+   "r3_dryness": 0.498,
+   "r4_barren": -0.006,
+   "r5_roughness": 0.9835,
+   "r5_ground_ice": 1.0,
+   "r5_cold": -16.79,
+   "r6_temperature": -16.79
+  },
+  "categories": {
+   "r4_lithology": "sm"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.070364,
+     0.153871,
+     0.237377,
+     0.320883,
+     0.405758,
+     0.489264,
+     0.572771,
+     0.656277,
+     0.739783,
+     0.825321,
+     0.90609,
+     0.986858
+    ],
+    "values": [
+     0.0251,
+     0.0303,
+     0.021,
+     0.0114,
+     0.0065,
+     0.0081,
+     0.0086,
+     0.0074,
+     0.0053,
+     0.0051,
+     0.009,
+     0.0164
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     -18.53,
+     -15.04
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_1403104",
+  "name": "Kyzyl-Mazhalyk (RU) 附近",
+  "name_en": "near Kyzyl-Mazhalyk (RU)",
+  "lat": 51.05,
+  "lon": 90.45,
+  "known_analog": false,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 0.534,
+   "r1_thermal_inertia": 0.0337,
+   "r1_barren": 0.1912,
+   "r1_ice_free": 0.0,
+   "r3_ground_ice": 0.0028,
+   "r3_cold": 1.84,
+   "r3_dryness": 0.2509,
+   "r4_barren": 0.1912,
+   "r5_roughness": 2.875,
+   "r5_ground_ice": 0.0028,
+   "r5_cold": 1.84,
+   "r6_temperature": 1.84
+  },
+  "categories": {
+   "r4_lithology": "sm"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.070364,
+     0.153871,
+     0.237377,
+     0.320883,
+     0.405758,
+     0.489264,
+     0.572771,
+     0.656277,
+     0.739783,
+     0.825321,
+     0.90609,
+     0.986858
+    ],
+    "values": [
+     0.0566,
+     0.0616,
+     0.0415,
+     0.0278,
+     0.0225,
+     0.0233,
+     0.0194,
+     0.0203,
+     0.0142,
+     0.0185,
+     0.0285,
+     0.0432
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     -8.749,
+     12.43
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_1446286",
+  "name": "Kosh-Agach (RU) 附近",
+  "name_en": "near Kosh-Agach (RU)",
+  "lat": 49.85,
+  "lon": 88.65,
+  "known_analog": false,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 0.8015,
+   "r1_thermal_inertia": 0.0312,
+   "r1_barren": 0.107,
+   "r1_ice_free": 0.0,
+   "r3_ground_ice": 0.8828,
+   "r3_cold": 0.3951,
+   "r3_dryness": 0.1621,
+   "r4_barren": 0.107,
+   "r5_roughness": 4.108,
+   "r5_ground_ice": 0.8828,
+   "r5_cold": 0.3951,
+   "r6_temperature": 0.3951
+  },
+  "categories": {
+   "r4_lithology": "vi"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.070364,
+     0.153871,
+     0.237377,
+     0.320883,
+     0.405758,
+     0.489264,
+     0.572771,
+     0.656277,
+     0.739783,
+     0.825321,
+     0.90609,
+     0.986858
+    ],
+    "values": [
+     0.0563,
+     0.0685,
+     0.0419,
+     0.0274,
+     0.0238,
+     0.0228,
+     0.0199,
+     0.0179,
+     0.0115,
+     0.015,
+     0.0256,
+     0.0434
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     -10.91,
+     11.7
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_1694683",
+  "name": "Toksun (CN) 附近",
+  "name_en": "near Toksun (CN)",
+  "lat": 42.95,
+  "lon": 88.35,
+  "known_analog": false,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 1.689,
+   "r1_thermal_inertia": 0.0351,
+   "r1_barren": 0.0224,
+   "r1_ice_free": 0.0,
+   "r3_ground_ice": 0.0,
+   "r3_cold": 21.23,
+   "r3_dryness": 0.0315,
+   "r4_barren": 0.0224,
+   "r5_roughness": 8.763,
+   "r5_ground_ice": 0.0,
+   "r5_cold": 21.23,
+   "r6_temperature": 21.23
+  },
+  "categories": {
+   "r4_lithology": "su"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.070364,
+     0.153871,
+     0.237377,
+     0.320883,
+     0.405758,
+     0.489264,
+     0.572771,
+     0.656277,
+     0.739783,
+     0.825321,
+     0.90609,
+     0.986858
+    ],
+    "values": [
+     0.282,
+     0.3207,
+     0.2116,
+     0.1537,
+     0.1459,
+     0.1806,
+     0.3011,
+     0.2071,
+     0.1448,
+     0.1259,
+     0.167,
+     0.2502
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     8.849,
+     33.61
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_1673115",
+  "name": "距 Mori (CN) 113 km",
+  "name_en": "113 km from Mori (CN)",
+  "lat": 43.55,
+  "lon": 91.55,
+  "known_analog": false,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 1.694,
+   "r1_thermal_inertia": 0.0377,
+   "r1_barren": 0.0264,
+   "r1_ice_free": 0.0,
+   "r3_ground_ice": 0.0,
+   "r3_cold": 16.28,
+   "r3_dryness": 0.0298,
+   "r4_barren": 0.0264,
+   "r5_roughness": 11.19,
+   "r5_ground_ice": 0.0,
+   "r5_cold": 16.28,
+   "r6_temperature": 16.28
+  },
+  "categories": {
+   "r4_lithology": "ss"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.070364,
+     0.153871,
+     0.237377,
+     0.320883,
+     0.405758,
+     0.489264,
+     0.572771,
+     0.656277,
+     0.739783,
+     0.825321,
+     0.90609,
+     0.986858
+    ],
+    "values": [
+     0.1414,
+     0.17,
+     0.1223,
+     0.0973,
+     0.0858,
+     0.0814,
+     0.1183,
+     0.0673,
+     0.0374,
+     0.0365,
+     0.0634,
+     0.1128
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     4.706,
+     27.86
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_591246",
+  "name": "73.5°N 95.3°W（最近城鎮 Gjoa Haven (CA)，548 km）",
+  "name_en": "73.5°N 95.3°W (548 km from Gjoa Haven (CA))",
+  "lat": 73.55,
+  "lon": -95.35,
+  "known_analog": false,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 1.834,
+   "r1_barren": 0.0005,
+   "r1_ice_free": 0.0439,
+   "r3_ground_ice": 1.0,
+   "r3_cold": -16.9,
+   "r3_dryness": 0.6371,
+   "r4_barren": 0.0005,
+   "r5_roughness": 5.606,
+   "r5_ground_ice": 1.0,
+   "r5_cold": -16.9,
+   "r6_temperature": -16.9
+  },
+  "categories": {
+   "r4_lithology": "sm"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.070364,
+     0.153871,
+     0.237377,
+     0.320883,
+     0.405758,
+     0.489264,
+     0.572771,
+     0.656277,
+     0.739783,
+     0.825321,
+     0.90609,
+     0.986858
+    ],
+    "values": [
+     0.0244,
+     0.0268,
+     0.0198,
+     0.0107,
+     0.0064,
+     0.0075,
+     0.0086,
+     0.0066,
+     0.0054,
+     0.0043,
+     0.0082,
+     0.0142
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     -18.5,
+     -15.3
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_551752",
+  "name": "74.7°N 84.8°W（最近城鎮 Gjoa Haven (CA)，772 km）",
+  "name_en": "74.7°N 84.8°W (772 km from Gjoa Haven (CA))",
+  "lat": 74.65,
+  "lon": -84.75,
+  "known_analog": false,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 5.381,
+   "r1_barren": 0.0016,
+   "r1_ice_free": 0.076,
+   "r3_ground_ice": 1.0,
+   "r3_cold": -18.1,
+   "r3_dryness": 1.018,
+   "r4_barren": 0.0016,
+   "r5_roughness": 16.74,
+   "r5_ground_ice": 1.0,
+   "r5_cold": -18.1,
+   "r6_temperature": -18.1
+  },
+  "categories": {
+   "r4_lithology": "sm"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.070364,
+     0.153871,
+     0.237377,
+     0.320883,
+     0.405758,
+     0.489264,
+     0.572771,
+     0.656277,
+     0.739783,
+     0.825321,
+     0.90609,
+     0.986858
+    ],
+    "values": [
+     0.0235,
+     0.0248,
+     0.0179,
+     0.0102,
+     0.006,
+     0.0069,
+     0.0082,
+     0.0063,
+     0.0045,
+     0.0032,
+     0.0068,
+     0.0128
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     -19.41,
+     -16.79
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_2222833",
+  "name": "Vilaflor (ES) 附近",
+  "name_en": "near Vilaflor (ES)",
+  "lat": 28.25,
+  "lon": -16.65,
+  "known_analog": false,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 13.86,
+   "r1_thermal_inertia": 0.037,
+   "r1_barren": 0.1439,
+   "r1_ice_free": 0.0,
+   "r3_ground_ice": 0.0,
+   "r3_cold": 17.22,
+   "r3_dryness": 0.2234,
+   "r4_barren": 0.1439,
+   "r5_roughness": 77.54,
+   "r5_ground_ice": 0.0,
+   "r5_cold": 17.22,
+   "r6_temperature": 17.22
+  },
+  "categories": {
+   "r4_lithology": "vb"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.070364,
+     0.153871,
+     0.237377,
+     0.320883,
+     0.405758,
+     0.489264,
+     0.572771,
+     0.656277,
+     0.739783,
+     0.825321,
+     0.90609,
+     0.986858
+    ],
+    "values": [
+     0.0495,
+     0.0486,
+     0.1105,
+     0.1605,
+     0.1538,
+     0.0899,
+     0.1083,
+     0.0433,
+     0.0548,
+     0.064,
+     0.1537,
+     0.0737
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     4.981,
+     29.46
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_1975632",
+  "name": "Zuogaiduoma (CN) 附近",
+  "name_en": "near Zuogaiduoma (CN)",
+  "lat": 35.15,
+  "lon": 103.25,
+  "known_analog": false,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 4.368,
+   "r1_barren": 0.418,
+   "r1_ice_free": 0.0,
+   "r3_ground_ice": 0.073,
+   "r3_cold": 3.579,
+   "r3_dryness": 0.7001,
+   "r4_barren": 0.418,
+   "r5_roughness": 18.45,
+   "r5_ground_ice": 0.073,
+   "r5_cold": 3.579,
+   "r6_temperature": 3.579
+  },
+  "categories": {
+   "r4_lithology": "sc"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.070364,
+     0.153871,
+     0.237377,
+     0.320883,
+     0.405758,
+     0.489264,
+     0.572771,
+     0.656277,
+     0.739783,
+     0.825321,
+     0.90609,
+     0.986858
+    ],
+    "values": [
+     0.1363,
+     0.1188,
+     0.0888,
+     0.0516,
+     0.0456,
+     0.0421,
+     0.0542,
+     0.0489,
+     0.0326,
+     0.033,
+     0.0556,
+     0.1229
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     -7.187,
+     14.34
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_3766641",
+  "name": "距 Ocucaje (PE) 39 km",
+  "name_en": "39 km from Ocucaje (PE)",
+  "lat": -14.65,
+  "lon": -75.85,
+  "known_analog": false,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 4.056,
+   "r1_thermal_inertia": 0.0384,
+   "r1_barren": 0.0397,
+   "r1_ice_free": 0.0,
+   "r3_ground_ice": 0.0,
+   "r3_cold": 24.91,
+   "r3_dryness": 0.0009,
+   "r4_barren": 0.0397,
+   "r5_roughness": 26.31,
+   "r5_ground_ice": 0.0,
+   "r5_cold": 24.91,
+   "r6_temperature": 24.91
+  },
+  "categories": {
+   "r4_lithology": "pa"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.072771,
+     0.156277,
+     0.239783,
+     0.325321,
+     0.40609,
+     0.486858,
+     0.570364,
+     0.653871,
+     0.737377,
+     0.820883,
+     0.905758,
+     0.989264
+    ],
+    "values": [
+     0.0192,
+     0.0205,
+     0.022,
+     0.0222,
+     0.0209,
+     0.0196,
+     0.0177,
+     0.0161,
+     0.018,
+     0.0209,
+     0.0202,
+     0.0221
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     14.56,
+     35.25
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_2039944",
+  "name": "距 Khur (IR) 75 km",
+  "name_en": "75 km from Khur (IR)",
+  "lat": 33.35,
+  "lon": 54.45,
+  "known_analog": false,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 5.061,
+   "r1_thermal_inertia": 0.0345,
+   "r1_barren": 0.043,
+   "r1_ice_free": 0.0,
+   "r3_ground_ice": 0.0,
+   "r3_cold": 26.42,
+   "r3_dryness": 0.0379,
+   "r4_barren": 0.043,
+   "r5_roughness": 28.26,
+   "r5_ground_ice": 0.0,
+   "r5_cold": 26.42,
+   "r6_temperature": 26.42
+  },
+  "categories": {
+   "r4_lithology": "su"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.070364,
+     0.153871,
+     0.237377,
+     0.320883,
+     0.405758,
+     0.489264,
+     0.572771,
+     0.656277,
+     0.739783,
+     0.825321,
+     0.90609,
+     0.986858
+    ],
+    "values": [
+     0.2131,
+     0.184,
+     0.1595,
+     0.2089,
+     0.1246,
+     0.1255,
+     0.1003,
+     0.063,
+     0.0422,
+     0.0563,
+     0.0839,
+     0.1865
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     14.59,
+     38.25
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_1979002",
+  "name": "距 Jisegumen (CN) 120 km",
+  "name_en": "120 km from Jisegumen (CN)",
+  "lat": 35.05,
+  "lon": 80.25,
+  "known_analog": false,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 0.2046,
+   "r1_thermal_inertia": 0.0322,
+   "r1_barren": -0.0111,
+   "r1_ice_free": 0.0,
+   "r3_ground_ice": 1.0,
+   "r3_cold": 1.784,
+   "r3_dryness": 0.0297,
+   "r4_barren": -0.0111,
+   "r5_roughness": 1.107,
+   "r5_ground_ice": 1.0,
+   "r5_cold": 1.784,
+   "r6_temperature": 1.784
+  },
+  "categories": {
+   "r4_lithology": "ss"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.070364,
+     0.153871,
+     0.237377,
+     0.320883,
+     0.405758,
+     0.489264,
+     0.572771,
+     0.656277,
+     0.739783,
+     0.825321,
+     0.90609,
+     0.986858
+    ],
+    "values": [
+     0.0749,
+     0.1433,
+     0.1047,
+     0.1161,
+     0.1077,
+     0.0552,
+     0.0254,
+     0.0092,
+     0.0041,
+     0.0078,
+     0.017,
+     0.044
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     -9.987,
+     13.56
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_1507231",
+  "name": "距 Torghay (KZ) 167 km",
+  "name_en": "167 km from Torghay (KZ)",
+  "lat": 48.15,
+  "lon": 63.15,
+  "known_analog": false,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 0.0,
+   "r1_thermal_inertia": 0.0496,
+   "r1_barren": -0.0005,
+   "r1_ice_free": 0.0,
+   "r3_ground_ice": 0.0,
+   "r3_cold": 8.856,
+   "r3_dryness": 0.105,
+   "r4_barren": -0.0005,
+   "r5_roughness": 0.0,
+   "r5_ground_ice": 0.0,
+   "r5_cold": 8.856,
+   "r6_temperature": 8.856
+  },
+  "categories": {
+   "r4_lithology": "ss"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.070364,
+     0.153871,
+     0.237377,
+     0.320883,
+     0.405758,
+     0.489264,
+     0.572771,
+     0.656277,
+     0.739783,
+     0.825321,
+     0.90609,
+     0.986858
+    ],
+    "values": [
+     0.1305,
+     0.1524,
+     0.0789,
+     0.0564,
+     0.0362,
+     0.0408,
+     0.0332,
+     0.037,
+     0.0384,
+     0.0478,
+     0.0535,
+     0.0771
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     2.828,
+     14.89
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_1942970",
+  "name": "距 Khapalu (PK) 118 km",
+  "name_en": "118 km from Khapalu (PK)",
+  "lat": 36.05,
+  "lon": 77.05,
+  "known_analog": false,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 12.13,
+   "r1_thermal_inertia": 0.0234,
+   "r1_barren": -0.0006,
+   "r1_ice_free": 1.0,
+   "r3_ground_ice": 1.0,
+   "r3_cold": -7.56,
+   "r3_dryness": 0.1181,
+   "r4_barren": -0.0006,
+   "r5_roughness": 64.45,
+   "r5_ground_ice": 1.0,
+   "r5_cold": -7.56,
+   "r6_temperature": -7.56
+  },
+  "categories": {
+   "r4_lithology": "sm"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.070364,
+     0.153871,
+     0.237377,
+     0.320883,
+     0.405758,
+     0.489264,
+     0.572771,
+     0.656277,
+     0.739783,
+     0.825321,
+     0.90609,
+     0.986858
+    ],
+    "values": [
+     0.0932,
+     0.1368,
+     0.1143,
+     0.1373,
+     0.1237,
+     0.0646,
+     0.0442,
+     0.0147,
+     0.007,
+     0.0125,
+     0.0252,
+     0.0613
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     -20.39,
+     5.271
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_1871167",
+  "name": "距 Hoit Taria (CN) 78 km",
+  "name_en": "78 km from Hoit Taria (CN)",
+  "lat": 38.05,
+  "lon": 96.75,
+  "known_analog": false,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 2.274,
+   "r1_thermal_inertia": 0.0281,
+   "r1_barren": 0.0993,
+   "r1_ice_free": 0.0,
+   "r3_ground_ice": 1.0,
+   "r3_cold": -3.224,
+   "r3_dryness": 0.2262,
+   "r4_barren": 0.0993,
+   "r5_roughness": 11.62,
+   "r5_ground_ice": 1.0,
+   "r5_cold": -3.224,
+   "r6_temperature": -3.224
+  },
+  "categories": {
+   "r4_lithology": "pi"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.070364,
+     0.153871,
+     0.237377,
+     0.320883,
+     0.405758,
+     0.489264,
+     0.572771,
+     0.656277,
+     0.739783,
+     0.825321,
+     0.90609,
+     0.986858
+    ],
+    "values": [
+     0.1088,
+     0.1145,
+     0.1083,
+     0.0748,
+     0.0625,
+     0.0671,
+     0.0504,
+     0.0232,
+     0.0123,
+     0.0158,
+     0.0311,
+     0.078
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     -15.79,
+     9.344
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_6033417",
+  "name": "McMurdo Dry Valleys (Antarctica)",
+  "name_en": "McMurdo Dry Valleys (Antarctica)",
+  "lat": -77.55,
+  "lon": 161.75,
+  "known_analog": true,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 15.88,
+   "r1_barren": 0.0,
+   "r1_ice_free": 0.5987,
+   "r3_ground_ice": 1.0,
+   "r3_cold": -26.87,
+   "r3_dryness": 0.0,
+   "r4_barren": 0.0,
+   "r5_roughness": 85.41,
+   "r5_ground_ice": 1.0,
+   "r5_cold": -26.87,
+   "r6_temperature": -26.87
+  },
+  "categories": {
+   "r4_lithology": "sm"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.072771,
+     0.156277,
+     0.239783,
+     0.325321,
+     0.40609,
+     0.486858,
+     0.570364,
+     0.653871,
+     0.737377,
+     0.820883,
+     0.905758,
+     0.989264
+    ],
+    "values": [
+     0.0029,
+     0.0035,
+     0.0031,
+     0.0027,
+     0.0027,
+     0.0032,
+     0.0028,
+     0.0021,
+     0.0018,
+     0.0017,
+     0.0018,
+     0.0022
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     -27.22,
+     -26.53
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_526503",
+  "name": "Haughton impact crater Devon Island (Canada)",
+  "name_en": "Haughton impact crater Devon Island (Canada)",
+  "lat": 75.35,
+  "lon": -89.65,
+  "known_analog": true,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 3.812,
+   "r1_barren": 0.0083,
+   "r1_ice_free": 0.0223,
+   "r3_ground_ice": 1.0,
+   "r3_cold": -20.26,
+   "r3_dryness": 0.8685,
+   "r4_barren": 0.0083,
+   "r5_roughness": 11.39,
+   "r5_ground_ice": 1.0,
+   "r5_cold": -20.26,
+   "r6_temperature": -20.26
+  },
+  "categories": {
+   "r4_lithology": "sm"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.070364,
+     0.153871,
+     0.237377,
+     0.320883,
+     0.405758,
+     0.489264,
+     0.572771,
+     0.656277,
+     0.739783,
+     0.825321,
+     0.90609,
+     0.986858
+    ],
+    "values": [
+     0.024,
+     0.026,
+     0.0187,
+     0.0106,
+     0.0062,
+     0.0071,
+     0.0085,
+     0.0065,
+     0.005,
+     0.0039,
+     0.0078,
+     0.0137
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     -21.59,
+     -18.92
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_4105100",
+  "name": "Atacama Desert Yungay core (Chile)",
+  "name_en": "Atacama Desert Yungay core (Chile)",
+  "lat": -24.05,
+  "lon": -69.95,
+  "known_analog": true,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 2.688,
+   "r1_thermal_inertia": 0.0203,
+   "r1_barren": 0.1094,
+   "r1_ice_free": 0.0,
+   "r3_ground_ice": 0.0,
+   "r3_cold": 26.9,
+   "r3_dryness": 0.0004,
+   "r4_barren": 0.1094,
+   "r5_roughness": 15.73,
+   "r5_ground_ice": 0.0,
+   "r5_cold": 26.9,
+   "r6_temperature": 26.9
+  },
+  "categories": {
+   "r4_lithology": "su"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.072771,
+     0.156277,
+     0.239783,
+     0.325321,
+     0.40609,
+     0.486858,
+     0.570364,
+     0.653871,
+     0.737377,
+     0.820883,
+     0.905758,
+     0.989264
+    ],
+    "values": [
+     0.0069,
+     0.008,
+     0.0102,
+     0.0109,
+     0.0106,
+     0.0106,
+     0.0087,
+     0.0085,
+     0.0081,
+     0.0078,
+     0.0072,
+     0.0064
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     8.293,
+     45.51
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_1888496",
+  "name": "Lake Salda (Turkey)",
+  "name_en": "Lake Salda (Turkey)",
+  "lat": 37.55,
+  "lon": 29.65,
+  "known_analog": true,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 3.948,
+   "r1_thermal_inertia": 0.0559,
+   "r1_barren": 0.3962,
+   "r1_ice_free": 0.0,
+   "r3_ground_ice": 0.0,
+   "r3_cold": 14.58,
+   "r3_dryness": 0.3699,
+   "r4_barren": 0.3962,
+   "r5_roughness": 25.29,
+   "r5_ground_ice": 0.0,
+   "r5_cold": 14.58,
+   "r6_temperature": 14.58
+  },
+  "categories": {
+   "r4_lithology": "su"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.070364,
+     0.153871,
+     0.237377,
+     0.320883,
+     0.405758,
+     0.489264,
+     0.572771,
+     0.656277,
+     0.739783,
+     0.825321,
+     0.90609,
+     0.986858
+    ],
+    "values": [
+     0.1259,
+     0.1213,
+     0.0583,
+     0.0282,
+     0.03,
+     0.0301,
+     0.0419,
+     0.0359,
+     0.0165,
+     0.0279,
+     0.0392,
+     0.0776
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     6.807,
+     22.35
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_1854692",
+  "name": "Mars Desert Research Station Hanksville (Utah)",
+  "name_en": "Mars Desert Research Station Hanksville (Utah)",
+  "lat": 38.45,
+  "lon": -110.75,
+  "known_analog": true,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 2.533,
+   "r1_thermal_inertia": 0.0277,
+   "r1_barren": 0.0954,
+   "r1_ice_free": 0.0,
+   "r3_ground_ice": 0.0,
+   "r3_cold": 18.14,
+   "r3_dryness": 0.0777,
+   "r4_barren": 0.0954,
+   "r5_roughness": 12.88,
+   "r5_ground_ice": 0.0,
+   "r5_cold": 18.14,
+   "r6_temperature": 18.14
+  },
+  "categories": {
+   "r4_lithology": "su"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.070364,
+     0.153871,
+     0.237377,
+     0.320883,
+     0.405758,
+     0.489264,
+     0.572771,
+     0.656277,
+     0.739783,
+     0.825321,
+     0.90609,
+     0.986858
+    ],
+    "values": [
+     0.0437,
+     0.0491,
+     0.0346,
+     0.018,
+     0.0125,
+     0.0118,
+     0.0124,
+     0.0084,
+     0.0047,
+     0.0059,
+     0.011,
+     0.0261
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     5.226,
+     31.06
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ },
+ {
+  "id": "hf-e_898032",
+  "name": "Askja lava fields Vikrahraun (Iceland)",
+  "name_en": "Askja lava fields Vikrahraun (Iceland)",
+  "lat": 65.05,
+  "lon": -16.75,
+  "known_analog": true,
+  "is_placeholder": false,
+  "values": {
+   "r1_slope_100m": 2.633,
+   "r1_barren": -0.0536,
+   "r1_ice_free": 1.0,
+   "r3_ground_ice": 0.4631,
+   "r3_cold": -5.955,
+   "r3_dryness": 2.86,
+   "r4_barren": -0.0536,
+   "r5_roughness": 14.45,
+   "r5_ground_ice": 0.4631,
+   "r5_cold": -5.955,
+   "r6_temperature": -5.955
+  },
+  "categories": {
+   "r4_lithology": "vb"
+  },
+  "spectra": {},
+  "series": {
+   "r6_dust": {
+    "phase": [
+     0.070364,
+     0.153871,
+     0.237377,
+     0.320883,
+     0.405758,
+     0.489264,
+     0.572771,
+     0.656277,
+     0.739783,
+     0.825321,
+     0.90609,
+     0.986858
+    ],
+    "values": [
+     0.0243,
+     0.0227,
+     0.0187,
+     0.0108,
+     0.007,
+     0.0079,
+     0.0066,
+     0.0045,
+     0.0037,
+     0.0032,
+     0.0053,
+     0.012
+    ],
+    "step_hours": 730.48,
+    "period": "season_ls: 當地季節的太陽黃經/360（MERRA-2 DUEXTTAU 月平均）"
+   },
+   "r6_wind_temp": {
+    "phase": [
+     0.0,
+     0.5
+    ],
+    "values": [
+     -8.255,
+     -3.655
+    ],
+    "step_hours": 12.0,
+    "period": "local_solar_day: MODIS 夜間（≈00:00）與日間（≈12:00）兩點，Terra＋Aqua 2015–2024"
+   }
+  },
+  "planet_values": {}
+ }
+]

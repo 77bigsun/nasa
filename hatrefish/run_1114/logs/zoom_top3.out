@@ -1,0 +1,34 @@
+放大：21 個候選、20 個方框（已下載的會用快取）
+  [1/20] box_+037.700_+0093.640_63x50_0.010_copernicus  20.5 s
+  [2/20] box_+047.300_+0092.480_73x50_0.010_copernicus  21.8 s
+  [3/20] box_+043.600_+0087.800_69x50_0.010_copernicus  28.2 s
+  [4/20] box_+040.200_+0103.220_65x50_0.010_copernicus  31.6 s
+  [5/20] box_+045.700_+0098.900_71x50_0.010_copernicus  20.0 s
+  [6/20] box_+045.200_+0091.900_71x50_0.010_copernicus  32.5 s
+  [7/20] box_+030.500_+0082.660_58x50_0.010_copernicus  21.6 s
+  [8/20] box_+064.200_+0110.080_114x50_0.010_copernicus  27.8 s
+  [9/20] box_+064.500_+0148.680_115x50_0.010_copernicus  26.8 s
+  [10/20] box_+040.700_+0090.420_66x50_0.010_copernicus  17.9 s
+  [11/20] box_+039.700_+0087.920_65x50_0.010_copernicus  21.5 s
+  [12/20] box_+042.800_+0097.310_68x50_0.010_copernicus  29.9 s
+  [13/20] box_+042.400_+0101.720_67x50_0.010_copernicus  21.9 s
+  [14/20] box_+047.400_+0086.680_74x50_0.010_copernicus  25.3 s
+  [15/20] box_+031.200_+0084.260_58x50_0.010_copernicus  20.5 s
+  [16/20] box_+032.700_+0082.660_59x50_0.010_copernicus  19.8 s
+  [17/20] box_+031.600_+0087.660_59x50_0.010_copernicus  19.8 s
+  [18/20] box_+050.200_+0088.260_78x50_0.010_copernicus  25.4 s
+  [19/20] box_+050.100_+0094.760_78x50_0.010_copernicus  25.7 s
+  [20/20] box_+033.700_+0082.650_60x50_0.010_copernicus  19.1 s
+下載完成，126 秒
+地點細節：63 個最佳小區（高解析坡度、雷達）…
+C:\Users\plusl\miniconda3\envs\nasa_hackathon\Lib\site-packages\ee\deprecation.py:215: DeprecationWarning: 
+
+Attention required for UMN/PGC/ArcticDEM/V3/2m_mosaic! You are using a deprecated asset.
+To make sure your code keeps working, please update it.
+This dataset has been superseded by UMN/PGC/ArcticDEM/V4/2m_mosaic
+
+Learn more: https://developers.google.com/earth-engine/datasets/catalog/UMN_PGC_ArcticDEM_V3_2m_mosaic
+
+  warnings.warn(warning, category=DeprecationWarning)
+寫出 C:\Users\plusl\nasa\hatrefish\outputs\zoom
+---- 結束（代碼 0，2.9 分鐘）

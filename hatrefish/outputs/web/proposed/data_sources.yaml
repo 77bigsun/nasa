@@ -1,0 +1,323 @@
+- id: earthdata
+  name: NASA Earthdata Search
+  portal: NASA Earthdata Search
+  official: true
+  url: https://search.earthdata.nasa.gov/
+  status: portal
+  used_by:
+  - m1_rock_proxy
+  - m2_sun_elevation
+  - m3_abs_temp
+  - m3_cold_hours
+  - m3_diurnal_range
+  - m3_max_dark
+  - m4_looseness
+  - m5_grain_proxy
+  - m5_tir_mineral
+  - m5_vswir_mineral
+  - m6_annual_temp
+  - m6_permafrost
+  - r1_barren
+  - r1_ice_free
+  - r1_slope_1_5m
+  - r1_thermal_inertia
+  - r3_cold
+  - r3_ground_ice
+  - r4_barren
+  - r4_hydrated_spectra
+  - r5_cold
+  - r6_dust
+  - r6_temperature
+  - r6_wind_temp
+  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+- id: worldview
+  name: NASA Worldview
+  portal: NASA Worldview
+  official: true
+  url: https://worldview.earthdata.nasa.gov/
+  status: portal
+  used_by: []
+  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+- id: pds
+  name: NASA Planetary Data System (PDS)
+  portal: NASA Planetary Data System (PDS)
+  official: true
+  url: https://pds.nasa.gov/
+  status: portal
+  used_by:
+  - m2_sun_elevation
+  - m3_cold_hours
+  - m3_max_dark
+  - m5_vswir_mineral
+  - r1_rock
+  - r1_slope_1_5m
+  - r1_thermal_inertia
+  - r2_texture
+  - r3_ground_ice
+  - r3_polygons
+  - r3_subsurface_radar
+  - r4_hydrated_spectra
+  - r5_landform
+  - r5_polygon_size
+  - r5_roughness
+  - r6_dust
+  - r6_wind_temp
+  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+- id: lro
+  name: NASA LRO
+  portal: NASA LRO
+  official: true
+  url: https://science.nasa.gov/mission/lro/
+  status: portal
+  used_by:
+  - m1_radar_rough
+  - m1_slope
+  - m2_horizon
+  - m2_illum_fraction
+  - m4_radar_rough
+  - m4_slope_dist
+  - m6_cold_trap
+  - m6_hydrogen
+  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+- id: diviner
+  name: NASA LRO Diviner Lunar Data
+  portal: NASA LRO Diviner Lunar Data
+  official: true
+  url: https://pds-geosciences.wustl.edu/missions/lro/diviner.htm
+  status: portal
+  used_by:
+  - m1_rock_proxy
+  - m3_abs_temp
+  - m3_diurnal_range
+  - m4_looseness
+  - m5_grain_proxy
+  - m5_tir_mineral
+  - m6_annual_temp
+  - m6_ice_depth
+  - m6_permafrost
+  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+- id: copernicus
+  name: Copernicus Data Space Ecosystem
+  portal: Copernicus Data Space Ecosystem
+  official: true
+  url: https://dataspace.copernicus.eu/
+  status: portal
+  used_by:
+  - m1_radar_rough
+  - m1_slope
+  - m2_horizon
+  - m2_illum_fraction
+  - m4_radar_rough
+  - m4_slope_dist
+  - m6_cold_trap
+  - m6_hydrogen
+  - r1_rock
+  - r1_slope_100m
+  - r2_dune_fraction
+  - r2_texture
+  - r3_polygons
+  - r5_landform
+  - r5_polygon_size
+  - r5_roughness
+  - r6_dust
+  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+- id: esa
+  name: ESA Open Science Catalog
+  portal: ESA Open Science Catalog
+  official: true
+  url: https://opensciencedata.esa.int/
+  status: portal
+  used_by: []
+  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+- id: jaxa
+  name: JAXA G-Portal
+  portal: JAXA G-Portal
+  official: true
+  url: https://gportal.jaxa.jp/gpr/
+  status: portal
+  used_by:
+  - r3_subsurface_radar
+  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+- id: rcm
+  name: CSA RADARSAT Constellation Mission (RCM)
+  portal: CSA RADARSAT Constellation Mission (RCM)
+  official: true
+  url: https://www.asc-csa.gc.ca/eng/satellites/radarsat/
+  status: portal
+  used_by: []
+  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+- id: radarsat
+  name: CSA RADARSAT-1
+  portal: CSA RADARSAT-1
+  official: true
+  url: https://www.asc-csa.gc.ca/eng/satellites/radarsat1/
+  status: portal
+  used_by:
+  - r5_roughness
+  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+- id: sar
+  name: CSA SAR Python Tutorial
+  portal: CSA SAR Python Tutorial
+  official: true
+  url: null
+  status: TODO
+  used_by: []
+  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+- id: pgda
+  name: NASA PGDA
+  portal: NASA PGDA
+  official: false
+  url: https://pgda.gsfc.nasa.gov/
+  status: portal
+  used_by:
+  - m2_illum_fraction
+  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+- id: trek
+  name: Moon Trek / Mars Trek
+  portal: Moon Trek / Mars Trek
+  official: false
+  url: https://trek.nasa.gov/
+  status: portal
+  used_by: []
+  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+- id: ctx
+  name: Caltech CTX Global Mosaic
+  portal: Caltech CTX Global Mosaic
+  official: false
+  url: https://murray-lab.caltech.edu/CTX/
+  status: portal
+  used_by:
+  - r1_slope_100m
+  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+- id: themis
+  name: ASU THEMIS Thermal Inertia
+  portal: ASU THEMIS Thermal Inertia
+  official: false
+  url: https://themis.asu.edu/
+  status: portal
+  used_by: []
+  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+- id: swim
+  name: SWIM Subsurface Ice Maps
+  portal: SWIM Subsurface Ice Maps
+  official: false
+  url: https://swim.psi.edu/
+  status: portal
+  used_by:
+  - r3_ground_ice
+  - r5_ground_ice
+  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+- id: mcd
+  name: Mars Climate Database (LMD)
+  portal: Mars Climate Database (LMD)
+  official: false
+  url: https://www-mars.lmd.jussieu.fr/
+  status: portal
+  used_by:
+  - r3_cold
+  - r5_cold
+  - r6_dust
+  - r6_temperature
+  - r6_wind_temp
+  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+- id: power
+  name: NASA POWER
+  portal: NASA POWER
+  official: false
+  url: https://power.larc.nasa.gov/
+  status: portal
+  used_by: []
+  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+- id: cci
+  name: ESA CCI Permafrost
+  portal: ESA CCI Permafrost
+  official: false
+  url: https://climate.esa.int/en/projects/permafrost/
+  status: portal
+  used_by:
+  - m6_ice_depth
+  - r3_ground_ice
+  - r5_ground_ice
+  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+- id: shadowcam
+  name: ShadowCam
+  portal: ShadowCam
+  official: false
+  url: https://www.shadowcam.asu.edu/
+  status: portal
+  used_by: []
+  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+- id: dunes
+  name: USGS Mars Global Dune Database
+  portal: USGS Mars Global Dune Database
+  official: false
+  url: https://astrogeology.usgs.gov/
+  status: portal
+  used_by:
+  - r2_dune_fraction
+  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+- id: rgi
+  name: Randolph Glacier Inventory
+  portal: Randolph Glacier Inventory
+  official: false
+  url: https://www.glims.org/RGI/
+  status: portal
+  used_by:
+  - r5_landform
+  notes: official 指列在競賽 Resources；產品級連結、版本、範圍和授權待團隊確認。
+- id: gmted
+  name: USGS GMTED2010
+  portal: USGS EROS
+  official: false
+  url: https://doi.org/10.3133/ofr20111073
+  status: used
+  notes: Danielson & Gesch (2011)。本隊用 230 m 坡度與 5×5 視窗高程標準差，取 0.1° 格內中位數（Google Earth Engine）。
+  used_by:
+  - r1_slope_100m
+  - r5_roughness
+- id: hrsc_mola
+  name: Mars HRSC MOLA Blended DEM Global 200 m v2
+  portal: USGS Astrogeology
+  official: false
+  url: https://astrogeology.usgs.gov/search/map/mars_mgs_mola_mex_hrsc_blended_dem_global_200m
+  status: used
+  notes: Fergason et al. (2018)。火星端坡度與粗糙度，和地球端同為約 200 m 尺度。
+  used_by:
+  - r1_slope_100m
+  - r5_roughness
+- id: glim
+  name: GLiM Global Lithological Map
+  portal: Universität Hamburg
+  official: false
+  url: https://doi.org/10.1029/2012GC004370
+  status: used
+  notes: Hartmann & Moosdorf (2012)，0.5° 版。只是岩性大類代理。
+  used_by:
+  - r4_lithology
+- id: sim3292
+  name: USGS SIM 3292 Geologic Map of Mars
+  portal: USGS
+  official: false
+  url: https://doi.org/10.3133/sim3292
+  status: used
+  notes: Tanaka et al. (2014)。地質單元依本隊對照表歸成岩性大類；Oxia、Meridiani 用文獻覆寫。
+  used_by:
+  - r4_lithology
+- id: aridity
+  name: Global Aridity Index and PET Database v3
+  portal: figshare
+  official: false
+  url: https://doi.org/10.1038/s41597-022-01493-1
+  status: used
+  notes: Zomer et al. (2022)。南緯 60° 以南沒有資料，補成極乾。
+  used_by:
+  - r3_dryness
+- id: tes
+  name: TES nighttime thermal inertia (Putzig & Mellon 2007)
+  portal: PDS
+  official: true
+  url: https://doi.org/10.1016/j.icarus.2007.05.013
+  status: used
+  notes: 火星熱慣量與全球百分位。
+  used_by:
+  - r1_thermal_inertia
