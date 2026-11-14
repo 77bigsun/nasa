@@ -1,0 +1,32 @@
+services:
+  gateway:
+    volumes:
+      - ./gateway/nginx.dev.conf:/etc/nginx/conf.d/default.conf:ro
+  frontend:
+    build:
+      context: ./frontend
+      target: development
+    volumes:
+      - ./frontend:/app
+      - frontend_modules:/app/node_modules
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:5173/health').then(r=>{if(!r.ok)process.exit(1)})"]
+  catalog:
+    command: python -m uvicorn services.catalog.app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - ./services:/app/services:ro
+  similarity:
+    command: python -m uvicorn services.similarity.app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - ./services:/app/services:ro
+  measurements:
+    command: python -m uvicorn services.measurements.app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - ./services:/app/services:ro
+  planning:
+    command: python -m uvicorn services.planning.app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - ./services:/app/services:ro
+volumes:
+  frontend_modules:
+

@@ -1,0 +1,20 @@
+tau: 0.7
+sigma: 1.0
+sigma_rank: 0.15
+epsilon: 1.0e-06
+similar_cutoff: 0.7
+different_cutoff: 0.4
+weight_scheme: roc
+sensitivity:
+  n_samples: 500
+  alpha: 1.0
+  seed: 42
+integration_bonus:
+- tasks:
+  - M4
+  - M6
+  bonus: 0.05
+map:
+  gibs_url: https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/BlueMarble_ShadedRelief_Bathymetry/default/GoogleMapsCompatible_Level8/{z}/{y}/{x}.jpeg
+  max_zoom: 8
+  fallback_url: https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png

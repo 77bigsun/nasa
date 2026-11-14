@@ -1,0 +1,92 @@
+services:
+  gateway:
+    image: nginx:stable-alpine
+    ports:
+      - "${PORT:-8080}:80"
+    volumes:
+      - ./gateway/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      frontend: {condition: service_healthy}
+      catalog: {condition: service_healthy}
+      measurements: {condition: service_healthy}
+      similarity: {condition: service_healthy}
+      planning: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, wget, -q, -O, /dev/null, http://127.0.0.1/health]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+  frontend:
+    build: ./frontend
+    healthcheck:
+      test: [CMD, wget, -q, -O, /dev/null, http://127.0.0.1/health]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+  catalog:
+    build:
+      context: .
+      dockerfile: services/catalog/Dockerfile
+    environment:
+      DATA_DIR: /data
+      DOCS_DIR: /docs
+      ROOT_PATH: /api/catalog
+    volumes:
+      - ./data:/data:ro
+      - ./docs:/docs:ro
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+  similarity:
+    build:
+      context: .
+      dockerfile: services/similarity/Dockerfile
+    environment:
+      CATALOG_URL: http://catalog:8000
+      CATALOG_CACHE_SECONDS: ${CATALOG_CACHE_SECONDS:-60}
+      MEASUREMENTS_URL: http://measurements:8000
+      MEASUREMENTS_CACHE_SECONDS: ${MEASUREMENTS_CACHE_SECONDS:-60}
+      ROOT_PATH: /api/similarity
+    depends_on:
+      catalog: {condition: service_healthy}
+      measurements: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+  measurements:
+    build:
+      context: .
+      dockerfile: services/measurements/Dockerfile
+    environment:
+      DATA_DIR: /data
+      ROOT_PATH: /api/measurements
+    volumes:
+      - ./data:/data:ro
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+  planning:
+    build:
+      context: .
+      dockerfile: services/planning/Dockerfile
+    environment:
+      CATALOG_URL: http://catalog:8000
+      CATALOG_CACHE_SECONDS: ${CATALOG_CACHE_SECONDS:-60}
+      SIMILARITY_URL: http://similarity:8000
+      ROOT_PATH: /api/planning
+    depends_on:
+      catalog: {condition: service_healthy}
+      similarity: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+# Future ingest worker: see services/ingest/README.md.
+

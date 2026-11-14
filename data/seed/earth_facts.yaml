@@ -1,0 +1,30 @@
+source:
+  title: NASA Planetary Fact Sheet
+  url: https://nssdc.gsfc.nasa.gov/planetary/factsheet/
+notes: 一天採太陽日（非恆星自轉週期）；月球陰影溫度為局部極值，非全球平均。
+rows:
+- name: 重力
+  name_en: Surface gravity
+  earth: 1 g
+  moon: 0.166 g
+  mars: 0.38 g
+- name: 一天長度（太陽日）
+  name_en: Solar day
+  earth: 24 h
+  moon: 29.5 Earth days
+  mars: 24 h 39 min
+- name: 地表氣壓
+  name_en: Surface pressure
+  earth: 1013 hPa
+  moon: ≈ 0 hPa
+  mars: ≈ 6 hPa
+- name: 地表溫度
+  name_en: Surface temperature
+  earth: ≈ 15°C
+  moon: < −230°C / > 100°C
+  mars: ≈ −60°C
+- name: 全球內生磁場
+  name_en: Global intrinsic magnetic field
+  earth: 有 / Yes
+  moon: 無 / No
+  mars: 無 / No

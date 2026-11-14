@@ -1,0 +1,282 @@
+"""Versioned API contracts shared by independently running services."""
+from typing import Any, Literal
+from pydantic import BaseModel, ConfigDict, Field, model_validator
+
+class Record(BaseModel):
+    model_config = ConfigDict(extra='forbid', allow_inf_nan=False)
+
+class SourceRef(Record):
+    name: str
+    official: bool
+    source_id: str
+    url: str | None = None
+
+class Feature(Record):
+    id: str
+    name: str
+    name_en: str = ''
+    type: Literal['threshold','profile','categorical','spectral','timeseries']
+    compare_mode: Literal['absolute','relative_rank'] = 'absolute'
+    unit: str = ''
+    weight: float = Field(default=1, gt=0)
+    threshold: dict[str,float] | None = None
+    planet_threshold: dict[str,float] | None = None
+    out_of_earth_range: bool = False
+    earth_proxy: bool = False
+    planet_data: list[SourceRef] = []
+    earth_data: list[SourceRef] = []
+    notes: list[str] = []
+    stat: str = 'mean'
+    stat_threshold: float = 0
+    rank_stat_threshold: float | None = None
+
+    @model_validator(mode='after')
+    def threshold_required(self):
+        if self.type=='threshold' and self.compare_mode=='absolute' and not self.threshold:
+            raise ValueError('Absolute threshold feature needs a threshold')
+        return self
+
+class TechGap(Record):
+    rank: int
+    bin: int
+    label: str
+
+class Task(Record):
+    id: str
+    mission: Literal['moon','mars']
+    name: str
+    name_en: str = ''
+    verify: str
+    nasa_basis: str
+    nasa_url: str
+    tech_gap: TechGap | None = None
+    order: int = Field(ge=1)
+    manual_adjust: dict[str,str] | None = None
+    notes: list[str] = []
+    features: list[Feature]
+    weights: dict[str,float] = {}
+
+class Link(Record):
+    title: str
+    url: str
+
+class Mission(Record):
+    id: Literal['moon','mars']
+    name: str
+    name_en: str
+    goal: str
+    goal_en: str
+    summary: str
+    summary_en: str
+    nasa_sources: list[Link]
+
+class Site(Record):
+    id: str
+    mission: Literal['moon','mars']
+    name: str
+    name_en: str = ''
+    source: str
+    description: str
+    description_en: str = ''
+    lat: float | None = Field(default=None, ge=-90,le=90)
+    lon: float | None = Field(default=None, ge=0,le=360)
+    coords_status: Literal['todo','approx','exact']
+
+class Series(Record):
+    phase: list[float]
+    values: list[float]
+    step_hours: float = Field(default=1,gt=0)
+    period: str = ''
+
+    @model_validator(mode='after')
+    def valid_arrays(self):
+        if not self.values or len(self.phase)!=len(self.values):
+            raise ValueError('Series needs matching, nonempty phase and values')
+        if self.phase!=sorted(self.phase):raise ValueError('Phase must be sorted')
+        return self
+
+class Measurements(Record):
+    is_placeholder: bool
+    values: dict[str,float | None] = {}
+    categories: dict[str,str] = {}
+    spectra: dict[str,list[float]] = {}
+    series: dict[str,Series] = {}
+    planet_values: dict[str,float] = {}
+
+class Candidate(Measurements):
+    id: str
+    name: str
+    name_en: str = ''
+    lat: float = Field(ge=-90,le=90)
+    lon: float = Field(ge=-180,le=180)
+    known_analog: bool = False
+
+class EarthLimit(Record):
+    condition: str
+    planet: str
+    reproducible: str
+    handling: str
+
+class Constraint(Record):
+    condition: str
+    requirement: str
+    earth_analog: str
+
+class DataSource(Record):
+    id: str
+    name: str
+    portal: str
+    official: bool
+    url: str | None
+    status: str
+    used_by: list[str]
+    notes: str
+
+class Facts(Record):
+    source: Link
+    notes: str
+    rows: list[dict[str,str]]
+
+class Method(Record):
+    settings: dict[str,Any]
+    markdown: str
+
+class Bundle(Record):
+    mission: Mission
+    tasks: list[Task]
+    sites: list[Site]
+    limits: list[EarthLimit]
+    constraints: list[Constraint]
+    settings: dict[str,Any]
+    categorical_tables: dict[str,dict[str,dict[str,float]]]
+
+
+from typing import Literal
+from pydantic import BaseModel, ConfigDict, Field, model_validator
+
+class Model(BaseModel):
+    model_config=ConfigDict(extra='forbid',allow_inf_nan=False)
+
+class ScoreRequest(Model):
+    mission: Literal['moon','mars']
+    site_id: str
+    task_ids: list[str] = Field(min_length=1,max_length=6)
+    weight_scheme: Literal['roc','rank_sum','custom']='roc'
+    custom_weights: dict[str,float] | None=None
+    exclude_known: bool=False
+    tau: float=Field(default=.7,gt=0,le=1)
+
+    @model_validator(mode='after')
+    def unique_tasks(self):
+        if len(set(self.task_ids))!=len(self.task_ids):raise ValueError('Duplicate task IDs')
+        return self
+
+class SensitivityRequest(ScoreRequest):
+    n_samples: int=Field(default=500,ge=1,le=1000)
+    seed: int=Field(default=42,ge=0,le=4294967295)
+    alpha: float=Field(default=1,gt=0,le=100)
+
+class FeatureScore(Model):
+    feature: Feature
+    target_value: float | str | list[float] | None
+    candidate_value: float | str | list[float] | None
+    score: float | None
+    classification: Literal['similar','different','intermediate','not_reproducible','missing']
+    warnings: list[str]=[]
+
+class TaskScore(Model):
+    score: float | None
+    features: list[FeatureScore]
+    similar: list[str]
+    different: list[str]
+    not_reproducible: list[str]
+    available_features: int
+    total_features: int
+
+class CandidateScore(Model):
+    id: str
+    name: str
+    name_en: str
+    lat: float
+    lon: float
+    known_analog: bool
+    is_placeholder: bool
+    overall: float
+    tasks: dict[str,TaskScore]
+
+class Rank(Model):
+    candidate_id: str
+    score: float | None
+
+class TaskRanking(Model):
+    task_id: str
+    rankings: list[Rank]
+
+class Robustness(Model):
+    status: str
+    spearman: float | None
+    distances: list[float]
+    candidate_ids: list[str]
+
+class ScoreResponse(Model):
+    mission: str
+    site_id: str
+    weights: dict[str,float]
+    candidates: list[CandidateScore]
+    task_rankings: list[TaskRanking]
+    limits: list[EarthLimit]
+    robustness: Robustness
+    uses_placeholder: bool
+    warnings: list[str]
+    tau: float
+
+class CoverageRow(Model):
+    task_id: str
+    covered_by: list[Rank]
+
+class Marginal(Model):
+    k: int
+    weighted_coverage: float
+    selected: list[str]
+
+class OptimizeResponse(Model):
+    minimum_sites: int
+    selected: list[str]
+    covered_tasks: list[str]
+    total_tasks: int
+    uncoverable: list[str]
+    coverage: list[CoverageRow]
+    marginal_curve: list[Marginal]
+    objective: float
+    uses_placeholder: bool
+
+class Frequency(Model):
+    candidate_id: str
+    frequency: float
+
+class SensitivityResponse(Model):
+    frequencies: list[Frequency]
+    n_samples: int
+    seed: int
+    k: int
+    uses_placeholder: bool
+
+class Ecdf(Model):
+    x: list[float]
+    y: list[float]
+
+class SeriesResponse(Model):
+    phase: list[float]
+    target: list[float]
+    candidate: list[float]
+    target_ecdf: Ecdf
+    candidate_ecdf: Ecdf
+    wasserstein: float
+    uses_placeholder: bool
+    raw_target: Series
+    raw_candidate: Series
+
+
+class MeasurementSnapshot(Model):
+    candidates: list[Candidate]
+    targets: dict[str,Measurements]
