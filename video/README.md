@@ -1,6 +1,6 @@
 # Project video — Earth Analog Finder (30s)
 
-`EarthAnalogFinder_30s.mp4` — 30.0s, 1920×1080, 30 fps, H.264 + AAC, with voice-over.
+`EarthAnalogFinder_30s.mp4` — 30.0s, 1920×1080, 30 fps, H.264 + AAC, with voice-over and background music.
 
 | Time | Content | Voice-over / subtitles |
 |---|---|---|
@@ -19,7 +19,8 @@ Website footage is from the "final version" of this repo (c089480), captured loc
 ## AI disclosure (Space Apps rules)
 - **Intro shots (0–10s) generated with Google Veo 3.1 (Google Flow).**
 - **Voice-over generated with ElevenLabs** (voice "Brian – Deep, Resonant and Comforting").
-- Everything from 10s to 27s is a real screen capture of this project's website. Earth imagery: NASA. No music; ambience is Veo's generated audio.
+- **Background music generated with Google Flow Music** (Lyria; track "Deep Space Odyssey"), edited to the cuts and ducked under the voice.
+- Everything from 10s to 27s is a real screen capture of this project's website. Earth imagery: NASA. Ambience is Veo's generated audio. No copyrighted music.
 
 ## How it was made
 - Intro: Veo clips (Moon and Mars wide shots and close-ups, Earth match cuts).
