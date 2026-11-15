@@ -12,8 +12,18 @@ r"""
    報告會列出來），算它在該面向的全球排名百分位（面積加權，同分取中間）。比較：同一批地點用總體分數的排名。
    只對 known_analogs.csv 標給它的火星目標算（mars_target_ids）。
 2. 負對照：明顯不像火星的地方（雨林、三角洲、農地），總體分數應該排在後段。
-3. 穩健性：(a) 每個面向權重 ×0.5、×1.5（其他不變）；(b) 拿掉一個面向；(c) 隨機權重（Dirichlet α = 1）。
-   和等權重的前 20 名比：有幾個地點仍在（150 km 內算同一處），等權重第 1 名還在不在前 5。
+3. 穩健性：和等權重的前 20 名比，有幾個地點仍在（150 km 內算同一處），等權重第 1 名還在不在前 5。
+   情境分五類：(a) 每個面向權重 ×0.5、×1.5；(b) 隨機權重（Dirichlet α = 1）；(c) 合成方式：算術平均、
+   取最小值、幾何平均但最低分 0.05（原本 0.01）；(d) 排名池門檻：資料覆蓋 60%、100%（原本 80%）；
+   (e) 地點最小間距 100、300 km（原本 150）。另外單獨列「拿掉一個面向」，不算進穩定度（那是在問另一個問題）。
+   穩定度：等權重前 20 名的每個地點，在每一類情境裡留在前 20 的比例；總穩定度 = 五類的平均（每類權重相同）。
+3b. 方法變體（不算進穩定度，是在問「如果方法這樣改，結果差多少」）：
+   - 植被獨立：地表物質只用岩性＋熱慣量，「無植被」另成一個面向（共 6 個面向）。
+   - 沒冰的目標不算冰：和 R3、R5 同一條標準（SWIM Ci < ice_min_ci = 0.1）的火星目標，總分不含「水與冰」
+     （有冰的目標不變，標「—」）。
+   - 溫度冷到一定程度就滿分：溫度單項分數 ÷ 0.9 後上限 1（地球最冷的 10% 都滿分）。
+   - 三者一起。
+   另外算：植被獨立後第 1 節的「分面向找回」、溫度飽和後「環境面向」前 3 名。
 4. 區域層級的找回：前 20 名有幾成落在任一已知類比地 300 km 內，和「排名池裡隨機一格」的比例（面積加權）相比。
 
 百分位 = 全球排名池中分數比它高的面積比例 + 同分面積比例的一半（0% = 最像、100% = 最不像）。
@@ -32,7 +42,21 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from mars_analog import config, profiles  # noqa: E402
-from mars_analog.novelty import distinct_sites, haversine_km  # noqa: E402
+from mars_analog.novelty import distinct_sites, haversine_km, place_name  # noqa: E402
+from mars_analog.similarity import ice_target  # noqa: E402
+
+TEMP_SAT = 0.9   # 溫度單項分數 ≥ 0.9（地球最冷的 10%）就算滿分
+
+
+def ice_min_ci() -> float:
+    """和 R3、R5 測試同一條標準：SWIM Ci ≥ ice_min_ci 才算有冰（config/mission_tests.yaml）。"""
+    import yaml
+    return float(yaml.safe_load((ROOT / "config" / "mission_tests.yaml").read_text(encoding="utf-8")).get("ice_min_ci", 0.0))
+
+
+def no_ice(t: str) -> bool:
+    it = ice_target(config.mars_targets()[t])
+    return it is not None and it < ice_min_ci()
 
 OUT = ROOT / "outputs" / "validation"
 TZ = timezone(timedelta(hours=8))
@@ -101,19 +125,35 @@ def site_cells(df: pd.DataFrame, lat: float, lon: float, radius: float) -> np.nd
     return idx
 
 
-def weighted_overall(pool: pd.DataFrame, dims: list[str], w: dict) -> np.ndarray:
+def weighted_overall(pool: pd.DataFrame, dims: list[str], w: dict, floor: float = profiles.EPS) -> np.ndarray:
     D = np.column_stack([pool[f"dim_{k}"].values.astype("float64") for k in dims])
     W = np.array([w[k] for k in dims], dtype="float64")[None, :] * np.isfinite(D)
-    L = np.log(np.maximum(np.nan_to_num(D, nan=1.0), profiles.EPS))
+    L = np.log(np.maximum(np.nan_to_num(D, nan=1.0), floor))
     s = W.sum(1)
     return np.where(s > 0, np.exp((W * L).sum(1) / np.where(s > 0, s, 1)), np.nan) * 100
 
 
-def top_sites(pool: pd.DataFrame, score: np.ndarray, n: int = TOP) -> pd.DataFrame:
+def other_overall(pool: pd.DataFrame, dims: list[str], how: str) -> np.ndarray:
+    D = np.column_stack([pool[f"dim_{k}"].values.astype("float64") for k in dims])
+    ok = np.isfinite(D).any(1)
+    with np.errstate(all="ignore"):
+        v = np.nanmean(D, 1) if how == "mean" else np.nanmin(D, 1)
+    return np.where(ok, v * 100, np.nan)
+
+
+def top_sites(pool: pd.DataFrame, score: np.ndarray, n: int = TOP, sep: float = SEP) -> pd.DataFrame:
     p = pool[["lat", "lon"]].copy()
     p["_s"] = score
     p = p[np.isfinite(p._s)]
-    return distinct_sites(p, "_s", n, SEP)
+    return distinct_sites(p, "_s", n, sep)
+
+
+def hits(base: pd.DataFrame, s: pd.DataFrame) -> np.ndarray:
+    """base 的每個地點，在 s 裡有沒有 SEP km 內的地點。"""
+    if not len(s):
+        return np.zeros(len(base), dtype=bool)
+    return np.array([(haversine_km(la, lo, s.lat.values, s.lon.values) <= SEP).any()
+                     for la, lo in zip(base.lat.values, base.lon.values)])
 
 
 def overlap(a: pd.DataFrame, b: pd.DataFrame) -> int:
@@ -122,6 +162,38 @@ def overlap(a: pd.DataFrame, b: pd.DataFrame) -> int:
         return 0
     return int(sum((haversine_km(la, lo, b.lat.values, b.lon.values) <= SEP).any()
                    for la, lo in zip(a.lat.values, a.lon.values)))
+
+
+def variant_dims(frame: pd.DataFrame, t: str, split=False, noice=False, tempsat=False) -> dict:
+    """依方法變體重算各面向分數（和 profiles.score_table 同一種幾何平均與最低分）。"""
+    dims = {k: frame[f"dim_{k}"].values.astype("float64") for k in profiles.evaluable()}
+    sv = lambda v: frame[f"s_{v}"].values.astype("float64")  # noqa: E731
+    if split:
+        surf = [v for v in profiles.dimensions()["surface"]["variables"] if v != "barrenness"]
+        dims["surface"] = profiles._gmean(np.column_stack([sv(v) for v in surf]))[0]
+        dims["bareness"] = sv("barrenness")
+    if tempsat:
+        env = []
+        for v in profiles.dimensions()["environment"]["variables"]:
+            x = sv(v)
+            env.append(np.minimum(1.0, x / TEMP_SAT) if v == "temperature" else x)
+        dims["environment"] = profiles._gmean(np.column_stack(env))[0]
+    if noice and no_ice(t):
+        dims.pop("water_ice", None)
+    return dims
+
+
+def overall_of(dims: dict) -> np.ndarray:
+    o, _ = profiles._gmean(np.column_stack(list(dims.values())))
+    return o * 100
+
+
+def dim_top(frame: pd.DataFrame, dim: np.ndarray, overall: np.ndarray, n: int = 3) -> pd.DataFrame:
+    """某面向的前 n 名（面向分數取到小數第 2 位，同分整體高的優先；同 profiles.top_dimension）。"""
+    p = frame[["lat", "lon"]].copy()
+    p["_k"] = np.round(dim, 2) * 1000 + overall / 1000
+    p = p[np.isfinite(p._k)]
+    return distinct_sites(p, "_k", n, SEP)
 
 
 def validate_target(t: str, draws: int, rng: np.random.Generator) -> dict:
@@ -134,6 +206,8 @@ def validate_target(t: str, draws: int, rng: np.random.Generator) -> dict:
     res = {"target": t, "pool_cells": int(len(pool))}
 
     # 1. 分面向找回
+    split_surf_pool = variant_dims(pool, t, split=True)["surface"]
+    split_surf_df = variant_dims(df, t, split=True)["surface"]
     rows = []
     for r in ka.itertuples():
         if t not in r.targets:
@@ -154,6 +228,16 @@ def validate_target(t: str, draws: int, rng: np.random.Generator) -> dict:
             ok = np.isfinite(col)
             rec["dim_pct"][k] = pct_of(col[ok], w_pool[ok], x)
         rec["best_dim_pct"] = min(rec["dim_pct"].values()) if rec["dim_pct"] else None
+        if "surface" in rec["dim_pct"]:          # 植被獨立後的地表物質（只有岩性＋熱慣量）
+            col = split_surf_pool
+            ok = np.isfinite(col)
+            vs = split_surf_df[idx]
+            if np.isfinite(vs).any():
+                rec["surface_rock_pct"] = pct_of(col[ok], w_pool[ok], float(np.nanmedian(vs)))
+        dp2 = dict(rec["dim_pct"])
+        if "surface_rock_pct" in rec:
+            dp2["surface"] = rec["surface_rock_pct"]
+        rec["best_dim_pct_split"] = min(dp2.values()) if dp2 else None
         rows.append(rec)
     res["known"] = rows
 
@@ -177,26 +261,67 @@ def validate_target(t: str, draws: int, rng: np.random.Generator) -> dict:
     first = base.head(1)
     res["top_scores"] = {"first": float(np.nanmax(base_score)),
                          "twentieth": float(pd.Series(base_score, index=pool.index).loc[base.index].min()) if len(base) else None}
+    fam_hits: dict[str, list] = {k: [] for k in ("weights", "random", "aggregation", "filter", "separation")}
+    scen = []
 
-    def compare(w: dict) -> dict:
-        s = top_sites(pool, weighted_overall(pool, dims, w))
-        return {"overlap": overlap(s, base), "first_in_top5": bool(overlap(first, s.head(5)))}
+    def run(family: str, label: str, p: pd.DataFrame, score: np.ndarray, sep: float = SEP):
+        s = top_sites(p, score, TOP, sep)
+        h = hits(base, s)
+        rec = {"family": family, "label": label, "overlap": int(h.sum()), "first_in_top5": bool(overlap(first, s.head(5)))}
+        scen.append(rec)
+        if family in fam_hits:
+            fam_hits[family].append(h)
+        return rec
 
-    one = []
     for k in dims:
         for f in (0.5, 1.5):
             w = dict(base_w)
             w[k] = f
-            one.append({"dimension": k, "factor": f, **compare(w)})
+            run("weights", f"{k} ×{f:g}", pool, weighted_overall(pool, dims, w))
         w = dict(base_w)
         w[k] = 0.0
-        one.append({"dimension": k, "factor": 0.0, **compare(w)})
-    rnd = [compare(dict(zip(dims, rng.dirichlet(np.ones(len(dims))) * len(dims)))) for _ in range(draws)]
-    res["robust"] = {"one_at_a_time": one,
+        run("drop", f"{k} 拿掉", pool, weighted_overall(pool, dims, w))
+    rnd = [run("random", "隨機權重", pool, weighted_overall(pool, dims, dict(zip(dims, rng.dirichlet(np.ones(len(dims))) * len(dims)))))
+           for _ in range(draws)]
+    run("aggregation", "算術平均", pool, other_overall(pool, dims, "mean"))
+    run("aggregation", "取最小值", pool, other_overall(pool, dims, "min"))
+    run("aggregation", "幾何平均，最低分 0.05", pool, weighted_overall(pool, dims, base_w, floor=0.05))
+    for c in (0.6, 1.0):
+        p = df[(df.confidence >= c) & (df.var_coverage >= c) & np.isfinite(df.overall)]
+        run("filter", f"資料覆蓋 ≥ {c:.0%}", p, weighted_overall(p, dims, base_w))
+    for sep in (100, 300):
+        run("separation", f"最小間距 {sep} km", pool, base_score, sep)
+
+    has_noice = no_ice(t)
+    for lab, kw in (("植被獨立成一個面向", dict(split=True)), ("沒冰的目標不算冰", dict(noice=True)),
+                    ("溫度冷到最冷 10% 就滿分", dict(tempsat=True)), ("三者一起", dict(split=True, noice=True, tempsat=True))):
+        if kw == {"noice": True} and not has_noice:
+            scen.append({"family": "variant", "label": lab, "overlap": None, "first_in_top5": None})
+            continue
+        run("variant", lab, pool, overall_of(variant_dims(pool, t, **kw)))
+    base_env = pool["dim_environment"].values.astype("float64")
+    sat = variant_dims(pool, t, tempsat=True)
+    env_base = dim_top(pool, base_env, base_score)
+    env_sat = dim_top(pool, sat["environment"], overall_of(sat))
+    res["env_top"] = {"base": place_name(env_base.lat.values, env_base.lon.values),
+                      "base_ll": [[round(float(a), 2), round(float(b), 2)] for a, b in zip(env_base.lat, env_base.lon)],
+                      "tempsat": place_name(env_sat.lat.values, env_sat.lon.values),
+                      "tempsat_ll": [[round(float(a), 2), round(float(b), 2)] for a, b in zip(env_sat.lat, env_sat.lon)]}
+    res["noice_applies"] = bool(has_noice)
+
+    names = place_name(base.lat.values, base.lon.values)
+    stab = []
+    for i, (la, lo) in enumerate(zip(base.lat.values, base.lon.values)):
+        fam = {k: float(np.mean([h[i] for h in v])) for k, v in fam_hits.items() if v}
+        stab.append({"rank": i + 1, "lat": round(float(la), 2), "lon": round(float(lo), 2), "name": names[i],
+                     "overall": round(float(base_score[pool.index.get_indexer([base.index[i]])[0]]), 1),
+                     "by_family": fam, "stability": float(np.mean(list(fam.values()))) if fam else None})
+    res["robust"] = {"scenarios": [x for x in scen if x["family"] != "random"],
                      "random": {"draws": draws,
                                 "overlap_median": float(np.median([x["overlap"] for x in rnd])) if rnd else None,
                                 "overlap_p10": float(np.percentile([x["overlap"] for x in rnd], 10)) if rnd else None,
-                                "first_in_top5_share": float(np.mean([x["first_in_top5"] for x in rnd])) if rnd else None}}
+                                "first_in_top5_share": float(np.mean([x["first_in_top5"] for x in rnd])) if rnd else None},
+                     "stability": stab}
 
     # 4. 區域層級的找回
     near_pool = np.zeros(len(pool), dtype=bool)
@@ -266,21 +391,65 @@ def report(results: list[dict], draws: int) -> str:
     # 3
     L += ["## 3. 穩健性（和等權重前 20 名比）", "",
           f"數字 = 前 20 名裡有幾個地點仍在（{SEP} km 內算同一處）；★ = 等權重第 1 名仍在前 5。", ""]
-    dims = profiles.evaluable()
-    head = "| 改法 | " + " | ".join(r["target"] for r in results) + " |"
-    L += [head, "|---|" + "---|" * len(results)]
-    for k in dims:
-        for f, label in ((0.5, "×0.5"), (1.5, "×1.5"), (0.0, "拿掉")):
-            cells = []
-            for r in results:
-                x = next(o for o in r["robust"]["one_at_a_time"] if o["dimension"] == k and o["factor"] == f)
-                cells.append(f"{x['overlap']}{' ★' if x['first_in_top5'] else ''}")
-            L.append(f"| {k} {label} | " + " | ".join(cells) + " |")
+    L += ["| 情境 | " + " | ".join(r["target"] for r in results) + " |", "|---|" + "---|" * len(results)]
+    order = [("weights", "權重"), ("drop", "拿掉面向（不算進穩定度）"), ("aggregation", "合成方式"),
+             ("filter", "排名池門檻"), ("separation", "最小間距"), ("variant", "方法變體（不算進穩定度）")]
+    labels = [(fam, x["label"]) for fam, _ in order for x in results[0]["robust"]["scenarios"] if x["family"] == fam]
+    for fam, lab in labels:
+        cells = []
+        for r in results:
+            x = next(o for o in r["robust"]["scenarios"] if o["family"] == fam and o["label"] == lab)
+            cells.append("—" if x["overlap"] is None else f"{x['overlap']}{' ★' if x['first_in_top5'] else ''}")
+        L.append(f"| {dict(order)[fam]}：{lab} | " + " | ".join(cells) + " |")
     L.append(f"| 隨機權重 {draws} 組：重疊中位數（第 10 百分位） | " + " | ".join(
         f"{_f(r['robust']['random']['overlap_median'])}（{_f(r['robust']['random']['overlap_p10'])}）" for r in results) + " |")
     L.append("| 隨機權重：第 1 名仍在前 5 的比例 | " + " | ".join(
         _f((r['robust']['random']['first_in_top5_share'] or 0) * 100, 0, True) for r in results) + " |")
-    L.append("")
+    L += ["", "### 3.1 每個地點的穩定度", "",
+          "等權重前 10 名，在各類情境裡留在前 20 名的比例。總穩定度 = 五類的平均；"
+          "≥ 80% 可以說「換假設也穩」，< 50% 表示這個地點的名次靠特定假設。", ""]
+    fams = [("weights", "權重 ±50%"), ("random", "隨機權重"), ("aggregation", "合成方式"),
+            ("filter", "排名池門檻"), ("separation", "最小間距")]
+    for r in results:
+        L += [f"**{r['target']}**", "", "| # | 地點 | 總體 | " + " | ".join(n for _, n in fams) + " | 總穩定度 |",
+              "|---|---|---|" + "---|" * len(fams) + "---|"]
+        for x in r["robust"]["stability"][:10]:
+            L.append(f"| {x['rank']} | {x['name'] or ''}（{x['lat']}, {x['lon']}） | {x['overall']} | " + " | ".join(
+                _f(x['by_family'].get(k, 0) * 100, 0, True) for k, _ in fams) + f" | **{_f((x['stability'] or 0) * 100, 0, True)}** |")
+        L.append("")
+    allst = [x["stability"] for r in results for x in r["robust"]["stability"][:10] if x["stability"] is not None]
+    if allst:
+        a = np.array(allst)
+        L += [f"全部目標的前 10 名（{len(a)} 個）：總穩定度 ≥ 80% 的 {int((a >= 0.8).sum())} 個，"
+              f"50–80% 的 {int(((a >= 0.5) & (a < 0.8)).sum())} 個，< 50% 的 {int((a < 0.5).sum())} 個。", ""]
+
+    # 3.2 方法變體細節
+    L += ["### 3.2 方法變體的細節", ""]
+    allk2 = [k for r in results for k in r["known"] if k.get("best_dim_pct_split") is not None]
+    if allk2:
+        a0 = np.array([k["best_dim_pct"] for k in allk2])
+        a1 = np.array([k["best_dim_pct_split"] for k in allk2])
+        L += ["**植被獨立後，第 1 節的分面向找回**（地表物質只看岩性＋熱慣量）", "",
+              "| 指標 | 現在 | 植被獨立 |", "|---|---|---|",
+              f"| 百分位中位數 | {np.median(a0):.1f}% | {np.median(a1):.1f}% |",
+              f"| 前 10% 的比例 | {np.mean(a0 <= 10) * 100:.0f}% | {np.mean(a1 <= 10) * 100:.0f}% |",
+              f"| 前 25% 的比例 | {np.mean(a0 <= 25) * 100:.0f}% | {np.mean(a1 <= 25) * 100:.0f}% |", "",
+              "| 目標 | 已知類比地 | 地表物質：現在 → 只看岩石 |", "|---|---|---|"]
+        for r in results:
+            for k in r["known"]:
+                if "surface" in k["dim_pct"] and "surface_rock_pct" in k:
+                    d = k["surface_rock_pct"] - k["dim_pct"]["surface"]
+                    if abs(d) >= 15:
+                        L.append(f"| {r['target']} | {k['name']} | {k['dim_pct']['surface']:.0f}% → {k['surface_rock_pct']:.0f}% |")
+        L += ["", "（只列變動 ≥ 15 個百分點的。）", ""]
+    L += ["**溫度飽和後，環境面向的前 3 名**", "", "| 目標 | 現在 | 冷到最冷 10% 就滿分 |", "|---|---|---|"]
+    for r in results:
+        e = r["env_top"]
+        L.append(f"| {r['target']} | {'；'.join(n or '' for n in e['base'])} | {'；'.join(n or '' for n in e['tempsat'])} |")
+    L += ["", "注意：環境面向的兩個變數（溫度、乾燥度）都是「越極端越像」，和火星目標無關，所以每個目標的環境前幾名都一樣；"
+          "溫度飽和只會換掉被極端值獨佔的地點，不會讓它隨目標改變。", "",
+          f"「沒冰的目標不算冰」適用 SWIM Ci < {ice_min_ci():g} 的目標（同 R3、R5 的標準）："
+          + "、".join(r["target"] for r in results if r.get("noice_applies")) + "；其他目標標「—」。", ""]
 
     # 4
     L += ["## 4. 區域層級的找回", "",
@@ -300,7 +469,9 @@ def report(results: list[dict], draws: int) -> str:
           "- 沒有「正確答案」：已知類比地多半因為單一特徵被選上，也偏向容易到達的地方。",
           "- 已知類比地只有 28 個，而且 4 個目標（ap105、oxia、meridiani、protonilus）沒有標給它們的已知類比地，第 1 節只涵蓋 jezero、gale、arcadia。",
           "- 面向對照是人工判斷；改 `SITE_DIMS` 就能重算。",
-          "- 負對照只有 8 個點，用來排除「算法亂來」，不能證明排在前面的就是好的類比地。", ""]
+          "- 負對照只有 8 個點，用來排除「算法亂來」，不能證明排在前面的就是好的類比地。",
+          "- 穩健性只改了「怎麼合成、怎麼篩選」，沒有改輸入資料本身（例如溫度 ±1–2 K 的誤差）、單一變數的比較參數，"
+          "也沒有改火星端的目標值；這些列為之後的工作。", ""]
     return "\n".join(L)
 
 

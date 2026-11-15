@@ -1,0 +1,4619 @@
+[
+ {
+  "target": "jezero",
+  "pool_cells": 1436043,
+  "known": [
+   {
+    "site_id": "haughton_crater",
+    "name": "Haughton impact crater Devon Island (Canada)",
+    "dims": [
+     "environment",
+     "water_ice"
+    ],
+    "overall_pct": 86.22644805908203,
+    "dim_pct": {
+     "environment": 41.50538635253906,
+     "water_ice": 97.79486083984375
+    },
+    "best_dim_pct": 41.50538635253906,
+    "best_dim_pct_split": 41.50538635253906
+   },
+   {
+    "site_id": "svalbard_bockfjorden",
+    "name": "Bockfjorden Volcanic Complex Svalbard (Norway)",
+    "dims": [
+     "surface",
+     "water_ice"
+    ],
+    "overall_pct": 99.83967590332031,
+    "dim_pct": {
+     "surface": 0.12074784934520721,
+     "water_ice": 97.79486083984375
+    },
+    "best_dim_pct": 0.12074784934520721,
+    "surface_rock_pct": 21.811311721801758,
+    "best_dim_pct_split": 21.811311721801758
+   },
+   {
+    "site_id": "mdrs_hanksville",
+    "name": "Mars Desert Research Station Hanksville (Utah)",
+    "dims": [
+     "surface",
+     "terrain"
+    ],
+    "overall_pct": 5.860228061676025,
+    "dim_pct": {
+     "surface": 12.509478569030762,
+     "terrain": 14.32625961303711
+    },
+    "best_dim_pct": 12.509478569030762,
+    "surface_rock_pct": 61.39849853515625,
+    "best_dim_pct_split": 14.32625961303711
+   },
+   {
+    "site_id": "black_point_lava_flow",
+    "name": "Black Point Lava Flow (Arizona)",
+    "dims": [
+     "surface",
+     "terrain"
+    ],
+    "overall_pct": 7.681773662567139,
+    "dim_pct": {
+     "surface": 12.995217323303223,
+     "terrain": 24.73589324951172
+    },
+    "best_dim_pct": 12.995217323303223,
+    "surface_rock_pct": 58.6743049621582,
+    "best_dim_pct_split": 24.73589324951172
+   },
+   {
+    "site_id": "mojave_lavic_lake",
+    "name": "Lavic Lake and Sunshine volcanic field Mojave Desert (California)",
+    "dims": [
+     "terrain",
+     "surface"
+    ],
+    "overall_pct": 8.621197700500488,
+    "dim_pct": {
+     "terrain": 20.220640182495117,
+     "surface": 7.902879238128662
+    },
+    "best_dim_pct": 7.902879238128662,
+    "surface_rock_pct": 55.288063049316406,
+    "best_dim_pct_split": 20.220640182495117
+   },
+   {
+    "site_id": "pavilion_lake",
+    "name": "Pavilion Lake (British Columbia)",
+    "dims": [],
+    "overall_pct": 92.57936096191406,
+    "dim_pct": {},
+    "best_dim_pct": null,
+    "best_dim_pct_split": null
+   },
+   {
+    "site_id": "lake_salda",
+    "name": "Lake Salda (Turkey)",
+    "dims": [
+     "surface"
+    ],
+    "overall_pct": 20.940122604370117,
+    "dim_pct": {
+     "surface": 51.009429931640625
+    },
+    "best_dim_pct": 51.009429931640625,
+    "surface_rock_pct": 30.514657974243164,
+    "best_dim_pct_split": 30.514657974243164
+   },
+   {
+    "site_id": "ries_crater",
+    "name": "Ries impact crater (Germany)",
+    "dims": [],
+    "overall_pct": 42.85152816772461,
+    "dim_pct": {},
+    "best_dim_pct": null,
+    "best_dim_pct_split": null
+   },
+   {
+    "site_id": "askja_vikrahraun",
+    "name": "Askja lava fields Vikrahraun (Iceland)",
+    "dims": [
+     "surface",
+     "terrain"
+    ],
+    "overall_pct": 50.71699142456055,
+    "dim_pct": {
+     "surface": 7.752358913421631,
+     "terrain": 23.780683517456055
+    },
+    "best_dim_pct": 7.752358913421631,
+    "surface_rock_pct": 78.03079223632812,
+    "best_dim_pct_split": 23.780683517456055
+   },
+   {
+    "site_id": "lonar_crater",
+    "name": "Lonar crater (India)",
+    "dims": [
+     "surface"
+    ],
+    "overall_pct": 37.147579193115234,
+    "dim_pct": {
+     "surface": 57.349212646484375
+    },
+    "best_dim_pct": 57.349212646484375,
+    "surface_rock_pct": 58.2247428894043,
+    "best_dim_pct_split": 58.2247428894043
+   },
+   {
+    "site_id": "kachchh_matanumadh",
+    "name": "Matanumadh jarosite locality Kachchh (India)",
+    "dims": [
+     "surface"
+    ],
+    "overall_pct": 25.899883270263672,
+    "dim_pct": {
+     "surface": 45.43067932128906
+    },
+    "best_dim_pct": 45.43067932128906,
+    "surface_rock_pct": 16.654582977294922,
+    "best_dim_pct_split": 16.654582977294922
+   },
+   {
+    "site_id": "pilbara_dresser",
+    "name": "Dresser Formation stromatolites Pilbara (Australia)",
+    "dims": [],
+    "overall_pct": 44.06370544433594,
+    "dim_pct": {},
+    "best_dim_pct": null,
+    "best_dim_pct_split": null
+   }
+  ],
+  "negative": [
+   {
+    "name": "Amazon rainforest, Brazil",
+    "lat": -5.0,
+    "lon": -62.0,
+    "overall": 32.5,
+    "pct": 75.68716430664062
+   },
+   {
+    "name": "Congo Basin rainforest, DR Congo",
+    "lat": 0.5,
+    "lon": 22.0,
+    "overall": 41.2,
+    "pct": 59.04642868041992
+   },
+   {
+    "name": "Borneo rainforest, Indonesia",
+    "lat": 0.8,
+    "lon": 114.0,
+    "overall": 9.7,
+    "pct": 99.65030670166016
+   },
+   {
+    "name": "Ganges–Brahmaputra delta, Bangladesh",
+    "lat": 23.8,
+    "lon": 89.5,
+    "overall": 44.1,
+    "pct": 51.525421142578125
+   },
+   {
+    "name": "Mekong Delta, Vietnam",
+    "lat": 10.0,
+    "lon": 105.8,
+    "overall": 31.9,
+    "pct": 76.63868713378906
+   },
+   {
+    "name": "Paris Basin farmland, France",
+    "lat": 48.6,
+    "lon": 2.4,
+    "overall": 46.7,
+    "pct": 45.38335418701172
+   },
+   {
+    "name": "Corn Belt, Iowa, USA",
+    "lat": 42.0,
+    "lon": -93.5,
+    "overall": 47.4,
+    "pct": 43.78387451171875
+   },
+   {
+    "name": "Pasture, central Ireland",
+    "lat": 53.0,
+    "lon": -8.0,
+    "overall": 39.5,
+    "pct": 62.92548370361328
+   }
+  ],
+  "top_scores": {
+   "first": 88.37165708749056,
+   "twentieth": 85.98359891149134
+  },
+  "env_top": {
+   "base": [
+    null,
+    null,
+    null
+   ],
+   "base_ll": [
+    [
+     81.35,
+     -93.25
+    ],
+    [
+     35.25,
+     81.15
+    ],
+    [
+     36.25,
+     79.45
+    ]
+   ],
+   "tempsat": [
+    null,
+    null,
+    null
+   ],
+   "tempsat_ll": [
+    [
+     34.45,
+     81.35
+    ],
+    [
+     36.25,
+     79.45
+    ],
+    [
+     36.05,
+     81.55
+    ]
+   ]
+  },
+  "noice_applies": true,
+  "robust": {
+   "scenarios": [
+    {
+     "family": "weights",
+     "label": "terrain ×0.5",
+     "overlap": 15,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "terrain ×1.5",
+     "overlap": 19,
+     "first_in_top5": false
+    },
+    {
+     "family": "drop",
+     "label": "terrain 拿掉",
+     "overlap": 8,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "surface ×0.5",
+     "overlap": 17,
+     "first_in_top5": false
+    },
+    {
+     "family": "weights",
+     "label": "surface ×1.5",
+     "overlap": 16,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "surface 拿掉",
+     "overlap": 9,
+     "first_in_top5": false
+    },
+    {
+     "family": "weights",
+     "label": "environment ×0.5",
+     "overlap": 19,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "environment ×1.5",
+     "overlap": 18,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "environment 拿掉",
+     "overlap": 2,
+     "first_in_top5": false
+    },
+    {
+     "family": "weights",
+     "label": "water_ice ×0.5",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "water_ice ×1.5",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "water_ice 拿掉",
+     "overlap": 18,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "atmosphere_dust ×0.5",
+     "overlap": 18,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "atmosphere_dust ×1.5",
+     "overlap": 18,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "atmosphere_dust 拿掉",
+     "overlap": 11,
+     "first_in_top5": true
+    },
+    {
+     "family": "aggregation",
+     "label": "算術平均",
+     "overlap": 18,
+     "first_in_top5": true
+    },
+    {
+     "family": "aggregation",
+     "label": "取最小值",
+     "overlap": 10,
+     "first_in_top5": true
+    },
+    {
+     "family": "aggregation",
+     "label": "幾何平均，最低分 0.05",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "filter",
+     "label": "資料覆蓋 ≥ 60%",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "filter",
+     "label": "資料覆蓋 ≥ 100%",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "separation",
+     "label": "最小間距 100 km",
+     "overlap": 19,
+     "first_in_top5": true
+    },
+    {
+     "family": "separation",
+     "label": "最小間距 300 km",
+     "overlap": 13,
+     "first_in_top5": true
+    },
+    {
+     "family": "variant",
+     "label": "植被獨立成一個面向",
+     "overlap": 14,
+     "first_in_top5": true
+    },
+    {
+     "family": "variant",
+     "label": "沒冰的目標不算冰",
+     "overlap": 18,
+     "first_in_top5": true
+    },
+    {
+     "family": "variant",
+     "label": "溫度冷到最冷 10% 就滿分",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "variant",
+     "label": "三者一起",
+     "overlap": 11,
+     "first_in_top5": true
+    }
+   ],
+   "random": {
+    "draws": 100,
+    "overlap_median": 12.0,
+    "overlap_p10": 7.0,
+    "first_in_top5_share": 0.54
+   },
+   "stability": [
+    {
+     "rank": 1,
+     "lat": 37.45,
+     "lon": 93.95,
+     "name": null,
+     "overall": 88.4,
+     "by_family": {
+      "weights": 0.8,
+      "random": 0.64,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.8879999999999999
+    },
+    {
+     "rank": 2,
+     "lat": 43.35,
+     "lon": 88.15,
+     "name": null,
+     "overall": 88.2,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.91,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.982
+    },
+    {
+     "rank": 3,
+     "lat": 39.95,
+     "lon": 103.55,
+     "name": null,
+     "overall": 87.4,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.69,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.8713333333333333
+    },
+    {
+     "rank": 4,
+     "lat": 43.55,
+     "lon": 91.55,
+     "name": null,
+     "overall": 87.1,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.89,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.8780000000000001
+    },
+    {
+     "rank": 5,
+     "lat": 39.45,
+     "lon": 106.95,
+     "name": null,
+     "overall": 87.0,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.69,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.8379999999999999
+    },
+    {
+     "rank": 6,
+     "lat": 40.15,
+     "lon": 97.45,
+     "name": null,
+     "overall": 86.9,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.55,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.8433333333333334
+    },
+    {
+     "rank": 7,
+     "lat": 42.95,
+     "lon": 98.35,
+     "name": null,
+     "overall": 86.9,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.6,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.8533333333333333
+    },
+    {
+     "rank": 8,
+     "lat": 44.35,
+     "lon": 83.75,
+     "name": null,
+     "overall": 86.8,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.59,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.8513333333333332
+    },
+    {
+     "rank": 9,
+     "lat": 42.95,
+     "lon": 95.55,
+     "name": null,
+     "overall": 86.8,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.58,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.8160000000000001
+    },
+    {
+     "rank": 10,
+     "lat": 43.85,
+     "lon": 94.15,
+     "name": null,
+     "overall": 86.6,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.38,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.876
+    },
+    {
+     "rank": 11,
+     "lat": 41.85,
+     "lon": 83.05,
+     "name": null,
+     "overall": 86.5,
+     "by_family": {
+      "weights": 0.8,
+      "random": 0.42,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.7773333333333333
+    },
+    {
+     "rank": 12,
+     "lat": 41.55,
+     "lon": 97.45,
+     "name": null,
+     "overall": 86.3,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.43,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.7193333333333334
+    },
+    {
+     "rank": 13,
+     "lat": 46.95,
+     "lon": 87.25,
+     "name": null,
+     "overall": 86.3,
+     "by_family": {
+      "weights": 0.9,
+      "random": 0.54,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.8879999999999999
+    },
+    {
+     "rank": 14,
+     "lat": 40.45,
+     "lon": 105.75,
+     "name": null,
+     "overall": 86.3,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.7,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.8400000000000001
+    },
+    {
+     "rank": 15,
+     "lat": 44.85,
+     "lon": 92.35,
+     "name": null,
+     "overall": 86.3,
+     "by_family": {
+      "weights": 0.8,
+      "random": 0.49,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.7913333333333333
+    },
+    {
+     "rank": 16,
+     "lat": 41.65,
+     "lon": 54.05,
+     "name": null,
+     "overall": 86.1,
+     "by_family": {
+      "weights": 0.5,
+      "random": 0.34,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.7013333333333334
+    },
+    {
+     "rank": 17,
+     "lat": 41.15,
+     "lon": 90.85,
+     "name": null,
+     "overall": 86.1,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.53,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.906
+    },
+    {
+     "rank": 18,
+     "lat": 41.35,
+     "lon": 87.85,
+     "name": null,
+     "overall": 86.0,
+     "by_family": {
+      "weights": 0.8,
+      "random": 0.42,
+      "aggregation": 0.3333333333333333,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.6106666666666667
+    },
+    {
+     "rank": 19,
+     "lat": 42.05,
+     "lon": 86.15,
+     "name": null,
+     "overall": 86.0,
+     "by_family": {
+      "weights": 0.7,
+      "random": 0.4,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.6533333333333333
+    },
+    {
+     "rank": 20,
+     "lat": 40.35,
+     "lon": 78.15,
+     "name": null,
+     "overall": 86.0,
+     "by_family": {
+      "weights": 0.7,
+      "random": 0.51,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.6753333333333333
+    }
+   ]
+  },
+  "region": {
+   "top_n": 20,
+   "near_known_share": 0.05,
+   "baseline_share": 0.03114602155983448,
+   "enrichment": 1.6053414688596819
+  }
+ },
+ {
+  "target": "gale",
+  "pool_cells": 1436043,
+  "known": [
+   {
+    "site_id": "atacama_yungay",
+    "name": "Atacama Desert Yungay core (Chile)",
+    "dims": [
+     "environment",
+     "surface"
+    ],
+    "overall_pct": 15.8803071975708,
+    "dim_pct": {
+     "environment": 41.27465057373047,
+     "surface": 24.66588020324707
+    },
+    "best_dim_pct": 24.66588020324707,
+    "surface_rock_pct": 73.95941925048828,
+    "best_dim_pct_split": 41.27465057373047
+   },
+   {
+    "site_id": "mdrs_hanksville",
+    "name": "Mars Desert Research Station Hanksville (Utah)",
+    "dims": [
+     "surface",
+     "terrain"
+    ],
+    "overall_pct": 2.492917060852051,
+    "dim_pct": {
+     "surface": 11.756307601928711,
+     "terrain": 23.40813636779785
+    },
+    "best_dim_pct": 11.756307601928711,
+    "surface_rock_pct": 60.275638580322266,
+    "best_dim_pct_split": 23.40813636779785
+   },
+   {
+    "site_id": "utah_navajo_concretions",
+    "name": "Navajo Sandstone hematite concretions southern Utah",
+    "dims": [
+     "surface"
+    ],
+    "overall_pct": 1.0162067413330078,
+    "dim_pct": {
+     "surface": 9.604820251464844
+    },
+    "best_dim_pct": 9.604820251464844,
+    "surface_rock_pct": 30.16095733642578,
+    "best_dim_pct_split": 30.16095733642578
+   },
+   {
+    "site_id": "pilot_valley_utah",
+    "name": "Pilot Valley paleolake playa (Utah)",
+    "dims": [
+     "surface"
+    ],
+    "overall_pct": 2.122735023498535,
+    "dim_pct": {
+     "surface": 7.604665279388428
+    },
+    "best_dim_pct": 7.604665279388428,
+    "surface_rock_pct": 56.85072708129883,
+    "best_dim_pct_split": 56.85072708129883
+   },
+   {
+    "site_id": "death_valley_badwater",
+    "name": "Badwater Basin Death Valley (California)",
+    "dims": [
+     "surface",
+     "environment"
+    ],
+    "overall_pct": 5.781510353088379,
+    "dim_pct": {
+     "surface": 1.2248637676239014,
+     "environment": 38.74156188964844
+    },
+    "best_dim_pct": 1.2248637676239014,
+    "surface_rock_pct": 29.414220809936523,
+    "best_dim_pct_split": 29.414220809936523
+   },
+   {
+    "site_id": "mojave_lavic_lake",
+    "name": "Lavic Lake and Sunshine volcanic field Mojave Desert (California)",
+    "dims": [
+     "terrain",
+     "surface"
+    ],
+    "overall_pct": 1.8928142786026,
+    "dim_pct": {
+     "terrain": 15.263687133789062,
+     "surface": 7.571130275726318
+    },
+    "best_dim_pct": 7.571130275726318,
+    "surface_rock_pct": 54.22703170776367,
+    "best_dim_pct_split": 15.263687133789062
+   },
+   {
+    "site_id": "white_sands_lake_lucero",
+    "name": "White Sands gypsum dunes and Lake Lucero (New Mexico)",
+    "dims": [
+     "surface"
+    ],
+    "overall_pct": 21.806570053100586,
+    "dim_pct": {
+     "surface": 22.539104461669922
+    },
+    "best_dim_pct": 22.539104461669922,
+    "surface_rock_pct": 69.5447998046875,
+    "best_dim_pct_split": 69.5447998046875
+   },
+   {
+    "site_id": "rio_tinto",
+    "name": "Rio Tinto acid river headwaters (Spain)",
+    "dims": [
+     "surface"
+    ],
+    "overall_pct": 5.530045032501221,
+    "dim_pct": {
+     "surface": 45.27546310424805
+    },
+    "best_dim_pct": 45.27546310424805,
+    "surface_rock_pct": 16.404094696044922,
+    "best_dim_pct_split": 16.404094696044922
+   },
+   {
+    "site_id": "askja_vikrahraun",
+    "name": "Askja lava fields Vikrahraun (Iceland)",
+    "dims": [
+     "surface",
+     "terrain"
+    ],
+    "overall_pct": 41.52274703979492,
+    "dim_pct": {
+     "surface": 9.007460594177246,
+     "terrain": 24.59052085876465
+    },
+    "best_dim_pct": 9.007460594177246,
+    "surface_rock_pct": 78.58100891113281,
+    "best_dim_pct_split": 24.59052085876465
+   },
+   {
+    "site_id": "mauna_kea_palagonite",
+    "name": "Mauna Kea upper slopes palagonitic tephra (Hawaii)",
+    "dims": [
+     "surface"
+    ],
+    "overall_pct": 81.1775131225586,
+    "dim_pct": {
+     "surface": 95.15943145751953
+    },
+    "best_dim_pct": 95.15943145751953,
+    "surface_rock_pct": 93.81838989257812,
+    "best_dim_pct_split": 93.81838989257812
+   },
+   {
+    "site_id": "kau_desert_kilauea",
+    "name": "Ka'u Desert Kilauea (Hawaii)",
+    "dims": [
+     "surface"
+    ],
+    "overall_pct": 63.208587646484375,
+    "dim_pct": {
+     "surface": 86.6274642944336
+    },
+    "best_dim_pct": 86.6274642944336,
+    "surface_rock_pct": 78.58100891113281,
+    "best_dim_pct_split": 78.58100891113281
+   },
+   {
+    "site_id": "lonar_crater",
+    "name": "Lonar crater (India)",
+    "dims": [
+     "surface"
+    ],
+    "overall_pct": 47.281436920166016,
+    "dim_pct": {
+     "surface": 57.33565139770508
+    },
+    "best_dim_pct": 57.33565139770508,
+    "surface_rock_pct": 59.08424758911133,
+    "best_dim_pct_split": 59.08424758911133
+   },
+   {
+    "site_id": "kachchh_matanumadh",
+    "name": "Matanumadh jarosite locality Kachchh (India)",
+    "dims": [
+     "surface"
+    ],
+    "overall_pct": 37.97514724731445,
+    "dim_pct": {
+     "surface": 44.14406967163086
+    },
+    "best_dim_pct": 44.14406967163086,
+    "surface_rock_pct": 14.975915908813477,
+    "best_dim_pct_split": 14.975915908813477
+   },
+   {
+    "site_id": "qaidam_dalangtan",
+    "name": "Dalangtan saline playa Qaidam Basin (China)",
+    "dims": [
+     "surface",
+     "environment"
+    ],
+    "overall_pct": 7.199858665466309,
+    "dim_pct": {
+     "surface": 20.499361038208008,
+     "environment": 0.5934948325157166
+    },
+    "best_dim_pct": 0.5934948325157166,
+    "surface_rock_pct": 73.65288543701172,
+    "best_dim_pct_split": 0.5934948325157166
+   },
+   {
+    "site_id": "dallol",
+    "name": "Dallol geothermal area Afar (Ethiopia)",
+    "dims": [
+     "surface"
+    ],
+    "overall_pct": 51.40994644165039,
+    "dim_pct": {
+     "surface": 1.07701575756073
+    },
+    "best_dim_pct": 1.07701575756073,
+    "surface_rock_pct": 30.550687789916992,
+    "best_dim_pct_split": 30.550687789916992
+   },
+   {
+    "site_id": "dhofar_amadee18",
+    "name": "AMADEE-18 field site Marmul area Dhofar (Oman)",
+    "dims": [
+     "terrain",
+     "surface",
+     "environment"
+    ],
+    "overall_pct": 41.728416442871094,
+    "dim_pct": {
+     "terrain": 74.3421401977539,
+     "surface": 15.780538558959961,
+     "environment": 88.62035369873047
+    },
+    "best_dim_pct": 15.780538558959961,
+    "surface_rock_pct": 62.96015548706055,
+    "best_dim_pct_split": 62.96015548706055
+   }
+  ],
+  "negative": [
+   {
+    "name": "Amazon rainforest, Brazil",
+    "lat": -5.0,
+    "lon": -62.0,
+    "overall": 24.7,
+    "pct": 90.66726684570312
+   },
+   {
+    "name": "Congo Basin rainforest, DR Congo",
+    "lat": 0.5,
+    "lon": 22.0,
+    "overall": 33.9,
+    "pct": 67.48358154296875
+   },
+   {
+    "name": "Borneo rainforest, Indonesia",
+    "lat": 0.8,
+    "lon": 114.0,
+    "overall": 13.7,
+    "pct": 99.17023468017578
+   },
+   {
+    "name": "Ganges–Brahmaputra delta, Bangladesh",
+    "lat": 23.8,
+    "lon": 89.5,
+    "overall": 32.2,
+    "pct": 73.53270721435547
+   },
+   {
+    "name": "Mekong Delta, Vietnam",
+    "lat": 10.0,
+    "lon": 105.8,
+    "overall": 25.2,
+    "pct": 89.9019546508789
+   },
+   {
+    "name": "Paris Basin farmland, France",
+    "lat": 48.6,
+    "lon": 2.4,
+    "overall": 38.3,
+    "pct": 50.64524841308594
+   },
+   {
+    "name": "Corn Belt, Iowa, USA",
+    "lat": 42.0,
+    "lon": -93.5,
+    "overall": 35.9,
+    "pct": 59.73540496826172
+   },
+   {
+    "name": "Pasture, central Ireland",
+    "lat": 53.0,
+    "lon": -8.0,
+    "overall": 31.7,
+    "pct": 75.20309448242188
+   }
+  ],
+  "top_scores": {
+   "first": 87.39375994145323,
+   "twentieth": 84.69881089208558
+  },
+  "env_top": {
+   "base": [
+    null,
+    null,
+    null
+   ],
+   "base_ll": [
+    [
+     35.25,
+     81.15
+    ],
+    [
+     81.35,
+     -93.25
+    ],
+    [
+     36.15,
+     79.65
+    ]
+   ],
+   "tempsat": [
+    null,
+    null,
+    null
+   ],
+   "tempsat_ll": [
+    [
+     34.45,
+     81.35
+    ],
+    [
+     36.05,
+     79.85
+    ],
+    [
+     36.05,
+     81.55
+    ]
+   ]
+  },
+  "noice_applies": true,
+  "robust": {
+   "scenarios": [
+    {
+     "family": "weights",
+     "label": "terrain ×0.5",
+     "overlap": 17,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "terrain ×1.5",
+     "overlap": 19,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "terrain 拿掉",
+     "overlap": 9,
+     "first_in_top5": false
+    },
+    {
+     "family": "weights",
+     "label": "surface ×0.5",
+     "overlap": 19,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "surface ×1.5",
+     "overlap": 19,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "surface 拿掉",
+     "overlap": 12,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "environment ×0.5",
+     "overlap": 17,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "environment ×1.5",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "environment 拿掉",
+     "overlap": 13,
+     "first_in_top5": false
+    },
+    {
+     "family": "weights",
+     "label": "water_ice ×0.5",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "water_ice ×1.5",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "water_ice 拿掉",
+     "overlap": 14,
+     "first_in_top5": false
+    },
+    {
+     "family": "weights",
+     "label": "atmosphere_dust ×0.5",
+     "overlap": 19,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "atmosphere_dust ×1.5",
+     "overlap": 19,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "atmosphere_dust 拿掉",
+     "overlap": 17,
+     "first_in_top5": true
+    },
+    {
+     "family": "aggregation",
+     "label": "算術平均",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "aggregation",
+     "label": "取最小值",
+     "overlap": 15,
+     "first_in_top5": false
+    },
+    {
+     "family": "aggregation",
+     "label": "幾何平均，最低分 0.05",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "filter",
+     "label": "資料覆蓋 ≥ 60%",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "filter",
+     "label": "資料覆蓋 ≥ 100%",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "separation",
+     "label": "最小間距 100 km",
+     "overlap": 16,
+     "first_in_top5": true
+    },
+    {
+     "family": "separation",
+     "label": "最小間距 300 km",
+     "overlap": 13,
+     "first_in_top5": true
+    },
+    {
+     "family": "variant",
+     "label": "植被獨立成一個面向",
+     "overlap": 16,
+     "first_in_top5": true
+    },
+    {
+     "family": "variant",
+     "label": "沒冰的目標不算冰",
+     "overlap": 14,
+     "first_in_top5": false
+    },
+    {
+     "family": "variant",
+     "label": "溫度冷到最冷 10% 就滿分",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "variant",
+     "label": "三者一起",
+     "overlap": 11,
+     "first_in_top5": false
+    }
+   ],
+   "random": {
+    "draws": 100,
+    "overlap_median": 14.0,
+    "overlap_p10": 8.0,
+    "first_in_top5_share": 0.51
+   },
+   "stability": [
+    {
+     "rank": 1,
+     "lat": 47.05,
+     "lon": 92.85,
+     "name": null,
+     "overall": 87.4,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.88,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.9093333333333333
+    },
+    {
+     "rank": 2,
+     "lat": 44.95,
+     "lon": 92.25,
+     "name": null,
+     "overall": 87.2,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.97,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.994
+    },
+    {
+     "rank": 3,
+     "lat": 45.45,
+     "lon": 99.25,
+     "name": null,
+     "overall": 87.1,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.9,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.9800000000000001
+    },
+    {
+     "rank": 4,
+     "lat": 46.45,
+     "lon": 90.15,
+     "name": null,
+     "overall": 87.0,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.91,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.882
+    },
+    {
+     "rank": 5,
+     "lat": 43.45,
+     "lon": 92.05,
+     "name": null,
+     "overall": 86.8,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.92,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.984
+    },
+    {
+     "rank": 6,
+     "lat": 45.85,
+     "lon": 94.65,
+     "name": null,
+     "overall": 86.3,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.9,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.8800000000000001
+    },
+    {
+     "rank": 7,
+     "lat": 42.85,
+     "lon": 98.75,
+     "name": null,
+     "overall": 86.2,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.68,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.836
+    },
+    {
+     "rank": 8,
+     "lat": 44.55,
+     "lon": 102.15,
+     "name": null,
+     "overall": 86.2,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.77,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.8873333333333333
+    },
+    {
+     "rank": 9,
+     "lat": 43.25,
+     "lon": 88.25,
+     "name": null,
+     "overall": 86.0,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.65,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.93
+    },
+    {
+     "rank": 10,
+     "lat": 48.35,
+     "lon": 91.15,
+     "name": null,
+     "overall": 85.9,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.68,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.836
+    },
+    {
+     "rank": 11,
+     "lat": 47.25,
+     "lon": 94.95,
+     "name": null,
+     "overall": 85.8,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.75,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.7833333333333333
+    },
+    {
+     "rank": 12,
+     "lat": 42.05,
+     "lon": 83.95,
+     "name": null,
+     "overall": 85.8,
+     "by_family": {
+      "weights": 0.9,
+      "random": 0.56,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.892
+    },
+    {
+     "rank": 13,
+     "lat": 45.55,
+     "lon": 82.35,
+     "name": null,
+     "overall": 85.7,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.67,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.9339999999999999
+    },
+    {
+     "rank": 14,
+     "lat": 43.35,
+     "lon": 96.25,
+     "name": null,
+     "overall": 85.6,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.48,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.8960000000000001
+    },
+    {
+     "rank": 15,
+     "lat": 41.15,
+     "lon": 106.75,
+     "name": null,
+     "overall": 85.5,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.44,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.788
+    },
+    {
+     "rank": 16,
+     "lat": 43.65,
+     "lon": 94.25,
+     "name": null,
+     "overall": 85.3,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.89,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.8780000000000001
+    },
+    {
+     "rank": 17,
+     "lat": 46.65,
+     "lon": 85.65,
+     "name": null,
+     "overall": 85.0,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.49,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.798
+    },
+    {
+     "rank": 18,
+     "lat": 43.65,
+     "lon": 103.65,
+     "name": null,
+     "overall": 84.9,
+     "by_family": {
+      "weights": 0.8,
+      "random": 0.74,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.908
+    },
+    {
+     "rank": 19,
+     "lat": 41.95,
+     "lon": 95.85,
+     "name": null,
+     "overall": 84.8,
+     "by_family": {
+      "weights": 0.7,
+      "random": 0.19,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.0
+     },
+     "stability": 0.5113333333333333
+    },
+    {
+     "rank": 20,
+     "lat": 47.15,
+     "lon": 72.75,
+     "name": null,
+     "overall": 84.7,
+     "by_family": {
+      "weights": 0.5,
+      "random": 0.23,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.5793333333333333
+    }
+   ]
+  },
+  "region": {
+   "top_n": 20,
+   "near_known_share": 0.0,
+   "baseline_share": 0.03114602155983448,
+   "enrichment": 0.0
+  }
+ },
+ {
+  "target": "arcadia",
+  "pool_cells": 1436043,
+  "known": [
+   {
+    "site_id": "mcmurdo_dry_valleys",
+    "name": "McMurdo Dry Valleys (Antarctica)",
+    "dims": [
+     "environment",
+     "water_ice"
+    ],
+    "overall_pct": 87.807861328125,
+    "dim_pct": {
+     "environment": 0.0,
+     "water_ice": 11.881686210632324
+    },
+    "best_dim_pct": 0.0,
+    "best_dim_pct_split": 0.0
+   },
+   {
+    "site_id": "beacon_valley",
+    "name": "Beacon Valley ancient buried ice (Antarctica)",
+    "dims": [
+     "water_ice",
+     "environment"
+    ],
+    "overall_pct": 87.807861328125,
+    "dim_pct": {
+     "water_ice": 11.881686210632324,
+     "environment": 0.0
+    },
+    "best_dim_pct": 0.0,
+    "best_dim_pct_split": 0.0
+   },
+   {
+    "site_id": "haughton_crater",
+    "name": "Haughton impact crater Devon Island (Canada)",
+    "dims": [
+     "environment",
+     "water_ice"
+    ],
+    "overall_pct": 25.046125411987305,
+    "dim_pct": {
+     "environment": 41.50538635253906,
+     "water_ice": 11.881686210632324
+    },
+    "best_dim_pct": 11.881686210632324,
+    "best_dim_pct_split": 11.881686210632324
+   },
+   {
+    "site_id": "axel_heiberg_lost_hammer",
+    "name": "Lost Hammer cold saline spring Axel Heiberg Island (Canada)",
+    "dims": [
+     "environment",
+     "water_ice"
+    ],
+    "overall_pct": 86.33285522460938,
+    "dim_pct": {
+     "environment": 11.724593162536621,
+     "water_ice": 11.881686210632324
+    },
+    "best_dim_pct": 11.724593162536621,
+    "best_dim_pct_split": 11.724593162536621
+   },
+   {
+    "site_id": "svalbard_bockfjorden",
+    "name": "Bockfjorden Volcanic Complex Svalbard (Norway)",
+    "dims": [
+     "surface",
+     "water_ice"
+    ],
+    "overall_pct": 92.12583923339844,
+    "dim_pct": {
+     "surface": 26.41683578491211,
+     "water_ice": 9.542366981506348
+    },
+    "best_dim_pct": 9.542366981506348,
+    "surface_rock_pct": 92.97257995605469,
+    "best_dim_pct_split": 9.542366981506348
+   },
+   {
+    "site_id": "pilot_valley_utah",
+    "name": "Pilot Valley paleolake playa (Utah)",
+    "dims": [
+     "surface"
+    ],
+    "overall_pct": 5.963746547698975,
+    "dim_pct": {
+     "surface": 3.489691734313965
+    },
+    "best_dim_pct": 3.489691734313965,
+    "surface_rock_pct": 27.954673767089844,
+    "best_dim_pct_split": 27.954673767089844
+   },
+   {
+    "site_id": "lanzarote",
+    "name": "Lanzarote volcanic fields (Spain)",
+    "dims": [
+     "surface",
+     "terrain"
+    ],
+    "overall_pct": 12.420469284057617,
+    "dim_pct": {
+     "surface": 0.8281300663948059,
+     "terrain": 71.09404754638672
+    },
+    "best_dim_pct": 0.8281300663948059,
+    "surface_rock_pct": 3.187856435775757,
+    "best_dim_pct_split": 3.187856435775757
+   },
+   {
+    "site_id": "mauna_kea_palagonite",
+    "name": "Mauna Kea upper slopes palagonitic tephra (Hawaii)",
+    "dims": [
+     "surface"
+    ],
+    "overall_pct": 90.83152770996094,
+    "dim_pct": {
+     "surface": 63.51799774169922
+    },
+    "best_dim_pct": 63.51799774169922,
+    "surface_rock_pct": 5.314772605895996,
+    "best_dim_pct_split": 5.314772605895996
+   },
+   {
+    "site_id": "hiseas_mauna_loa",
+    "name": "HI-SEAS habitat Mauna Loa (Hawaii)",
+    "dims": [
+     "terrain",
+     "surface"
+    ],
+    "overall_pct": 46.533565521240234,
+    "dim_pct": {
+     "terrain": 78.33296966552734,
+     "surface": 0.44384780526161194
+    },
+    "best_dim_pct": 0.44384780526161194,
+    "surface_rock_pct": 4.628751277923584,
+    "best_dim_pct_split": 4.628751277923584
+   }
+  ],
+  "negative": [
+   {
+    "name": "Amazon rainforest, Brazil",
+    "lat": -5.0,
+    "lon": -62.0,
+    "overall": 30.4,
+    "pct": 74.2297134399414
+   },
+   {
+    "name": "Congo Basin rainforest, DR Congo",
+    "lat": 0.5,
+    "lon": 22.0,
+    "overall": 30.6,
+    "pct": 73.70586395263672
+   },
+   {
+    "name": "Borneo rainforest, Indonesia",
+    "lat": 0.8,
+    "lon": 114.0,
+    "overall": 9.1,
+    "pct": 99.98042297363281
+   },
+   {
+    "name": "Ganges–Brahmaputra delta, Bangladesh",
+    "lat": 23.8,
+    "lon": 89.5,
+    "overall": 34.5,
+    "pct": 64.88694763183594
+   },
+   {
+    "name": "Mekong Delta, Vietnam",
+    "lat": 10.0,
+    "lon": 105.8,
+    "overall": 33.6,
+    "pct": 66.59130096435547
+   },
+   {
+    "name": "Paris Basin farmland, France",
+    "lat": 48.6,
+    "lon": 2.4,
+    "overall": 37.7,
+    "pct": 56.515342712402344
+   },
+   {
+    "name": "Corn Belt, Iowa, USA",
+    "lat": 42.0,
+    "lon": -93.5,
+    "overall": 39.6,
+    "pct": 51.72746658325195
+   },
+   {
+    "name": "Pasture, central Ireland",
+    "lat": 53.0,
+    "lon": -8.0,
+    "overall": 32.9,
+    "pct": 68.08052825927734
+   }
+  ],
+  "top_scores": {
+   "first": 81.74523242842541,
+   "twentieth": 77.28473576301876
+  },
+  "env_top": {
+   "base": [
+    null,
+    null,
+    null
+   ],
+   "base_ll": [
+    [
+     81.35,
+     -93.25
+    ],
+    [
+     35.25,
+     81.15
+    ],
+    [
+     36.35,
+     78.55
+    ]
+   ],
+   "tempsat": [
+    null,
+    null,
+    null
+   ],
+   "tempsat_ll": [
+    [
+     34.45,
+     81.35
+    ],
+    [
+     36.25,
+     79.45
+    ],
+    [
+     36.05,
+     81.55
+    ]
+   ]
+  },
+  "noice_applies": false,
+  "robust": {
+   "scenarios": [
+    {
+     "family": "weights",
+     "label": "terrain ×0.5",
+     "overlap": 17,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "terrain ×1.5",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "terrain 拿掉",
+     "overlap": 10,
+     "first_in_top5": false
+    },
+    {
+     "family": "weights",
+     "label": "surface ×0.5",
+     "overlap": 15,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "surface ×1.5",
+     "overlap": 16,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "surface 拿掉",
+     "overlap": 5,
+     "first_in_top5": false
+    },
+    {
+     "family": "weights",
+     "label": "environment ×0.5",
+     "overlap": 16,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "environment ×1.5",
+     "overlap": 14,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "environment 拿掉",
+     "overlap": 10,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "water_ice ×0.5",
+     "overlap": 12,
+     "first_in_top5": false
+    },
+    {
+     "family": "weights",
+     "label": "water_ice ×1.5",
+     "overlap": 17,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "water_ice 拿掉",
+     "overlap": 3,
+     "first_in_top5": false
+    },
+    {
+     "family": "weights",
+     "label": "atmosphere_dust ×0.5",
+     "overlap": 16,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "atmosphere_dust ×1.5",
+     "overlap": 17,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "atmosphere_dust 拿掉",
+     "overlap": 13,
+     "first_in_top5": false
+    },
+    {
+     "family": "aggregation",
+     "label": "算術平均",
+     "overlap": 16,
+     "first_in_top5": true
+    },
+    {
+     "family": "aggregation",
+     "label": "取最小值",
+     "overlap": 10,
+     "first_in_top5": false
+    },
+    {
+     "family": "aggregation",
+     "label": "幾何平均，最低分 0.05",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "filter",
+     "label": "資料覆蓋 ≥ 60%",
+     "overlap": 17,
+     "first_in_top5": true
+    },
+    {
+     "family": "filter",
+     "label": "資料覆蓋 ≥ 100%",
+     "overlap": 17,
+     "first_in_top5": true
+    },
+    {
+     "family": "separation",
+     "label": "最小間距 100 km",
+     "overlap": 13,
+     "first_in_top5": true
+    },
+    {
+     "family": "separation",
+     "label": "最小間距 300 km",
+     "overlap": 17,
+     "first_in_top5": true
+    },
+    {
+     "family": "variant",
+     "label": "植被獨立成一個面向",
+     "overlap": 8,
+     "first_in_top5": false
+    },
+    {
+     "family": "variant",
+     "label": "沒冰的目標不算冰",
+     "overlap": null,
+     "first_in_top5": null
+    },
+    {
+     "family": "variant",
+     "label": "溫度冷到最冷 10% 就滿分",
+     "overlap": 19,
+     "first_in_top5": true
+    },
+    {
+     "family": "variant",
+     "label": "三者一起",
+     "overlap": 8,
+     "first_in_top5": false
+    }
+   ],
+   "random": {
+    "draws": 100,
+    "overlap_median": 8.5,
+    "overlap_p10": 3.0,
+    "first_in_top5_share": 0.52
+   },
+   "stability": [
+    {
+     "rank": 1,
+     "lat": 63.95,
+     "lon": 110.65,
+     "name": null,
+     "overall": 81.7,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.74,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.9480000000000001
+    },
+    {
+     "rank": 2,
+     "lat": 30.25,
+     "lon": 82.95,
+     "name": null,
+     "overall": 80.9,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.7,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.8733333333333334
+    },
+    {
+     "rank": 3,
+     "lat": 64.25,
+     "lon": 149.25,
+     "name": null,
+     "overall": 80.9,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.59,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.8513333333333332
+    },
+    {
+     "rank": 4,
+     "lat": 62.05,
+     "lon": 159.65,
+     "name": null,
+     "overall": 80.4,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.57,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.914
+    },
+    {
+     "rank": 5,
+     "lat": 64.45,
+     "lon": 104.25,
+     "name": null,
+     "overall": 80.3,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.66,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.8653333333333333
+    },
+    {
+     "rank": 6,
+     "lat": 48.25,
+     "lon": 92.65,
+     "name": null,
+     "overall": 79.9,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.51,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.9019999999999999
+    },
+    {
+     "rank": 7,
+     "lat": 67.85,
+     "lon": 170.95,
+     "name": null,
+     "overall": 79.9,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.41,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.882
+    },
+    {
+     "rank": 8,
+     "lat": 49.85,
+     "lon": 94.95,
+     "name": null,
+     "overall": 79.8,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.4,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.8800000000000001
+    },
+    {
+     "rank": 9,
+     "lat": 49.95,
+     "lon": 88.65,
+     "name": null,
+     "overall": 79.8,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.37,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.874
+    },
+    {
+     "rank": 10,
+     "lat": 64.95,
+     "lon": 107.25,
+     "name": null,
+     "overall": 79.1,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.55,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.8099999999999999
+    },
+    {
+     "rank": 11,
+     "lat": 62.55,
+     "lon": 104.85,
+     "name": null,
+     "overall": 78.8,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.51,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.8019999999999999
+    },
+    {
+     "rank": 12,
+     "lat": 65.25,
+     "lon": 174.05,
+     "name": null,
+     "overall": 78.3,
+     "by_family": {
+      "weights": 0.8,
+      "random": 0.43,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.7793333333333333
+    },
+    {
+     "rank": 13,
+     "lat": 60.55,
+     "lon": -101.55,
+     "name": null,
+     "overall": 78.1,
+     "by_family": {
+      "weights": 0.7,
+      "random": 0.26,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.7253333333333333
+    },
+    {
+     "rank": 14,
+     "lat": 33.45,
+     "lon": 82.95,
+     "name": null,
+     "overall": 77.8,
+     "by_family": {
+      "weights": 0.7,
+      "random": 0.2,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.6133333333333333
+    },
+    {
+     "rank": 15,
+     "lat": 66.65,
+     "lon": 173.95,
+     "name": null,
+     "overall": 77.7,
+     "by_family": {
+      "weights": 0.6,
+      "random": 0.33,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.0
+     },
+     "stability": 0.5193333333333333
+    },
+    {
+     "rank": 16,
+     "lat": 32.35,
+     "lon": 88.75,
+     "name": null,
+     "overall": 77.6,
+     "by_family": {
+      "weights": 0.6,
+      "random": 0.38,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.6293333333333333
+    },
+    {
+     "rank": 17,
+     "lat": -19.95,
+     "lon": -67.85,
+     "name": null,
+     "overall": 77.6,
+     "by_family": {
+      "weights": 0.4,
+      "random": 0.24,
+      "aggregation": 0.6666666666666666,
+      "filter": 0.5,
+      "separation": 0.5
+     },
+     "stability": 0.4613333333333333
+    },
+    {
+     "rank": 18,
+     "lat": 61.45,
+     "lon": -77.35,
+     "name": null,
+     "overall": 77.6,
+     "by_family": {
+      "weights": 0.6,
+      "random": 0.28,
+      "aggregation": 0.3333333333333333,
+      "filter": 0.0,
+      "separation": 0.5
+     },
+     "stability": 0.3426666666666667
+    },
+    {
+     "rank": 19,
+     "lat": 41.25,
+     "lon": -112.95,
+     "name": null,
+     "overall": 77.5,
+     "by_family": {
+      "weights": 0.4,
+      "random": 0.39,
+      "aggregation": 0.6666666666666666,
+      "filter": 0.0,
+      "separation": 0.5
+     },
+     "stability": 0.3913333333333333
+    },
+    {
+     "rank": 20,
+     "lat": 65.65,
+     "lon": -157.45,
+     "name": null,
+     "overall": 77.3,
+     "by_family": {
+      "weights": 0.2,
+      "random": 0.02,
+      "aggregation": 0.3333333333333333,
+      "filter": 0.5,
+      "separation": 0.5
+     },
+     "stability": 0.31066666666666665
+    }
+   ]
+  },
+  "region": {
+   "top_n": 20,
+   "near_known_share": 0.05,
+   "baseline_share": 0.03114602155983448,
+   "enrichment": 1.6053414688596819
+  }
+ },
+ {
+  "target": "oxia",
+  "pool_cells": 1436043,
+  "known": [],
+  "negative": [
+   {
+    "name": "Amazon rainforest, Brazil",
+    "lat": -5.0,
+    "lon": -62.0,
+    "overall": 31.6,
+    "pct": 69.26520538330078
+   },
+   {
+    "name": "Congo Basin rainforest, DR Congo",
+    "lat": 0.5,
+    "lon": 22.0,
+    "overall": 38.9,
+    "pct": 54.79201126098633
+   },
+   {
+    "name": "Borneo rainforest, Indonesia",
+    "lat": 0.8,
+    "lon": 114.0,
+    "overall": 7.7,
+    "pct": 99.69020080566406
+   },
+   {
+    "name": "Ganges–Brahmaputra delta, Bangladesh",
+    "lat": 23.8,
+    "lon": 89.5,
+    "overall": 43.8,
+    "pct": 45.305721282958984
+   },
+   {
+    "name": "Mekong Delta, Vietnam",
+    "lat": 10.0,
+    "lon": 105.8,
+    "overall": 28.8,
+    "pct": 74.44100952148438
+   },
+   {
+    "name": "Paris Basin farmland, France",
+    "lat": 48.6,
+    "lon": 2.4,
+    "overall": 47.8,
+    "pct": 36.28962326049805
+   },
+   {
+    "name": "Corn Belt, Iowa, USA",
+    "lat": 42.0,
+    "lon": -93.5,
+    "overall": 45.9,
+    "pct": 40.86419677734375
+   },
+   {
+    "name": "Pasture, central Ireland",
+    "lat": 53.0,
+    "lon": -8.0,
+    "overall": 38.7,
+    "pct": 55.33522415161133
+   }
+  ],
+  "top_scores": {
+   "first": 88.86852973274001,
+   "twentieth": 84.10690823104817
+  },
+  "env_top": {
+   "base": [
+    null,
+    null,
+    null
+   ],
+   "base_ll": [
+    [
+     81.35,
+     -93.25
+    ],
+    [
+     35.25,
+     81.15
+    ],
+    [
+     36.25,
+     79.45
+    ]
+   ],
+   "tempsat": [
+    null,
+    null,
+    null
+   ],
+   "tempsat_ll": [
+    [
+     36.25,
+     79.45
+    ],
+    [
+     34.45,
+     81.35
+    ],
+    [
+     36.05,
+     81.55
+    ]
+   ]
+  },
+  "noice_applies": true,
+  "robust": {
+   "scenarios": [
+    {
+     "family": "weights",
+     "label": "terrain ×0.5",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "terrain ×1.5",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "terrain 拿掉",
+     "overlap": 9,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "surface ×0.5",
+     "overlap": 16,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "surface ×1.5",
+     "overlap": 19,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "surface 拿掉",
+     "overlap": 2,
+     "first_in_top5": false
+    },
+    {
+     "family": "weights",
+     "label": "environment ×0.5",
+     "overlap": 17,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "environment ×1.5",
+     "overlap": 16,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "environment 拿掉",
+     "overlap": 8,
+     "first_in_top5": false
+    },
+    {
+     "family": "weights",
+     "label": "water_ice ×0.5",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "water_ice ×1.5",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "water_ice 拿掉",
+     "overlap": 19,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "atmosphere_dust ×0.5",
+     "overlap": 17,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "atmosphere_dust ×1.5",
+     "overlap": 16,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "atmosphere_dust 拿掉",
+     "overlap": 12,
+     "first_in_top5": true
+    },
+    {
+     "family": "aggregation",
+     "label": "算術平均",
+     "overlap": 17,
+     "first_in_top5": true
+    },
+    {
+     "family": "aggregation",
+     "label": "取最小值",
+     "overlap": 15,
+     "first_in_top5": true
+    },
+    {
+     "family": "aggregation",
+     "label": "幾何平均，最低分 0.05",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "filter",
+     "label": "資料覆蓋 ≥ 60%",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "filter",
+     "label": "資料覆蓋 ≥ 100%",
+     "overlap": 18,
+     "first_in_top5": true
+    },
+    {
+     "family": "separation",
+     "label": "最小間距 100 km",
+     "overlap": 19,
+     "first_in_top5": true
+    },
+    {
+     "family": "separation",
+     "label": "最小間距 300 km",
+     "overlap": 13,
+     "first_in_top5": true
+    },
+    {
+     "family": "variant",
+     "label": "植被獨立成一個面向",
+     "overlap": 16,
+     "first_in_top5": true
+    },
+    {
+     "family": "variant",
+     "label": "沒冰的目標不算冰",
+     "overlap": 19,
+     "first_in_top5": true
+    },
+    {
+     "family": "variant",
+     "label": "溫度冷到最冷 10% 就滿分",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "variant",
+     "label": "三者一起",
+     "overlap": 16,
+     "first_in_top5": true
+    }
+   ],
+   "random": {
+    "draws": 100,
+    "overlap_median": 13.0,
+    "overlap_p10": 4.0,
+    "first_in_top5_share": 0.74
+   },
+   "stability": [
+    {
+     "rank": 1,
+     "lat": 37.45,
+     "lon": 93.95,
+     "name": null,
+     "overall": 88.9,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.87,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.974
+    },
+    {
+     "rank": 2,
+     "lat": 40.45,
+     "lon": 90.75,
+     "name": null,
+     "overall": 88.7,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.97,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.994
+    },
+    {
+     "rank": 3,
+     "lat": 39.45,
+     "lon": 88.25,
+     "name": null,
+     "overall": 88.1,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.94,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.8879999999999999
+    },
+    {
+     "rank": 4,
+     "lat": 39.65,
+     "lon": 106.75,
+     "name": null,
+     "overall": 87.6,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.77,
+      "aggregation": 1.0,
+      "filter": 0.5,
+      "separation": 1.0
+     },
+     "stability": 0.8539999999999999
+    },
+    {
+     "rank": 5,
+     "lat": 45.65,
+     "lon": 57.25,
+     "name": null,
+     "overall": 87.3,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.72,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.944
+    },
+    {
+     "rank": 6,
+     "lat": 45.45,
+     "lon": 53.95,
+     "name": null,
+     "overall": 86.9,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.76,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.852
+    },
+    {
+     "rank": 7,
+     "lat": 41.15,
+     "lon": 61.45,
+     "name": null,
+     "overall": 86.1,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.68,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.9359999999999999
+    },
+    {
+     "rank": 8,
+     "lat": 45.45,
+     "lon": 73.75,
+     "name": null,
+     "overall": 85.9,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.7,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.9400000000000001
+    },
+    {
+     "rank": 9,
+     "lat": 41.65,
+     "lon": 57.75,
+     "name": null,
+     "overall": 85.4,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.66,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.932
+    },
+    {
+     "rank": 10,
+     "lat": 38.85,
+     "lon": 56.85,
+     "name": null,
+     "overall": 85.1,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.53,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.8393333333333335
+    },
+    {
+     "rank": 11,
+     "lat": 42.75,
+     "lon": 54.35,
+     "name": null,
+     "overall": 84.9,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.44,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.8879999999999999
+    },
+    {
+     "rank": 12,
+     "lat": 47.25,
+     "lon": 53.05,
+     "name": null,
+     "overall": 84.8,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.48,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.8960000000000001
+    },
+    {
+     "rank": 13,
+     "lat": 23.15,
+     "lon": -16.15,
+     "name": null,
+     "overall": 84.7,
+     "by_family": {
+      "weights": 0.8,
+      "random": 0.46,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.7853333333333333
+    },
+    {
+     "rank": 14,
+     "lat": 48.15,
+     "lon": 62.95,
+     "name": null,
+     "overall": 84.7,
+     "by_family": {
+      "weights": 0.8,
+      "random": 0.56,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.8720000000000001
+    },
+    {
+     "rank": 15,
+     "lat": 21.05,
+     "lon": -17.05,
+     "name": null,
+     "overall": 84.5,
+     "by_family": {
+      "weights": 0.7,
+      "random": 0.32,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.6373333333333333
+    },
+    {
+     "rank": 16,
+     "lat": 43.35,
+     "lon": 51.85,
+     "name": null,
+     "overall": 84.4,
+     "by_family": {
+      "weights": 0.8,
+      "random": 0.37,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.734
+    },
+    {
+     "rank": 17,
+     "lat": 36.95,
+     "lon": 95.65,
+     "name": null,
+     "overall": 84.4,
+     "by_family": {
+      "weights": 0.8,
+      "random": 0.45,
+      "aggregation": 0.3333333333333333,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.6166666666666666
+    },
+    {
+     "rank": 18,
+     "lat": 34.35,
+     "lon": 42.15,
+     "name": null,
+     "overall": 84.3,
+     "by_family": {
+      "weights": 0.7,
+      "random": 0.31,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.7353333333333334
+    },
+    {
+     "rank": 19,
+     "lat": 46.15,
+     "lon": 61.65,
+     "name": null,
+     "overall": 84.2,
+     "by_family": {
+      "weights": 0.8,
+      "random": 0.39,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.6713333333333333
+    },
+    {
+     "rank": 20,
+     "lat": 46.55,
+     "lon": 76.25,
+     "name": null,
+     "overall": 84.1,
+     "by_family": {
+      "weights": 0.7,
+      "random": 0.4,
+      "aggregation": 0.6666666666666666,
+      "filter": 0.5,
+      "separation": 0.0
+     },
+     "stability": 0.4533333333333333
+    }
+   ]
+  },
+  "region": {
+   "top_n": 20,
+   "near_known_share": 0.1,
+   "baseline_share": 0.03114602155983448,
+   "enrichment": 3.2106829377193637
+  }
+ },
+ {
+  "target": "meridiani",
+  "pool_cells": 1436043,
+  "known": [],
+  "negative": [
+   {
+    "name": "Amazon rainforest, Brazil",
+    "lat": -5.0,
+    "lon": -62.0,
+    "overall": 32.8,
+    "pct": 74.87955474853516
+   },
+   {
+    "name": "Congo Basin rainforest, DR Congo",
+    "lat": 0.5,
+    "lon": 22.0,
+    "overall": 40.3,
+    "pct": 58.49077224731445
+   },
+   {
+    "name": "Borneo rainforest, Indonesia",
+    "lat": 0.8,
+    "lon": 114.0,
+    "overall": 9.8,
+    "pct": 99.72543334960938
+   },
+   {
+    "name": "Ganges–Brahmaputra delta, Bangladesh",
+    "lat": 23.8,
+    "lon": 89.5,
+    "overall": 44.3,
+    "pct": 49.9801025390625
+   },
+   {
+    "name": "Mekong Delta, Vietnam",
+    "lat": 10.0,
+    "lon": 105.8,
+    "overall": 33.0,
+    "pct": 74.26119232177734
+   },
+   {
+    "name": "Paris Basin farmland, France",
+    "lat": 48.6,
+    "lon": 2.4,
+    "overall": 47.2,
+    "pct": 42.62335205078125
+   },
+   {
+    "name": "Corn Belt, Iowa, USA",
+    "lat": 42.0,
+    "lon": -93.5,
+    "overall": 46.4,
+    "pct": 44.667781829833984
+   },
+   {
+    "name": "Pasture, central Ireland",
+    "lat": 53.0,
+    "lon": -8.0,
+    "overall": 39.1,
+    "pct": 61.01473617553711
+   }
+  ],
+  "top_scores": {
+   "first": 89.92774586666948,
+   "twentieth": 87.69135834604367
+  },
+  "env_top": {
+   "base": [
+    null,
+    null,
+    null
+   ],
+   "base_ll": [
+    [
+     81.35,
+     -93.25
+    ],
+    [
+     35.25,
+     81.15
+    ],
+    [
+     36.25,
+     79.45
+    ]
+   ],
+   "tempsat": [
+    null,
+    null,
+    null
+   ],
+   "tempsat_ll": [
+    [
+     34.45,
+     81.35
+    ],
+    [
+     36.25,
+     79.45
+    ],
+    [
+     36.05,
+     81.55
+    ]
+   ]
+  },
+  "noice_applies": true,
+  "robust": {
+   "scenarios": [
+    {
+     "family": "weights",
+     "label": "terrain ×0.5",
+     "overlap": 17,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "terrain ×1.5",
+     "overlap": 17,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "terrain 拿掉",
+     "overlap": 13,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "surface ×0.5",
+     "overlap": 16,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "surface ×1.5",
+     "overlap": 16,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "surface 拿掉",
+     "overlap": 10,
+     "first_in_top5": false
+    },
+    {
+     "family": "weights",
+     "label": "environment ×0.5",
+     "overlap": 17,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "environment ×1.5",
+     "overlap": 17,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "environment 拿掉",
+     "overlap": 5,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "water_ice ×0.5",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "water_ice ×1.5",
+     "overlap": 19,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "water_ice 拿掉",
+     "overlap": 16,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "atmosphere_dust ×0.5",
+     "overlap": 17,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "atmosphere_dust ×1.5",
+     "overlap": 18,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "atmosphere_dust 拿掉",
+     "overlap": 11,
+     "first_in_top5": false
+    },
+    {
+     "family": "aggregation",
+     "label": "算術平均",
+     "overlap": 18,
+     "first_in_top5": true
+    },
+    {
+     "family": "aggregation",
+     "label": "取最小值",
+     "overlap": 14,
+     "first_in_top5": true
+    },
+    {
+     "family": "aggregation",
+     "label": "幾何平均，最低分 0.05",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "filter",
+     "label": "資料覆蓋 ≥ 60%",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "filter",
+     "label": "資料覆蓋 ≥ 100%",
+     "overlap": 13,
+     "first_in_top5": true
+    },
+    {
+     "family": "separation",
+     "label": "最小間距 100 km",
+     "overlap": 16,
+     "first_in_top5": true
+    },
+    {
+     "family": "separation",
+     "label": "最小間距 300 km",
+     "overlap": 11,
+     "first_in_top5": true
+    },
+    {
+     "family": "variant",
+     "label": "植被獨立成一個面向",
+     "overlap": 13,
+     "first_in_top5": true
+    },
+    {
+     "family": "variant",
+     "label": "沒冰的目標不算冰",
+     "overlap": 16,
+     "first_in_top5": true
+    },
+    {
+     "family": "variant",
+     "label": "溫度冷到最冷 10% 就滿分",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "variant",
+     "label": "三者一起",
+     "overlap": 12,
+     "first_in_top5": true
+    }
+   ],
+   "random": {
+    "draws": 100,
+    "overlap_median": 11.0,
+    "overlap_p10": 5.0,
+    "first_in_top5_share": 0.54
+   },
+   "stability": [
+    {
+     "rank": 1,
+     "lat": 42.55,
+     "lon": 97.65,
+     "name": null,
+     "overall": 89.9,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.9,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.9800000000000001
+    },
+    {
+     "rank": 2,
+     "lat": 47.15,
+     "lon": 87.05,
+     "name": null,
+     "overall": 89.8,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.71,
+      "aggregation": 1.0,
+      "filter": 0.5,
+      "separation": 1.0
+     },
+     "stability": 0.842
+    },
+    {
+     "rank": 3,
+     "lat": 42.15,
+     "lon": 102.05,
+     "name": null,
+     "overall": 89.8,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.87,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.974
+    },
+    {
+     "rank": 4,
+     "lat": 49.15,
+     "lon": 93.05,
+     "name": null,
+     "overall": 89.4,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.69,
+      "aggregation": 1.0,
+      "filter": 0.5,
+      "separation": 1.0
+     },
+     "stability": 0.8379999999999999
+    },
+    {
+     "rank": 5,
+     "lat": 45.65,
+     "lon": 90.95,
+     "name": null,
+     "overall": 89.1,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.68,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.9359999999999999
+    },
+    {
+     "rank": 6,
+     "lat": 44.85,
+     "lon": 94.35,
+     "name": null,
+     "overall": 89.0,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.69,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.8713333333333333
+    },
+    {
+     "rank": 7,
+     "lat": 37.55,
+     "lon": 93.95,
+     "name": null,
+     "overall": 89.0,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.72,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.944
+    },
+    {
+     "rank": 8,
+     "lat": 46.95,
+     "lon": 74.95,
+     "name": null,
+     "overall": 88.9,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.55,
+      "aggregation": 1.0,
+      "filter": 0.5,
+      "separation": 1.0
+     },
+     "stability": 0.8099999999999999
+    },
+    {
+     "rank": 9,
+     "lat": 43.95,
+     "lon": 96.35,
+     "name": null,
+     "overall": 88.5,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.63,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.826
+    },
+    {
+     "rank": 10,
+     "lat": 42.65,
+     "lon": 95.75,
+     "name": null,
+     "overall": 88.5,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.63,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.7593333333333333
+    },
+    {
+     "rank": 11,
+     "lat": 42.15,
+     "lon": 99.45,
+     "name": null,
+     "overall": 88.2,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.59,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.818
+    },
+    {
+     "rank": 12,
+     "lat": 44.35,
+     "lon": 91.95,
+     "name": null,
+     "overall": 88.1,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.47,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.7939999999999999
+    },
+    {
+     "rank": 13,
+     "lat": 45.15,
+     "lon": 51.45,
+     "name": null,
+     "overall": 88.1,
+     "by_family": {
+      "weights": 0.7,
+      "random": 0.51,
+      "aggregation": 0.6666666666666666,
+      "filter": 0.5,
+      "separation": 1.0
+     },
+     "stability": 0.6753333333333333
+    },
+    {
+     "rank": 14,
+     "lat": 46.55,
+     "lon": 60.85,
+     "name": null,
+     "overall": 88.0,
+     "by_family": {
+      "weights": 0.8,
+      "random": 0.39,
+      "aggregation": 0.6666666666666666,
+      "filter": 0.5,
+      "separation": 1.0
+     },
+     "stability": 0.6713333333333333
+    },
+    {
+     "rank": 15,
+     "lat": 40.85,
+     "lon": 104.35,
+     "name": null,
+     "overall": 88.0,
+     "by_family": {
+      "weights": 0.8,
+      "random": 0.44,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.6813333333333333
+    },
+    {
+     "rank": 16,
+     "lat": 45.95,
+     "lon": 73.55,
+     "name": null,
+     "overall": 87.9,
+     "by_family": {
+      "weights": 0.8,
+      "random": 0.21,
+      "aggregation": 0.6666666666666666,
+      "filter": 0.5,
+      "separation": 0.0
+     },
+     "stability": 0.43533333333333335
+    },
+    {
+     "rank": 17,
+     "lat": 43.95,
+     "lon": 102.85,
+     "name": null,
+     "overall": 87.8,
+     "by_family": {
+      "weights": 0.6,
+      "random": 0.22,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.0
+     },
+     "stability": 0.564
+    },
+    {
+     "rank": 18,
+     "lat": 38.75,
+     "lon": 92.85,
+     "name": null,
+     "overall": 87.8,
+     "by_family": {
+      "weights": 0.7,
+      "random": 0.56,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.0
+     },
+     "stability": 0.6519999999999999
+    },
+    {
+     "rank": 19,
+     "lat": 41.05,
+     "lon": 95.45,
+     "name": null,
+     "overall": 87.8,
+     "by_family": {
+      "weights": 0.5,
+      "random": 0.54,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.6413333333333333
+    },
+    {
+     "rank": 20,
+     "lat": 39.95,
+     "lon": 106.95,
+     "name": null,
+     "overall": 87.7,
+     "by_family": {
+      "weights": 0.5,
+      "random": 0.46,
+      "aggregation": 0.6666666666666666,
+      "filter": 0.5,
+      "separation": 0.5
+     },
+     "stability": 0.5253333333333333
+    }
+   ]
+  },
+  "region": {
+   "top_n": 20,
+   "near_known_share": 0.1,
+   "baseline_share": 0.03114602155983448,
+   "enrichment": 3.2106829377193637
+  }
+ },
+ {
+  "target": "protonilus",
+  "pool_cells": 1436043,
+  "known": [],
+  "negative": [
+   {
+    "name": "Amazon rainforest, Brazil",
+    "lat": -5.0,
+    "lon": -62.0,
+    "overall": 29.3,
+    "pct": 87.94387817382812
+   },
+   {
+    "name": "Congo Basin rainforest, DR Congo",
+    "lat": 0.5,
+    "lon": 22.0,
+    "overall": 32.9,
+    "pct": 80.53004455566406
+   },
+   {
+    "name": "Borneo rainforest, Indonesia",
+    "lat": 0.8,
+    "lon": 114.0,
+    "overall": 14.9,
+    "pct": 99.02611541748047
+   },
+   {
+    "name": "Ganges–Brahmaputra delta, Bangladesh",
+    "lat": 23.8,
+    "lon": 89.5,
+    "overall": 32.2,
+    "pct": 82.27971649169922
+   },
+   {
+    "name": "Mekong Delta, Vietnam",
+    "lat": 10.0,
+    "lon": 105.8,
+    "overall": 32.1,
+    "pct": 82.39785766601562
+   },
+   {
+    "name": "Paris Basin farmland, France",
+    "lat": 48.6,
+    "lon": 2.4,
+    "overall": 41.1,
+    "pct": 54.8081169128418
+   },
+   {
+    "name": "Corn Belt, Iowa, USA",
+    "lat": 42.0,
+    "lon": -93.5,
+    "overall": 40.6,
+    "pct": 56.520538330078125
+   },
+   {
+    "name": "Pasture, central Ireland",
+    "lat": 53.0,
+    "lon": -8.0,
+    "overall": 37.6,
+    "pct": 67.4598617553711
+   }
+  ],
+  "top_scores": {
+   "first": 86.61019547277736,
+   "twentieth": 83.28383442631726
+  },
+  "env_top": {
+   "base": [
+    null,
+    null,
+    null
+   ],
+   "base_ll": [
+    [
+     35.25,
+     81.15
+    ],
+    [
+     81.35,
+     -93.25
+    ],
+    [
+     34.15,
+     82.15
+    ]
+   ],
+   "tempsat": [
+    null,
+    null,
+    null
+   ],
+   "tempsat_ll": [
+    [
+     34.45,
+     81.35
+    ],
+    [
+     36.05,
+     79.85
+    ],
+    [
+     36.05,
+     81.55
+    ]
+   ]
+  },
+  "noice_applies": false,
+  "robust": {
+   "scenarios": [
+    {
+     "family": "weights",
+     "label": "terrain ×0.5",
+     "overlap": 19,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "terrain ×1.5",
+     "overlap": 18,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "terrain 拿掉",
+     "overlap": 14,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "surface ×0.5",
+     "overlap": 17,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "surface ×1.5",
+     "overlap": 18,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "surface 拿掉",
+     "overlap": 8,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "environment ×0.5",
+     "overlap": 16,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "environment ×1.5",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "environment 拿掉",
+     "overlap": 10,
+     "first_in_top5": false
+    },
+    {
+     "family": "weights",
+     "label": "water_ice ×0.5",
+     "overlap": 18,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "water_ice ×1.5",
+     "overlap": 18,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "water_ice 拿掉",
+     "overlap": 8,
+     "first_in_top5": false
+    },
+    {
+     "family": "weights",
+     "label": "atmosphere_dust ×0.5",
+     "overlap": 15,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "atmosphere_dust ×1.5",
+     "overlap": 16,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "atmosphere_dust 拿掉",
+     "overlap": 4,
+     "first_in_top5": false
+    },
+    {
+     "family": "aggregation",
+     "label": "算術平均",
+     "overlap": 18,
+     "first_in_top5": true
+    },
+    {
+     "family": "aggregation",
+     "label": "取最小值",
+     "overlap": 13,
+     "first_in_top5": false
+    },
+    {
+     "family": "aggregation",
+     "label": "幾何平均，最低分 0.05",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "filter",
+     "label": "資料覆蓋 ≥ 60%",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "filter",
+     "label": "資料覆蓋 ≥ 100%",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "separation",
+     "label": "最小間距 100 km",
+     "overlap": 15,
+     "first_in_top5": true
+    },
+    {
+     "family": "separation",
+     "label": "最小間距 300 km",
+     "overlap": 12,
+     "first_in_top5": true
+    },
+    {
+     "family": "variant",
+     "label": "植被獨立成一個面向",
+     "overlap": 14,
+     "first_in_top5": true
+    },
+    {
+     "family": "variant",
+     "label": "沒冰的目標不算冰",
+     "overlap": null,
+     "first_in_top5": null
+    },
+    {
+     "family": "variant",
+     "label": "溫度冷到最冷 10% 就滿分",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "variant",
+     "label": "三者一起",
+     "overlap": 14,
+     "first_in_top5": true
+    }
+   ],
+   "random": {
+    "draws": 100,
+    "overlap_median": 10.0,
+    "overlap_p10": 4.0,
+    "first_in_top5_share": 0.55
+   },
+   "stability": [
+    {
+     "rank": 1,
+     "lat": 30.95,
+     "lon": 84.55,
+     "name": null,
+     "overall": 86.6,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.8,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.96
+    },
+    {
+     "rank": 2,
+     "lat": 32.45,
+     "lon": 82.95,
+     "name": null,
+     "overall": 86.3,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.78,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.8560000000000001
+    },
+    {
+     "rank": 3,
+     "lat": 31.35,
+     "lon": 87.95,
+     "name": null,
+     "overall": 85.8,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.74,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.9480000000000001
+    },
+    {
+     "rank": 4,
+     "lat": 33.75,
+     "lon": 80.65,
+     "name": null,
+     "overall": 85.6,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.64,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.9280000000000002
+    },
+    {
+     "rank": 5,
+     "lat": 41.65,
+     "lon": -107.35,
+     "name": null,
+     "overall": 85.3,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.62,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.924
+    },
+    {
+     "rank": 6,
+     "lat": -32.35,
+     "lon": -69.15,
+     "name": null,
+     "overall": 84.8,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.43,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.8193333333333334
+    },
+    {
+     "rank": 7,
+     "lat": 41.65,
+     "lon": -109.45,
+     "name": null,
+     "overall": 84.5,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.58,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.916
+    },
+    {
+     "rank": 8,
+     "lat": 32.25,
+     "lon": 86.55,
+     "name": null,
+     "overall": 84.4,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.58,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.8160000000000001
+    },
+    {
+     "rank": 9,
+     "lat": 38.25,
+     "lon": -111.15,
+     "name": null,
+     "overall": 84.3,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.46,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.892
+    },
+    {
+     "rank": 10,
+     "lat": 38.75,
+     "lon": -108.25,
+     "name": null,
+     "overall": 84.2,
+     "by_family": {
+      "weights": 0.9,
+      "random": 0.45,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.7033333333333334
+    },
+    {
+     "rank": 11,
+     "lat": 43.35,
+     "lon": -107.15,
+     "name": null,
+     "overall": 84.0,
+     "by_family": {
+      "weights": 0.9,
+      "random": 0.44,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.768
+    },
+    {
+     "rank": 12,
+     "lat": 38.55,
+     "lon": -117.35,
+     "name": null,
+     "overall": 84.0,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.45,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.8233333333333335
+    },
+    {
+     "rank": 13,
+     "lat": 44.95,
+     "lon": -108.25,
+     "name": null,
+     "overall": 84.0,
+     "by_family": {
+      "weights": 0.9,
+      "random": 0.41,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.7953333333333333
+    },
+    {
+     "rank": 14,
+     "lat": 49.15,
+     "lon": 90.75,
+     "name": null,
+     "overall": 83.7,
+     "by_family": {
+      "weights": 0.6,
+      "random": 0.5,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.82
+    },
+    {
+     "rank": 15,
+     "lat": 32.15,
+     "lon": 79.45,
+     "name": null,
+     "overall": 83.5,
+     "by_family": {
+      "weights": 0.7,
+      "random": 0.41,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.722
+    },
+    {
+     "rank": 16,
+     "lat": 39.95,
+     "lon": -109.25,
+     "name": null,
+     "overall": 83.5,
+     "by_family": {
+      "weights": 0.8,
+      "random": 0.36,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.0
+     },
+     "stability": 0.5653333333333334
+    },
+    {
+     "rank": 17,
+     "lat": 28.15,
+     "lon": 88.55,
+     "name": null,
+     "overall": 83.5,
+     "by_family": {
+      "weights": 0.9,
+      "random": 0.38,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.6893333333333334
+    },
+    {
+     "rank": 18,
+     "lat": 43.55,
+     "lon": -109.35,
+     "name": null,
+     "overall": 83.4,
+     "by_family": {
+      "weights": 0.7,
+      "random": 0.34,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.0
+     },
+     "stability": 0.5413333333333333
+    },
+    {
+     "rank": 19,
+     "lat": 32.15,
+     "lon": 81.15,
+     "name": null,
+     "overall": 83.4,
+     "by_family": {
+      "weights": 0.6,
+      "random": 0.41,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.0
+     },
+     "stability": 0.5353333333333333
+    },
+    {
+     "rank": 20,
+     "lat": 46.05,
+     "lon": 92.85,
+     "name": null,
+     "overall": 83.3,
+     "by_family": {
+      "weights": 0.5,
+      "random": 0.46,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.6253333333333333
+    }
+   ]
+  },
+  "region": {
+   "top_n": 20,
+   "near_known_share": 0.2,
+   "baseline_share": 0.03114602155983448,
+   "enrichment": 6.4213658754387275
+  }
+ },
+ {
+  "target": "ap105",
+  "pool_cells": 1436043,
+  "known": [],
+  "negative": [
+   {
+    "name": "Amazon rainforest, Brazil",
+    "lat": -5.0,
+    "lon": -62.0,
+    "overall": 28.5,
+    "pct": 76.02848052978516
+   },
+   {
+    "name": "Congo Basin rainforest, DR Congo",
+    "lat": 0.5,
+    "lon": 22.0,
+    "overall": 31.3,
+    "pct": 69.90447998046875
+   },
+   {
+    "name": "Borneo rainforest, Indonesia",
+    "lat": 0.8,
+    "lon": 114.0,
+    "overall": 8.2,
+    "pct": 99.98088836669922
+   },
+   {
+    "name": "Ganges–Brahmaputra delta, Bangladesh",
+    "lat": 23.8,
+    "lon": 89.5,
+    "overall": 35.3,
+    "pct": 59.97938537597656
+   },
+   {
+    "name": "Mekong Delta, Vietnam",
+    "lat": 10.0,
+    "lon": 105.8,
+    "overall": 30.7,
+    "pct": 71.10552978515625
+   },
+   {
+    "name": "Paris Basin farmland, France",
+    "lat": 48.6,
+    "lon": 2.4,
+    "overall": 37.5,
+    "pct": 54.350460052490234
+   },
+   {
+    "name": "Corn Belt, Iowa, USA",
+    "lat": 42.0,
+    "lon": -93.5,
+    "overall": 38.2,
+    "pct": 52.37234878540039
+   },
+   {
+    "name": "Pasture, central Ireland",
+    "lat": 53.0,
+    "lon": -8.0,
+    "overall": 30.7,
+    "pct": 71.12061309814453
+   }
+  ],
+  "top_scores": {
+   "first": 86.06286589277087,
+   "twentieth": 78.34276632256181
+  },
+  "env_top": {
+   "base": [
+    null,
+    null,
+    null
+   ],
+   "base_ll": [
+    [
+     81.35,
+     -93.25
+    ],
+    [
+     35.25,
+     81.15
+    ],
+    [
+     36.35,
+     78.55
+    ]
+   ],
+   "tempsat": [
+    null,
+    null,
+    null
+   ],
+   "tempsat_ll": [
+    [
+     34.45,
+     81.35
+    ],
+    [
+     36.25,
+     79.45
+    ],
+    [
+     36.05,
+     81.55
+    ]
+   ]
+  },
+  "noice_applies": false,
+  "robust": {
+   "scenarios": [
+    {
+     "family": "weights",
+     "label": "terrain ×0.5",
+     "overlap": 16,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "terrain ×1.5",
+     "overlap": 19,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "terrain 拿掉",
+     "overlap": 10,
+     "first_in_top5": false
+    },
+    {
+     "family": "weights",
+     "label": "surface ×0.5",
+     "overlap": 16,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "surface ×1.5",
+     "overlap": 16,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "surface 拿掉",
+     "overlap": 11,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "environment ×0.5",
+     "overlap": 19,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "environment ×1.5",
+     "overlap": 18,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "environment 拿掉",
+     "overlap": 15,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "water_ice ×0.5",
+     "overlap": 14,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "water_ice ×1.5",
+     "overlap": 17,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "water_ice 拿掉",
+     "overlap": 6,
+     "first_in_top5": false
+    },
+    {
+     "family": "weights",
+     "label": "atmosphere_dust ×0.5",
+     "overlap": 19,
+     "first_in_top5": true
+    },
+    {
+     "family": "weights",
+     "label": "atmosphere_dust ×1.5",
+     "overlap": 18,
+     "first_in_top5": true
+    },
+    {
+     "family": "drop",
+     "label": "atmosphere_dust 拿掉",
+     "overlap": 13,
+     "first_in_top5": true
+    },
+    {
+     "family": "aggregation",
+     "label": "算術平均",
+     "overlap": 18,
+     "first_in_top5": true
+    },
+    {
+     "family": "aggregation",
+     "label": "取最小值",
+     "overlap": 8,
+     "first_in_top5": true
+    },
+    {
+     "family": "aggregation",
+     "label": "幾何平均，最低分 0.05",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "filter",
+     "label": "資料覆蓋 ≥ 60%",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "filter",
+     "label": "資料覆蓋 ≥ 100%",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "separation",
+     "label": "最小間距 100 km",
+     "overlap": 16,
+     "first_in_top5": true
+    },
+    {
+     "family": "separation",
+     "label": "最小間距 300 km",
+     "overlap": 11,
+     "first_in_top5": true
+    },
+    {
+     "family": "variant",
+     "label": "植被獨立成一個面向",
+     "overlap": 15,
+     "first_in_top5": true
+    },
+    {
+     "family": "variant",
+     "label": "沒冰的目標不算冰",
+     "overlap": null,
+     "first_in_top5": null
+    },
+    {
+     "family": "variant",
+     "label": "溫度冷到最冷 10% 就滿分",
+     "overlap": 20,
+     "first_in_top5": true
+    },
+    {
+     "family": "variant",
+     "label": "三者一起",
+     "overlap": 15,
+     "first_in_top5": true
+    }
+   ],
+   "random": {
+    "draws": 100,
+    "overlap_median": 10.0,
+    "overlap_p10": 7.0,
+    "first_in_top5_share": 0.65
+   },
+   "stability": [
+    {
+     "rank": 1,
+     "lat": 49.95,
+     "lon": 88.65,
+     "name": null,
+     "overall": 86.1,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.97,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.994
+    },
+    {
+     "rank": 2,
+     "lat": 49.85,
+     "lon": 95.15,
+     "name": null,
+     "overall": 85.4,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.91,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.982
+    },
+    {
+     "rank": 3,
+     "lat": 33.45,
+     "lon": 82.95,
+     "name": null,
+     "overall": 84.1,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.79,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.8913333333333334
+    },
+    {
+     "rank": 4,
+     "lat": 48.35,
+     "lon": 92.65,
+     "name": null,
+     "overall": 83.7,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.97,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.8939999999999999
+    },
+    {
+     "rank": 5,
+     "lat": 48.55,
+     "lon": 88.55,
+     "name": null,
+     "overall": 82.7,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.6,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.7533333333333333
+    },
+    {
+     "rank": 6,
+     "lat": 37.35,
+     "lon": 90.05,
+     "name": null,
+     "overall": 82.6,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.64,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.9280000000000002
+    },
+    {
+     "rank": 7,
+     "lat": 34.55,
+     "lon": 84.65,
+     "name": null,
+     "overall": 81.8,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.61,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.7553333333333333
+    },
+    {
+     "rank": 8,
+     "lat": 33.95,
+     "lon": 80.85,
+     "name": null,
+     "overall": 81.6,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.52,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.7373333333333333
+    },
+    {
+     "rank": 9,
+     "lat": 35.05,
+     "lon": 90.65,
+     "name": null,
+     "overall": 81.5,
+     "by_family": {
+      "weights": 0.8,
+      "random": 0.52,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.7973333333333333
+    },
+    {
+     "rank": 10,
+     "lat": 39.15,
+     "lon": 73.35,
+     "name": null,
+     "overall": 81.2,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.4,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.8800000000000001
+    },
+    {
+     "rank": 11,
+     "lat": 48.75,
+     "lon": 97.75,
+     "name": null,
+     "overall": 81.0,
+     "by_family": {
+      "weights": 1.0,
+      "random": 0.79,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.858
+    },
+    {
+     "rank": 12,
+     "lat": 35.95,
+     "lon": 86.45,
+     "name": null,
+     "overall": 80.9,
+     "by_family": {
+      "weights": 0.8,
+      "random": 0.47,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.7873333333333333
+    },
+    {
+     "rank": 13,
+     "lat": 35.75,
+     "lon": 89.05,
+     "name": null,
+     "overall": 80.0,
+     "by_family": {
+      "weights": 0.8,
+      "random": 0.47,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.6873333333333334
+    },
+    {
+     "rank": 14,
+     "lat": 30.35,
+     "lon": 82.75,
+     "name": null,
+     "overall": 79.8,
+     "by_family": {
+      "weights": 0.9,
+      "random": 0.41,
+      "aggregation": 1.0,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.8620000000000001
+    },
+    {
+     "rank": 15,
+     "lat": 38.75,
+     "lon": 96.45,
+     "name": null,
+     "overall": 79.5,
+     "by_family": {
+      "weights": 0.9,
+      "random": 0.45,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.8033333333333333
+    },
+    {
+     "rank": 16,
+     "lat": 44.95,
+     "lon": 98.35,
+     "name": null,
+     "overall": 79.5,
+     "by_family": {
+      "weights": 0.9,
+      "random": 0.41,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 1.0
+     },
+     "stability": 0.7953333333333333
+    },
+    {
+     "rank": 17,
+     "lat": 32.45,
+     "lon": 88.65,
+     "name": null,
+     "overall": 79.3,
+     "by_family": {
+      "weights": 0.8,
+      "random": 0.34,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.5
+     },
+     "stability": 0.6613333333333333
+    },
+    {
+     "rank": 18,
+     "lat": 46.75,
+     "lon": 99.95,
+     "name": null,
+     "overall": 79.0,
+     "by_family": {
+      "weights": 0.7,
+      "random": 0.37,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.0
+     },
+     "stability": 0.5473333333333332
+    },
+    {
+     "rank": 19,
+     "lat": 32.35,
+     "lon": 90.45,
+     "name": null,
+     "overall": 78.5,
+     "by_family": {
+      "weights": 0.4,
+      "random": 0.34,
+      "aggregation": 0.6666666666666666,
+      "filter": 1.0,
+      "separation": 0.0
+     },
+     "stability": 0.48133333333333334
+    },
+    {
+     "rank": 20,
+     "lat": 40.65,
+     "lon": 74.95,
+     "name": null,
+     "overall": 78.3,
+     "by_family": {
+      "weights": 0.2,
+      "random": 0.05,
+      "aggregation": 0.3333333333333333,
+      "filter": 1.0,
+      "separation": 0.0
+     },
+     "stability": 0.31666666666666665
+    }
+   ]
+  },
+  "region": {
+   "top_n": 20,
+   "near_known_share": 0.05,
+   "baseline_share": 0.03114602155983448,
+   "enrichment": 1.6053414688596819
+  }
+ }
+]
