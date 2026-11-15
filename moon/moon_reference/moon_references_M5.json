@@ -1,0 +1,24 @@
+{
+  "_note": "Moon-side substitute references for M5 (team decision 2026-11-14). Not Shackleton in-situ truth.",
+  "S_T_christiansen_feature": {
+    "source": "Lucey et al. 2021 improved Diviner CF map, DIVGLOB1701_CX3.tiff, Zenodo 10.5281/zenodo.4558235 (32 ppd, +/-70 deg)",
+    "region": "65-70 S, all longitudes except 140-240 E (South Pole-Aitken basin excluded)",
+    "pixels": 1331200,
+    "lambda_CF_um_median": 8.1277,
+    "lambda_CF_um_mean": 8.1304,
+    "lambda_CF_um_sd": 0.0508,
+    "lambda_CF_um_p16_p84": [8.0862, 8.1728],
+    "including_SPA_median": 8.1391
+  },
+  "S_G_grain_size": {
+    "source": "PlanetGSD 1.0 (Zhang & Li 2026, ESSD 18, 4983; Figshare 10.6084/m9.figshare.32362083, CC BY 4.0), sheet 'Apollo 16' (sieve data, Descartes highlands drive-tube subsamples)",
+    "samples": ["60006,205","60006,202","60006,193","60006,185","60006,184","60007,206","60007,217","60007,221","60007,222","60007,232","60007,243","60007,248","60009,458","60009,457"],
+    "bins_mm": [">1", "0.5-1", "0.25-0.5", "0.075-0.25", "0.02-0.075", "<0.02"],
+    "mass_fraction_mean": [0.029, 0.077, 0.121, 0.291, 0.277, 0.205],
+    "mass_fraction_sd": [0.056, 0.024, 0.012, 0.078, 0.036, 0.065]
+  },
+  "S_V_vnir_swir": {
+    "source": "Chandrayaan-1 M3 L2 reflectance M3G20090713T233042_V01_RFL (PDS CH1M3_0004)",
+    "file": "moon_m3_south_polar_reference.csv"
+  }
+}

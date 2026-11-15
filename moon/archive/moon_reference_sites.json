@@ -1,0 +1,54 @@
+{
+ "Site01": {
+  "label": "Shackleton 連接脊 Connecting Ridge（Moon Base I 目的地）",
+  "tile_km": 16,
+  "relief_m": 2477,
+  "slope_frac": [
+   0.098,
+   0.2757,
+   0.3035,
+   0.2206,
+   0.1023,
+   0
+  ]
+ },
+ "Site11": {
+  "label": "de Gerlache 撞擊坑邊緣（de Gerlache Rim）",
+  "tile_km": 16,
+  "relief_m": 2619,
+  "slope_frac": [
+   0.0468,
+   0.173,
+   0.326,
+   0.3121,
+   0.142,
+   0.0002
+  ]
+ },
+ "Site20": {
+  "label": "Mons Mouton Plateau（舊名 Leibnitz Beta Plateau）",
+  "tile_km": 16,
+  "relief_m": 3664,
+  "slope_frac": [
+   0.1076,
+   0.3109,
+   0.2404,
+   0.1423,
+   0.1988,
+   0.0001
+  ]
+ },
+ "Site23": {
+  "label": "Malapert Massif",
+  "tile_km": 21,
+  "relief_m": 4267,
+  "slope_frac": [
+   0.0427,
+   0.1238,
+   0.1998,
+   0.2478,
+   0.3833,
+   0.0026
+  ]
+ }
+}
