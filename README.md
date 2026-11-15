@@ -1,159 +1,169 @@
 # Earth Analog Finder
 
-A NASA Space Apps Challenge 2026 team prototype for connecting lunar and Martian mission requirements to terrestrial analog sites. The project lives directly in `D:\NASA`.
+**Find Earth environments for testing technologies and planning research for the Moon and Mars.**
 
-The website switches between English and Traditional Chinese with the header language button and remembers the choice. Developer documentation and source definitions remain English. New browsers default to Traditional Chinese. The system runs as **six services, including four backend APIs**. Start with the [service guide](docs/SERVICES.md), [Docker instructions](docs/DOCKER.md), and [GitHub setup](docs/GIT.md). The [specification](docs/SPEC.md) incorporates the original brief and subsequent service and language requirements.
+Earth Analog Finder is a NASA Space Apps Challenge 2026 team prototype that connects planetary mission requirements with terrestrial analog environments. Choose a mission task, explore the relevant lunar or Martian study areas, and compare Earth locations using environmental data and explainable similarity scores. The system helps teams shortlist test environments, inspect the evidence behind a ranking, and plan a network of complementary Earth test sites.
 
-**The lunar experience is task-first.** `/moon` shows M2, M3, M4 and M6. Each task opens a page with lunar suitability first, then two groups: the three most-similar new Earth candidates and three least-similar locations. The original visual style, maps, evidence drawer and English/Traditional Chinese switch are retained. Scores use the supplied 0-100 scale. See [LUNAR_METHOD.md](docs/LUNAR_METHOD.md).
+[Watch the 30-second project video](video/EarthAnalogFinder_30s.mp4)
 
-The current lunar handoff supplies 19599 global land cells, a 4881-cell permanent-snow/ice mask and independent M4 terrain references for all ten lunar locations. M2/M3/M6 retain common Earth-achievable anchors; M4 changes with the chosen lunar reference. The source's revised feature weights and fitness factors are used, with raw inputs, per-feature similarity, formulas and sources inspectable in the drawer. Known analogs are a separate validation group.
+## What you can do
 
-Lunar suitability is a preliminary team assessment from published studies, not mission certification. M4's final comparison covers 135 eligible entries from the supplied fine-terrain pool, not a complete global 30 m search; its global grid is relief-only screening. Imported files retain hashes and a reproducible importer. Source JSON nonfinite values and the M4 ice-mask inconsistency are corrected explicitly. Earth names are approximate grid labels.
+- **Explore by mission purpose.** Start with the conditions an experiment needs, such as low-angle sunlight, extreme cold, difficult terrain, subsurface ice, minerals, or dust.
+- **Compare contrasting environments.** View the three most-similar new Earth candidates alongside the three least-similar locations, with additional rankings and known-analog validation results available to inspect.
+- **Understand each score.** Open a location's evidence drawer to see feature similarities, available inputs, formulas, data sources, and an animated, interactive radar chart.
+- **See the locations.** Preview regional imagery by hovering over or focusing an Earth candidate. Open lunar site information and images, and explore candidate locations on maps.
+- **Plan a Mars test network.** Find a minimum set of Earth locations covering the selected target's evaluated tests within the supplied candidate pool.
+- **Read in either language.** Switch between English and Traditional Chinese throughout the website. The language button remembers your choice.
 
-`/mars` retains the observed-comparison wizard. Earlier observed and 15-site lunar research APIs remain available as separate archived models. Old lunar shared links preserve their site selection and open the first retained selected task. The home globe keeps its original design. The active lunar map shows the six comparison locations; the full source grid is downloadable.
+## Explore the Moon
 
-The active lunar temperature profile now uses **2023 MODIS Terra MOD11C3 monthly surface-temperature summaries from Worldview/GIBS**, replacing POWER air temperatures and removing ERA5 from active lunar inputs. Monthly maxima/minima are not daily extremes. Twelve no-LST cells are excluded from M3/M6 and masked in the downloadable grid; 403 cells have partial-month coverage, shown in the drawer. Colour-derived GIBS estimates and the polar-zero difference convention remain explicitly labelled. M2/M4 inputs, ten references, anchors and weights are unchanged. See the [current method](data/content/lunar-modis.en.md).
+The Moon explorer starts with four mission tasks.
 
-## Start with Docker
+| Mission task | Conditions compared |
+|---|---|
+| Low-sun illumination and solar power | Noon solar elevation and the fraction of daylight at low solar angles |
+| Long darkness and extreme cold | Continuous darkness, minimum monthly nighttime surface temperature, and day-night temperature difference |
+| Steep-slope and extreme-terrain mobility | Slope distribution and terrain relief within a 16 km study window |
+| Cold-trap ice resource prospecting | Mean and maximum monthly surface temperature, plus a frozen-ground proxy |
 
-Open Docker Desktop with Linux containers, then run from the project root:
+Each task page presents two stages.
 
-```powershell
-cd D:\NASA
+1. **Explore lunar suitability.** Inspect the team's priority, conditional, and insufficient-evidence assessments across ten lunar reference areas. Click a site to view its information, credited imagery, coordinates, and research sources.
+2. **Compare Earth environments.** Inspect the three most-similar new candidates and three least-similar comparisons, then open the map, additional candidates, or known-analog validation group.
+
+Terrain rankings use the selected lunar site's own reference. The other three tasks use shared Earth-achievable environmental anchors. The page explains the team-defined feature weights, their purpose-based rationale, data-fitness adjustments, and the separate 120-hour continuous-darkness check.
+
+![Lunar Earth-candidate comparison with a floating regional image preview](docs/images/earth-candidate-preview.jpg)
+
+*Earth candidate cards show feature similarities and a fading regional image preview on hover or keyboard focus.*
+
+## Explore Mars
+
+The Mars explorer follows a three-step workflow.
+
+1. **Choose tests.** Select landing surface conditions, shallow subsurface ice exploration, hydrated mineral identification, glacial and periglacial terrain, or dust and near-surface weather. The visual-navigation option displays its current data-availability status.
+2. **Choose a study area.** Explore Jezero, Gale, Arcadia, Oxia, Meridiani, Protonilus, or AP-105 and their applicable tests.
+3. **Compare and plan.** Inspect task-specific Earth rankings, top-versus-bottom comparisons, known analogs, the optional global score map, and a five-dimension environmental profile covering terrain, surface, environment, water/ice, and atmosphere/dust.
+
+The current Mars dataset contains **27 scored target/test pairs**. Ice-related tests use the supplied SWIM ice-consistency eligibility rule. Each scored task combines its applicable feature similarities using an equal-weight geometric mean.
+
+The planning section selects a minimum-cardinality Earth test network from the supplied pool. Its relative coverage threshold is 90% of each demand's best pool score. You can inspect coverage for the selected target and tests, plus the supplied all-target reference network.
+
+![Mars Earth-candidate evidence drawer with an interactive feature-similarity radar](docs/images/mars-feature-radar.jpg)
+
+*The evidence drawer plots individual feature similarities on a 0–1 scale. Chart tooltips, indicator selection, and replayable animation help explain the candidate's environmental profile. This screenshot shows the Traditional Chinese interface.*
+
+## Data and explainable comparisons
+
+The website brings together the team's reviewed lunar and Mars result packages, source metadata, and credited imagery. Each explorer exposes the method and evidence supporting its comparisons.
+
+| Area | Current inputs and approach |
+|---|---|
+| Moon | 19,599 global land cells, a MODIS permanent-snow/ice mask, ten lunar terrain references, and 2023 MODIS Terra monthly surface-temperature summaries derived through NASA Worldview/GIBS |
+| Mars | Reviewed Earth/Mars comparisons using MODIS, MERRA-2, ASTER, USGS terrain and geology, TES, SWIM, Mars Climate Database, and complementary permafrost, glacier, lithology, and aridity datasets |
+| Lunar scoring | Feature similarities aggregated with team-defined weights and supplied data-fitness coefficients |
+| Mars scoring | Equal-weight geometric mean of all applicable feature similarities, with a 0.01 floor |
+| Evidence | Per-feature values and similarities where supplied, source links, observation coverage, proxy labels, and downloadable results |
+
+The comparisons support regional screening and experiment planning. Spatial resolution, observation periods, missing inputs, and proxy definitions determine how each result can be used. Lunar thermal inputs are monthly surface-temperature summaries, and the current ice-resource indicator is a temperature-based frozen-ground proxy. The method pages document these details alongside the weighting rationale and formulas.
+
+The **Method**, **Data Sources**, and **Research Plan** pages provide bilingual explanations, dataset provenance, and research context. Regional imagery includes NASA GIBS/Worldview products, with individual credits available in the interface.
+
+- [Lunar data and comparison method](docs/LUNAR_METHOD.md)
+- [Lunar feature weights and rationale](data/content/lunar-weights.en.md)
+- [Current MODIS temperature method](data/content/lunar-modis.en.md)
+- [Mars data and comparison method](docs/MARS_METHOD.md)
+- [Earth imagery and radar behavior](docs/EARTH_IMAGERY.md)
+
+## Run locally
+
+Install Docker Desktop, start it with Linux containers, and run these commands in a terminal.
+
+```bash
+git clone https://github.com/77bigsun/nasa.git
+cd nasa
 docker compose up --build -d
 docker compose ps
 ```
 
-Open **http://localhost:8080** when the services are healthy.
+If you already have the repository, run the Compose commands from its root folder. Open [http://localhost:8080](http://localhost:8080) once the services are healthy.
 
-- Catalog API: http://localhost:8080/api/catalog/docs
-- Measurements API: http://localhost:8080/api/measurements/docs
-- Similarity API: http://localhost:8080/api/similarity/docs
-- Planning API: http://localhost:8080/api/planning/docs
-- Gateway health: http://localhost:8080/health
+The default configuration works immediately. To choose another port, copy `.env.example` to `.env` and set `PORT`.
 
-The defaults work without an `.env` file. To change the port, copy `.env.example` to `.env` and edit `PORT`. Compose configures the API root paths and mounts data and documentation read-only. Backend images use Python 3.12; the frontend build uses Node 26 LTS.
+```bash
+docker compose logs -f
+docker compose down
+```
 
-Follow logs with `docker compose logs -f`. Stop the stack with `docker compose down`.
+The first command follows service logs. The second stops the stack. Windows setup and troubleshooting are covered in the [Docker guide](docs/DOCKER.md).
 
-### Development mode
+## How the system is built
 
-```powershell
+The application runs as **six Docker services, including four backend APIs**.
+
+| Service | Responsibility |
+|---|---|
+| `gateway` | Nginx entry point and routing for the website and APIs |
+| `frontend` | Vue 3 and TypeScript interface, bilingual navigation, maps, imagery, and charts |
+| `catalog` | Mission definitions, study areas, feature descriptions, source metadata, and method content |
+| `measurements` | Reviewed measurements, imported results, global grids, and candidate pools |
+| `similarity` | Version-checked comparison results, rankings, and feature evidence |
+| `planning` | Earth test-network selection and coverage analysis |
+
+The backend uses Python and FastAPI. The frontend uses Vite, Leaflet, ECharts, Three.js/globe.gl, and KaTeX. The similarity service obtains definitions and results from the catalog and measurements APIs, and the planning service consumes comparison results. The frontend presents these results and handles user interaction.
+
+API documentation is available under `/api/catalog/docs`, `/api/measurements/docs`, `/api/similarity/docs`, and `/api/planning/docs` on the local website. See the [service guide](docs/SERVICES.md) for responsibilities and data flow.
+
+## Development
+
+Start the development stack with frontend hot reload and backend reload.
+
+```bash
+docker compose down
 docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
 ```
 
-This uses Vite hot reload, uvicorn reload, and source bind mounts. After adding frontend dependencies, rebuild the image. If the existing node_modules volume still contains old packages, update it with:
+After frontend dependencies change, rebuild the image. Refresh a stale development dependency volume with the following command.
 
-```powershell
+```bash
 docker compose -f docker-compose.yml -f docker-compose.dev.yml run --rm --no-deps frontend npm ci
 ```
 
-### Windows development without Docker
+<details>
+<summary>Run directly with Python and Node.js on Windows</summary>
 
-Use Python 3.12 or later and Node 22 or later, subject to the pinned packages' supported versions. The local validation environment used Python 3.13.1 and Node 26.13.0.
+Install Python 3.12 or later and Node.js 22 or later, then run from the repository root.
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
-Set-Location frontend
-npm.cmd ci
-Set-Location ..
+npm.cmd --prefix frontend ci
 .\.venv\Scripts\python.exe scripts/dev.py
 ```
 
-The launcher manages catalog (8001), similarity (8002), measurements (8003), planning (8004), and Vite (8080). Open **http://localhost:8080**. Ctrl+C stops the local processes; logs are written to the ignored `.runtime/` directory. `PORT` overrides only the frontend port. Keep ports 8001-8004 available. Frontend hot reload is enabled; restart after backend changes or use `scripts/dev.py --reload`.
+Open http://localhost:8080. The launcher starts all four APIs and the frontend. Keep ports 8001–8004 available. Ctrl+C stops the processes, and logs are written to `.runtime/`. Use `scripts/dev.py --reload` for backend reload.
 
-This workspace already has `.venv` and `frontend/node_modules` installed. These local dependencies are excluded from Git.
+</details>
 
-## Features
+The main project directories are listed below.
 
-- `/`: a NASA Blue Marble globe, mission selection, and Earth/Moon/Mars comparisons with source attribution. A static globe is available when WebGL initialization fails. Solar days are distinguished from sidereal rotation periods.
-- `/moon`: four task cards, followed by lunar suitability and two groups of three Earth locations. Each task preserves source scores and exposes raw inputs, similarity, feature weights and data fitness. All ten lunar sites have their own M4 reference.
-- `/mars`: the original three-step observed-comparison wizard, with threshold and weight controls, evidence details, coverage and sensitivity analysis.
-- Top-ten rankings for each test, overall rankings, and a candidate detail drawer with feature values, scores, similarities, differences, Earth limitations, sources, and proxy flags.
-- Phase overlays, empirical CDFs, and Wasserstein distance. The Leaflet map uses NASA GIBS first and falls back to OpenStreetMap. Planetary targets use a coordinate diagram without an Earth basemap.
-- Adjustable coverage threshold, ROC/rank-sum/custom weights, and known-analog exclusion. Minimum set cover, coverage tables, uncoverable tests, marginal benefit, and Dirichlet sensitivity analysis.
-- `/method`: English and Traditional Chinese methodology served by catalog, with KaTeX formulas.
-- `/data`: 32 product-level records with access requirements, resolution, feature usage and import status; observed terrain tables, ECDFs, meteorology cycles and SHA-256 provenance; plus the original 22 portals. The `official` flag denotes inclusion in the competition Resources list, not institutional ownership.
-- `/research`: ten bilingual sections from the supplied planning PDFs and lunar-method revision, separating implemented scope, partial work, proposed work and source-review needs.
-- Persistent English / Traditional Chinese navigation, task descriptions, source notes, limitations, research content and methodology.
-- Visible evidence coverage, source metadata and missing/incompatible-data notices. Actual inputs and scoped models never imply certified sites or new discoveries.
+| Directory | Contents |
+|---|---|
+| `frontend/src/` | Website pages, components, charts, and translations |
+| `services/` | Catalog, measurements, similarity, planning, and optional ingestion code |
+| `data/lunar/` and `data/mars/` | Reviewed source packages, imported results, and provenance |
+| `data/content/` and `data/locales/` | Method explanations and bilingual content |
+| `scripts/` | Data importers, local development launcher, and validation tools |
+| `docs/` | Methods, architecture, setup, and validation records |
+| `video/` | Project introduction and website demonstration |
 
-## Project structure
-
-```text
-gateway/                         Production and development Nginx routing
-frontend/src/pages/              Home, mission, method, data, and research pages
-frontend/src/components/         Globe, maps, charts, and evidence drawer
-services/catalog/app/            Definition repository and content API
-services/measurements/app/       Sole reader of candidate and target measurements
-services/similarity/app/core/    Scoring, aggregation, weights, robustness, time series
-services/similarity/app/engine.py Scoring orchestration; no scoring in Vue
-services/planning/app/core/      Set cover, marginal benefit, weight sensitivity
-services/shared/                 Shared API contracts and catalog HTTP client
-services/similarity/tests/        Core methods, service boundaries, API integration
-services/ingest/                 Public-data ingestion worker (optional Compose profile)
-data/catalog/                    Product inventory and PDF research review
-data/locales/                    Traditional Chinese content translations
-data/observed/                   Derived observations and source provenance
-data/processed/                  Small common-grid GeoTIFF windows
-data/raw/                        Ignored downloaded source cache
-data/seed/                       12 tests, 37 features, 17 proposed targets; legacy fixtures unused at runtime
-scripts/generate_seed.py         Deterministic fixture generation; overwrites seed files
-scripts/dev.py                   Local stack launcher without Docker
-scripts/smoke.py                 Real HTTP routing and service integration checks
-docs/SPEC.md                     English project specification
-docs/METHOD.md                   Methods, assumptions, limitations, references
-docs/VALIDATION.md               Validation evidence and outstanding checks
-docs/SERVICES.md                 Service responsibilities and data flow
-docs/DOCKER.md                   Windows Docker setup and troubleshooting
-docs/GIT.md                      GitHub connection and contribution workflow
-```
-
-See [data/README.md](data/README.md) for measurement formats, replacing fixtures, and adding tests or features. See [METHOD.md](docs/METHOD.md) for the scoring methods.
-
-Catalog owns definitions and measurements owns numeric data. Similarity obtains both over HTTP and caches them for 60 seconds by default. Planning obtains scores from similarity to select site networks. Similarity and planning do not mount the data directory. The two file repositories can later be replaced with database adapters. Restart all four backends after changing seed data to refresh loaded measurements and caches together. After recreating backend containers, run `docker compose restart gateway` so Nginx resolves their new addresses. Observed pilot updates are read directly and need only a page reload.
-
-## Validation
+With development dependencies installed, run the existing checks from the repository root.
 
 ```powershell
 .\.venv\Scripts\python.exe -m pytest -q
 .\.venv\Scripts\python.exe scripts/check_english.py
-Set-Location frontend
-npm.cmd test
-npm.cmd run build
+npm.cmd --prefix frontend test
+npm.cmd --prefix frontend run build
 ```
 
-Backend and frontend tests cover service boundaries, scoring, observed-data separation, processing math and locale switching; see the current counts in [VALIDATION.md](docs/VALIDATION.md). The TypeScript and Vite production build is also checked. Live HTTP checks cover all four health/OpenAPI/docs prefixes, lunar and Martian scoring and planning, time series, and legacy planning aliases. A NASA GIBS sample tile returned HTTP 200 with image/jpeg.
-
-The production Docker stack has been built and started with all six containers healthy. The Nginx entry point successfully served pages, production assets, API documentation, scoring, optimization, sensitivity analysis, and legacy aliases.
-
-**Validation limits:** the Docker development override has not been started. Browser automation was unavailable and native Edge approval timed out; visual layout, WebGL, responsive behavior, charts, and keyboard/screen-reader behavior still require manual browser review. DOM simulation is not visual acceptance. See [VALIDATION.md](docs/VALIDATION.md).
-
-## Remaining team work
-
-The imported lunar study-window center is derived from the published ROI and is not a final base coordinate. Gale has actual terrain and regional REMS evidence; AP-105 keeps its own TES/SWIM evidence. Unmeasured locations retain missing values. The SkyFall design-reference coordinates and selected landing constraints have been checked against the official package; the complete engineering and technology-gap mapping still needs team review. Mission schedules are not confirmed commitments. Product versions, spatial coverage, cross-sensor scales, wavelength alignment, and uncertainty still require review.
-
-TOST is an exploratory independent-differences helper; block bootstrap for autocorrelated series is not implemented or used to claim equivalence. Fixed-k coverage and sensitivity use exact enumeration for this 20-candidate prototype; larger collections need a different solver strategy. The ingestion pilot covers terrain and meteorological context only; other products, QA workflows, spectral calibration and uncertainty propagation remain unfinished. The prototype has no login, database, or cloud deployment.
-
-NASA imagery attribution is documented in [textures/README.md](frontend/public/textures/README.md).
-
-## Import actual mission data
-
-The ingestion worker retrieves public LOLA, Copernicus, NAIF, Diviner, MODIS, Sentinel-2, HiRISE, REMS, TES, SWIM and POWER products. Public Planetary Computer access uses temporary signatures in memory without a user account. Products keep their own acquisition times, units, quality flags and spatial support.
-
-```powershell
-docker compose --profile ingest run --rm --build ingest
-```
-
-The worker writes raw caches and observed products; the measurement service reads `data/observed/mission-measurements.json`. After a new import, restart `measurements`, `similarity` and `planning` to refresh snapshots and service caches, then reload the page. After container recreation, also restart `gateway` to refresh DNS. The optional `--cached-only` workflow and all remaining feature gaps are documented in [OBSERVED_DATA.md](docs/OBSERVED_DATA.md).
-
-The old `*.demo.*` files and deterministic generator are archival test material. They are not runtime inputs. Do not regenerate seed definitions over reviewed observed-data feature definitions.
-
-## Mars update (2026-11-15)
-
-The Mars explorer now uses the supplied seven-target handoff with 27 scored target/test pairs. It retains the three-step workflow, displays top/bottom comparisons and feature evidence, offers the global score grid, and plans minimum Earth test networks with relative thresholds. R2 and inapplicable ice tests remain explicitly unscored. See [Mars method](docs/MARS_METHOD.md). Lunar sites now open credited images; the Chinese homepage title is updated and task codes are hidden while task names remain.
-
-Earth candidate cards in both explorers now show fading image previews. Their drawers include the same credited regional imagery and an animated, interactive feature-similarity radar. See [Earth imagery and radar](docs/EARTH_IMAGERY.md) for coordinate matching, provenance and interpretation.
-
-The Method, Data Sources and Research Plan pages display full task names in both languages while preserving internal IDs and URLs. Lunar task pages and evidence drawers now document the team-defined feature weights, their purpose-based rationale, data-fitness-adjusted effective weights and the independent 120-hour darkness check. Full bilingual derivations are in `data/content/lunar-weights.*.md`.
+Further references include the [data guide](data/README.md), [validation record](docs/VALIDATION.md), [Git workflow](docs/GIT.md), and [NASA globe imagery attribution](frontend/public/textures/README.md).
