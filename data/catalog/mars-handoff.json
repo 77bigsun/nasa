@@ -1,0 +1,1801 @@
+{
+  "meta": {
+    "version": "mars-handoff-v1",
+    "body": "mars",
+    "generated": "2026-11-15T17:32:48+08:00",
+    "source_results_generated": "2026-11-14T23:54:00+08:00",
+    "status": "final for Space Apps 2026 submission; place names are automatic (GeoNames reverse geocoding) - verify before publishing",
+    "grid": "Earth 0.1-degree land cells (water-masked); MODIS LST 2020-2024",
+    "score_formula": "task score = 100 * exp( sum(w * ln(max(s, eps))) / sum(w) ), eps = 0.01, w = 1 for every feature (equal-weight geometric mean). Every listed feature is required: a cell missing any feature is not scored.",
+    "score_formula_note": "Not the lunar weighted arithmetic mean 100*sum(w*c*s)/sum(w*c): one feature near 0 pulls the Mars score toward 0 (a site that fails one requirement cannot be compensated by others). c = 1 everywhere.",
+    "total_score_optional": "weighted geometric mean of the scored tests with weight_roc renormalised over the tests the user selects; reference only",
+    "task_weights_roc": {
+      "R1": 0.408,
+      "R3": 0.242,
+      "R6": 0.158,
+      "R2": 0.103,
+      "R4": 0.061,
+      "R5": 0.028
+    },
+    "profile_formula": "dimension = equal-weight geometric mean of its variable similarities (floor 0.01); overall = equal-weight geometric mean of the 5 scored dimensions x 100; ranked cells need >= 80% of dimensions and >= 80% of variables with data",
+    "classification_cutoffs": {
+      "similar": 0.6,
+      "different": 0.3
+    },
+    "classification_rule": "s >= 0.6 similar; s < 0.3 different; otherwise partial",
+    "known_analog_rule": "a candidate within 50 km of a known analog site (data/labels/known_analogs.csv) is flagged and listed under known_analogs_in_top instead of new_candidates",
+    "min_separation_km": 150,
+    "ice_rule": "tests with applies = ice (R3, R5) are scored only for Mars targets with SWIM Ci >= 0.1",
+    "ranking_groups": {
+      "new_candidates": "top 10 Earth sites for this test and Mars site, known analogs removed, >= 150 km apart",
+      "known_analogs_in_top": "known analog sites that made the top 20 (shown for credibility)",
+      "known_analogs_validation": "every known analog site with its score and global top-% for this test",
+      "least_similar": "3 lowest-scoring fully observed sites (contrast); present only after --grid"
+    },
+    "mars_sites": [
+      "mars-jezero",
+      "mars-gale",
+      "mars-arcadia",
+      "mars-oxia",
+      "mars-meridiani",
+      "mars-protonilus",
+      "mars-ap105"
+    ],
+    "data_sources": {
+      "earth_datasets": [
+        "Ninomiya indices derived from ASTER GED AG100 thermal emissivity",
+        "ESA CCI Permafrost",
+        "ESA CCI Permafrost v5.0 (2023)",
+        "GLIMS glacier outlines (distance to nearest glacier)",
+        "GLiM 0.5°",
+        "GMTED2010",
+        "GMTED2010 230 m",
+        "GMTED2010 230 m slope, median within each 0.1-degree cell",
+        "Global Aridity Index v3",
+        "Maximum of MCD12Q1 ice/snow fraction, GLIMS glacier fraction, and annual NDVI < 0 with annual mean LST < 0 C",
+        "MERRA-2 DUEXTTAU",
+        "MERRA-2 DUEXTTAU monthly mean",
+        "MOD13A2 2015-2024 NDVI 90th percentile",
+        "MODIS LST",
+        "MODIS LST day-night difference",
+        "MODIS LST monthly mean",
+        "MODIS MOD11A2+MYD11A2 2015–2024",
+        "MODIS NDVI",
+        "Global percentile of apparent thermal inertia ATI (MODIS)"
+      ],
+      "mars_datasets": [
+        "CTX/HRSC terrain; this study uses HRSC+MOLA 200 m",
+        "HRSC+MOLA 200 m",
+        "MCD",
+        "MCD tauref",
+        "MCD tauref at 15-degree Ls intervals",
+        "MCD global dust at 30-degree Ls intervals",
+        "MCD surface temperature at 15-degree Ls intervals",
+        "MCD annual mean surface temperature",
+        "SWIM4MIM Ci",
+        "Global percentile of TES nighttime thermal inertia (2007)",
+        "USGS SIM3292 global geologic map with literature overrides",
+        "Literature (see source target_attributes)"
+      ],
+      "mars_target_value_sources": [
+        "fixed_max",
+        "fixed_zero_ndvi",
+        "hrsc_mola_blend_200m_v2",
+        "mcd_v6_web_climatology",
+        "swim4mim_ci_composite",
+        "tes_night_2007",
+        "usgs_sim3292"
+      ],
+      "full_citations": "docs/DATA_SOURCES.md"
+    },
+    "ai_disclosure": "Scoring code, data-processing scripts and this export were written with Claude (Anthropic); the team chose the method, reviewed the code and checked the results.",
+    "limitations": [
+      "R2 (visual navigation) is not evaluated: no global image-texture data.",
+      "Earth cells are 0.1 degree (~11 km); Mars study circles have radii of 25-50 km. Sub-cell terrain is unresolved.",
+      "Earth slope is the 230 m GMTED2010 median per cell, not the 100 m scale in the landing requirement.",
+      "Lithology is a coarse class match (GLiM 0.5 degree vs USGS SIM 3292).",
+      "Temperature and aridity are scored as 'more extreme is closer' (Earth cannot reach Mars values), so they do not change between Mars targets.",
+      "Seven Mars targets; biology and subsurface dimensions are not scored."
+    ],
+    "global_grid": "mars_global_grid.json",
+    "site_limit_note": "Mars study circles have radii of 25 or 50 km, as recorded for each site."
+  },
+  "tasks": {
+    "R1": {
+      "name": "Landing surface",
+      "weight_roc": 0.408,
+      "applies": "all",
+      "applies_rule": "all Mars targets",
+      "depends_on_mars_site": true,
+      "status": "scored",
+      "dimensions": {
+        "terrain": "main",
+        "surface": "main"
+      },
+      "features": [
+        {
+          "id": "slope",
+          "kind": "threshold",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "deg",
+          "formula": "D(slope_deg): x <= 5 -> 1, x >= 15 -> 0, linear between",
+          "mars_data": "CTX/HRSC terrain; this study uses HRSC+MOLA 200 m",
+          "earth_data": "GMTED2010 230 m slope, median within each 0.1-degree cell",
+          "fill": null,
+          "when_available": false
+        },
+        {
+          "id": "roughness",
+          "kind": "similarity",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "m",
+          "formula": "s = exp(-(x_earth - x_mars)^2 / (2 sigma^2)), sigma = 0.5 x Earth land standard deviation",
+          "mars_data": "HRSC+MOLA 200 m",
+          "earth_data": "GMTED2010 230 m",
+          "fill": null,
+          "when_available": false
+        },
+        {
+          "id": "thermal_inertia",
+          "kind": "mars_rank_threshold",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "J m-2 K-1 s-1/2",
+          "formula": "Mars threshold 100 -> 150 converted to Mars percentiles; Earth percentile of ati_pct scored larger_is_better between them",
+          "mars_data": "Global percentile of TES nighttime thermal inertia (2007)",
+          "earth_data": "Global percentile of apparent thermal inertia ATI (MODIS)",
+          "fill": null,
+          "when_available": false
+        },
+        {
+          "id": "barrenness",
+          "kind": "similarity",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "NDVI",
+          "formula": "s = clip(1 - NDVI / 0.3, 0, 1)",
+          "mars_data": "—",
+          "earth_data": "MODIS NDVI",
+          "fill": {
+            "south_of": -60,
+            "value": 1.0,
+            "reason": "South of 60 S, this unavailable variable is assigned similarity 1 by the source polar-desert assumption; elsewhere missing data prevent scoring"
+          },
+          "when_available": false
+        },
+        {
+          "id": "summer_barren",
+          "kind": "threshold",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "NDVI",
+          "formula": "D(ndvi_p90): x <= 0.15 -> 1, x >= 0.4 -> 0, linear between",
+          "mars_data": "—",
+          "earth_data": "MOD13A2 2015-2024 NDVI 90th percentile",
+          "fill": {
+            "south_of": -60,
+            "value": 1.0,
+            "reason": "Antarctic NDVI is unavailable; the source method treats Antarctica as unvegetated"
+          },
+          "when_available": true
+        },
+        {
+          "id": "ice_free",
+          "kind": "threshold",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "fraction",
+          "formula": "D(icy_frac): x <= 0.1 -> 1, x >= 0.5 -> 0, linear between",
+          "mars_data": "—",
+          "earth_data": "Maximum of MCD12Q1 ice/snow fraction, GLIMS glacier fraction, and annual NDVI < 0 with annual mean LST < 0 C",
+          "fill": null,
+          "when_available": false
+        }
+      ]
+    },
+    "R2": {
+      "name": "Visual navigation",
+      "weight_roc": 0.103,
+      "applies": "all",
+      "applies_rule": "all Mars targets",
+      "depends_on_mars_site": true,
+      "status": "not_evaluated",
+      "dimensions": {
+        "terrain": "related",
+        "surface": "related"
+      },
+      "features": []
+    },
+    "R3": {
+      "name": "Shallow ground ice",
+      "weight_roc": 0.242,
+      "applies": "ice",
+      "applies_rule": "only Mars targets with SWIM Ci >= 0.1",
+      "depends_on_mars_site": true,
+      "status": "scored",
+      "dimensions": {
+        "water_ice": "main",
+        "environment": "main",
+        "subsurface": "related"
+      },
+      "features": [
+        {
+          "id": "permafrost",
+          "kind": "threshold",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "fraction",
+          "formula": "D(permafrost_frac): x <= 0.1 -> 0, x >= 0.9 -> 1, linear between",
+          "mars_data": "SWIM4MIM Ci",
+          "earth_data": "ESA CCI Permafrost v5.0 (2023)",
+          "fill": null,
+          "when_available": false
+        },
+        {
+          "id": "cold",
+          "kind": "threshold",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "C",
+          "formula": "D(lst_mean_c): x <= -2 -> 1, x >= 2 -> 0, linear between",
+          "mars_data": "MCD annual mean surface temperature",
+          "earth_data": "MODIS MOD11A2+MYD11A2 2015–2024",
+          "fill": null,
+          "when_available": false
+        },
+        {
+          "id": "dryness",
+          "kind": "similarity",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "aridity index",
+          "formula": "s = Earth percentile of extremeness (colder / drier = closer to 1); target-independent",
+          "mars_data": "—",
+          "earth_data": "Global Aridity Index v3",
+          "fill": {
+            "south_of": -60,
+            "value": 1.0,
+            "reason": "South of 60 S, this unavailable variable is assigned similarity 1 by the source polar-desert assumption; elsewhere missing data prevent scoring"
+          },
+          "when_available": false
+        }
+      ]
+    },
+    "R4": {
+      "name": "Hydrated minerals",
+      "weight_roc": 0.061,
+      "applies": "all",
+      "applies_rule": "all Mars targets",
+      "depends_on_mars_site": true,
+      "status": "scored",
+      "dimensions": {
+        "surface": "main"
+      },
+      "features": [
+        {
+          "id": "lithology",
+          "kind": "similarity",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "class",
+          "formula": "s = lookup table Mars geologic unit group -> Earth GLiM rock class (default 0.1)",
+          "mars_data": "USGS SIM3292 global geologic map with literature overrides",
+          "earth_data": "GLiM 0.5°",
+          "fill": null,
+          "when_available": false
+        },
+        {
+          "id": "barrenness",
+          "kind": "similarity",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "NDVI",
+          "formula": "s = clip(1 - NDVI / 0.3, 0, 1)",
+          "mars_data": "—",
+          "earth_data": "MODIS NDVI",
+          "fill": {
+            "south_of": -60,
+            "value": 1.0,
+            "reason": "South of 60 S, this unavailable variable is assigned similarity 1 by the source polar-desert assumption; elsewhere missing data prevent scoring"
+          },
+          "when_available": false
+        },
+        {
+          "id": "summer_barren",
+          "kind": "threshold",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "NDVI",
+          "formula": "D(ndvi_p90): x <= 0.15 -> 1, x >= 0.4 -> 0, linear between",
+          "mars_data": "—",
+          "earth_data": "MOD13A2 2015-2024 NDVI 90th percentile",
+          "fill": {
+            "south_of": -60,
+            "value": 1.0,
+            "reason": "Antarctic NDVI is unavailable; the source method treats Antarctica as unvegetated"
+          },
+          "when_available": true
+        },
+        {
+          "id": "ice_free",
+          "kind": "threshold",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "fraction",
+          "formula": "D(icy_frac): x <= 0.1 -> 1, x >= 0.5 -> 0, linear between",
+          "mars_data": "—",
+          "earth_data": "Maximum of MCD12Q1 ice/snow fraction, GLIMS glacier fraction, and annual NDVI < 0 with annual mean LST < 0 C",
+          "fill": null,
+          "when_available": false
+        },
+        {
+          "id": "mineral_signature",
+          "kind": "index_rank",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "global percentile",
+          "formula": "D(percentile of the ASTER Ninomiya index within the same annual-LST band): 0.5 -> 0, 0.9 -> 1",
+          "mars_data": "Literature (see source target_attributes)",
+          "earth_data": "Ninomiya indices derived from ASTER GED AG100 thermal emissivity",
+          "fill": null,
+          "when_available": true
+        }
+      ]
+    },
+    "R5": {
+      "name": "Periglacial landforms",
+      "weight_roc": 0.028,
+      "applies": "ice",
+      "applies_rule": "only Mars targets with SWIM Ci >= 0.1",
+      "depends_on_mars_site": true,
+      "status": "scored",
+      "dimensions": {
+        "water_ice": "main",
+        "terrain": "main",
+        "environment": "related"
+      },
+      "features": [
+        {
+          "id": "permafrost",
+          "kind": "threshold",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "fraction",
+          "formula": "D(permafrost_frac): x <= 0.1 -> 0, x >= 0.9 -> 1, linear between",
+          "mars_data": "SWIM4MIM Ci",
+          "earth_data": "ESA CCI Permafrost",
+          "fill": null,
+          "when_available": false
+        },
+        {
+          "id": "cold",
+          "kind": "threshold",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "C",
+          "formula": "D(lst_mean_c): x <= -2 -> 1, x >= 2 -> 0, linear between",
+          "mars_data": "MCD",
+          "earth_data": "MODIS LST",
+          "fill": null,
+          "when_available": false
+        },
+        {
+          "id": "slope",
+          "kind": "similarity",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "deg",
+          "formula": "s = exp(-(x_earth - x_mars)^2 / (2 sigma^2)), sigma = 3.0 deg",
+          "mars_data": "HRSC+MOLA 200 m",
+          "earth_data": "GMTED2010",
+          "fill": null,
+          "when_available": false
+        },
+        {
+          "id": "roughness",
+          "kind": "similarity",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "m",
+          "formula": "s = exp(-(x_earth - x_mars)^2 / (2 sigma^2)), sigma = 0.5 x Earth land standard deviation",
+          "mars_data": "HRSC+MOLA 200 m",
+          "earth_data": "GMTED2010",
+          "fill": null,
+          "when_available": false
+        },
+        {
+          "id": "barrenness",
+          "kind": "similarity",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "NDVI",
+          "formula": "s = clip(1 - NDVI / 0.3, 0, 1)",
+          "mars_data": "—",
+          "earth_data": "MODIS NDVI",
+          "fill": {
+            "south_of": -60,
+            "value": 1.0,
+            "reason": "South of 60 S, this unavailable variable is assigned similarity 1 by the source polar-desert assumption; elsewhere missing data prevent scoring"
+          },
+          "when_available": false
+        },
+        {
+          "id": "summer_barren",
+          "kind": "threshold",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "NDVI",
+          "formula": "D(ndvi_p90): x <= 0.15 -> 1, x >= 0.4 -> 0, linear between",
+          "mars_data": "—",
+          "earth_data": "MOD13A2 2015-2024 NDVI 90th percentile",
+          "fill": {
+            "south_of": -60,
+            "value": 1.0,
+            "reason": "Antarctic NDVI is unavailable; the source method treats Antarctica as unvegetated"
+          },
+          "when_available": true
+        },
+        {
+          "id": "glacier_distance",
+          "kind": "threshold",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "km",
+          "formula": "D(glacier_km): x <= 20 -> 1, x >= 300 -> 0, linear between",
+          "mars_data": "Literature (see source target_attributes)",
+          "earth_data": "GLIMS glacier outlines (distance to nearest glacier)",
+          "fill": null,
+          "when_available": true
+        }
+      ]
+    },
+    "R6": {
+      "name": "Dust and near-surface weather",
+      "weight_roc": 0.158,
+      "applies": "all",
+      "applies_rule": "all Mars targets",
+      "depends_on_mars_site": true,
+      "status": "scored",
+      "dimensions": {
+        "atmosphere_dust": "main",
+        "environment": "main"
+      },
+      "features": [
+        {
+          "id": "dust",
+          "kind": "similarity",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "percentile",
+          "formula": "s = 1 - |p_earth - p_mars|, p = percentile on its own planet (area-weighted)",
+          "mars_data": "MCD global dust at 30-degree Ls intervals",
+          "earth_data": "MERRA-2 DUEXTTAU",
+          "fill": null,
+          "when_available": false
+        },
+        {
+          "id": "temperature",
+          "kind": "similarity",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "C",
+          "formula": "s = Earth percentile of extremeness (colder / drier = closer to 1); target-independent",
+          "mars_data": "MCD",
+          "earth_data": "MODIS LST",
+          "fill": null,
+          "when_available": false
+        },
+        {
+          "id": "diurnal_range",
+          "kind": "similarity",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "C",
+          "formula": "s = Earth percentile of day-night LST range; larger range = closer to 1; target-independent",
+          "mars_data": "MCD",
+          "earth_data": "MODIS LST day-night difference",
+          "fill": null,
+          "when_available": false
+        },
+        {
+          "id": "dust_season_shape",
+          "kind": "seasonal_shape",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "correlation",
+          "formula": "s = (1 + r) / 2, r = correlation of Earth 12-month curve with Mars Ls curve aligned by local season",
+          "mars_data": "MCD tauref at 15-degree Ls intervals",
+          "earth_data": "MERRA-2 DUEXTTAU monthly mean",
+          "fill": null,
+          "when_available": true
+        },
+        {
+          "id": "dust_season_amplitude",
+          "kind": "seasonal_amplitude",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "ratio",
+          "formula": "s = exp(-(ln(A_earth / A_mars))^2 / (2 (ln 2)^2)), A = (max - min) / mean of the seasonal curve",
+          "mars_data": "MCD tauref",
+          "earth_data": "MERRA-2 DUEXTTAU monthly mean",
+          "fill": null,
+          "when_available": true
+        },
+        {
+          "id": "temperature_season_shape",
+          "kind": "seasonal_shape",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "correlation",
+          "formula": "s = (1 + r) / 2, r = correlation of Earth 12-month curve with Mars Ls curve aligned by local season",
+          "mars_data": "MCD surface temperature at 15-degree Ls intervals",
+          "earth_data": "MODIS LST monthly mean",
+          "fill": null,
+          "when_available": true
+        },
+        {
+          "id": "temperature_season_amplitude",
+          "kind": "seasonal_range_ratio",
+          "w": 1.0,
+          "c": 1.0,
+          "required": true,
+          "unit": "K",
+          "formula": "s = exp(-(ln(R_earth / R_mars))^2 / (2 (ln 2)^2)), R = warmest minus coldest month (K)",
+          "mars_data": "MCD surface temperature at 15-degree Ls intervals",
+          "earth_data": "MODIS LST monthly mean",
+          "fill": null,
+          "when_available": true
+        }
+      ]
+    }
+  },
+  "mars_sites": [
+    {
+      "id": "mars-jezero",
+      "target_id": "jezero",
+      "name": "Jezero Crater",
+      "lat": 18.4,
+      "lon": 77.5,
+      "radius_km": 25,
+      "missions": [
+        "geology",
+        "rover"
+      ],
+      "source": "Teammate's targets.yaml (rounded centre of the Jezero area). A 25 km circle contains the Perseverance landing site (Octavia E. Butler Landing, 18.4447 N 77.4508 E): https://www.jpl.nasa.gov/images/pia24483-welcome-to-octavia-e-butler-landing/",
+      "lithology_group": "clastic",
+      "lithology_unit": "HNt",
+      "ice_ci": -0.206,
+      "ice_target": 0.0,
+      "has_ice": false,
+      "test_status": {
+        "R1": "scored",
+        "R2": "not_evaluated",
+        "R3": "not_applicable",
+        "R4": "scored",
+        "R5": "not_applicable",
+        "R6": "scored"
+      },
+      "scored_tests": [
+        "R1",
+        "R4",
+        "R6"
+      ],
+      "values": {
+        "slope": {
+          "value": 2.236,
+          "unit": "deg",
+          "source": "hrsc_mola_blend_200m_v2",
+          "coverage": true
+        },
+        "roughness": {
+          "value": 10.608,
+          "unit": "m",
+          "source": "hrsc_mola_blend_200m_v2",
+          "coverage": true
+        },
+        "thermal_inertia": {
+          "value": 296.0,
+          "pct": 0.877,
+          "unit": "tiu",
+          "source": "tes_night_2007",
+          "coverage": true
+        },
+        "lithology": {
+          "value": "HNt",
+          "source": "usgs_sim3292",
+          "group": "clastic",
+          "unit_desc": "Hesperian and Noachian transition unit",
+          "coverage": true
+        },
+        "ice": {
+          "value": -0.206,
+          "source": "swim4mim_ci_composite",
+          "coverage": true
+        },
+        "temperature": {
+          "value": -49.47,
+          "unit": "C",
+          "source": "mcd_v6_web_climatology",
+          "coverage": true
+        },
+        "diurnal_range": {
+          "value": 84.69,
+          "unit": "C",
+          "source": "mcd_v6_web_climatology",
+          "coverage": true
+        },
+        "dust": {
+          "value": 0.5542,
+          "pct": 0.869,
+          "unit": "tau",
+          "source": "mcd_v6_web_climatology",
+          "coverage": true
+        },
+        "aridity": {
+          "value": "max",
+          "source": "fixed_max",
+          "coverage": true
+        },
+        "barrenness": {
+          "value": 0.0,
+          "unit": "ndvi",
+          "source": "fixed_zero_ndvi",
+          "coverage": true
+        }
+      },
+      "best_earth_analogs_by_task": {
+        "R1": [
+          {
+            "name_en": "113 km from Mori (CN)",
+            "lat": 43.55,
+            "lon": 91.55,
+            "score": 98.5
+          },
+          {
+            "name_en": "near Toksun (CN)",
+            "lat": 42.95,
+            "lon": 88.35,
+            "score": 98.5
+          },
+          {
+            "name_en": "57 km from Yiwu (CN)",
+            "lat": 43.75,
+            "lon": 94.55,
+            "score": 98.3
+          }
+        ],
+        "R4": [
+          {
+            "name_en": "548 km from Gjoa Haven (CA)",
+            "lat": 73.55,
+            "lon": -95.35,
+            "score": 95.6
+          },
+          {
+            "name_en": "765 km from Gjoa Haven (CA)",
+            "lat": 74.55,
+            "lon": -84.65,
+            "score": 95.5
+          },
+          {
+            "name_en": "1027 km from Kugluktuk (CA)",
+            "lat": 77.05,
+            "lon": -116.65,
+            "score": 95.0
+          }
+        ],
+        "R6": [
+          {
+            "name_en": "near Vilaflor (ES)",
+            "lat": 28.25,
+            "lon": -16.65,
+            "score": 77.3
+          },
+          {
+            "name_en": "near Zuogaiduoma (CN)",
+            "lat": 35.15,
+            "lon": 103.25,
+            "score": 75.7
+          },
+          {
+            "name_en": "near Lujing Zhen (CN)",
+            "lat": 34.35,
+            "lon": 104.65,
+            "score": 74.6
+          }
+        ]
+      }
+    },
+    {
+      "id": "mars-gale",
+      "target_id": "gale",
+      "name": "Gale Crater",
+      "lat": -5.4,
+      "lon": 137.8,
+      "radius_km": 25,
+      "missions": [
+        "geology",
+        "rover"
+      ],
+      "source": "Teammate's targets.yaml (Gale crater centre). Note: Curiosity's Bradbury Landing (4.5895 S 137.4417 E) is about 48 km away, outside the 25 km circle, so the circle covers the crater floor and the foot of Mount Sharp, not the landing site.",
+      "lithology_group": "clastic",
+      "lithology_unit": "Htu",
+      "ice_ci": 0.059,
+      "ice_target": 0.059,
+      "has_ice": false,
+      "test_status": {
+        "R1": "scored",
+        "R2": "not_evaluated",
+        "R3": "not_applicable",
+        "R4": "scored",
+        "R5": "not_applicable",
+        "R6": "scored"
+      },
+      "scored_tests": [
+        "R1",
+        "R4",
+        "R6"
+      ],
+      "values": {
+        "slope": {
+          "value": 5.455,
+          "unit": "deg",
+          "source": "hrsc_mola_blend_200m_v2",
+          "coverage": true
+        },
+        "roughness": {
+          "value": 27.254,
+          "unit": "m",
+          "source": "hrsc_mola_blend_200m_v2",
+          "coverage": true
+        },
+        "thermal_inertia": {
+          "value": 283.0,
+          "pct": 0.843,
+          "unit": "tiu",
+          "source": "tes_night_2007",
+          "coverage": true
+        },
+        "lithology": {
+          "value": "Htu",
+          "source": "usgs_sim3292",
+          "group": "clastic",
+          "unit_desc": "Hesperian transition undivided unit",
+          "coverage": true
+        },
+        "ice": {
+          "value": 0.059,
+          "source": "swim4mim_ci_composite",
+          "coverage": true
+        },
+        "temperature": {
+          "value": -50.85,
+          "unit": "C",
+          "source": "mcd_v6_web_climatology",
+          "coverage": true
+        },
+        "diurnal_range": {
+          "value": 93.3,
+          "unit": "C",
+          "source": "mcd_v6_web_climatology",
+          "coverage": true
+        },
+        "dust": {
+          "value": 0.4639,
+          "pct": 0.735,
+          "unit": "tau",
+          "source": "mcd_v6_web_climatology",
+          "coverage": true
+        },
+        "aridity": {
+          "value": "max",
+          "source": "fixed_max",
+          "coverage": true
+        },
+        "barrenness": {
+          "value": 0.0,
+          "unit": "ndvi",
+          "source": "fixed_zero_ndvi",
+          "coverage": true
+        }
+      },
+      "best_earth_analogs_by_task": {
+        "R1": [
+          {
+            "name_en": "39 km from Ocucaje (PE)",
+            "lat": -14.65,
+            "lon": -75.85,
+            "score": 97.6
+          },
+          {
+            "name_en": "132 km from Bohu (CN)",
+            "lat": 41.15,
+            "lon": 87.75,
+            "score": 97.3
+          },
+          {
+            "name_en": "75 km from Khur (IR)",
+            "lat": 33.35,
+            "lon": 54.45,
+            "score": 97.3
+          }
+        ],
+        "R4": [
+          {
+            "name_en": "92 km from Wutumeiren (CN)",
+            "lat": 37.45,
+            "lon": 93.95,
+            "score": 97.4
+          },
+          {
+            "name_en": "40 km from Xitieshan (CN)",
+            "lat": 36.95,
+            "lon": 95.65,
+            "score": 97.4
+          },
+          {
+            "name_en": "167 km from Torghay (KZ)",
+            "lat": 48.15,
+            "lon": 63.15,
+            "score": 97.4
+          }
+        ],
+        "R6": [
+          {
+            "name_en": "118 km from Khapalu (PK)",
+            "lat": 36.05,
+            "lon": 77.05,
+            "score": 95.0
+          },
+          {
+            "name_en": "183 km from Koramlik (CN)",
+            "lat": 36.45,
+            "lon": 87.55,
+            "score": 94.9
+          },
+          {
+            "name_en": "144 km from Wutumeiren (CN)",
+            "lat": 35.75,
+            "lon": 92.45,
+            "score": 94.9
+          }
+        ]
+      }
+    },
+    {
+      "id": "mars-arcadia",
+      "target_id": "arcadia",
+      "name": "Arcadia Planitia (shallow ground ice)",
+      "lat": 47.2,
+      "lon": -175.7,
+      "radius_km": 50,
+      "missions": [
+        "isru_base",
+        "landing"
+      ],
+      "source": "Teammate's targets.yaml. Inside the SWIM Arcadia study region (150-225 E, 0-60 N); SWIM ice consistency about 0.5 here. Morgan et al. 2021, Nature Astronomy 5:230; https://swim.psi.edu/resources/abstracts/LPSC2019/2069.pdf",
+      "lithology_group": "basalt",
+      "lithology_unit": "Av",
+      "ice_ci": 0.526,
+      "ice_target": 0.526,
+      "has_ice": true,
+      "test_status": {
+        "R1": "scored",
+        "R2": "not_evaluated",
+        "R3": "scored",
+        "R4": "scored",
+        "R5": "scored",
+        "R6": "scored"
+      },
+      "scored_tests": [
+        "R1",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "values": {
+        "slope": {
+          "value": 0.209,
+          "unit": "deg",
+          "source": "hrsc_mola_blend_200m_v2",
+          "coverage": true
+        },
+        "roughness": {
+          "value": 1.008,
+          "unit": "m",
+          "source": "hrsc_mola_blend_200m_v2",
+          "coverage": true
+        },
+        "thermal_inertia": {
+          "value": 233.0,
+          "pct": 0.64,
+          "unit": "tiu",
+          "source": "tes_night_2007",
+          "coverage": true
+        },
+        "lithology": {
+          "value": "Av",
+          "source": "usgs_sim3292",
+          "group": "basalt",
+          "unit_desc": "Amazonian volcanic unit",
+          "coverage": true
+        },
+        "ice": {
+          "value": 0.526,
+          "source": "swim4mim_ci_composite",
+          "coverage": true
+        },
+        "temperature": {
+          "value": -75.93,
+          "unit": "C",
+          "source": "mcd_v6_web_climatology",
+          "coverage": true
+        },
+        "diurnal_range": {
+          "value": 62.61,
+          "unit": "C",
+          "source": "mcd_v6_web_climatology",
+          "coverage": true
+        },
+        "dust": {
+          "value": 0.3547,
+          "pct": 0.415,
+          "unit": "tau",
+          "source": "mcd_v6_web_climatology",
+          "coverage": true
+        },
+        "aridity": {
+          "value": "max",
+          "source": "fixed_max",
+          "coverage": true
+        },
+        "barrenness": {
+          "value": 0.0,
+          "unit": "ndvi",
+          "source": "fixed_zero_ndvi",
+          "coverage": true
+        }
+      },
+      "best_earth_analogs_by_task": {
+        "R1": [
+          {
+            "name_en": "75 km from Colchani (BO)",
+            "lat": -19.95,
+            "lon": -67.55,
+            "score": 100.0
+          },
+          {
+            "name_en": "52 km from Xitieshan (CN)",
+            "lat": 36.85,
+            "lon": 95.35,
+            "score": 100.0
+          },
+          {
+            "name_en": "235 km from Qilanbulak (CN)",
+            "lat": 40.45,
+            "lon": 90.75,
+            "score": 100.0
+          }
+        ],
+        "R3": [
+          {
+            "name_en": "67 km from McMurdo Station (AQ)",
+            "lat": -78.15,
+            "lon": 164.15,
+            "score": 100.0
+          },
+          {
+            "name_en": "494 km from McMurdo Station (AQ)",
+            "lat": -82.25,
+            "lon": 163.25,
+            "score": 100.0
+          },
+          {
+            "name_en": "2641 km from Port-aux-Francais (TF)",
+            "lat": -73.05,
+            "lon": 66.55,
+            "score": 100.0
+          }
+        ],
+        "R4": [
+          {
+            "name_en": "260 km from Talnakh (RU)",
+            "lat": 69.15,
+            "lon": 94.95,
+            "score": 98.6
+          },
+          {
+            "name_en": "147 km from Sultanah (SA)",
+            "lat": 25.75,
+            "lon": 40.05,
+            "score": 97.2
+          },
+          {
+            "name_en": "153 km from Kotzebue (US)",
+            "lat": 68.25,
+            "lon": -161.95,
+            "score": 96.4
+          }
+        ],
+        "R5": [
+          {
+            "name_en": "1196 km from Kugluktuk (CA)",
+            "lat": 78.55,
+            "lon": -111.95,
+            "score": 100.0
+          },
+          {
+            "name_en": "995 km from Khatanga (RU)",
+            "lat": 80.85,
+            "lon": 97.25,
+            "score": 100.0
+          },
+          {
+            "name_en": "1522 km from Vorgashor (RU)",
+            "lat": 81.25,
+            "lon": 60.45,
+            "score": 100.0
+          }
+        ],
+        "R6": [
+          {
+            "name_en": "37 km from Todok (CN)",
+            "lat": 44.85,
+            "lon": 83.75,
+            "score": 78.8
+          },
+          {
+            "name_en": "68 km from Bay-Khaak (RU)",
+            "lat": 50.55,
+            "lon": 94.35,
+            "score": 78.4
+          },
+          {
+            "name_en": "203 km from Zeya (RU)",
+            "lat": 54.65,
+            "lon": 129.95,
+            "score": 78.4
+          }
+        ]
+      }
+    },
+    {
+      "id": "mars-oxia",
+      "target_id": "oxia",
+      "name": "Oxia Planum (ExoMars Rosalind Franklin landing site)",
+      "lat": 18.2,
+      "lon": -24.55,
+      "radius_km": 25,
+      "missions": [
+        "geology",
+        "rover"
+      ],
+      "source": "ESA: Oxia Planum site 18.20N 335.45E; landing ellipse 104 x 19 km, clay-bearing Noachian plains. https://exploration.esa.int/mars/54724-oxia-planum/",
+      "lithology_group": "sedimentary_carbonate_clay",
+      "lithology_unit": "lNh",
+      "ice_ci": -0.323,
+      "ice_target": 0.0,
+      "has_ice": false,
+      "test_status": {
+        "R1": "scored",
+        "R2": "not_evaluated",
+        "R3": "not_applicable",
+        "R4": "scored",
+        "R5": "not_applicable",
+        "R6": "scored"
+      },
+      "scored_tests": [
+        "R1",
+        "R4",
+        "R6"
+      ],
+      "values": {
+        "slope": {
+          "value": 0.559,
+          "unit": "deg",
+          "source": "hrsc_mola_blend_200m_v2",
+          "coverage": true
+        },
+        "roughness": {
+          "value": 2.767,
+          "unit": "m",
+          "source": "hrsc_mola_blend_200m_v2",
+          "coverage": true
+        },
+        "thermal_inertia": {
+          "value": 416.0,
+          "pct": 0.981,
+          "unit": "tiu",
+          "source": "tes_night_2007",
+          "coverage": true
+        },
+        "lithology": {
+          "value": "lNh",
+          "source": "usgs_sim3292",
+          "group": "sedimentary_carbonate_clay",
+          "unit_desc": "Late Noachian highland unit",
+          "coverage": true
+        },
+        "ice": {
+          "value": -0.323,
+          "source": "swim4mim_ci_composite",
+          "coverage": true
+        },
+        "temperature": {
+          "value": -50.75,
+          "unit": "C",
+          "source": "mcd_v6_web_climatology",
+          "coverage": true
+        },
+        "diurnal_range": {
+          "value": 77.07,
+          "unit": "C",
+          "source": "mcd_v6_web_climatology",
+          "coverage": true
+        },
+        "dust": {
+          "value": 0.62,
+          "pct": 0.961,
+          "unit": "tau",
+          "source": "mcd_v6_web_climatology",
+          "coverage": true
+        },
+        "aridity": {
+          "value": "max",
+          "source": "fixed_max",
+          "coverage": true
+        },
+        "barrenness": {
+          "value": 0.0,
+          "unit": "ndvi",
+          "source": "fixed_zero_ndvi",
+          "coverage": true
+        }
+      },
+      "best_earth_analogs_by_task": {
+        "R1": [
+          {
+            "name_en": "160 km from Yeyik (CN)",
+            "lat": 35.25,
+            "lon": 82.95,
+            "score": 100.0
+          },
+          {
+            "name_en": "40 km from Xitieshan (CN)",
+            "lat": 36.95,
+            "lon": 95.65,
+            "score": 99.8
+          },
+          {
+            "name_en": "near Sidi el Hani (TN)",
+            "lat": 35.55,
+            "lon": 10.45,
+            "score": 99.8
+          }
+        ],
+        "R4": [
+          {
+            "name_en": "156 km from Beyneu (KZ)",
+            "lat": 45.65,
+            "lon": 57.15,
+            "score": 94.6
+          },
+          {
+            "name_en": "82 km from Colchani (BO)",
+            "lat": -19.75,
+            "lon": -67.45,
+            "score": 94.6
+          },
+          {
+            "name_en": "1086 km from Kugluktuk (CA)",
+            "lat": 77.55,
+            "lon": -111.75,
+            "score": 94.6
+          }
+        ],
+        "R6": [
+          {
+            "name_en": "near Zuogaiduoma (CN)",
+            "lat": 35.15,
+            "lon": 103.25,
+            "score": 75.7
+          },
+          {
+            "name_en": "near Vilaflor (ES)",
+            "lat": 28.25,
+            "lon": -16.65,
+            "score": 75.5
+          },
+          {
+            "name_en": "near Lujing Zhen (CN)",
+            "lat": 34.35,
+            "lon": 104.65,
+            "score": 74.8
+          }
+        ]
+      }
+    },
+    {
+      "id": "mars-meridiani",
+      "target_id": "meridiani",
+      "name": "Meridiani Planum (Opportunity landing site, Eagle crater)",
+      "lat": -1.95,
+      "lon": -5.53,
+      "radius_km": 25,
+      "missions": [
+        "geology",
+        "rover"
+      ],
+      "source": "NASA/JPL: Eagle crater 1.95S 354.47E, Opportunity landing site (hematite spherules, sulfate-rich sandstones). https://www.jpl.nasa.gov/images/rovers-landing-hardware-at-eagle-crater-mars",
+      "lithology_group": "evaporite_sulfate_clastic",
+      "lithology_unit": "HNhu",
+      "ice_ci": 0.034,
+      "ice_target": 0.034,
+      "has_ice": false,
+      "test_status": {
+        "R1": "scored",
+        "R2": "not_evaluated",
+        "R3": "not_applicable",
+        "R4": "scored",
+        "R5": "not_applicable",
+        "R6": "scored"
+      },
+      "scored_tests": [
+        "R1",
+        "R4",
+        "R6"
+      ],
+      "values": {
+        "slope": {
+          "value": 1.279,
+          "unit": "deg",
+          "source": "hrsc_mola_blend_200m_v2",
+          "coverage": true
+        },
+        "roughness": {
+          "value": 6.363,
+          "unit": "m",
+          "source": "hrsc_mola_blend_200m_v2",
+          "coverage": true
+        },
+        "thermal_inertia": {
+          "value": 190.0,
+          "pct": 0.425,
+          "unit": "tiu",
+          "source": "tes_night_2007",
+          "coverage": true
+        },
+        "lithology": {
+          "value": "HNhu",
+          "source": "usgs_sim3292",
+          "group": "evaporite_sulfate_clastic",
+          "unit_desc": "Hesperian and Noachian highland undivided unit",
+          "coverage": true
+        },
+        "ice": {
+          "value": 0.034,
+          "source": "swim4mim_ci_composite",
+          "coverage": true
+        },
+        "temperature": {
+          "value": -46.09,
+          "unit": "C",
+          "source": "mcd_v6_web_climatology",
+          "coverage": true
+        },
+        "diurnal_range": {
+          "value": 95.43,
+          "unit": "C",
+          "source": "mcd_v6_web_climatology",
+          "coverage": true
+        },
+        "dust": {
+          "value": 0.5207,
+          "pct": 0.826,
+          "unit": "tau",
+          "source": "mcd_v6_web_climatology",
+          "coverage": true
+        },
+        "aridity": {
+          "value": "max",
+          "source": "fixed_max",
+          "coverage": true
+        },
+        "barrenness": {
+          "value": 0.0,
+          "unit": "ndvi",
+          "source": "fixed_zero_ndvi",
+          "coverage": true
+        }
+      },
+      "best_earth_analogs_by_task": {
+        "R1": [
+          {
+            "name_en": "160 km from Yeyik (CN)",
+            "lat": 35.25,
+            "lon": 82.95,
+            "score": 99.0
+          },
+          {
+            "name_en": "174 km from Sangiyn Dalay (MN)",
+            "lat": 43.65,
+            "lon": 97.05,
+            "score": 98.7
+          },
+          {
+            "name_en": "105 km from Kugluktuk (CA)",
+            "lat": 68.65,
+            "lon": -116.35,
+            "score": 98.6
+          }
+        ],
+        "R4": [
+          {
+            "name_en": "65 km from Colchani (BO)",
+            "lat": -20.35,
+            "lon": -67.55,
+            "score": 100.0
+          },
+          {
+            "name_en": "150 km from Antofagasta de la Sierra (AR)",
+            "lat": -24.75,
+            "lon": -67.75,
+            "score": 98.5
+          },
+          {
+            "name_en": "563 km from Kugluktuk (CA)",
+            "lat": 72.55,
+            "lon": -109.65,
+            "score": 98.0
+          }
+        ],
+        "R6": [
+          {
+            "name_en": "37 km from Yeyik (CN)",
+            "lat": 36.35,
+            "lon": 83.35,
+            "score": 93.8
+          },
+          {
+            "name_en": "160 km from Waxxari (CN)",
+            "lat": 37.35,
+            "lon": 87.95,
+            "score": 93.4
+          },
+          {
+            "name_en": "99 km from Nur (CN)",
+            "lat": 35.65,
+            "lon": 80.35,
+            "score": 93.4
+          }
+        ]
+      }
+    },
+    {
+      "id": "mars-protonilus",
+      "target_id": "protonilus",
+      "name": "Protonilus Mensae (candidate human exploration zone, buried glacial ice)",
+      "lat": 41.905,
+      "lon": 48.548,
+      "radius_km": 50,
+      "missions": [
+        "isru_base",
+        "landing"
+      ],
+      "source": "Gallegos & Newsom 2015 EZ at 48.548E 41.905N, First Landing Site/Exploration Zone Workshop; described in IAC-17,A5,IP,1,x39861. https://iafastro.directory/iac/archive/browse/IAC-17/A5/IP/39861/",
+      "lithology_group": "clastic",
+      "lithology_unit": "HNt",
+      "ice_ci": 0.162,
+      "ice_target": 0.162,
+      "has_ice": true,
+      "test_status": {
+        "R1": "scored",
+        "R2": "not_evaluated",
+        "R3": "scored",
+        "R4": "scored",
+        "R5": "scored",
+        "R6": "scored"
+      },
+      "scored_tests": [
+        "R1",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "values": {
+        "slope": {
+          "value": 4.594,
+          "unit": "deg",
+          "source": "hrsc_mola_blend_200m_v2",
+          "coverage": true
+        },
+        "roughness": {
+          "value": 22.599,
+          "unit": "m",
+          "source": "hrsc_mola_blend_200m_v2",
+          "coverage": true
+        },
+        "thermal_inertia": {
+          "value": 197.0,
+          "pct": 0.457,
+          "unit": "tiu",
+          "source": "tes_night_2007",
+          "coverage": true
+        },
+        "lithology": {
+          "value": "HNt",
+          "source": "usgs_sim3292",
+          "group": "clastic",
+          "unit_desc": "Hesperian and Noachian transition unit",
+          "coverage": true
+        },
+        "ice": {
+          "value": 0.162,
+          "source": "swim4mim_ci_composite",
+          "coverage": true
+        },
+        "temperature": {
+          "value": -71.24,
+          "unit": "C",
+          "source": "mcd_v6_web_climatology",
+          "coverage": true
+        },
+        "diurnal_range": {
+          "value": 79.45,
+          "unit": "C",
+          "source": "mcd_v6_web_climatology",
+          "coverage": true
+        },
+        "dust": {
+          "value": 0.3385,
+          "pct": 0.361,
+          "unit": "tau",
+          "source": "mcd_v6_web_climatology",
+          "coverage": true
+        },
+        "aridity": {
+          "value": "max",
+          "source": "fixed_max",
+          "coverage": true
+        },
+        "barrenness": {
+          "value": 0.0,
+          "unit": "ndvi",
+          "source": "fixed_zero_ndvi",
+          "coverage": true
+        }
+      },
+      "best_earth_analogs_by_task": {
+        "R1": [
+          {
+            "name_en": "67 km from Khash (IR)",
+            "lat": 28.75,
+            "lon": 61.55,
+            "score": 98.0
+          },
+          {
+            "name_en": "near Minas de Marcona (PE)",
+            "lat": -15.25,
+            "lon": -75.15,
+            "score": 97.9
+          },
+          {
+            "name_en": "96 km from Bayangol (MN)",
+            "lat": 44.85,
+            "lon": 93.65,
+            "score": 97.6
+          }
+        ],
+        "R3": [
+          {
+            "name_en": "522 km from McMurdo Station (AQ)",
+            "lat": -73.15,
+            "lon": 167.15,
+            "score": 100.0
+          },
+          {
+            "name_en": "37 km from McMurdo Station (AQ)",
+            "lat": -77.65,
+            "lon": 167.95,
+            "score": 100.0
+          },
+          {
+            "name_en": "1067 km from Stanley (FK)",
+            "lat": -61.15,
+            "lon": -54.85,
+            "score": 100.0
+          }
+        ],
+        "R4": [
+          {
+            "name_en": "40 km from Xitieshan (CN)",
+            "lat": 36.95,
+            "lon": 95.65,
+            "score": 97.4
+          },
+          {
+            "name_en": "167 km from Torghay (KZ)",
+            "lat": 48.15,
+            "lon": 63.15,
+            "score": 97.4
+          },
+          {
+            "name_en": "92 km from Wutumeiren (CN)",
+            "lat": 37.45,
+            "lon": 93.95,
+            "score": 97.4
+          }
+        ],
+        "R5": [
+          {
+            "name_en": "881 km from Kugluktuk (CA)",
+            "lat": 75.75,
+            "lon": -114.75,
+            "score": 100.0
+          },
+          {
+            "name_en": "1389 km from Clyde River (CA)",
+            "lat": 82.95,
+            "lon": -71.15,
+            "score": 100.0
+          },
+          {
+            "name_en": "1237 km from Clyde River (CA)",
+            "lat": 81.55,
+            "lon": -73.15,
+            "score": 100.0
+          }
+        ],
+        "R6": [
+          {
+            "name_en": "128 km from Jumla (NP)",
+            "lat": 30.35,
+            "lon": 82.65,
+            "score": 74.2
+          },
+          {
+            "name_en": "near Craig (US)",
+            "lat": 40.55,
+            "lon": -107.75,
+            "score": 74.0
+          },
+          {
+            "name_en": "92 km from Kyelang (IN)",
+            "lat": 32.85,
+            "lon": 77.95,
+            "score": 73.9
+          }
+        ]
+      }
+    },
+    {
+      "id": "mars-ap105",
+      "target_id": "ap105",
+      "name": "Arcadia Planitia AP-105 (SkyFall design reference landing site)",
+      "lat": 43.3295,
+      "lon": -161.4772,
+      "radius_km": 50,
+      "missions": [
+        "landing",
+        "isru_base"
+      ],
+      "source": "SkyFall design reference landing site AP-105, 43.3295N 198.5228E, quoted in the team Mars plan citing the SkyFall engineering constraints package. The 50 km study radius covers the 100 x 25 km landing ellipse. The original reference document is pending.",
+      "lithology_group": "basalt",
+      "lithology_unit": "Av",
+      "ice_ci": 0.583,
+      "ice_target": 0.583,
+      "has_ice": true,
+      "test_status": {
+        "R1": "scored",
+        "R2": "not_evaluated",
+        "R3": "scored",
+        "R4": "scored",
+        "R5": "scored",
+        "R6": "scored"
+      },
+      "scored_tests": [
+        "R1",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "values": {
+        "slope": {
+          "value": 0.208,
+          "unit": "deg",
+          "source": "hrsc_mola_blend_200m_v2",
+          "coverage": true
+        },
+        "roughness": {
+          "value": 0.994,
+          "unit": "m",
+          "source": "hrsc_mola_blend_200m_v2",
+          "coverage": true
+        },
+        "thermal_inertia": {
+          "value": 181.0,
+          "pct": 0.387,
+          "unit": "tiu",
+          "source": "tes_night_2007",
+          "coverage": true
+        },
+        "lithology": {
+          "value": "Av",
+          "source": "usgs_sim3292",
+          "group": "basalt",
+          "unit_desc": "Amazonian volcanic unit",
+          "coverage": true
+        },
+        "ice": {
+          "value": 0.583,
+          "source": "swim4mim_ci_composite",
+          "coverage": true
+        },
+        "temperature": {
+          "value": -72.67,
+          "unit": "C",
+          "source": "mcd_v6_web_climatology",
+          "coverage": true
+        },
+        "diurnal_range": {
+          "value": 75.45,
+          "unit": "C",
+          "source": "mcd_v6_web_climatology",
+          "coverage": true
+        },
+        "dust": {
+          "value": 0.4056,
+          "pct": 0.595,
+          "unit": "tau",
+          "source": "mcd_v6_web_climatology",
+          "coverage": true
+        },
+        "aridity": {
+          "value": "max",
+          "source": "fixed_max",
+          "coverage": true
+        },
+        "barrenness": {
+          "value": 0.0,
+          "unit": "ndvi",
+          "source": "fixed_zero_ndvi",
+          "coverage": true
+        }
+      },
+      "best_earth_analogs_by_task": {
+        "R1": [
+          {
+            "name_en": "75 km from Colchani (BO)",
+            "lat": -19.95,
+            "lon": -67.55,
+            "score": 100.0
+          },
+          {
+            "name_en": "52 km from Xitieshan (CN)",
+            "lat": 36.85,
+            "lon": 95.35,
+            "score": 100.0
+          },
+          {
+            "name_en": "235 km from Qilanbulak (CN)",
+            "lat": 40.45,
+            "lon": 90.75,
+            "score": 100.0
+          }
+        ],
+        "R3": [
+          {
+            "name_en": "67 km from McMurdo Station (AQ)",
+            "lat": -78.15,
+            "lon": 164.15,
+            "score": 100.0
+          },
+          {
+            "name_en": "494 km from McMurdo Station (AQ)",
+            "lat": -82.25,
+            "lon": 163.25,
+            "score": 100.0
+          },
+          {
+            "name_en": "2641 km from Port-aux-Francais (TF)",
+            "lat": -73.05,
+            "lon": 66.55,
+            "score": 100.0
+          }
+        ],
+        "R4": [
+          {
+            "name_en": "260 km from Talnakh (RU)",
+            "lat": 69.15,
+            "lon": 94.95,
+            "score": 98.6
+          },
+          {
+            "name_en": "147 km from Sultanah (SA)",
+            "lat": 25.75,
+            "lon": 40.05,
+            "score": 97.2
+          },
+          {
+            "name_en": "153 km from Kotzebue (US)",
+            "lat": 68.25,
+            "lon": -161.95,
+            "score": 96.4
+          }
+        ],
+        "R5": [
+          {
+            "name_en": "1196 km from Kugluktuk (CA)",
+            "lat": 78.55,
+            "lon": -111.95,
+            "score": 100.0
+          },
+          {
+            "name_en": "995 km from Khatanga (RU)",
+            "lat": 80.85,
+            "lon": 97.25,
+            "score": 100.0
+          },
+          {
+            "name_en": "1522 km from Vorgashor (RU)",
+            "lat": 81.25,
+            "lon": 60.45,
+            "score": 100.0
+          }
+        ],
+        "R6": [
+          {
+            "name_en": "near Kyzyl-Mazhalyk (RU)",
+            "lat": 51.05,
+            "lon": 90.45,
+            "score": 78.8
+          },
+          {
+            "name_en": "near Kosh-Agach (RU)",
+            "lat": 49.85,
+            "lon": 88.65,
+            "score": 78.3
+          },
+          {
+            "name_en": "40 km from Chernogorsk (RU)",
+            "lat": 53.65,
+            "lon": 90.75,
+            "score": 78.0
+          }
+        ]
+      }
+    }
+  ]
+}

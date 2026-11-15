@@ -3,6 +3,7 @@ import {mount,flushPromises,enableAutoUnmount} from '@vue/test-utils'
 import {createRouter,createMemoryHistory} from 'vue-router'
 import LunarMission from '../src/pages/LunarMission.vue'
 import LunarEvidenceDrawer from '../src/components/LunarEvidenceDrawer.vue'
+import LunarSiteDialog from '../src/components/LunarSiteDialog.vue'
 import {api} from '../src/api'
 import {i18n,setContentTranslations} from '../src/i18n'
 import catalogData from '../../data/catalog/lunar-handoff.json'
@@ -26,6 +27,21 @@ async function open(path:string){
  await flushPromises();return {wrapper,router}
 }
 describe('Task-first lunar experience',()=>{
+ it('hides task codes and removed notices, and opens a credited image for a lunar site',async()=>{
+  const {wrapper}=await open('/moon/M4?site=ConnectingRidge')
+  expect(wrapper.find('h1').text()).not.toContain('M4')
+  expect(wrapper.find('.lunar-task-tabs').text()).not.toMatch(/M[2346]/)
+  expect(wrapper.text()).not.toContain(i18n.global.t('lunarSuitabilityMeaning'))
+  expect(wrapper.text()).not.toContain('Shared Earth-achievable anchors')
+  await wrapper.find('[data-site-id="MalapertMassif"]').trigger('click');await flushPromises()
+  const dialog=wrapper.findComponent(LunarSiteDialog)
+  expect(dialog.props('site').id).toBe('MalapertMassif')
+  expect(dialog.find('img').attributes('src')).toBe('/images/moon-sites/MalapertMassif.png')
+  expect(dialog.text()).toContain('NASA/GSFC/Arizona State University')
+  expect(dialog.find('figcaption a').attributes('href')).toContain('science.nasa.gov')
+  await dialog.find('.icon-button').trigger('click');await flushPromises()
+  expect(wrapper.findComponent(LunarSiteDialog).exists()).toBe(false)
+ })
  it('starts with four mission cards and opens lunar suitability before Earth comparisons',async()=>{
   const {wrapper,router}=await open('/moon')
   expect(wrapper.findAll('[data-task-id]')).toHaveLength(4)
@@ -36,7 +52,9 @@ describe('Task-first lunar experience',()=>{
   const html=wrapper.html();expect(html.indexOf('lunar-sites-section')).toBeLessThan(html.indexOf('lunar-earth-section'))
   expect(wrapper.find('[data-testid="most-similar"]').findAll('.lunar-earth-card')).toHaveLength(3)
   expect(wrapper.find('[data-testid="least-similar"]').findAll('.lunar-earth-card')).toHaveLength(3)
-  expect(wrapper.find('[data-testid="most-similar"]').text()).toContain('92.7')
+  expect(wrapper.find('[data-testid="most-similar"]').text()).toContain('76.6')
+  expect(wrapper.find('[data-testid="modis-method-notice"]').text()).toContain('monthly land-surface temperatures')
+  expect(wrapper.find('[data-testid="most-similar"] [data-testid="temperature-months"]').text()).toContain('12/12')
   expect(wrapper.find('[data-testid="least-similar"]').text()).toContain('0.0')
   wrapper.unmount()
  })
@@ -65,7 +83,7 @@ describe('Task-first lunar experience',()=>{
   expect(wrapper.find('[data-testid="most-similar"]').text()).toContain(i18n.global.t('lunarMostSimilar'))
   expect(wrapper.find('[data-testid="most-similar"]').text()).not.toBe(originalScore)
   expect(wrapper.find('[data-testid="most-similar"]').text()).toContain(translations['Longest continuous darkness'])
-  expect(wrapper.find('[data-testid="most-similar"]').text()).toContain('92.7')
+  expect(wrapper.find('[data-testid="most-similar"]').text()).toContain('76.6')
   wrapper.unmount()
  })
  it('rejects an unknown site and prevents stale request results after changing a lunar reference',async()=>{
@@ -79,6 +97,24 @@ describe('Task-first lunar experience',()=>{
   pending.get('ConnectingRidge')!(result('M4','ConnectingRidge'));await flushPromises()
   expect(wrapper.find('[data-testid="most-similar"]').text()).toContain('90.2')
   expect(wrapper.find('[data-testid="most-similar"]').text()).not.toContain('89.8')
+  wrapper.unmount()
+ })
+ it('shows the MODIS M6 winner with LST definitions and actual month coverage in both languages',async()=>{
+  const {wrapper}=await open('/moon/M6?site=Haworth')
+  const first=wrapper.find('[data-testid="most-similar"] .lunar-earth-card')
+  expect(first.text()).toContain('Lake Hazen')
+  expect(first.text()).toContain('59.3')
+  await first.trigger('click');await flushPromises()
+  const drawer=wrapper.findComponent(LunarEvidenceDrawer)
+  expect(drawer.text()).toContain('Mean monthly day/night LST (2023)')
+  expect(drawer.find('[data-testid="temperature-source"]').text()).toContain('MODIS LST 2023')
+  expect(drawer.text()).not.toContain('Annual mean 2 m air temperature')
+  await drawer.find('.icon-button').trigger('click');await flushPromises()
+  await wrapper.find('button.language').trigger('click');await flushPromises()
+  await wrapper.find('[data-testid="most-similar"] .lunar-earth-card').trigger('click');await flushPromises()
+  const translatedDrawer=wrapper.findComponent(LunarEvidenceDrawer)
+  expect(translatedDrawer.text()).toContain(translations['Mean monthly day/night LST (2023)'])
+  expect(translatedDrawer.text()).toContain(i18n.global.t('lunarModisMonths',{months:12}))
   wrapper.unmount()
  })
 })

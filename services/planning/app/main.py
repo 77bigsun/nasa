@@ -2,7 +2,7 @@
 import asyncio
 import os
 import httpx
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.concurrency import run_in_threadpool
 from services.shared.catalog_client import CatalogClient
 from services.shared.contracts import ScoreRequest, SensitivityRequest, OptimizeResponse, SensitivityResponse
@@ -38,6 +38,18 @@ def create_app(catalog=None,similarity=None):
 
     @app.post('/optimize',response_model=OptimizeResponse)
     async def optimize(request:ScoreRequest):return await execute(request,'optimize')
+
+    @app.get('/mars/network')
+    async def mars_network(site_id:str=Query('all'),tasks:str=Query('')):
+        from .mars_handoff import network
+        measurements_url=os.getenv('MEASUREMENTS_URL','http://127.0.0.1:8003')
+        try:
+            async with httpx.AsyncClient(timeout=30) as client:
+                response=await client.get(measurements_url+'/mars-network-inputs')
+                response.raise_for_status();data=response.json()
+        except (httpx.HTTPError,ValueError) as error:raise HTTPException(503,'Mars planning inputs unavailable') from error
+        try:return await run_in_threadpool(network,data,site_id,tasks.split(',') if tasks else [])
+        except ValueError as error:raise HTTPException(422,str(error)) from error
 
     @app.post('/sensitivity',response_model=SensitivityResponse)
     async def sensitivity(request:SensitivityRequest):return await execute(request,'sensitivity')

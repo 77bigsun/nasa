@@ -43,10 +43,46 @@ def create_app(repository=None):
         from fastapi.responses import FileResponse
         path=repo.data_root/'lunar/handoff/global-grid.json'
         if not path.exists():raise HTTPException(404,'Lunar global screening grid is not imported')
-        return FileResponse(path,media_type='application/json',filename='lunar-global-screen-2026-11-14.json')
+        return FileResponse(path,media_type='application/json',filename='lunar-global-screen-modis-2023.json')
+
+    @app.get('/lunar-temperature')
+    def lunar_temperature():
+        from fastapi.responses import FileResponse
+        path=repo.data_root/'lunar/handoff-modis-source/modis_lst_2023_1deg.csv'
+        if not path.exists():raise HTTPException(404,'Lunar MODIS temperature summary is not imported')
+        return FileResponse(path,media_type='text/csv',filename='modis-lst-2023-1deg.csv')
 
     @app.get('/candidates',response_model=list[Candidate])
     def candidates():return repo.candidates
+
+    from services.shared.mars_handoff import MarsResults
+    @app.get('/mars-handoff',response_model=MarsResults)
+    def mars_handoff():
+        path=repo.data_root/'mars/handoff/results.json'
+        if not path.exists():raise HTTPException(404,'Mars handoff is not imported')
+        return MarsResults.model_validate_json(path.read_text(encoding='utf-8'))
+
+    @app.get('/mars-grid')
+    def mars_grid():
+        from fastapi.responses import FileResponse
+        return FileResponse(repo.data_root/'mars/handoff-source/mars_global_grid.json',media_type='application/json',filename='mars-global-grid.json')
+
+    @app.get('/mars-pool')
+    def mars_pool():
+        from fastapi.responses import FileResponse
+        return FileResponse(repo.data_root/'mars/handoff-source/mars_candidate_pool.csv',media_type='text/csv',filename='mars-candidate-pool.csv')
+
+    @app.get('/mars-network-inputs')
+    def mars_network_inputs():
+        import csv
+        result=mars_handoff()
+        with (repo.data_root/'mars/handoff-source/mars_candidate_pool.csv').open(encoding='utf-8-sig',newline='') as handle:
+            rows=list(csv.DictReader(handle))
+        for row in rows:
+            for key,value in row.items():
+                if key.startswith('S_') or key in {'lat','lon','nearest_known_km'}:row[key]=float(value) if value else None
+                elif key=='known_analog':row[key]=value.lower()=='true'
+        return {'version':result.meta['version'],'pool':rows,'set_cover':result.set_cover}
 
     @app.get('/candidates/{candidate_id}',response_model=Candidate)
     def candidate(candidate_id:str):

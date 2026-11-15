@@ -1,7 +1,7 @@
 [
   {
     "id": "lunar-pdf-revision",
-    "title": "Lunar missions: ten lunar references and global Earth comparisons",
+    "title": "Lunar update: MODIS monthly surface temperatures for 2023",
     "status": "implemented",
     "pdf": "lunar-principles",
     "pages": [
@@ -15,11 +15,11 @@
       8
     ],
     "items": [
-      "The lunar page starts with four tasks. Each task shows lunar suitability first, then three most-similar new Earth candidates and three least-similar locations; known analogs remain a separate validation group.",
-      "The latest two ZIPs supply 19599 land cells, a 4881-cell ice mask and independent 30 m slope / 16 km relief references for all ten lunar locations. M4 now changes with the selected lunar site.",
-      "Revised feature weights are M2 0.3/0.7, M3 0.5/0.35/0.15, M4 0.7/0.3 and M6 0.25/0.25/0.5, multiplied by data fitness. The drawer shows inputs, feature scores, weights and sources on the handoff 0-100 task scale.",
-      "The importer preserves source hashes, converts nonfinite JSON values to null and applies the MODIS mask consistently to M4 new and least-similar groups. The final M4 pool has 135 eligible entries; the global M4 grid is relief-only screening.",
-      "Lunar suitability is a preliminary literature-based team assessment. Earth place names are approximate grid labels. The older 15-site PDF model and observed APIs are retained separately, not mixed into current task rankings."
+      "Current lunar M3/M6 use 2023 MODIS Terra MOD11C3 monthly LST via Worldview/GIBS, replacing POWER air temperatures. ERA5 validation data are archived, not active inputs.",
+      "The thermal pool has 19587 cells with MODIS LST and 12 no-LST cells excluded; 403 cells have 7-11 months. Cards and evidence details show month coverage.",
+      "Monthly daytime maxima and nighttime minima are not daily extremes. GIBS colour-derived values, its 200 K lower colour bound and the polar day-night zero convention are explicit exploratory limits.",
+      "M2/M4 inputs, ten lunar terrain references, all weights and anchors, ice masks and known-analog exclusions are unchanged. M2 remains usable without MODIS; M3/M6 never use POWER fallback.",
+      "The first new M3 candidate is Northern Yakutia, 76.6; M6 is northern Ellesmere near Lake Hazen, 59.3. The supplied precomputed scores and weighted arithmetic are checked; raw monthly processing has not been independently repeated."
     ],
     "links": [
       {
@@ -27,8 +27,8 @@
         "url": "http://localhost:8080/moon"
       },
       {
-        "title": "Current lunar principles and sources",
-        "url": "http://localhost:8080/docs/lunar-principles-2026-11-14.pdf"
+        "title": "Current MODIS lunar method",
+        "url": "http://localhost:8080/docs/lunar-principles-modis-2026-11-15.pdf"
       }
     ]
   },

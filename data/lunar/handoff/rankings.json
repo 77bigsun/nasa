@@ -1,77 +1,11 @@
 {
-  "version": "lunar-handoff-2026-11-14-2330",
+  "version": "lunar-handoff-modis-2026-11-15-1630",
   "rankings": {
     "M2": {
       "new_candidates": [
         {
-          "id": "M2:74.5:96.5",
-          "rank": 1,
-          "name_en": "Taymyr Peninsula, Russia",
-          "lat": 74.5,
-          "lon": 96.5,
-          "score": 52.9,
-          "known_analog_region": null,
-          "group": "new_candidates",
-          "features": [
-            {
-              "feature": "noon_sun_elevation",
-              "value": 15.5,
-              "moon_value": null,
-              "s": 0.876,
-              "w": 0.3,
-              "c": 1.0,
-              "classification": "similar"
-            },
-            {
-              "feature": "low_sun_fraction",
-              "value": 0.3803544782909342,
-              "moon_value": null,
-              "s": 0.38,
-              "w": 0.7,
-              "c": 1.0,
-              "classification": "partial"
-            }
-          ],
-          "available_features": 2,
-          "total_features": 2,
-          "notes": []
-        },
-        {
-          "id": "M2:74.5:104.5",
-          "rank": 2,
-          "name_en": "Eastern Taymyr Peninsula, Russia",
-          "lat": 74.5,
-          "lon": 104.5,
-          "score": 52.9,
-          "known_analog_region": null,
-          "group": "new_candidates",
-          "features": [
-            {
-              "feature": "noon_sun_elevation",
-              "value": 15.5,
-              "moon_value": null,
-              "s": 0.876,
-              "w": 0.3,
-              "c": 1.0,
-              "classification": "similar"
-            },
-            {
-              "feature": "low_sun_fraction",
-              "value": 0.3803544782909342,
-              "moon_value": null,
-              "s": 0.38,
-              "w": 0.7,
-              "c": 1.0,
-              "classification": "partial"
-            }
-          ],
-          "available_features": 2,
-          "total_features": 2,
-          "notes": []
-        },
-        {
           "id": "M2:74.5:58.5",
-          "rank": 3,
+          "rank": 1,
           "name_en": "Novaya Zemlya, Russia",
           "lat": 74.5,
           "lon": 58.5,
@@ -100,11 +34,153 @@
           ],
           "available_features": 2,
           "total_features": 2,
-          "notes": []
+          "notes": [],
+          "temperature_source": null,
+          "temperature_months": null
+        },
+        {
+          "id": "M2:74.5:105.5",
+          "rank": 2,
+          "name_en": "Eastern Taymyr Peninsula, Russia",
+          "lat": 74.5,
+          "lon": 105.5,
+          "score": 52.9,
+          "known_analog_region": null,
+          "group": "new_candidates",
+          "features": [
+            {
+              "feature": "noon_sun_elevation",
+              "value": 15.5,
+              "moon_value": null,
+              "s": 0.876,
+              "w": 0.3,
+              "c": 1.0,
+              "classification": "similar"
+            },
+            {
+              "feature": "low_sun_fraction",
+              "value": 0.3803544782909342,
+              "moon_value": null,
+              "s": 0.38,
+              "w": 0.7,
+              "c": 1.0,
+              "classification": "partial"
+            }
+          ],
+          "available_features": 2,
+          "total_features": 2,
+          "notes": [],
+          "temperature_source": null,
+          "temperature_months": null
+        },
+        {
+          "id": "M2:74.5:-19.5",
+          "rank": 3,
+          "name_en": "Wollaston Forland, NE Greenland",
+          "lat": 74.5,
+          "lon": -19.5,
+          "score": 52.9,
+          "known_analog_region": null,
+          "group": "new_candidates",
+          "features": [
+            {
+              "feature": "noon_sun_elevation",
+              "value": 15.5,
+              "moon_value": null,
+              "s": 0.876,
+              "w": 0.3,
+              "c": 1.0,
+              "classification": "similar"
+            },
+            {
+              "feature": "low_sun_fraction",
+              "value": 0.3803544782909342,
+              "moon_value": null,
+              "s": 0.38,
+              "w": 0.7,
+              "c": 1.0,
+              "classification": "partial"
+            }
+          ],
+          "available_features": 2,
+          "total_features": 2,
+          "notes": [],
+          "temperature_source": null,
+          "temperature_months": null
+        },
+        {
+          "id": "M2:74.5:98.5",
+          "rank": 4,
+          "name_en": "Taymyr Peninsula, Russia",
+          "lat": 74.5,
+          "lon": 98.5,
+          "score": 52.9,
+          "known_analog_region": null,
+          "group": "new_candidates",
+          "features": [
+            {
+              "feature": "noon_sun_elevation",
+              "value": 15.5,
+              "moon_value": null,
+              "s": 0.876,
+              "w": 0.3,
+              "c": 1.0,
+              "classification": "similar"
+            },
+            {
+              "feature": "low_sun_fraction",
+              "value": 0.3803544782909342,
+              "moon_value": null,
+              "s": 0.38,
+              "w": 0.7,
+              "c": 1.0,
+              "classification": "partial"
+            }
+          ],
+          "available_features": 2,
+          "total_features": 2,
+          "notes": [],
+          "temperature_source": null,
+          "temperature_months": null
+        },
+        {
+          "id": "M2:74.5:-113.5",
+          "rank": 5,
+          "name_en": "Northern Victoria Island, Canadian Arctic",
+          "lat": 74.5,
+          "lon": -113.5,
+          "score": 52.9,
+          "known_analog_region": null,
+          "group": "new_candidates",
+          "features": [
+            {
+              "feature": "noon_sun_elevation",
+              "value": 15.5,
+              "moon_value": null,
+              "s": 0.876,
+              "w": 0.3,
+              "c": 1.0,
+              "classification": "similar"
+            },
+            {
+              "feature": "low_sun_fraction",
+              "value": 0.3803544782909342,
+              "moon_value": null,
+              "s": 0.38,
+              "w": 0.7,
+              "c": 1.0,
+              "classification": "partial"
+            }
+          ],
+          "available_features": 2,
+          "total_features": 2,
+          "notes": [],
+          "temperature_source": null,
+          "temperature_months": null
         },
         {
           "id": "M2:74.5:-97.5",
-          "rank": 4,
+          "rank": 6,
           "name_en": "Prince of Wales Island area, Canada",
           "lat": 74.5,
           "lon": -97.5,
@@ -133,98 +209,34 @@
           ],
           "available_features": 2,
           "total_features": 2,
-          "notes": []
+          "notes": [],
+          "temperature_source": null,
+          "temperature_months": null
         },
         {
-          "id": "M2:74.5:-21.5",
-          "rank": 5,
-          "name_en": "Wollaston Forland, NE Greenland",
-          "lat": 74.5,
-          "lon": -21.5,
-          "score": 52.9,
-          "known_analog_region": null,
-          "group": "new_candidates",
-          "features": [
-            {
-              "feature": "noon_sun_elevation",
-              "value": 15.5,
-              "moon_value": null,
-              "s": 0.876,
-              "w": 0.3,
-              "c": 1.0,
-              "classification": "similar"
-            },
-            {
-              "feature": "low_sun_fraction",
-              "value": 0.3803544782909342,
-              "moon_value": null,
-              "s": 0.38,
-              "w": 0.7,
-              "c": 1.0,
-              "classification": "partial"
-            }
-          ],
-          "available_features": 2,
-          "total_features": 2,
-          "notes": []
-        },
-        {
-          "id": "M2:74.5:-121.5",
-          "rank": 6,
-          "name_en": "Banks Island, Canada",
-          "lat": 74.5,
-          "lon": -121.5,
-          "score": 52.9,
-          "known_analog_region": null,
-          "group": "new_candidates",
-          "features": [
-            {
-              "feature": "noon_sun_elevation",
-              "value": 15.5,
-              "moon_value": null,
-              "s": 0.876,
-              "w": 0.3,
-              "c": 1.0,
-              "classification": "similar"
-            },
-            {
-              "feature": "low_sun_fraction",
-              "value": 0.3803544782909342,
-              "moon_value": null,
-              "s": 0.38,
-              "w": 0.7,
-              "c": 1.0,
-              "classification": "partial"
-            }
-          ],
-          "available_features": 2,
-          "total_features": 2,
-          "notes": []
-        },
-        {
-          "id": "M2:73.5:142.5",
+          "id": "M2:75.5:138.5",
           "rank": 7,
-          "name_en": "Yana–Indigirka coast, Russia",
-          "lat": 73.5,
-          "lon": 142.5,
+          "name_en": "New Siberian Islands, Russia",
+          "lat": 75.5,
+          "lon": 138.5,
           "score": 52.8,
           "known_analog_region": null,
           "group": "new_candidates",
           "features": [
             {
               "feature": "noon_sun_elevation",
-              "value": 16.5,
+              "value": 14.5,
               "moon_value": null,
-              "s": 0.865,
+              "s": 0.888,
               "w": 0.3,
               "c": 1.0,
               "classification": "similar"
             },
             {
               "feature": "low_sun_fraction",
-              "value": 0.3840809050893085,
+              "value": 0.3741494123212401,
               "moon_value": null,
-              "s": 0.384,
+              "s": 0.374,
               "w": 0.7,
               "c": 1.0,
               "classification": "partial"
@@ -232,7 +244,9 @@
           ],
           "available_features": 2,
           "total_features": 2,
-          "notes": []
+          "notes": [],
+          "temperature_source": null,
+          "temperature_months": null
         },
         {
           "id": "M2:73.5:-25.5",
@@ -265,14 +279,16 @@
           ],
           "available_features": 2,
           "total_features": 2,
-          "notes": []
+          "notes": [],
+          "temperature_source": null,
+          "temperature_months": null
         },
         {
-          "id": "M2:72.5:-54.5",
+          "id": "M2:72.5:-55.5",
           "rank": 9,
           "name_en": "Upernavik coast, West Greenland",
           "lat": 72.5,
-          "lon": -54.5,
+          "lon": -55.5,
           "score": 52.6,
           "known_analog_region": null,
           "group": "new_candidates",
@@ -298,14 +314,16 @@
           ],
           "available_features": 2,
           "total_features": 2,
-          "notes": []
+          "notes": [],
+          "temperature_source": null,
+          "temperature_months": null
         },
         {
-          "id": "M2:71.5:-93.5",
+          "id": "M2:71.5:-110.5",
           "rank": 10,
-          "name_en": "Boothia Peninsula, Canada",
+          "name_en": "Victoria Island, Canada",
           "lat": 71.5,
-          "lon": -93.5,
+          "lon": -110.5,
           "score": 52.3,
           "known_analog_region": null,
           "group": "new_candidates",
@@ -331,16 +349,18 @@
           ],
           "available_features": 2,
           "total_features": 2,
-          "notes": []
+          "notes": [],
+          "temperature_source": null,
+          "temperature_months": null
         }
       ],
       "least_similar": [
         {
-          "id": "M2:-2.5:116.5",
+          "id": "M2:2.5:-77.5",
           "rank": 1,
-          "name_en": "-2.5, 116.5",
-          "lat": -2.5,
-          "lon": 116.5,
+          "name_en": "2.5, -77.5",
+          "lat": 2.5,
+          "lon": -77.5,
           "score": 9.2,
           "known_analog_region": null,
           "group": "least_similar",
@@ -356,7 +376,7 @@
             },
             {
               "feature": "low_sun_fraction",
-              "value": 0.1191006149319047,
+              "value": 0.1187629643597963,
               "moon_value": null,
               "s": 0.119,
               "w": 0.7,
@@ -366,14 +386,16 @@
           ],
           "available_features": 2,
           "total_features": 2,
-          "notes": []
+          "notes": [],
+          "temperature_source": null,
+          "temperature_months": null
         },
         {
-          "id": "M2:-2.5:119.5",
+          "id": "M2:2.5:-76.5",
           "rank": 2,
-          "name_en": "-2.5, 119.5",
-          "lat": -2.5,
-          "lon": 119.5,
+          "name_en": "2.5, -76.5",
+          "lat": 2.5,
+          "lon": -76.5,
           "score": 9.2,
           "known_analog_region": null,
           "group": "least_similar",
@@ -389,7 +411,7 @@
             },
             {
               "feature": "low_sun_fraction",
-              "value": 0.1191006149319047,
+              "value": 0.1187629643597963,
               "moon_value": null,
               "s": 0.119,
               "w": 0.7,
@@ -399,14 +421,16 @@
           ],
           "available_features": 2,
           "total_features": 2,
-          "notes": []
+          "notes": [],
+          "temperature_source": null,
+          "temperature_months": null
         },
         {
-          "id": "M2:-2.5:120.5",
+          "id": "M2:2.5:-75.5",
           "rank": 3,
-          "name_en": "Central Sulawesi highlands, Indonesia",
-          "lat": -2.5,
-          "lon": 120.5,
+          "name_en": "2.5, -75.5",
+          "lat": 2.5,
+          "lon": -75.5,
           "score": 9.2,
           "known_analog_region": null,
           "group": "least_similar",
@@ -422,7 +446,7 @@
             },
             {
               "feature": "low_sun_fraction",
-              "value": 0.1191006149319047,
+              "value": 0.1187629643597963,
               "moon_value": null,
               "s": 0.119,
               "w": 0.7,
@@ -432,7 +456,9 @@
           ],
           "available_features": 2,
           "total_features": 2,
-          "notes": []
+          "notes": [],
+          "temperature_source": null,
+          "temperature_months": null
         }
       ],
       "known_analogs_validation": [
@@ -467,7 +493,9 @@
           ],
           "available_features": 2,
           "total_features": 2,
-          "notes": []
+          "notes": [],
+          "temperature_source": null,
+          "temperature_months": null
         },
         {
           "id": "M2:74.5:-85.5",
@@ -500,7 +528,9 @@
           ],
           "available_features": 2,
           "total_features": 2,
-          "notes": []
+          "notes": [],
+          "temperature_source": null,
+          "temperature_months": null
         },
         {
           "id": "M2:65.5:-18.5",
@@ -533,7 +563,9 @@
           ],
           "available_features": 2,
           "total_features": 2,
-          "notes": []
+          "notes": [],
+          "temperature_source": null,
+          "temperature_months": null
         },
         {
           "id": "M2:37.5:-116.5",
@@ -566,19 +598,205 @@
           ],
           "available_features": 2,
           "total_features": 2,
-          "notes": []
+          "notes": [],
+          "temperature_source": null,
+          "temperature_months": null
         }
       ]
     },
     "M3": {
       "new_candidates": [
         {
-          "id": "M3:69.5:115.5",
+          "id": "M3:70.5:112.5",
           "rank": 1,
-          "name_en": "Northern Yakutia (Olenyok basin), Russia",
+          "name_en": "Northern Yakutia, Russia",
+          "lat": 70.5,
+          "lon": 112.5,
+          "score": 76.6,
+          "known_analog_region": null,
+          "group": "new_candidates",
+          "features": [
+            {
+              "feature": "longest_darkness_h",
+              "value": 1391.3333333333333,
+              "moon_value": null,
+              "s": 1.0,
+              "w": 0.5,
+              "c": 1.0,
+              "classification": "similar"
+            },
+            {
+              "feature": "annual_min_temp_C",
+              "value": -47.7,
+              "moon_value": null,
+              "s": 0.536,
+              "w": 0.35,
+              "c": 0.6,
+              "classification": "partial"
+            },
+            {
+              "feature": "diurnal_range_C",
+              "value": 5.55,
+              "moon_value": null,
+              "s": 0.0,
+              "w": 0.15,
+              "c": 0.6,
+              "classification": "different"
+            }
+          ],
+          "available_features": 3,
+          "total_features": 3,
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
+        },
+        {
+          "id": "M3:67.5:135.5",
+          "rank": 2,
+          "name_en": "Verkhoyansk area, Yakutia, Russia",
+          "lat": 67.5,
+          "lon": 135.5,
+          "score": 76.3,
+          "known_analog_region": null,
+          "group": "new_candidates",
+          "features": [
+            {
+              "feature": "longest_darkness_h",
+              "value": 263.6666666666667,
+              "moon_value": null,
+              "s": 1.0,
+              "w": 0.5,
+              "c": 1.0,
+              "classification": "similar"
+            },
+            {
+              "feature": "annual_min_temp_C",
+              "value": -46.7,
+              "moon_value": null,
+              "s": 0.525,
+              "w": 0.35,
+              "c": 0.6,
+              "classification": "partial"
+            },
+            {
+              "feature": "diurnal_range_C",
+              "value": 6.02,
+              "moon_value": null,
+              "s": 0.0,
+              "w": 0.15,
+              "c": 0.6,
+              "classification": "different"
+            }
+          ],
+          "available_features": 3,
+          "total_features": 3,
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
+        },
+        {
+          "id": "M3:71.5:-86.5",
+          "rank": 3,
+          "name_en": "Brodeur Peninsula, Baffin Island, Canada",
+          "lat": 71.5,
+          "lon": -86.5,
+          "score": 75.4,
+          "known_analog_region": null,
+          "group": "new_candidates",
+          "features": [
+            {
+              "feature": "longest_darkness_h",
+              "value": 1607.1666666666667,
+              "moon_value": null,
+              "s": 1.0,
+              "w": 0.5,
+              "c": 1.0,
+              "classification": "similar"
+            },
+            {
+              "feature": "annual_min_temp_C",
+              "value": -43.83,
+              "moon_value": null,
+              "s": 0.492,
+              "w": 0.35,
+              "c": 0.6,
+              "classification": "partial"
+            },
+            {
+              "feature": "diurnal_range_C",
+              "value": 3.21,
+              "moon_value": null,
+              "s": 0.0,
+              "w": 0.15,
+              "c": 0.6,
+              "classification": "different"
+            }
+          ],
+          "available_features": 3,
+          "total_features": 3,
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
+        },
+        {
+          "id": "M3:71.5:99.5",
+          "rank": 4,
+          "name_en": "Khatanga area, Russia",
+          "lat": 71.5,
+          "lon": 99.5,
+          "score": 75.3,
+          "known_analog_region": null,
+          "group": "new_candidates",
+          "features": [
+            {
+              "feature": "longest_darkness_h",
+              "value": 1607.1666666666667,
+              "moon_value": null,
+              "s": 1.0,
+              "w": 0.5,
+              "c": 1.0,
+              "classification": "similar"
+            },
+            {
+              "feature": "annual_min_temp_C",
+              "value": -43.47,
+              "moon_value": null,
+              "s": 0.488,
+              "w": 0.35,
+              "c": 0.6,
+              "classification": "partial"
+            },
+            {
+              "feature": "diurnal_range_C",
+              "value": 4.47,
+              "moon_value": null,
+              "s": 0.0,
+              "w": 0.15,
+              "c": 0.6,
+              "classification": "different"
+            }
+          ],
+          "available_features": 3,
+          "total_features": 3,
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
+        },
+        {
+          "id": "M3:69.5:-72.5",
+          "rank": 5,
+          "name_en": "Northern Baffin Island, Canada",
           "lat": 69.5,
-          "lon": 115.5,
-          "score": 92.7,
+          "lon": -72.5,
+          "score": 75.2,
           "known_analog_region": null,
           "group": "new_candidates",
           "features": [
@@ -593,34 +811,84 @@
             },
             {
               "feature": "annual_min_temp_C",
-              "value": -67.1,
+              "value": -43.01,
               "moon_value": null,
-              "s": 0.754,
+              "s": 0.483,
               "w": 0.35,
               "c": 0.6,
-              "classification": "similar"
+              "classification": "partial"
             },
             {
               "feature": "diurnal_range_C",
-              "value": null,
+              "value": 4.31,
               "moon_value": null,
-              "s": null,
+              "s": 0.0,
               "w": 0.15,
-              "c": 0.0,
-              "classification": null
+              "c": 0.6,
+              "classification": "different"
             }
           ],
-          "available_features": 2,
+          "available_features": 3,
           "total_features": 3,
-          "notes": []
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
         },
         {
-          "id": "M3:72.5:117.5",
-          "rank": 2,
+          "id": "M3:72.5:-88.5",
+          "rank": 6,
+          "name_en": "NW Baffin Island, Canada",
+          "lat": 72.5,
+          "lon": -88.5,
+          "score": 75.0,
+          "known_analog_region": null,
+          "group": "new_candidates",
+          "features": [
+            {
+              "feature": "longest_darkness_h",
+              "value": 1799.1666666666667,
+              "moon_value": null,
+              "s": 1.0,
+              "w": 0.5,
+              "c": 1.0,
+              "classification": "similar"
+            },
+            {
+              "feature": "annual_min_temp_C",
+              "value": -42.53,
+              "moon_value": null,
+              "s": 0.478,
+              "w": 0.35,
+              "c": 0.6,
+              "classification": "partial"
+            },
+            {
+              "feature": "diurnal_range_C",
+              "value": 2.92,
+              "moon_value": null,
+              "s": 0.0,
+              "w": 0.15,
+              "c": 0.6,
+              "classification": "different"
+            }
+          ],
+          "available_features": 3,
+          "total_features": 3,
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
+        },
+        {
+          "id": "M3:72.5:118.5",
+          "rank": 7,
           "name_en": "Lower Olenyok, Yakutia, Russia",
           "lat": 72.5,
-          "lon": 117.5,
-          "score": 92.5,
+          "lon": 118.5,
+          "score": 74.8,
           "known_analog_region": null,
           "group": "new_candidates",
           "features": [
@@ -635,160 +903,38 @@
             },
             {
               "feature": "annual_min_temp_C",
-              "value": -66.44,
+              "value": -41.7,
               "moon_value": null,
-              "s": 0.747,
+              "s": 0.469,
               "w": 0.35,
               "c": 0.6,
-              "classification": "similar"
+              "classification": "partial"
             },
             {
               "feature": "diurnal_range_C",
-              "value": null,
+              "value": 3.89,
               "moon_value": null,
-              "s": null,
+              "s": 0.0,
               "w": 0.15,
-              "c": 0.0,
-              "classification": null
-            }
-          ],
-          "available_features": 2,
-          "total_features": 3,
-          "notes": []
-        },
-        {
-          "id": "M3:70.5:125.5",
-          "rank": 3,
-          "name_en": "Lower Lena River, Yakutia, Russia",
-          "lat": 70.5,
-          "lon": 125.5,
-          "score": 91.1,
-          "known_analog_region": null,
-          "group": "new_candidates",
-          "features": [
-            {
-              "feature": "longest_darkness_h",
-              "value": 1391.3333333333333,
-              "moon_value": null,
-              "s": 1.0,
-              "w": 0.5,
-              "c": 1.0,
-              "classification": "similar"
-            },
-            {
-              "feature": "annual_min_temp_C",
-              "value": -62.16,
-              "moon_value": null,
-              "s": 0.698,
-              "w": 0.35,
               "c": 0.6,
-              "classification": "similar"
-            },
-            {
-              "feature": "diurnal_range_C",
-              "value": null,
-              "moon_value": null,
-              "s": null,
-              "w": 0.15,
-              "c": 0.0,
-              "classification": null
+              "classification": "different"
             }
           ],
-          "available_features": 2,
+          "available_features": 3,
           "total_features": 3,
-          "notes": []
-        },
-        {
-          "id": "M3:73.5:87.5",
-          "rank": 4,
-          "name_en": "Central Taymyr, Russia",
-          "lat": 73.5,
-          "lon": 87.5,
-          "score": 90.3,
-          "known_analog_region": null,
-          "group": "new_candidates",
-          "features": [
-            {
-              "feature": "longest_darkness_h",
-              "value": 1990.8333333333333,
-              "moon_value": null,
-              "s": 1.0,
-              "w": 0.5,
-              "c": 1.0,
-              "classification": "similar"
-            },
-            {
-              "feature": "annual_min_temp_C",
-              "value": -59.7,
-              "moon_value": null,
-              "s": 0.671,
-              "w": 0.35,
-              "c": 0.6,
-              "classification": "similar"
-            },
-            {
-              "feature": "diurnal_range_C",
-              "value": null,
-              "moon_value": null,
-              "s": null,
-              "w": 0.15,
-              "c": 0.0,
-              "classification": null
-            }
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
           ],
-          "available_features": 2,
-          "total_features": 3,
-          "notes": []
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
         },
         {
-          "id": "M3:72.5:125.5",
-          "rank": 5,
-          "name_en": "Lena Delta, Russia",
-          "lat": 72.5,
-          "lon": 125.5,
-          "score": 90.2,
-          "known_analog_region": null,
-          "group": "new_candidates",
-          "features": [
-            {
-              "feature": "longest_darkness_h",
-              "value": 1799.1666666666667,
-              "moon_value": null,
-              "s": 1.0,
-              "w": 0.5,
-              "c": 1.0,
-              "classification": "similar"
-            },
-            {
-              "feature": "annual_min_temp_C",
-              "value": -59.41,
-              "moon_value": null,
-              "s": 0.668,
-              "w": 0.35,
-              "c": 0.6,
-              "classification": "similar"
-            },
-            {
-              "feature": "diurnal_range_C",
-              "value": null,
-              "moon_value": null,
-              "s": null,
-              "w": 0.15,
-              "c": 0.0,
-              "classification": null
-            }
-          ],
-          "available_features": 2,
-          "total_features": 3,
-          "notes": []
-        },
-        {
-          "id": "M3:67.5:151.5",
-          "rank": 6,
+          "id": "M3:67.5:155.5",
+          "rank": 8,
           "name_en": "Kolyma basin, Russia",
           "lat": 67.5,
-          "lon": 151.5,
-          "score": 90.1,
+          "lon": 155.5,
+          "score": 74.8,
           "known_analog_region": null,
           "group": "new_candidates",
           "features": [
@@ -803,118 +949,38 @@
             },
             {
               "feature": "annual_min_temp_C",
-              "value": -59.11,
+              "value": -41.67,
               "moon_value": null,
-              "s": 0.664,
+              "s": 0.468,
               "w": 0.35,
               "c": 0.6,
-              "classification": "similar"
+              "classification": "partial"
             },
             {
               "feature": "diurnal_range_C",
-              "value": null,
+              "value": 6.45,
               "moon_value": null,
-              "s": null,
+              "s": 0.0,
               "w": 0.15,
-              "c": 0.0,
-              "classification": null
-            }
-          ],
-          "available_features": 2,
-          "total_features": 3,
-          "notes": []
-        },
-        {
-          "id": "M3:67.5:81.5",
-          "rank": 7,
-          "name_en": "Gydan–Taz lowland, Russia",
-          "lat": 67.5,
-          "lon": 81.5,
-          "score": 90.0,
-          "known_analog_region": null,
-          "group": "new_candidates",
-          "features": [
-            {
-              "feature": "longest_darkness_h",
-              "value": 263.6666666666667,
-              "moon_value": null,
-              "s": 1.0,
-              "w": 0.5,
-              "c": 1.0,
-              "classification": "similar"
-            },
-            {
-              "feature": "annual_min_temp_C",
-              "value": -58.87,
-              "moon_value": null,
-              "s": 0.661,
-              "w": 0.35,
               "c": 0.6,
-              "classification": "similar"
-            },
-            {
-              "feature": "diurnal_range_C",
-              "value": null,
-              "moon_value": null,
-              "s": null,
-              "w": 0.15,
-              "c": 0.0,
-              "classification": null
+              "classification": "different"
             }
           ],
-          "available_features": 2,
+          "available_features": 3,
           "total_features": 3,
-          "notes": []
-        },
-        {
-          "id": "M3:70.5:-83.5",
-          "rank": 8,
-          "name_en": "Melville Peninsula area, Canada",
-          "lat": 70.5,
-          "lon": -83.5,
-          "score": 89.1,
-          "known_analog_region": null,
-          "group": "new_candidates",
-          "features": [
-            {
-              "feature": "longest_darkness_h",
-              "value": 1391.3333333333333,
-              "moon_value": null,
-              "s": 1.0,
-              "w": 0.5,
-              "c": 1.0,
-              "classification": "similar"
-            },
-            {
-              "feature": "annual_min_temp_C",
-              "value": -56.27,
-              "moon_value": null,
-              "s": 0.632,
-              "w": 0.35,
-              "c": 0.6,
-              "classification": "similar"
-            },
-            {
-              "feature": "diurnal_range_C",
-              "value": null,
-              "moon_value": null,
-              "s": null,
-              "w": 0.15,
-              "c": 0.0,
-              "classification": null
-            }
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
           ],
-          "available_features": 2,
-          "total_features": 3,
-          "notes": []
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
         },
         {
-          "id": "M3:72.5:-115.5",
+          "id": "M3:72.5:129.5",
           "rank": 9,
-          "name_en": "Victoria Island, Canada",
+          "name_en": "Tiksi area, Lena coast, Russia",
           "lat": 72.5,
-          "lon": -115.5,
-          "score": 89.0,
+          "lon": 129.5,
+          "score": 74.5,
           "known_analog_region": null,
           "group": "new_candidates",
           "features": [
@@ -929,40 +995,44 @@
             },
             {
               "feature": "annual_min_temp_C",
-              "value": -55.98,
+              "value": -40.56,
               "moon_value": null,
-              "s": 0.629,
+              "s": 0.456,
               "w": 0.35,
               "c": 0.6,
-              "classification": "similar"
+              "classification": "partial"
             },
             {
               "feature": "diurnal_range_C",
-              "value": null,
+              "value": 2.82,
               "moon_value": null,
-              "s": null,
+              "s": 0.0,
               "w": 0.15,
-              "c": 0.0,
-              "classification": null
+              "c": 0.6,
+              "classification": "different"
             }
           ],
-          "available_features": 2,
+          "available_features": 3,
           "total_features": 3,
-          "notes": []
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
         },
         {
-          "id": "M3:68.5:-69.5",
+          "id": "M3:72.5:97.5",
           "rank": 10,
-          "name_en": "Central Baffin Island, Canada",
-          "lat": 68.5,
-          "lon": -69.5,
-          "score": 88.9,
+          "name_en": "Southern Taymyr, Russia",
+          "lat": 72.5,
+          "lon": 97.5,
+          "score": 74.2,
           "known_analog_region": null,
           "group": "new_candidates",
           "features": [
             {
               "feature": "longest_darkness_h",
-              "value": 839.3333333333334,
+              "value": 1799.1666666666667,
               "moon_value": null,
               "s": 1.0,
               "w": 0.5,
@@ -971,35 +1041,39 @@
             },
             {
               "feature": "annual_min_temp_C",
-              "value": -55.72,
+              "value": -39.74,
               "moon_value": null,
-              "s": 0.626,
+              "s": 0.447,
               "w": 0.35,
               "c": 0.6,
-              "classification": "similar"
+              "classification": "partial"
             },
             {
               "feature": "diurnal_range_C",
-              "value": null,
+              "value": 3.55,
               "moon_value": null,
-              "s": null,
+              "s": 0.0,
               "w": 0.15,
-              "c": 0.0,
-              "classification": null
+              "c": 0.6,
+              "classification": "different"
             }
           ],
-          "available_features": 2,
+          "available_features": 3,
           "total_features": 3,
-          "notes": []
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
         }
       ],
       "least_similar": [
         {
-          "id": "M3:1.5:27.5",
+          "id": "M3:0.5:122.5",
           "rank": 1,
-          "name_en": "1.5, 27.5",
-          "lat": 1.5,
-          "lon": 27.5,
+          "name_en": "0.5, 122.5",
+          "lat": 0.5,
+          "lon": 122.5,
           "score": 0.0,
           "known_analog_region": null,
           "group": "least_similar",
@@ -1015,7 +1089,7 @@
             },
             {
               "feature": "annual_min_temp_C",
-              "value": 14.15,
+              "value": 21.25,
               "moon_value": null,
               "s": 0.0,
               "w": 0.35,
@@ -1024,24 +1098,28 @@
             },
             {
               "feature": "diurnal_range_C",
-              "value": null,
+              "value": 6.43,
               "moon_value": null,
-              "s": null,
+              "s": 0.0,
               "w": 0.15,
-              "c": 0.0,
-              "classification": null
+              "c": 0.6,
+              "classification": "different"
             }
           ],
-          "available_features": 2,
+          "available_features": 3,
           "total_features": 3,
-          "notes": []
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
         },
         {
-          "id": "M3:1.5:28.5",
+          "id": "M3:0.5:123.5",
           "rank": 2,
-          "name_en": "1.5, 28.5",
-          "lat": 1.5,
-          "lon": 28.5,
+          "name_en": "0.5, 123.5",
+          "lat": 0.5,
+          "lon": 123.5,
           "score": 0.0,
           "known_analog_region": null,
           "group": "least_similar",
@@ -1057,7 +1135,7 @@
             },
             {
               "feature": "annual_min_temp_C",
-              "value": 12.94,
+              "value": 20.43,
               "moon_value": null,
               "s": 0.0,
               "w": 0.35,
@@ -1066,24 +1144,28 @@
             },
             {
               "feature": "diurnal_range_C",
-              "value": null,
+              "value": 5.7,
               "moon_value": null,
-              "s": null,
+              "s": 0.0,
               "w": 0.15,
-              "c": 0.0,
-              "classification": null
+              "c": 0.6,
+              "classification": "different"
             }
           ],
-          "available_features": 2,
+          "available_features": 3,
           "total_features": 3,
-          "notes": []
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
         },
         {
-          "id": "M3:1.5:29.5",
+          "id": "M3:0.5:124.5",
           "rank": 3,
-          "name_en": "1.5, 29.5",
-          "lat": 1.5,
-          "lon": 29.5,
+          "name_en": "0.5, 124.5",
+          "lat": 0.5,
+          "lon": 124.5,
           "score": 0.0,
           "known_analog_region": null,
           "group": "least_similar",
@@ -1099,7 +1181,7 @@
             },
             {
               "feature": "annual_min_temp_C",
-              "value": 13.15,
+              "value": 19.98,
               "moon_value": null,
               "s": 0.0,
               "w": 0.35,
@@ -1108,27 +1190,31 @@
             },
             {
               "feature": "diurnal_range_C",
-              "value": null,
+              "value": 5.96,
               "moon_value": null,
-              "s": null,
+              "s": 0.0,
               "w": 0.15,
-              "c": 0.0,
-              "classification": null
+              "c": 0.6,
+              "classification": "different"
             }
           ],
-          "available_features": 2,
+          "available_features": 3,
           "total_features": 3,
-          "notes": []
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
         }
       ],
       "known_analogs_validation": [
         {
-          "id": "M3:75.5:-90.5",
+          "id": "M3:75.5:-95.5",
           "rank": 1,
-          "name_en": "75.5, -90.5",
+          "name_en": "75.5, -95.5",
           "lat": 75.5,
-          "lon": -90.5,
-          "score": 87.2,
+          "lon": -95.5,
+          "score": 74.4,
           "known_analog_region": "Devon/Haughton",
           "group": "known_analogs_validation",
           "features": [
@@ -1143,58 +1229,16 @@
             },
             {
               "feature": "annual_min_temp_C",
-              "value": -50.43,
+              "value": -40.33,
               "moon_value": null,
-              "s": 0.567,
+              "s": 0.453,
               "w": 0.35,
               "c": 0.6,
               "classification": "partial"
             },
             {
               "feature": "diurnal_range_C",
-              "value": null,
-              "moon_value": null,
-              "s": null,
-              "w": 0.15,
-              "c": 0.0,
-              "classification": null
-            }
-          ],
-          "available_features": 2,
-          "total_features": 3,
-          "notes": []
-        },
-        {
-          "id": "M3:-70.5:-72.5",
-          "rank": 2,
-          "name_en": "-70.5, -72.5",
-          "lat": -70.5,
-          "lon": -72.5,
-          "score": 75.8,
-          "known_analog_region": "Antarctica",
-          "group": "known_analogs_validation",
-          "features": [
-            {
-              "feature": "longest_darkness_h",
-              "value": 1487.3333333333333,
-              "moon_value": null,
-              "s": 1.0,
-              "w": 0.5,
-              "c": 1.0,
-              "classification": "similar"
-            },
-            {
-              "feature": "annual_min_temp_C",
-              "value": -44.97,
-              "moon_value": null,
-              "s": 0.505,
-              "w": 0.35,
-              "c": 0.6,
-              "classification": "partial"
-            },
-            {
-              "feature": "diurnal_range_C",
-              "value": 5.35,
+              "value": 1.82,
               "moon_value": null,
               "s": 0.0,
               "w": 0.15,
@@ -1204,57 +1248,19 @@
           ],
           "available_features": 3,
           "total_features": 3,
-          "notes": []
-        },
-        {
-          "id": "M3:65.5:-15.5",
-          "rank": 3,
-          "name_en": "65.5, -15.5",
-          "lat": 65.5,
-          "lon": -15.5,
-          "score": 14.0,
-          "known_analog_region": "Iceland",
-          "group": "known_analogs_validation",
-          "features": [
-            {
-              "feature": "longest_darkness_h",
-              "value": 20.83333333333333,
-              "moon_value": null,
-              "s": 0.082,
-              "w": 0.5,
-              "c": 1.0,
-              "classification": "different"
-            },
-            {
-              "feature": "annual_min_temp_C",
-              "value": -24.68,
-              "moon_value": null,
-              "s": 0.277,
-              "w": 0.35,
-              "c": 0.6,
-              "classification": "different"
-            },
-            {
-              "feature": "diurnal_range_C",
-              "value": null,
-              "moon_value": null,
-              "s": null,
-              "w": 0.15,
-              "c": 0.0,
-              "classification": null
-            }
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
           ],
-          "available_features": 2,
-          "total_features": 3,
-          "notes": []
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
         },
         {
-          "id": "M3:-27.5:-68.5",
-          "rank": 4,
-          "name_en": "-27.5, -68.5",
-          "lat": -27.5,
+          "id": "M3:-25.5:-68.5",
+          "rank": 2,
+          "name_en": "-25.5, -68.5",
+          "lat": -25.5,
           "lon": -68.5,
-          "score": 10.6,
+          "score": 11.9,
           "known_analog_region": "Atacama",
           "group": "known_analogs_validation",
           "features": [
@@ -1269,18 +1275,64 @@
             },
             {
               "feature": "annual_min_temp_C",
-              "value": -26.8,
+              "value": -9.59,
               "moon_value": null,
-              "s": 0.301,
+              "s": 0.108,
               "w": 0.35,
               "c": 0.6,
-              "classification": "partial"
+              "classification": "different"
             },
             {
               "feature": "diurnal_range_C",
-              "value": 14.97,
+              "value": 31.75,
               "moon_value": null,
-              "s": 0.166,
+              "s": 0.725,
+              "w": 0.15,
+              "c": 0.6,
+              "classification": "similar"
+            }
+          ],
+          "available_features": 3,
+          "total_features": 3,
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
+        },
+        {
+          "id": "M3:64.5:-17.5",
+          "rank": 3,
+          "name_en": "64.5, -17.5",
+          "lat": 64.5,
+          "lon": -17.5,
+          "score": 9.7,
+          "known_analog_region": "Iceland",
+          "group": "known_analogs_validation",
+          "features": [
+            {
+              "feature": "longest_darkness_h",
+              "value": 20.166666666666668,
+              "moon_value": null,
+              "s": 0.076,
+              "w": 0.5,
+              "c": 1.0,
+              "classification": "different"
+            },
+            {
+              "feature": "annual_min_temp_C",
+              "value": -16.72,
+              "moon_value": null,
+              "s": 0.188,
+              "w": 0.35,
+              "c": 0.6,
+              "classification": "different"
+            },
+            {
+              "feature": "diurnal_range_C",
+              "value": 4.3,
+              "moon_value": null,
+              "s": 0.0,
               "w": 0.15,
               "c": 0.6,
               "classification": "different"
@@ -1288,76 +1340,84 @@
           ],
           "available_features": 3,
           "total_features": 3,
-          "notes": []
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
+        },
+        {
+          "id": "M3:37.5:-116.5",
+          "rank": 4,
+          "name_en": "37.5, -116.5",
+          "lat": 37.5,
+          "lon": -116.5,
+          "score": 7.1,
+          "known_analog_region": "Death Valley",
+          "group": "known_analogs_validation",
+          "features": [
+            {
+              "feature": "longest_darkness_h",
+              "value": 14.5,
+              "moon_value": null,
+              "s": 0.023,
+              "w": 0.5,
+              "c": 1.0,
+              "classification": "different"
+            },
+            {
+              "feature": "annual_min_temp_C",
+              "value": -6.45,
+              "moon_value": null,
+              "s": 0.072,
+              "w": 0.35,
+              "c": 0.6,
+              "classification": "different"
+            },
+            {
+              "feature": "diurnal_range_C",
+              "value": 19.99,
+              "moon_value": null,
+              "s": 0.333,
+              "w": 0.15,
+              "c": 0.6,
+              "classification": "partial"
+            }
+          ],
+          "available_features": 3,
+          "total_features": 3,
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
         }
       ]
     },
     "M6": {
       "new_candidates": [
         {
-          "id": "M6:82.5:-32.5",
+          "id": "M6:82.5:-69.5",
           "rank": 1,
-          "name_en": "Peary Land, North Greenland (ice-free)",
+          "name_en": "Northern Ellesmere Island (Lake Hazen area), Canada",
           "lat": 82.5,
-          "lon": -32.5,
-          "score": 58.7,
+          "lon": -69.5,
+          "score": 59.3,
           "known_analog_region": null,
           "group": "new_candidates",
           "features": [
             {
               "feature": "annual_mean_temp_C",
-              "value": -19.32,
+              "value": -19.86,
               "moon_value": null,
-              "s": 0.49,
+              "s": 0.498,
               "w": 0.25,
               "c": 0.6,
               "classification": "partial"
             },
             {
               "feature": "annual_max_temp_C",
-              "value": 5.81,
-              "moon_value": null,
-              "s": 0.57,
-              "w": 0.25,
-              "c": 0.6,
-              "classification": "partial"
-            },
-            {
-              "feature": "ice_permafrost_proxy",
-              "value": 0.7,
-              "moon_value": null,
-              "s": 0.7,
-              "w": 0.5,
-              "c": 0.3,
-              "classification": "similar"
-            }
-          ],
-          "available_features": 3,
-          "total_features": 3,
-          "notes": []
-        },
-        {
-          "id": "M6:81.5:-21.5",
-          "rank": 2,
-          "name_en": "Kronprins Christian Land, NE Greenland",
-          "lat": 81.5,
-          "lon": -21.5,
-          "score": 57.4,
-          "known_analog_region": null,
-          "group": "new_candidates",
-          "features": [
-            {
-              "feature": "annual_mean_temp_C",
-              "value": -15.76,
-              "moon_value": null,
-              "s": 0.439,
-              "w": 0.25,
-              "c": 0.6,
-              "classification": "partial"
-            },
-            {
-              "feature": "annual_max_temp_C",
-              "value": 5.05,
+              "value": 5.07,
               "moon_value": null,
               "s": 0.582,
               "w": 0.25,
@@ -1376,30 +1436,209 @@
           ],
           "available_features": 3,
           "total_features": 3,
-          "notes": []
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
         },
         {
-          "id": "M6:81.5:-84.5",
-          "rank": 3,
-          "name_en": "Northern Ellesmere Island, Canada",
-          "lat": 81.5,
-          "lon": -84.5,
-          "score": 56.3,
+          "id": "M6:70.5:-74.5",
+          "rank": 2,
+          "name_en": "North-central Baffin Island, Canada",
+          "lat": 70.5,
+          "lon": -74.5,
+          "score": 59.1,
           "known_analog_region": null,
           "group": "new_candidates",
           "features": [
             {
               "feature": "annual_mean_temp_C",
-              "value": -18.68,
+              "value": -19.01,
               "moon_value": null,
-              "s": 0.481,
+              "s": 0.486,
               "w": 0.25,
               "c": 0.6,
               "classification": "partial"
             },
             {
               "feature": "annual_max_temp_C",
-              "value": 9.55,
+              "value": 4.83,
+              "moon_value": null,
+              "s": 0.586,
+              "w": 0.25,
+              "c": 0.6,
+              "classification": "partial"
+            },
+            {
+              "feature": "ice_permafrost_proxy",
+              "value": 0.7,
+              "moon_value": null,
+              "s": 0.7,
+              "w": 0.5,
+              "c": 0.3,
+              "classification": "similar"
+            }
+          ],
+          "available_features": 3,
+          "total_features": 3,
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
+        },
+        {
+          "id": "M6:71.5:-75.5",
+          "rank": 3,
+          "name_en": "Northern Baffin Island, Canada",
+          "lat": 71.5,
+          "lon": -75.5,
+          "score": 58.6,
+          "known_analog_region": null,
+          "group": "new_candidates",
+          "features": [
+            {
+              "feature": "annual_mean_temp_C",
+              "value": -18.36,
+              "moon_value": null,
+              "s": 0.477,
+              "w": 0.25,
+              "c": 0.6,
+              "classification": "partial"
+            },
+            {
+              "feature": "annual_max_temp_C",
+              "value": 5.11,
+              "moon_value": null,
+              "s": 0.582,
+              "w": 0.25,
+              "c": 0.6,
+              "classification": "partial"
+            },
+            {
+              "feature": "ice_permafrost_proxy",
+              "value": 0.7,
+              "moon_value": null,
+              "s": 0.7,
+              "w": 0.5,
+              "c": 0.3,
+              "classification": "similar"
+            }
+          ],
+          "available_features": 3,
+          "total_features": 3,
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
+        },
+        {
+          "id": "M6:78.5:100.5",
+          "rank": 4,
+          "name_en": "Severnaya Zemlya, Russia",
+          "lat": 78.5,
+          "lon": 100.5,
+          "score": 58.5,
+          "known_analog_region": null,
+          "group": "new_candidates",
+          "features": [
+            {
+              "feature": "annual_mean_temp_C",
+              "value": -16.65,
+              "moon_value": null,
+              "s": 0.452,
+              "w": 0.25,
+              "c": 0.6,
+              "classification": "partial"
+            },
+            {
+              "feature": "annual_max_temp_C",
+              "value": 3.81,
+              "moon_value": null,
+              "s": 0.603,
+              "w": 0.25,
+              "c": 0.6,
+              "classification": "similar"
+            },
+            {
+              "feature": "ice_permafrost_proxy",
+              "value": 0.7,
+              "moon_value": null,
+              "s": 0.7,
+              "w": 0.5,
+              "c": 0.3,
+              "classification": "similar"
+            }
+          ],
+          "available_features": 3,
+          "total_features": 3,
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
+        },
+        {
+          "id": "M6:75.5:141.5",
+          "rank": 5,
+          "name_en": "New Siberian Islands, Russia",
+          "lat": 75.5,
+          "lon": 141.5,
+          "score": 58.3,
+          "known_analog_region": null,
+          "group": "new_candidates",
+          "features": [
+            {
+              "feature": "annual_mean_temp_C",
+              "value": -17.82,
+              "moon_value": null,
+              "s": 0.469,
+              "w": 0.25,
+              "c": 0.6,
+              "classification": "partial"
+            },
+            {
+              "feature": "annual_max_temp_C",
+              "value": 5.18,
+              "moon_value": null,
+              "s": 0.58,
+              "w": 0.25,
+              "c": 0.6,
+              "classification": "partial"
+            },
+            {
+              "feature": "ice_permafrost_proxy",
+              "value": 0.7,
+              "moon_value": null,
+              "s": 0.7,
+              "w": 0.5,
+              "c": 0.3,
+              "classification": "similar"
+            }
+          ],
+          "available_features": 3,
+          "total_features": 3,
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
+        },
+        {
+          "id": "M6:78.5:-67.5",
+          "rank": 6,
+          "name_en": "Inglefield Land, NW Greenland",
+          "lat": 78.5,
+          "lon": -67.5,
+          "score": 58.1,
+          "known_analog_region": null,
+          "group": "new_candidates",
+          "features": [
+            {
+              "feature": "annual_mean_temp_C",
+              "value": -20.47,
               "moon_value": null,
               "s": 0.507,
               "w": 0.25,
@@ -1407,83 +1646,8 @@
               "classification": "partial"
             },
             {
-              "feature": "ice_permafrost_proxy",
-              "value": 0.7,
-              "moon_value": null,
-              "s": 0.7,
-              "w": 0.5,
-              "c": 0.3,
-              "classification": "similar"
-            }
-          ],
-          "available_features": 3,
-          "total_features": 3,
-          "notes": []
-        },
-        {
-          "id": "M6:77.5:-105.5",
-          "rank": 4,
-          "name_en": "Lougheed Island area, Canada",
-          "lat": 77.5,
-          "lon": -105.5,
-          "score": 55.7,
-          "known_analog_region": null,
-          "group": "new_candidates",
-          "features": [
-            {
-              "feature": "annual_mean_temp_C",
-              "value": -14.15,
-              "moon_value": null,
-              "s": 0.416,
-              "w": 0.25,
-              "c": 0.6,
-              "classification": "partial"
-            },
-            {
               "feature": "annual_max_temp_C",
-              "value": 6.67,
-              "moon_value": null,
-              "s": 0.556,
-              "w": 0.25,
-              "c": 0.6,
-              "classification": "partial"
-            },
-            {
-              "feature": "ice_permafrost_proxy",
-              "value": 0.7,
-              "moon_value": null,
-              "s": 0.7,
-              "w": 0.5,
-              "c": 0.3,
-              "classification": "similar"
-            }
-          ],
-          "available_features": 3,
-          "total_features": 3,
-          "notes": []
-        },
-        {
-          "id": "M6:76.5:-23.5",
-          "rank": 5,
-          "name_en": "Germania Land, NE Greenland",
-          "lat": 76.5,
-          "lon": -23.5,
-          "score": 55.3,
-          "known_analog_region": null,
-          "group": "new_candidates",
-          "features": [
-            {
-              "feature": "annual_mean_temp_C",
-              "value": -14.48,
-              "moon_value": null,
-              "s": 0.421,
-              "w": 0.25,
-              "c": 0.6,
-              "classification": "partial"
-            },
-            {
-              "feature": "annual_max_temp_C",
-              "value": 7.81,
+              "value": 7.86,
               "moon_value": null,
               "s": 0.536,
               "w": 0.25,
@@ -1502,74 +1666,36 @@
           ],
           "available_features": 3,
           "total_features": 3,
-          "notes": []
-        },
-        {
-          "id": "M6:78.5:-67.5",
-          "rank": 6,
-          "name_en": "Inglefield Land, NW Greenland",
-          "lat": 78.5,
-          "lon": -67.5,
-          "score": 55.1,
-          "known_analog_region": null,
-          "group": "new_candidates",
-          "features": [
-            {
-              "feature": "annual_mean_temp_C",
-              "value": -16.27,
-              "moon_value": null,
-              "s": 0.447,
-              "w": 0.25,
-              "c": 0.6,
-              "classification": "partial"
-            },
-            {
-              "feature": "annual_max_temp_C",
-              "value": 9.54,
-              "moon_value": null,
-              "s": 0.508,
-              "w": 0.25,
-              "c": 0.6,
-              "classification": "partial"
-            },
-            {
-              "feature": "ice_permafrost_proxy",
-              "value": 0.7,
-              "moon_value": null,
-              "s": 0.7,
-              "w": 0.5,
-              "c": 0.3,
-              "classification": "similar"
-            }
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
           ],
-          "available_features": 3,
-          "total_features": 3,
-          "notes": []
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
         },
         {
-          "id": "M6:73.5:-25.5",
+          "id": "M6:73.5:-86.5",
           "rank": 7,
-          "name_en": "Kong Oscar Fjord, East Greenland",
+          "name_en": "Brodeur Peninsula, Baffin Island, Canada",
           "lat": 73.5,
-          "lon": -25.5,
-          "score": 55.1,
+          "lon": -86.5,
+          "score": 58.1,
           "known_analog_region": null,
           "group": "new_candidates",
           "features": [
             {
               "feature": "annual_mean_temp_C",
-              "value": -15.37,
+              "value": -17.48,
               "moon_value": null,
-              "s": 0.434,
+              "s": 0.464,
               "w": 0.25,
               "c": 0.6,
               "classification": "partial"
             },
             {
               "feature": "annual_max_temp_C",
-              "value": 8.84,
+              "value": 5.2,
               "moon_value": null,
-              "s": 0.519,
+              "s": 0.58,
               "w": 0.25,
               "c": 0.6,
               "classification": "partial"
@@ -1586,32 +1712,36 @@
           ],
           "available_features": 3,
           "total_features": 3,
-          "notes": []
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
         },
         {
-          "id": "M6:79.5:-80.5",
+          "id": "M6:81.5:-89.5",
           "rank": 8,
-          "name_en": "Central Ellesmere Island, Canada",
-          "lat": 79.5,
-          "lon": -80.5,
-          "score": 54.5,
+          "name_en": "Northern Axel Heiberg Island, Canada",
+          "lat": 81.5,
+          "lon": -89.5,
+          "score": 57.8,
           "known_analog_region": null,
           "group": "new_candidates",
           "features": [
             {
               "feature": "annual_mean_temp_C",
-              "value": -18.19,
+              "value": -19.71,
               "moon_value": null,
-              "s": 0.474,
+              "s": 0.496,
               "w": 0.25,
               "c": 0.6,
               "classification": "partial"
             },
             {
               "feature": "annual_max_temp_C",
-              "value": 12.38,
+              "value": 7.69,
               "moon_value": null,
-              "s": 0.46,
+              "s": 0.539,
               "w": 0.25,
               "c": 0.6,
               "classification": "partial"
@@ -1628,32 +1758,36 @@
           ],
           "available_features": 3,
           "total_features": 3,
-          "notes": []
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
         },
         {
-          "id": "M6:78.5:100.5",
+          "id": "M6:83.5:-35.5",
           "rank": 9,
-          "name_en": "Severnaya Zemlya, Russia",
-          "lat": 78.5,
-          "lon": 100.5,
-          "score": 54.5,
+          "name_en": "Peary Land, North Greenland",
+          "lat": 83.5,
+          "lon": -35.5,
+          "score": 57.4,
           "known_analog_region": null,
           "group": "new_candidates",
           "features": [
             {
               "feature": "annual_mean_temp_C",
-              "value": -12.36,
+              "value": -18.06,
               "moon_value": null,
-              "s": 0.391,
+              "s": 0.472,
               "w": 0.25,
               "c": 0.6,
               "classification": "partial"
             },
             {
               "feature": "annual_max_temp_C",
-              "value": 7.37,
+              "value": 7.04,
               "moon_value": null,
-              "s": 0.544,
+              "s": 0.549,
               "w": 0.25,
               "c": 0.6,
               "classification": "partial"
@@ -1670,32 +1804,36 @@
           ],
           "available_features": 3,
           "total_features": 3,
-          "notes": []
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
         },
         {
-          "id": "M6:35.5:77.5",
+          "id": "M6:79.5:77.5",
           "rank": 10,
-          "name_en": "Aksai Chin / Karakoram high plateau",
-          "lat": 35.5,
+          "name_en": "Vize Island, Kara Sea, Russia",
+          "lat": 79.5,
           "lon": 77.5,
-          "score": 53.5,
+          "score": 56.8,
           "known_analog_region": null,
           "group": "new_candidates",
           "features": [
             {
               "feature": "annual_mean_temp_C",
-              "value": -13.37,
+              "value": -14.24,
               "moon_value": null,
-              "s": 0.405,
+              "s": 0.418,
               "w": 0.25,
               "c": 0.6,
               "classification": "partial"
             },
             {
               "feature": "annual_max_temp_C",
-              "value": 10.07,
+              "value": 4.85,
               "moon_value": null,
-              "s": 0.499,
+              "s": 0.586,
               "w": 0.25,
               "c": 0.6,
               "classification": "partial"
@@ -1712,23 +1850,27 @@
           ],
           "available_features": 3,
           "total_features": 3,
-          "notes": []
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
         }
       ],
       "least_similar": [
         {
-          "id": "M6:3.5:18.5",
+          "id": "M6:17.5:2.5",
           "rank": 1,
-          "name_en": "3.5, 18.5",
-          "lat": 3.5,
-          "lon": 18.5,
+          "name_en": "17.5, 2.5",
+          "lat": 17.5,
+          "lon": 2.5,
           "score": 0.0,
           "known_analog_region": null,
           "group": "least_similar",
           "features": [
             {
               "feature": "annual_mean_temp_C",
-              "value": 26.43,
+              "value": 32.61,
               "moon_value": null,
               "s": 0.0,
               "w": 0.25,
@@ -1737,7 +1879,7 @@
             },
             {
               "feature": "annual_max_temp_C",
-              "value": 42.12,
+              "value": 48.07,
               "moon_value": null,
               "s": 0.0,
               "w": 0.25,
@@ -1756,21 +1898,25 @@
           ],
           "available_features": 3,
           "total_features": 3,
-          "notes": []
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
         },
         {
-          "id": "M6:24.5:117.5",
+          "id": "M6:33.5:55.5",
           "rank": 2,
-          "name_en": "24.5, 117.5",
-          "lat": 24.5,
-          "lon": 117.5,
+          "name_en": "33.5, 55.5",
+          "lat": 33.5,
+          "lon": 55.5,
           "score": 0.0,
           "known_analog_region": null,
           "group": "least_similar",
           "features": [
             {
               "feature": "annual_mean_temp_C",
-              "value": 20.66,
+              "value": 28.41,
               "moon_value": null,
               "s": 0.0,
               "w": 0.25,
@@ -1779,7 +1925,7 @@
             },
             {
               "feature": "annual_max_temp_C",
-              "value": 41.55,
+              "value": 53.99,
               "moon_value": null,
               "s": 0.0,
               "w": 0.25,
@@ -1798,21 +1944,25 @@
           ],
           "available_features": 3,
           "total_features": 3,
-          "notes": []
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
         },
         {
-          "id": "M6:24.5:96.5",
+          "id": "M6:33.5:56.5",
           "rank": 3,
-          "name_en": "24.5, 96.5",
-          "lat": 24.5,
-          "lon": 96.5,
+          "name_en": "33.5, 56.5",
+          "lat": 33.5,
+          "lon": 56.5,
           "score": 0.0,
           "known_analog_region": null,
           "group": "least_similar",
           "features": [
             {
               "feature": "annual_mean_temp_C",
-              "value": 26.58,
+              "value": 27.12,
               "moon_value": null,
               "s": 0.0,
               "w": 0.25,
@@ -1821,7 +1971,7 @@
             },
             {
               "feature": "annual_max_temp_C",
-              "value": 43.4,
+              "value": 53.2,
               "moon_value": null,
               "s": 0.0,
               "w": 0.25,
@@ -1840,76 +1990,38 @@
           ],
           "available_features": 3,
           "total_features": 3,
-          "notes": []
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
         }
       ],
       "known_analogs_validation": [
         {
-          "id": "M6:-72.5:-77.5",
+          "id": "M6:74.5:-85.5",
           "rank": 1,
-          "name_en": "-72.5, -77.5",
-          "lat": -72.5,
-          "lon": -77.5,
-          "score": 57.2,
-          "known_analog_region": "Antarctica",
-          "group": "known_analogs_validation",
-          "features": [
-            {
-              "feature": "annual_mean_temp_C",
-              "value": -11.31,
-              "moon_value": null,
-              "s": 0.376,
-              "w": 0.25,
-              "c": 0.6,
-              "classification": "partial"
-            },
-            {
-              "feature": "annual_max_temp_C",
-              "value": 1.62,
-              "moon_value": null,
-              "s": 0.64,
-              "w": 0.25,
-              "c": 0.6,
-              "classification": "similar"
-            },
-            {
-              "feature": "ice_permafrost_proxy",
-              "value": 0.7,
-              "moon_value": null,
-              "s": 0.7,
-              "w": 0.5,
-              "c": 0.3,
-              "classification": "similar"
-            }
-          ],
-          "available_features": 3,
-          "total_features": 3,
-          "notes": []
-        },
-        {
-          "id": "M6:76.5:-86.5",
-          "rank": 2,
-          "name_en": "76.5, -86.5",
-          "lat": 76.5,
-          "lon": -86.5,
-          "score": 52.8,
+          "name_en": "74.5, -85.5",
+          "lat": 74.5,
+          "lon": -85.5,
+          "score": 58.8,
           "known_analog_region": "Devon/Haughton",
           "group": "known_analogs_validation",
           "features": [
             {
               "feature": "annual_mean_temp_C",
-              "value": -15.35,
+              "value": -18.12,
               "moon_value": null,
-              "s": 0.434,
+              "s": 0.473,
               "w": 0.25,
               "c": 0.6,
               "classification": "partial"
             },
             {
               "feature": "annual_max_temp_C",
-              "value": 13.01,
+              "value": 4.6,
               "moon_value": null,
-              "s": 0.45,
+              "s": 0.59,
               "w": 0.25,
               "c": 0.6,
               "classification": "partial"
@@ -1926,32 +2038,36 @@
           ],
           "available_features": 3,
           "total_features": 3,
-          "notes": []
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
         },
         {
           "id": "M6:64.5:-17.5",
-          "rank": 3,
+          "rank": 2,
           "name_en": "64.5, -17.5",
           "lat": 64.5,
           "lon": -17.5,
-          "score": 39.9,
+          "score": 41.6,
           "known_analog_region": "Iceland",
           "group": "known_analogs_validation",
           "features": [
             {
               "feature": "annual_mean_temp_C",
-              "value": -4.32,
+              "value": -6.79,
               "moon_value": null,
-              "s": 0.276,
+              "s": 0.311,
               "w": 0.25,
               "c": 0.6,
-              "classification": "different"
+              "classification": "partial"
             },
             {
               "feature": "annual_max_temp_C",
-              "value": 8.83,
+              "value": 7.8,
               "moon_value": null,
-              "s": 0.52,
+              "s": 0.537,
               "w": 0.25,
               "c": 0.6,
               "classification": "partial"
@@ -1968,35 +2084,39 @@
           ],
           "available_features": 3,
           "total_features": 3,
-          "notes": []
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
         },
         {
           "id": "M6:-27.5:-68.5",
-          "rank": 4,
+          "rank": 3,
           "name_en": "-27.5, -68.5",
           "lat": -27.5,
           "lon": -68.5,
-          "score": 18.9,
+          "score": 8.9,
           "known_analog_region": "Atacama",
           "group": "known_analogs_validation",
           "features": [
             {
               "feature": "annual_mean_temp_C",
-              "value": -1.84,
+              "value": 6.75,
               "moon_value": null,
-              "s": 0.241,
+              "s": 0.118,
               "w": 0.25,
               "c": 0.6,
               "classification": "different"
             },
             {
               "feature": "annual_max_temp_C",
-              "value": 20.47,
+              "value": 31.04,
               "moon_value": null,
-              "s": 0.326,
+              "s": 0.149,
               "w": 0.25,
               "c": 0.6,
-              "classification": "partial"
+              "classification": "different"
             },
             {
               "feature": "ice_permafrost_proxy",
@@ -2010,7 +2130,57 @@
           ],
           "available_features": 3,
           "total_features": 3,
-          "notes": []
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
+        },
+        {
+          "id": "M6:19.5:-155.5",
+          "rank": 4,
+          "name_en": "19.5, -155.5",
+          "lat": 19.5,
+          "lon": -155.5,
+          "score": 4.9,
+          "known_analog_region": "Hawaii",
+          "group": "known_analogs_validation",
+          "features": [
+            {
+              "feature": "annual_mean_temp_C",
+              "value": 20.8,
+              "moon_value": null,
+              "s": 0.0,
+              "w": 0.25,
+              "c": 0.6,
+              "classification": "different"
+            },
+            {
+              "feature": "annual_max_temp_C",
+              "value": 31.12,
+              "moon_value": null,
+              "s": 0.148,
+              "w": 0.25,
+              "c": 0.6,
+              "classification": "different"
+            },
+            {
+              "feature": "ice_permafrost_proxy",
+              "value": 0.0,
+              "moon_value": null,
+              "s": 0.0,
+              "w": 0.5,
+              "c": 0.3,
+              "classification": "different"
+            }
+          ],
+          "available_features": 3,
+          "total_features": 3,
+          "notes": [
+            "2023 GIBS colour-derived monthly LST, not annual instantaneous extremes or 2 m air temperature."
+          ],
+          "temperature_source": "MODIS_LST_2023",
+          "temperature_months": 12
         }
       ]
     },
@@ -2062,7 +2232,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:39.5:45.5",
@@ -2109,7 +2281,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:59.5:-136.5",
@@ -2156,7 +2330,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:19.5:-103.5",
@@ -2203,7 +2379,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:20.5:17.5",
@@ -2250,7 +2428,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:71.5:-52.5",
@@ -2297,7 +2477,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-1.5:121.5",
@@ -2344,7 +2526,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-0.5:-78.5",
@@ -2391,7 +2575,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-1.5:133.5",
@@ -2438,7 +2624,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-15.5:-74.5",
@@ -2485,7 +2673,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ],
         "least_similar": [
@@ -2534,7 +2724,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:14.5:-91.5",
@@ -2581,7 +2773,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:28.5:84.5",
@@ -2628,7 +2822,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ],
         "known_analogs_validation": [
@@ -2677,7 +2873,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-26.5:-68.5",
@@ -2724,7 +2922,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-77.53:161.6",
@@ -2771,7 +2971,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-73.5:166.5",
@@ -2820,7 +3022,9 @@
             "total_features": 2,
             "notes": [
               "Local terrain validation in an ice-masked global cell; excluded from the new-candidate comparison."
-            ]
+            ],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ]
       },
@@ -2871,7 +3075,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-2.5:120.5",
@@ -2918,7 +3124,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-29.5:-69.5",
@@ -2965,7 +3173,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:36.5:51.5",
@@ -3012,7 +3222,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-7.5:-78.5",
@@ -3059,7 +3271,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-3.5:136.5",
@@ -3106,7 +3320,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-8.5:147.5",
@@ -3153,7 +3369,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:27.5:91.5",
@@ -3200,7 +3418,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-4.5:-79.5",
@@ -3247,7 +3467,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:22.5:103.5",
@@ -3294,7 +3516,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ],
         "least_similar": [
@@ -3343,7 +3567,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:14.5:-91.5",
@@ -3390,7 +3616,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:75.38:-89.67",
@@ -3437,7 +3665,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ],
         "known_analogs_validation": [
@@ -3486,7 +3716,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:19.82:-155.47",
@@ -3533,7 +3765,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-26.5:-68.5",
@@ -3580,7 +3814,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-73.5:166.5",
@@ -3629,7 +3865,9 @@
             "total_features": 2,
             "notes": [
               "Local terrain validation in an ice-masked global cell; excluded from the new-candidate comparison."
-            ]
+            ],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ]
       },
@@ -3680,7 +3918,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:19.5:-103.5",
@@ -3727,7 +3967,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-15.5:-74.5",
@@ -3774,7 +4016,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-0.5:-78.5",
@@ -3821,7 +4065,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:30.5:81.5",
@@ -3868,7 +4114,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-5.5:142.5",
@@ -3915,7 +4163,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:59.5:-136.5",
@@ -3962,7 +4212,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-11.5:-73.5",
@@ -4009,7 +4261,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:39.5:45.5",
@@ -4056,7 +4310,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:61.5:-147.5",
@@ -4103,7 +4359,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ],
         "least_similar": [
@@ -4152,7 +4410,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-28.5:-66.5",
@@ -4199,7 +4459,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:29.5:95.5",
@@ -4246,7 +4508,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ],
         "known_analogs_validation": [
@@ -4297,7 +4561,9 @@
             "total_features": 2,
             "notes": [
               "Local terrain validation in an ice-masked global cell; excluded from the new-candidate comparison."
-            ]
+            ],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-77.53:161.6",
@@ -4344,7 +4610,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-77.5:-85.5",
@@ -4393,7 +4661,9 @@
             "total_features": 2,
             "notes": [
               "Local terrain validation in an ice-masked global cell; excluded from the new-candidate comparison."
-            ]
+            ],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-26.5:-68.5",
@@ -4440,7 +4710,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ]
       },
@@ -4491,7 +4763,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-2.5:120.5",
@@ -4538,7 +4812,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:36.5:51.5",
@@ -4585,7 +4861,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:39.5:45.5",
@@ -4632,7 +4910,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-4.5:-79.5",
@@ -4679,7 +4959,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:23.5:98.5",
@@ -4726,7 +5008,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-29.5:-69.5",
@@ -4773,7 +5057,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-7.5:-78.5",
@@ -4820,7 +5106,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:20.5:17.5",
@@ -4867,7 +5155,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:22.5:103.5",
@@ -4914,7 +5204,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ],
         "least_similar": [
@@ -4963,7 +5255,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:14.5:-91.5",
@@ -5010,7 +5304,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:75.38:-89.67",
@@ -5057,7 +5353,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ],
         "known_analogs_validation": [
@@ -5106,7 +5404,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:19.82:-155.47",
@@ -5153,7 +5453,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-26.5:-68.5",
@@ -5200,7 +5502,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-73.5:166.5",
@@ -5249,7 +5553,9 @@
             "total_features": 2,
             "notes": [
               "Local terrain validation in an ice-masked global cell; excluded from the new-candidate comparison."
-            ]
+            ],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ]
       },
@@ -5300,7 +5606,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:83.5:-32.5",
@@ -5347,7 +5655,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:71.5:-52.5",
@@ -5394,7 +5704,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-15.5:-74.5",
@@ -5441,7 +5753,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-0.5:-78.5",
@@ -5488,7 +5802,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:19.5:-103.5",
@@ -5535,7 +5851,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:2.5:99.5",
@@ -5582,7 +5900,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:78.2:15.8",
@@ -5629,7 +5949,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:42.5:70.5",
@@ -5676,7 +5998,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-1.5:121.5",
@@ -5723,7 +6047,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ],
         "least_similar": [
@@ -5772,7 +6098,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:29.5:95.5",
@@ -5819,7 +6147,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:32.5:76.5",
@@ -5866,7 +6196,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ],
         "known_analogs_validation": [
@@ -5917,7 +6249,9 @@
             "total_features": 2,
             "notes": [
               "Local terrain validation in an ice-masked global cell; excluded from the new-candidate comparison."
-            ]
+            ],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-77.53:161.6",
@@ -5964,7 +6298,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-77.5:-85.5",
@@ -6013,7 +6349,9 @@
             "total_features": 2,
             "notes": [
               "Local terrain validation in an ice-masked global cell; excluded from the new-candidate comparison."
-            ]
+            ],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-26.5:-68.5",
@@ -6060,7 +6398,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ]
       },
@@ -6111,7 +6451,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:39.5:45.5",
@@ -6158,7 +6500,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:59.5:-136.5",
@@ -6205,7 +6549,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:19.5:-103.5",
@@ -6252,7 +6598,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:20.5:17.5",
@@ -6299,7 +6647,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-1.5:121.5",
@@ -6346,7 +6696,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-0.5:-78.5",
@@ -6393,7 +6745,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-29.5:-70.5",
@@ -6440,7 +6794,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-1.5:133.5",
@@ -6487,7 +6843,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-11.5:-73.5",
@@ -6534,7 +6892,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ],
         "least_similar": [
@@ -6583,7 +6943,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:14.5:-91.5",
@@ -6630,7 +6992,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:10.5:35.5",
@@ -6677,7 +7041,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ],
         "known_analogs_validation": [
@@ -6726,7 +7092,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-26.5:-68.5",
@@ -6773,7 +7141,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-73.5:166.5",
@@ -6822,7 +7192,9 @@
             "total_features": 2,
             "notes": [
               "Local terrain validation in an ice-masked global cell; excluded from the new-candidate comparison."
-            ]
+            ],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-77.53:161.6",
@@ -6869,7 +7241,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ]
       },
@@ -6920,7 +7294,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:39.5:45.5",
@@ -6967,7 +7343,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:20.5:17.5",
@@ -7014,7 +7392,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:19.5:-103.5",
@@ -7061,7 +7441,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-5.5:142.5",
@@ -7108,7 +7490,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-2.5:120.5",
@@ -7155,7 +7539,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-11.5:-73.5",
@@ -7202,7 +7588,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-0.5:-78.5",
@@ -7249,7 +7637,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-29.5:-70.5",
@@ -7296,7 +7686,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:30.5:94.5",
@@ -7343,7 +7735,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ],
         "least_similar": [
@@ -7392,7 +7786,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:14.5:-91.5",
@@ -7439,7 +7835,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-29.5:-68.5",
@@ -7486,7 +7884,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ],
         "known_analogs_validation": [
@@ -7535,7 +7935,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:19.82:-155.47",
@@ -7582,7 +7984,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-73.5:166.5",
@@ -7631,7 +8035,9 @@
             "total_features": 2,
             "notes": [
               "Local terrain validation in an ice-masked global cell; excluded from the new-candidate comparison."
-            ]
+            ],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-27.5:-69.5",
@@ -7678,7 +8084,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ]
       },
@@ -7729,7 +8137,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:19.5:-103.5",
@@ -7776,7 +8186,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-5.5:142.5",
@@ -7823,7 +8235,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-0.5:-78.5",
@@ -7870,7 +8284,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:59.5:-136.5",
@@ -7917,7 +8333,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-15.5:-74.5",
@@ -7964,7 +8382,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:39.5:45.5",
@@ -8011,7 +8431,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:30.5:81.5",
@@ -8058,7 +8480,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:20.5:17.5",
@@ -8105,7 +8529,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-11.5:-73.5",
@@ -8152,7 +8578,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ],
         "least_similar": [
@@ -8201,7 +8629,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:14.5:-91.5",
@@ -8248,7 +8678,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:28.5:84.5",
@@ -8295,7 +8727,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ],
         "known_analogs_validation": [
@@ -8346,7 +8780,9 @@
             "total_features": 2,
             "notes": [
               "Local terrain validation in an ice-masked global cell; excluded from the new-candidate comparison."
-            ]
+            ],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:19.82:-155.47",
@@ -8393,7 +8829,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-26.5:-68.5",
@@ -8440,7 +8878,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-77.53:161.6",
@@ -8487,7 +8927,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ]
       },
@@ -8538,7 +8980,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:39.5:45.5",
@@ -8585,7 +9029,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-29.5:-70.5",
@@ -8632,7 +9078,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:20.5:17.5",
@@ -8679,7 +9127,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:36.5:51.5",
@@ -8726,7 +9176,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:59.5:-136.5",
@@ -8773,7 +9225,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-1.5:133.5",
@@ -8820,7 +9274,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-1.5:121.5",
@@ -8867,7 +9323,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-11.5:-73.5",
@@ -8914,7 +9372,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:19.5:-103.5",
@@ -8961,7 +9421,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ],
         "least_similar": [
@@ -9010,7 +9472,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:14.5:-91.5",
@@ -9057,7 +9521,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:75.38:-89.67",
@@ -9104,7 +9570,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ],
         "known_analogs_validation": [
@@ -9153,7 +9621,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-26.5:-68.5",
@@ -9200,7 +9670,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-27.5:-69.5",
@@ -9247,7 +9719,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-77.53:161.6",
@@ -9294,7 +9768,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ]
       },
@@ -9345,7 +9821,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-0.5:-78.5",
@@ -9392,7 +9870,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:19.5:-103.5",
@@ -9439,7 +9919,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-15.5:-74.5",
@@ -9486,7 +9968,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:30.5:81.5",
@@ -9533,7 +10017,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-5.5:142.5",
@@ -9580,7 +10066,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:59.5:-136.5",
@@ -9627,7 +10115,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:39.5:45.5",
@@ -9674,7 +10164,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-11.5:-73.5",
@@ -9721,7 +10213,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-1.5:121.5",
@@ -9768,7 +10262,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ],
         "least_similar": [
@@ -9817,7 +10313,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-28.5:-66.5",
@@ -9864,7 +10362,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:29.5:95.5",
@@ -9911,7 +10411,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ],
         "known_analogs_validation": [
@@ -9962,7 +10464,9 @@
             "total_features": 2,
             "notes": [
               "Local terrain validation in an ice-masked global cell; excluded from the new-candidate comparison."
-            ]
+            ],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-77.53:161.6",
@@ -10009,7 +10513,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:-26.5:-68.5",
@@ -10056,7 +10562,9 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           },
           {
             "id": "M4:19.82:-155.47",
@@ -10103,38 +10611,40 @@
             ],
             "available_features": 2,
             "total_features": 2,
-            "notes": []
+            "notes": [],
+            "temperature_source": null,
+            "temperature_months": null
           }
         ]
       }
     }
   },
   "provenance": {
-    "version": "lunar-handoff-2026-11-14-2330",
+    "version": "lunar-handoff-modis-2026-11-15-1630",
     "input_sha256": {
-      "global_by_task.csv": "10104b0446bf3c746ea95bf65dd1e2bb5a66a4b97320faf8bcdff868e5f25c68",
+      "global_by_task.csv": "823ece1ae2dea823d3ae7fecf16e8794566cc8e8f977b1187db16417cf6bc437",
+      "m2-validation-baseline.json": "ee7374a652df64cc3484a7a423affd56e395dc3ce7fcdb99f02e7ba253c7bd6c",
       "m4_global_by_moonsite.csv": "524a361c391ada290aba8b364bcf2bcaedde7c438f4749036876aacad3a5c92e",
       "m4_slope_global_cells.csv": "24d80a2dcf92426a1a156de5aa71b13b1b3ca53aed4e790050085a9eae64345c",
-      "M4_slope_results.csv": "d170c4f2a7d9f9708f5a6e08ce6099e8f099327751945b487a3702aef1fba358",
-      "moon10_reference_sites.json": "3794bbb32c0818282dc65a78ee5861239fd1f40f8c6ae94fa1edac01c31cc502",
-      "moon_global_grid.json": "ec6f827bf7c0874ce8f51507ed93f4a8d827e0746e45d030e33847c0dabda24f",
-      "moon_results.json": "25f0de3ffa3c5abd25d6f869a965aea114a8351fe14520e5fea8c12e58966b22",
-      "new_features_results.csv": "3b7fffbff52558fed925b0407346d40ff8c456137ea4d06c5d0667e03ed6fab6",
-      "provided-artifact-sha256.json": "c00a500e997ca92ee88df08cf59f59aee6874ea9d7dca95d21de6f3dadae1fb6",
+      "M4_slope_results.csv": "2c5eb581ab53d62b0b98f6c5331e6bb5b24c9063472a006998629493d029fcdd",
+      "modis_lst_2023_1deg.csv": "0652ef07a0d4c6e9faea41a79cacb6571786d95c1a72eb877a4ed4bd041aded6",
+      "moon_global_grid.json": "e6a792e19a5d0b98da934d589c6427fa2f1f3399fd25c2f2571f6111e16509a5",
+      "moon_results.json": "048436cf2193ab430a33db5329eba2e5e4e1d5ba4a9105f03092b6c6af968a2e",
+      "provided-artifact-sha256.json": "71f47083b70328faae179f9e8eccdbd7065dc5fa678856a48cd4eba703f8b5e4",
       "site01-map-centre.json": "689e323870b99b9e5f1966479a99a9eac3db6beeb03c679918052968ef36c3d8",
-      "stage2_scores.csv": "11c019abd15de8e16750476749dc9f5b2475a3c129e3142257df7fe53e976632",
       "stage2_top_with_slope.csv": "cae4d8f03ddc98063ba0b9d9ce3e900b7ee988cac8a7d813b7d6b90171b6d7bf"
     },
     "artifact_sha256": {
-      "web_handoff_2026-11-14.zip": "b6a3134876580cbac569d7de819c978044d78af22d93ab1721a486c24336b560",
-      "moon_branch_2026-11-14.zip": "4cfd6b4f9492b9569ee5992eb6858c7add4255059f840df5c816085f89983703",
+      "nasa-moon.zip": "cf551ba49dcca6d8d00f1df4bab99232ce1b5bdcc447af09bcd6fa249d973c56",
+      "lunar-principles-modis.pdf": "d24ec82f35b077b3c11c115ebc7ce99edb6c82090c27b812b6711e6294111d45",
       "lunar-principles.pdf": "12122d803c935abbf2c5fc1f425397b35fa533df1528e67b92bf59c92353287d",
-      "lunar-method.pdf": "580690050989b2c0f4031f9dea1384ccebdf16afd09847570276c9ed96f5c008"
+      "lunar-method.pdf": "580690050989b2c0f4031f9dea1384ccebdf16afd09847570276c9ed96f5c008",
+      "power-backup.csv": "10104b0446bf3c746ea95bf65dd1e2bb5a66a4b97320faf8bcdff868e5f25c68"
     },
     "global_cells": 19599,
     "excluded_ice_cells": 4881,
     "eligible_global_cells": 14718,
-    "missing_daily_range_cells": 12459,
+    "missing_daily_range_cells": 12,
     "m4_supplied_pool": 151,
     "m4_nonice_pool": 135,
     "m4_new_candidate_pool": 130,
@@ -10144,7 +10654,20 @@
       "Noon elevation and ice proxy raw values recovered from the coordinate-matched global CSV.",
       "Mauna Kea validation coordinates recovered from the supplied six-page PDF.",
       "M4 new and least-similar groups rebuilt from the full supplied pool after applying its MODIS ice mask; imported scores preserved.",
-      "The missing Connecting Ridge map longitude uses the georeferenced PGDA tile centre, explicitly separate from report coordinates."
-    ]
+      "The missing Connecting Ridge map longitude uses the georeferenced PGDA tile centre, explicitly separate from report coordinates.",
+      "MODIS raw feature values use LST columns, never legacy T2M columns.",
+      "Twelve no-LST cells are rejected for M3/M6 and their grid scores are null; no POWER fallback.",
+      "M2 retains its four original validation regions because temperature availability does not gate astronomical scores.",
+      "Stale ERA5 metadata removed from the active handoff; archives remain separate."
+    ],
+    "temperature_source": "MODIS_LST_2023",
+    "temperature_year": 2023,
+    "temperature_cells": 19587,
+    "excluded_temperature_cells": 12,
+    "eligible_temperature_cells": 14706,
+    "partial_month_cells": 403,
+    "maximum_global_thermal_error": 0.05000000000001137,
+    "temperature_zero_convention": "No paired monthly day/night LST: use 0; not a measured zero.",
+    "power_backup_sha256": "10104b0446bf3c746ea95bf65dd1e2bb5a66a4b97320faf8bcdff868e5f25c68"
   }
 }

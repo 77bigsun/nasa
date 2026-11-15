@@ -1,0 +1,7 @@
+{
+  "version": "mars-handoff-v1",
+  "scored_pairs": 27,
+  "candidate_scores_checked": 352,
+  "maximum_rounding_error_points": 0.08741,
+  "scope": "Reproduces exported candidate scores from rounded per-feature similarities; raw global raster processing is not included in this handoff."
+}

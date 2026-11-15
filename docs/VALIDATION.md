@@ -4,11 +4,11 @@ The production workflow now uses downloaded observations and explicitly scoped d
 
 | Check | Result |
 |---|---|
-| Backend formulas, PDF lunar model, solvers, observed APIs, target windows and boundaries | 77 tests passed |
+| Backend formulas, PDF lunar model, solvers, observed APIs, target windows and boundaries | 80 tests passed |
 | Missing feature cannot become complete coverage; missing target cannot borrow another target | Passed |
 | Actual Gale DTM slope; missing REMS wind; AP-105 TES context-only handling | Passed |
 | Snapshot rejects synthetic flags and never falls back to seed measurements | Passed |
-| Frontend task-first lunar pages, original Mars wizard, maps, evidence and bilingual content | 22 tests passed |
+| Frontend task-first lunar pages, original Mars wizard, maps, evidence and bilingual content | 23 tests passed |
 | TypeScript and Vite production build | Passed locally and in Docker |
 | Production web Compose stack | Six services built and healthy |
 | Public Earth adapter | End-to-end validated; 446 crop hashes/unsigned URLs, actual MODIS view times |
@@ -44,3 +44,12 @@ The newer 23:30 handoff and 23:50 principles PDF now drive the active lunar task
 Browser visual verification was attempted on 2026-11-15. The browser access host was unavailable; native Edge control then stopped because it could not reliably establish the current URL for policy enforcement. No browser screenshots or responsive visual acceptance are claimed. Appropriate DOM, build, source-validation and HTTP checks continue separately.
 
 Live validation after deployment on 2026-11-15 passed: all six Compose services are healthy; all four task routes return successfully; each task returns three new and three least-similar candidates; ten M4 calls return ten distinct selected reference reliefs; shared-anchor rankings preserve lunar suitability status; retired tasks and unknown sites are rejected; the source principles PDF hash matches; and the 19599-cell grid is valid JSON. Served entry and LunarMission assets match the local production build byte for byte. The older observed/Mars/planning smoke checks still pass. The stack is left running at http://localhost:8080/moon.
+
+The 2026-11-15 16:30 MODIS profile supersedes the POWER handoff for active lunar M3/M6. Full validation passed with 80 backend and 23 frontend tests plus TypeScript/Vite production build. The importer independently checks every valid thermal cell against its MODIS summary and the unchanged weighted equations. Twelve no-LST cells are excluded and their M3/M6 grid values are null, while M2 validation remains temperature-independent. All nonthermal inputs, ten lunar references, weights and M4 source matrices are checked against the archived baseline. The updated PDF, original archive and input CSVs retain SHA-256 provenance. Candidate month coverage, surface-temperature labels and language switching are covered by frontend tests.
+Maximum global thermal score reconstruction discrepancy: 0.050000 points (source scores rounded to 0.1); candidate feature aggregation discrepancy remains 0.09. Partial-month cells: 403; eligible thermal cells after ice and no-LST exclusion: 14706.
+
+MODIS live deployment validation passed: all six services are healthy; M3 returns Northern Yakutia 76.6 with MODIS_LST_2023 and 12 months, and M6 returns northern Ellesmere/Lake Hazen 59.3 with the same source/year coverage. The global download masks all twelve no-LST M3/M6 scores, the LST CSV downloads successfully, the updated PDF hash matches, and served entry/LunarMission assets match the tested production build byte for byte. Existing observed/Mars/planning smoke checks also pass. No additional browser visual acceptance is claimed.
+
+## 2026-11-15 Mars handoff and lunar images
+
+Validated 27 eligible Mars target/test pairs and reproduced all 352 candidate scores from rounded similarities (maximum error 0.08741 points). Tests cover geometric aggregation, the 0.01 floor, required applicable features, target-specific mineral/glacier rules, R2 and ice eligibility, source hashes, map dimensions/scale/nulls, profile aggregation, exact relative-threshold network coverage and HTTP service boundaries. Frontend checks cover the retained wizard, evidence, bilingual output, missing/inapplicable tests, stale replies and lunar image dialogs. These do not repeat upstream raw-raster processing or certify mission feasibility.

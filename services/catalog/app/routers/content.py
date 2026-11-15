@@ -56,8 +56,8 @@ def create_router(repo: FileRepository):
 
     @router.get('/method',response_model=Method)
     def method():
-        en=(repo.data_root/'content/lunar-tasks.en.md').read_text(encoding='utf-8')
-        zh=(repo.data_root/'content/lunar-tasks.zh-TW.md').read_text(encoding='utf-8')
+        en=(repo.data_root/'content/mars-handoff.en.md').read_text(encoding='utf-8')+(repo.data_root/'content/lunar-modis.en.md').read_text(encoding='utf-8')
+        zh=(repo.data_root/'content/mars-handoff.zh-TW.md').read_text(encoding='utf-8')+(repo.data_root/'content/lunar-modis.zh-TW.md').read_text(encoding='utf-8')
         return Method(settings=repo.settings,markdown=en+(repo.docs/'METHOD.md').read_text(encoding='utf-8'),markdown_zh=zh+(repo.data_root/'content/method.zh-TW.md').read_text(encoding='utf-8'))
     @router.get('/datasets',response_model=list[DatasetProduct])
     def datasets():return repo.products
@@ -81,6 +81,13 @@ def create_router(repo: FileRepository):
     def translations(locale: str):
         if locale!='zh-TW':raise HTTPException(404,'Unknown translation locale')
         return repo.translations
+
+    from services.shared.mars_handoff import MarsCatalog
+    @router.get('/mars-handoff',response_model=MarsCatalog)
+    def mars_handoff():
+        path=repo.data_root/'catalog/mars-handoff.json'
+        if not path.exists():raise HTTPException(404,'Mars handoff is not imported')
+        return MarsCatalog.model_validate_json(path.read_text(encoding='utf-8'))
 
     return router
 

@@ -17,7 +17,8 @@ onBeforeUnmount(()=>{dialog.value?.close();previous?.focus()})
 </script>
 <template><dialog ref="dialog" class="detail-drawer" aria-labelledby="lunar-evidence-title" @cancel.prevent="close" @click="e=>{if(e.target===dialog)close()}"><div class="drawer-inner">
  <div class="drawer-heading"><div><span class="eyebrow">EARTH / {{task.name}}</span><h2 id="lunar-evidence-title">{{lunarCandidateName(candidate,locale)}}</h2><span class="mono">{{candidate.score.toFixed(1)}} / 100 · {{candidate.lat}}°, {{candidate.lon}}°</span></div><button class="icon-button" :aria-label="t('close')" @click="close">×</button></div>
- <p class="notice">{{t('lunarScoreMeaning')}}</p><p>{{t('comparisonTarget')}}: <strong>{{site.name}}</strong></p><p v-if="!task.depends_on_moon_site" class="small muted">{{t('lunarSharedAnchor')}}</p>
+ <p class="notice">{{t('lunarScoreMeaning')}}</p><p>{{t('comparisonTarget')}}: <strong>{{site.name}}</strong></p>
+ <p v-if="candidate.temperature_source==='MODIS_LST_2023'" class="notice" data-testid="temperature-source">{{t('lunarModisMonths',{months:candidate.temperature_months})}} · {{t('lunarModisMethodNotice')}}</p>
  <p v-for="note in candidate.notes" :key="note" class="notice">{{text(note)}}</p>
  <article v-for="feature in candidate.features" :key="feature.feature" class="feature-detail">
   <div class="feature-heading"><h3>{{definition(feature.feature).name}}</h3><span class="badge" :class="feature.classification||'missing'">{{t(feature.classification==='partial'?'lunarPartial':feature.classification==='similar'?'similar':feature.classification==='different'?'different':'lunarMissing')}}</span></div>

@@ -1,0 +1,22 @@
+{
+  "R2 (visual navigation) is not evaluated: no global image-texture data.": "R2（視覺導航）尚未評分，缺少全球影像紋理資料。",
+  "Earth cells are 0.1 degree (~11 km); Mars study circles have radii of 25-50 km. Sub-cell terrain is unresolved.": "地球網格為 0.1°（約 11 公里）；火星研究半徑為 25–50 公里，無法解析小於格點的地形。",
+  "Earth slope is the 230 m GMTED2010 median per cell, not the 100 m scale in the landing requirement.": "地球坡度為每格內 GMTED2010 230 m 坡度的中位數，與著陸需求的 100 m 尺度不同。",
+  "Lithology is a coarse class match (GLiM 0.5 degree vs USGS SIM 3292).": "岩性僅比較粗略大類（GLiM 0.5° 與 USGS SIM 3292）。",
+  "Temperature and aridity are scored as 'more extreme is closer' (Earth cannot reach Mars values), so they do not change between Mars targets.": "地球無法達到火星的溫度與乾燥程度，因此這兩項依地球極端程度計分，不隨火星目標改變。",
+  "Seven Mars targets; biology and subsurface dimensions are not scored.": "目前共七個火星目標；生物與地下環境面向未計分。",
+  "Scoring code, data-processing scripts and this export were written with Claude (Anthropic); the team chose the method, reviewed the code and checked the results.": "評分、資料處理與匯出程式由 Claude（Anthropic）協助撰寫；團隊決定方法、審查程式並檢查結果。",
+  "Jezero Crater": "Jezero 傑澤羅隕石坑",
+  "Gale Crater": "Gale 蓋爾隕石坑",
+  "Arcadia Planitia (shallow ground ice)": "Arcadia 平原（淺層地下冰）",
+  "Oxia Planum (ExoMars Rosalind Franklin landing site)": "Oxia 平原（ExoMars Rosalind Franklin 著陸區）",
+  "Meridiani Planum (Opportunity landing site, Eagle crater)": "Meridiani 平原（機會號著陸地，鷹隕石坑）",
+  "Protonilus Mensae (candidate human exploration zone, buried glacial ice)": "Protonilus 桌山（載人探索候選區、埋藏冰河）",
+  "Arcadia Planitia AP-105 (SkyFall design reference landing site)": "Arcadia 平原 AP-105（SkyFall 設計參考著陸區）",
+  "Mars handoff: seven targets and global Earth comparisons": "火星交接資料：七個目標與全球地球環境比較",
+  "Earth 0.1-degree cells; Mars 25-50 km study radii; 1-degree display maxima": "地球 0.1° 格點；火星研究半徑 25–50 公里；以 1° 格內最高分展示",
+  "Team-derived export from 2026-11-15: 27 scored target/test pairs, 352 candidate evidence records, 17225 display cells and a 3317-cell planning pool.": "團隊 2026-11-15 匯出結果：27 組可計分目標與任務、352 筆候選證據、17,225 格展示網格及 3,317 格規劃候選池。",
+  "NASA MODIS, MERRA-2 and ASTER inputs are combined with USGS terrain/geology, MCD climate, SWIM ice, ESA CCI, GLIMS, GLiM and Global Aridity Index.": "NASA MODIS、MERRA-2 與 ASTER 結合 USGS 地形地質、MCD 氣候、SWIM 地下冰、ESA CCI、GLIMS、GLiM 與全球乾燥指數。",
+  "R2 is not evaluated. R3/R5 require SWIM Ci >= 0.1. Raw global raster processing is not included in the supplied handoff.": "R2 尚未評分；R3／R5 需要 SWIM Ci ≥ 0.1。交接包未包含全球原始網格的處理流程。",
+  "See the current bilingual method page for provider citations, periods, target-specific feature rules and known limitations.": "資料提供者、期間、目標適用特徵與限制，請參考目前的雙語方法頁。"
+}

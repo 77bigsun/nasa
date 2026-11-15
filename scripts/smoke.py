@@ -136,7 +136,7 @@ def main():
             assert all(c['available_features']>0 for c in response['most_similar']+response['least_similar'])
             top_scores[tid]=response['most_similar'][0]['score']
             client.get(f'/moon/{tid}').raise_for_status()
-        assert top_scores=={'M2':52.9,'M3':92.7,'M4':89.8,'M6':58.7}
+        assert top_scores=={'M2':52.9,'M3':76.6,'M4':89.8,'M6':59.3}
         references=[]
         for site in handoff['moon_sites']:
             response=client.get('/api/similarity/lunar/tasks/M4',params={'site_id':site['id']})
@@ -146,14 +146,46 @@ def main():
         shared=client.get('/api/similarity/lunar/tasks/M3',params={'site_id':'moon-scr'})
         shared.raise_for_status();shared=shared.json()
         assert shared['selected_site']['id']=='ConnectingRidge' and shared['site_status']=='unassessed'
-        assert shared['most_similar'][0]['score']==92.7
+        assert shared['most_similar'][0]['score']==76.6
         assert client.get('/api/similarity/lunar/tasks/M5').status_code==404
         assert client.get('/api/similarity/lunar/tasks/M4',params={'site_id':'unknown'}).status_code==404
-        principles=client.get('/docs/lunar-principles-2026-11-14.pdf');principles.raise_for_status()
-        assert hashlib.sha256(principles.content).hexdigest()==handoff['provenance']['artifact_sha256']['lunar-principles.pdf']
+        principles=client.get('/docs/lunar-principles-modis-2026-11-15.pdf');principles.raise_for_status()
+        assert hashlib.sha256(principles.content).hexdigest()==handoff['provenance']['artifact_sha256']['lunar-principles-modis.pdf']
         method_page=client.get('/api/catalog/method').json()
-        assert '12,459' in method_page['markdown'] and '0.70' in method_page['markdown_zh']
+        assert 'MODIS' in method_page['markdown'] and '0.70' in method_page['markdown_zh']
+        assert handoff['provenance']['temperature_source']=='MODIS_LST_2023'
+        assert handoff['provenance']['excluded_temperature_cells']==12
+        cols={name:i for i,name in enumerate(grid.json()['meta']['columns'])}
+        missing=[r for r in grid.json()['rows'] if r[cols['temperature_valid']]==0]
+        assert len(missing)==12 and all(r[cols['M3']] is None and r[cols['M6']] is None for r in missing)
+        temperatures=client.get('/api/measurements/lunar-temperature');temperatures.raise_for_status()
+        assert 'LST_mean_C' in temperatures.text and 'T2M_ann_C' not in temperatures.text
         print('Active lunar missions: four task pages, 3+3 comparisons, 19599 cells, ice exclusion and ten independent M4 references OK')
+        mars=client.get('/api/catalog/mars-handoff');mars.raise_for_status();mars=mars.json()
+        assert len(mars['mars_sites'])==7 and len(mars['tasks'])==6
+        for site in mars['mars_sites']:
+            response=client.get('/api/similarity/mars/compare',params={'site_id':site['id'],'tasks':'R1,R2,R3,R4,R5,R6'})
+            response.raise_for_status();comparison=response.json()
+            assert comparison['site']['id']==site['id'] and comparison['version']==mars['meta']['version']
+            assert comparison['groups'][1]['status']=='not_evaluated' and comparison['groups'][1]['ranking'] is None
+            assert sum(g['ranking'] is not None for g in comparison['groups'])==len(site['scored_tests'])
+            for group in comparison['groups']:
+                if not group['ranking']:continue
+                assert len(group['ranking']['new_candidates'])==10 and len(group['ranking']['least_similar'])==3
+            plan=client.get('/api/planning/mars/network',params={'site_id':site['id'],'tasks':','.join(site['scored_tests'])})
+            plan.raise_for_status();assert not plan.json()['uncoverable']
+        plan=client.get('/api/planning/mars/network',params={'site_id':'all'});plan.raise_for_status()
+        assert plan.json()['k_star']==5 and plan.json()['n_requirements']==27
+        grid=client.get('/api/measurements/mars-grid');grid.raise_for_status();assert len(grid.json()['rows'])==17225
+        pool=client.get('/api/measurements/mars-pool');pool.raise_for_status();assert 'S_jezero_R1' in pool.text
+        client.get('/mars?step=3&site=mars-jezero&tasks=R1,R4,R6').raise_for_status()
+        from pathlib import Path
+        root=Path(__file__).resolve().parents[1]
+        import json
+        for asset in json.loads((root/'frontend/src/moonSiteImages.json').read_text(encoding='utf-8')).values():
+            response=client.get(asset['url']);response.raise_for_status()
+            assert hashlib.sha256(response.content).hexdigest()==asset['sha256']
+        print('Mars handoff: seven targets, 27 scored pairs, unscored/ice rules, planning and global grid OK; ten lunar images match original hashes')
         print('All live HTTP checks passed.')
 
 if __name__=='__main__':main()

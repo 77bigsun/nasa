@@ -59,4 +59,4 @@ def test_research_product_catalog_and_translated_method():
     assert len(translations)>300
     assert client.get('/translations/invalid').status_code==404
     assert client.get('/method').json()['markdown_zh']
-    assert all(p['url'].startswith('https://') for p in products)
+    assert all(p['url'].startswith('https://') or p['url'].startswith('/api/measurements/') for p in products)

@@ -5,7 +5,7 @@ import EarthMap from './components/EarthMap.vue'
 import type {Candidate} from './types'
 const state=vi.hoisted(()=>({fitBounds:vi.fn(),positions:[] as number[][],tooltips:[] as HTMLElement[],resize:null as (()=>void)|null}))
 vi.mock('leaflet',()=>{
- const map={setView(){return this},fitBounds:state.fitBounds,invalidateSize(){},remove(){}}
+ const map={setView(){return this},createPane:()=>({style:{}}),fitBounds:state.fitBounds,invalidateSize(){},remove(){}}
  const group={addTo(){return this},clearLayers(){}}
  const tile={addTo(){return this},once(){return this},remove(){}}
  return {default:{

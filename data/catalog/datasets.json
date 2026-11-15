@@ -1,5 +1,44 @@
 [
   {
+    "id": "mars-handoff-1115",
+    "name": "Mars handoff: seven targets and global Earth comparisons",
+    "url": "/api/measurements/mars-handoff",
+    "resolution": "Earth 0.1-degree cells; Mars 25-50 km study radii; 1-degree display maxima",
+    "access": "public",
+    "status": "imported",
+    "uses": [
+      "R1",
+      "R3",
+      "R4",
+      "R5",
+      "R6"
+    ],
+    "notes": [
+      "Team-derived export from 2026-11-15: 27 scored target/test pairs, 352 candidate evidence records, 17225 display cells and a 3317-cell planning pool.",
+      "NASA MODIS, MERRA-2 and ASTER inputs are combined with USGS terrain/geology, MCD climate, SWIM ice, ESA CCI, GLIMS, GLiM and Global Aridity Index.",
+      "R2 is not evaluated. R3/R5 require SWIM Ci >= 0.1. Raw global raster processing is not included in the supplied handoff.",
+      "See the current bilingual method page for provider citations, periods, target-specific feature rules and known limitations."
+    ]
+  },
+  {
+    "id": "lunar-modis-monthly-lst",
+    "name": "MODIS Terra monthly LST 2023 (GIBS-derived lunar inputs)",
+    "url": "https://lpdaac.usgs.gov/products/mod11c3v061/",
+    "resolution": "0.1-degree imagery sampling aggregated to 1-degree cells; monthly means",
+    "access": "public",
+    "status": "imported",
+    "uses": [
+      "M3",
+      "M6"
+    ],
+    "notes": [
+      "Current lunar temperature source: team-provided 2023 MODIS/GIBS colour-derived summaries, not independently downloaded science-quality numeric rasters.",
+      "19587 valid temperature cells; 12 no-LST cells excluded; 403 valid cells have fewer than 12 months.",
+      "Monthly extrema are not daily annual extremes. The polar day-night zero convention and 200 K colour-scale floor limit interpretation.",
+      "The source package identifies Worldview/MODIS as competition-listed; NASA publication and competition-list inclusion are separate claims."
+    ]
+  },
+  {
     "id": "pgda-lola-5m",
     "name": "LOLA Site01 adjusted DEM",
     "url": "https://pgda.gsfc.nasa.gov/products/78",

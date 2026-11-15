@@ -1,0 +1,7 @@
+{
+  "lat": -89.46316283403667,
+  "lon": -137.48955292199918,
+  "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Site01_final_adj_5mpp_surf.tif",
+  "source_sha256": "3ba7b97cb00a2bcf21189c3aeb535f65afc21207154ab9f0d43c5bdc1f7e747e",
+  "method": "Centre of the georeferenced PGDA Site01 16 km tile, transformed from its lunar polar stereographic CRS."
+}

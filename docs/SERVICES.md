@@ -2,7 +2,7 @@
 
 The current architecture runs **six services, including four backend APIs**. All source remains in the same GitHub repository; separate repositories are not required.
 
-For the active lunar task pages, catalog owns `/lunar-handoff` (four definitions, ten lunar references and suitability assessments). Measurements owns `/lunar-handoff` (reviewed rankings) and `/lunar-grid` (global screening data). Similarity fetches both services, validates matching versions and serves `/lunar/tasks/{task_id}?site_id=...`, selecting three new candidates and three least-similar entries from imported rankings. The frontend does no scientific scoring. Planning and the older PDF/observed APIs remain available separately; the active lunar pages do not present their older coverage or sensitivity results as current handoff results. See [LUNAR_METHOD.md](LUNAR_METHOD.md).
+For the active lunar task pages, catalog owns `/lunar-handoff` (four definitions, ten lunar references and suitability assessments). Measurements owns `/lunar-handoff` (reviewed rankings), `/lunar-grid` (global screening data with no-LST scores masked) and `/lunar-temperature` (the 2023 MODIS LST summary CSV). Similarity fetches both services, validates matching versions and serves `/lunar/tasks/{task_id}?site_id=...`, selecting three new candidates and three least-similar entries from imported rankings. The frontend does no scientific scoring. Planning and the older PDF/observed APIs remain available separately; the active lunar pages do not present their older coverage or sensitivity results as current handoff results. See [LUNAR_METHOD.md](LUNAR_METHOD.md).
 
 A service is a program with a specific job and its own entry point. A Docker container supplies the environment for that program. Compose starts the programs together, connects their network, and waits for dependencies to become healthy.
 
@@ -104,3 +104,12 @@ Catalog additionally owns `/datasets`, `/research`, `/translations/zh-TW` and tr
 
 
 Current measurement runtime: `/snapshot` reads only `data/observed/mission-measurements.json`; `/coverage` and `/products` expose feature pairings and quality/provenance. Similarity requires matching eligible quantities and returns null complete scores for missing features. Planning uses complete task scores only. Legacy demo measurement files have no runtime reader. See `OBSERVED_DATA.md`.
+
+## Active Mars handoff endpoints
+
+- Catalog: `GET /mars-handoff` (six task definitions, seven study areas).
+- Measurements: `GET /mars-handoff`, `/mars-grid`, `/mars-pool`, `/mars-network-inputs`.
+- Similarity: `GET /mars/compare?site_id=mars-jezero&tasks=R1,R4,R6`.
+- Planning: `GET /mars/network?site_id=mars-jezero&tasks=R1,R4,R6`; `site_id=all` with no tasks returns the supplied global reference.
+
+Planning now depends on measurements for the handoff pool; `MEASUREMENTS_URL` defaults to port 8003 locally. All active Mars routes use source-native scores, independent of the legacy observed pilot.

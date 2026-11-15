@@ -76,11 +76,13 @@ services:
       context: .
       dockerfile: services/planning/Dockerfile
     environment:
+      MEASUREMENTS_URL: http://measurements:8000
       CATALOG_URL: http://catalog:8000
       CATALOG_CACHE_SECONDS: ${CATALOG_CACHE_SECONDS:-60}
       SIMILARITY_URL: http://similarity:8000
       ROOT_PATH: /api/planning
     depends_on:
+      measurements: {condition: service_healthy}
       catalog: {condition: service_healthy}
       similarity: {condition: service_healthy}
     healthcheck:

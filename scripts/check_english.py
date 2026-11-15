@@ -18,7 +18,7 @@ def main():
         for name in files:
             path=Path(directory)/name
             relative=path.relative_to(ROOT).as_posix()
-            if relative.startswith('data/lunar/handoff-source/') or relative in {'data/locales/lunar-handoff-source.zh-TW.json','data/locales/lunar-handoff.zh-TW.json','data/content/lunar-tasks.zh-TW.md'}:continue
+            if relative.startswith(('data/lunar/handoff-source/','data/lunar/handoff-modis-source/','data/mars/handoff-source/')) or relative in {'data/locales/lunar-handoff-source.zh-TW.json','data/locales/lunar-handoff.zh-TW.json','data/content/lunar-tasks.zh-TW.md','data/content/lunar-modis.zh-TW.md','data/content/mars-handoff.zh-TW.md','data/locales/lunar-images.zh-TW.json','data/locales/mars-handoff.zh-TW.json','data/locales/mars-source-text.json','data/locales/mars-display.zh-TW.json'}:continue
             if path.relative_to(ROOT).as_posix() in LOCALIZED:continue
             if path.suffix.lower() in {'.jpg','.jpeg','.png','.gif','.ico','.woff','.woff2','.ttf','.pyc'}:continue
             try:text=path.read_text(encoding='utf-8-sig')

@@ -9,6 +9,7 @@ const {t,locale}=useI18n()
 <template><button class="lunar-earth-card" :class="{least}" @click="$emit('select',candidate)" :data-candidate-id="candidate.id">
  <div class="lunar-card-top"><span class="mono muted">{{String(candidate.rank).padStart(2,'0')}}</span><strong class="lunar-score mono">{{candidate.score.toFixed(1)}}<small> / 100</small></strong></div>
  <h4>{{lunarCandidateName(candidate,locale)}}</h4><p class="mono muted small">{{candidate.lat.toFixed(2)}}°, {{candidate.lon.toFixed(2)}}°</p>
+ <p v-if="candidate.temperature_source==='MODIS_LST_2023'" class="small muted" data-testid="temperature-months">{{t('lunarModisMonths',{months:candidate.temperature_months})}}</p>
  <div class="score-track"><i :style="{width:candidate.score+'%'}"></i></div>
  <p v-if="candidate.available_features<candidate.total_features" class="small warning">{{t('lunarAvailableFeatures',{available:candidate.available_features,total:candidate.total_features})}}</p>
  <div class="lunar-feature-preview"><p v-for="feature in candidate.features" :key="feature.feature"><span>{{task.features.find(f=>f.id===feature.feature)?.name}}</span><b :class="feature.classification||'muted'">{{feature.s===null?t('lunarMissing'):feature.s.toFixed(3)}}</b></p></div>

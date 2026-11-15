@@ -1,0 +1,82 @@
+{
+  "ConnectingRidge": {
+    "url": "/images/moon-sites/ConnectingRidge.png",
+    "caption": "Orthorectified image of the connecting ridge; not a boundary map of the entire candidate region.",
+    "credit": "NASA/GSFC/Arizona State University (LROC)",
+    "source_url": "https://data.lroc.im-ldi.com/lroc/view_rdr/NAC_DTM_SHACKRDGE02",
+    "original_url": "https://pds.mcp.nasa.gov/data/store/img/lunar_reconnaissance_orbiter/pds4/lroc/lro-l-lroc-5-rdr/LROLRC_2001/EXTRAS/BROWSE/NAC_DTM/SHACKRDGE02/NAC_DTM_SHACKRDGE02_M139797542_120CM.BROWSE.PNG",
+    "sha256": "28ea766d3f34da8ab7ed04d02162a41491452166bdf282c6913ef094b655cb74"
+  },
+  "PeakNearCabeusB": {
+    "url": "/images/moon-sites/PeakNearCabeusB.png",
+    "caption": "Mosaic of the candidate region.",
+    "credit": "NASA/GSFC/Arizona State University (LROC)",
+    "source_url": "https://data.lroc.im-ldi.com/lroc/view_rdr/NAC_ROI_CABEUSPKLO2",
+    "original_url": "https://pds.mcp.nasa.gov/data/store/img/lunar_reconnaissance_orbiter/pds4/lroc/lro-l-lroc-5-rdr/LROLRC_2001/EXTRAS/BROWSE/NAC_ROI/CABEUSPKLO2/NAC_ROI_CABEUSPKLO2_P836S2912.BROWSE.PNG",
+    "sha256": "f06d108f618e4bd0fdf6d5ea67c43b85ee0bf79be85284f30be8b2460932484e"
+  },
+  "Haworth": {
+    "url": "/images/moon-sites/Haworth.png",
+    "caption": "Mosaic of the Haworth candidate region, not the entire crater.",
+    "credit": "NASA/GSFC/Arizona State University (LROC)",
+    "source_url": "https://data.lroc.im-ldi.com/lroc/view_rdr/NAC_ROI_HAWORTH_LO1",
+    "original_url": "https://pds.mcp.nasa.gov/data/store/img/lunar_reconnaissance_orbiter/pds4/lroc/lro-l-lroc-5-rdr/LROLRC_2001/EXTRAS/BROWSE/NAC_ROI/HAWORTH_LO1/NAC_ROI_HAWORTH_LO1_P867S3363.BROWSE.PNG",
+    "sha256": "64b24dc7698435ee1e119a0dfcf16eb078020f475b893d8b4a97a710c06b5a77"
+  },
+  "MalapertMassif": {
+    "url": "/images/moon-sites/MalapertMassif.png",
+    "caption": "Oblique view; the massif is at lower left.",
+    "credit": "NASA/GSFC/Arizona State University (LROC)",
+    "source_url": "https://science.nasa.gov/resource/malapert-massif/",
+    "original_url": "https://assets.science.nasa.gov/content/dam/science/psd/lunar-science/2023/08/MalapertMassif-1.png/jcr:content/renditions/cq5dam.web.1280.1280.png",
+    "sha256": "1221ad3f77308c19413ab1d43f21cf990e641fddbe4761a4c486c7989c4de17d"
+  },
+  "MonsMoutonPlateau": {
+    "url": "/images/moon-sites/MonsMoutonPlateau.png",
+    "caption": "Regional mosaic of Mons Mouton Plateau.",
+    "credit": "NASA/GSFC/Arizona State University (LROC)",
+    "source_url": "https://data.lroc.im-ldi.com/lroc/view_rdr/NAC_ROI_MOUTNPLTLO1",
+    "original_url": "https://pds.mcp.nasa.gov/data/store/img/lunar_reconnaissance_orbiter/pds4/lroc/lro-l-lroc-5-rdr/LROLRC_2001/EXTRAS/BROWSE/NAC_ROI/MOUTNPLTLO1/NAC_ROI_MOUTNPLTLO1_P843S0306.BROWSE.PNG",
+    "sha256": "2b46e6a097fc6eb5524c2c92e63a13e838f6450b9a5adec4650252a5cc9c08fe"
+  },
+  "MonsMouton": {
+    "url": "/images/moon-sites/MonsMouton.jpg",
+    "caption": "NASA terrain visualization, not a surface photograph.",
+    "credit": "NASA\u2019s Scientific Visualization Studio",
+    "source_url": "https://svs.gsfc.nasa.gov/5074/",
+    "original_url": "https://svs.gsfc.nasa.gov/vis/a000000/a005000/a005074/earthview.0001_print.jpg",
+    "sha256": "e1c9b67557f86462d77ae932b9298e43d84f9eab09f497d7d21c12debf4f92fc"
+  },
+  "NobileRim1": {
+    "url": "/images/moon-sites/NobileRim1.png",
+    "caption": "Uncropped image covering both Nobile Rim 1 and Mons Mouton; not an isolated close-up.",
+    "credit": "NASA/GSFC/Arizona State University (LROC)",
+    "source_url": "https://data.lroc.im-ldi.com/lroc/view_rdr/NAC_ROI_MTMOUTONLO1",
+    "original_url": "https://pds.mcp.nasa.gov/data/store/img/lunar_reconnaissance_orbiter/pds4/lroc/lro-l-lroc-5-rdr/LROLRC_2001/EXTRAS/BROWSE/NAC_ROI/MTMOUTONLO1/NAC_ROI_MTMOUTONLO1_P854S0353.BROWSE.PNG",
+    "sha256": "9aba7f89cd38b26753d7c88b4e033ba8172af7ff2aea7b5705c7b058404cbcaf"
+  },
+  "NobileRim2": {
+    "url": "/images/moon-sites/NobileRim2.png",
+    "caption": "Regional mosaic of Nobile Rim 2.",
+    "credit": "NASA/GSFC/Arizona State University (LROC)",
+    "source_url": "https://data.lroc.im-ldi.com/lroc/view_rdr/NAC_ROI_NOBILE02LO1",
+    "original_url": "https://pds.mcp.nasa.gov/data/store/img/lunar_reconnaissance_orbiter/pds4/lroc/lro-l-lroc-5-rdr/LROLRC_2001/EXTRAS/BROWSE/NAC_ROI/NOBILE02LO1/NAC_ROI_NOBILE02LO1_P839S0587.BROWSE.PNG",
+    "sha256": "d67a025c4fccbd55dce68631aeef81e575b49adbf603809f4be3f7af1aeffb8c"
+  },
+  "deGerlacheRim2": {
+    "url": "/images/moon-sites/deGerlacheRim2.png",
+    "caption": "Uncropped mosaic of the de Gerlache rim; not an isolated close-up of Rim 2.",
+    "credit": "NASA/GSFC/Arizona State University (LROC)",
+    "source_url": "https://data.lroc.im-ldi.com/lroc/view_rdr/NAC_ROI_DEGERRIMLO1",
+    "original_url": "https://pds.mcp.nasa.gov/data/store/img/lunar_reconnaissance_orbiter/pds4/lroc/lro-l-lroc-5-rdr/LROLRC_2001/EXTRAS/BROWSE/NAC_ROI/DEGERRIMLO1/NAC_ROI_DEGERRIMLO1_P885S2933.BROWSE.PNG",
+    "sha256": "a64bb4d5e8ed2ed2c1f125531a11232f3ac981c029b7740675886cc92b5a8ecd"
+  },
+  "SlaterPlain": {
+    "url": "/images/moon-sites/SlaterPlain.jpg",
+    "caption": "Official overview of nine candidate regions, used in place of a Slater Plain close-up.",
+    "credit": "NASA/GSFC/ASU/JSC/AGDT",
+    "source_url": "https://www.nasa.gov/news-release/nasa-provides-update-on-artemis-iii-moon-landing-regions/",
+    "original_url": "https://www.nasa.gov/wp-content/uploads/2024/10/artemis-iii-landing-region-candidates.jpg",
+    "sha256": "fd68f6631236b90b1352d4b41c1f70a25fdd45343d6864531c21a92be8526789"
+  }
+}

@@ -71,6 +71,20 @@ def create_app(catalog=None,measurements=None):
         try:return await run_in_threadpool(calculate,request,config,data)
         except ValueError as error:raise HTTPException(422,str(error)) from error
 
+    @app.get('/mars/compare')
+    async def mars_comparison(site_id:str=Query(...),tasks:str=Query('R1,R4,R6')):
+        from services.shared.mars_handoff import MarsCatalog,MarsResults
+        from .mars_handoff import comparison
+        try:
+            async with httpx.AsyncClient(timeout=30) as client:
+                config,data=await asyncio.gather(client.get(catalog.url+'/mars-handoff'),client.get(measurements.url+'/mars-handoff'))
+                config.raise_for_status();data.raise_for_status()
+                config=MarsCatalog.model_validate(config.json());data=MarsResults.model_validate(data.json())
+        except (httpx.HTTPError,ValueError) as error:raise HTTPException(503,'Mars task inputs unavailable or invalid') from error
+        try:return comparison(site_id,tasks.split(','),config,data)
+        except ValueError as error:raise HTTPException(422,str(error)) from error
+        except RuntimeError as error:raise HTTPException(503,str(error)) from error
+
     @app.post('/lunar/sensitivity')
     async def lunar_sensitivity(request:LunarRequest):
         from .lunar import sensitivity

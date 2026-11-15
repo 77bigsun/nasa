@@ -6,11 +6,13 @@ The website switches between English and Traditional Chinese with the header lan
 
 **The lunar experience is task-first.** `/moon` shows M2, M3, M4 and M6. Each task opens a page with lunar suitability first, then two groups: the three most-similar new Earth candidates and three least-similar locations. The original visual style, maps, evidence drawer and English/Traditional Chinese switch are retained. Scores use the supplied 0-100 scale. See [LUNAR_METHOD.md](docs/LUNAR_METHOD.md).
 
-The two supplied handoff ZIPs now supply 19599 global land cells, a 4881-cell permanent-snow/ice mask and independent M4 terrain references for all ten lunar locations. M2/M3/M6 retain common Earth-achievable anchors; M4 changes with the chosen lunar reference. The source's revised feature weights and fitness factors are used, with raw inputs, per-feature similarity, formulas and sources inspectable in the drawer. Known analogs are a separate validation group.
+The current lunar handoff supplies 19599 global land cells, a 4881-cell permanent-snow/ice mask and independent M4 terrain references for all ten lunar locations. M2/M3/M6 retain common Earth-achievable anchors; M4 changes with the chosen lunar reference. The source's revised feature weights and fitness factors are used, with raw inputs, per-feature similarity, formulas and sources inspectable in the drawer. Known analogs are a separate validation group.
 
 Lunar suitability is a preliminary team assessment from published studies, not mission certification. M4's final comparison covers 135 eligible entries from the supplied fine-terrain pool, not a complete global 30 m search; its global grid is relief-only screening. Imported files retain hashes and a reproducible importer. Source JSON nonfinite values and the M4 ice-mask inconsistency are corrected explicitly. Earth names are approximate grid labels.
 
 `/mars` retains the observed-comparison wizard. Earlier observed and 15-site lunar research APIs remain available as separate archived models. Old lunar shared links preserve their site selection and open the first retained selected task. The home globe keeps its original design. The active lunar map shows the six comparison locations; the full source grid is downloadable.
+
+The active lunar temperature profile now uses **2023 MODIS Terra MOD11C3 monthly surface-temperature summaries from Worldview/GIBS**, replacing POWER air temperatures and removing ERA5 from active lunar inputs. Monthly maxima/minima are not daily extremes. Twelve no-LST cells are excluded from M3/M6 and masked in the downloadable grid; 403 cells have partial-month coverage, shown in the drawer. Colour-derived GIBS estimates and the polar-zero difference convention remain explicitly labelled. M2/M4 inputs, ten references, anchors and weights are unchanged. See the [current method](data/content/lunar-modis.en.md).
 
 ## Start with Docker
 
@@ -72,7 +74,7 @@ This workspace already has `.venv` and `frontend/node_modules` installed. These 
 - Phase overlays, empirical CDFs, and Wasserstein distance. The Leaflet map uses NASA GIBS first and falls back to OpenStreetMap. Planetary targets use a coordinate diagram without an Earth basemap.
 - Adjustable coverage threshold, ROC/rank-sum/custom weights, and known-analog exclusion. Minimum set cover, coverage tables, uncoverable tests, marginal benefit, and Dirichlet sensitivity analysis.
 - `/method`: English and Traditional Chinese methodology served by catalog, with KaTeX formulas.
-- `/data`: 31 product-level records with access requirements, resolution, feature usage and import status; observed terrain tables, ECDFs, meteorology cycles and SHA-256 provenance; plus the original 22 portals. The `official` flag denotes inclusion in the competition Resources list, not institutional ownership.
+- `/data`: 32 product-level records with access requirements, resolution, feature usage and import status; observed terrain tables, ECDFs, meteorology cycles and SHA-256 provenance; plus the original 22 portals. The `official` flag denotes inclusion in the competition Resources list, not institutional ownership.
 - `/research`: ten bilingual sections from the supplied planning PDFs and lunar-method revision, separating implemented scope, partial work, proposed work and source-review needs.
 - Persistent English / Traditional Chinese navigation, task descriptions, source notes, limitations, research content and methodology.
 - Visible evidence coverage, source metadata and missing/incompatible-data notices. Actual inputs and scoped models never imply certified sites or new discoveries.
@@ -147,3 +149,7 @@ docker compose --profile ingest run --rm --build ingest
 The worker writes raw caches and observed products; the measurement service reads `data/observed/mission-measurements.json`. After a new import, restart `measurements`, `similarity` and `planning` to refresh snapshots and service caches, then reload the page. After container recreation, also restart `gateway` to refresh DNS. The optional `--cached-only` workflow and all remaining feature gaps are documented in [OBSERVED_DATA.md](docs/OBSERVED_DATA.md).
 
 The old `*.demo.*` files and deterministic generator are archival test material. They are not runtime inputs. Do not regenerate seed definitions over reviewed observed-data feature definitions.
+
+## Mars update (2026-11-15)
+
+The Mars explorer now uses the supplied seven-target handoff with 27 scored target/test pairs. It retains the three-step workflow, displays top/bottom comparisons and feature evidence, offers the global score grid, and plans minimum Earth test networks with relative thresholds. R2 and inapplicable ice tests remain explicitly unscored. See [Mars method](docs/MARS_METHOD.md). Lunar sites now open credited images; the Chinese homepage title is updated and task codes are hidden while task names remain.

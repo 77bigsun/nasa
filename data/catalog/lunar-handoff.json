@@ -1,7 +1,7 @@
 {
-  "version": "lunar-handoff-2026-11-14-2330",
+  "version": "lunar-handoff-modis-2026-11-15-1630",
   "meta": {
-    "generated": "2026-11-14T23:21",
+    "generated": "2026-11-15T16:15",
     "status": "preliminary - verify place names before publishing",
     "score_formula": "task score = 100·Σ(w·c·s)/Σ(w·c); total (optional) = Σ W_task·task over the tasks the user selects, W renormalised",
     "task_weights_roc": {
@@ -27,12 +27,12 @@
       "LRO LOLA 5 m (NASA GSFC PGDA)",
       "LRO LOLA LDEM_80S_20M (NASA PDS)",
       "LROC NAC ROI centres",
-      "NASA POWER climatology 2001-2025",
+      "NASA MODIS Terra monthly LST 2023 via NASA GIBS (temperatures)",
       "MODIS MCD12Q1 via NASA GIBS",
-      "SRTM-based AWS Terrain Tiles",
-      "ERA5 via Open-Meteo (validation sites)"
+      "SRTM-based AWS Terrain Tiles"
     ],
-    "ai_disclosure": "Computation scripts and data assembly produced with Claude (Anthropic)."
+    "ai_disclosure": "Computation scripts and data assembly produced with Claude (Anthropic).",
+    "temperature_model": "2023 MODIS/GIBS monthly LST; colour-derived exploratory statistics"
   },
   "tasks": {
     "M2": {
@@ -73,7 +73,7 @@
         },
         {
           "id": "annual_min_temp_C",
-          "name": "Annual minimum 2 m air temperature",
+          "name": "Minimum monthly night LST (2023)",
           "unit": "C",
           "w": 0.35,
           "c": 0.6,
@@ -81,7 +81,7 @@
         },
         {
           "id": "diurnal_range_C",
-          "name": "Daily 2 m air-temperature range",
+          "name": "Mean monthly day-night LST difference (2023)",
           "unit": "C",
           "w": 0.15,
           "c": 0.6,
@@ -119,7 +119,7 @@
       "features": [
         {
           "id": "annual_mean_temp_C",
-          "name": "Annual mean 2 m air temperature",
+          "name": "Mean monthly day/night LST (2023)",
           "unit": "C",
           "w": 0.25,
           "c": 0.6,
@@ -127,7 +127,7 @@
         },
         {
           "id": "annual_max_temp_C",
-          "name": "Annual maximum 2 m air temperature",
+          "name": "Maximum monthly day LST (2023)",
           "unit": "C",
           "w": 0.25,
           "c": 0.6,
@@ -135,7 +135,7 @@
         },
         {
           "id": "ice_permafrost_proxy",
-          "name": "Temperature-based permafrost and ice proxy",
+          "name": "LST-based frozen-ground proxy",
           "unit": "index",
           "w": 0.5,
           "c": 0.3,
@@ -597,12 +597,17 @@
     "Lunar suitability is a preliminary team assessment from published studies, not a mission feasibility certification. An unlisted task means insufficient evidence, not proven infeasibility.",
     "Earth place names are approximate labels for grid coordinates. A 1-degree cell is a research region, not a confirmed field site.",
     "M2, M3 and M6 use common Earth-achievable anchors. Only M4 compares the selected lunar site directly, using its own 30 m slope and 16 km relief reference.",
-    "NASA POWER provides approximately 50 km, 2 m air-temperature climatology for 2001-2025, not surface temperatures. Daily range is missing in 12459 of 19599 cells and missing features are skipped.",
     "Sunlight and darkness are latitude-based astronomy without terrain obstruction. Equal-latitude M2 results can tie.",
     "M4 final rankings cover the supplied fine-terrain pool, not a complete global 30 m search. The global M4 grid contains relief-only screening scores and must not be mixed with final rankings.",
     "The global MODIS mask excludes 4881 permanent-snow/ice cells from new candidates and least-similar comparisons. Named local validation sites remain separate; exposed terrain can differ from its surrounding 1-degree cell.",
     "Permafrost and subsurface ice are temperature-based proxies with fitness 0.3; the cold-trap-ice term is zero. No confirmed ice measurement is inferred.",
-    "Vacuum, one-sixth gravity, radiation and electrostatic lunar dust cannot be reproduced by these Earth analogs. M1 and M5 are not scored."
+    "Vacuum, one-sixth gravity, radiation and electrostatic lunar dust cannot be reproduced by these Earth analogs. M1 and M5 are not scored.",
+    "Temperatures are team-derived 2023 MODIS Terra MOD11C3 monthly land-surface temperatures from Worldview/GIBS colour imagery, sampled at 0.1 degrees and aggregated to 1 degree. They are not 2 m air temperatures or independently downloaded science-quality rasters.",
+    "Mean LST averages the available monthly day/night means; maximum and minimum are extrema of monthly daytime and nighttime means, not observed daily extremes. Some cells have fewer than 12 months; month counts remain visible.",
+    "The GIBS colour scale has a 200 K lower bound; the upstream convention encodes colder values at approximately -74 C. Colour quantization and resampling limit precision; these results support exploratory comparison.",
+    "All 19587 temperature-eligible cells have a day-night difference value, including the team convention of zero when no month has paired day/night values in polar conditions. This is calculated coverage, not proof of paired observations in every cell.",
+    "Twelve coastal cells lack MODIS LST and are excluded from M3/M6 rankings and masked to null in their downloaded grid scores. POWER fallback scores in the source CSV are not used. M2/M4 do not require temperature availability.",
+    "M6 retains the supplied anchors and frozen-ground thresholds after switching from air temperature to LST. This is an uncalibrated team proxy with fitness 0.3, not a confirmed permafrost or subsurface-ice observation."
   ],
   "sources": [
     {
@@ -618,19 +623,31 @@
       "url": "https://data.lroc.im-ldi.com/lroc/view_rdr/NAC_ROI_CABEUSPKLOB"
     },
     {
-      "title": "NASA POWER climatology",
-      "url": "https://power.larc.nasa.gov/docs/services/api/temporal/climatology/"
-    },
-    {
       "title": "NASA MODIS MCD12Q1 land cover",
       "url": "https://lpdaac.usgs.gov/products/mcd12q1v061/"
     },
     {
       "title": "AWS Terrain Tiles",
       "url": "https://registry.opendata.aws/terrain-tiles/"
+    },
+    {
+      "title": "NASA MODIS Terra MOD11C3 monthly LST",
+      "url": "https://lpdaac.usgs.gov/products/mod11c3v061/"
+    },
+    {
+      "title": "NASA GIBS monthly LST layers",
+      "url": "https://gibs.earthdata.nasa.gov/wms/epsg4326/best/wms.cgi"
+    },
+    {
+      "title": "NASA GIBS colormap analysis guidance",
+      "url": "https://nasa-gibs.github.io/gibs-api-docs/python-usage/"
     }
   ],
   "documents": [
+    {
+      "title": "Current MODIS lunar method (2026-11-15)",
+      "url": "/docs/lunar-principles-modis-2026-11-15.pdf"
+    },
     {
       "title": "Lunar formulas, sites and sources (23:50)",
       "url": "/docs/lunar-principles-2026-11-14.pdf"
@@ -641,31 +658,31 @@
     }
   ],
   "provenance": {
-    "version": "lunar-handoff-2026-11-14-2330",
+    "version": "lunar-handoff-modis-2026-11-15-1630",
     "input_sha256": {
-      "global_by_task.csv": "10104b0446bf3c746ea95bf65dd1e2bb5a66a4b97320faf8bcdff868e5f25c68",
+      "global_by_task.csv": "823ece1ae2dea823d3ae7fecf16e8794566cc8e8f977b1187db16417cf6bc437",
+      "m2-validation-baseline.json": "ee7374a652df64cc3484a7a423affd56e395dc3ce7fcdb99f02e7ba253c7bd6c",
       "m4_global_by_moonsite.csv": "524a361c391ada290aba8b364bcf2bcaedde7c438f4749036876aacad3a5c92e",
       "m4_slope_global_cells.csv": "24d80a2dcf92426a1a156de5aa71b13b1b3ca53aed4e790050085a9eae64345c",
-      "M4_slope_results.csv": "d170c4f2a7d9f9708f5a6e08ce6099e8f099327751945b487a3702aef1fba358",
-      "moon10_reference_sites.json": "3794bbb32c0818282dc65a78ee5861239fd1f40f8c6ae94fa1edac01c31cc502",
-      "moon_global_grid.json": "ec6f827bf7c0874ce8f51507ed93f4a8d827e0746e45d030e33847c0dabda24f",
-      "moon_results.json": "25f0de3ffa3c5abd25d6f869a965aea114a8351fe14520e5fea8c12e58966b22",
-      "new_features_results.csv": "3b7fffbff52558fed925b0407346d40ff8c456137ea4d06c5d0667e03ed6fab6",
-      "provided-artifact-sha256.json": "c00a500e997ca92ee88df08cf59f59aee6874ea9d7dca95d21de6f3dadae1fb6",
+      "M4_slope_results.csv": "2c5eb581ab53d62b0b98f6c5331e6bb5b24c9063472a006998629493d029fcdd",
+      "modis_lst_2023_1deg.csv": "0652ef07a0d4c6e9faea41a79cacb6571786d95c1a72eb877a4ed4bd041aded6",
+      "moon_global_grid.json": "e6a792e19a5d0b98da934d589c6427fa2f1f3399fd25c2f2571f6111e16509a5",
+      "moon_results.json": "048436cf2193ab430a33db5329eba2e5e4e1d5ba4a9105f03092b6c6af968a2e",
+      "provided-artifact-sha256.json": "71f47083b70328faae179f9e8eccdbd7065dc5fa678856a48cd4eba703f8b5e4",
       "site01-map-centre.json": "689e323870b99b9e5f1966479a99a9eac3db6beeb03c679918052968ef36c3d8",
-      "stage2_scores.csv": "11c019abd15de8e16750476749dc9f5b2475a3c129e3142257df7fe53e976632",
       "stage2_top_with_slope.csv": "cae4d8f03ddc98063ba0b9d9ce3e900b7ee988cac8a7d813b7d6b90171b6d7bf"
     },
     "artifact_sha256": {
-      "web_handoff_2026-11-14.zip": "b6a3134876580cbac569d7de819c978044d78af22d93ab1721a486c24336b560",
-      "moon_branch_2026-11-14.zip": "4cfd6b4f9492b9569ee5992eb6858c7add4255059f840df5c816085f89983703",
+      "nasa-moon.zip": "cf551ba49dcca6d8d00f1df4bab99232ce1b5bdcc447af09bcd6fa249d973c56",
+      "lunar-principles-modis.pdf": "d24ec82f35b077b3c11c115ebc7ce99edb6c82090c27b812b6711e6294111d45",
       "lunar-principles.pdf": "12122d803c935abbf2c5fc1f425397b35fa533df1528e67b92bf59c92353287d",
-      "lunar-method.pdf": "580690050989b2c0f4031f9dea1384ccebdf16afd09847570276c9ed96f5c008"
+      "lunar-method.pdf": "580690050989b2c0f4031f9dea1384ccebdf16afd09847570276c9ed96f5c008",
+      "power-backup.csv": "10104b0446bf3c746ea95bf65dd1e2bb5a66a4b97320faf8bcdff868e5f25c68"
     },
     "global_cells": 19599,
     "excluded_ice_cells": 4881,
     "eligible_global_cells": 14718,
-    "missing_daily_range_cells": 12459,
+    "missing_daily_range_cells": 12,
     "m4_supplied_pool": 151,
     "m4_nonice_pool": 135,
     "m4_new_candidate_pool": 130,
@@ -675,7 +692,20 @@
       "Noon elevation and ice proxy raw values recovered from the coordinate-matched global CSV.",
       "Mauna Kea validation coordinates recovered from the supplied six-page PDF.",
       "M4 new and least-similar groups rebuilt from the full supplied pool after applying its MODIS ice mask; imported scores preserved.",
-      "The missing Connecting Ridge map longitude uses the georeferenced PGDA tile centre, explicitly separate from report coordinates."
-    ]
+      "The missing Connecting Ridge map longitude uses the georeferenced PGDA tile centre, explicitly separate from report coordinates.",
+      "MODIS raw feature values use LST columns, never legacy T2M columns.",
+      "Twelve no-LST cells are rejected for M3/M6 and their grid scores are null; no POWER fallback.",
+      "M2 retains its four original validation regions because temperature availability does not gate astronomical scores.",
+      "Stale ERA5 metadata removed from the active handoff; archives remain separate."
+    ],
+    "temperature_source": "MODIS_LST_2023",
+    "temperature_year": 2023,
+    "temperature_cells": 19587,
+    "excluded_temperature_cells": 12,
+    "eligible_temperature_cells": 14706,
+    "partial_month_cells": 403,
+    "maximum_global_thermal_error": 0.05000000000001137,
+    "temperature_zero_convention": "No paired monthly day/night LST: use 0; not a measured zero.",
+    "power_backup_sha256": "10104b0446bf3c746ea95bf65dd1e2bb5a66a4b97320faf8bcdff868e5f25c68"
   }
 }

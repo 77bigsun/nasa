@@ -1,11 +1,16 @@
 import axios from 'axios'
 import type {Bundle,Mission,Facts,DataSource,ScoreRequest,ScoreResponse,OptimizeResponse,SensitivityResponse,SeriesResponse,DatasetProduct,ResearchSection,ObservedPilot,MeasurementCoverage} from './types'
 import type {LunarHandoffCatalog,LunarTaskComparison,LunarTaskId} from './lunarHandoffTypes'
+import type {MarsCatalog,MarsComparison,MarsNetwork,MarsGlobalGrid} from './marsHandoffTypes'
 const catalog=axios.create({baseURL:'/api/catalog',timeout:15000})
 const similarity=axios.create({baseURL:'/api/similarity',timeout:120000})
 const measurements=axios.create({baseURL:'/api/measurements',timeout:15000})
 const planning=axios.create({baseURL:'/api/planning',timeout:120000})
 export const api={
+ marsHandoff:()=>catalog.get<MarsCatalog>('/mars-handoff').then(r=>r.data),
+ marsComparison:(site:string,tasks:string[],signal?:AbortSignal)=>similarity.get<MarsComparison>('/mars/compare',{params:{site_id:site,tasks:tasks.join(',')},signal}).then(r=>r.data),
+ marsNetwork:(site:string,tasks:string[]=[],signal?:AbortSignal)=>planning.get<MarsNetwork>('/mars/network',{params:{site_id:site,tasks:tasks.join(',')},signal}).then(r=>r.data),
+ marsGrid:(signal?:AbortSignal)=>measurements.get<MarsGlobalGrid>('/mars-grid',{signal}).then(r=>r.data),
  lunarHandoff:()=>catalog.get<LunarHandoffCatalog>('/lunar-handoff').then(r=>r.data),
  lunarTask:(task:LunarTaskId,site:string,signal?:AbortSignal)=>similarity.get<LunarTaskComparison>(`/lunar/tasks/${task}`,{params:{site_id:site},signal}).then(r=>r.data),
  missions:()=>catalog.get<Mission[]>('/missions').then(r=>r.data),

@@ -99,6 +99,8 @@ class HandoffCandidate(BaseModel):
     available_features: int
     total_features: int
     notes: list[str]
+    temperature_source: str | None = None
+    temperature_months: int | None = Field(default=None, ge=0, le=12)
 
 
 class RankingGroups(BaseModel):
