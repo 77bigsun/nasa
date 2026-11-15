@@ -4,7 +4,7 @@
 
 | Time | Content | On screen |
 |---|---|---|
-| 0–7s | Mars: astronaut wide shot → boot in red dust → visor reflecting Mars → glove on red rock | Before Mars… |
+| 0–7s | Moon & Mars: Moon wide shot → Mars wide shot → boot in lunar dust → visor reflecting Mars | Before missions… |
 | 7–8s | Black, silence | — |
 | 8–15s | Earth: boot in sand → visor → glove on sandstone → wide shot | …we practise on Earth. → EARTH ANALOG FINDER — "Find the places on Earth that match the Moon and Mars." |
 | 15–19s | Website: home → Moon/Mars cards → Moon missions | MOON · MARS — Pick a mission |
@@ -16,7 +16,7 @@
 **Intro shots (0–15s) generated with Google Veo 3.1 (Google Flow).** Everything from 15s on is a real screen capture of this project's website. Earth imagery: NASA. No music; audio is Veo's generated ambience.
 
 ## How it was made
-- Intro: 8 Veo clips (wide shots + boot/visor/glove match cuts on Mars and Earth).
+- Intro: Veo clips: Moon and Mars wide shots and close-ups, then boot/visor/glove match cuts on Earth.
 - Website footage: automated capture of the local site (Playwright driving Edge, frames encoded with ffmpeg), English UI.
 - Assembly, captions and logo: ffmpeg, with captions rendered from the website's own font and logo.
 
