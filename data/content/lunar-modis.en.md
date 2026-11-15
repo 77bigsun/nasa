@@ -1,6 +1,6 @@
 # Lunar missions: suitability first, Earth analogs second
 
-The lunar entry page shows **M2, M3, M4 and M6**. Open one mission to see two sections: the ten lunar locations and their task suitability, followed by **three most-similar new Earth candidates and three least-similar locations**. The original site's colors, header, maps, evidence drawer and language switch are retained. Mars keeps its existing observed-comparison workflow.
+The lunar entry page shows **M2, M3, M4 and M6**. Open one mission to see two sections: the ten lunar locations and their task suitability, followed by **three most-similar new Earth candidates and three least-similar locations**. The original site's colors, header, maps, evidence drawer and language switch are retained. Mars uses the separate seven-target handoff described above.
 
 ## Lunar suitability is separate from Earth similarity
 
@@ -51,7 +51,7 @@ All anchors and weights remain as supplied. In particular, M6 applies the earlie
 
 ---
 
-# Archived observed-comparison method and current Mars workflow
+# Archived observed-comparison method
 
-The following documents the earlier observed model and current Mars calculation. The archived 15-site lunar research APIs retain their earlier configuration and are not the active lunar task-page data source.
+The following documents the earlier observed model. The archived 15-site lunar research APIs retain their earlier configuration; neither they nor the legacy observed Mars profile supply the current task explorers.
 

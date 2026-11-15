@@ -4,12 +4,12 @@ The Mars explorer retains the three-step workflow: choose tests, choose one of s
 
 **Task score:** `100 × exp(Σ ln(max(s, 0.01)) / n)`. Feature weights and confidence factors are all 1. Every feature applicable to the target is required; missing data prevent scoring. The website preserves the exported score rather than replacing it with a score from rounded inputs. Rechecking all 352 candidate scores gives a maximum discrepancy of 0.08741 points.
 
-- R1: landing surface (six features).
-- R2: visual navigation, not evaluated because global image-texture and dune-fraction data are absent.
-- R3: shallow ground ice (three features), only where SWIM Ci ≥ 0.1.
-- R4: hydrated minerals (four features, plus an ASTER mineral index for Jezero, Arcadia and AP-105).
-- R5: periglacial landforms (six features, plus glacier distance for Protonilus), only where SWIM Ci ≥ 0.1.
-- R6: dust and near-surface weather (seven features, including seasonal shape and amplitude).
+- **Landing surface conditions:** six features.
+- **Visual navigation feasibility:** not evaluated because global image-texture and dune-fraction data are absent.
+- **Shallow subsurface ice exploration:** three features, only where SWIM Ci ≥ 0.1.
+- **Hydrated mineral identification:** four features, plus an ASTER mineral index for Jezero, Arcadia and AP-105.
+- **Glacial and periglacial terrain:** six features, plus glacier distance for Protonilus, only where SWIM Ci ≥ 0.1.
+- **Dust and near-surface weather:** seven features, including seasonal shape and amplitude.
 
 The five-dimension environmental profile is a separate reference. Each dimension is a geometric mean of its variables; the overall score is a geometric mean of the five scored dimensions. Ranking requires at least 80% dimension and variable coverage. Biology and subsurface are not evaluated. Temperature and aridity use terrestrial extremeness percentiles, not physical equality with Mars. Task scores should be compared within the same test.
 

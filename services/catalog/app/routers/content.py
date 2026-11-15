@@ -56,8 +56,8 @@ def create_router(repo: FileRepository):
 
     @router.get('/method',response_model=Method)
     def method():
-        en=(repo.data_root/'content/mars-handoff.en.md').read_text(encoding='utf-8')+(repo.data_root/'content/lunar-modis.en.md').read_text(encoding='utf-8')
-        zh=(repo.data_root/'content/mars-handoff.zh-TW.md').read_text(encoding='utf-8')+(repo.data_root/'content/lunar-modis.zh-TW.md').read_text(encoding='utf-8')
+        en=''.join((repo.data_root/f'content/{name}.en.md').read_text(encoding='utf-8') for name in ['mars-handoff','lunar-weights','lunar-modis'])
+        zh=''.join((repo.data_root/f'content/{name}.zh-TW.md').read_text(encoding='utf-8') for name in ['mars-handoff','lunar-weights','lunar-modis'])
         return Method(settings=repo.settings,markdown=en+(repo.docs/'METHOD.md').read_text(encoding='utf-8'),markdown_zh=zh+(repo.data_root/'content/method.zh-TW.md').read_text(encoding='utf-8'))
     @router.get('/datasets',response_model=list[DatasetProduct])
     def datasets():return repo.products

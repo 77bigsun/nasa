@@ -29,7 +29,7 @@ beforeEach(()=>{
 async function open(path:string){
  const router=createRouter({history:createMemoryHistory(),routes:[{path:'/mars',component:MarsMission},{path:'/:pathMatch(.*)*',component:{template:'<div>Other</div>'}}]})
  await router.push(path);await router.isReady()
- const wrapper=mount(MarsMission,{global:{plugins:[router,i18n],stubs:{EarthMap:true,PlanetTargetMap:true}}})
+ const wrapper=mount(MarsMission,{global:{plugins:[router,i18n],stubs:{EarthMap:true,PlanetTargetMap:true,Chart:true}}})
  await flushPromises();return {wrapper,router}
 }
 describe('Source-native Mars explorer',()=>{

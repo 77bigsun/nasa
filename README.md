@@ -153,3 +153,7 @@ The old `*.demo.*` files and deterministic generator are archival test material.
 ## Mars update (2026-11-15)
 
 The Mars explorer now uses the supplied seven-target handoff with 27 scored target/test pairs. It retains the three-step workflow, displays top/bottom comparisons and feature evidence, offers the global score grid, and plans minimum Earth test networks with relative thresholds. R2 and inapplicable ice tests remain explicitly unscored. See [Mars method](docs/MARS_METHOD.md). Lunar sites now open credited images; the Chinese homepage title is updated and task codes are hidden while task names remain.
+
+Earth candidate cards in both explorers now show fading image previews. Their drawers include the same credited regional imagery and an animated, interactive feature-similarity radar. See [Earth imagery and radar](docs/EARTH_IMAGERY.md) for coordinate matching, provenance and interpretation.
+
+The Method, Data Sources and Research Plan pages display full task names in both languages while preserving internal IDs and URLs. Lunar task pages and evidence drawers now document the team-defined feature weights, their purpose-based rationale, data-fitness-adjusted effective weights and the independent 120-hour darkness check. Full bilingual derivations are in `data/content/lunar-weights.*.md`.

@@ -4,9 +4,10 @@ import {useI18n} from 'vue-i18n'
 import Shell from '../components/Shell.vue'
 import {api,errorMessage} from '../api'
 import {localizeData} from '../i18n'
+import {readableTaskContent} from '../taskNames'
 import type {ResearchSection} from '../types'
 const {t,locale}=useI18n();const raw=ref<ResearchSection[]>([]);const error=ref('')
-const sections=computed(()=>localizeData(raw.value,locale.value))
+const sections=computed(()=>readableTaskContent(localizeData(raw.value,locale.value),locale.value))
 async function load(){error.value='';try{raw.value=await api.research()}catch(e){error.value=errorMessage(e)}}
 onMounted(load)
 </script>

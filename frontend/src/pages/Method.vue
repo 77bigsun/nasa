@@ -7,12 +7,14 @@ import katex from 'katex'
 import 'katex/dist/katex.min.css'
 import Shell from '../components/Shell.vue'
 import {api,errorMessage} from '../api'
+import {readableTaskHtml} from '../taskNames'
 const {t,locale}=useI18n();const markdown=ref('');const chinese=ref('');const error=ref('')
 const html=computed(()=>{
  const formulas:string[]=[]
- const md=(locale.value==='zh-TW'&&chinese.value?chinese.value:markdown.value).replace(/\$\$([\s\S]*?)\$\$/g,(_,formula:string)=>{const index=formulas.push(katex.renderToString(formula,{displayMode:true,throwOnError:false}))-1;return '\n\nFORMULABLOCK'+index+'END\n\n'})
+ const source=(locale.value==='zh-TW'&&chinese.value?chinese.value:markdown.value).replace(/^(#{1,5})[ \t]+/gm,'#$1 ')
+ const md=source.replace(/\$\$([\s\S]*?)\$\$/g,(_,formula:string)=>{const index=formulas.push(katex.renderToString(formula,{displayMode:true,throwOnError:false}))-1;return '\n\nFORMULABLOCK'+index+'END\n\n'})
  const output=DOMPurify.sanitize(String(marked(md,{async:false})))
- return output.replace(/FORMULABLOCK(\d+)END/g,(_,i:string)=>formulas[Number(i)]!)
+ return readableTaskHtml(output.replace(/FORMULABLOCK(\d+)END/g,(_,i:string)=>formulas[Number(i)]!),locale.value)
 })
 async function load(){error.value='';try{const result=await api.method();markdown.value=result.markdown;chinese.value=result.markdown_zh||''}catch(e){error.value=errorMessage(e)}}
 onMounted(load)

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import {use} from 'echarts/core'
 import {CanvasRenderer} from 'echarts/renderers'
-import {LineChart,BarChart} from 'echarts/charts'
-import {GridComponent,TooltipComponent,LegendComponent,TitleComponent} from 'echarts/components'
+import {LineChart,BarChart,RadarChart} from 'echarts/charts'
+import {GridComponent,TooltipComponent,LegendComponent,TitleComponent,RadarComponent} from 'echarts/components'
 import VChart from 'vue-echarts'
 import type {EChartsOption} from 'echarts'
-use([CanvasRenderer,LineChart,BarChart,GridComponent,TooltipComponent,LegendComponent,TitleComponent])
+use([CanvasRenderer,LineChart,BarChart,RadarChart,GridComponent,TooltipComponent,LegendComponent,TitleComponent,RadarComponent])
 defineProps<{option:EChartsOption;label:string}>()
 </script>
 <template><VChart :option="option" :init-options="{locale:'EN'}" autoresize class="chart" role="img" :aria-label="label" /></template>

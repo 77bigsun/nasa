@@ -23,7 +23,7 @@ beforeEach(()=>{vi.clearAllMocks();i18n.global.locale.value='en';setContentTrans
 async function open(path:string){
  const router=createRouter({history:createMemoryHistory(),routes:[{path:'/moon',name:'lunar-tasks',component:LunarMission},{path:'/moon/:task(M2|M3|M4|M6)',name:'lunar-task',component:LunarMission},{path:'/:pathMatch(.*)*',component:{template:'<div>Other page</div>'}}]})
  await router.push(path);await router.isReady()
- const wrapper=mount(LunarMission,{global:{plugins:[router,i18n],stubs:{EarthMap:true,PlanetTargetMap:true}}})
+ const wrapper=mount(LunarMission,{global:{plugins:[router,i18n],stubs:{EarthMap:true,PlanetTargetMap:true,Chart:true}}})
  await flushPromises();return {wrapper,router}
 }
 describe('Task-first lunar experience',()=>{
